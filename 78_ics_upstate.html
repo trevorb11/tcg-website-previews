@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ICS Upstate — Managed IT Services for Upstate New York Businesses</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #1A3A5C;
+      --blue-mid: #234E7A;
+      --blue-light: #2E6296;
+      --accent: #00A8E8;
+      --accent-light: #2CBDF5;
+      --white: #FFFFFF;
+      --off-white: #F5F7FA;
+      --light-grey: #EEF1F5;
+      --text-dark: #0D1B2A;
+      --text-mid: #3A4A5C;
+      --text-light: #6A7A8C;
+      --border: #D5DCE5;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(26,58,92,0.97);
+      backdrop-filter: blur(8px);
+      padding: 0 2rem;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: var(--white) !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--accent-light) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--blue);
+      position: relative;
+      overflow: hidden;
+      padding: 100px 2rem 60px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 55%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80') center/cover no-repeat;
+      opacity: 0.1;
+    }
+
+    .hero-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(0,168,232,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,168,232,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-glow {
+      position: absolute;
+      bottom: -50px;
+      right: 10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0,168,232,0.12), transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to top, var(--white), transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 660px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(0,168,232,0.12);
+      border: 1px solid rgba(0,168,232,0.3);
+      color: var(--accent);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 em { font-style: normal; color: var(--accent); }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+      max-width: 540px;
+    }
+
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.5rem;
+    }
+
+    .hero-stat span {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .hero-stat p { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+
+    /* SECTIONS */
+    section { padding: 90px 2rem; }
+    .container { max-width: 1120px; margin: 0 auto; }
+
+    .section-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      color: var(--blue);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-lead { font-size: 1.05rem; color: var(--text-mid); max-width: 580px; line-height: 1.8; }
+
+    /* PROBLEM */
+    .problem { background: var(--off-white); }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .problem-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 1.8rem;
+      border-left: 3px solid var(--accent);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+
+    .problem-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .problem-card p { color: var(--text-mid); font-size: 0.9rem; line-height: 1.7; }
+
+    .problem-bridge {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 1.1rem;
+      color: var(--blue);
+      font-weight: 500;
+    }
+
+    .problem-bridge em { font-style: normal; color: var(--accent); font-weight: 700; }
+
+    /* SERVICES */
+    .services { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: var(--off-white);
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,168,232,0.08); }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .service-icon svg { width: 24px; height: 24px; fill: var(--white); }
+
+    .service-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p { color: var(--text-mid); font-size: 0.9rem; line-height: 1.7; }
+
+    /* INDUSTRIES */
+    .industries { background: var(--blue); }
+    .industries .section-title { color: var(--white); }
+    .industries .section-label { color: var(--accent); }
+
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .industry-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 1.5rem 1.2rem;
+      text-align: center;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .industry-card:hover { background: rgba(0,168,232,0.1); border-color: rgba(0,168,232,0.3); }
+
+    .industry-card span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .industry-icon {
+      display: block;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    /* WHY */
+    .why { background: var(--off-white); }
+
+    .why-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .why-image { border-radius: 12px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.1); }
+    .why-image img { width: 100%; height: 420px; object-fit: cover; display: block; }
+
+    .why-list { margin-top: 1.5rem; }
+
+    .why-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .why-item:last-child { border-bottom: none; }
+
+    .why-check {
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .why-check svg { width: 14px; height: 14px; fill: var(--white); }
+
+    .why-item h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 0.3rem;
+    }
+
+    .why-item p { color: var(--text-mid); font-size: 0.88rem; line-height: 1.65; }
+
+    /* LOCATIONS */
+    .locations { background: var(--white); }
+
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .location-card {
+      background: var(--off-white);
+      border-radius: 10px;
+      padding: 2rem;
+      border-bottom: 3px solid var(--accent);
+      text-align: center;
+    }
+
+    .location-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .location-card p { color: var(--text-light); font-size: 0.88rem; }
+
+    /* PROCESS */
+    .process { background: var(--light-grey); }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .process-step {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+    }
+
+    .process-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: rgba(0,168,232,0.18);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .process-step h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .process-step p { color: var(--text-mid); font-size: 0.88rem; line-height: 1.7; }
+
+    /* ABOUT */
+    .about { background: var(--off-white); }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image { border-radius: 12px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.1); }
+    .about-image img { width: 100%; height: 420px; object-fit: cover; display: block; }
+
+    .about-text p { color: var(--text-mid); font-size: 0.97rem; line-height: 1.85; margin-bottom: 1rem; }
+
+    .about-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-top: 1.5rem !important;
+    }
+
+    .about-title { color: var(--accent) !important; font-size: 0.88rem; margin-bottom: 0 !important; }
+
+    /* CONTACT */
+    .contact { background: var(--blue); }
+    .contact .section-title { color: var(--white); }
+    .contact .section-label { color: var(--accent); }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p { color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.5rem; }
+
+    .contact-detail { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; }
+    .contact-detail-icon { width: 20px; height: 20px; fill: var(--accent); flex-shrink: 0; margin-top: 2px; }
+    .contact-detail p { color: rgba(255,255,255,0.65) !important; font-size: 0.93rem !important; margin-bottom: 0 !important; }
+    .contact-detail a { color: var(--accent); text-decoration: none; }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      color: var(--white);
+      font-size: 0.92rem;
+      font-family: 'Open Sans', sans-serif;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,0.35); }
+    .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { outline: none; border-color: var(--accent); }
+    .contact-form select option { background: var(--blue); }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-submit:hover { background: var(--accent-light); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      background: #0A1E30;
+      padding: 3rem 2rem 2rem;
+      color: rgba(255,255,255,0.45);
+      font-size: 0.87rem;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .footer-brand p { margin-top: 0.8rem; line-height: 1.7; max-width: 300px; }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.5rem; }
+    .footer-col ul a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .footer-col ul a:hover { color: var(--accent); }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .why-inner { grid-template-columns: 1fr; }
+      .about-inner { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      section { padding: 60px 1.2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo"><span style="color:#00A8E8;">ICS</span> Upstate</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#locations">Locations</a></li>
+      <li><a href="#contact" class="nav-cta">Free Assessment</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-grid-lines"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-badge">30+ Years &nbsp;|&nbsp; ~150 Experts &nbsp;|&nbsp; 4 Upstate NY Offices</div>
+      <h1>Upstate New York's<br/><em>Technology Partner</em></h1>
+      <p>ICS Upstate delivers managed IT services, cloud solutions, cybersecurity, and business communications to organizations across the region. Local expertise. Real people. 30+ years of doing this right.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Get a Free IT Assessment</a>
+        <a href="#services" class="btn-outline">Our Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><span>30+</span><p>Years Serving Upstate NY</p></div>
+        <div class="hero-stat"><span>~150</span><p>Technology Experts</p></div>
+        <div class="hero-stat"><span>4</span><p>Regional Office Locations</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem" id="problem">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">The Challenge</div>
+        <h2 class="section-title">Technology That Works Against You — Instead of For You</h2>
+        <p class="section-lead">Most growing businesses reach a point where IT becomes a source of stress rather than a competitive advantage. Sound familiar?</p>
+      </div>
+      <div class="problem-grid">
+        <div class="problem-card reveal reveal-delay-1">
+          <h3>Rising Cyber Threats</h3>
+          <p>Ransomware, phishing, and data breaches are targeting organizations of every size. Without proactive security, a single incident can cost far more than years of IT investment.</p>
+        </div>
+        <div class="problem-card reveal reveal-delay-2">
+          <h3>Unreliable Systems</h3>
+          <p>Downtime costs money, productivity, and customer trust. Aging infrastructure and reactive break-fix support leave you vulnerable to the next failure.</p>
+        </div>
+        <div class="problem-card reveal reveal-delay-3">
+          <h3>Internal IT Stretched Too Thin</h3>
+          <p>Your internal IT person — if you have one — is juggling too much. Strategic projects, user support, security, and vendor management can't all get the attention they need from one person.</p>
+        </div>
+      </div>
+      <p class="problem-bridge reveal">ICS Upstate takes it all off your plate. <em>Stop reacting. Start growing.</em></p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Our Services</div>
+        <h2 class="section-title">Everything You Need. One Partner.</h2>
+        <p class="section-lead">From proactive monitoring and help desk support to full cloud migrations and compliance programs — ICS Upstate covers the full spectrum of business technology needs.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>Managed IT Services</h3>
+          <p>Proactive monitoring, maintenance, and help desk support for your entire IT environment. We fix problems before they become outages, and we're there when you need us.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><polyline points="16 17 21 12 16 7"/><path d="M21 12H9"/><path d="M9 18H4a2 2 0 01-2-2V8a2 2 0 012-2h5"/></svg>
+          </div>
+          <h3>Cloud Services</h3>
+          <p>Cloud migration, management, and optimization for Microsoft 365, Azure, and other platforms. We help you get the most out of cloud investment — securely and cost-effectively.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Cybersecurity &amp; Compliance</h3>
+          <p>Multi-layered security protection, threat detection, employee security awareness training, and compliance support for HIPAA, NIST, PCI, and other frameworks.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.08 2.2 2 2 0 012.06.06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          </div>
+          <h3>Business Communications</h3>
+          <p>Modern phone systems, unified communications, and collaboration tools that keep your team connected — whether in the office, at home, or on the road.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <h3>Data Services</h3>
+          <p>Backup, disaster recovery, and data storage solutions that protect your most critical assets. If the worst happens, we make sure you can recover quickly and completely.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Project-Based IT</h3>
+          <p>One-time infrastructure upgrades, server deployments, office moves, network redesigns, and software implementations handled by a dedicated project team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="industries" id="industries">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Industries We Serve</div>
+        <h2 class="section-title" style="color:var(--white);">Built for Upstate New York's Business Community</h2>
+        <p class="section-lead" style="color:rgba(255,255,255,0.65);">We've spent 30+ years working alongside the businesses and organizations that define Upstate New York — and we understand the specific technology needs of each sector.</p>
+      </div>
+      <div class="industries-grid">
+        <div class="industry-card reveal reveal-delay-1"><div class="industry-icon">+</div><span>Healthcare</span></div>
+        <div class="industry-card reveal reveal-delay-2"><div class="industry-icon">+</div><span>Education</span></div>
+        <div class="industry-card reveal reveal-delay-3"><div class="industry-icon">+</div><span>Manufacturing</span></div>
+        <div class="industry-card reveal reveal-delay-1"><div class="industry-icon">+</div><span>Professional Services</span></div>
+        <div class="industry-card reveal reveal-delay-2"><div class="industry-icon">+</div><span>Nonprofits</span></div>
+        <div class="industry-card reveal reveal-delay-3"><div class="industry-icon">+</div><span>Government</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="why" id="why">
+    <div class="container">
+      <div class="why-inner">
+        <div class="why-image reveal">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=700&q=80" alt="ICS Upstate IT team working" />
+        </div>
+        <div class="reveal">
+          <div class="section-label">Why ICS Upstate</div>
+          <h2 class="section-title">Local Experts. Real Accountability.</h2>
+          <p class="section-lead" style="margin-bottom:0.5rem;">There's a reason Upstate New York businesses keep coming back to ICS — and it's not just the technology.</p>
+          <div class="why-list">
+            <div class="why-item">
+              <div class="why-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div>
+                <h4>30+ Years of Regional Expertise</h4>
+                <p>We know Upstate New York businesses because we've been serving them for over three decades. We understand your community, your industry, and your technology environment.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div>
+                <h4>One of the Region's Largest MSPs</h4>
+                <p>With nearly 150 experts across four offices, we have the depth to handle enterprise-level complexity — while staying local enough to be on-site fast.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div>
+                <h4>No Overseas Call Centers</h4>
+                <p>When you call ICS, you reach a local person who knows your environment. No overseas support queues, no scripted responses from someone who doesn't know your systems.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div>
+                <h4>Four Office Locations for Fast On-Site Response</h4>
+                <p>Endicott, East Syracuse, Ithaca, and Auburn — our physical presence across the region means we can get a technician to your site quickly when remote support isn't enough.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section class="locations" id="locations">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:0;">
+        <div class="section-label">Our Offices</div>
+        <h2 class="section-title">Four Locations Across Upstate New York</h2>
+        <p class="section-lead" style="margin:0 auto;">We're not a remote-only operation. Our four regional offices mean we have people near you — ready to respond when you need boots on the ground.</p>
+      </div>
+      <div class="locations-grid" style="margin-top:3rem;">
+        <div class="location-card reveal reveal-delay-1">
+          <h3>Endicott</h3>
+          <p>111 Grant Ave, Suite 103<br/>Endicott, NY 13760</p>
+        </div>
+        <div class="location-card reveal reveal-delay-2">
+          <h3>East Syracuse</h3>
+          <p>6007 Fair Lakes Rd<br/>East Syracuse, NY</p>
+        </div>
+        <div class="location-card reveal reveal-delay-3">
+          <h3>Ithaca</h3>
+          <p>Serving Tompkins County<br/>and surrounding region</p>
+        </div>
+        <div class="location-card reveal reveal-delay-4">
+          <h3>Auburn</h3>
+          <p>Serving Cayuga County<br/>and surrounding area</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:0;">
+        <div class="section-label">Getting Started</div>
+        <h2 class="section-title">Simple From Day One</h2>
+        <p class="section-lead" style="margin:0 auto;">Transitioning to a managed services provider shouldn't be complicated. Here's exactly how we onboard a new client and what you can expect.</p>
+      </div>
+      <div class="process-steps" style="margin-top:3rem;">
+        <div class="process-step reveal reveal-delay-1">
+          <div class="process-num">01</div>
+          <h3>Free IT Assessment</h3>
+          <p>We review your current technology environment, identify risks and gaps, and give you an honest picture of where you stand — at no cost and no obligation.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="process-num">02</div>
+          <h3>Technology Roadmap</h3>
+          <p>Based on your assessment, we develop a practical technology roadmap aligned with your business goals, budget, and timeline — short-term fixes and long-term strategy.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="process-num">03</div>
+          <h3>Onboarding</h3>
+          <p>Our onboarding team deploys our tools, documents your environment, and trains your team. We make the transition as smooth as possible with minimal disruption to your operations.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-4">
+          <div class="process-num">04</div>
+          <h3>Ongoing Partnership</h3>
+          <p>Proactive monitoring, regular reviews, and continuous improvement. We stay ahead of problems and keep you informed — so technology becomes a strength, not a worry.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-image reveal">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=700&q=80" alt="Joshua Wamser, ICS Upstate" />
+        </div>
+        <div class="about-text reveal">
+          <div class="section-label">About ICS Upstate</div>
+          <h2 class="section-title">Rooted in Upstate New York for Over 30 Years</h2>
+          <p>ICS Upstate has been serving organizations across the Southern Tier and Central New York for more than three decades — making it one of the region's largest privately held technology managed services firms.</p>
+          <p>What started as a local technology services business has grown into a team of nearly 150 experts operating from four offices — Endicott, East Syracuse, Ithaca, and Auburn. That growth reflects the trust that businesses across the region have placed in ICS over the years.</p>
+          <p>Joshua Wamser leads ICS Upstate with a straightforward philosophy: technology is supposed to make your business run better. When it doesn't, that's our problem to fix — proactively, locally, and without the runaround that clients get from impersonal national vendors.</p>
+          <p>Every person on the ICS team lives and works in Upstate New York. This region is our community, and the businesses here are our neighbors. We take that personally.</p>
+          <p class="about-name">Joshua Wamser</p>
+          <p class="about-title">Leadership, ICS Upstate</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">Get a Free IT Assessment</h2>
+        <p class="section-lead" style="color:rgba(255,255,255,0.65);">No obligation, no pushy sales pitch. Just an honest look at your current technology environment and a straight answer about what we'd recommend — and what it would cost.</p>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-info reveal">
+          <h3>Email Josh: josh@icsupstate.com</h3>
+          <p>Fill out the form and a local ICS expert from your nearest office will reach out — usually within one business day. Or email Josh directly. Either way, you'll be talking to someone who actually knows Upstate NY.</p>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <p><a href="mailto:josh@icsupstate.com">josh@icsupstate.com</a></p>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <p>Offices in Endicott, East Syracuse, Ithaca, and Auburn, NY</p>
+          </div>
+        </div>
+        <div class="reveal">
+          <form class="contact-form">
+            <div class="form-row">
+              <input type="text" placeholder="Your Name" />
+              <input type="email" placeholder="Email Address" />
+            </div>
+            <div class="form-row">
+              <input type="text" placeholder="Company Name" />
+              <input type="tel" placeholder="Phone Number" />
+            </div>
+            <div class="form-row">
+              <select>
+                <option value="" disabled selected>Industry</option>
+                <option>Healthcare</option>
+                <option>Education</option>
+                <option>Manufacturing</option>
+                <option>Professional Services</option>
+                <option>Nonprofit</option>
+                <option>Government</option>
+                <option>Other</option>
+              </select>
+              <input type="text" placeholder="Number of Employees" />
+            </div>
+            <textarea placeholder="Tell us about your current IT situation and your biggest technology challenges..."></textarea>
+            <button type="submit" class="btn-submit">Request My Free Assessment</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="font-size:1.2rem;"><span style="color:#00A8E8;">ICS</span> Upstate</a>
+        <p>ICS Upstate — one of Upstate New York's largest privately held managed IT services firms. Serving businesses across the Southern Tier and Central NY for 30+ years, from four regional offices.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Managed IT</a></li>
+          <li><a href="#services">Cloud Services</a></li>
+          <li><a href="#services">Cybersecurity</a></li>
+          <li><a href="#services">Business Communications</a></li>
+          <li><a href="#services">Data Services</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#locations">Locations</a></li>
+          <li><a href="#industries">Industries</a></li>
+          <li><a href="#contact">Get Assessment</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Endicott | East Syracuse | Ithaca | Auburn, NY &nbsp;|&nbsp; josh@icsupstate.com</p>
+      <p>&copy; 2025 ICS Upstate. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

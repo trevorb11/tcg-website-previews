@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wakestream Ventures | Early-Stage Venture Capital | Holland, MI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0d1b2a;
+      --navy-mid: #1a3351;
+      --teal: #00c2b8;
+      --teal-light: #e0faf8;
+      --white: #ffffff;
+      --off-white: #f5f8fc;
+      --gray: #6b7e96;
+      --gray-light: #e4eaf2;
+      --text: #1a2535;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.2;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 5%;
+      background: rgba(13, 27, 42, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 194, 184, 0.15);
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo span { color: var(--teal); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--teal); }
+
+    .nav-cta {
+      background: var(--teal);
+      color: var(--navy) !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: 50px;
+      font-weight: 600 !important;
+      transition: opacity 0.2s !important;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--navy);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1600&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.18;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(13,27,42,0.98) 50%, rgba(0,194,184,0.08) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5%;
+      padding-top: 7rem;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: rgba(0, 194, 184, 0.12);
+      color: var(--teal);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      border: 1px solid rgba(0, 194, 184, 0.3);
+      margin-bottom: 1.8rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      color: var(--white);
+      font-weight: 700;
+      max-width: 700px;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--teal);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: var(--navy);
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 194, 184, 0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.35);
+      transition: border-color 0.2s, color 0.2s;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      flex-wrap: wrap;
+    }
+
+    .stat-item .num {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--teal);
+    }
+
+    .stat-item .label {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* SECTION COMMONS */
+    section { padding: 5.5rem 5%; }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--gray);
+      max-width: 600px;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+    }
+
+    /* THESIS */
+    .thesis {
+      background: var(--off-white);
+    }
+
+    .thesis-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .thesis-img {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    }
+
+    .thesis-img img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .stats-row {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-box {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.2rem 1.6rem;
+      text-align: center;
+      flex: 1;
+      min-width: 120px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .stat-box .num {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .stat-box .label {
+      font-size: 0.75rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* WHAT WE LOOK FOR */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid var(--gray-light);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+    }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--teal-light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .card-icon svg {
+      width: 26px;
+      height: 26px;
+      fill: none;
+      stroke: var(--teal);
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+      color: var(--navy);
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* PORTFOLIO */
+    .portfolio { background: var(--navy); }
+
+    .portfolio .section-title { color: var(--white); }
+    .portfolio .section-lead { color: rgba(255,255,255,0.6); }
+
+    .portfolio-scroll {
+      display: flex;
+      gap: 1.2rem;
+      overflow-x: auto;
+      padding-bottom: 1.2rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--teal) transparent;
+    }
+
+    .portfolio-card {
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 1.5rem 1.8rem;
+      min-width: 200px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .portfolio-card:hover {
+      background: rgba(0, 194, 184, 0.08);
+      border-color: rgba(0, 194, 184, 0.3);
+    }
+
+    .portfolio-card .co-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .portfolio-card .co-tag {
+      font-size: 0.75rem;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .portfolio-card .co-desc {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.5rem;
+    }
+
+    /* MICHIGAN SECTION */
+    .michigan {
+      position: relative;
+      overflow: hidden;
+      background: var(--navy-mid);
+      color: var(--white);
+    }
+
+    .michigan-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1600&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.12;
+    }
+
+    .michigan-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .michigan .section-title { color: var(--white); }
+
+    .michigan blockquote {
+      margin-top: 2rem;
+      padding-left: 1.5rem;
+      border-left: 3px solid var(--teal);
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.8);
+      font-style: italic;
+      line-height: 1.8;
+    }
+
+    /* HOW WE WORK */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .step {
+      text-align: center;
+    }
+
+    .step-num {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--teal-light);
+      color: var(--teal);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+    }
+
+    .step h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--navy);
+    }
+
+    .step p {
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* TEAM PHOTO STRIP */
+    .team-photos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .team-photos img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+    }
+
+    /* CONTACT */
+    .contact { background: var(--off-white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p {
+      font-size: 0.95rem;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-detail svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--teal);
+      fill: none;
+      stroke-width: 2;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .contact-detail span {
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.83rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.8rem 1.1rem;
+      border: 1.5px solid var(--gray-light);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--teal);
+    }
+
+    .form-group textarea { height: 120px; resize: vertical; }
+
+    .form-submit {
+      background: var(--navy);
+      color: var(--white);
+      padding: 0.9rem 2.4rem;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .form-submit:hover { background: var(--teal); color: var(--navy); }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.6);
+      padding: 3.5rem 5%;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .footer-logo span { color: var(--teal); }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--teal); }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+      width: 100%;
+      text-align: center;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .thesis-grid, .contact-grid { grid-template-columns: 1fr; }
+      .cards-grid { grid-template-columns: 1fr 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .team-photos { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .cards-grid, .process-steps { grid-template-columns: 1fr; }
+      .team-photos { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Wake<span>stream</span></a>
+    <ul class="nav-links">
+      <li><a href="#thesis">Thesis</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#process">How We Work</a></li>
+      <li><a href="#contact" class="nav-cta">Pitch to Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Early-Stage Venture Capital</div>
+      <h1>Where Physical Products Meet the <em>Connected World</em></h1>
+      <p class="hero-sub">Wakestream Ventures backs remarkable founders building hardware that thinks, connects, and redefines what objects can do. We invest at the seed stage from the heart of Michigan's manufacturing legacy.</p>
+      <div class="hero-btns">
+        <a href="#portfolio" class="btn-primary">Explore Portfolio</a>
+        <a href="#contact" class="btn-outline">Pitch to Us</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="num">60+</span>
+          <span class="label">Portfolio Companies</span>
+        </div>
+        <div class="stat-item">
+          <span class="num">$150K–500K</span>
+          <span class="label">Initial Check Size</span>
+        </div>
+        <div class="stat-item">
+          <span class="num">$1.5M</span>
+          <span class="label">Cumulative Capacity</span>
+        </div>
+        <div class="stat-item">
+          <span class="num">Seed</span>
+          <span class="label">Stage Focus</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THESIS -->
+  <section class="thesis" id="thesis">
+    <div class="section-inner">
+      <div class="thesis-grid">
+        <div class="reveal">
+          <span class="section-tag">Investment Thesis</span>
+          <h2 class="section-title">We Back Founders at the Frontier</h2>
+          <p class="section-lead">The most interesting companies of the next decade will not be purely digital. They will be things you can hold, install, and use — products that also connect, sense, and adapt. Wakestream was built to find these founders early.</p>
+          <p style="color: var(--gray); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.5rem;">Michigan has been building physical things for over a century. The design sensibility, the manufacturing know-how, the problem-solving culture — it is still here. Wakestream is rooted in that heritage while looking squarely at what is next. We are a generalist early-stage fund with a sharp focus on founders who understand both atoms and bits.</p>
+          <p style="color: var(--gray); font-size: 0.95rem; line-height: 1.8;">We take first meetings seriously. We move with conviction. And once we invest, we stay engaged — as a real partner, not a passive cap table entry.</p>
+          <div class="stats-row">
+            <div class="stat-box reveal">
+              <span class="num">60+</span>
+              <span class="label">Companies Backed</span>
+            </div>
+            <div class="stat-box reveal">
+              <span class="num">Seed</span>
+              <span class="label">Stage</span>
+            </div>
+            <div class="stat-box reveal">
+              <span class="num">MI</span>
+              <span class="label">Home Base</span>
+            </div>
+          </div>
+        </div>
+        <div class="thesis-img reveal">
+          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&auto=format&fit=crop" alt="Founders working on a hardware prototype" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE LOOK FOR -->
+  <section id="criteria">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">Investment Criteria</span>
+        <h2 class="section-title">What We Look For</h2>
+        <p class="section-lead">We are generalists by design, but the founders who find the best fit with Wakestream share a few things in common.</p>
+      </div>
+      <div class="cards-grid">
+        <div class="card reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Physical Meets Digital</h3>
+          <p>Products that live in the real world and connect to the internet. IoT, smart hardware, connected consumer goods, industrial sensors. If you can hold it and it also thinks, we are interested.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          </div>
+          <h3>Defensible Hardware</h3>
+          <p>Manufacturing know-how, industrial design, and supply chain relationships that are not easy to replicate. The best hardware startups build moats before they need them.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <h3>Visionary Founders</h3>
+          <p>Builders who understand both the physical and digital domains deeply. People who can ship something people want to touch while also building the software layer that makes it remarkable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio" id="portfolio">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag" style="color: var(--teal);">Selected Portfolio</span>
+        <h2 class="section-title">Founders We Have Backed</h2>
+        <p class="section-lead">Across consumer hardware, health technology, food innovation, logistics, and beyond — our portfolio reflects what happens when great founders work at the edge of physical and digital.</p>
+      </div>
+      <div class="portfolio-scroll">
+        <div class="portfolio-card reveal">
+          <div class="co-name">Magic Spoon</div>
+          <div class="co-tag">Consumer Food</div>
+          <div class="co-desc">High-protein, low-carb cereal reimagined for adults</div>
+        </div>
+        <div class="portfolio-card reveal">
+          <div class="co-name">PlayVS</div>
+          <div class="co-tag">Sports Technology</div>
+          <div class="co-desc">High school and college esports platform</div>
+        </div>
+        <div class="portfolio-card reveal">
+          <div class="co-name">Open Loop Health</div>
+          <div class="co-tag">Health Technology</div>
+          <div class="co-desc">Digital health infrastructure for patients and providers</div>
+        </div>
+        <div class="portfolio-card reveal">
+          <div class="co-name">BindPlane</div>
+          <div class="co-tag">IoT / SaaS</div>
+          <div class="co-desc">Data collection and observability platform</div>
+        </div>
+        <div class="portfolio-card reveal">
+          <div class="co-name">EXO Protein</div>
+          <div class="co-tag">Food Innovation</div>
+          <div class="co-desc">Cricket-based protein bars and nutrition products</div>
+        </div>
+        <div class="portfolio-card reveal">
+          <div class="co-name">Modalyst</div>
+          <div class="co-tag">eCommerce / Logistics</div>
+          <div class="co-desc">Dropshipping automation marketplace</div>
+        </div>
+        <div class="portfolio-card reveal">
+          <div class="co-name">SOLS</div>
+          <div class="co-tag">Consumer Hardware</div>
+          <div class="co-desc">3D-printed custom orthotics and footwear</div>
+        </div>
+        <div class="portfolio-card reveal">
+          <div class="co-name">Nomiku</div>
+          <div class="co-tag">Smart Appliances</div>
+          <div class="co-desc">Connected sous vide cooking device</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MICHIGAN -->
+  <section class="michigan" id="michigan">
+    <div class="michigan-bg"></div>
+    <div class="section-inner">
+      <div class="michigan-content reveal">
+        <span class="section-tag">Our Home</span>
+        <h2 class="section-title">Built in Michigan</h2>
+        <p style="color: rgba(255,255,255,0.75); font-size: 1rem; line-height: 1.9; margin-bottom: 1.2rem;">Michigan has been building physical things for over a century. The auto industry brought world-class manufacturing engineering, industrial design talent, and a culture that knows how to take an idea from a drawing and make it into a thing you can actually use.</p>
+        <p style="color: rgba(255,255,255,0.75); font-size: 1rem; line-height: 1.9; margin-bottom: 1.2rem;">That culture did not go away. It evolved. Today, Michigan founders are some of the most capable hardware builders in the country, and they have a built-in understanding of manufacturing that pure software investors simply cannot offer.</p>
+        <blockquote>"We are not a coastal fund wearing Michigan as a costume. We live here, invest here, and believe the most interesting hardware founders in the country are building right here in the Midwest."</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section id="process">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">Our Process</span>
+        <h2 class="section-title">How We Work With Founders</h2>
+        <p class="section-lead">We try to be the investor we would have wanted ourselves. That means honest, fast, and genuinely engaged from the first conversation.</p>
+      </div>
+      <div class="process-steps">
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <h4>First Conversation</h4>
+          <p>Tell us what you are building. We listen, ask questions, and give real feedback — not a form rejection.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">02</div>
+          <h4>Due Diligence</h4>
+          <p>We dig into the product, the team, the market. We move fast and tell you where we stand as we go.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">03</div>
+          <h4>Term Sheet</h4>
+          <p>Straightforward terms. We do not bury founders in legal complexity. Clean documents and fair economics.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">04</div>
+          <h4>Active Partnership</h4>
+          <p>After we invest, we stay in your corner — on hiring, next rounds, manufacturing questions, and anything else you need.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM PHOTO STRIP -->
+  <section style="padding: 0 5% 5rem; background: var(--off-white);">
+    <div class="section-inner">
+      <div class="team-photos">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&auto=format&fit=crop" alt="Startup team reviewing hardware prototype" class="reveal" />
+        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=800&auto=format&fit=crop" alt="Entrepreneur presenting to investors" class="reveal" />
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop" alt="Team collaboration in modern workspace" class="reveal" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="reveal">
+          <span class="section-tag">Get in Touch</span>
+          <h2 class="section-title">Pitch to Wakestream</h2>
+          <div class="contact-info">
+            <p>If you are building something where hardware and software meet and are looking for a seed-stage investor who genuinely understands physical products, we want to hear from you. Send us a note.</p>
+            <div class="contact-detail">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Holland, MI</span>
+            </div>
+            <div class="contact-detail">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.23 1.2 2 2 0 012.2 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.27 7a16 16 0 006.72 6.72l1.08-1.08a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              <span>(616) 822-0720</span>
+            </div>
+            <div class="contact-detail">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>sross@ellisparking.com</span>
+            </div>
+          </div>
+        </div>
+        <form class="reveal" onsubmit="return false;">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Jane Smith" />
+          </div>
+          <div class="form-group">
+            <label>Company Name</label>
+            <input type="text" placeholder="Acme Hardware Co." />
+          </div>
+          <div class="form-group">
+            <label>Stage</label>
+            <select>
+              <option>Pre-Seed</option>
+              <option>Seed</option>
+              <option>Series A</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tell Us What You're Building</label>
+            <textarea placeholder="Brief description of your company and what stage you're at..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Website or Deck Link</label>
+            <input type="text" placeholder="https://" />
+          </div>
+          <button type="submit" class="form-submit">Send Your Pitch</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Wake<span>stream</span> Ventures</div>
+      <ul class="footer-links">
+        <li><a href="#thesis">Thesis</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <p class="footer-copy">&copy; 2025 Wakestream Ventures. Early-stage venture capital from Holland, Michigan.</p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(r => observer.observe(r));
+  </script>
+</body>
+</html>

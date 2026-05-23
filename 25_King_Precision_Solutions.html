@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>King Precision Solutions | CNC Machining | Erie, PA</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark: #0D1B2A;
+      --steel: #1A2332;
+      --steel-mid: #243447;
+      --silver: #94A3B8;
+      --silver-light: #CBD5E1;
+      --orange: #EA580C;
+      --orange-light: #F97316;
+      --white: #FFFFFF;
+      --off-white: #F1F5F9;
+      --border: #2D3F52;
+    }
+
+    body { font-family: 'Roboto', sans-serif; color: #E2E8F0; background: var(--dark); }
+
+    /* NAV */
+    nav {
+      background: var(--steel);
+      padding: 18px 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--white); letter-spacing: 0.08em; text-transform: uppercase; }
+    .nav-logo span { color: var(--orange); }
+    .nav-sub { font-size: 0.68rem; color: var(--silver); letter-spacing: 0.15em; text-transform: uppercase; display: block; margin-top: 2px; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--silver-light); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta {
+      background: var(--orange);
+      color: var(--white);
+      padding: 11px 24px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--orange-light); }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=1600&q=80') center/cover no-repeat;
+      filter: brightness(0.2);
+    }
+    .hero-lines {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.3;
+    }
+    .hero-content {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 50px;
+      width: 100%;
+    }
+    .hero-certs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .cert-pill {
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 2px;
+    }
+    .hero h1 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      margin-bottom: 20px;
+      max-width: 800px;
+    }
+    .hero h1 span { color: var(--orange); }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--silver);
+      max-width: 520px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-orange {
+      background: var(--orange);
+      color: var(--white);
+      padding: 15px 32px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-orange:hover { background: var(--orange-light); transform: translateY(-2px); }
+    .btn-outline-silver {
+      border: 1.5px solid var(--silver);
+      color: var(--silver-light);
+      padding: 15px 32px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline-silver:hover { border-color: var(--white); color: var(--white); }
+
+    /* STATS */
+    .stats-bar {
+      background: var(--steel-mid);
+      border-top: 2px solid var(--orange);
+      border-bottom: 1px solid var(--border);
+      padding: 36px 50px;
+    }
+    .stats-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 24px; }
+    .stat-item { text-align: center; }
+    .stat-num { font-family: 'Rajdhani', sans-serif; font-size: 2.4rem; font-weight: 700; color: var(--orange); line-height: 1; }
+    .stat-label { font-size: 0.82rem; color: var(--silver); margin-top: 5px; letter-spacing: 0.05em; text-transform: uppercase; }
+
+    /* SHARED */
+    section { padding: 90px 50px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .eyebrow {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+    }
+    .section-sub { font-size: 0.98rem; color: var(--silver); line-height: 1.7; max-width: 560px; margin-bottom: 52px; font-weight: 300; }
+
+    /* CAPABILITIES */
+    .capabilities { background: var(--steel); }
+    .cap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: var(--border); }
+    .cap-card {
+      background: var(--steel);
+      padding: 36px 30px;
+      border-top: 3px solid transparent;
+      transition: border-color 0.3s;
+    }
+    .cap-card:hover { border-top-color: var(--orange); }
+    .cap-num { font-family: 'Rajdhani', sans-serif; font-size: 0.78rem; letter-spacing: 0.15em; color: var(--orange); font-weight: 600; text-transform: uppercase; margin-bottom: 12px; }
+    .cap-card h3 { font-family: 'Rajdhani', sans-serif; font-size: 1.25rem; font-weight: 700; text-transform: uppercase; color: var(--white); letter-spacing: 0.04em; margin-bottom: 10px; }
+    .cap-card p { font-size: 0.9rem; color: var(--silver); line-height: 1.65; }
+
+    /* ABOUT -->
+    .about { background: var(--dark); }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .about-img { border-radius: 4px; overflow: hidden; border: 2px solid var(--border); }
+    .about-img img { width: 100%; height: 480px; object-fit: cover; display: block; }
+    .about-list { list-style: none; margin-bottom: 36px; }
+    .about-list li { padding: 11px 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; color: #CBD5E1; display: flex; align-items: center; gap: 12px; }
+    .check-orange { color: var(--orange); font-weight: 700; }
+    .btn-orange-outline {
+      display: inline-block;
+      border: 2px solid var(--orange);
+      color: var(--orange);
+      padding: 13px 28px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-orange-outline:hover { background: var(--orange); color: var(--white); }
+
+    /* INDUSTRIES -->
+    .industries { background: var(--steel-mid); }
+    .ind-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+    .ind-card { border: 1px solid var(--border); border-radius: 4px; padding: 28px 20px; text-align: center; transition: border-color 0.3s; }
+    .ind-card:hover { border-color: var(--orange); }
+    .ind-icon { font-size: 2rem; margin-bottom: 12px; }
+    .ind-card h3 { font-family: 'Rajdhani', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--white); }
+
+    /* PHOTO ROW -->
+    .photo-row { display: grid; grid-template-columns: repeat(4, 1fr); height: 260px; }
+    .photo-row-item { overflow: hidden; }
+    .photo-row-item img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(20%); transition: transform 0.5s, filter 0.3s; }
+    .photo-row-item:hover img { transform: scale(1.06); filter: grayscale(0%); }
+
+    /* TESTIMONIAL -->
+    .testimonials { background: var(--steel); }
+    .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 22px; }
+    .test-card { border: 1px solid var(--border); border-radius: 4px; padding: 28px; }
+    .test-card p { font-size: 0.93rem; color: var(--silver-light); line-height: 1.75; margin-bottom: 16px; font-style: italic; }
+    .test-author { font-family: 'Rajdhani', sans-serif; font-size: 0.88rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--orange); }
+
+    /* CTA */
+    .cta-section { background: var(--orange); padding: 80px 50px; }
+    .cta-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .cta-text h2 { font-family: 'Rajdhani', sans-serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; text-transform: uppercase; color: var(--white); letter-spacing: 0.04em; margin-bottom: 10px; }
+    .cta-text p { font-size: 1rem; color: rgba(255,255,255,0.88); max-width: 460px; line-height: 1.65; }
+    .btn-white-raj {
+      background: var(--white);
+      color: var(--orange);
+      padding: 16px 36px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: transform 0.2s;
+      white-space: nowrap;
+    }
+    .btn-white-raj:hover { transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer { background: #060D16; color: rgba(255,255,255,0.55); padding: 60px 50px 30px; border-top: 2px solid var(--border); }
+    .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-logo { font-family: 'Rajdhani', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--white); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+    .footer-logo span { color: var(--orange); }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.7; }
+    footer h4 { font-family: 'Rajdhani', sans-serif; color: var(--white); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+    footer ul { list-style: none; }
+    footer ul li { margin-bottom: 10px; }
+    footer ul li a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.87rem; transition: color 0.2s; }
+    footer ul li a:hover { color: var(--orange); }
+    .footer-bottom { max-width: 1100px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; font-size: 0.82rem; text-align: center; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 960px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      section { padding: 70px 24px; }
+      .hero-content { padding: 60px 24px; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .photo-row { grid-template-columns: 1fr 1fr; height: auto; }
+      .photo-row-item img { height: 180px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .stats-bar { padding: 28px 24px; }
+    }
+    @media (max-width: 600px) {
+      .photo-row { grid-template-columns: 1fr; }
+      .cta-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div>
+      <div class="nav-logo">King <span>Precision</span> Solutions</div>
+      <div class="nav-sub">Erie, PA &mdash; CNC Machining &mdash; ISO 9001 &mdash; ITAR</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Capabilities</a></li>
+      <li><a href="#">Industries</a></li>
+      <li><a href="#">Quality</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <a href="tel:8773123858" style="color:var(--silver-light);font-size:0.9rem;font-weight:500;text-decoration:none;margin-right:8px;">(877) 312-3858</a>
+    <a href="#" class="nav-cta">Request a Quote</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-lines"></div>
+    <div class="hero-content">
+      <div class="hero-certs">
+        <span class="cert-pill">ISO 9001 Certified</span>
+        <span class="cert-pill">ITAR Compliant</span>
+        <span class="cert-pill">Est. 1990</span>
+      </div>
+      <h1>Tolerance.<br><span>Integrity.</span><br>Delivery.</h1>
+      <p class="hero-sub">King Precision Solutions is a second-generation CNC machine shop in Erie, PA &mdash; founded in 1990 by Todd King's father and built on a simple premise: hold tolerance, ship on time, and stand behind every part. ISO 9001 certified and ITAR compliant. Defense, aerospace, and precision electronics welcome.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-orange">Submit Your RFQ</a>
+        <a href="#" class="btn-outline-silver">View Capabilities</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item"><div class="stat-num">1990</div><div class="stat-label">Founded in Erie, PA</div></div>
+      <div class="stat-item"><div class="stat-num">35+</div><div class="stat-label">Years of Precision</div></div>
+      <div class="stat-item"><div class="stat-num">ISO</div><div class="stat-label">9001 Certified</div></div>
+      <div class="stat-item"><div class="stat-num">ITAR</div><div class="stat-label">Compliant Facility</div></div>
+      <div class="stat-item"><div class="stat-num">5-Axis</div><div class="stat-label">CNC Capability</div></div>
+    </div>
+  </div>
+
+  <!-- CAPABILITIES -->
+  <section class="capabilities">
+    <div class="container">
+      <p class="eyebrow reveal">What We Machine</p>
+      <h2 class="section-title reveal">Full-Service Precision Machining &mdash; Erie, PA</h2>
+      <p class="section-sub reveal">Our machine shop runs CNC milling and turning, 5-axis machining, Swiss lathe, EDM, wire EDM, laser welding, and tool and die polishing under one roof. If your part needs tight tolerance and clean documentation for a defense or aerospace customer, we've done it before and we know what the paperwork needs to look like.</p>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-card reveal">
+        <div class="cap-num">Machine Shop</div>
+        <h3>CNC Machining</h3>
+        <p>3-axis and 5-axis CNC milling and turning with live tooling. Parts up to 12" diameter with surface grinding and tight-tolerance capability.</p>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-num">Swiss Shop</div>
+        <h3>Swiss Lathe Machining</h3>
+        <p>Precision Swiss-type lathe machining for small-diameter, high-complexity components requiring exceptional concentricity and surface finish.</p>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-num">Polish Shop</div>
+        <h3>Tool &amp; Die Polishing</h3>
+        <p>Expert polishing services for tooling, molds, and dies. We restore worn tooling and finish new tooling to precise surface specification.</p>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-num">Value-Added</div>
+        <h3>EDM &amp; Wire EDM</h3>
+        <p>Electrical discharge machining for complex internal geometries and hard materials that conventional cutting cannot achieve.</p>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-num">Value-Added</div>
+        <h3>Laser Welding</h3>
+        <p>Precision laser welding for tooling repair, part joining, and complex assemblies requiring minimal heat distortion.</p>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-num">Manufacturing</div>
+        <h3>Blow Molding</h3>
+        <p>Blow molding capabilities for plastic component manufacturing. Turnkey solutions from tooling through production runs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-img reveal">
+          <img src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=800&q=80" alt="CNC machinist at work" />
+        </div>
+        <div class="reveal">
+          <p class="eyebrow">Our Story</p>
+          <h2 class="section-title">Second Generation. Same Standards.</h2>
+          <p class="section-sub">Todd King's father started this shop in Erie, PA in 1990. Todd grew up around the machines, learned the trade, and eventually took over a company that had already built its reputation the hard way &mdash; one precision part at a time. Erie is a manufacturing town and King Precision is exactly the kind of shop Erie produces: no-nonsense, skilled, and reliable.</p>
+          <p style="font-size:0.9rem; color:var(--silver); line-height:1.7; margin-bottom:28px;">When Todd took over, he didn't reinvent the shop &mdash; he formalized it. ISO 9001 certification brought structure to the quality processes that were already there. ITAR compliance opened the door to defense customers who needed a domestic machining partner they could trust. More than 35 years in, the shop holds the same tolerances and ships on the same timelines it always has.</p>
+          <ul class="about-list">
+            <li><span class="check-orange">&#9632;</span> ISO 9001-certified quality management system</li>
+            <li><span class="check-orange">&#9632;</span> ITAR-compliant facility &mdash; defense and controlled-technology applications</li>
+            <li><span class="check-orange">&#9632;</span> Second-generation family ownership under Todd King</li>
+            <li><span class="check-orange">&#9632;</span> Turnkey solutions from raw stock to finished, inspected part</li>
+            <li><span class="check-orange">&#9632;</span> 100% domestic production &mdash; 2200 Colonial Ave, Erie, Pennsylvania</li>
+          </ul>
+          <a href="#" class="btn-orange-outline">About King Precision</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="industries">
+    <div class="container">
+      <p class="eyebrow reveal" style="text-align:center;">Who We Serve</p>
+      <h2 class="section-title reveal" style="text-align:center; max-width:600px; margin:0 auto 48px;">Industries That Demand Precision</h2>
+      <div class="ind-grid">
+        <div class="ind-card reveal">
+          <div class="ind-icon">&#9992;</div>
+          <h3>Aerospace</h3>
+        </div>
+        <div class="ind-card reveal">
+          <div class="ind-icon">&#128737;</div>
+          <h3>Defense</h3>
+        </div>
+        <div class="ind-card reveal">
+          <div class="ind-icon">&#128268;</div>
+          <h3>Electronics</h3>
+        </div>
+        <div class="ind-card reveal">
+          <div class="ind-icon">&#128139;</div>
+          <h3>Medical</h3>
+        </div>
+        <div class="ind-card reveal">
+          <div class="ind-icon">&#9881;</div>
+          <h3>Industrial</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO ROW -->
+  <div class="photo-row">
+    <div class="photo-row-item">
+      <img src="https://images.unsplash.com/photo-1562408590-e32931084e23?w=600&q=80" alt="CNC machine in operation" />
+    </div>
+    <div class="photo-row-item">
+      <img src="https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=600&q=80" alt="Precision metal parts" />
+    </div>
+    <div class="photo-row-item">
+      <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&q=80" alt="Machinist inspecting part" />
+    </div>
+    <div class="photo-row-item">
+      <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=600&q=80" alt="Manufacturing facility" />
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <p class="eyebrow reveal" style="text-align:center;">What Our Customers Say</p>
+      <h2 class="section-title reveal" style="text-align:center; max-width:500px; margin:0 auto 48px;">Straight Talk from Procurement and Engineering</h2>
+      <div class="test-grid">
+        <div class="test-card reveal">
+          <p>"We've sourced defense components from King Precision for over ten years. They hold tolerance, the paperwork is clean, and when we've had expedite requests they've come through. For that type of work you need a shop you can count on without babysitting every order. That's what King Precision is."</p>
+          <div class="test-author">Procurement Manager, Defense Subcontractor</div>
+        </div>
+        <div class="test-card reveal">
+          <p>"We moved a family of aerospace components to King Precision about three years ago after our previous source had repeat nonconformances. Zero rejections since. Their ISO documentation makes our incoming inspection and audit prep straightforward. I wish we'd made the switch sooner."</p>
+          <div class="test-author">Quality Engineer, Aerospace OEM</div>
+        </div>
+        <div class="test-card reveal">
+          <p>"Our medical device components are small-diameter, high-complexity Swiss work with very tight concentricity requirements. Todd's team got qualified quickly and we've had clean deliveries since. They communicate proactively when something might affect delivery &mdash; that matters more than people realize."</p>
+          <div class="test-author">Engineer, Medical Device Manufacturer</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h2>Send Us Your Drawing</h2>
+        <p>Upload your print or RFQ and Todd's team will review it and get back to you within 24&ndash;48 hours. ISO 9001 quality, ITAR compliant, domestic production. No middlemen, no delays.</p>
+      </div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap; align-items:center;">
+        <a href="#" class="btn-white-raj">Submit Your RFQ</a>
+        <a href="tel:8773123858" style="color:rgba(255,255,255,0.88);font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:600;text-decoration:none;letter-spacing:0.06em;">(877) 312-3858</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">King <span>Precision</span> Solutions</div>
+        <p>Second-generation precision CNC machine shop in Erie, PA. ISO 9001 certified, ITAR compliant. Serving defense, aerospace, electronics, and industrial manufacturers since 1990.</p>
+      </div>
+      <div>
+        <h4>Capabilities</h4>
+        <ul>
+          <li><a href="#">CNC Machining</a></li>
+          <li><a href="#">Swiss Machining</a></li>
+          <li><a href="#">Tool &amp; Die Polishing</a></li>
+          <li><a href="#">EDM / Wire EDM</a></li>
+          <li><a href="#">Laser Welding</a></li>
+          <li><a href="#">Blow Molding</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">2200 Colonial Ave, Erie, PA</a></li>
+          <li><a href="tel:8773123858">(877) 312-3858</a></li>
+          <li><a href="mailto:todd@kingprecisionsolutions.com">Email Us</a></li>
+          <li><a href="#">Submit an RFQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 King Precision Solutions, LLC. All rights reserved. | Erie, PA | ISO 9001 Certified | ITAR Compliant</p>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

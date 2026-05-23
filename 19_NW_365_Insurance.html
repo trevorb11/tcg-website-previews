@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NW 365 Insurance | Independent Insurance Agency | Portland, OR</title>
+  <meta name="description" content="NW 365 Insurance is an independent insurance agency in Portland, OR. Auto, home, life, business, umbrella, and Medicare coverage. Free quotes from Tina VanPhung." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest:       #1a3c34;
+      --forest-deep:  #0f2820;
+      --forest-mid:   #2a5e4a;
+      --forest-light: #3d8b6a;
+      --forest-pale:  #a8d4bc;
+      --mountain-blue:#2c4a6e;
+      --mountain-light:#4a7fb5;
+      --sky-pale:     #d6e8f0;
+      --warm-white:   #f8faf9;
+      --warm-gray:    #f0f4f2;
+      --warm-gray2:   #e2e8e5;
+      --warm-gray3:   #b8c4be;
+      --charcoal:     #1a1e1c;
+      --text:         #2c302e;
+      --gray-mid:     #5e6862;
+      --white:        #ffffff;
+      --accent:       #d4763a;
+      --accent-light: #e8955f;
+      --accent-glow:  rgba(212,118,58,0.3);
+      --radius:       14px;
+      --radius-lg:    20px;
+      --shadow:       0 8px 32px rgba(26,60,52,0.10);
+      --shadow-lg:    0 20px 60px rgba(26,60,52,0.15);
+      --glass-bg:     rgba(255,255,255,0.08);
+      --glass-border: rgba(255,255,255,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Figtree', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* REVEAL ANIMATIONS */
+    .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1); }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1); }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .stagger-1 { transition-delay: 0.08s; }
+    .stagger-2 { transition-delay: 0.16s; }
+    .stagger-3 { transition-delay: 0.24s; }
+    .stagger-4 { transition-delay: 0.32s; }
+    .stagger-5 { transition-delay: 0.40s; }
+
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 100px 0; }
+    .section-label {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--forest-light);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-label::before {
+      content: ''; width: 28px; height: 2px;
+      background: linear-gradient(90deg, var(--forest-light), transparent);
+    }
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800; color: var(--charcoal);
+      line-height: 1.12; margin-bottom: 18px;
+      letter-spacing: -0.02em;
+    }
+    .section-sub {
+      font-size: 17px; color: var(--gray-mid);
+      line-height: 1.8; max-width: 580px;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(15,40,32,0.92);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(168,212,188,0.08);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(15,40,32,0.98);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px; padding: 0 28px;
+      max-width: 1180px; margin: 0 auto;
+    }
+    .nav-logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 20px; font-weight: 800;
+      color: var(--white); text-decoration: none;
+      letter-spacing: -0.01em;
+      display: flex; flex-direction: column;
+    }
+    .nav-logo span { color: var(--forest-pale); }
+    .nav-logo-sub {
+      font-size: 10px; font-weight: 500;
+      color: rgba(168,212,188,0.5);
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 30px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.7); text-decoration: none;
+      font-size: 14px; font-weight: 500;
+      transition: color 0.25s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute;
+      bottom: -4px; left: 0; width: 0; height: 2px;
+      background: var(--forest-pale);
+      transition: width 0.3s cubic-bezier(.22,1,.36,1);
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      background: var(--accent); color: var(--white);
+      padding: 11px 24px; border-radius: 10px;
+      font-size: 14px; font-weight: 700; text-decoration: none;
+      transition: all 0.25s;
+      box-shadow: 0 4px 16px var(--accent-glow);
+    }
+    .nav-cta:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px var(--accent-glow);
+    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
+    .hamburger span { width: 24px; height: 2px; background: white; border-radius: 2px; transition: all 0.3s; }
+
+    /* MOBILE MENU */
+    .mobile-menu {
+      display: none; position: fixed;
+      top: 72px; left: 0; right: 0; bottom: 0;
+      background: rgba(15,40,32,0.98);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 28px;
+    }
+    .mobile-menu.active { display: flex; }
+    .mobile-menu a {
+      color: var(--white); text-decoration: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 20px; font-weight: 600;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--forest-pale); }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 72px 0 0;
+      background: linear-gradient(165deg, var(--forest-deep) 0%, var(--forest) 40%, var(--mountain-blue) 100%);
+    }
+    .hero-bg-photo {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1600&q=80');
+      background-size: cover; background-position: center 35%;
+      opacity: 0.12;
+    }
+    .hero-gradient-overlay {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(61,139,106,0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(44,74,110,0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 100%, rgba(212,118,58,0.08) 0%, transparent 40%);
+    }
+    /* Mountain silhouette at bottom of hero */
+    .hero-mountains {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 180px; z-index: 1;
+    }
+    .hero-mountains svg { width: 100%; height: 100%; display: block; }
+
+    /* Floating particles */
+    .hero-particles {
+      position: absolute; inset: 0; overflow: hidden; z-index: 0;
+    }
+    .particle {
+      position: absolute; border-radius: 50%;
+      background: rgba(168,212,188,0.15);
+      animation: float-particle 12s infinite ease-in-out;
+    }
+    .particle:nth-child(1) { width: 6px; height: 6px; top: 20%; left: 15%; animation-delay: 0s; animation-duration: 14s; }
+    .particle:nth-child(2) { width: 4px; height: 4px; top: 60%; left: 80%; animation-delay: 2s; animation-duration: 10s; }
+    .particle:nth-child(3) { width: 8px; height: 8px; top: 40%; left: 50%; animation-delay: 4s; animation-duration: 16s; }
+    .particle:nth-child(4) { width: 3px; height: 3px; top: 75%; left: 30%; animation-delay: 6s; animation-duration: 11s; }
+    .particle:nth-child(5) { width: 5px; height: 5px; top: 15%; left: 70%; animation-delay: 1s; animation-duration: 13s; }
+    @keyframes float-particle {
+      0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+      25% { transform: translateY(-30px) translateX(15px); opacity: 0.7; }
+      50% { transform: translateY(-15px) translateX(-10px); opacity: 0.5; }
+      75% { transform: translateY(-40px) translateX(20px); opacity: 0.8; }
+    }
+
+    .hero-content { position: relative; z-index: 2; }
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+      min-height: calc(100vh - 72px);
+      padding: 60px 0 120px;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(168,212,188,0.1);
+      border: 1px solid rgba(168,212,188,0.2);
+      border-radius: 100px; padding: 6px 18px 6px 12px;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--forest-pale);
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-eyebrow-text {
+      font-size: 12px; font-weight: 600;
+      color: var(--forest-pale);
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .hero h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(38px, 5.5vw, 64px);
+      font-weight: 800; color: var(--white);
+      line-height: 1.06; margin-bottom: 24px;
+      letter-spacing: -0.03em;
+    }
+    .hero h1 .accent { color: var(--accent); }
+    .hero h1 .pale { color: var(--forest-pale); }
+    .hero-desc {
+      font-size: 17px; color: rgba(255,255,255,0.6);
+      line-height: 1.8; margin-bottom: 40px; max-width: 500px;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+    .btn-primary {
+      background: var(--accent); color: var(--white);
+      padding: 16px 36px; border-radius: 12px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700; font-size: 15px;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: all 0.3s cubic-bezier(.22,1,.36,1);
+      box-shadow: 0 6px 24px var(--accent-glow);
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .btn-primary:hover {
+      background: var(--accent-light);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 36px var(--accent-glow);
+    }
+    .btn-primary svg { transition: transform 0.3s; }
+    .btn-primary:hover svg { transform: translateX(3px); }
+    .btn-outline {
+      background: transparent; color: var(--white);
+      padding: 16px 36px; border-radius: 12px;
+      font-weight: 600; font-size: 15px;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-outline:hover {
+      border-color: rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.06);
+    }
+    .hero-trust-row { display: flex; gap: 28px; flex-wrap: wrap; }
+    .hero-trust-item {
+      font-size: 13px; color: rgba(255,255,255,0.5);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hero-trust-icon {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: rgba(168,212,188,0.15);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-trust-icon svg { width: 12px; height: 12px; }
+
+    /* Hero right: glass stat cards */
+    .hero-right { display: flex; flex-direction: column; gap: 18px; }
+    .hero-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .glass-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      padding: 24px;
+      transition: all 0.35s cubic-bezier(.22,1,.36,1);
+    }
+    .glass-card:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-4px);
+    }
+    .stat-num {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 36px; font-weight: 800;
+      color: var(--white); line-height: 1;
+    }
+    .stat-label {
+      font-size: 13px; color: rgba(255,255,255,0.45);
+      margin-top: 8px; line-height: 1.4;
+    }
+    .hero-cta-card {
+      background: linear-gradient(135deg, rgba(212,118,58,0.15) 0%, rgba(212,118,58,0.05) 100%);
+      border: 1px solid rgba(212,118,58,0.25);
+      border-radius: var(--radius); padding: 24px;
+    }
+    .hero-cta-card-label {
+      font-size: 11px; text-transform: uppercase;
+      letter-spacing: 0.15em; color: var(--accent-light);
+      font-weight: 700; margin-bottom: 8px;
+    }
+    .hero-cta-card-text {
+      font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.6;
+    }
+    .hero-states-bar {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius); padding: 20px 24px;
+    }
+    .hero-states-label {
+      font-size: 11px; text-transform: uppercase;
+      letter-spacing: 0.15em; color: rgba(255,255,255,0.35);
+      font-weight: 600; margin-bottom: 12px;
+    }
+    .state-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+    .state-pill {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px; padding: 5px 12px;
+      font-size: 12px; font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      transition: all 0.2s;
+    }
+    .state-pill:hover {
+      background: rgba(168,212,188,0.15);
+      color: var(--forest-pale);
+    }
+
+    /* ===== NATURE DIVIDER ===== */
+    .nature-divider {
+      position: relative; height: 4px; overflow: visible;
+      background: linear-gradient(90deg, transparent, var(--forest-pale), var(--mountain-light), var(--forest-pale), transparent);
+      opacity: 0.3;
+    }
+    .tree-divider {
+      position: relative; height: 60px;
+      background: var(--warm-white);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .tree-divider svg { opacity: 0.06; }
+
+    /* ===== TRUST STATS BAR ===== */
+    .trust-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--warm-gray2);
+      padding: 48px 0;
+      position: relative;
+      z-index: 5;
+    }
+    .trust-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 32px; text-align: center;
+    }
+    .trust-stat {
+      padding: 0 16px;
+      position: relative;
+    }
+    .trust-stat:not(:last-child)::after {
+      content: ''; position: absolute;
+      right: 0; top: 10%; height: 80%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--warm-gray2), transparent);
+    }
+    .trust-stat-num {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(32px, 4vw, 46px);
+      font-weight: 800; color: var(--forest);
+      line-height: 1;
+    }
+    .trust-stat-label {
+      font-size: 13px; color: var(--gray-mid);
+      margin-top: 8px; font-weight: 500;
+    }
+
+    /* ===== SERVICES GRID ===== */
+    .services-bg { background: var(--warm-white); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; margin-top: 56px;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      border: 1px solid var(--warm-gray2);
+      transition: all 0.4s cubic-bezier(.22,1,.36,1);
+      position: relative; overflow: hidden;
+      cursor: default;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--forest), var(--forest-light));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(.22,1,.36,1);
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+    }
+    .service-icon {
+      width: 60px; height: 60px;
+      background: linear-gradient(135deg, var(--warm-gray) 0%, var(--warm-gray2) 100%);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 22px;
+      transition: all 0.35s;
+    }
+    .service-card:hover .service-icon {
+      background: linear-gradient(135deg, var(--forest) 0%, var(--forest-mid) 100%);
+      transform: scale(1.08);
+    }
+    .service-icon svg {
+      stroke: var(--forest);
+      transition: stroke 0.3s;
+    }
+    .service-card:hover .service-icon svg { stroke: var(--white); }
+    .service-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 19px; font-weight: 700;
+      color: var(--charcoal); margin-bottom: 12px;
+    }
+    .service-desc {
+      font-size: 14px; color: var(--gray-mid);
+      line-height: 1.7; margin-bottom: 18px;
+    }
+    .service-features {
+      list-style: none; display: flex;
+      flex-direction: column; gap: 8px;
+    }
+    .service-features li {
+      font-size: 13px; color: var(--gray-mid);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .service-features li::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--forest-light);
+      flex-shrink: 0;
+    }
+    .service-card.featured {
+      grid-column: span 1;
+      background: linear-gradient(135deg, var(--forest) 0%, var(--forest-deep) 100%);
+      border-color: transparent;
+    }
+    .service-card.featured .service-title { color: var(--white); }
+    .service-card.featured .service-desc { color: rgba(255,255,255,0.65); }
+    .service-card.featured .service-features li { color: rgba(255,255,255,0.6); }
+    .service-card.featured .service-features li::before { background: var(--forest-pale); }
+    .service-card.featured .service-icon {
+      background: rgba(168,212,188,0.15);
+    }
+    .service-card.featured .service-icon svg { stroke: var(--forest-pale); }
+    .service-card.featured::before {
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    }
+
+    /* ===== WHY INDEPENDENT ===== */
+    .why-bg {
+      background: linear-gradient(170deg, var(--forest-deep) 0%, var(--forest) 50%, var(--mountain-blue) 100%);
+      padding: 100px 0;
+      position: relative; overflow: hidden;
+    }
+    .why-bg-pattern {
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(ellipse at 30% 0%, rgba(168,212,188,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 100%, rgba(74,127,181,0.08) 0%, transparent 50%);
+    }
+    .why-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .why-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800; color: var(--white);
+      margin-bottom: 18px; letter-spacing: -0.02em;
+    }
+    .why-sub {
+      color: rgba(255,255,255,0.6);
+      font-size: 16px; line-height: 1.8;
+      margin-bottom: 36px;
+    }
+    .why-points { display: flex; flex-direction: column; gap: 24px; }
+    .why-point { display: flex; gap: 18px; }
+    .why-point-icon {
+      width: 46px; height: 46px;
+      background: rgba(168,212,188,0.1);
+      border: 1px solid rgba(168,212,188,0.15);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+      transition: all 0.3s;
+    }
+    .why-point:hover .why-point-icon {
+      background: rgba(168,212,188,0.2);
+      transform: scale(1.08);
+    }
+    .why-point-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px; font-weight: 700;
+      color: var(--white); margin-bottom: 6px;
+    }
+    .why-point-desc {
+      font-size: 14px; color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+    }
+
+    /* VS Table */
+    .vs-table {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+    .vs-header {
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+      background: rgba(255,255,255,0.04);
+    }
+    .vs-col-title {
+      padding: 18px 16px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px; font-weight: 700;
+      text-align: center;
+    }
+    .vs-col-title.feature { text-align: left; padding-left: 24px; color: rgba(255,255,255,0.5); }
+    .vs-col-title.ours { color: var(--forest-pale); }
+    .vs-col-title.theirs { color: rgba(255,255,255,0.3); }
+    .vs-row {
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.2s;
+    }
+    .vs-row:hover { background: rgba(255,255,255,0.03); }
+    .vs-cell {
+      padding: 14px 16px; font-size: 13px;
+      text-align: center; color: rgba(255,255,255,0.5);
+    }
+    .vs-cell.feature {
+      text-align: left; padding-left: 24px;
+      color: rgba(255,255,255,0.7); font-weight: 500;
+    }
+    .vs-cell.yes { color: var(--forest-pale); font-weight: 700; }
+    .vs-cell.no { color: rgba(255,100,100,0.55); }
+    .vs-cta-bar {
+      margin-top: 24px;
+      background: rgba(168,212,188,0.08);
+      border: 1px solid rgba(168,212,188,0.15);
+      border-radius: var(--radius); padding: 24px;
+      text-align: center;
+    }
+    .vs-cta-bar-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px; font-weight: 700;
+      color: var(--white); margin-bottom: 12px;
+    }
+
+    /* ===== PROCESS ===== */
+    .process-bg { background: var(--white); }
+    .process-steps {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; margin-top: 60px; position: relative;
+    }
+    .process-steps::before {
+      content: ''; position: absolute;
+      top: 38px; left: 12.5%; right: 12.5%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--warm-gray2), var(--forest-pale), var(--warm-gray2));
+      z-index: 0;
+    }
+    .process-step {
+      text-align: center; padding: 0 20px;
+      position: relative; z-index: 1;
+    }
+    .process-num {
+      width: 76px; height: 76px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--forest) 0%, var(--forest-mid) 100%);
+      color: var(--white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 24px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 22px;
+      transition: all 0.35s cubic-bezier(.22,1,.36,1);
+      box-shadow: 0 4px 20px rgba(26,60,52,0.15);
+    }
+    .process-step:hover .process-num {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+      transform: scale(1.1);
+      box-shadow: 0 8px 28px var(--accent-glow);
+    }
+    .process-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px; font-weight: 700;
+      color: var(--charcoal); margin-bottom: 10px;
+    }
+    .process-desc {
+      font-size: 14px; color: var(--gray-mid); line-height: 1.65;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .reviews-bg { background: var(--warm-white); }
+    .reviews-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; margin-bottom: 52px;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .rating-block { display: flex; align-items: center; gap: 18px; }
+    .rating-num {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 56px; font-weight: 800;
+      color: var(--charcoal); line-height: 1;
+    }
+    .rating-stars {
+      display: flex; gap: 3px;
+      color: #e8a020; font-size: 20px;
+      margin-bottom: 4px;
+    }
+    .rating-label { font-size: 13px; color: var(--warm-gray3); }
+    .reviews-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .review-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      border: 1px solid var(--warm-gray2);
+      transition: all 0.4s cubic-bezier(.22,1,.36,1);
+      position: relative;
+    }
+    .review-card::before {
+      content: '\201C';
+      position: absolute; top: 20px; right: 24px;
+      font-size: 72px; line-height: 1;
+      font-family: Georgia, serif;
+      color: var(--warm-gray2);
+      transition: color 0.3s;
+    }
+    .review-card:hover::before { color: var(--forest-pale); }
+    .review-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+    }
+    .review-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--forest) 0%, var(--forest-mid) 100%);
+      color: var(--white);
+      font-size: 11px; font-weight: 700;
+      padding: 4px 12px; border-radius: 6px;
+      margin-bottom: 14px; letter-spacing: 0.05em;
+    }
+    .review-stars {
+      display: flex; gap: 3px;
+      color: #e8a020; font-size: 15px;
+      margin-bottom: 14px;
+    }
+    .review-text {
+      font-size: 15px; color: var(--text);
+      line-height: 1.75; margin-bottom: 20px;
+      position: relative; z-index: 1;
+    }
+    .review-author {
+      font-weight: 700; font-size: 14px;
+      color: var(--charcoal);
+    }
+    .review-location {
+      font-size: 12px; color: var(--warm-gray3); margin-top: 3px;
+    }
+
+    /* ===== QUOTE FORM ===== */
+    .quote-bg {
+      background: linear-gradient(170deg, var(--forest-deep) 0%, var(--forest) 60%, var(--mountain-blue) 100%);
+      padding: 100px 0; position: relative; overflow: hidden;
+    }
+    .quote-bg-pattern {
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(ellipse at 70% 0%, rgba(212,118,58,0.06) 0%, transparent 40%),
+        radial-gradient(ellipse at 20% 100%, rgba(168,212,188,0.06) 0%, transparent 50%);
+    }
+    .quote-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+      position: relative; z-index: 1;
+    }
+    .quote-info-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 800; color: var(--white);
+      margin-bottom: 16px; letter-spacing: -0.02em;
+    }
+    .quote-info-sub {
+      color: rgba(255,255,255,0.6); font-size: 16px;
+      line-height: 1.8; margin-bottom: 36px;
+    }
+    .quote-contact-item {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 20px;
+    }
+    .quote-contact-icon {
+      width: 44px; height: 44px;
+      background: rgba(168,212,188,0.1);
+      border: 1px solid rgba(168,212,188,0.15);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .quote-contact-label {
+      font-size: 11px; text-transform: uppercase;
+      letter-spacing: 0.12em; color: rgba(255,255,255,0.35);
+      font-weight: 700;
+    }
+    .quote-contact-value {
+      color: var(--white); font-weight: 700;
+      font-size: 15px; margin-top: 3px;
+    }
+    .quote-contact-note {
+      font-size: 13px; color: rgba(168,212,188,0.6); margin-top: 2px;
+    }
+
+    .form-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.2);
+    }
+    .form-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 22px; font-weight: 800;
+      color: var(--charcoal); margin-bottom: 6px;
+    }
+    .form-sub {
+      font-size: 14px; color: var(--gray-mid); margin-bottom: 28px;
+    }
+    .form-group {
+      display: flex; flex-direction: column;
+      gap: 6px; margin-bottom: 16px;
+    }
+    .form-group label {
+      font-size: 12px; font-weight: 700;
+      color: var(--gray-mid);
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      border: 1.5px solid var(--warm-gray2);
+      border-radius: 10px; padding: 13px 16px;
+      font-family: 'Figtree', sans-serif;
+      font-size: 14px; color: var(--text);
+      background: var(--warm-white);
+      transition: all 0.25s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--forest-light);
+      box-shadow: 0 0 0 4px rgba(61,139,106,0.1);
+      background: var(--white);
+    }
+    .form-group textarea { min-height: 90px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .coverage-checkboxes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .coverage-checkbox {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14px; color: var(--gray-mid); cursor: pointer;
+      padding: 8px 12px; border-radius: 8px;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+    }
+    .coverage-checkbox:hover {
+      background: var(--warm-white);
+      border-color: var(--warm-gray2);
+    }
+    .coverage-checkbox input {
+      accent-color: var(--forest);
+      width: 18px; height: 18px;
+    }
+    .form-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+      color: var(--white); border: none;
+      padding: 16px; border-radius: 12px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800; font-size: 16px;
+      cursor: pointer; transition: all 0.3s;
+      margin-top: 8px;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px var(--accent-glow);
+    }
+    .form-disclaimer {
+      font-size: 11px; color: var(--warm-gray3);
+      text-align: center; margin-top: 12px; line-height: 1.5;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #0d1f17;
+      padding: 72px 0 32px;
+      position: relative;
+    }
+    .footer-top-border {
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--forest), var(--forest-pale), var(--mountain-light), var(--forest-pale), var(--forest));
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; margin-bottom: 48px;
+    }
+    .footer-brand {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 20px; font-weight: 800;
+      color: var(--white); margin-bottom: 4px;
+    }
+    .footer-brand span { color: var(--forest-pale); }
+    .footer-brand-sub {
+      font-size: 11px; color: rgba(255,255,255,0.3);
+      text-transform: uppercase; letter-spacing: 0.12em;
+      margin-bottom: 16px;
+    }
+    .footer-desc {
+      font-size: 14px; color: rgba(255,255,255,0.38);
+      line-height: 1.7; max-width: 380px;
+    }
+    .footer-col-title {
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.35); margin-bottom: 16px;
+    }
+    .footer-links {
+      list-style: none; display: flex;
+      flex-direction: column; gap: 10px;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.5); text-decoration: none;
+      font-size: 14px; transition: color 0.25s;
+    }
+    .footer-links a:hover { color: var(--forest-pale); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 28px;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 14px;
+    }
+    .footer-copy {
+      font-size: 13px; color: rgba(255,255,255,0.25);
+    }
+    .footer-lic {
+      background: rgba(168,212,188,0.08);
+      border: 1px solid rgba(168,212,188,0.2);
+      border-radius: 8px; padding: 6px 16px;
+      font-size: 12px; color: var(--forest-pale);
+      font-weight: 700;
+    }
+
+    /* ===== STICKY MOBILE CTA ===== */
+    .sticky-cta {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      z-index: 998;
+      background: rgba(15,40,32,0.95);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(168,212,188,0.15);
+      padding: 12px 20px;
+    }
+    .sticky-cta a {
+      display: block; width: 100%;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+      color: var(--white);
+      text-align: center; padding: 14px;
+      border-radius: 10px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800; font-size: 15px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .hero-right { display: none; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: 1fr; }
+      .quote-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .trust-stat:nth-child(2)::after { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .sticky-cta { display: block; }
+      .services-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
+      .process-steps::before { display: none; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .section { padding: 72px 0; }
+      .hero-grid { padding: 40px 0 100px; }
+      body { padding-bottom: 68px; }
+    }
+    @media (max-width: 540px) {
+      .trust-grid { grid-template-columns: 1fr 1fr; }
+      .trust-stat::after { display: none !important; }
+      .process-steps { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .coverage-checkboxes { grid-template-columns: 1fr; }
+      .hero h1 { font-size: clamp(32px, 8vw, 48px); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      NW 365 <span>Insurance</span>
+      <span class="nav-logo-sub">Independent Agency &mdash; Portland, OR</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Coverage</a></li>
+      <li><a href="#why">Why Independent</a></li>
+      <li><a href="#process">How It Works</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#quote">Get a Quote</a></li>
+    </ul>
+    <a class="nav-cta" href="#quote">Free Quote</a>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMenu()">Coverage</a>
+  <a href="#why" onclick="closeMenu()">Why Independent</a>
+  <a href="#process" onclick="closeMenu()">How It Works</a>
+  <a href="#reviews" onclick="closeMenu()">Reviews</a>
+  <a href="#quote" onclick="closeMenu()">Get a Free Quote</a>
+  <a href="tel:5034464643" onclick="closeMenu()">Call: (503) 446-4643</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-photo"></div>
+  <div class="hero-gradient-overlay"></div>
+  <div class="hero-particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <div class="container hero-content">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-dot"></div>
+          <span class="hero-eyebrow-text">Independent Agency &mdash; Licensed in 10 States</span>
+        </div>
+
+        <h1>Protection for<br>Every Day of<br>the Year.<br><span class="accent">All 365.</span></h1>
+
+        <p class="hero-desc">NW 365 Insurance is your independent insurance agency in Portland, Oregon. We shop multiple carriers to find the right auto, home, life, business, and Medicare coverage &mdash; so you get better protection at a better price, every single day.</p>
+
+        <div class="hero-actions">
+          <a href="#quote" class="btn-primary">
+            Get Your Free Quote
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="tel:5034464643" class="btn-outline">Call (503) 446-4643</a>
+        </div>
+
+        <div class="hero-trust-row">
+          <div class="hero-trust-item">
+            <div class="hero-trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--forest-pale)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Free to Clients
+          </div>
+          <div class="hero-trust-item">
+            <div class="hero-trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--forest-pale)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            10+ Years Experience
+          </div>
+          <div class="hero-trust-item">
+            <div class="hero-trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--forest-pale)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Multiple Carriers
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-stat-grid">
+          <div class="glass-card">
+            <div class="stat-num" data-target="2500" data-suffix="+">0</div>
+            <div class="stat-label">Families and businesses protected</div>
+          </div>
+          <div class="glass-card">
+            <div class="stat-num" data-target="30" data-suffix="+">0</div>
+            <div class="stat-label">Insurance carriers represented</div>
+          </div>
+          <div class="glass-card">
+            <div class="stat-num" data-target="10" data-suffix="+">0</div>
+            <div class="stat-label">Years serving the Pacific Northwest</div>
+          </div>
+          <div class="glass-card">
+            <div class="stat-num" data-target="500" data-prefix="$" data-suffix="/yr">0</div>
+            <div class="stat-label">Average savings per client annually</div>
+          </div>
+        </div>
+        <div class="hero-cta-card">
+          <div class="hero-cta-card-label">Why Independent Matters</div>
+          <div class="hero-cta-card-text">We are not employed by any insurance company. That means we compare plans from 30+ carriers to find you the best coverage at the best price. Our guidance is always free &mdash; carriers pay us when you enroll.</div>
+        </div>
+        <div class="hero-states-bar">
+          <div class="hero-states-label">Licensed States</div>
+          <div class="state-pills">
+            <div class="state-pill">OR</div><div class="state-pill">WA</div><div class="state-pill">CA</div><div class="state-pill">NV</div><div class="state-pill">AZ</div><div class="state-pill">TX</div><div class="state-pill">CO</div><div class="state-pill">FL</div><div class="state-pill">VA</div><div class="state-pill">MD</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mountain silhouette -->
+  <div class="hero-mountains">
+    <svg viewBox="0 0 1440 180" preserveAspectRatio="none" fill="var(--white)">
+      <path d="M0,180 L0,120 Q60,80 120,100 Q200,130 280,90 Q340,60 400,80 Q480,110 560,70 Q620,40 700,65 Q780,90 840,55 Q900,25 960,50 Q1040,80 1100,45 Q1160,15 1240,60 Q1320,100 1380,75 Q1410,62 1440,70 L1440,180 Z" opacity="0.5"/>
+      <path d="M0,180 L0,140 Q80,110 160,130 Q240,150 320,120 Q400,95 480,115 Q560,135 640,105 Q720,80 800,100 Q880,120 960,95 Q1040,70 1120,90 Q1200,110 1280,85 Q1360,65 1440,90 L1440,180 Z"/>
+    </svg>
+  </div>
+</section>
+
+<!-- TRUST STATS BAR -->
+<section class="trust-bar">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-stat reveal stagger-1">
+        <div class="trust-stat-num"><span data-counter="2500">0</span>+</div>
+        <div class="trust-stat-label">Families Protected</div>
+      </div>
+      <div class="trust-stat reveal stagger-2">
+        <div class="trust-stat-num"><span data-counter="30">0</span>+</div>
+        <div class="trust-stat-label">Carriers Represented</div>
+      </div>
+      <div class="trust-stat reveal stagger-3">
+        <div class="trust-stat-num"><span data-counter="10">0</span>+</div>
+        <div class="trust-stat-label">Years Serving the NW</div>
+      </div>
+      <div class="trust-stat reveal stagger-4">
+        <div class="trust-stat-num">$<span data-counter="500">0</span>/yr</div>
+        <div class="trust-stat-label">Avg. Client Savings</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES GRID -->
+<section class="section services-bg" id="services">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-label mx-auto" style="justify-content:center;">Coverage Options</div>
+      <h2 class="section-title">Complete Protection.<br>One Trusted Agency.</h2>
+      <p class="section-sub mx-auto" style="text-align:center;">From your daily commute to your family's future, NW 365 Insurance provides coverage across every area of your life. We shop the market so you don't have to.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- AUTO -->
+      <div class="service-card reveal stagger-1">
+        <div class="service-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l3 7h7l-5.5 4.5 2 7L12 16l-6.5 4.5 2-7L2 9h7z" fill="none"/>
+            <rect x="3" y="11" width="18" height="8" rx="2"/>
+            <circle cx="7" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/>
+            <path d="M5 11L7 5h10l2 6"/>
+          </svg>
+        </div>
+        <div class="service-title">Auto Insurance</div>
+        <div class="service-desc">Comprehensive auto coverage tailored to Oregon and Washington drivers. We compare rates across multiple carriers to find you the best protection at the best price.</div>
+        <ul class="service-features">
+          <li>Liability, collision, and comprehensive</li>
+          <li>Uninsured/underinsured motorist</li>
+          <li>Multi-vehicle and good driver discounts</li>
+          <li>Roadside assistance options</li>
+        </ul>
+      </div>
+
+      <!-- HOME -->
+      <div class="service-card reveal stagger-2">
+        <div class="service-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <div class="service-title">Home Insurance</div>
+        <div class="service-desc">Protect your biggest investment. We understand Oregon-specific risks like earthquake, wildfire, and flooding &mdash; and find carriers that cover them properly.</div>
+        <ul class="service-features">
+          <li>Dwelling and personal property</li>
+          <li>Earthquake and flood coverage</li>
+          <li>Wildfire-zone specialist carriers</li>
+          <li>Renters insurance available</li>
+        </ul>
+      </div>
+
+      <!-- LIFE -->
+      <div class="service-card reveal stagger-3">
+        <div class="service-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <div class="service-title">Life Insurance</div>
+        <div class="service-desc">Give your family the security they deserve. From affordable term policies to permanent whole life, we match the right policy to your stage of life.</div>
+        <ul class="service-features">
+          <li>Term life (10, 20, 30 year)</li>
+          <li>Whole life and universal life</li>
+          <li>Family and mortgage protection</li>
+          <li>No-exam policy options</li>
+        </ul>
+      </div>
+
+      <!-- BUSINESS -->
+      <div class="service-card reveal stagger-4">
+        <div class="service-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+          </svg>
+        </div>
+        <div class="service-title">Business Insurance</div>
+        <div class="service-desc">Commercial coverage for Pacific Northwest businesses &mdash; from general liability and workers' comp to BOPs and professional liability. Oregon expertise built in.</div>
+        <ul class="service-features">
+          <li>General liability and commercial property</li>
+          <li>Workers' compensation (OR/WA)</li>
+          <li>Professional liability / E&O</li>
+          <li>Commercial auto and cyber liability</li>
+        </ul>
+      </div>
+
+      <!-- UMBRELLA -->
+      <div class="service-card reveal stagger-5">
+        <div class="service-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20"/>
+            <path d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12h20z"/>
+            <path d="M12 22a2 2 0 0 1-2-2"/>
+          </svg>
+        </div>
+        <div class="service-title">Umbrella Coverage</div>
+        <div class="service-desc">Extra liability protection that goes beyond your auto and home policies. Essential for families with assets to protect and risks to manage.</div>
+        <ul class="service-features">
+          <li>$1M to $5M+ coverage limits</li>
+          <li>Covers auto, home, and boat liability</li>
+          <li>Lawsuit and legal defense costs</li>
+          <li>Affordable peace of mind</li>
+        </ul>
+      </div>
+
+      <!-- MEDICARE (Featured) -->
+      <div class="service-card featured reveal stagger-5">
+        <div class="service-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="service-title">Medicare &amp; Health</div>
+        <div class="service-desc">Tina's personal specialty. Medicare Parts A through D, Supplement plans, Advantage plans, and ACA Marketplace coverage &mdash; explained in plain language, at no cost to you.</div>
+        <ul class="service-features">
+          <li>Medicare Advantage and Supplement</li>
+          <li>Part D prescription drug plans</li>
+          <li>ACA Marketplace enrollment</li>
+          <li>Annual plan review every year</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NATURE SCENE BREAK -->
+<div style="position:relative;height:380px;overflow:hidden;">
+  <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1600&q=80" alt="Pacific Northwest mountains and forest" style="width:100%;height:100%;object-fit:cover;display:block;object-position:center 40%;" loading="lazy" />
+  <div style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(15,40,32,0.88) 0%, rgba(44,74,110,0.6) 50%, rgba(26,60,52,0.3) 100%);"></div>
+  <div style="position:absolute;inset:0;display:flex;align-items:center;">
+    <div class="container">
+      <div style="max-width:520px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--forest-pale);margin-bottom:14px;display:flex;align-items:center;gap:10px;">
+          <span style="width:28px;height:2px;background:var(--forest-pale);display:inline-block;"></span>
+          Portland, Oregon
+        </div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(24px,3.5vw,40px);font-weight:800;color:white;line-height:1.15;margin-bottom:16px;letter-spacing:-0.02em;">Rooted in the Pacific Northwest. Protecting What Matters Most.</div>
+        <div style="font-size:15px;color:rgba(255,255,255,0.7);line-height:1.75;">Tina VanPhung built NW 365 Insurance on a simple belief: everyone deserves an insurance advisor who puts their interests first. Serving Oregon, Washington, and 8 additional states with independent, unbiased guidance.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY INDEPENDENT -->
+<section class="why-bg" id="why">
+  <div class="why-bg-pattern"></div>
+  <div class="container">
+    <div class="why-grid">
+      <div class="reveal-left">
+        <div class="section-label" style="color:var(--forest-pale);">The Independent Advantage</div>
+        <div class="why-title">We Work for You.<br>Not the Insurance Company.</div>
+        <div class="why-sub">A captive agent sells one company's products. We are independent &mdash; free to shop across 30+ carriers and recommend what is genuinely best for your situation. That independence changes everything about how we serve you.</div>
+
+        <div class="why-points">
+          <div class="why-point">
+            <div class="why-point-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--forest-pale)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            <div>
+              <div class="why-point-title">Multiple Carriers, One Agent</div>
+              <div class="why-point-desc">We compare rates and coverage from 30+ insurance companies so you get the best deal &mdash; without calling a dozen agencies yourself.</div>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-point-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--forest-pale)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+            <div>
+              <div class="why-point-title">Savings You Can Measure</div>
+              <div class="why-point-desc">Clients save an average of $500 per year when we review their coverage. Same or better protection, lower premiums. That is the power of choice.</div>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-point-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--forest-pale)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <div>
+              <div class="why-point-title">A Real Person, Every Time</div>
+              <div class="why-point-desc">When you call, you reach Tina &mdash; not a call center, not an automated phone tree. She knows your file, your family, and your coverage inside and out.</div>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-point-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--forest-pale)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div>
+              <div class="why-point-title">Claims Advocacy</div>
+              <div class="why-point-desc">When you need to file a claim, we go to bat for you. We work with the carrier on your behalf to make sure you get what you are owed &mdash; quickly and fairly.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal-right">
+        <div class="vs-table">
+          <div class="vs-header">
+            <div class="vs-col-title feature">What You Get</div>
+            <div class="vs-col-title ours">NW 365</div>
+            <div class="vs-col-title theirs">Captive Agent</div>
+          </div>
+          <div class="vs-row"><div class="vs-cell feature">Multiple carriers compared</div><div class="vs-cell yes">Yes</div><div class="vs-cell no">No</div></div>
+          <div class="vs-row"><div class="vs-cell feature">Unbiased recommendations</div><div class="vs-cell yes">Yes</div><div class="vs-cell no">No</div></div>
+          <div class="vs-row"><div class="vs-cell feature">Free to clients</div><div class="vs-cell yes">Yes</div><div class="vs-cell yes">Yes</div></div>
+          <div class="vs-row"><div class="vs-cell feature">Annual coverage review</div><div class="vs-cell yes">Yes</div><div class="vs-cell">Varies</div></div>
+          <div class="vs-row"><div class="vs-cell feature">Personal agent, not call center</div><div class="vs-cell yes">Yes</div><div class="vs-cell">Varies</div></div>
+          <div class="vs-row"><div class="vs-cell feature">Claims advocacy</div><div class="vs-cell yes">Yes</div><div class="vs-cell no">No</div></div>
+          <div class="vs-row"><div class="vs-cell feature">Licensed in 10 states</div><div class="vs-cell yes">Yes</div><div class="vs-cell no">Rarely</div></div>
+        </div>
+        <div class="vs-cta-bar">
+          <div class="vs-cta-bar-title">Ready to see what better coverage looks like?</div>
+          <a href="#quote" class="btn-primary" style="font-size:14px;padding:13px 28px;">Get Your Free Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section process-bg" id="process">
+  <div class="container">
+    <div class="reveal text-center">
+      <div class="section-label mx-auto" style="justify-content:center;">Simple Process</div>
+      <h2 class="section-title">Four Steps to Better Coverage</h2>
+      <p class="section-sub mx-auto" style="text-align:center;">Getting the right insurance should not be complicated. Here is exactly how working with NW 365 Insurance works &mdash; from first call to ongoing coverage.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal stagger-1">
+        <div class="process-num">1</div>
+        <div class="process-title">Tell Us Your Situation</div>
+        <div class="process-desc">Your vehicles, your home, your family, your business. A 15-minute conversation gives us everything we need to start shopping.</div>
+      </div>
+      <div class="process-step reveal stagger-2">
+        <div class="process-num">2</div>
+        <div class="process-title">We Shop 30+ Carriers</div>
+        <div class="process-desc">We compare coverage options and rates across our network of top-rated insurance companies &mdash; doing the work so you don't have to.</div>
+      </div>
+      <div class="process-step reveal stagger-3">
+        <div class="process-num">3</div>
+        <div class="process-title">Review Your Options</div>
+        <div class="process-desc">We present your top options in plain language &mdash; what's covered, what it costs, and what we recommend. No jargon, no pressure.</div>
+      </div>
+      <div class="process-step reveal stagger-4">
+        <div class="process-num">4</div>
+        <div class="process-title">Enroll and Relax</div>
+        <div class="process-desc">We handle the paperwork and stay your dedicated agent for annual reviews, claims help, and any questions that come up. Year-round support.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section reviews-bg" id="reviews">
+  <div class="container">
+    <div class="reviews-header reveal">
+      <div>
+        <div class="section-label">Client Reviews</div>
+        <h2 class="section-title">What Our Clients Say</h2>
+      </div>
+      <div class="rating-block">
+        <div class="rating-num">5.0</div>
+        <div>
+          <div class="rating-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+          <div class="rating-label">Based on client reviews</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card reveal stagger-1">
+        <div class="review-tag">Auto &amp; Home Bundle</div>
+        <div class="review-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+        <div class="review-text">"Tina saved us over $700 a year by bundling our auto and home insurance with a carrier we never would have found on our own. She handled the entire switch and it was seamless. Wish we had called her years ago."</div>
+        <div class="review-author">Mike &amp; Sarah D.</div>
+        <div class="review-location">Lake Oswego, OR</div>
+      </div>
+
+      <div class="review-card reveal stagger-2">
+        <div class="review-tag">Medicare Supplement</div>
+        <div class="review-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+        <div class="review-text">"My husband and I were completely lost when he turned 65. Tina took the time to explain every option and found us a Medigap plan that covered exactly what we needed. She remembers us every year at renewal. Remarkable service."</div>
+        <div class="review-author">Carol &amp; Dennis R.</div>
+        <div class="review-location">Vancouver, WA</div>
+      </div>
+
+      <div class="review-card reveal stagger-3">
+        <div class="review-tag">Business Insurance</div>
+        <div class="review-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+        <div class="review-text">"As a small business owner in Portland, I needed someone who understood Oregon workers' comp and general liability. Tina reviewed my entire coverage, found two gaps I didn't know about, and actually lowered my overall premium."</div>
+        <div class="review-author">James K.</div>
+        <div class="review-location">Portland, OR</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE FORM -->
+<section id="quote" class="quote-bg">
+  <div class="quote-bg-pattern"></div>
+  <div class="container">
+    <div class="quote-grid">
+      <div class="reveal-left">
+        <div class="section-label" style="color:var(--forest-pale);">Free, No Obligation</div>
+        <div class="quote-info-title">Get Your Free Quote.<br>See What You Could Save.</div>
+        <div class="quote-info-sub">Tell us a little about what you need and Tina will personally get back to you within one business day with options from multiple carriers. No cost. No obligation. No sales pressure. Just honest guidance from an independent agent who works for you.</div>
+
+        <div class="quote-contact-item">
+          <div class="quote-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--forest-pale)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div>
+            <div class="quote-contact-label">Phone</div>
+            <div class="quote-contact-value">(503) 446-4643</div>
+            <div class="quote-contact-note">Also: (503) 642-3977</div>
+          </div>
+        </div>
+        <div class="quote-contact-item">
+          <div class="quote-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--forest-pale)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg></div>
+          <div>
+            <div class="quote-contact-label">Email</div>
+            <div class="quote-contact-value">tina@insuranceresourcesnw.com</div>
+          </div>
+        </div>
+        <div class="quote-contact-item">
+          <div class="quote-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--forest-pale)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <div class="quote-contact-label">Office</div>
+            <div class="quote-contact-value">1827 NE 44th Ave, Suite 110</div>
+            <div class="quote-contact-note">Portland, OR 97213</div>
+          </div>
+        </div>
+        <div class="quote-contact-item">
+          <div class="quote-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--forest-pale)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <div>
+            <div class="quote-contact-label">Your Agent</div>
+            <div class="quote-contact-value">Tina VanPhung, Owner</div>
+            <div class="quote-contact-note">NW 365 Insurance / Insurance Resources NW</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal-right">
+        <div class="form-card">
+          <div class="form-title">Request a Free Quote</div>
+          <div class="form-sub">Fill out the basics and Tina will personally follow up within one business day.</div>
+
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input type="text" placeholder="Jane" /></div>
+            <div class="form-group"><label>Last Name</label><input type="text" placeholder="Doe" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Phone</label><input type="tel" placeholder="(503) 555-0000" /></div>
+            <div class="form-group"><label>Email</label><input type="email" placeholder="you@email.com" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>State</label>
+              <select>
+                <option value="">Select state...</option>
+                <option>Oregon</option><option>Washington</option><option>California</option>
+                <option>Nevada</option><option>Arizona</option><option>Texas</option>
+                <option>Colorado</option><option>Florida</option><option>Virginia</option><option>Maryland</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Current Carrier</label>
+              <input type="text" placeholder="e.g., State Farm, Allstate..." />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Coverage Interested In</label>
+            <div class="coverage-checkboxes">
+              <label class="coverage-checkbox"><input type="checkbox" /> Auto Insurance</label>
+              <label class="coverage-checkbox"><input type="checkbox" /> Home / Renters</label>
+              <label class="coverage-checkbox"><input type="checkbox" /> Life Insurance</label>
+              <label class="coverage-checkbox"><input type="checkbox" /> Business / Commercial</label>
+              <label class="coverage-checkbox"><input type="checkbox" /> Umbrella Coverage</label>
+              <label class="coverage-checkbox"><input type="checkbox" /> Medicare / Health</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Tell Us About Your Situation</label>
+            <textarea placeholder="Current coverage details, specific concerns, budget considerations, or anything else Tina should know..."></textarea>
+          </div>
+
+          <button class="form-submit" type="button">Send My Free Quote Request</button>
+          <div class="form-disclaimer">No spam, no obligation. Tina will call or email you personally within one business day.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top-border"></div>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">NW 365 <span>Insurance</span></div>
+        <div class="footer-brand-sub">Also known as Insurance Resources NW &mdash; Portland, Oregon</div>
+        <div class="footer-desc">Independent insurance agency owned by Tina VanPhung. Serving Oregon, Washington, California, Nevada, Arizona, Texas, Colorado, Florida, Virginia, and Maryland with auto, home, life, business, umbrella, Medicare, and health insurance coverage.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Coverage</div>
+        <ul class="footer-links">
+          <li><a href="#services">Auto Insurance</a></li>
+          <li><a href="#services">Home Insurance</a></li>
+          <li><a href="#services">Life Insurance</a></li>
+          <li><a href="#services">Business Insurance</a></li>
+          <li><a href="#services">Umbrella Coverage</a></li>
+          <li><a href="#services">Medicare &amp; Health</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Agency</div>
+        <ul class="footer-links">
+          <li><a href="#why">Why Independent</a></li>
+          <li><a href="#process">How It Works</a></li>
+          <li><a href="#reviews">Client Reviews</a></li>
+          <li><a href="#quote">Get a Free Quote</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact Tina</div>
+        <ul class="footer-links">
+          <li><a href="tel:5034464643">(503) 446-4643</a></li>
+          <li><a href="tel:5036423977">(503) 642-3977</a></li>
+          <li><a href="mailto:tina@insuranceresourcesnw.com">tina@insuranceresourcesnw.com</a></li>
+          <li><a href="#">1827 NE 44th Ave, Suite 110</a></li>
+          <li><a href="#">Portland, OR 97213</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2025 NW 365 Insurance LLC / Insurance Resources NW. All rights reserved. Tina VanPhung, Principal Broker.</div>
+      <div class="footer-lic">Licensed in OR, WA, CA, NV, AZ, TX, CO, FL, VA, MD</div>
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta">
+  <a href="#quote">Get a Free Quote &mdash; No Obligation</a>
+</div>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+  // Nav scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Hamburger menu
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburgerBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+  });
+  function closeMenu() {
+    mobileMenu.classList.remove('active');
+  }
+
+  // Animated counters
+  function animateCounter(el, target, duration) {
+    let start = 0;
+    const increment = target / (duration / 16);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    function step() {
+      start += increment;
+      if (start >= target) {
+        el.textContent = prefix + target.toLocaleString() + suffix;
+        return;
+      }
+      el.textContent = prefix + Math.floor(start).toLocaleString() + suffix;
+      requestAnimationFrame(step);
+    }
+    step();
+  }
+
+  // Hero stat counters
+  const heroStatObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const target = parseInt(e.target.dataset.target);
+        const prefix = e.target.dataset.prefix || '';
+        const suffix = e.target.dataset.suffix || '';
+        e.target.dataset.prefix = prefix;
+        e.target.dataset.suffix = suffix;
+        animateCounter(e.target, target, 2000);
+        heroStatObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.stat-num[data-target]').forEach(el => heroStatObserver.observe(el));
+
+  // Trust bar counters
+  const trustObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const target = parseInt(e.target.dataset.counter);
+        const update = () => {
+          let start = 0;
+          const increment = target / 120;
+          function step() {
+            start += increment;
+            if (start >= target) {
+              e.target.textContent = target.toLocaleString();
+              return;
+            }
+            e.target.textContent = Math.floor(start).toLocaleString();
+            requestAnimationFrame(step);
+          }
+          step();
+        };
+        update();
+        trustObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('[data-counter]').forEach(el => trustObserver.observe(el));
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 80;
+        const pos = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: pos, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>

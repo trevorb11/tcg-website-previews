@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kaake Electric | Licensed Electrician in Plymouth, MA</title>
+  <meta name="description" content="Kaake Electric — Douglas Kaake, licensed electrician serving Plymouth, MA and the South Shore & Cape Cod region. Panel upgrades, EV chargers, wiring, generators, and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── CUSTOM PROPERTIES ─────────────────────────────────────────── */
+    :root {
+      --electric-blue: #1a8fe3;
+      --blue-dark:     #0f6bb5;
+      --blue-light:    #4daaee;
+      --navy:          #0d1b2a;
+      --charcoal:      #1c2b3a;
+      --charcoal-mid:  #253545;
+      --amber:         #f0b429;
+      --amber-dark:    #d99b0e;
+      --white:         #ffffff;
+      --off-white:     #f4f7fb;
+      --text-body:     #3a4a5a;
+      --text-muted:    #6b7e90;
+      --border:        #dde5ee;
+      --shadow-sm:     0 2px 8px rgba(13,27,42,.08);
+      --shadow-md:     0 6px 24px rgba(13,27,42,.12);
+      --shadow-lg:     0 16px 48px rgba(13,27,42,.18);
+      --radius:        10px;
+      --font-head:     'Barlow Condensed', sans-serif;
+      --font-body:     'Barlow', sans-serif;
+      --nav-h:         72px;
+      --transition:    .3s ease;
+    }
+
+    /* ─── RESET & BASE ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text-body);
+      background: var(--white);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    /* ─── UTILITY ───────────────────────────────────────────────────── */
+    .container {
+      width: min(1140px, 92%);
+      margin-inline: auto;
+    }
+    .section-label {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--electric-blue);
+      margin-bottom: .6rem;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 580px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .75rem 1.75rem;
+      border-radius: 6px;
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--amber);
+      color: var(--navy);
+    }
+    .btn-primary:hover { background: var(--amber-dark); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(240,180,41,.35); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,.65);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,.12); border-color: var(--white); transform: translateY(-2px); }
+    .btn-blue {
+      background: var(--electric-blue);
+      color: var(--white);
+    }
+    .btn-blue:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(26,143,227,.3); }
+
+    /* ─── REVEAL ANIMATION ──────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+
+    /* ─── NAVIGATION ────────────────────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      z-index: 1000;
+      transition: background var(--transition), box-shadow var(--transition);
+      background: transparent;
+    }
+    #navbar.scrolled {
+      background: var(--navy);
+      box-shadow: 0 2px 20px rgba(0,0,0,.3);
+    }
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-logo-icon {
+      width: 40px; height: 40px;
+      background: var(--amber);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+    .nav-logo-text {
+      font-family: var(--font-head);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .nav-logo-text span {
+      display: block;
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      color: var(--amber);
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+    .nav-links a {
+      font-family: var(--font-head);
+      font-size: .95rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.85);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--amber); }
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--amber);
+      color: var(--navy) !important;
+      padding: .5rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover { background: var(--amber-dark) !important; color: var(--navy) !important; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 6px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      width: 26px; height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition);
+      display: block;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: var(--charcoal);
+      padding: 1.5rem;
+      z-index: 999;
+      flex-direction: column;
+      gap: .25rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,.3);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: .75rem 1rem;
+      border-radius: 6px;
+      transition: background var(--transition);
+    }
+    .mobile-menu a:hover { background: var(--charcoal-mid); }
+    .mobile-menu .mob-cta {
+      margin-top: .75rem;
+      background: var(--amber);
+      color: var(--navy);
+      text-align: center;
+    }
+
+    /* ─── HERO ──────────────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center 40%;
+      transform: scale(1.04);
+      transition: transform 8s ease;
+    }
+    #hero.loaded .hero-bg { transform: scale(1); }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(13,27,42,.88) 0%, rgba(13,27,42,.72) 55%, rgba(15,107,181,.45) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding-top: var(--nav-h);
+      padding-block: 5rem;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(240,180,41,.18);
+      border: 1px solid rgba(240,180,41,.4);
+      border-radius: 50px;
+      padding: .35rem 1rem;
+      font-family: var(--font-head);
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge::before { content: '⚡'; font-size: .9rem; }
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 1.25rem;
+      max-width: 760px;
+    }
+    .hero-title em {
+      font-style: normal;
+      color: var(--amber);
+    }
+    .hero-desc {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,.8);
+      max-width: 540px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+      color: rgba(255,255,255,.5);
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-family: var(--font-head);
+      font-weight: 600;
+    }
+    .scroll-arrow {
+      width: 28px; height: 28px;
+      border: 2px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: bounce 2s infinite;
+    }
+    .scroll-arrow::after { content: '↓'; font-size: .85rem; color: rgba(255,255,255,.5); }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
+    }
+
+    /* ─── TRUST STRIP ───────────────────────────────────────────────── */
+    #trust {
+      background: var(--navy);
+      padding: 1.2rem 0;
+      border-bottom: 3px solid var(--amber);
+    }
+    .trust-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .55rem 2rem;
+      border-right: 1px solid rgba(255,255,255,.12);
+      font-family: var(--font-head);
+      font-size: .95rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-icon {
+      width: 28px; height: 28px;
+      background: var(--amber);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .85rem;
+      flex-shrink: 0;
+    }
+
+    /* ─── SERVICES ──────────────────────────────────────────────────── */
+    #services {
+      padding: 5.5rem 0;
+      background: var(--off-white);
+    }
+    .section-head {
+      margin-bottom: 3rem;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem 1.75rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--electric-blue), var(--amber));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--electric-blue);
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--electric-blue), var(--blue-dark));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.1rem;
+    }
+    .service-name {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: .5rem;
+    }
+    .service-desc {
+      font-size: .93rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─── ABOUT ─────────────────────────────────────────────────────── */
+    #about {
+      padding: 5.5rem 0;
+      background: var(--white);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+    }
+    .about-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--amber);
+      color: var(--navy);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.5rem;
+      font-family: var(--font-head);
+      font-weight: 800;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      line-height: 1.15;
+    }
+    .about-badge .big { font-size: 2rem; display: block; }
+    .about-badge .small { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; }
+    .about-text .section-subtitle { max-width: 100%; margin-bottom: 1.5rem; }
+    .about-list {
+      display: flex;
+      flex-direction: column;
+      gap: .65rem;
+      margin-top: 1.5rem;
+    }
+    .about-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .7rem;
+      font-size: .97rem;
+      color: var(--text-body);
+    }
+    .check {
+      width: 22px; height: 22px;
+      background: var(--electric-blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: .7rem;
+      flex-shrink: 0;
+      margin-top: .15rem;
+    }
+    .check::before { content: '✓'; font-weight: 900; }
+    .about-cta { margin-top: 2rem; }
+
+    /* ─── WHY CHOOSE US ─────────────────────────────────────────────── */
+    #why {
+      padding: 5.5rem 0;
+      background: var(--navy);
+    }
+    #why .section-label { color: var(--amber); }
+    #why .section-title { color: var(--white); }
+    #why .section-subtitle { color: rgba(255,255,255,.6); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .why-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius);
+      padding: 2rem 1.75rem;
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .why-card:hover {
+      background: rgba(26,143,227,.12);
+      border-color: var(--electric-blue);
+      transform: translateY(-4px);
+    }
+    .why-num {
+      font-family: var(--font-head);
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--amber);
+      line-height: 1;
+      margin-bottom: .75rem;
+    }
+    .why-title {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: .5rem;
+    }
+    .why-desc {
+      font-size: .92rem;
+      color: rgba(255,255,255,.55);
+      line-height: 1.6;
+    }
+
+    /* ─── TESTIMONIALS ──────────────────────────────────────────────── */
+    #testimonials {
+      padding: 5.5rem 0;
+      background: var(--off-white);
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .review-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      position: relative;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .review-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .review-quote {
+      font-size: 3.5rem;
+      color: var(--electric-blue);
+      line-height: 1;
+      font-family: Georgia, serif;
+      margin-bottom: .25rem;
+      opacity: .25;
+      position: absolute;
+      top: 1.25rem; right: 1.5rem;
+    }
+    .stars {
+      color: var(--amber);
+      font-size: 1.1rem;
+      letter-spacing: .1em;
+      margin-bottom: 1rem;
+    }
+    .review-text {
+      font-size: .97rem;
+      color: var(--text-body);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .reviewer-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .reviewer-name {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--navy);
+    }
+    .reviewer-loc {
+      font-size: .82rem;
+      color: var(--text-muted);
+    }
+
+    /* ─── SERVICE AREA ──────────────────────────────────────────────── */
+    #area {
+      padding: 5.5rem 0;
+      background: var(--white);
+    }
+    .area-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+    .area-map-placeholder {
+      background: linear-gradient(135deg, var(--charcoal) 0%, var(--navy) 100%);
+      border-radius: var(--radius);
+      height: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .75rem;
+      color: var(--white);
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+    .area-map-placeholder::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 40% 55%, rgba(26,143,227,.3) 0%, transparent 65%);
+    }
+    .map-pin { font-size: 2.5rem; }
+    .area-map-label { position: relative; z-index: 1; }
+    .area-map-sub { font-size: .85rem; font-weight: 500; color: rgba(255,255,255,.55); position: relative; z-index: 1; }
+    .communities {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .5rem;
+    }
+    .community-tag {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .55rem .85rem;
+      background: var(--off-white);
+      border-radius: 6px;
+      font-size: .9rem;
+      color: var(--text-body);
+      font-weight: 500;
+      border: 1px solid var(--border);
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .community-tag:hover { background: rgba(26,143,227,.08); border-color: var(--electric-blue); }
+    .community-tag::before { content: '📍'; font-size: .85rem; }
+    .area-note {
+      margin-top: 1.25rem;
+      font-size: .9rem;
+      color: var(--text-muted);
+      padding: 1rem 1.25rem;
+      background: rgba(26,143,227,.07);
+      border-left: 3px solid var(--electric-blue);
+      border-radius: 0 6px 6px 0;
+    }
+
+    /* ─── CONTACT ───────────────────────────────────────────────────── */
+    #contact {
+      padding: 5.5rem 0;
+      background: var(--charcoal);
+    }
+    #contact .section-label { color: var(--amber); }
+    #contact .section-title { color: var(--white); }
+    #contact .section-subtitle { color: rgba(255,255,255,.6); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .contact-item-icon {
+      width: 46px; height: 46px;
+      background: var(--electric-blue);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .contact-item-text strong {
+      display: block;
+      font-family: var(--font-head);
+      font-weight: 700;
+      color: var(--white);
+      font-size: .95rem;
+      margin-bottom: .2rem;
+    }
+    .contact-item-text span {
+      color: rgba(255,255,255,.6);
+      font-size: .92rem;
+    }
+    .contact-item-text a { color: var(--amber); }
+    .contact-form {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2.25rem;
+      box-shadow: var(--shadow-lg);
+    }
+    .form-title {
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+      margin-bottom: 1rem;
+    }
+    .form-group label {
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--navy);
+      font-family: var(--font-head);
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: .7rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-size: .95rem;
+      color: var(--text-body);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      background: var(--off-white);
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--electric-blue);
+      box-shadow: 0 0 0 3px rgba(26,143,227,.12);
+      background: var(--white);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit { width: 100%; justify-content: center; font-size: 1.05rem; padding: .85rem; }
+
+    /* ─── FOOTER ────────────────────────────────────────────────────── */
+    #footer {
+      background: var(--navy);
+      padding: 3rem 0 1.5rem;
+      border-top: 3px solid var(--amber);
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .footer-brand .nav-logo { margin-bottom: 1rem; pointer-events: none; }
+    .footer-tagline {
+      font-size: .92rem;
+      color: rgba(255,255,255,.5);
+      line-height: 1.7;
+      max-width: 280px;
+    }
+    .footer-col-title {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--amber);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+    }
+    .footer-links a {
+      font-size: .9rem;
+      color: rgba(255,255,255,.55);
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--amber); }
+    .footer-contact-line {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-size: .9rem;
+      color: rgba(255,255,255,.55);
+      margin-bottom: .5rem;
+    }
+    .footer-contact-line span { font-size: 1rem; }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1.5rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-copy {
+      font-size: .82rem;
+      color: rgba(255,255,255,.35);
+    }
+    .footer-lic {
+      font-size: .82rem;
+      color: rgba(255,255,255,.35);
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+    }
+
+    /* ─── EMERGENCY BANNER ──────────────────────────────────────────── */
+    .emergency-banner {
+      background: linear-gradient(90deg, var(--amber), var(--amber-dark));
+      padding: .6rem 0;
+      text-align: center;
+    }
+    .emergency-banner p {
+      font-family: var(--font-head);
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .emergency-banner a {
+      color: var(--navy);
+      text-decoration: underline;
+      font-weight: 800;
+    }
+
+    /* ─── RESPONSIVE ────────────────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-img-wrap { order: -1; }
+      .about-badge { bottom: -1rem; right: 1rem; }
+      .area-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 640px) {
+      :root { --nav-h: 64px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .communities { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-brand { grid-column: auto; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .trust-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); width: 100%; justify-content: center; }
+      .trust-item:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- EMERGENCY BANNER -->
+  <div class="emergency-banner">
+    <p>24/7 Emergency Electrical Service Available — Call Now: <a href="tel:+15085550142">(508) 555-0142</a></p>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="#hero" class="nav-logo">
+        <div class="nav-logo-icon">⚡</div>
+        <div class="nav-logo-text">
+          Kaake Electric
+          <span>Plymouth, MA</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#area">Service Area</a></li>
+        <li><a href="#contact" class="nav-cta">📞 Get a Quote</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#why">Why Us</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#area">Service Area</a>
+    <a href="#contact" class="mob-cta">Get a Free Quote</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <div class="hero-badge">Licensed & Insured Electrician</div>
+      <h1 class="hero-title">
+        Plymouth's <em>Trusted</em><br />Electrical Contractor
+      </h1>
+      <p class="hero-desc">
+        From panel upgrades to EV chargers, Douglas Kaake brings expert, code-compliant electrical work to homes and businesses across Plymouth and the South Shore.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">⚡ Get a Free Estimate</a>
+        <a href="tel:+15085550142" class="btn btn-outline">📞 (508) 555-0142</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-arrow"></div>
+      Scroll
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div id="trust">
+    <div class="container">
+      <ul class="trust-list">
+        <li class="trust-item">
+          <div class="trust-icon">✓</div>
+          MA Licensed Electrician
+        </li>
+        <li class="trust-item">
+          <div class="trust-icon">🛡</div>
+          Fully Insured
+        </li>
+        <li class="trust-item">
+          <div class="trust-icon">📍</div>
+          Plymouth, MA Local
+        </li>
+        <li class="trust-item">
+          <div class="trust-icon">⚡</div>
+          24/7 Emergency Service
+        </li>
+        <li class="trust-item">
+          <div class="trust-icon">★</div>
+          5-Star Rated
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-label">What We Do</span>
+        <h2 class="section-title">Electrical Services for<br />Home & Business</h2>
+        <p class="section-subtitle">From routine installations to complex panel work, Kaake Electric handles every job with precision and care.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">🔌</div>
+          <div class="service-name">Panel Upgrades</div>
+          <p class="service-desc">Modernize your electrical panel to handle today's power demands safely. We upgrade breaker boxes and service entrances for homes and commercial spaces.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">🔧</div>
+          <div class="service-name">Wiring & Rewiring</div>
+          <p class="service-desc">New construction wiring and full rewiring of older homes. We bring outdated wiring up to code and handle additions, renovations, and more.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">💡</div>
+          <div class="service-name">Lighting Installation</div>
+          <p class="service-desc">Recessed lighting, LED retrofits, outdoor lighting, landscape illumination, and smart lighting systems installed cleanly and efficiently.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-4">
+          <div class="service-icon">🚗</div>
+          <div class="service-name">EV Charger Installation</div>
+          <p class="service-desc">Level 2 home EV charging station installation for all vehicle makes. We handle permitting, panel assessment, and a clean, professional install.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">⚡</div>
+          <div class="service-name">Generator Installation</div>
+          <p class="service-desc">Whole-home standby generators and portable generator hookups. Stay powered during New England's nor'easters and storm outages.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">🌀</div>
+          <div class="service-name">Ceiling Fan Installation</div>
+          <p class="service-desc">New ceiling fan installations and replacements, including junction box upgrades when needed for safe, code-compliant mounting.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">🔵</div>
+          <div class="service-name">Outlet & Switch Installation</div>
+          <p class="service-desc">GFCI and AFCI outlet installation, USB outlets, whole-house surge protection, dimmer switches, and smart switch upgrades.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-4">
+          <div class="service-icon">📋</div>
+          <div class="service-name">Code Compliance & Inspections</div>
+          <p class="service-desc">Electrical inspections for real estate transactions, rental properties, and code compliance work to meet current Massachusetts electrical standards.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">🚨</div>
+          <div class="service-name">Emergency Electrical Service</div>
+          <p class="service-desc">Power outages, tripped breakers, sparking outlets, and burning smells can't wait. We offer around-the-clock emergency response across the South Shore.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap reveal">
+          <img
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80"
+            alt="Licensed electrician at work"
+            class="about-img"
+          />
+          <div class="about-badge">
+            <span class="big">10+</span>
+            <span class="small">Years of Experience</span>
+          </div>
+        </div>
+        <div class="about-text reveal reveal-delay-2">
+          <span class="section-label">About Douglas Kaake</span>
+          <h2 class="section-title">Your Neighbor.<br />Your Electrician.</h2>
+          <p class="section-subtitle">
+            Douglas Kaake is a Massachusetts licensed electrician and Plymouth native who built Kaake Electric on a simple principle: do the job right, treat every customer like a neighbor, and never cut corners.
+          </p>
+          <p class="section-subtitle" style="margin-top: .9rem;">
+            Whether you're a homeowner upgrading an aging panel or a business owner needing a commercial build-out wired, Douglas brings the same level of craftsmanship, professionalism, and local know-how to every project.
+          </p>
+          <ul class="about-list">
+            <li>
+              <div class="check"></div>
+              Massachusetts Licensed Electrician — fully permitted and code-compliant work on every job
+            </li>
+            <li>
+              <div class="check"></div>
+              Residential and commercial experience across Plymouth County and beyond
+            </li>
+            <li>
+              <div class="check"></div>
+              Straightforward pricing — detailed quotes before any work begins
+            </li>
+            <li>
+              <div class="check"></div>
+              Clean, respectful job sites — we treat your home as if it were our own
+            </li>
+          </ul>
+          <div class="about-cta">
+            <a href="#contact" class="btn btn-blue">Schedule a Consultation</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section id="why">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-label">Why Kaake Electric</span>
+        <h2 class="section-title">The Right Electrician<br />Makes All the Difference</h2>
+        <p class="section-subtitle">We combine local expertise, genuine craftsmanship, and honest service to deliver electrical work you can count on for decades.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal reveal-delay-1">
+          <div class="why-num">01</div>
+          <div class="why-title">MA Licensed & Insured</div>
+          <p class="why-desc">Douglas holds a current Massachusetts electrician's license and full liability insurance, so you're protected on every job — no exceptions.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-2">
+          <div class="why-num">02</div>
+          <div class="why-title">South Shore Local</div>
+          <p class="why-desc">We know Plymouth's neighborhoods, local inspection requirements, and permit processes. No out-of-area contractor learning on your dime.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-3">
+          <div class="why-num">03</div>
+          <div class="why-title">10+ Years of Experience</div>
+          <p class="why-desc">From hundred-year-old Cape Cod cottages to new commercial builds, Douglas has handled it all. Complex jobs don't faze us.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-4">
+          <div class="why-num">04</div>
+          <div class="why-title">Emergency Response</div>
+          <p class="why-desc">Electrical emergencies don't keep business hours. We're available 24/7 for urgent situations so you're never left in the dark.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-1">
+          <div class="why-num">05</div>
+          <div class="why-title">Transparent Pricing</div>
+          <p class="why-desc">We provide detailed written estimates before starting any work. No surprise invoices, no hidden fees — just honest, fair pricing.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-2">
+          <div class="why-num">06</div>
+          <div class="why-title">Clean, Careful Work</div>
+          <p class="why-desc">We take pride in tidy cable routing, professional finishes, and leaving your space cleaner than we found it. Quality you'll see and trust.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-head reveal" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+        <span class="section-label">Customer Reviews</span>
+        <h2 class="section-title">What Plymouth Homeowners<br />Are Saying</h2>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-quote">"</div>
+          <div class="stars">★★★★★</div>
+          <p class="review-text">Douglas upgraded our 100-amp panel to 200-amp service and had everything done in a single day. He explained every step of the process, pulled all the permits, and passed inspection on the first visit. Absolutely first-rate work — I wouldn't call anyone else.</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar" style="background: var(--electric-blue);">MR</div>
+            <div>
+              <div class="reviewer-name">Michael R.</div>
+              <div class="reviewer-loc">Plymouth, MA</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-quote">"</div>
+          <div class="stars">★★★★★</div>
+          <p class="review-text">We had a Level 2 EV charger installed for our new Tesla and couldn't be happier. Doug assessed our panel, suggested the right unit, and had it running perfectly. The work was clean and professional. He also spotted some outdated wiring that he fixed while he was here — very thorough.</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar" style="background: var(--amber); color: var(--navy);">SL</div>
+            <div>
+              <div class="reviewer-name">Sarah L.</div>
+              <div class="reviewer-loc">Duxbury, MA</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card reveal reveal-delay-3">
+          <div class="review-quote">"</div>
+          <div class="stars">★★★★★</div>
+          <p class="review-text">Lost power to half our house on a Friday night. Called Kaake Electric and Douglas was at our door within 45 minutes. He tracked down a failed breaker and corrected a wiring issue that could have been a real fire hazard. Emergency service that actually lives up to the name — incredible.</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar" style="background: var(--blue-dark);">TC</div>
+            <div>
+              <div class="reviewer-name">Tom C.</div>
+              <div class="reviewer-loc">Marshfield, MA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section id="area">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-label">Where We Work</span>
+        <h2 class="section-title">Serving Plymouth,<br />South Shore & Cape Cod</h2>
+        <p class="section-subtitle">Based in Plymouth, MA — we serve communities throughout Plymouth County, the South Shore, and the Upper Cape.</p>
+      </div>
+      <div class="area-grid">
+        <div class="area-map-placeholder reveal">
+          <span class="map-pin">📍</span>
+          <span class="area-map-label">Plymouth, MA</span>
+          <span class="area-map-sub">South Shore &amp; Cape Cod Region</span>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div class="communities">
+            <div class="community-tag">Plymouth</div>
+            <div class="community-tag">Duxbury</div>
+            <div class="community-tag">Marshfield</div>
+            <div class="community-tag">Kingston</div>
+            <div class="community-tag">Pembroke</div>
+            <div class="community-tag">Hanover</div>
+            <div class="community-tag">Rockland</div>
+            <div class="community-tag">Scituate</div>
+            <div class="community-tag">Norwell</div>
+            <div class="community-tag">Hanson</div>
+            <div class="community-tag">Carver</div>
+            <div class="community-tag">Wareham</div>
+            <div class="community-tag">Sandwich</div>
+            <div class="community-tag">Bourne</div>
+          </div>
+          <div class="area-note">
+            Not sure if we cover your area? Give us a call — we travel for larger jobs and are happy to discuss your project regardless of location.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-label">Get In Touch</span>
+        <h2 class="section-title">Request a Free Estimate</h2>
+        <p class="section-subtitle">Describe your project and we'll get back to you promptly with a straightforward, no-obligation quote.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div class="contact-item-text">
+              <strong>Phone</strong>
+              <span><a href="tel:+15085550142">(508) 555-0142</a></span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div class="contact-item-text">
+              <strong>Email</strong>
+              <span><a href="mailto:doug@kaakeelectric.com">doug@kaakeelectric.com</a></span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div class="contact-item-text">
+              <strong>Based In</strong>
+              <span>Plymouth, MA 02360</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🕐</div>
+            <div class="contact-item-text">
+              <strong>Hours</strong>
+              <span>Mon–Fri 7am–6pm<br />Sat 8am–2pm<br />24/7 Emergency Service</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form reveal reveal-delay-2">
+          <div class="form-title">Send Us a Message</div>
+          <form action="#" method="POST">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="fname" placeholder="John" required />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lname" placeholder="Smith" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(508) 000-0000" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="you@email.com" />
+            </div>
+            <div class="form-group">
+              <label for="service">Service Needed</label>
+              <select id="service" name="service">
+                <option value="">Select a service…</option>
+                <option>Panel Upgrade</option>
+                <option>Wiring / Rewiring</option>
+                <option>Lighting Installation</option>
+                <option>EV Charger Installation</option>
+                <option>Generator Installation</option>
+                <option>Ceiling Fan Installation</option>
+                <option>Outlets & Switches</option>
+                <option>Code Compliance / Inspection</option>
+                <option>Emergency Service</option>
+                <option>Other / Not Sure</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Project Details</label>
+              <textarea id="message" name="message" placeholder="Briefly describe your project or issue…"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit">⚡ Send My Request</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <div class="nav-logo-icon">⚡</div>
+            <div class="nav-logo-text">
+              Kaake Electric
+              <span>Plymouth, MA</span>
+            </div>
+          </div>
+          <p class="footer-tagline">
+            Douglas Kaake — licensed Massachusetts electrician proudly serving Plymouth and the South Shore with honest work, fair pricing, and local expertise.
+          </p>
+        </div>
+        <div>
+          <div class="footer-col-title">Services</div>
+          <ul class="footer-links">
+            <li><a href="#services">Panel Upgrades</a></li>
+            <li><a href="#services">Wiring & Rewiring</a></li>
+            <li><a href="#services">Lighting Installation</a></li>
+            <li><a href="#services">EV Charger Installation</a></li>
+            <li><a href="#services">Generator Installation</a></li>
+            <li><a href="#services">Emergency Service</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <div class="footer-contact-line"><span>📞</span> <a href="tel:+15085550142" style="color: rgba(255,255,255,.55);">(508) 555-0142</a></div>
+          <div class="footer-contact-line"><span>✉️</span> <a href="mailto:doug@kaakeelectric.com" style="color: rgba(255,255,255,.55);">doug@kaakeelectric.com</a></div>
+          <div class="footer-contact-line"><span>📍</span> Plymouth, MA 02360</div>
+          <div class="footer-contact-line"><span>🕐</span> 24/7 Emergency Line</div>
+          <div style="margin-top: 1rem;">
+            <a href="#contact" class="btn btn-primary" style="font-size: .85rem; padding: .6rem 1.2rem;">Get a Free Quote</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 Kaake Electric. All rights reserved. Plymouth, MA.</p>
+        <p class="footer-lic"><span>🪪</span> MA Licensed Electrician &mdash; Fully Insured &mdash; Serving the South Shore</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── NAV SCROLL BEHAVIOR ─────────────────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // ─── HAMBURGER MENU ──────────────────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // ─── HERO PARALLAX TRIGGER ───────────────────────────────────────────
+    document.getElementById('hero').classList.add('loaded');
+
+    // ─── SCROLL REVEAL ───────────────────────────────────────────────────
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+</html>

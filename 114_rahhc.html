@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAHHC | Remain At Home Healthcare | In-Home Care for Seniors</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #0f766e;
+      --teal-dark: #0a5954;
+      --teal-light: #14b8a6;
+      --teal-pale: #e6f7f6;
+      --sage: #6b9c78;
+      --navy: #1e3a5f;
+      --cream: #fdf8f0;
+      --warm-white: #fffef9;
+      --gray: #6b7280;
+      --gray-light: #e8ede8;
+      --text: #1f2937;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: var(--text);
+      background: var(--warm-white);
+      line-height: 1.75;
+    }
+
+    h1, h2, h3 { font-family: 'Merriweather', serif; }
+    h4 { font-family: 'Nunito', sans-serif; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255, 254, 249, 0.97);
+      backdrop-filter: blur(8px);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      border-bottom: 1px solid var(--gray-light);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .nav-logo {
+      font-family: 'Merriweather', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--teal-dark);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--sage); }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--teal); }
+
+    .nav-cta {
+      background: var(--teal);
+      color: var(--warm-white) !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 30px;
+      font-weight: 700 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--teal-dark) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 100px 5% 60px;
+      gap: 4rem;
+      background: var(--cream);
+    }
+
+    .hero-content { max-width: 560px; }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--teal-pale);
+      color: var(--teal-dark);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--teal);
+    }
+
+    .hero p {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.05rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: var(--warm-white);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 30px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--teal);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 30px;
+      text-decoration: none;
+      border: 2px solid var(--teal);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover { background: var(--teal); color: var(--warm-white); }
+
+    .hero-image { position: relative; }
+
+    .hero-image img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .hero-stat {
+      position: absolute;
+      bottom: 30px;
+      left: -20px;
+      background: var(--warm-white);
+      border-radius: 14px;
+      padding: 1.2rem 1.6rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-stat strong {
+      font-family: 'Merriweather', serif;
+      font-size: 1.8rem;
+      color: var(--teal);
+      display: block;
+    }
+
+    .hero-stat span {
+      font-size: 0.82rem;
+      color: var(--gray);
+      display: block;
+    }
+
+    /* SECTIONS */
+    section { padding: 90px 5%; }
+
+    .section-label {
+      font-size: 0.73rem;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-heading {
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      color: var(--navy);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .section-intro {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 580px;
+      margin-bottom: 3rem;
+      line-height: 1.8;
+    }
+
+    /* ABOUT */
+    .about { background: var(--warm-white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .about-text p {
+      color: var(--gray);
+      margin-bottom: 1.2rem;
+    }
+
+    /* WHO WE SERVE */
+    .serve { background: var(--cream); }
+
+    .serve-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .serve-card {
+      background: var(--warm-white);
+      border-radius: 18px;
+      padding: 2.5rem 2rem;
+      border: 2px solid var(--gray-light);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .serve-card:hover {
+      border-color: var(--teal-light);
+      transform: translateY(-4px);
+    }
+
+    .serve-card-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--teal-pale);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .serve-card-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--teal);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .serve-card h3 {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .serve-card p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .service-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: var(--warm-white);
+      border-radius: 14px;
+      border: 1.5px solid var(--gray-light);
+      transition: border-color 0.2s;
+    }
+
+    .service-item:hover { border-color: var(--teal-light); }
+
+    .service-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--teal);
+      border-radius: 50%;
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    .service-item h4 {
+      font-size: 0.95rem;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+    }
+
+    .service-item p {
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* EEOICP */
+    .eeoicp {
+      background: var(--teal-dark);
+    }
+
+    .eeoicp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .eeoicp .section-label { color: var(--teal-light); }
+    .eeoicp .section-heading { color: var(--warm-white); }
+
+    .eeoicp-text p {
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 1.2rem;
+    }
+
+    .eeoicp-boxes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .eeoicp-box {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+
+    .eeoicp-box h4 {
+      font-size: 0.88rem;
+      color: var(--teal-light);
+      margin-bottom: 0.4rem;
+    }
+
+    .eeoicp-box p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--cream); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--warm-white);
+      border-radius: 18px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      border-bottom: 4px solid var(--teal-light);
+    }
+
+    .testimonial-card p {
+      font-size: 0.97rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .testimonial-author img {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .testimonial-author strong {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--navy);
+    }
+
+    .testimonial-author span {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    /* CONTACT */
+    .contact { background: var(--warm-white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      font-size: 1.8rem;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p { color: var(--gray); margin-bottom: 2rem; }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+      padding: 1.2rem;
+      background: var(--cream);
+      border-radius: 14px;
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--teal);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: var(--warm-white);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .contact-detail strong {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--teal-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-detail span { font-size: 0.92rem; color: var(--text); }
+
+    .contact-form {
+      background: var(--cream);
+      padding: 2.5rem;
+      border-radius: 20px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group { margin-bottom: 1.2rem; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--gray-light);
+      border-radius: 10px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--warm-white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--teal); }
+
+    .form-group textarea { resize: vertical; min-height: 110px; }
+
+    /* CTA */
+    .cta-section {
+      background: var(--cream);
+      text-align: center;
+      padding: 90px 5%;
+      position: relative;
+    }
+
+    .cta-inner {
+      background: var(--teal);
+      border-radius: 24px;
+      padding: 70px 5%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta-inner h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+      color: var(--warm-white);
+      margin-bottom: 1rem;
+    }
+
+    .cta-inner p {
+      color: rgba(255,255,255,0.82);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn-cta {
+      background: var(--warm-white);
+      color: var(--teal-dark);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 0.9rem 2.2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+
+    .btn-cta:hover { transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.65);
+      padding: 60px 5% 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+    }
+
+    .footer-brand p { font-size: 0.88rem; margin-top: 1rem; line-height: 1.7; }
+
+    .footer-col h4 {
+      color: var(--teal-light);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.6rem; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.87rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--teal-light); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      font-size: 0.82rem;
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .about-grid,
+      .eeoicp-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-image { display: none; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      section { padding: 65px 5%; }
+      .form-row { grid-template-columns: 1fr; }
+      .eeoicp-boxes { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">RAHHC <span>| Remain At Home Healthcare</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#eeoicp">EEOICP</a></li>
+      <li><a href="#contact" class="nav-cta">Get Care</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <span class="hero-eyebrow">In-Home Healthcare &mdash; Athens, GA</span>
+      <h1>Care That Comes to You.<br><em>Dignity That</em><br>Stays With You.</h1>
+      <p>Compassionate in-home healthcare services designed around the people who matter most — your family. We bring professional care to the place they love best: home.</p>
+      <div class="hero-buttons">
+        <a href="#eeoicp" class="btn-primary">Learn About Your Benefits</a>
+        <a href="#contact" class="btn-outline">Talk to a Coordinator</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=800&q=80" alt="Caring for seniors at home" />
+      <div class="hero-stat">
+        <div>
+          <strong>20+</strong>
+          <span>Years of Leadership</span>
+        </div>
+        <div style="width:1px;height:40px;background:var(--gray-light);"></div>
+        <div>
+          <strong>100%</strong>
+          <span>In-Home Care</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="about-image reveal">
+        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80" alt="Caregiver with senior" />
+      </div>
+      <div class="about-text reveal">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-heading">Founded on the Belief That Everyone Deserves Care at Home</h2>
+        <p>Brian Carrigan founded Remain At Home Healthcare after spending two decades in leadership roles across the home health and hospice industry. He saw firsthand how many people — particularly seniors and workers affected by occupational illness — struggled to navigate complex systems to access the care they were owed.</p>
+        <p>RAHHC was built to change that. We're based in Athens, Georgia, and we specialize in bringing high-quality, personalized care directly to our clients' homes — while also guiding eligible individuals through the process of accessing no-cost benefits they may not even know they have.</p>
+        <p>Every care plan we create is personal. Every relationship we build is built on respect. We don't believe in one-size-fits-all solutions, because the people we serve have earned something better than that.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="serve" id="serve">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">Who We Help</p>
+      <h2 class="section-heading reveal">Care Designed Around the People We Serve</h2>
+      <p class="section-intro reveal">Every client we work with has a unique situation, and we take the time to understand it fully before recommending a path forward.</p>
+      <div class="serve-cards">
+        <div class="serve-card reveal">
+          <div class="serve-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <h3>Seniors Needing Support</h3>
+          <p>Whether it's daily living assistance, companionship, or more involved personal care, we provide the support that helps seniors thrive in the home they love.</p>
+        </div>
+        <div class="serve-card reveal">
+          <div class="serve-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3>EEOICP-Eligible Workers</h3>
+          <p>Current and former nuclear workers with work-related illnesses may qualify for no-cost home healthcare through the Energy Employees Occupational Illness Compensation Program.</p>
+        </div>
+        <div class="serve-card reveal">
+          <div class="serve-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8z"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Family Caregivers</h3>
+          <p>Caring for a loved one at home is one of the most meaningful things you can do. We provide training, support, and respite so family caregivers can sustain their role without burning out.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">What We Provide</p>
+      <h2 class="section-heading reveal">Comprehensive In-Home Healthcare Services</h2>
+      <p class="section-intro reveal">Every service we offer is delivered in the comfort and safety of your own home, by caregivers who genuinely care about the people they serve.</p>
+      <div class="services-grid">
+        <div class="service-item reveal">
+          <div class="service-dot"></div>
+          <div>
+            <h4>Personal Care Assistance</h4>
+            <p>Bathing, dressing, grooming, and mobility support delivered with dignity and respect.</p>
+          </div>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-dot"></div>
+          <div>
+            <h4>Medication Reminders</h4>
+            <p>Ensuring medication schedules are followed safely and consistently.</p>
+          </div>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-dot"></div>
+          <div>
+            <h4>Companionship and Daily Living</h4>
+            <p>Meaningful connection and support for everyday activities that keep life running smoothly.</p>
+          </div>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-dot"></div>
+          <div>
+            <h4>EEOICP Benefit Enrollment</h4>
+            <p>Guidance through the enrollment process so eligible nuclear workers can access the benefits they are entitled to.</p>
+          </div>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-dot"></div>
+          <div>
+            <h4>Medical Screening Coordination</h4>
+            <p>Coordination of medical screenings and referrals as part of comprehensive care planning.</p>
+          </div>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-dot"></div>
+          <div>
+            <h4>Travel Reimbursement Assistance</h4>
+            <p>Helping eligible clients navigate travel reimbursement benefits for medical appointments.</p>
+          </div>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-dot"></div>
+          <div>
+            <h4>Home Modification Consultation</h4>
+            <p>Guidance on home vehicle and accessibility modifications to support independent living.</p>
+          </div>
+        </div>
+        <div class="service-item reveal">
+          <div class="service-dot"></div>
+          <div>
+            <h4>Free Caregiver Training</h4>
+            <p>Comprehensive training programs for family members who want to provide better care for their loved ones.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="eeoicp" id="eeoicp">
+    <div class="eeoicp-grid">
+      <div class="eeoicp-text reveal">
+        <p class="section-label">EEOICP Benefits</p>
+        <h2 class="section-heading">Nuclear Workers May Qualify for No-Cost Home Care</h2>
+        <p>The Energy Employees Occupational Illness Compensation Program (EEOICP) provides benefits to current and former employees of the Department of Energy and its contractors who developed certain illnesses as a result of their work.</p>
+        <p>Many eligible workers don't know they qualify — or find the enrollment process too complex to navigate alone. That's exactly what we're here for. Our team has deep expertise in the EEOICP program and guides families through every step of the process.</p>
+        <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:1.5rem;">Check Your Eligibility</a>
+      </div>
+      <div class="eeoicp-boxes reveal">
+        <div class="eeoicp-box">
+          <h4>Who Qualifies?</h4>
+          <p>Former DOE employees and contractors who developed work-related illnesses including cancers and beryllium disease.</p>
+        </div>
+        <div class="eeoicp-box">
+          <h4>What's Covered?</h4>
+          <p>No-cost in-home healthcare, medical screenings, travel reimbursements, and home modifications.</p>
+        </div>
+        <div class="eeoicp-box">
+          <h4>How We Help</h4>
+          <p>We guide you through eligibility determination, enrollment paperwork, and ongoing benefit management.</p>
+        </div>
+        <div class="eeoicp-box">
+          <h4>No Cost to You</h4>
+          <p>Our assistance navigating EEOICP benefits is provided at no out-of-pocket expense to eligible clients.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">Family Stories</p>
+      <h2 class="section-heading reveal">What Families Say About RAHHC</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <p>When my father was diagnosed with a work-related illness from his time at a nuclear facility, we had no idea help was available. RAHHC not only found him benefits we didn't know existed — they also sent us a caregiver who treated him like family.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=100&q=80" alt="Family member" />
+            <div>
+              <strong>Sandra K.</strong>
+              <span>Daughter of EEOICP Client</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>The caregiver RAHHC assigned to my mother has become part of our family. She knows Mom's routines, her quirks, her favorite stories. That kind of continuity and caring is what makes the difference in someone's quality of life.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80" alt="Family member" />
+            <div>
+              <strong>James L.</strong>
+              <span>Son of Senior Care Client</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>Brian and his team treated us with more patience and kindness than I thought possible during an incredibly difficult time. They handled everything — the paperwork, the scheduling, the care — and we didn't have to figure any of it out on our own.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Family member" />
+            <div>
+              <strong>Michelle T.</strong>
+              <span>Family Caregiver, Athens, GA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <div class="cta-inner">
+      <h2>Let Us Help Your Family Find the Care You Deserve</h2>
+      <p>A conversation costs nothing. We'll listen to your situation and help you understand your options — no pressure, no commitment.</p>
+      <a href="#contact" class="btn-cta">Talk to a Care Coordinator</a>
+    </div>
+  </div>
+
+  <section class="contact" id="contact">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p class="section-label">Contact Us</p>
+        <h2>We'd Love to Hear From You</h2>
+        <p>Every family's situation is different. Reach out and let's have a conversation about how RAHHC can help your loved one live comfortably and safely at home.</p>
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <strong>Email</strong>
+            <span>brian.carrigan@rahhc.com</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <strong>Location</strong>
+            <span>Athens, Georgia &mdash; serving surrounding communities</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <h3 style="font-family:'Merriweather',serif;font-size:1.3rem;color:var(--navy);margin-bottom:1.5rem;">Get in Touch</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="First and last" />
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="(706) 555-0100" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com" />
+        </div>
+        <div class="form-group">
+          <label>Who Are You Seeking Care For?</label>
+          <select>
+            <option value="">Select...</option>
+            <option>Myself (senior needing care)</option>
+            <option>A parent or family member</option>
+            <option>A nuclear worker (EEOICP inquiry)</option>
+            <option>General information</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Us About Your Situation</label>
+          <textarea placeholder="Share as much or as little as you'd like. We're here to listen and help you find the right path forward."></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;padding:1rem;border-radius:30px;font-size:1rem;">Send Message</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="color:var(--teal-light);">RAHHC</a>
+        <p>Remain At Home Healthcare &mdash; compassionate in-home care for seniors and EEOICP-eligible nuclear workers. Based in Athens, Georgia.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Personal Care</a></li>
+          <li><a href="#">EEOICP Benefits</a></li>
+          <li><a href="#">Caregiver Training</a></li>
+          <li><a href="#">Companion Care</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:brian.carrigan@rahhc.com">brian.carrigan@rahhc.com</a></li>
+          <li><a href="#">Athens, Georgia</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Remain At Home Healthcare. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

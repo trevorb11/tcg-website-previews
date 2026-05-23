@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Debt Market | Institutional Debt Portfolio Trading</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0D1B3E;
+      --navy-mid: #122454;
+      --teal: #0A5C6B;
+      --teal-light: #0D7A8C;
+      --gold: #D4A843;
+      --silver: #B8C4CC;
+      --white: #FFFFFF;
+      --off-white: #F5F8FA;
+      --text: #1A1F2E;
+      --text-light: #5A6472;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: var(--text);
+      background: var(--off-white);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 { font-family: 'IBM Plex Sans', sans-serif; line-height: 1.2; font-weight: 600; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(13,27,62,0.98);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 64px;
+      border-bottom: 1px solid rgba(212,168,67,0.15);
+    }
+
+    .nav-logo {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-tagline {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.08em;
+      margin-left: 0.5rem;
+      padding-left: 0.75rem;
+      border-left: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold) !important;
+      color: var(--navy) !important;
+      padding: 0.45rem 1.2rem;
+      font-weight: 600 !important;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 92vh;
+      background: var(--navy);
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.12;
+    }
+
+    .hero-grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(212,168,67,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,168,67,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(13,27,62,0.97) 0%, rgba(13,27,62,0.7) 70%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 5%;
+      padding-top: 64px;
+      max-width: 760px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(212,168,67,0.1);
+      border: 1px solid rgba(212,168,67,0.3);
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.3rem;
+    }
+
+    .hero h1 span { color: var(--gold); }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 540px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 0.85rem 2rem;
+      border: none;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-gold:hover { background: #e0b84f; transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* METRICS BAR */
+    .metrics {
+      background: var(--teal);
+      padding: 3rem 5%;
+    }
+
+    .metrics-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .metric {
+      text-align: center;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .metric p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+      margin-top: 0.3rem;
+    }
+
+    /* SECTIONS */
+    section { padding: 5.5rem 5%; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .overline {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--text-light);
+      max-width: 580px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* WHAT WE DO */
+    .what { background: var(--off-white); }
+
+    .what-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .what-card {
+      background: var(--white);
+      border-radius: 2px;
+      padding: 2.5rem;
+      border-top: 4px solid var(--teal);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .what-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-icon svg { width: 22px; height: 22px; fill: none; stroke: var(--gold); stroke-width: 2; }
+
+    .what-card h3 { font-size: 1.2rem; margin-bottom: 0.75rem; color: var(--navy); }
+    .what-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.7; margin-bottom: 1.2rem; }
+    .what-card ul { list-style: none; }
+    .what-card ul li {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid var(--off-white);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .what-card ul li::before { content: ''; width: 6px; height: 6px; min-width: 6px; background: var(--teal); border-radius: 50%; }
+
+    /* ASSET CLASSES */
+    .assets { background: var(--navy); }
+    .assets .section-title { color: var(--white); }
+    .assets .section-desc { color: rgba(255,255,255,0.55); }
+    .assets .overline { color: var(--gold); }
+
+    .assets-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 3.5rem;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .asset-cell {
+      background: rgba(255,255,255,0.02);
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.2s;
+    }
+
+    .asset-cell:hover { background: rgba(212,168,67,0.06); }
+
+    .asset-cell h3 {
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .asset-cell p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+    }
+
+    /* FOR SELLERS / BUYERS */
+    .parties { background: var(--off-white); }
+
+    .parties-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .party-card {
+      background: var(--white);
+      padding: 3rem;
+      border-left: 4px solid var(--teal);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .party-tag {
+      display: inline-block;
+      background: var(--teal);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .party-card h3 { font-size: 1.4rem; margin-bottom: 1rem; color: var(--navy); }
+    .party-card p { font-size: 0.92rem; color: var(--text-light); margin-bottom: 1rem; line-height: 1.75; }
+
+    .party-list {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .party-list li {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--off-white);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .party-list li::before { content: ''; width: 6px; height: 6px; min-width: 6px; background: var(--gold); border-radius: 50%; }
+
+    /* PROCESS */
+    .process { background: var(--teal); }
+    .process .section-title { color: var(--white); }
+    .process .section-desc { color: rgba(255,255,255,0.65); }
+    .process .overline { color: var(--gold); }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 12%;
+      right: 12%;
+      height: 1px;
+      background: rgba(212,168,67,0.3);
+    }
+
+    .step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-circle {
+      width: 56px;
+      height: 56px;
+      background: var(--navy);
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .step h3 { font-size: 1rem; color: var(--white); margin-bottom: 0.5rem; }
+    .step p { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+    /* COMPLIANCE */
+    .compliance { background: var(--off-white); }
+
+    .compliance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 3.5rem;
+    }
+
+    .compliance-img img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    .compliance-text p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      margin-bottom: 1.2rem;
+      line-height: 1.8;
+    }
+
+    .compliance-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .compliance-badge {
+      background: var(--navy);
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      border-radius: 2px;
+    }
+
+    /* CONTACT */
+    .contact { background: var(--navy); }
+    .contact .section-title { color: var(--white); }
+    .contact .section-desc { color: rgba(255,255,255,0.55); }
+    .contact .overline { color: var(--gold); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 5rem;
+      margin-top: 3.5rem;
+    }
+
+    .contact-info h3 {
+      font-size: 1rem;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.88rem;
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .contact-detail svg { width: 16px; height: 16px; min-width: 16px; fill: none; stroke: var(--gold); stroke-width: 2; margin-top: 2px; }
+
+    .contact-form { display: grid; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+
+    .form-group label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.8rem 1rem;
+      color: var(--white);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold); }
+    .form-group select option { background: var(--navy); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    /* FOOTER */
+    footer {
+      background: #060E20;
+      color: rgba(255,255,255,0.3);
+      padding: 2.5rem 5%;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .footer-logo { font-size: 1.2rem; font-weight: 700; color: var(--white); }
+    .footer-logo span { color: var(--gold); }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 0.72rem; text-align: center; }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .metrics-inner { grid-template-columns: 1fr 1fr; }
+      .what-grid { grid-template-columns: 1fr; }
+      .assets-grid { grid-template-columns: 1fr 1fr; }
+      .parties-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+      .compliance-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 580px) {
+      .assets-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div style="display:flex;align-items:center;">
+      <a href="#" class="nav-logo">Debt<span>Market</span></a>
+      <span class="nav-tagline">by Triton Financial Solutions</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#what">How It Works</a></li>
+      <li><a href="#assets">Asset Classes</a></li>
+      <li><a href="#parties">Sellers</a></li>
+      <li><a href="#compliance">Compliance</a></li>
+      <li><a href="#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img class="hero-bg" src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1600&q=80" alt="Financial data" />
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Institutional Debt Portfolio Trading</div>
+      <h1>Connecting Sellers and Buyers of <span>Charged-Off Receivables</span></h1>
+      <p>Debt Market, powered by Triton Financial Solutions, is a licensed debt buyer, broker, and marketplace operating across all 50 states. We've facilitated more than $500 million in portfolio transactions for institutional clients over 15 years.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-gold">Submit a Portfolio</a>
+        <a href="#parties" class="btn-outline">Browse Opportunities</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <div class="metrics">
+    <div class="metrics-inner">
+      <div class="metric reveal">
+        <strong>$500M+</strong>
+        <p>Total Transaction Volume</p>
+      </div>
+      <div class="metric reveal reveal-delay-1">
+        <strong>200+</strong>
+        <p>Vetted Buyers Nationwide</p>
+      </div>
+      <div class="metric reveal reveal-delay-2">
+        <strong>15+</strong>
+        <p>Years of Operations</p>
+      </div>
+      <div class="metric reveal reveal-delay-3">
+        <strong>50</strong>
+        <p>States Covered</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT WE DO -->
+  <section class="what" id="what">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Our Role</div>
+        <h2 class="section-title">One Platform. Three Ways We Serve the Market.</h2>
+        <p class="section-desc">Debt Market provides institutional-grade debt trading capabilities across three core functions — serving both sides of the market with equal rigor and compliance discipline.</p>
+      </div>
+      <div class="what-grid">
+        <div class="what-card reveal reveal-delay-1">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Debt Buying</h3>
+          <p>We acquire charged-off receivable portfolios directly from financial institutions, healthcare systems, and fintech lenders — providing immediate capital and clean balance sheet relief.</p>
+          <ul>
+            <li>Direct acquisition from originators</li>
+            <li>All major asset classes</li>
+            <li>Market-rate pricing</li>
+            <li>Fast decisioning</li>
+          </ul>
+        </div>
+        <div class="what-card reveal reveal-delay-2">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          </div>
+          <h3>Debt Selling</h3>
+          <p>Sellers gain access to our network of 200+ qualified, vetted buyers competing for your portfolio — driving stronger pricing and faster transactions than direct outreach alone.</p>
+          <ul>
+            <li>Competitive buyer network</li>
+            <li>Portfolio valuation guidance</li>
+            <li>Maximized price discovery</li>
+            <li>End-to-end transaction management</li>
+          </ul>
+        </div>
+        <div class="what-card reveal reveal-delay-3">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+          </div>
+          <h3>Portfolio Brokerage</h3>
+          <p>When a direct transaction isn't the right structure, Triton Financial Solutions acts as a neutral broker — matching portfolios to the most qualified buyers with full documentation oversight.</p>
+          <ul>
+            <li>Neutral third-party facilitation</li>
+            <li>Chain-of-title documentation</li>
+            <li>Regulatory compliance managed</li>
+            <li>Nationwide licensing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASSET CLASSES -->
+  <section class="assets" id="assets">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Asset Classes</div>
+        <h2 class="section-title">We Trade Across Every Major Category of Receivable</h2>
+        <p class="section-desc">Debt Market handles charged-off portfolios across consumer and commercial asset types, with specialized expertise in high-volume categories and emerging asset classes.</p>
+      </div>
+      <div class="assets-grid">
+        <div class="asset-cell reveal reveal-delay-1">
+          <h3>Credit Card Receivables</h3>
+          <p>High-volume consumer credit card charge-offs from major banks, credit unions, and fintech issuers.</p>
+        </div>
+        <div class="asset-cell reveal reveal-delay-2">
+          <h3>Auto Deficiencies</h3>
+          <p>Post-repossession deficiency balances from auto lenders, dealer finance companies, and credit unions.</p>
+        </div>
+        <div class="asset-cell reveal reveal-delay-3">
+          <h3>Medical Receivables</h3>
+          <p>Aged medical and healthcare receivables from hospitals, physician practices, and revenue cycle firms.</p>
+        </div>
+        <div class="asset-cell reveal reveal-delay-4">
+          <h3>Personal Loans</h3>
+          <p>Unsecured consumer installment loan charge-offs from banks, credit unions, and online lenders.</p>
+        </div>
+        <div class="asset-cell reveal reveal-delay-1">
+          <h3>Commercial Receivables</h3>
+          <p>Small business and commercial debt portfolios from banks and alternative lenders.</p>
+        </div>
+        <div class="asset-cell reveal reveal-delay-2">
+          <h3>Telecommunications</h3>
+          <p>Wireless, cable, and internet service provider charge-off accounts from national and regional carriers.</p>
+        </div>
+        <div class="asset-cell reveal reveal-delay-3">
+          <h3>Student Loans</h3>
+          <p>Private student loan charge-offs from specialty lenders and institutional originators.</p>
+        </div>
+        <div class="asset-cell reveal reveal-delay-4">
+          <h3>BNPL and Fintech</h3>
+          <p>Emerging asset classes including buy-now-pay-later charge-offs and fintech installment receivables.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR SELLERS AND BUYERS -->
+  <section class="parties" id="parties">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">For Institutions</div>
+        <h2 class="section-title">We Serve Both Sides of Every Transaction</h2>
+        <p class="section-desc">Whether you have non-performing assets to monetize or you're looking to acquire quality portfolios, Debt Market was built to serve your needs with equal depth.</p>
+      </div>
+      <div class="parties-grid">
+        <div class="party-card reveal reveal-delay-1">
+          <span class="party-tag">For Sellers</span>
+          <h3>Turn Non-Performing Assets Into Capital</h3>
+          <p>Financial institutions that hold aged receivables are sitting on an asset class that can be monetized efficiently. Debt Market's seller process is designed to be fast, transparent, and maximally competitive.</p>
+          <ul class="party-list">
+            <li>Immediate access to 200+ qualified buyers</li>
+            <li>Competitive bidding drives market-rate pricing</li>
+            <li>Portfolio valuation and market assessment included</li>
+            <li>Complete documentation and compliance support</li>
+            <li>FDCPA-compliant transaction process</li>
+            <li>Transactions close in days, not months</li>
+          </ul>
+          <a href="#contact" class="btn-gold" style="font-size:0.82rem;">List a Portfolio</a>
+        </div>
+        <div class="party-card reveal reveal-delay-2">
+          <span class="party-tag">For Buyers</span>
+          <h3>Access Quality Portfolios from Vetted Sources</h3>
+          <p>Debt buyers seeking volume and variety will find Debt Market's platform provides a consistent pipeline of portfolios with full transparency, documentation integrity, and regulatory alignment.</p>
+          <ul class="party-list">
+            <li>Curated portfolio listings across all asset classes</li>
+            <li>Transparent data rooms and due diligence materials</li>
+            <li>Complete chain-of-title documentation</li>
+            <li>Nationwide licensing — all 50 states</li>
+            <li>RMAI-aligned compliance standards</li>
+            <li>Vetted seller relationships ensure portfolio quality</li>
+          </ul>
+          <a href="#contact" class="btn-outline" style="font-size:0.82rem;border-color:var(--teal);color:var(--teal);">Explore Opportunities</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">How We Work</div>
+        <h2 class="section-title">From Submission to Closing in Four Steps</h2>
+        <p class="section-desc">Our streamlined process is built around speed, transparency, and compliance at every stage of the transaction.</p>
+      </div>
+      <div class="process-steps">
+        <div class="step reveal reveal-delay-1">
+          <div class="step-circle">01</div>
+          <h3>Submit Portfolio Details</h3>
+          <p>Provide basic information about your portfolio — asset class, face value, vintage, and geographic distribution.</p>
+        </div>
+        <div class="step reveal reveal-delay-2">
+          <div class="step-circle">02</div>
+          <h3>Valuation and Analysis</h3>
+          <p>We assess the portfolio against market comps and identify the buyer segments most likely to compete aggressively.</p>
+        </div>
+        <div class="step reveal reveal-delay-3">
+          <div class="step-circle">03</div>
+          <h3>Buyer Matching</h3>
+          <p>Qualified buyers from our vetted network review your portfolio and submit competitive bids through our secure platform.</p>
+        </div>
+        <div class="step reveal reveal-delay-4">
+          <div class="step-circle">04</div>
+          <h3>Close and Transfer</h3>
+          <p>Debt Market manages all documentation, chain-of-title verification, and compliance requirements through transaction close.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPLIANCE -->
+  <section class="compliance" id="compliance">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Compliance and Security</div>
+        <h2 class="section-title">Regulatory Rigor at Every Step</h2>
+      </div>
+      <div class="compliance-grid">
+        <div class="compliance-img reveal">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80" alt="Financial compliance professionals" />
+        </div>
+        <div class="compliance-text reveal reveal-delay-2">
+          <p>The debt purchasing industry is heavily regulated, and for good reason. Consumer information, chain-of-title integrity, and collection practice standards are areas where failure creates significant legal and reputational risk.</p>
+          <p>Debt Market has built compliance into every layer of how we operate — not as a checkbox exercise, but as the foundation of how we protect buyers, sellers, and the consumers whose data flows through every transaction.</p>
+          <p>We maintain nationwide licensing, align with RMAI member standards, enforce strict data security protocols on all portfolio data rooms, and provide complete chain-of-title documentation on every transaction we facilitate.</p>
+          <div class="compliance-badges">
+            <span class="compliance-badge">FDCPA Compliant</span>
+            <span class="compliance-badge">RMAI Aligned</span>
+            <span class="compliance-badge">Chain-of-Title Verified</span>
+            <span class="compliance-badge">Data Security Protocols</span>
+            <span class="compliance-badge">50-State Licensed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Get Started</div>
+        <h2 class="section-title">Ready to Discuss Your Portfolio?</h2>
+        <p class="section-desc">Tell us whether you're a buyer or seller, your asset class, and what you're looking to accomplish. A member of our team will be in touch within one business day.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal reveal-delay-1">
+          <h3>Debt Market</h3>
+          <p style="font-size:0.82rem;color:rgba(255,255,255,0.4);margin-bottom:1.5rem;">Operated by Triton Financial Solutions</p>
+          <div class="contact-detail">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            portfolios@debtmarket.net
+          </div>
+          <div style="margin-top:2rem;padding:1.5rem;background:rgba(212,168,67,0.06);border:1px solid rgba(212,168,67,0.15);">
+            <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);line-height:1.65;">All portfolio inquiries are treated as confidential. Debt Market does not share client information or portfolio details with any third party without explicit written consent.</p>
+          </div>
+        </div>
+        <form class="contact-form reveal reveal-delay-2">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" placeholder="Full name" />
+            </div>
+            <div class="form-group">
+              <label>Organization</label>
+              <input type="text" placeholder="Company name" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="your@email.com" />
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" placeholder="(555) 000-0000" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>I Am a</label>
+            <select>
+              <option value="">Select your role</option>
+              <option>Seller (I have portfolios to sell)</option>
+              <option>Buyer (I'm looking to acquire portfolios)</option>
+              <option>Both / Not Sure Yet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Asset Class</label>
+            <select>
+              <option value="">Primary asset class of interest</option>
+              <option>Credit Card Receivables</option>
+              <option>Auto Deficiencies</option>
+              <option>Medical Receivables</option>
+              <option>Personal Loans</option>
+              <option>Commercial Receivables</option>
+              <option>Telecommunications</option>
+              <option>Student Loans</option>
+              <option>BNPL / Fintech</option>
+              <option>Multiple / Mixed</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tell Us More</label>
+            <textarea placeholder="Portfolio face value, vintage range, volume, geographic distribution, or any other relevant details..."></textarea>
+          </div>
+          <button type="submit" class="btn-gold" style="width:100%;text-align:center;border:none;cursor:pointer;font-size:0.85rem;">Submit Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Debt<span>Market</span> &nbsp;|&nbsp; Triton Financial Solutions</div>
+      <div class="footer-links">
+        <a href="#what">How It Works</a>
+        <a href="#assets">Asset Classes</a>
+        <a href="#parties">Sellers</a>
+        <a href="#parties">Buyers</a>
+        <a href="#compliance">Compliance</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Debt Market / Triton Financial Solutions. All rights reserved. FDCPA Compliant &bull; RMAI Aligned &bull; 50-State Licensed</p>
+    </div>
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

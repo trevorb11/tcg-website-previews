@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>McCarthy Insurance | Independent Agency | Hawthorne, NY</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --burgundy: #6B2737;
+      --burgundy-dark: #4D1C28;
+      --navy: #1D3557;
+      --cream: #F5EFE0;
+      --cream-mid: #EDE4CE;
+      --gold: #C4952A;
+      --gold-light: #D4AA40;
+      --white: #FFFFFF;
+      --text: #2A2420;
+      --text-light: #6B6361;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 { font-family: 'Libre Baskerville', serif; line-height: 1.25; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 70px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    .nav-brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-logo {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--burgundy);
+      text-decoration: none;
+    }
+
+    .nav-sub {
+      font-size: 0.65rem;
+      color: var(--text-light);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--burgundy); }
+
+    .nav-cta {
+      background: var(--burgundy) !important;
+      color: #fff !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 3px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 88vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--burgundy-dark);
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.25;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(77,28,40,0.95) 50%, rgba(77,28,40,0.5) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 5%;
+      padding-top: 70px;
+      max-width: 680px;
+    }
+
+    .hero-est {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-est::before,
+    .hero-est::after {
+      content: '';
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.3rem;
+    }
+
+    .hero h1 em { font-style: italic; color: var(--gold); }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--text);
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: 3px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border: 2px solid rgba(255,255,255,0.35);
+      border-radius: 3px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* SECTIONS */
+    section { padding: 5.5rem 5%; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .overline {
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--text-light);
+      max-width: 580px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* COVERAGES */
+    .coverages { background: var(--cream); }
+
+    .coverages-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .coverage-card {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      border-bottom: 4px solid var(--burgundy);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .coverage-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    }
+
+    .cov-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--cream);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+    }
+
+    .cov-icon svg { width: 28px; height: 28px; fill: none; stroke: var(--burgundy); stroke-width: 2; }
+
+    .coverage-card h3 { font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--text); }
+    .coverage-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; margin-bottom: 1.2rem; }
+    .coverage-card ul { list-style: none; text-align: left; }
+    .coverage-card ul li { font-size: 0.82rem; color: var(--text-light); padding: 0.25rem 0; }
+    .coverage-card ul li::before { content: '– '; color: var(--gold); }
+
+    /* ABOUT */
+    .about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-img {
+      position: relative;
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      left: -1.5rem;
+      background: var(--burgundy);
+      color: var(--white);
+      padding: 1.5rem 2rem;
+      border-radius: 4px;
+    }
+
+    .about-badge strong {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 2.5rem;
+      display: block;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .about-badge span { font-size: 0.8rem; color: rgba(255,255,255,0.7); }
+
+    .about-text p {
+      font-size: 1rem;
+      color: var(--text-light);
+      margin-bottom: 1.2rem;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .about-quote {
+      border-left: 4px solid var(--gold);
+      padding: 1rem 1.5rem;
+      background: var(--cream);
+      border-radius: 0 4px 4px 0;
+      margin: 2rem 0;
+    }
+
+    .about-quote p {
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--burgundy);
+      margin: 0;
+    }
+
+    /* WHY INDEPENDENT */
+    .independent { background: var(--navy); }
+    .independent .section-title { color: var(--white); }
+    .independent .section-desc { color: rgba(255,255,255,0.65); }
+    .independent .overline { color: var(--gold); }
+
+    .carriers-row {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .carrier-badge {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(196,149,42,0.3);
+      color: rgba(255,255,255,0.75);
+      padding: 0.6rem 1.4rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border-radius: 3px;
+    }
+
+    .ind-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .ind-card {
+      background: rgba(255,255,255,0.04);
+      border-top: 3px solid var(--gold);
+      padding: 2rem;
+      border-radius: 0 0 4px 4px;
+    }
+
+    .ind-card h3 { font-size: 1.2rem; color: var(--white); margin-bottom: 0.75rem; }
+    .ind-card p { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+
+    /* ADDITIONAL COVERAGES */
+    .additional { background: var(--cream); }
+
+    .add-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .add-card {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 4px;
+      border-left: 3px solid var(--gold);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .add-card h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--burgundy); }
+    .add-card p { font-size: 0.82rem; color: var(--text-light); line-height: 1.6; }
+
+    /* SERVICE AREA */
+    .service-area { background: var(--white); }
+
+    .area-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .area-tag {
+      background: var(--cream);
+      padding: 1rem;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+      border: 1px solid var(--cream-mid);
+      transition: border-color 0.2s;
+    }
+
+    .area-tag:hover { border-color: var(--burgundy); }
+
+    /* COMMUNITY */
+    .community { background: var(--burgundy); }
+    .community .section-title { color: var(--white); }
+    .community .section-desc { color: rgba(255,255,255,0.7); }
+    .community .overline { color: var(--gold); }
+
+    .community-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .community-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 2.5rem;
+      border-radius: 4px;
+    }
+
+    .community-card h3 { font-size: 1.3rem; color: var(--gold); margin-bottom: 0.75rem; }
+    .community-card p { font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.75; }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--cream); }
+
+    .test-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .test-card {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      position: relative;
+    }
+
+    .test-card::before {
+      content: '"';
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 4rem;
+      color: var(--cream);
+      line-height: 1;
+    }
+
+    .test-card p {
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .test-client {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .test-client img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .test-client strong { font-size: 0.88rem; display: block; color: var(--text); }
+    .test-client span { font-size: 0.78rem; color: var(--text-light); }
+
+    /* TEAM */
+    .team { background: var(--white); }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .team-card { text-align: center; }
+
+    .team-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 4px;
+      margin-bottom: 1.2rem;
+    }
+
+    .team-card h3 { font-size: 1.2rem; margin-bottom: 0.3rem; }
+    .team-card .role { font-size: 0.8rem; color: var(--burgundy); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+    .team-card p { font-size: 0.85rem; color: var(--text-light); margin-top: 0.75rem; }
+
+    /* CONTACT */
+    .contact { background: var(--navy); }
+    .contact .section-title { color: var(--white); }
+    .contact .section-desc { color: rgba(255,255,255,0.6); }
+    .contact .overline { color: var(--gold); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 5rem;
+      margin-top: 3.5rem;
+    }
+
+    .contact-info h3 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-detail svg { width: 16px; height: 16px; min-width: 16px; fill: none; stroke: var(--gold); stroke-width: 2; margin-top: 3px; }
+
+    .contact-form { display: grid; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+
+    .form-group label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 3px;
+      padding: 0.8rem 1rem;
+      color: var(--white);
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold); }
+    .form-group select option { background: var(--navy); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    /* FOOTER */
+    footer {
+      background: #0D1F35;
+      color: rgba(255,255,255,0.3);
+      padding: 2.5rem 5%;
+      text-align: center;
+    }
+
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+    .footer-logo {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 0.82rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 0.75rem; }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .coverages-grid { grid-template-columns: 1fr 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .ind-grid { grid-template-columns: 1fr; }
+      .add-grid { grid-template-columns: 1fr 1fr; }
+      .area-grid { grid-template-columns: 1fr 1fr; }
+      .community-grid { grid-template-columns: 1fr; }
+      .test-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 580px) {
+      .coverages-grid { grid-template-columns: 1fr; }
+      .add-grid { grid-template-columns: 1fr; }
+      .area-grid { grid-template-columns: 1fr 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-brand">
+      <span class="nav-logo">McCarthy Insurance</span>
+      <span class="nav-sub">Independent Agency &bull; Est. 1930</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#coverages">Coverage</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#independent">Why Independent</a></li>
+      <li><a href="#community">Community</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?w=1600&q=80" alt="Family at home" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-est">Established 1930</div>
+      <h1>Protecting What Matters Most <em>Since 1930.</em></h1>
+      <p>Independent insurance experts serving Westchester County and beyond. We work for you — not for any single insurance company — and we've been doing it for over 90 years.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-gold">Get a Free Quote</a>
+        <a href="#coverages" class="btn-ghost">What We Cover</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COVERAGES -->
+  <section class="coverages" id="coverages">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Coverage Options</div>
+        <h2 class="section-title">The Right Coverage for Every Stage of Life</h2>
+        <p class="section-desc">From your first apartment to your family home, from your car to your business, McCarthy Insurance has the coverage options and carrier relationships to protect what you've built.</p>
+      </div>
+      <div class="coverages-grid">
+        <div class="coverage-card reveal reveal-delay-1">
+          <div class="cov-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Home Insurance</h3>
+          <p>Protect your most important investment with comprehensive homeowners coverage tailored to your property and circumstances.</p>
+          <ul>
+            <li>Homeowners policies</li>
+            <li>Renters insurance</li>
+            <li>Condo coverage</li>
+            <li>Flood protection</li>
+          </ul>
+        </div>
+        <div class="coverage-card reveal reveal-delay-2">
+          <div class="cov-icon">
+            <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <h3>Auto Insurance</h3>
+          <p>Personal and commercial auto coverage that keeps you protected on every road, from your daily commute to weekend drives.</p>
+          <ul>
+            <li>Personal auto</li>
+            <li>Commercial vehicles</li>
+            <li>Classic and collector cars</li>
+            <li>Multi-vehicle discounts</li>
+          </ul>
+        </div>
+        <div class="coverage-card reveal reveal-delay-3">
+          <div class="cov-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+          </div>
+          <h3>Business Insurance</h3>
+          <p>Comprehensive commercial coverage for small and mid-size businesses in Westchester County and surrounding areas.</p>
+          <ul>
+            <li>General liability</li>
+            <li>Commercial property</li>
+            <li>Workers compensation</li>
+            <li>Business interruption</li>
+          </ul>
+        </div>
+        <div class="coverage-card reveal reveal-delay-4">
+          <div class="cov-icon">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <h3>Life Insurance</h3>
+          <p>Give your family the financial security they need, no matter what tomorrow brings. We help you find coverage that fits your life and budget.</p>
+          <ul>
+            <li>Term life insurance</li>
+            <li>Whole life policies</li>
+            <li>Universal life</li>
+            <li>Estate planning support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-img reveal">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=80" alt="Insurance agent with clients" />
+          <div class="about-badge">
+            <strong>90+</strong>
+            <span>Years Serving Westchester</span>
+          </div>
+        </div>
+        <div class="about-text reveal reveal-delay-2" style="padding:1rem 0;">
+          <div class="overline">Our Story</div>
+          <h2 class="section-title">More Than Nine Decades. Same Commitment to You.</h2>
+          <p>McCarthy Insurance opened its doors in Hawthorne, New York in 1930. Through world wars, economic cycles, and a constantly changing insurance market, one thing has never changed: our commitment to putting clients first and navigating the complexity of insurance on their behalf.</p>
+          <div class="about-quote">
+            <p>We work for you — not for any insurance company. That independence means our only obligation is finding you the right coverage at the best possible price.</p>
+          </div>
+          <p>As an independent broker, we have relationships with dozens of leading carriers — including Travelers, Chubb, Progressive, and Main Street America. That means we can shop your coverage across the market and deliver options a single-company agent simply can't offer.</p>
+          <p>We're proud of our roots in Hawthorne and our deep ties to Westchester County. When you call McCarthy Insurance, you talk to a neighbor — someone who understands this community because they live in it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY INDEPENDENT -->
+  <section class="independent" id="independent">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Why It Matters</div>
+        <h2 class="section-title">Independent Means We Work for You</h2>
+        <p class="section-desc">An independent agent represents you — not any insurance company. That's a meaningful difference when you're filing a claim or reviewing your options at renewal.</p>
+      </div>
+      <div class="carriers-row reveal" style="margin-top:2.5rem;">
+        <span class="carrier-badge">Travelers</span>
+        <span class="carrier-badge">Chubb</span>
+        <span class="carrier-badge">Progressive</span>
+        <span class="carrier-badge">Main Street America</span>
+        <span class="carrier-badge">+ Many More</span>
+      </div>
+      <div class="ind-grid">
+        <div class="ind-card reveal reveal-delay-1">
+          <h3>Choice Across Carriers</h3>
+          <p>We compare rates and coverage options from dozens of carriers to find the best fit for your specific situation — something a single-company agent simply cannot do for you.</p>
+        </div>
+        <div class="ind-card reveal reveal-delay-2">
+          <h3>Advocacy When You Need It</h3>
+          <p>When you file a claim, your McCarthy agent advocates for you through the process. We're on your side of the table — not the insurance company's.</p>
+        </div>
+        <div class="ind-card reveal reveal-delay-3">
+          <h3>Long-Term Relationship</h3>
+          <p>We review your coverage as your life changes — new home, new car, new business, new family member. Independent agents build relationships that last decades.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADDITIONAL COVERAGES -->
+  <section class="additional">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Specialty Coverages</div>
+        <h2 class="section-title">Beyond the Basics</h2>
+        <p class="section-desc">Life is complicated, and standard policies don't always cover everything. McCarthy Insurance offers a range of specialty coverage options for situations that need a closer look.</p>
+      </div>
+      <div class="add-grid">
+        <div class="add-card reveal reveal-delay-1">
+          <h3>Umbrella Policies</h3>
+          <p>Extra liability protection above and beyond your standard home and auto policies — essential for high-net-worth households.</p>
+        </div>
+        <div class="add-card reveal reveal-delay-2">
+          <h3>Classic Car Coverage</h3>
+          <p>Agreed-value coverage for collector vehicles, vintage autos, and specialty cars that deserve more than a standard auto policy.</p>
+        </div>
+        <div class="add-card reveal reveal-delay-3">
+          <h3>Flood Insurance</h3>
+          <p>Flood damage is typically excluded from standard homeowners policies. Don't find out the hard way — we'll help you assess your risk.</p>
+        </div>
+        <div class="add-card reveal reveal-delay-4">
+          <h3>Bundling Options</h3>
+          <p>Combining your home and auto coverage with the same carrier typically delivers meaningful savings. We'll show you the numbers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section class="service-area">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Where We Serve</div>
+        <h2 class="section-title">Rooted in Westchester. Ready to Help Wherever You Are.</h2>
+        <p class="section-desc">McCarthy Insurance is based in Hawthorne, NY and serves clients throughout Westchester County, Rockland, Putnam, Dutchess, and into southern Connecticut.</p>
+      </div>
+      <div class="area-grid">
+        <div class="area-tag reveal reveal-delay-1">Hawthorne</div>
+        <div class="area-tag reveal reveal-delay-2">White Plains</div>
+        <div class="area-tag reveal reveal-delay-3">Yonkers</div>
+        <div class="area-tag reveal reveal-delay-4">Tarrytown</div>
+        <div class="area-tag reveal reveal-delay-1">Pleasantville</div>
+        <div class="area-tag reveal reveal-delay-2">Ossining</div>
+        <div class="area-tag reveal reveal-delay-3">Rockland County</div>
+        <div class="area-tag reveal reveal-delay-4">Putnam County</div>
+        <div class="area-tag reveal reveal-delay-1">Dutchess County</div>
+        <div class="area-tag reveal reveal-delay-2">Southern Connecticut</div>
+        <div class="area-tag reveal reveal-delay-3">All Westchester</div>
+        <div class="area-tag reveal reveal-delay-4">And Beyond</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY -->
+  <section class="community" id="community">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Giving Back</div>
+        <h2 class="section-title">We Believe in the Communities We Protect</h2>
+        <p class="section-desc">McCarthy Insurance is proud to support causes that reflect the values of our clients and our community. Protecting people extends beyond insurance policies.</p>
+      </div>
+      <div class="community-grid">
+        <div class="community-card reveal reveal-delay-1">
+          <h3>Tunnel to Towers Foundation</h3>
+          <p>McCarthy Insurance donates to the Tunnel to Towers Foundation, which provides mortgage-free homes to the families of fallen first responders and catastrophically injured veterans. We believe in honoring those who protect others — it's close to what we do every day.</p>
+        </div>
+        <div class="community-card reveal reveal-delay-2">
+          <h3>One Tree Planted</h3>
+          <p>Through our partnership with One Tree Planted, McCarthy Insurance contributes to global reforestation efforts — helping restore forests, support biodiversity, and leave the environment better than we found it. Small actions, lasting impact.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Client Stories</div>
+        <h2 class="section-title">What Our Clients Say</h2>
+      </div>
+      <div class="test-grid">
+        <div class="test-card reveal reveal-delay-1">
+          <p>McCarthy has been our family's insurance agency for over twenty years. When we had a claim on our home two winters ago, they walked us through the whole process and made sure we were taken care of. You can't put a price on that kind of service.</p>
+          <div class="test-client">
+            <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=100&q=80" alt="Client" />
+            <div>
+              <strong>Robert and Carol M.</strong>
+              <span>Pleasantville, NY</span>
+            </div>
+          </div>
+        </div>
+        <div class="test-card reveal reveal-delay-2">
+          <p>I switched to McCarthy because I was tired of feeling like a number at the big insurance companies. From day one, I got real answers from real people who remembered who I was when I called back. That matters to me.</p>
+          <div class="test-client">
+            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=100&q=80" alt="Client" />
+            <div>
+              <strong>Linda K.</strong>
+              <span>Tarrytown, NY</span>
+            </div>
+          </div>
+        </div>
+        <div class="test-card reveal reveal-delay-3">
+          <p>They found me better coverage for my business at a lower rate than what I had been paying for years. I honestly didn't know what I didn't know until McCarthy showed me. I recommend them to every small business owner I talk to.</p>
+          <div class="test-client">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="Client" />
+            <div>
+              <strong>James D.</strong>
+              <span>White Plains, NY</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Request a Quote</div>
+        <h2 class="section-title">Let's Find the Right Coverage for You</h2>
+        <p class="section-desc">Tell us what you need and we'll be in touch with options. No pressure, no obligation — just straightforward answers from people who know insurance.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal reveal-delay-1">
+          <h3>McCarthy Insurance</h3>
+          <div class="contact-detail">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Hawthorne, New York
+          </div>
+          <div class="contact-detail">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.16 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012.07 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            (914) 769-0417
+          </div>
+          <div class="contact-detail">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            bill@mccarthyinsurance.net
+          </div>
+        </div>
+        <form class="contact-form reveal reveal-delay-2">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="First name" />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Last name" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" placeholder="(555) 000-0000" />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="your@email.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Type of Coverage</label>
+            <select>
+              <option value="">What can we help you with?</option>
+              <option>Home Insurance</option>
+              <option>Auto Insurance</option>
+              <option>Business Insurance</option>
+              <option>Life Insurance</option>
+              <option>Umbrella Policy</option>
+              <option>Classic Car Coverage</option>
+              <option>Multiple / Bundle</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tell Us About Your Situation</label>
+            <textarea placeholder="Where are you located? What coverage are you looking to add or replace? Any specific questions we can answer?"></textarea>
+          </div>
+          <button type="submit" class="btn-gold" style="width:100%;text-align:center;border:none;cursor:pointer;">Request Your Free Quote</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">McCarthy Insurance</div>
+      <div class="footer-links">
+        <a href="#coverages">Home</a>
+        <a href="#coverages">Auto</a>
+        <a href="#coverages">Business</a>
+        <a href="#coverages">Life</a>
+        <a href="#about">About</a>
+        <a href="#community">Community</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p class="footer-copy">McCarthy Insurance &bull; Hawthorne, NY &bull; Established 1930 &bull; &copy; 2026 All rights reserved. Independent Insurance Agency.</p>
+    </div>
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

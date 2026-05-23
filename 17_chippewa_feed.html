@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animal Feed & Nutrition | Chippewa Farm Supply | Spruce, MI</title>
+  <meta name="description" content="Chippewa Farm Supply carries in-house mixed Chippewa Brand feeds plus ADM, Kalmbach, Hubbard, and Double S Liquid. Cattle, poultry, horse, goat, swine, and small animal feed in Spruce, MI. (989) 471-5523." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       RESET & ROOT
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest:      #1a3a1a;
+      --forest-deep: #0f260f;
+      --forest-mid:  #275a27;
+      --amber:       #d4a855;
+      --amber-light: #e8c97a;
+      --amber-dark:  #b8912e;
+      --earth:       #3d2b1a;
+      --earth-mid:   #5c422a;
+      --earth-light: #7a5c3a;
+      --cream:       #f5ede0;
+      --cream-dark:  #e8dcc8;
+      --white:       #fefcf8;
+      --text:        #2a1f14;
+      --text-soft:   #6b5d4e;
+      --radius:      12px;
+      --radius-lg:   20px;
+      --shadow:      0 4px 20px rgba(26,58,26,0.08), 0 1px 3px rgba(61,43,26,0.06);
+      --shadow-md:   0 8px 32px rgba(26,58,26,0.10), 0 2px 8px rgba(61,43,26,0.08);
+      --shadow-lg:   0 20px 60px rgba(26,58,26,0.14), 0 4px 16px rgba(61,43,26,0.10);
+      --transition:  0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --transition-slow: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       GRAIN TEXTURE OVERLAY
+    ============================================================ */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+    }
+
+    /* ============================================================
+       TYPOGRAPHY
+    ============================================================ */
+    h1, h2, h3, h4, h5 { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+    .section { padding: 100px 0; }
+    .section-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::before {
+      content: '';
+      width: 28px;
+      height: 2px;
+      background: var(--amber);
+      display: block;
+      border-radius: 1px;
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(30px, 4vw, 48px);
+      color: var(--earth);
+      line-height: 1.15;
+      margin-bottom: 18px;
+      letter-spacing: -0.01em;
+    }
+    .section-sub {
+      font-size: 17px;
+      color: var(--text-soft);
+      line-height: 1.8;
+      max-width: 580px;
+      font-weight: 400;
+    }
+
+    /* ============================================================
+       SCROLL REVEAL ANIMATIONS
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+    /* Stagger children */
+    .stagger > *:nth-child(1) { transition-delay: 0.05s; }
+    .stagger > *:nth-child(2) { transition-delay: 0.12s; }
+    .stagger > *:nth-child(3) { transition-delay: 0.19s; }
+    .stagger > *:nth-child(4) { transition-delay: 0.26s; }
+    .stagger > *:nth-child(5) { transition-delay: 0.33s; }
+    .stagger > *:nth-child(6) { transition-delay: 0.40s; }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(15,38,15,0.92);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid rgba(212,168,85,0.15);
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(15,38,15,0.97);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      padding: 0 28px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .nav-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--forest-mid), var(--forest));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(212,168,85,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .nav-logo-icon::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(212,168,85,0.15) 0%, transparent 60%);
+    }
+    .nav-logo-text {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      color: var(--cream);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+    .nav-logo-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--amber);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 2px;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: rgba(245,237,224,0.7);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color var(--transition);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--amber);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover { color: var(--amber); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--cream);
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      background: rgba(212,168,85,0.15);
+      border: 1px solid rgba(212,168,85,0.35);
+      padding: 10px 22px;
+      border-radius: 8px;
+      transition: all var(--transition);
+      letter-spacing: 0.01em;
+    }
+    .nav-cta:hover { background: rgba(212,168,85,0.25); border-color: var(--amber); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .hamburger span { width: 22px; height: 2px; background: var(--cream); border-radius: 2px; transition: all 0.3s; }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: rgba(15,38,15,0.98);
+      backdrop-filter: blur(20px);
+      padding: 24px;
+      border-bottom: 1px solid rgba(212,168,85,0.15);
+    }
+    .mobile-menu.active { display: block; }
+    .mobile-menu a {
+      display: block;
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-weight: 500;
+    }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--amber);
+      color: var(--earth);
+      padding: 16px 34px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: all var(--transition);
+      box-shadow: 0 4px 20px rgba(212,168,85,0.3);
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--amber-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212,168,85,0.4); }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      border: 2px solid rgba(245,237,224,0.3);
+      color: var(--cream);
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: all var(--transition);
+    }
+    .btn-outline:hover { border-color: var(--cream); background: rgba(245,237,224,0.06); }
+
+    /* ============================================================
+       HERO  (short 60vh for sub-page)
+    ============================================================ */
+    .hero {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--forest-deep);
+    }
+    .hero-img-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      opacity: 0.5;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(15,38,15,0.5) 0%, rgba(15,38,15,0.2) 40%, rgba(15,38,15,0.3) 70%, rgba(26,58,26,0.75) 100%),
+        radial-gradient(ellipse at 20% 80%, rgba(212,168,85,0.06) 0%, transparent 60%);
+    }
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 150px 40px rgba(0,0,0,0.15);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      padding-top: 72px;
+    }
+    .hero-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--amber);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      transition: gap var(--transition), color var(--transition);
+    }
+    .hero-back:hover { gap: 12px; color: var(--amber-light); }
+    .hero-back svg { transition: transform var(--transition); }
+    .hero-back:hover svg { transform: translateX(-3px); }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(36px, 5.5vw, 64px);
+      color: var(--cream);
+      line-height: 1.08;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: heroReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    }
+    .hero h1 em { font-style: italic; color: var(--amber); }
+    @keyframes heroReveal { to { opacity: 1; transform: translateY(0); } }
+    .hero-desc {
+      font-size: 18px;
+      color: rgba(245,237,224,0.75);
+      line-height: 1.8;
+      max-width: 540px;
+      font-weight: 400;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: heroReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+    }
+
+    /* ============================================================
+       INTRO
+    ============================================================ */
+    .intro-bg { background: var(--white); }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .intro-text .section-sub { margin-bottom: 20px; }
+    .intro-detail {
+      font-size: 15px;
+      color: var(--text-soft);
+      line-height: 1.8;
+    }
+    .intro-photo-wrap { position: relative; }
+    .intro-photo {
+      border-radius: var(--radius-lg);
+      aspect-ratio: 4/3;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .intro-photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .intro-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(61,43,26,0.35) 0%, transparent 50%);
+    }
+    .intro-accent {
+      position: absolute;
+      top: -16px;
+      right: -16px;
+      width: 120px;
+      height: 120px;
+      border: 2px solid var(--amber);
+      border-radius: var(--radius-lg);
+      opacity: 0.25;
+    }
+
+    /* ============================================================
+       OWN BRAND SPOTLIGHT
+    ============================================================ */
+    .spotlight-bg {
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .spotlight-bg::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: -15%;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,168,85,0.08) 0%, transparent 60%);
+    }
+    .spotlight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .spotlight-photo {
+      border-radius: var(--radius-lg);
+      aspect-ratio: 3/4;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .spotlight-photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .spotlight-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(61,43,26,0.4) 0%, transparent 50%);
+    }
+    .spotlight-badge {
+      position: absolute;
+      bottom: -16px;
+      right: -16px;
+      background: var(--forest);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      box-shadow: var(--shadow-md);
+      z-index: 2;
+      animation: gentleFloat 5s ease-in-out infinite;
+    }
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .spotlight-badge-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      color: var(--amber);
+      line-height: 1;
+    }
+    .spotlight-badge-label {
+      font-size: 11px;
+      color: rgba(245,237,224,0.6);
+      margin-top: 4px;
+      letter-spacing: 0.05em;
+    }
+    .spotlight-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .spotlight-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--text-soft);
+      font-weight: 500;
+    }
+    .spotlight-feature-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--forest);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .spotlight-feature-icon svg { width: 12px; height: 12px; }
+
+    /* ============================================================
+       BRAND CARDS
+    ============================================================ */
+    .brands-bg { background: var(--white); }
+    .brands-header { text-align: center; margin-bottom: 56px; }
+    .brands-header .section-label { justify-content: center; }
+    .brands-header .section-title { text-align: center; }
+    .brands-header .section-sub { margin: 0 auto; text-align: center; }
+    .brands-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .brand-card {
+      background: var(--cream);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .brand-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(to right, var(--forest), var(--amber));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition-slow);
+    }
+    .brand-card:hover::before { transform: scaleX(1); }
+    .brand-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .brand-card-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--forest);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      position: relative;
+    }
+    .brand-card-icon::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 18px;
+      border: 1px solid rgba(26,58,26,0.1);
+    }
+    .brand-card-icon svg { width: 26px; height: 26px; }
+    .brand-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      color: var(--earth);
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+    .brand-card p {
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.75;
+    }
+
+    /* ============================================================
+       PRODUCT CATEGORY CARDS
+    ============================================================ */
+    .products-bg { background: var(--cream); }
+    .products-header { text-align: center; margin-bottom: 56px; }
+    .products-header .section-label { justify-content: center; }
+    .products-header .section-title { text-align: center; }
+    .products-header .section-sub { margin: 0 auto; text-align: center; }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .product-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      box-shadow: var(--shadow);
+      transition: transform var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(to right, var(--amber), var(--forest));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition-slow);
+    }
+    .product-card:hover::before { transform: scaleX(1); }
+    .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .product-card-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--forest);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .product-card-icon svg { width: 24px; height: 24px; }
+    .product-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      color: var(--earth);
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+    .product-card p {
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.75;
+    }
+    .product-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 16px;
+    }
+    .product-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--forest);
+      background: rgba(26,58,26,0.06);
+      border: 1px solid rgba(26,58,26,0.12);
+      padding: 3px 10px;
+      border-radius: 100px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ============================================================
+       DELIVERY CALLOUT BANNER
+    ============================================================ */
+    .delivery-callout {
+      background: linear-gradient(135deg, var(--forest-deep) 0%, var(--forest) 100%);
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .delivery-callout::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,168,85,0.06) 0%, transparent 60%);
+    }
+    .delivery-inner {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .delivery-icon-wrap {
+      width: 80px;
+      height: 80px;
+      background: rgba(212,168,85,0.12);
+      border: 1px solid rgba(212,168,85,0.25);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .delivery-icon-wrap svg { width: 38px; height: 38px; }
+    .delivery-text h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(24px, 3.5vw, 36px);
+      color: var(--cream);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .delivery-text p {
+      font-size: 16px;
+      color: rgba(245,237,224,0.7);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* ============================================================
+       WHY CHIPPEWA FEED
+    ============================================================ */
+    .why-bg { background: var(--white); }
+    .why-header { text-align: center; margin-bottom: 56px; }
+    .why-header .section-label { justify-content: center; }
+    .why-header .section-title { text-align: center; }
+    .why-header .section-sub { margin: 0 auto; text-align: center; }
+    .why-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+    .why-card {
+      background: var(--cream);
+      border-radius: var(--radius-lg);
+      padding: 32px 22px;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+      text-align: center;
+    }
+    .why-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(to right, var(--forest), var(--amber));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition-slow);
+    }
+    .why-card:hover::before { transform: scaleX(1); }
+    .why-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .why-card-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--forest);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      position: relative;
+    }
+    .why-card-icon::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 18px;
+      border: 1px solid rgba(26,58,26,0.1);
+    }
+    .why-card-icon svg { width: 24px; height: 24px; }
+    .why-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      color: var(--earth);
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+    .why-card p {
+      font-size: 13px;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       CTA SECTION
+    ============================================================ */
+    .cta-section {
+      background: var(--earth);
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(212,168,85,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 50%, rgba(26,58,26,0.3) 0%, transparent 50%);
+    }
+    .cta-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-text .section-label { color: var(--amber); }
+    .cta-text .section-title { color: var(--cream); }
+    .cta-text .section-sub { color: rgba(245,237,224,0.65); }
+    .cta-actions { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; margin-top: 28px; }
+    .cta-contact-box {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      padding: 36px 40px;
+      text-align: center;
+    }
+    .cta-contact-box-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 16px;
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+    .cta-phone {
+      font-family: 'DM Serif Display', serif;
+      font-size: 28px;
+      color: var(--amber);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+      transition: color var(--transition);
+    }
+    .cta-phone:hover { color: var(--amber-light); }
+    .cta-address {
+      font-size: 14px;
+      color: rgba(245,237,224,0.5);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--forest-deep);
+      padding: 72px 0 0;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(212,168,85,0.1);
+    }
+    .footer-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      color: var(--cream);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .footer-desc {
+      font-size: 14px;
+      color: rgba(245,237,224,0.5);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .footer-contact-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: rgba(245,237,224,0.65);
+      margin-bottom: 8px;
+    }
+    .footer-contact-line a {
+      color: var(--amber);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color var(--transition);
+    }
+    .footer-contact-line a:hover { color: var(--amber-light); }
+    .footer-col-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 16px;
+      color: var(--cream);
+      margin-bottom: 20px;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a {
+      color: rgba(245,237,224,0.55);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color var(--transition), padding-left var(--transition);
+      display: block;
+    }
+    .footer-links a:hover { color: var(--amber); padding-left: 6px; }
+    .footer-bottom {
+      padding: 28px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy {
+      font-size: 13px;
+      color: rgba(245,237,224,0.3);
+    }
+    .footer-motto {
+      font-family: 'DM Serif Display', serif;
+      font-size: 13px;
+      color: var(--amber);
+      font-style: italic;
+      opacity: 0.7;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 960px) {
+      .intro-grid { grid-template-columns: 1fr; gap: 48px; }
+      .spotlight-grid { grid-template-columns: 1fr; gap: 48px; }
+      .spotlight-photo { max-width: 400px; margin: 0 auto; }
+      .brands-grid { grid-template-columns: repeat(2, 1fr); }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: repeat(3, 1fr); }
+      .delivery-inner { grid-template-columns: 1fr; text-align: center; }
+      .delivery-icon-wrap { margin: 0 auto; }
+      .delivery-text { text-align: center; }
+      .delivery-text p { margin: 0 auto; }
+      .cta-inner { grid-template-columns: 1fr; text-align: center; }
+      .cta-inner .section-label { justify-content: center; }
+      .cta-inner .section-sub { margin: 0 auto; }
+      .cta-actions { align-items: center; }
+      .cta-contact-box { margin: 0 auto; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 0 20px; }
+      .section { padding: 72px 0; }
+      .brands-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+      .products-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+      .why-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+      .spotlight-features { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .hero { min-height: 50vh; }
+      .hero h1 { font-size: clamp(28px, 8vw, 44px); }
+      .hero-content { padding-top: 100px; }
+      .delivery-callout { padding: 56px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ==================== NAVIGATION ==================== -->
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a class="nav-logo-wrap" href="/17_Chippewa_Farm_Supply.html">
+      <div class="nav-logo-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d4a855" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </div>
+      <div>
+        <div class="nav-logo-text">Chippewa Farm Supply</div>
+        <span class="nav-logo-sub">Spruce, Michigan</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/17_Chippewa_Farm_Supply.html">Home</a></li>
+      <li><a href="#brands">Partner Brands</a></li>
+      <li><a href="#products">Feed Categories</a></li>
+      <li><a href="#why">Why Chippewa</a></li>
+    </ul>
+    <a class="nav-cta" href="tel:9894715523">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      (989) 471-5523
+    </a>
+    <div class="hamburger" id="hamburgerBtn">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/17_Chippewa_Farm_Supply.html">Back to All Products</a>
+  <a href="#brands">Partner Brands</a>
+  <a href="#products">Feed Categories</a>
+  <a href="#why">Why Chippewa</a>
+  <a href="tel:9894715523">Call (989) 471-5523</a>
+</div>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <img class="hero-img-bg" src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1600&q=80" alt="Cattle grazing in pastoral farmland" />
+  <div class="hero-overlay"></div>
+  <div class="hero-vignette"></div>
+  <div class="container">
+    <div class="hero-content">
+      <a class="hero-back" href="/17_Chippewa_Farm_Supply.html">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to All Products
+      </a>
+      <h1>Animal Feed <em>&amp; Nutrition</em></h1>
+      <p class="hero-desc">In-house mixed Chippewa Brand feeds and premium partner brands &mdash; formulated for northeast Michigan livestock, mixed fresh in Spruce, and backed by staff who know exactly what goes in every bag.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== INTRO ==================== -->
+<section class="section intro-bg">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-text reveal-left">
+        <div class="section-label">Mixed Right Here in Spruce</div>
+        <h2 class="section-title">Fresher Than Anything Off a Truck</h2>
+        <p class="section-sub">Chippewa Farm Supply mixes its own brand of animal feeds right here at the store in Spruce, Michigan. That means your feed isn't sitting in a warehouse for weeks before it reaches you &mdash; it's made fresh, on demand, and formulated for the animals and conditions of northeast Michigan.</p>
+        <p class="intro-detail" style="margin-top:16px;">We also carry the top national brands in animal nutrition. Whether you're running a hundred-head cattle operation or keeping backyard chickens for eggs, we stock the right feed at the right price &mdash; and our staff can help you choose the formulation that matches your animals' life stage and goals.</p>
+      </div>
+      <div class="intro-photo-wrap reveal-right">
+        <div class="intro-photo">
+          <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800&q=80" alt="Farm supply store interior with feed bags" loading="lazy" />
+        </div>
+        <div class="intro-accent"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== OWN BRAND SPOTLIGHT ==================== -->
+<section class="section spotlight-bg" id="chippewa-brand">
+  <div class="container">
+    <div class="spotlight-grid">
+      <div class="spotlight-photo reveal-left" style="position:relative;">
+        <img src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=800&q=80" alt="Freshly mixed animal feed in warm light" loading="lazy" />
+        <div class="spotlight-badge">
+          <div class="spotlight-badge-num">100%</div>
+          <div class="spotlight-badge-label">Mixed In-House</div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="section-label">Our Own Brand</div>
+        <h2 class="section-title">Chippewa Brand Feeds</h2>
+        <p class="section-sub">When you buy Chippewa Brand feed, you're buying from the people who made it. We mix every batch right here in Spruce &mdash; no middlemen, no mystery ingredients, no feed sitting on a truck for days. Our staff knows exactly what goes into every bag because they put it there themselves.</p>
+        <p class="intro-detail" style="margin-top:16px;">Need something specific? We offer custom formulations. Tell us your herd size, species, life stage, and goals &mdash; and we'll mix a feed designed for your operation. That's something no big box store can do.</p>
+        <div class="spotlight-features stagger" style="margin-top:28px;">
+          <div class="spotlight-feature reveal">
+            <div class="spotlight-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#d4a855" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Mixed fresh in-house
+          </div>
+          <div class="spotlight-feature reveal">
+            <div class="spotlight-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#d4a855" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Freshness guaranteed
+          </div>
+          <div class="spotlight-feature reveal">
+            <div class="spotlight-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#d4a855" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Custom formulations
+          </div>
+          <div class="spotlight-feature reveal">
+            <div class="spotlight-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#d4a855" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Total ingredient transparency
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== BRAND CARDS ==================== -->
+<section class="section brands-bg" id="brands">
+  <div class="container">
+    <div class="brands-header reveal">
+      <div class="section-label">Partner Brands</div>
+      <h2 class="section-title">Trusted Names in Animal Nutrition</h2>
+      <p class="section-sub">Alongside our own Chippewa Brand, we carry a curated selection of the most respected feed brands in the industry &mdash; companies with decades of research behind their formulations.</p>
+    </div>
+    <div class="brands-grid stagger">
+      <div class="brand-card reveal">
+        <div class="brand-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4a855" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3>ADM</h3>
+        <p>Full line of animal nutrition products from one of the largest feed companies in the world. Proven formulations backed by global research for cattle, swine, poultry, and more.</p>
+      </div>
+      <div class="brand-card reveal">
+        <div class="brand-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4a855" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Kalmbach</h3>
+        <p>Premium livestock and poultry feed from a family-owned company since 1963. Known for non-GMO options, consistent quality, and formulations that prioritize animal health.</p>
+      </div>
+      <div class="brand-card reveal">
+        <div class="brand-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4a855" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Hubbard Feeds</h3>
+        <p>Complete livestock nutrition solutions with research-backed formulations. Hubbard's scientific approach to feed design ensures your animals get precisely what they need at every life stage.</p>
+      </div>
+      <div class="brand-card reveal">
+        <div class="brand-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4a855" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+        </div>
+        <h3>Double S Liquid</h3>
+        <p>Liquid livestock feed supplements designed for easy delivery and maximum absorption. An efficient way to provide essential nutrients, minerals, and energy to grazing cattle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PRODUCT CATEGORIES ==================== -->
+<section class="section products-bg" id="products">
+  <div class="container">
+    <div class="products-header reveal">
+      <div class="section-label">Feed by Animal Type</div>
+      <h2 class="section-title">What Are You Feeding?</h2>
+      <p class="section-sub">From a hundred-head cattle ranch to a backyard rabbit hutch &mdash; we carry the right nutrition for every animal on your property.</p>
+    </div>
+    <div class="products-grid stagger">
+      <div class="product-card reveal">
+        <div class="product-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4a855" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4z"/><path d="M3 12c0-4.97 4.03-9 9-9s9 4.03 9 9-4.03 9-9 9-9-4.03-9-9z"/></svg>
+        </div>
+        <h3>Cattle Feed</h3>
+        <p>Complete nutrition for beef and dairy operations. Rations, minerals, protein supplements, and energy feeds designed for every stage from calf to finish.</p>
+        <div class="product-tags">
+          <span class="product-tag">Beef Rations</span>
+          <span class="product-tag">Dairy</span>
+          <span class="product-tag">Minerals</span>
+          <span class="product-tag">Supplements</span>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4a855" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
+        </div>
+        <h3>Poultry Feed</h3>
+        <p>Layer, broiler, starter, and grower feeds for chickens, turkeys, ducks, and game birds. Non-GMO options available through Kalmbach.</p>
+        <div class="product-tags">
+          <span class="product-tag">Layer</span>
+          <span class="product-tag">Broiler</span>
+          <span class="product-tag">Starter</span>
+          <span class="product-tag">Grower</span>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4a855" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3>Horse Feed</h3>
+        <p>Performance, maintenance, and senior formulations for equine nutrition. Quality ingredients that support muscle, joint health, and coat condition year-round.</p>
+        <div class="product-tags">
+          <span class="product-tag">Performance</span>
+          <span class="product-tag">Maintenance</span>
+          <span class="product-tag">Senior</span>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4a855" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+        </div>
+        <h3>Goat &amp; Sheep Feed</h3>
+        <p>Complete feeds and mineral supplements formulated for small ruminants. Whether you're raising meat goats, dairy goats, or a flock of sheep &mdash; we have what you need.</p>
+        <div class="product-tags">
+          <span class="product-tag">Complete Feeds</span>
+          <span class="product-tag">Minerals</span>
+          <span class="product-tag">Supplements</span>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4a855" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+        </div>
+        <h3>Swine Feed</h3>
+        <p>Starter, grower, and finisher feeds for hog operations of all sizes. Balanced nutrition that promotes efficient weight gain and overall herd health.</p>
+        <div class="product-tags">
+          <span class="product-tag">Starter</span>
+          <span class="product-tag">Grower</span>
+          <span class="product-tag">Finisher</span>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4a855" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3>Rabbit &amp; Small Animal</h3>
+        <p>Pelleted feeds and supplements for rabbits, guinea pigs, and other small animals. Quality nutrition for pets, 4-H projects, and small-scale operations.</p>
+        <div class="product-tags">
+          <span class="product-tag">Rabbit Pellets</span>
+          <span class="product-tag">Small Animal</span>
+          <span class="product-tag">4-H</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== DELIVERY CALLOUT ==================== -->
+<section class="delivery-callout">
+  <div class="container">
+    <div class="delivery-inner reveal">
+      <div class="delivery-icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#d4a855" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      <div class="delivery-text">
+        <h2>Farm Delivery for Bulk Feed Orders</h2>
+        <p>Running an operation means you can't always leave the farm. We deliver bulk feed orders to farms throughout northeast Michigan &mdash; on your schedule, not ours. Call to discuss your delivery needs and set up a recurring schedule.</p>
+      </div>
+      <a href="tel:9894715523" class="btn-primary">Schedule Delivery</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== WHY CHIPPEWA FEED ==================== -->
+<section class="section why-bg" id="why">
+  <div class="container">
+    <div class="why-header reveal">
+      <div class="section-label">The Difference</div>
+      <h2 class="section-title">Why Buy Feed at Chippewa?</h2>
+      <p class="section-sub">There are plenty of places to buy a bag of feed. Here's why the farmers and ranchers of northeast Michigan choose Chippewa instead.</p>
+    </div>
+    <div class="why-grid stagger">
+      <div class="why-card reveal">
+        <div class="why-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4a855" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <h3>Freshness</h3>
+        <p>Mixed in-house means your feed is days old, not weeks. Freshness matters for nutrition and palatability.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4a855" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3>Expertise</h3>
+        <p>Our staff knows animal nutrition &mdash; not just aisle numbers. Ask a question, get a real answer.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4a855" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>Custom Mixing</h3>
+        <p>Need a specific formula? We'll mix a custom batch for your animals' exact requirements. No big box can do that.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4a855" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h3>Delivery</h3>
+        <p>Bulk orders delivered to your farm gate throughout northeast Michigan. On your schedule.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#d4a855" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h3>Transparency</h3>
+        <p>We know what's in every bag because we put it there. No mystery ingredients. No guessing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CTA ==================== -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-text reveal-left">
+        <div class="section-label">Get Started</div>
+        <h2 class="section-title">Ready to Feed Better?</h2>
+        <p class="section-sub">Whether you need a single bag of layer feed or a bulk delivery of custom-mixed cattle rations &mdash; give us a call or stop by the store. We'll help you find the right feed for your animals and your budget.</p>
+        <div class="cta-actions">
+          <a href="tel:9894715523" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call (989) 471-5523
+          </a>
+          <a href="mailto:myron@chippewafarmsupply.com" class="btn-outline">Email Myron</a>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="cta-contact-box">
+          <div class="cta-contact-box-title">Visit the Store</div>
+          <a href="tel:9894715523" class="cta-phone">(989) 471-5523</a>
+          <div class="cta-address">
+            6701 N US Highway 23<br />
+            Spruce, MI 48762<br /><br />
+            Mon&ndash;Fri: 8am&ndash;5pm<br />
+            Saturday: 8am&ndash;2pm<br />
+            Sunday: Closed
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Chippewa Farm Supply</div>
+        <p class="footer-desc">Northeast Michigan's trusted agricultural supply store in Spruce, MI. Locally owned and operated, carrying our own Chippewa brand feeds mixed in-house, plus top national brands. Formerly Miller Feeds LLC.</p>
+        <div class="footer-contact-line">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <a href="tel:9894715523">(989) 471-5523</a>
+        </div>
+        <div class="footer-contact-line">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:myron@chippewafarmsupply.com">myron@chippewafarmsupply.com</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Products</div>
+        <ul class="footer-links">
+          <li><a href="#">Chippewa Brand Feed</a></li>
+          <li><a href="#">Custom Bird Feed</a></li>
+          <li><a href="#">Seed & Fertilizer</a></li>
+          <li><a href="#">Topsoil & Propane</a></li>
+          <li><a href="#">Pet & Pond Supplies</a></li>
+          <li><a href="#">Wildlife Management</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Feed Brands</div>
+        <ul class="footer-links">
+          <li><a href="#">Chippewa Brand</a></li>
+          <li><a href="#">ADM</a></li>
+          <li><a href="#">Kalmbach</a></li>
+          <li><a href="#">Hubbard Feeds</a></li>
+          <li><a href="#">Double S Liquid</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Visit Us</div>
+        <ul class="footer-links">
+          <li><a href="#">6701 N US Highway 23</a></li>
+          <li><a href="#">Spruce, MI 48762</a></li>
+          <li><a href="#">Mon&ndash;Fri: 8am&ndash;5pm</a></li>
+          <li><a href="#">Saturday: 8am&ndash;2pm</a></li>
+          <li><a href="#">Sunday: Closed</a></li>
+          <li><a href="#">Delivery Available</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2025 Chippewa Farm Supply. All rights reserved. Formerly Miller Feeds LLC.</div>
+      <div class="footer-motto">&ldquo;Honesty, Integrity, and Quality in Every Transaction&rdquo;</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script>
+  /* ========== Scroll Reveal via IntersectionObserver ========== */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach((el) => {
+    revealObserver.observe(el);
+  });
+
+  /* ========== Navbar scroll effect ========== */
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 80) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }, { passive: true });
+
+  /* ========== Mobile menu toggle ========== */
+  const hamburger = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+    const spans = hamburger.querySelectorAll('span');
+    if (mobileMenu.classList.contains('active')) {
+      spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+      spans[1].style.opacity = '0';
+      spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+    } else {
+      spans[0].style.transform = 'none';
+      spans[1].style.opacity = '1';
+      spans[2].style.transform = 'none';
+    }
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      const spans = hamburger.querySelectorAll('span');
+      spans[0].style.transform = 'none';
+      spans[1].style.opacity = '1';
+      spans[2].style.transform = 'none';
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JANUS Associates | Cybersecurity Consulting | Stamford, CT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark: #1B3A2D;
+      --green-mid: #2D5A40;
+      --gold: #C9A84C;
+      --gold-light: #DEC070;
+      --charcoal: #2E2E2E;
+      --off-white: #F8F6F1;
+      --text: #2E2E2E;
+      --text-light: #6B7280;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+      color: var(--text);
+      background: var(--off-white);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(27,58,45,0.97);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 72px;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--off-white);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: rgba(248,246,241,0.75);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold) !important;
+      color: var(--green-dark) !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 2px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--gold-light) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--green-dark);
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.18;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(27,58,45,0.97) 55%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      padding: 0 5%;
+      padding-top: 72px;
+    }
+
+    .hero-year {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-year::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900;
+      color: var(--off-white);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(248,246,241,0.75);
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--green-dark);
+      padding: 0.9rem 2.2rem;
+      border: none;
+      border-radius: 2px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--off-white);
+      padding: 0.9rem 2.2rem;
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 2px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-trust {
+      position: absolute;
+      bottom: 3rem;
+      left: 5%;
+      display: flex;
+      gap: 3rem;
+      z-index: 2;
+    }
+
+    .hero-trust-item {
+      text-align: left;
+    }
+
+    .hero-trust-item strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .hero-trust-item span {
+      font-size: 0.78rem;
+      color: rgba(248,246,241,0.55);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* SECTIONS */
+    section { padding: 6rem 5%; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .overline {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      max-width: 600px;
+      line-height: 1.75;
+    }
+
+    /* FOUNDING STORY */
+    .story { background: var(--off-white); }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3.5rem;
+    }
+
+    .story-img img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      border-radius: 2px;
+      filter: grayscale(20%);
+    }
+
+    .story-text p {
+      font-size: 1rem;
+      color: var(--text-light);
+      margin-bottom: 1.2rem;
+      line-height: 1.8;
+    }
+
+    .story-highlight {
+      border-left: 3px solid var(--gold);
+      padding: 1rem 1.5rem;
+      background: rgba(201,168,76,0.06);
+      margin: 2rem 0;
+    }
+
+    .story-highlight p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--green-dark);
+      margin: 0;
+    }
+
+    /* SERVICES */
+    .services { background: var(--green-dark); }
+    .services .section-title { color: var(--off-white); }
+    .services .section-desc { color: rgba(248,246,241,0.65); }
+
+    .services-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      margin-top: 3.5rem;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .service-item {
+      padding: 2rem 2.5rem;
+      background: rgba(255,255,255,0.02);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.2s;
+    }
+
+    .service-item:hover { background: rgba(201,168,76,0.06); }
+
+    .service-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      opacity: 0.4;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-item h3 {
+      font-size: 1.1rem;
+      color: var(--off-white);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-item p {
+      font-size: 0.88rem;
+      color: rgba(248,246,241,0.55);
+      line-height: 1.65;
+    }
+
+    /* DIFFERENTIATORS */
+    .difference { background: var(--off-white); }
+
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .diff-card {
+      background: var(--white, #fff);
+      padding: 2.5rem;
+      border-radius: 2px;
+      border-top: 3px solid var(--gold);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .diff-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: var(--green-dark);
+    }
+
+    .diff-card p {
+      font-size: 0.92rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* FRAMEWORKS */
+    .frameworks { background: var(--charcoal); }
+    .frameworks .section-title { color: var(--off-white); }
+    .frameworks .section-desc { color: rgba(248,246,241,0.6); }
+
+    .frameworks-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .framework-badge {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 2px;
+      padding: 0.75rem 1.5rem;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+
+    .framework-badge:hover { background: rgba(201,168,76,0.12); }
+
+    /* SECTORS */
+    .sectors { background: var(--off-white); }
+
+    .sectors-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .sector-card {
+      padding: 2rem 1.5rem;
+      background: #fff;
+      border-radius: 2px;
+      text-align: center;
+      border-bottom: 3px solid transparent;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .sector-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    .sector-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Source Sans Pro', sans-serif;
+      margin-bottom: 0.5rem;
+      color: var(--green-dark);
+    }
+
+    .sector-card p {
+      font-size: 0.82rem;
+      color: var(--text-light);
+    }
+
+    /* TRUST BAR */
+    .trust-bar {
+      background: var(--green-dark);
+      padding: 4rem 5%;
+    }
+
+    .trust-bar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .trust-stat {
+      text-align: center;
+    }
+
+    .trust-stat strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: block;
+    }
+
+    .trust-stat p {
+      font-size: 0.85rem;
+      color: rgba(248,246,241,0.65);
+      margin-top: 0.35rem;
+    }
+
+    /* LEADERSHIP */
+    .leadership { background: var(--off-white); }
+
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 3.5rem;
+    }
+
+    .leadership-img img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 2px;
+      filter: grayscale(15%);
+    }
+
+    .leadership-text h3 {
+      font-size: 1.6rem;
+      color: var(--green-dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .leadership-text .title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .leadership-text p {
+      font-size: 1rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+
+    /* CONTACT */
+    .contact { background: var(--green-dark); }
+    .contact .section-title { color: var(--off-white); }
+    .contact .section-desc { color: rgba(248,246,241,0.65); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 5rem;
+      margin-top: 3.5rem;
+    }
+
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: rgba(248,246,241,0.75);
+      font-size: 0.92rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .contact-detail svg { width: 16px; height: 16px; min-width: 16px; fill: none; stroke: var(--gold); stroke-width: 2; margin-top: 3px; }
+
+    .contact-form { display: grid; gap: 1rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .form-group label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: rgba(248,246,241,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 2px;
+      padding: 0.8rem 1rem;
+      color: var(--off-white);
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold); }
+
+    .form-group select option { background: var(--green-dark); }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+
+    /* FOOTER */
+    footer {
+      background: #0F2018;
+      color: rgba(255,255,255,0.4);
+      padding: 3rem 5%;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--off-white);
+    }
+
+    .footer-logo span { color: var(--gold); }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.25); text-align: center; }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .hero-trust { display: none; }
+      .story-grid { grid-template-columns: 1fr; }
+      .services-cols { grid-template-columns: 1fr; }
+      .diff-grid { grid-template-columns: 1fr; }
+      .sectors-grid { grid-template-columns: 1fr 1fr; }
+      .trust-bar-inner { grid-template-columns: 1fr 1fr; }
+      .leadership-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 580px) {
+      .sectors-grid { grid-template-columns: 1fr; }
+      .trust-bar-inner { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo"><span>JANUS</span> Associates</a>
+    <ul class="nav-links">
+      <li><a href="#story">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#frameworks">Frameworks</a></li>
+      <li><a href="#sectors">Sectors</a></li>
+      <li><a href="#contact" class="nav-cta">Consult Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1600&q=80" alt="Cybersecurity professional" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-year">Established 1988 &mdash; Stamford, Connecticut</div>
+      <h1>The Nation's Oldest <em>Independent</em> Cybersecurity Firm.</h1>
+      <p>For more than three decades, JANUS Associates has protected organizations through expert, vendor-neutral security consulting. No products to sell. No juniors on your account. Just proven expertise that delivers results.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-gold">Schedule a Consultation</a>
+        <a href="#services" class="btn-ghost">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-trust">
+      <div class="hero-trust-item">
+        <strong>2,200+</strong>
+        <span>Client Engagements</span>
+      </div>
+      <div class="hero-trust-item">
+        <strong>37+</strong>
+        <span>Years of Practice</span>
+      </div>
+      <div class="hero-trust-item">
+        <strong>32</strong>
+        <span>Federal Agencies</span>
+      </div>
+      <div class="hero-trust-item">
+        <strong>128</strong>
+        <span>State Agencies</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story" id="story">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Our Founding</div>
+        <h2 class="section-title">Built on a Simple Principle: Objectivity Changes Everything</h2>
+      </div>
+      <div class="story-grid">
+        <div class="story-img reveal">
+          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80" alt="Professional woman leader" />
+        </div>
+        <div class="story-text reveal reveal-delay-2">
+          <p>In 1988, Patricia Fisher founded JANUS Associates on a straightforward belief: organizations deserve security advice that serves their interests, not a vendor's bottom line. In an industry crowded with product-pushing consultancies, JANUS would be different — vendor-neutral, senior-led, and focused exclusively on the client's security outcomes.</p>
+          <div class="story-highlight">
+            <p>"We don't sell hardware. We don't sell software. We sell expertise — and we stand behind every recommendation we make."</p>
+          </div>
+          <p>Over 37 years and more than 2,200 client engagements later, that founding principle remains the center of everything JANUS does. The firm has never had a sales quota. Every technologist maintains a minimum of eight years of experience. And every engagement is staffed by people who genuinely understand the threat landscape their clients face.</p>
+          <p>Today, JANUS serves organizations across every sector — from Fortune 500 corporations to federal agencies to nonprofit institutions — with the same commitment to objective, rigorous security counsel that Patricia Fisher instilled from day one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline" style="color:var(--gold);">What We Do</div>
+        <h2 class="section-title">Comprehensive Security. One Trusted Advisor.</h2>
+        <p class="section-desc">JANUS provides a full spectrum of cybersecurity and risk management services — always tailored to your specific environment, regulatory obligations, and organizational risk tolerance.</p>
+      </div>
+      <div class="services-cols">
+        <div class="service-item reveal reveal-delay-1">
+          <div class="service-num">01</div>
+          <h3>Vulnerability Risk Assessments</h3>
+          <p>Systematic evaluation of your technical environment, processes, and controls to identify and prioritize exposures before they become incidents.</p>
+        </div>
+        <div class="service-item reveal reveal-delay-2">
+          <div class="service-num">02</div>
+          <h3>Penetration Testing</h3>
+          <p>Authorized adversarial testing of your networks, applications, and physical controls — conducted by experienced professionals who think like attackers.</p>
+        </div>
+        <div class="service-item reveal reveal-delay-1">
+          <div class="service-num">03</div>
+          <h3>vCISO Services</h3>
+          <p>Senior security leadership on demand. Our virtual CISO service brings executive-level strategy and accountability without the cost of a full-time hire.</p>
+        </div>
+        <div class="service-item reveal reveal-delay-2">
+          <div class="service-num">04</div>
+          <h3>Enterprise Risk Management</h3>
+          <p>Structured frameworks for identifying, measuring, and managing organizational risk — aligned with your industry, regulatory environment, and business objectives.</p>
+        </div>
+        <div class="service-item reveal reveal-delay-1">
+          <div class="service-num">05</div>
+          <h3>Security Architecture</h3>
+          <p>Design and review of security controls, network segmentation, identity management, and zero-trust architecture for modern enterprise environments.</p>
+        </div>
+        <div class="service-item reveal reveal-delay-2">
+          <div class="service-num">06</div>
+          <h3>Business Resilience</h3>
+          <p>Business continuity planning, disaster recovery design, and incident response readiness — because security means keeping you operational when threats materialize.</p>
+        </div>
+        <div class="service-item reveal reveal-delay-1">
+          <div class="service-num">07</div>
+          <h3>Digital Forensics and eDiscovery</h3>
+          <p>Expert investigation of security incidents, litigation support, and electronic evidence collection with documented chain-of-custody and legal defensibility.</p>
+        </div>
+        <div class="service-item reveal reveal-delay-2">
+          <div class="service-num">08</div>
+          <h3>Data Breach Crisis Response</h3>
+          <p>When a breach occurs, response time is everything. Our crisis team provides rapid containment, analysis, notification support, and recovery coordination.</p>
+        </div>
+        <div class="service-item reveal reveal-delay-1">
+          <div class="service-num">09</div>
+          <h3>Security Awareness Training</h3>
+          <p>Customized education programs that actually change behavior — because the most sophisticated technical controls fail if people aren't prepared to recognize threats.</p>
+        </div>
+        <div class="service-item reveal reveal-delay-2">
+          <div class="service-num">10</div>
+          <h3>Regulatory Compliance Consulting</h3>
+          <p>Expert guidance through HIPAA, PCI-DSS, CMMC, FISMA, and other frameworks — translating regulatory requirements into practical, auditable security programs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFFERENCE -->
+  <section class="difference">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Why JANUS</div>
+        <h2 class="section-title">The Difference 37 Years of Focus Makes</h2>
+        <p class="section-desc">We've built our reputation on three uncompromising commitments that have defined every engagement since 1988.</p>
+      </div>
+      <div class="diff-grid">
+        <div class="diff-card reveal reveal-delay-1">
+          <h3>Vendor-Neutral Objectivity</h3>
+          <p>JANUS has never sold hardware or software. We have no preferred products, no reseller agreements, and no incentive to recommend anything other than what actually solves your security problem. That independence is the foundation of trustworthy counsel.</p>
+        </div>
+        <div class="diff-card reveal reveal-delay-2">
+          <h3>All-Senior Expertise</h3>
+          <p>Every JANUS technologist brings a minimum of eight years of field experience. We don't staff junior consultants on client work, and we don't run a B-team. When you hire JANUS, you get the people you met in the proposal — every time.</p>
+        </div>
+        <div class="diff-card reveal reveal-delay-3">
+          <h3>Proven at Any Scale</h3>
+          <p>From closely held private companies to 32 federal agencies to global institutions, JANUS has built security programs that work in the real world. Our 2,200+ completed engagements represent every sector, regulatory regime, and threat environment imaginable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRAMEWORKS -->
+  <section class="frameworks" id="frameworks">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline" style="color:var(--gold);">Framework Expertise</div>
+        <h2 class="section-title">Proficiency Across Every Major Security Standard</h2>
+        <p class="section-desc">JANUS maintains deep, current expertise in the frameworks your organization is likely required to address — and the experience to make compliance a strategic advantage rather than a checkbox exercise.</p>
+      </div>
+      <div class="frameworks-grid">
+        <span class="framework-badge reveal reveal-delay-1">NIST 800</span>
+        <span class="framework-badge reveal reveal-delay-2">ISO 27001</span>
+        <span class="framework-badge reveal reveal-delay-3">HIPAA</span>
+        <span class="framework-badge reveal reveal-delay-1">PCI-DSS</span>
+        <span class="framework-badge reveal reveal-delay-2">CMMC</span>
+        <span class="framework-badge reveal reveal-delay-3">NERC CIP</span>
+        <span class="framework-badge reveal reveal-delay-1">FISMA</span>
+        <span class="framework-badge reveal reveal-delay-2">SOC 2</span>
+        <span class="framework-badge reveal reveal-delay-3">GLBA</span>
+        <span class="framework-badge reveal reveal-delay-1">FERPA</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTORS -->
+  <section class="sectors" id="sectors">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Sectors We Serve</div>
+        <h2 class="section-title">Deep Experience Across Every Industry</h2>
+      </div>
+      <div class="sectors-grid">
+        <div class="sector-card reveal reveal-delay-1">
+          <h3>Federal Government</h3>
+          <p>32 federal agencies served, with FISMA and CMMC expertise built from real engagements.</p>
+        </div>
+        <div class="sector-card reveal reveal-delay-2">
+          <h3>State and Local Government</h3>
+          <p>128 state agencies protected, with deep understanding of public sector constraints and requirements.</p>
+        </div>
+        <div class="sector-card reveal reveal-delay-3">
+          <h3>Financial Services</h3>
+          <p>Banks, credit unions, and investment firms facing GLBA, SOX, and rising threat actor activity.</p>
+        </div>
+        <div class="sector-card reveal reveal-delay-4">
+          <h3>Healthcare</h3>
+          <p>HIPAA compliance, protected health information security, and clinical operations resilience.</p>
+        </div>
+        <div class="sector-card reveal reveal-delay-1">
+          <h3>Legal</h3>
+          <p>Law firms protecting privileged client data against increasingly sophisticated adversaries.</p>
+        </div>
+        <div class="sector-card reveal reveal-delay-2">
+          <h3>Manufacturing</h3>
+          <p>Operational technology security, CMMC readiness, and industrial control system protection.</p>
+        </div>
+        <div class="sector-card reveal reveal-delay-3">
+          <h3>Education</h3>
+          <p>Higher education and K-12 institutions navigating complex data environments and FERPA compliance.</p>
+        </div>
+        <div class="sector-card reveal reveal-delay-4">
+          <h3>Gaming</h3>
+          <p>Gaming and entertainment organizations with high-value data assets and regulatory exposure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-stat reveal">
+        <strong>2,200+</strong>
+        <p>Client Engagements Completed</p>
+      </div>
+      <div class="trust-stat reveal reveal-delay-1">
+        <strong>37+</strong>
+        <p>Years of Independent Practice</p>
+      </div>
+      <div class="trust-stat reveal reveal-delay-2">
+        <strong>32</strong>
+        <p>Federal Agencies Served</p>
+      </div>
+      <div class="trust-stat reveal reveal-delay-3">
+        <strong>128</strong>
+        <p>State Agencies Protected</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEADERSHIP -->
+  <section class="leadership">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Firm Leadership</div>
+        <h2 class="section-title">Founded and Led by One of the Industry's Most Respected Voices</h2>
+      </div>
+      <div class="leadership-grid">
+        <div class="leadership-img reveal">
+          <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=600&q=80" alt="Patricia Fisher, CEO" />
+        </div>
+        <div class="leadership-text reveal reveal-delay-2">
+          <h3>Patricia Fisher</h3>
+          <div class="title">Chief Executive Officer and President &bull; Founder, 1988</div>
+          <p>Patricia Fisher built JANUS Associates from the ground up with a conviction that the cybersecurity industry needed at least one firm whose only loyalty was to the client. Over 37 years, she has guided the organization through every evolution of the threat landscape — from mainframe security in the late 1980s to the AI-enabled adversaries of today — without ever losing sight of that founding conviction.</p>
+          <p>Under her leadership, JANUS has completed more than 2,200 client engagements, earned the trust of 32 federal agencies and 128 state agencies, and established itself as one of the most credentialed independent security advisory firms in the nation. She remains actively involved in client strategy and has testified before Congress on cybersecurity policy on multiple occasions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline" style="color:var(--gold);">Get in Touch</div>
+        <h2 class="section-title">Ready to Talk to a Senior Security Expert?</h2>
+        <p class="section-desc">Every consultation starts with a conversation. Tell us a little about your organization and what you're facing, and we'll be in touch within one business day.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal reveal-delay-1">
+          <h3>JANUS Associates, Inc.</h3>
+          <div class="contact-detail">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Stamford, Connecticut
+          </div>
+          <div class="contact-detail">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.16 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012.07 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            203-251-0200
+          </div>
+          <div class="contact-detail">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            patriciafisher@janusassociates.com
+          </div>
+          <div style="margin-top:2.5rem;padding:1.5rem;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:2px;">
+            <p style="font-size:0.85rem;color:rgba(248,246,241,0.6);line-height:1.65;">All initial consultations are confidential. JANUS does not share client information, project details, or organizational vulnerabilities with any third party.</p>
+          </div>
+        </div>
+        <form class="contact-form reveal reveal-delay-2">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" placeholder="Full name" />
+            </div>
+            <div class="form-group">
+              <label>Organization</label>
+              <input type="text" placeholder="Company or agency name" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Role</label>
+              <input type="text" placeholder="CISO, IT Director, etc." />
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" placeholder="(555) 000-0000" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Primary Security Challenge</label>
+            <select>
+              <option value="">Select a service area</option>
+              <option>Penetration Testing / Assessment</option>
+              <option>vCISO Services</option>
+              <option>Regulatory Compliance</option>
+              <option>Incident Response / Breach</option>
+              <option>Enterprise Risk Management</option>
+              <option>Security Awareness Training</option>
+              <option>Other / Not Sure Yet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tell Us About Your Situation</label>
+            <textarea placeholder="What security challenges are you facing? What's driving this conversation? Any regulatory requirements we should know about?"></textarea>
+          </div>
+          <button type="submit" class="btn-gold" style="width:100%;text-align:center;padding:1rem;">Request a Confidential Consultation</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo"><span>JANUS</span> Associates, Inc.</div>
+      <div class="footer-links">
+        <a href="#story">About</a>
+        <a href="#services">Services</a>
+        <a href="#frameworks">Frameworks</a>
+        <a href="#sectors">Sectors</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 JANUS Associates, Inc. All rights reserved. Stamford, Connecticut &bull; Established 1988</p>
+    </div>
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

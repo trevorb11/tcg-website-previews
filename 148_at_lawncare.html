@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A&T Lawncare Service LLC | Warner Robins, GA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── CSS Custom Properties ─────────────────────────────────── */
+    :root {
+      --green-dark:   #1e4d1e;
+      --green-mid:    #2e7d32;
+      --green-light:  #4caf50;
+      --green-pale:   #e8f5e9;
+      --brown-dark:   #4e342e;
+      --brown-mid:    #795548;
+      --brown-light:  #a1887f;
+      --sky:          #e3f2fd;
+      --sky-mid:      #90caf9;
+      --sky-dark:     #1565c0;
+      --white:        #ffffff;
+      --off-white:    #f9fafb;
+      --text-dark:    #1a2a1a;
+      --text-mid:     #3d4f3d;
+      --text-light:   #6b7c6b;
+      --shadow:       0 4px 24px rgba(30,77,30,.13);
+      --radius:       10px;
+      --transition:   0.3s ease;
+      --nav-h:        72px;
+    }
+
+    /* ─── Reset & Base ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ─── Utility ────────────────────────────────────────────────── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .section-label {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.75rem, 3.5vw, 2.6rem);
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--green-dark);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      max-width: 580px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      font-family: 'Montserrat', sans-serif;
+      font-size: .95rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--green-mid);
+      color: var(--white);
+      border-color: var(--green-mid);
+    }
+    .btn-primary:hover { background: var(--green-dark); border-color: var(--green-dark); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border-color: var(--white);
+    }
+    .btn-outline:hover { background: var(--white); color: var(--green-dark); }
+    .btn-brown {
+      background: var(--brown-mid);
+      color: var(--white);
+      border-color: var(--brown-mid);
+    }
+    .btn-brown:hover { background: var(--brown-dark); border-color: var(--brown-dark); }
+
+    /* ─── Reveal Animations ──────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left  { opacity: 0; transform: translateX(-40px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal-left.visible  { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(40px);  transition: opacity .6s ease, transform .6s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .delay-1 { transition-delay: .1s; }
+    .delay-2 { transition-delay: .2s; }
+    .delay-3 { transition-delay: .3s; }
+    .delay-4 { transition-delay: .4s; }
+
+    /* ─── NAV ────────────────────────────────────────────────────── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,.97);
+      box-shadow: 0 2px 16px rgba(30,77,30,.10);
+      transition: background var(--transition);
+    }
+    #nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    .nav-logo .logo-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      letter-spacing: .02em;
+    }
+    .nav-logo .logo-tagline {
+      font-size: .7rem;
+      font-weight: 600;
+      color: var(--brown-mid);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: .875rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--green-mid); }
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-phone {
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+    .nav-phone:hover { color: var(--green-mid); }
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: var(--green-dark);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    /* mobile nav drawer */
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: var(--white);
+      box-shadow: 0 8px 32px rgba(0,0,0,.12);
+      z-index: 999;
+      padding: 24px 24px 32px;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .nav-drawer.open { display: flex; }
+    .nav-drawer a {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-mid);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--green-pale);
+    }
+    .nav-drawer .btn { width: 100%; justify-content: center; margin-top: 8px; }
+
+    /* ─── HERO ───────────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: var(--nav-h);
+      background:
+        linear-gradient(to bottom right, rgba(18,48,18,.72) 0%, rgba(18,48,18,.55) 60%, rgba(78,52,46,.5) 100%),
+        url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&auto=format&fit=crop') center center / cover no-repeat;
+      position: relative;
+    }
+    .hero-content {
+      max-width: 680px;
+      color: var(--white);
+      padding: 60px 0;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      backdrop-filter: blur(6px);
+      padding: 7px 16px;
+      border-radius: 40px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 22px;
+    }
+    .hero-badge span.dot {
+      width: 8px; height: 8px;
+      background: var(--green-light);
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .hero-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 22px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: #a5d6a7;
+    }
+    .hero-desc {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.87);
+      margin-bottom: 36px;
+      max-width: 520px;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 52px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .stat-item { display: flex; flex-direction: column; }
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: .78rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.7);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .stat-divider {
+      width: 1px;
+      background: rgba(255,255,255,.25);
+      align-self: stretch;
+    }
+
+    /* ─── TRUST STRIP ────────────────────────────────────────────── */
+    #trust {
+      background: var(--green-dark);
+      padding: 18px 0;
+    }
+    .trust-items {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 36px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: rgba(255,255,255,.9);
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .trust-item .icon {
+      font-size: 1.1rem;
+    }
+    .trust-sep { color: rgba(255,255,255,.25); font-size: 1.2rem; }
+
+    /* ─── SERVICES ───────────────────────────────────────────────── */
+    #services {
+      padding: 88px 0 80px;
+      background: var(--off-white);
+    }
+    .services-header { margin-bottom: 52px; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 36px 28px 32px;
+      box-shadow: var(--shadow);
+      border-top: 4px solid var(--green-mid);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 36px rgba(30,77,30,.16); }
+    .service-icon {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+    }
+    .service-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      font-size: .9rem;
+      color: var(--text-light);
+      line-height: 1.65;
+    }
+
+    /* ─── ABOUT ──────────────────────────────────────────────────── */
+    #about {
+      padding: 88px 0;
+      background: var(--white);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .about-img-wrap img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+    }
+    .about-badge {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      background: var(--green-dark);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 14px 20px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,.3);
+    }
+    .about-badge .big { font-size: 2rem; font-weight: 800; display: block; }
+    .about-badge .sm  { font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: #a5d6a7; }
+    .about-text .section-sub { margin-bottom: 28px; }
+    .about-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
+    .about-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: .95rem;
+      color: var(--text-mid);
+    }
+    .about-list li .check {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      background: var(--green-pale);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green-mid);
+      font-size: .85rem;
+      margin-top: 1px;
+    }
+
+    /* ─── TESTIMONIALS ───────────────────────────────────────────── */
+    #testimonials {
+      padding: 88px 0;
+      background: var(--green-pale);
+    }
+    .testimonials-header { text-align: center; margin-bottom: 52px; }
+    .testimonials-header .section-sub { margin: 0 auto; }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+    .testi-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 34px 30px 30px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .testi-stars {
+      color: #f9a825;
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+    .testi-quote {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: .98rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testi-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--green-mid);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .testi-name { font-weight: 700; font-size: .9rem; color: var(--green-dark); }
+    .testi-loc  { font-size: .78rem; color: var(--text-light); }
+    .testi-source {
+      position: absolute;
+      top: 28px; right: 28px;
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--text-light);
+      background: var(--off-white);
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    /* ─── SERVICE AREA ───────────────────────────────────────────── */
+    #service-area {
+      padding: 88px 0;
+      background: var(--white);
+    }
+    .area-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .area-map-placeholder {
+      background: linear-gradient(135deg, var(--green-pale) 0%, var(--sky) 100%);
+      border-radius: 16px;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      border: 2px dashed var(--sky-mid);
+      color: var(--green-dark);
+    }
+    .area-map-placeholder .map-icon { font-size: 3.5rem; }
+    .area-map-placeholder p { font-size: 1rem; font-weight: 600; color: var(--text-mid); text-align: center; }
+    .area-cities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 24px 0 32px;
+    }
+    .city-chip {
+      background: var(--green-pale);
+      color: var(--green-dark);
+      font-size: .82rem;
+      font-weight: 700;
+      padding: 7px 16px;
+      border-radius: 30px;
+      border: 1px solid #c8e6c9;
+    }
+    .city-chip.primary {
+      background: var(--green-mid);
+      color: var(--white);
+      border-color: var(--green-mid);
+    }
+
+    /* ─── WHY CHOOSE US ──────────────────────────────────────────── */
+    #why {
+      padding: 88px 0;
+      background: var(--green-dark);
+    }
+    #why .section-label { color: #a5d6a7; }
+    #why .section-title { color: var(--white); }
+    #why .section-sub { color: rgba(255,255,255,.72); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 28px;
+      margin-top: 52px;
+    }
+    .why-card {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: background var(--transition);
+    }
+    .why-card:hover { background: rgba(255,255,255,.13); }
+    .why-icon { font-size: 2.4rem; margin-bottom: 14px; }
+    .why-card h3 { color: var(--white); font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
+    .why-card p  { color: rgba(255,255,255,.68); font-size: .88rem; line-height: 1.65; }
+
+    /* ─── CONTACT ────────────────────────────────────────────────── */
+    #contact {
+      padding: 88px 0;
+      background: var(--off-white);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .contact-form-wrap {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 44px 40px;
+      box-shadow: var(--shadow);
+    }
+    .contact-form-wrap h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.5rem;
+      color: var(--green-dark);
+      margin-bottom: 6px;
+    }
+    .contact-form-wrap p.sub { font-size: .9rem; color: var(--text-light); margin-bottom: 28px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-group label { font-size: .82rem; font-weight: 700; color: var(--text-mid); }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 12px 14px;
+      border: 1.5px solid #dde5dd;
+      border-radius: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: .9rem;
+      color: var(--text-dark);
+      transition: border-color var(--transition);
+      background: var(--white);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { outline: none; border-color: var(--green-mid); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit { margin-top: 8px; }
+    .form-submit .btn { width: 100%; justify-content: center; font-size: 1rem; padding: 16px; }
+    .contact-info { padding-top: 8px; }
+    .contact-info .section-title { font-size: 1.8rem; }
+    .contact-info .section-sub { margin-bottom: 36px; }
+    .info-cards { display: flex; flex-direction: column; gap: 18px; }
+    .info-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: var(--white);
+      border-radius: 12px;
+      padding: 20px 22px;
+      box-shadow: 0 2px 12px rgba(30,77,30,.08);
+    }
+    .info-card .ic-icon {
+      font-size: 1.5rem;
+      width: 48px; height: 48px;
+      background: var(--green-pale);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .info-card h4 { font-size: .82rem; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
+    .info-card p, .info-card a { font-size: .95rem; font-weight: 600; color: var(--green-dark); }
+    .info-card a:hover { color: var(--green-mid); }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────── */
+    #footer {
+      background: var(--text-dark);
+      padding: 52px 0 24px;
+      color: rgba(255,255,255,.75);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      margin-bottom: 24px;
+    }
+    .footer-brand .logo-name  { color: var(--white); font-size: 1.15rem; font-weight: 800; }
+    .footer-brand .logo-tagline { color: #a5d6a7; }
+    .footer-brand p { font-size: .88rem; margin-top: 14px; line-height: 1.7; max-width: 280px; }
+    .footer-col h4 { color: var(--white); font-size: .88rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 16px; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { font-size: .88rem; color: rgba(255,255,255,.65); transition: color var(--transition); }
+    .footer-col ul li a:hover { color: var(--green-light); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: .8rem;
+      color: rgba(255,255,255,.4);
+    }
+    .footer-bottom a { color: rgba(255,255,255,.5); }
+    .footer-bottom a:hover { color: var(--green-light); }
+
+    /* ─── RESPONSIVE 960px ───────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .nav-links, .nav-cta .btn-primary { display: none; }
+      .hamburger { display: flex; }
+      .about-grid, .area-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-img-wrap img { height: 300px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ─── RESPONSIVE 640px ───────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .hero-btns { flex-direction: column; }
+      .hero-stats { gap: 24px; }
+      .stat-divider { display: none; }
+      .trust-items { gap: 10px 20px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      #services, #about, #testimonials, #service-area, #why, #contact { padding: 60px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─────────────────────────────────────────────────────── -->
+  <nav id="nav">
+    <div class="container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-name">A&amp;T Lawncare Service</span>
+        <span class="logo-tagline">LLC &mdash; Warner Robins, GA</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#service-area">Service Area</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a class="nav-phone" href="tel:4783343486">(478) 334-3486</a>
+        <a class="btn btn-primary" href="#contact">Free Estimate</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <nav class="nav-drawer" id="navDrawer">
+    <a href="#services" onclick="closeDrawer()">Services</a>
+    <a href="#about" onclick="closeDrawer()">About</a>
+    <a href="#testimonials" onclick="closeDrawer()">Reviews</a>
+    <a href="#service-area" onclick="closeDrawer()">Service Area</a>
+    <a href="#contact" onclick="closeDrawer()">Contact</a>
+    <a class="btn btn-primary" href="tel:4783343486">Call (478) 334-3486</a>
+    <a class="btn btn-brown" href="#contact">Get Free Estimate</a>
+  </nav>
+
+  <!-- ─── HERO ─────────────────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge reveal">
+          <span class="dot"></span>
+          Serving Central Georgia Since 2004
+        </div>
+        <h1 class="hero-title reveal delay-1">
+          Warner Robins' Most Trusted<br><em>Lawn Care Experts</em>
+        </h1>
+        <p class="hero-desc reveal delay-2">
+          Family-owned and operated with 20+ years of experience. We bring professional results to every yard&mdash;from weekly mowing to full landscape clean-ups.
+        </p>
+        <div class="hero-btns reveal delay-3">
+          <a class="btn btn-primary" href="#contact">Get a Free Estimate</a>
+          <a class="btn btn-outline" href="tel:4783343486">&#128222; Call or Text Tony</a>
+        </div>
+        <div class="hero-stats reveal delay-4">
+          <div class="stat-item">
+            <span class="stat-num">20+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num">4.8&#9733;</span>
+            <span class="stat-label">HomeAdvisor Rating</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num">Top 5</span>
+            <span class="stat-label">Warner Robins 2025</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num">7</span>
+            <span class="stat-label">Cities Served</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TRUST STRIP ──────────────────────────────────────────────── -->
+  <div id="trust">
+    <div class="container">
+      <ul class="trust-items">
+        <li class="trust-item"><span class="icon">&#10003;</span> Licensed &amp; Insured LLC</li>
+        <li class="trust-sep">|</li>
+        <li class="trust-item"><span class="icon">&#10003;</span> Free Estimates</li>
+        <li class="trust-sep">|</li>
+        <li class="trust-item"><span class="icon">&#10003;</span> Family-Owned &amp; Operated</li>
+        <li class="trust-sep">|</li>
+        <li class="trust-item"><span class="icon">&#10003;</span> Online Booking Available</li>
+        <li class="trust-sep">|</li>
+        <li class="trust-item"><span class="icon">&#10003;</span> Mon&ndash;Sat 8AM&ndash;6PM</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ─── SERVICES ─────────────────────────────────────────────────── -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header">
+        <span class="section-label reveal">What We Do</span>
+        <h2 class="section-title reveal delay-1">Complete Lawn &amp; Landscape Services</h2>
+        <p class="section-sub reveal delay-2">From routine weekly maintenance to seasonal clean-ups, we handle every detail so your property always looks its best.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal delay-1">
+          <div class="service-icon">&#127807;</div>
+          <h3>Lawn Mowing</h3>
+          <p>Precise, consistent cuts that keep your grass healthy and your yard looking neat. Weekly and bi-weekly schedules available.</p>
+        </div>
+        <div class="service-card reveal delay-2">
+          <div class="service-icon">&#9986;&#65039;</div>
+          <h3>Edging &amp; Weed-Eating</h3>
+          <p>Crisp borders along driveways, walkways, and beds for that clean, professional finish every time we visit.</p>
+        </div>
+        <div class="service-card reveal delay-3">
+          <div class="service-icon">&#127795;</div>
+          <h3>Mulch &amp; Pine Straw Installation</h3>
+          <p>Fresh mulch and pine straw application to protect plant roots, retain moisture, and give your landscape a polished look.</p>
+        </div>
+        <div class="service-card reveal delay-4">
+          <div class="service-icon">&#127810;</div>
+          <h3>Leaf Removal &amp; Cleanup</h3>
+          <p>Thorough seasonal leaf removal and yard clean-ups that keep your lawn breathing and debris-free all year round.</p>
+        </div>
+        <div class="service-card reveal delay-1">
+          <div class="service-icon">&#127794;</div>
+          <h3>Shrub Trimming</h3>
+          <p>Careful shaping and trimming of hedges and ornamental shrubs to maintain healthy growth and great curb appeal.</p>
+        </div>
+        <div class="service-card reveal delay-2">
+          <div class="service-icon">&#128168;</div>
+          <h3>Blowing &amp; Debris Removal</h3>
+          <p>We finish every job by blowing clippings off hard surfaces and hauling debris, leaving your property spotless.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT ─────────────────────────────────────────────────────── -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap reveal-left">
+          <img
+            src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=900&auto=format&fit=crop"
+            alt="Professional lawn care in Warner Robins GA"
+            loading="lazy"
+          />
+          <div class="about-badge">
+            <span class="big">20+</span>
+            <span class="sm">Years Serving<br>Central Georgia</span>
+          </div>
+        </div>
+        <div class="about-text reveal-right">
+          <span class="section-label">Our Story</span>
+          <h2 class="section-title">A Family Business Built on Pride &amp; Hard Work</h2>
+          <p class="section-sub">
+            A&amp;T Lawncare Service LLC is Warner Robins' go-to lawn care team, run by Tony and backed by a crew that treats every property like their own. We're dedicated to making sure every job is done correctly&mdash;no shortcuts, no surprises.
+          </p>
+          <ul class="about-list">
+            <li>
+              <span class="check">&#10003;</span>
+              <span>Locally owned and operated right here in Warner Robins, GA (602 Cornelia Dr)</span>
+            </li>
+            <li>
+              <span class="check">&#10003;</span>
+              <span>Rated 4.8 out of 5 on HomeAdvisor with consistent 5-star reviews</span>
+            </li>
+            <li>
+              <span class="check">&#10003;</span>
+              <span>Officially ranked Top 5 lawn care providers in Warner Robins (2025)</span>
+            </li>
+            <li>
+              <span class="check">&#10003;</span>
+              <span>Easy online booking through Yardbook &mdash; schedule at your convenience</span>
+            </li>
+            <li>
+              <span class="check">&#10003;</span>
+              <span>Dependable, on-time service Monday through Saturday, 8 AM&ndash;6 PM</span>
+            </li>
+          </ul>
+          <a class="btn btn-primary" href="#contact">Work With Tony's Team</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIALS ─────────────────────────────────────────────── -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="testimonials-header">
+        <span class="section-label reveal">Customer Reviews</span>
+        <h2 class="section-title reveal delay-1">What Our Neighbors Are Saying</h2>
+        <p class="section-sub reveal delay-2">Don't take our word for it &mdash; here's what homeowners across Central Georgia have to say about their experience.</p>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card reveal delay-1">
+          <span class="testi-source">HomeAdvisor</span>
+          <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testi-quote">"Tony and his crew did an outstanding job on our yard. They showed up on time, did exactly what was asked, and the lawn looked absolutely amazing when they were done. We've finally found our go-to lawn service!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar">MJ</div>
+            <div>
+              <div class="testi-name">Marcus J.</div>
+              <div class="testi-loc">Warner Robins, GA</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal delay-2">
+          <span class="testi-source">Facebook</span>
+          <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testi-quote">"I hired A&amp;T for mulch installation and a full clean-up before selling my house. The yard looked better than it ever had. Professional, affordable, and fast. Highly recommend to anyone in the area!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar">SR</div>
+            <div>
+              <div class="testi-name">Sheila R.</div>
+              <div class="testi-loc">Centerville, GA</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal delay-3">
+          <span class="testi-source">Nextdoor</span>
+          <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testi-quote">"I've used a lot of lawn services over the years and A&amp;T is hands down the best in Warner Robins. Consistent, detail-oriented, and Tony always makes sure the job is right. My yard has never looked better."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">DW</div>
+            <div>
+              <div class="testi-name">David W.</div>
+              <div class="testi-loc">Bonaire, GA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SERVICE AREA ──────────────────────────────────────────────── -->
+  <section id="service-area">
+    <div class="container">
+      <div class="area-grid">
+        <div class="reveal-left">
+          <span class="section-label">Where We Work</span>
+          <h2 class="section-title">Proudly Serving Central Georgia</h2>
+          <p class="section-sub">Based in Warner Robins, we serve homeowners and businesses across the greater Central Georgia region. Not sure if we reach your neighborhood? Give Tony a call!</p>
+          <div class="area-cities">
+            <span class="city-chip primary">Warner Robins</span>
+            <span class="city-chip">Macon</span>
+            <span class="city-chip">Centerville</span>
+            <span class="city-chip">Kathleen</span>
+            <span class="city-chip">Byron</span>
+            <span class="city-chip">Bonaire</span>
+            <span class="city-chip">Perry</span>
+          </div>
+          <a class="btn btn-primary" href="tel:4783343486">Check Your Address &rarr;</a>
+        </div>
+        <div class="area-map-placeholder reveal-right">
+          <span class="map-icon">&#128205;</span>
+          <p>602 Cornelia Dr<br>Warner Robins, GA 31088</p>
+          <a class="btn btn-primary" href="https://maps.google.com/?q=602+Cornelia+Dr+Warner+Robins+GA+31088" target="_blank" rel="noopener">View on Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHY CHOOSE US ─────────────────────────────────────────────── -->
+  <section id="why">
+    <div class="container">
+      <span class="section-label reveal">Why A&amp;T</span>
+      <h2 class="section-title reveal delay-1">The A&amp;T Difference</h2>
+      <p class="section-sub reveal delay-2">We're not just cutting grass &mdash; we're building relationships one yard at a time. Here's what sets us apart from the competition.</p>
+      <div class="why-grid">
+        <div class="why-card reveal delay-1">
+          <div class="why-icon">&#127942;</div>
+          <h3>Top-Ranked Local Provider</h3>
+          <p>Officially recognized as a Top 5 lawn care provider in Warner Robins, GA for 2025 with a 4.8-star HomeAdvisor rating.</p>
+        </div>
+        <div class="why-card reveal delay-2">
+          <div class="why-icon">&#128198;</div>
+          <h3>Dependable Scheduling</h3>
+          <p>We show up when we say we will. Book online through Yardbook or call Tony directly for flexible scheduling that works for you.</p>
+        </div>
+        <div class="why-card reveal delay-3">
+          <div class="why-icon">&#128176;</div>
+          <h3>Fair, Transparent Pricing</h3>
+          <p>No hidden fees or surprise charges. Every job starts with a free estimate so you know exactly what to expect.</p>
+        </div>
+        <div class="why-card reveal delay-4">
+          <div class="why-icon">&#127968;</div>
+          <h3>Family Values, Local Roots</h3>
+          <p>As a family-owned Warner Robins business, we take personal pride in every property we service in our community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ───────────────────────────────────────────────────── -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-form-wrap reveal-left">
+          <h3>Request a Free Estimate</h3>
+          <p class="sub">Fill out the form and Tony will get back to you promptly &mdash; usually same day!</p>
+          <form onsubmit="return false;">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" placeholder="John" />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" placeholder="Smith" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="(478) 555-0100" />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="john@email.com" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="service">Service Needed</label>
+              <select id="service">
+                <option value="">Select a service...</option>
+                <option>Lawn Mowing</option>
+                <option>Edging &amp; Weed-Eating</option>
+                <option>Mulch / Pine Straw Installation</option>
+                <option>Leaf Removal &amp; Cleanup</option>
+                <option>Shrub Trimming</option>
+                <option>Full Yard Maintenance</option>
+                <option>Other / Multiple Services</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Tell Us About Your Property</label>
+              <textarea id="message" placeholder="Approximate yard size, address, any special needs..."></textarea>
+            </div>
+            <div class="form-submit">
+              <a class="btn btn-primary" href="https://www.yardbook.com/hp/104912" target="_blank" rel="noopener">
+                &#128640; Book Online via Yardbook
+              </a>
+            </div>
+          </form>
+        </div>
+        <div class="contact-info reveal-right">
+          <span class="section-label">Get In Touch</span>
+          <h2 class="section-title">Let's Talk About Your Yard</h2>
+          <p class="section-sub">Ready for a cleaner, greener lawn? Reach out to Tony's team today. We offer free estimates and same-day callbacks.</p>
+          <div class="info-cards">
+            <div class="info-card">
+              <div class="ic-icon">&#128222;</div>
+              <div>
+                <h4>Call or Text Tony</h4>
+                <a href="tel:4783343486">(478) 334-3486</a>
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="ic-icon">&#128140;</div>
+              <div>
+                <h4>Email Us</h4>
+                <a href="mailto:atlawncareservice19@gmail.com">atlawncareservice19@gmail.com</a>
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="ic-icon">&#128205;</div>
+              <div>
+                <h4>Our Location</h4>
+                <p>602 Cornelia Dr, Warner Robins, GA 31088</p>
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="ic-icon">&#128336;</div>
+              <div>
+                <h4>Business Hours</h4>
+                <p>Mon&ndash;Sat: 8:00 AM &ndash; 6:00 PM<br>Sunday: Closed</p>
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="ic-icon">&#128197;</div>
+              <div>
+                <h4>Online Booking</h4>
+                <a href="https://www.yardbook.com/hp/104912" target="_blank" rel="noopener">yardbook.com/hp/104912</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────────────── -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <span class="logo-name">A&amp;T Lawncare Service</span>
+            <span class="logo-tagline">LLC &mdash; Warner Robins, GA</span>
+          </div>
+          <p>Family-owned and operated for 20+ years. Serving Warner Robins and Central Georgia with professional lawn care you can count on.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Lawn Mowing</a></li>
+            <li><a href="#services">Edging &amp; Weed-Eating</a></li>
+            <li><a href="#services">Mulch &amp; Pine Straw</a></li>
+            <li><a href="#services">Leaf Removal</a></li>
+            <li><a href="#services">Shrub Trimming</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#service-area">Service Area</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#contact">Free Estimate</a></li>
+            <li><a href="https://www.facebook.com/ATlawncaresevice/" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://www.yardbook.com/hp/104912" target="_blank" rel="noopener">Book Online</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 A&amp;T Lawncare Service LLC. All rights reserved.</span>
+        <span>Warner Robins, GA &bull; <a href="tel:4783343486">(478) 334-3486</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── SCRIPTS ───────────────────────────────────────────────────── -->
+  <script>
+    // Hamburger toggle
+    const hamburger = document.getElementById('hamburger');
+    const navDrawer = document.getElementById('navDrawer');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navDrawer.classList.toggle('open');
+    });
+    function closeDrawer() {
+      hamburger.classList.remove('open');
+      navDrawer.classList.remove('open');
+    }
+
+    // Scroll reveal via IntersectionObserver
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

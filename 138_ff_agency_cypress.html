@@ -1,0 +1,3132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>F&amp;F Agency of Cypress | Allstate Insurance | Favorite Felder</title>
+  <meta name="description" content="Hope Favorite Felder is your local Allstate insurance agent in Cypress, TX. Auto, home, life, renters, and business insurance since 2007. Call (281) 256-0818." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ===========================
+       RESET & BASE
+    =========================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --blue:       #003DA5;
+      --blue-dark:  #002d7a;
+      --blue-light: #EEF3FB;
+      --blue-mid:   #1a56c4;
+      --blue-vivid: #2563eb;
+      --white:      #FFFFFF;
+      --charcoal:   #1A1A2E;
+      --gray-light: #f5f7fa;
+      --gray-mid:   #e8ecf2;
+      --gray-text:  #5a6272;
+      --gold:       #f0a500;
+      --gold-light: #fbbf24;
+      --green:      #15803d;
+      --font-body:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-head:  'Playfair Display', Georgia, 'Times New Roman', serif;
+      --radius:     12px;
+      --radius-lg:  20px;
+      --shadow:     0 4px 24px rgba(0, 61, 165, 0.10);
+      --shadow-sm:  0 2px 10px rgba(0, 0, 0, 0.06);
+      --shadow-lg:  0 20px 60px rgba(0, 61, 165, 0.15);
+      --shadow-glow: 0 0 40px rgba(0, 61, 165, 0.2);
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--charcoal);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* ===========================
+       DOT PATTERN OVERLAY
+    =========================== */
+    .dot-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(0,61,165,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ===========================
+       SCROLL REVEAL
+    =========================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+    .reveal-delay-6 { transition-delay: 0.6s; }
+
+    /* ===========================
+       TYPOGRAPHY UTILITIES
+    =========================== */
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.75rem;
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .section-label::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1.25rem;
+      height: 2px;
+      background: var(--blue);
+      border-radius: 2px;
+    }
+
+    .section-label.light {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .section-label.light::before {
+      background: rgba(255,255,255,0.4);
+    }
+
+    .section-label.center {
+      padding-left: 0;
+    }
+
+    .section-label.center::before {
+      display: none;
+    }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.85rem, 3.8vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--gray-text);
+      max-width: 600px;
+      line-height: 1.75;
+    }
+
+    .section-title.light { color: var(--white); }
+    .section-subtitle.light { color: rgba(255,255,255,0.8); }
+
+    /* ===========================
+       BUTTONS
+    =========================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.85rem;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      border: 2px solid transparent;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0) 100%);
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+    }
+
+    .btn:hover::after {
+      transform: translateX(100%);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-vivid) 100%);
+      color: var(--white);
+      border-color: var(--blue);
+      box-shadow: 0 4px 15px rgba(0, 61, 165, 0.25);
+    }
+
+    .btn-primary:hover {
+      border-color: var(--blue-dark);
+      box-shadow: 0 8px 30px rgba(0, 61, 165, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: var(--white);
+      border-color: rgba(255,255,255,0.5);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.2);
+      border-color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-blue {
+      background: transparent;
+      color: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .btn-outline-blue:hover {
+      background: var(--blue);
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 61, 165, 0.3);
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--blue);
+      border-color: var(--white);
+      font-weight: 700;
+    }
+
+    .btn-white:hover {
+      background: var(--blue-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255,255,255,0.3);
+    }
+
+    /* ===========================
+       LAYOUT UTILITIES
+    =========================== */
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section {
+      padding: 6rem 0;
+      position: relative;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.75rem;
+    }
+
+    /* ===========================
+       GLASS CARD
+    =========================== */
+    .glass-card {
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .glass-card-dark {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-lg);
+    }
+
+    /* ===========================
+       NAVBAR
+    =========================== */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      transition: all var(--transition);
+    }
+
+    #navbar.scrolled {
+      box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-brand-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-vivid));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .nav-brand-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--white);
+    }
+
+    .nav-brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .nav-brand-text .brand-main {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+    }
+
+    .nav-brand-text .brand-sub {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--blue);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--gray-text);
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--blue);
+      border-radius: 2px;
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-phone {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color var(--transition);
+    }
+
+    .nav-phone svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--blue);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .nav-phone:hover { color: var(--blue-dark); }
+    .nav-phone:hover svg { stroke: var(--blue-dark); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+      z-index: 1001;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2.5px;
+      background: var(--charcoal);
+      border-radius: 3px;
+      transition: all var(--transition);
+      transform-origin: center;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7.5px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7.5px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: rgba(255,255,255,0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--gray-mid);
+      z-index: 998;
+      flex-direction: column;
+      gap: 0.25rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      transform: translateY(-10px);
+      opacity: 0;
+      transition: all var(--transition);
+    }
+
+    .mobile-menu.open {
+      display: flex;
+      transform: translateY(0);
+      opacity: 1;
+      animation: slideDown 0.3s ease forwards;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-10px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .mobile-menu a {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      padding: 0.85rem 1rem;
+      border-radius: 10px;
+      transition: background var(--transition);
+    }
+
+    .mobile-menu a:hover {
+      background: var(--blue-light);
+    }
+
+    .mobile-menu a:last-child {
+      color: var(--white);
+      background: linear-gradient(135deg, var(--blue), var(--blue-vivid));
+      font-weight: 700;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    /* ===========================
+       STICKY MOBILE CTA
+    =========================== */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 997;
+      padding: 0.75rem 1rem;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid var(--gray-mid);
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+    }
+
+    .sticky-cta-inner {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .sticky-cta .btn {
+      flex: 1;
+      justify-content: center;
+      padding: 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    .sticky-cta .btn-call {
+      background: var(--green);
+      color: var(--white);
+      border-color: var(--green);
+    }
+
+    /* ===========================
+       HERO
+    =========================== */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding-top: 72px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&auto=format&fit=crop&q=80');
+      background-size: cover;
+      background-position: center 30%;
+      z-index: 0;
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroZoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,20,60,0.88) 0%, rgba(0,61,165,0.7) 50%, rgba(26,86,196,0.5) 100%);
+      z-index: 1;
+    }
+
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(255,255,255,0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.04) 0%, transparent 40%),
+        radial-gradient(circle at 60% 80%, rgba(255,255,255,0.02) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      padding: 3rem 0;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(8px);
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.1rem;
+      border-radius: 30px;
+      margin-bottom: 1.75rem;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .hero-eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      background: #4ade80;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.3); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.8s ease 0.15s both;
+    }
+
+    .hero-title .highlight {
+      background: linear-gradient(135deg, #7eb3ff, #93c5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 580px;
+      animation: fadeInUp 0.8s ease 0.3s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+      animation: fadeInUp 0.8s ease 0.45s both;
+    }
+
+    /* Hero stats counter */
+    .hero-stats {
+      display: flex;
+      gap: 1px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 16px;
+      overflow: hidden;
+      animation: fadeInUp 0.8s ease 0.6s both;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .hero-stat {
+      flex: 1;
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(8px);
+      min-width: 140px;
+    }
+
+    .hero-stat:not(:last-child) {
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hero-stat-num {
+      font-family: var(--font-head);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-stat-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ===========================
+       TRUST BAR
+    =========================== */
+    #trust-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-mid);
+      padding: 1.5rem 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    .trust-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .trust-item-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .trust-item-icon.blue { background: var(--blue-light); }
+    .trust-item-icon.gold { background: #fef3c7; }
+    .trust-item-icon.green { background: #dcfce7; }
+
+    .trust-item-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .trust-item-text {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.35;
+    }
+
+    .trust-item-text span {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--gray-text);
+    }
+
+    /* ===========================
+       ABOUT SECTION
+    =========================== */
+    #about {
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    .about-image-wrap {
+      position: relative;
+    }
+
+    .about-image-wrap img {
+      width: 100%;
+      height: 540px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -1.25rem;
+      right: -1.25rem;
+      background: linear-gradient(135deg, var(--blue), var(--blue-vivid));
+      color: var(--white);
+      padding: 1.5rem 1.75rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+      min-width: 160px;
+    }
+
+    .about-badge .badge-num {
+      font-family: var(--font-head);
+      font-size: 2.6rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .about-badge .badge-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      opacity: 0.9;
+      margin-top: 0.3rem;
+      line-height: 1.35;
+    }
+
+    .about-accent-shape {
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--blue-light);
+      z-index: -1;
+    }
+
+    .about-content {
+      padding-left: 1rem;
+    }
+
+    .about-quote {
+      margin: 1.75rem 0;
+      padding: 1.5rem 1.75rem;
+      border-left: 4px solid var(--blue);
+      background: linear-gradient(135deg, var(--blue-light) 0%, rgba(238,243,251,0.5) 100%);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    .about-quote p {
+      font-style: italic;
+      font-size: 1.02rem;
+      color: var(--charcoal);
+      line-height: 1.7;
+    }
+
+    .about-quote cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--blue);
+      font-style: normal;
+    }
+
+    .awards-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin: 1.5rem 0;
+    }
+
+    .award-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--gray-text);
+      padding: 0.4rem 0;
+    }
+
+    .award-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: var(--blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .award-icon svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--blue);
+    }
+
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .tag {
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      transition: all var(--transition);
+    }
+
+    .tag:hover {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    /* ===========================
+       SERVICES SECTION
+    =========================== */
+    #services {
+      background: linear-gradient(180deg, var(--gray-light) 0%, #eef1f6 100%);
+      position: relative;
+    }
+
+    .services-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .services-header .section-label {
+      padding-left: 0;
+    }
+
+    .services-header .section-label::before {
+      display: none;
+    }
+
+    .services-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 2rem;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition);
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid transparent;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--blue), var(--blue-vivid));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+
+    .service-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-6px);
+      border-color: rgba(0, 61, 165, 0.08);
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--blue-light), rgba(238,243,251,0.5));
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      transition: all var(--transition);
+    }
+
+    .service-card:hover .service-icon {
+      background: linear-gradient(135deg, var(--blue), var(--blue-vivid));
+    }
+
+    .service-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--blue);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke var(--transition);
+    }
+
+    .service-card:hover .service-icon svg {
+      stroke: var(--white);
+    }
+
+    .service-card h3 {
+      font-family: var(--font-head);
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.6rem;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--gray-text);
+      line-height: 1.7;
+    }
+
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin-top: 1.15rem;
+      transition: all var(--transition);
+    }
+
+    .service-link:hover {
+      gap: 0.7rem;
+      color: var(--blue-dark);
+    }
+
+    .services-cta-note {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.95rem;
+      color: var(--gray-text);
+    }
+
+    .services-cta-note a {
+      color: var(--blue);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ===========================
+       WHY CHOOSE US SECTION
+    =========================== */
+    #why {
+      background: linear-gradient(135deg, #001a4d 0%, var(--blue) 50%, var(--blue-mid) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-bg-shapes {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .why-bg-shapes::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .why-bg-shapes::after {
+      content: '';
+      position: absolute;
+      bottom: -150px;
+      left: -80px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.025);
+    }
+
+    .why-grid-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 30px 30px;
+      pointer-events: none;
+    }
+
+    .why-header {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 3.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .why-header .section-label {
+      padding-left: 0;
+    }
+
+    .why-header .section-label::before { display: none; }
+
+    .differentiator-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .diff-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .diff-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .diff-card:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .diff-card:hover::after {
+      opacity: 1;
+    }
+
+    .diff-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.1rem;
+      transition: all var(--transition);
+    }
+
+    .diff-card:hover .diff-icon {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .diff-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--white);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .diff-card h3 {
+      font-family: var(--font-head);
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .diff-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tagline-strip {
+      text-align: center;
+      margin-top: 4rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      position: relative;
+      z-index: 2;
+    }
+
+    .tagline-strip p {
+      font-family: var(--font-head);
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ===========================
+       REVIEWS SECTION
+    =========================== */
+    #reviews {
+      background: var(--white);
+      position: relative;
+    }
+
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .reviews-header .section-label {
+      padding-left: 0;
+    }
+
+    .reviews-header .section-label::before { display: none; }
+
+    .rating-summary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem 0 3.5rem;
+      flex-wrap: wrap;
+    }
+
+    .rating-stars {
+      display: flex;
+      gap: 3px;
+    }
+
+    .star {
+      width: 24px;
+      height: 24px;
+      fill: var(--gold);
+      filter: drop-shadow(0 2px 4px rgba(240,165,0,0.3));
+    }
+
+    .rating-text {
+      font-size: 0.95rem;
+      color: var(--gray-text);
+      font-weight: 500;
+    }
+
+    .rating-text strong {
+      color: var(--charcoal);
+    }
+
+    .review-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      border: 1px solid var(--gray-mid);
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .review-card::before {
+      content: '\201C';
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-family: var(--font-head);
+      font-size: 4rem;
+      color: var(--blue-light);
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .review-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+      border-color: rgba(0, 61, 165, 0.1);
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 2px;
+    }
+
+    .review-star {
+      width: 16px;
+      height: 16px;
+      fill: var(--gold);
+    }
+
+    .review-text {
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      line-height: 1.75;
+      font-style: italic;
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--gray-mid);
+    }
+
+    .review-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--blue-vivid));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--white);
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .review-name {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--charcoal);
+    }
+
+    .review-platform {
+      font-size: 0.78rem;
+      color: var(--gray-text);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .verified-badge {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .reviews-cta {
+      text-align: center;
+      margin-top: 3.5rem;
+    }
+
+    .reviews-cta p {
+      font-size: 1.05rem;
+      color: var(--gray-text);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ===========================
+       STATS BANNER
+    =========================== */
+    #stats-banner {
+      background: linear-gradient(135deg, var(--charcoal) 0%, #111827 100%);
+      padding: 4rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #stats-banner .dot-pattern {
+      background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .stat-number {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-number .counter-suffix {
+      font-size: 0.65em;
+      color: var(--gold-light);
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ===========================
+       QUOTE FORM SECTION
+    =========================== */
+    #quote {
+      background: linear-gradient(180deg, var(--blue-light) 0%, #dce6f5 100%);
+      position: relative;
+    }
+
+    .quote-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .quote-left h2 {
+      margin-bottom: 1rem;
+    }
+
+    .quote-left .section-subtitle {
+      margin-bottom: 2rem;
+    }
+
+    .contact-info-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,61,165,0.06);
+    }
+
+    .contact-info-card h3 {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--gray-mid);
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-row:last-child { margin-bottom: 0; }
+
+    .contact-row-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .contact-row-icon svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--blue);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .contact-row-text {
+      font-size: 0.88rem;
+      color: var(--gray-text);
+      line-height: 1.6;
+    }
+
+    .contact-row-text strong {
+      display: block;
+      color: var(--charcoal);
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .contact-row-text a {
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    .quote-form {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2.75rem;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(0,61,165,0.06);
+      position: relative;
+    }
+
+    .quote-form-badge {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      background: linear-gradient(135deg, var(--gold), #d97706);
+      color: var(--white);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.35rem 1rem;
+      border-radius: 20px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 12px rgba(240,165,0,0.3);
+    }
+
+    .quote-form h3 {
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.4rem;
+    }
+
+    .quote-form .form-subtitle {
+      font-size: 0.88rem;
+      color: var(--gray-text);
+      margin-bottom: 1.75rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.45rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1.5px solid var(--gray-mid);
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      background: var(--white);
+      transition: all var(--transition);
+      outline: none;
+      appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(0, 61, 165, 0.08);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-submit-btn {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--blue), var(--blue-vivid));
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all var(--transition);
+      margin-top: 0.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-submit-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0) 100%);
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+    }
+
+    .form-submit-btn:hover::after {
+      transform: translateX(100%);
+    }
+
+    .form-submit-btn:hover {
+      box-shadow: 0 8px 30px rgba(0, 61, 165, 0.35);
+      transform: translateY(-2px);
+    }
+
+    .form-privacy {
+      font-size: 0.78rem;
+      color: var(--gray-text);
+      text-align: center;
+      margin-top: 1rem;
+      line-height: 1.5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    .form-privacy svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--green);
+      fill: none;
+      stroke-width: 2;
+      flex-shrink: 0;
+    }
+
+    /* ===========================
+       CONTACT / MAP SECTION
+    =========================== */
+    #contact {
+      background: var(--gray-light);
+      position: relative;
+    }
+
+    .contact-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .contact-header .section-label {
+      padding-left: 0;
+    }
+
+    .contact-header .section-label::before { display: none; }
+
+    .contact-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .contact-details-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .contact-detail-block {
+      padding: 1.5rem;
+      background: var(--white);
+      border-radius: var(--radius);
+      border-left: 4px solid var(--blue);
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition);
+    }
+
+    .contact-detail-block:hover {
+      box-shadow: var(--shadow);
+      transform: translateX(4px);
+    }
+
+    .contact-detail-block h4 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-detail-block p,
+    .contact-detail-block a {
+      font-size: 0.92rem;
+      color: var(--charcoal);
+      line-height: 1.65;
+    }
+
+    .contact-detail-block a {
+      color: var(--blue);
+      font-weight: 600;
+      transition: color var(--transition);
+    }
+
+    .contact-detail-block a:hover {
+      color: var(--blue-dark);
+    }
+
+    .service-area-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .area-chip {
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.3rem 0.75rem;
+      border-radius: 30px;
+      transition: all var(--transition);
+    }
+
+    .area-chip:hover {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    .map-container {
+      width: 100%;
+      height: 100%;
+      min-height: 440px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 3px solid var(--white);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 440px;
+      border: none;
+    }
+
+    /* ===========================
+       FOOTER
+    =========================== */
+    #footer {
+      background: linear-gradient(180deg, #0a1628 0%, #0d1b3e 100%);
+      color: rgba(255,255,255,0.75);
+      padding: 4rem 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-accent {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--blue), var(--blue-vivid), var(--gold));
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand .brand-name {
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-brand .brand-allstate {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #7eb3ff;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      max-width: 300px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .social-link:hover {
+      background: var(--blue-vivid);
+      transform: translateY(-2px);
+    }
+
+    .social-link svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--white);
+    }
+
+    .footer-col h4 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col ul {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .footer-col ul li a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      transition: all var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--white);
+      transform: translateX(3px);
+    }
+
+    .footer-hours {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .footer-hours-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .footer-hours-row .day {
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 1.5rem 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.6;
+    }
+
+    /* ===========================
+       RESPONSIVE
+    =========================== */
+    @media (max-width: 1024px) {
+      .grid-4, .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .quote-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-stats {
+        flex-wrap: wrap;
+      }
+
+      .hero-stat {
+        min-width: 120px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        padding: 4rem 0;
+      }
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .sticky-cta {
+        display: block;
+      }
+
+      body {
+        padding-bottom: 70px;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .grid-3, .grid-4, .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .differentiator-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-title {
+        font-size: clamp(2rem, 7vw, 2.8rem);
+      }
+
+      .hero-stats {
+        flex-direction: column;
+        border-radius: 12px;
+      }
+
+      .hero-stat {
+        border-right: none !important;
+        padding: 1rem;
+      }
+
+      .hero-stat:not(:last-child) {
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-actions .btn {
+        justify-content: center;
+      }
+
+      .about-image-wrap img {
+        height: 320px;
+      }
+
+      .about-badge {
+        bottom: -1rem;
+        right: auto;
+        left: 1rem;
+        padding: 1rem 1.25rem;
+        min-width: 130px;
+      }
+
+      .about-content {
+        padding-left: 0;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-bar-inner {
+        gap: 1.5rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .stat-card {
+        padding: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .trust-bar-inner {
+        gap: 1rem;
+        justify-content: flex-start;
+      }
+
+      .trust-item-text {
+        font-size: 0.78rem;
+      }
+
+      .hero-stat-num {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===========================
+       NAVBAR
+  =========================== -->
+  <header id="navbar">
+    <div class="container">
+      <nav class="nav-inner">
+        <a href="#hero" class="nav-brand">
+          <div class="nav-brand-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+          </div>
+          <div class="nav-brand-text">
+            <span class="brand-main">F&amp;F Agency of Cypress</span>
+            <span class="brand-sub">Allstate Insurance Agent</span>
+          </div>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-cta">
+          <a href="tel:2812560818" class="nav-phone">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            (281) 256-0818
+          </a>
+          <a href="#quote" class="btn btn-primary" style="padding: 0.6rem 1.25rem; font-size: 0.85rem;">Get a Free Quote</a>
+        </div>
+
+        <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </div>
+
+    <nav class="mobile-menu" id="mobileMenu">
+      <a href="#about" onclick="closeMenu()">About Favorite</a>
+      <a href="#services" onclick="closeMenu()">Services</a>
+      <a href="#why" onclick="closeMenu()">Why Choose Us</a>
+      <a href="#reviews" onclick="closeMenu()">Reviews</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
+      <a href="tel:2812560818" onclick="closeMenu()">Call (281) 256-0818</a>
+    </nav>
+  </header>
+
+
+  <!-- ===========================
+       HERO
+  =========================== -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-particles"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-dot"></span>
+          Allstate Exclusive Agent &mdash; Cypress, Texas
+        </div>
+        <h1 class="hero-title">
+          Protecting What Matters Most<br />
+          <span class="highlight">in Cypress, Texas.</span>
+        </h1>
+        <p class="hero-subtitle">
+          Favorite Felder has been your neighbor and your Allstate agent since 2007.
+          Get real coverage, personal attention, and someone who picks up the phone
+          &mdash; even on a Sunday.
+        </p>
+        <div class="hero-actions">
+          <a href="#quote" class="btn btn-primary">Get a Free Quote</a>
+          <a href="tel:2812560818" class="btn btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Call (281) 256-0818
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num"><span class="counter" data-target="18">0</span><span class="counter-suffix">+</span></div>
+            <div class="hero-stat-label">Years in Cypress</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num"><span class="counter" data-target="500">0</span><span class="counter-suffix">+</span></div>
+            <div class="hero-stat-label">Families Protected</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num"><span class="counter" data-target="210">0</span><span class="counter-suffix">+</span></div>
+            <div class="hero-stat-label">5-Star Reviews</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">4.49<span class="counter-suffix">/5</span></div>
+            <div class="hero-stat-label">Allstate Rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===========================
+       TRUST BAR
+  =========================== -->
+  <div id="trust-bar">
+    <div class="container">
+      <div class="trust-bar-inner">
+        <div class="trust-item">
+          <div class="trust-item-icon blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#003DA5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+          </div>
+          <div class="trust-item-text">
+            Allstate Exclusive Agent
+            <span>Premier Agency Designation</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-item-icon gold">
+            <svg viewBox="0 0 24 24" fill="#f0a500" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="trust-item-text">
+            4.49 / 5 Stars
+            <span>210+ Verified Reviews</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-item-icon green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+          </div>
+          <div class="trust-item-text">
+            Serving Since 2007
+            <span>18+ Years in Cypress, TX</span>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-item-icon blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#003DA5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div class="trust-item-text">
+            Bilingual Service
+            <span>English &amp; Spanish</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===========================
+       ABOUT FAVORITE
+  =========================== -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="grid-2">
+
+        <div class="about-image-wrap reveal">
+          <div class="about-accent-shape"></div>
+          <img
+            src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&auto=format&fit=crop&q=80"
+            alt="A professional woman smiling in an office setting"
+            loading="lazy"
+          />
+          <div class="about-badge">
+            <div class="badge-num">18<span style="font-size:0.6em;">+</span></div>
+            <div class="badge-label">Years Serving<br />Cypress Families</div>
+          </div>
+        </div>
+
+        <div class="about-content reveal reveal-delay-2">
+          <span class="section-label">About Your Agent</span>
+          <h2 class="section-title">Hi, I'm Favorite.</h2>
+          <p style="color: var(--gray-text); font-size: 0.97rem; line-height: 1.8; margin-bottom: 1rem;">
+            I became an Allstate agent in 2007 for one reason: to help my community. After nearly two decades
+            of protecting families right here in Cypress, that reason hasn't changed. When you call
+            F&amp;F Agency, you get me &mdash; someone who knows this neighborhood, knows the risks that come
+            with living in northwest Houston, and takes the time to make sure you understand exactly what
+            you're covered for.
+          </p>
+          <p style="color: var(--gray-text); font-size: 0.97rem; line-height: 1.8; margin-bottom: 1.25rem;">
+            My team and I are bilingual in English and Spanish, and we're proud to serve the diverse
+            families who make Cypress one of the fastest-growing communities in the country. Whether
+            you're a longtime Towne Lake homeowner or just moving into Bridgeland, we're here for you.
+          </p>
+
+          <div class="about-quote">
+            <p>"I have been an Allstate agent since 2007 and I became an insurance agent in order to help
+            my community. I want to help customers understand the protection their family needs."</p>
+            <cite>&mdash; Hope Favorite Felder, F&amp;F Agency of Cypress</cite>
+          </div>
+
+          <div class="awards-list">
+            <div class="award-item">
+              <div class="award-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+              Agency Achievement Award &mdash; 2 years
+            </div>
+            <div class="award-item">
+              <div class="award-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+              Allstate Honor Ring
+            </div>
+            <div class="award-item">
+              <div class="award-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+              Allstate Financial Leader Award
+            </div>
+            <div class="award-item">
+              <div class="award-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+              Chairman's Conference &amp; National Conference
+            </div>
+            <div class="award-item">
+              <div class="award-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+              Premier Agency Designation
+            </div>
+          </div>
+
+          <div class="about-tags">
+            <span class="tag">Allstate Agent Since 2007</span>
+            <span class="tag">English &amp; Spanish</span>
+            <span class="tag">Cypress, TX Local</span>
+            <span class="tag">Family-Oriented</span>
+          </div>
+
+          <div style="margin-top: 2rem;">
+            <a href="tel:2812560818" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              Call Favorite &mdash; (281) 256-0818
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===========================
+       SERVICES
+  =========================== -->
+  <section id="services" class="section">
+    <div class="dot-pattern"></div>
+    <div class="container" style="position:relative; z-index:1;">
+      <div class="services-header reveal">
+        <span class="section-label center">What We Cover</span>
+        <h2 class="section-title">Coverage for Every Part of Your Life</h2>
+        <p class="section-subtitle">
+          Whether you're buying a home in Bridgeland, insuring your first car, or protecting
+          a small business on Barker Cypress &mdash; Favorite's team has you covered.
+        </p>
+      </div>
+
+      <div class="grid-3">
+
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9L18 10l-3-5H7L4 10l-2.5 1.1C.7 11.3 0 12.1 0 13v3c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+          </div>
+          <h3>Auto Insurance</h3>
+          <p>
+            From fender benders on US-290 to hail damage during storm season, Favorite's
+            auto coverage keeps you moving. Get the right policy for your car, truck, or SUV.
+          </p>
+          <a href="#quote" class="service-link">Get a quote &rarr;</a>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+          </div>
+          <h3>Home Insurance</h3>
+          <p>
+            Your home is your biggest investment. Protect it with the right coverage for
+            structural damage, personal property, and liability &mdash; tailored to Cypress, TX.
+          </p>
+          <a href="#quote" class="service-link">Get a quote &rarr;</a>
+        </div>
+
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <h3>Life Insurance</h3>
+          <p>
+            Give your family the financial security they deserve. Favorite will walk you through
+            term and permanent life options so you can make the right choice without the jargon.
+          </p>
+          <a href="#quote" class="service-link">Get a quote &rarr;</a>
+        </div>
+
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+          </div>
+          <h3>Renters Insurance</h3>
+          <p>
+            Renting in Cypress? Your landlord's policy doesn't cover your belongings.
+            Renters insurance is affordable, and Favorite can get you set up quickly.
+          </p>
+          <a href="#quote" class="service-link">Get a quote &rarr;</a>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+          </div>
+          <h3>Business Insurance</h3>
+          <p>
+            Protecting a small business in the Cypress area? Commercial coverage from Allstate
+            helps shield your livelihood against liability, property loss, and more.
+          </p>
+          <a href="#quote" class="service-link">Get a quote &rarr;</a>
+        </div>
+
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <h3>More Coverage</h3>
+          <p>
+            Condo, motorcycle, boat, ATV, and more. If you have something worth protecting,
+            Favorite's agency has a policy for it. Just call and ask.
+          </p>
+          <a href="#quote" class="service-link">Explore options &rarr;</a>
+        </div>
+
+      </div>
+
+      <p class="services-cta-note reveal" style="margin-top:2.5rem;">
+        Not sure what you need?
+        <a href="tel:2812560818">Call Favorite at (281) 256-0818</a> and she'll walk you through it.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ===========================
+       STATS BANNER
+  =========================== -->
+  <section id="stats-banner">
+    <div class="dot-pattern"></div>
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card reveal reveal-delay-1">
+          <div class="stat-number"><span class="counter" data-target="18">0</span><span class="counter-suffix">+</span></div>
+          <div class="stat-label">Years of Service</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-2">
+          <div class="stat-number"><span class="counter" data-target="500">0</span><span class="counter-suffix">+</span></div>
+          <div class="stat-label">Families Protected</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-3">
+          <div class="stat-number"><span class="counter" data-target="5">0</span><span class="counter-suffix"></span></div>
+          <div class="stat-label">Allstate Awards</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-4">
+          <div class="stat-number"><span class="counter" data-target="9">0</span><span class="counter-suffix"></span></div>
+          <div class="stat-label">Cities Served</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===========================
+       WHY CHOOSE F&F
+  =========================== -->
+  <section id="why" class="section">
+    <div class="why-bg-shapes"></div>
+    <div class="why-grid-pattern"></div>
+    <div class="container">
+      <div class="why-header reveal">
+        <span class="section-label light center">Why Cypress Families Choose Us</span>
+        <h2 class="section-title light">More Than a Policy &mdash; A Person You Can Call</h2>
+        <p class="section-subtitle light" style="margin:0 auto;">
+          There are a lot of insurance agents in northwest Houston. Here's why hundreds of
+          Cypress families trust Favorite to protect what matters most.
+        </p>
+      </div>
+
+      <div class="differentiator-grid">
+
+        <div class="diff-card reveal reveal-delay-1">
+          <div class="diff-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <h3>18+ Years in Cypress</h3>
+          <p>
+            Favorite has been an Allstate agent in this community since 2007. She knows the neighborhoods,
+            the schools, the flood zones, and the risks that come with living in northwest Harris County.
+          </p>
+        </div>
+
+        <div class="diff-card reveal reveal-delay-2">
+          <div class="diff-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <h3>Allstate Premier Agency</h3>
+          <p>
+            F&amp;F Agency holds a Premier Agency designation &mdash; one of Allstate's
+            top-tier recognitions &mdash; along with multiple Allstate awards for performance
+            and client service.
+          </p>
+        </div>
+
+        <div class="diff-card reveal reveal-delay-3">
+          <div class="diff-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <h3>Real People, Real Help</h3>
+          <p>
+            One client put it best: "She walked me through an entire claim on a Sunday." Favorite's
+            team is available when you need them &mdash; not just during business hours.
+          </p>
+        </div>
+
+        <div class="diff-card reveal reveal-delay-4">
+          <div class="diff-icon">
+            <svg viewBox="0 0 24 24"><path d="M5 8h14M5 12h14M5 16h6"/><rect x="2" y="3" width="20" height="18" rx="2"/></svg>
+          </div>
+          <h3>Bilingual Service</h3>
+          <p>
+            Favorite's team is fully bilingual in English and Spanish &mdash; an important
+            part of serving Cypress, where nearly half the community speaks Spanish at home.
+            You should understand your coverage in the language you're most comfortable with.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="tagline-strip reveal">
+        <p>"You're in Good Hands with Allstate &mdash; and with Favorite."</p>
+        <a href="#quote" class="btn btn-white">Get Your Free Quote Today</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===========================
+       REVIEWS
+  =========================== -->
+  <section id="reviews" class="section">
+    <div class="container">
+      <div class="reviews-header reveal">
+        <span class="section-label center">Client Reviews</span>
+        <h2 class="section-title">What Our Clients Are Saying</h2>
+      </div>
+
+      <div class="rating-summary reveal">
+        <div class="rating-stars">
+          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="rating-text"><strong>4.49 out of 5 stars</strong> &mdash; 210+ reviews on Allstate.com</p>
+      </div>
+
+      <div class="grid-3">
+
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-stars">
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="review-text">
+            "Great Agent and staff. I had a claim to submit on a Sunday &mdash; Favorite walked me through the
+            entire process on a Sunday. I recommend this office to all my friends, family, and patients."
+          </p>
+          <div class="review-author">
+            <div class="review-avatar">M</div>
+            <div>
+              <div class="review-name">Marcus T.</div>
+              <div class="review-platform"><span class="verified-badge">Verified</span> Allstate Review</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-stars">
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="review-text">
+            "Favorite and her team are incredibly responsive. She explained all my options clearly
+            and helped me find coverage I could actually afford. Moving to Cypress and finding her
+            agency was one of the best things we did for our family."
+          </p>
+          <div class="review-author">
+            <div class="review-avatar">L</div>
+            <div>
+              <div class="review-name">Leticia R.</div>
+              <div class="review-platform"><span class="verified-badge">Verified</span> Allstate Review</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-3">
+          <div class="review-stars">
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="review-text">
+            "I have been with Favorite for years. She has always been professional, knowledgeable,
+            and genuinely cares about her clients. I refer everyone I know in Cypress to her office.
+            You won't find a better agent in the area."
+          </p>
+          <div class="review-author">
+            <div class="review-avatar">D</div>
+            <div>
+              <div class="review-name">David K.</div>
+              <div class="review-platform"><span class="verified-badge">Verified</span> Allstate Review</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-stars">
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="review-text">
+            "Favorite helped us bundle our auto and home insurance and saved us almost $200 a month.
+            She took the time to explain every detail and never made us feel rushed.
+            Truly one of the best agents in Cypress."
+          </p>
+          <div class="review-author">
+            <div class="review-avatar">R</div>
+            <div>
+              <div class="review-name">Rachel &amp; James W.</div>
+              <div class="review-platform"><span class="verified-badge">Verified</span> Allstate Review</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-stars">
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="review-text">
+            "Cuando tuvimos un problema con nuestro seguro, Favorite nos ayudo en espanol y todo fue
+            muy facil. She made us feel comfortable and truly understood our family's needs.
+            Highly recommend!"
+          </p>
+          <div class="review-author">
+            <div class="review-avatar">C</div>
+            <div>
+              <div class="review-name">Carlos M.</div>
+              <div class="review-platform"><span class="verified-badge">Verified</span> Google Review</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-3">
+          <div class="review-stars">
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="review-text">
+            "After Hurricane Harvey, Favorite personally checked in on every client in our neighborhood.
+            She didn't have to do that &mdash; but that's the kind of agent she is. We'll never go
+            anywhere else."
+          </p>
+          <div class="review-author">
+            <div class="review-avatar">T</div>
+            <div>
+              <div class="review-name">Tanya B.</div>
+              <div class="review-platform"><span class="verified-badge">Verified</span> Allstate Review</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="reviews-cta reveal">
+        <p>Join hundreds of Cypress families who trust Favorite to protect what matters most.</p>
+        <a href="#quote" class="btn btn-primary">Get Your Free Quote</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===========================
+       QUOTE FORM
+  =========================== -->
+  <section id="quote" class="section">
+    <div class="dot-pattern" style="opacity:0.5;"></div>
+    <div class="container" style="position:relative; z-index:1;">
+      <div class="quote-inner">
+
+        <div class="quote-left reveal">
+          <span class="section-label">Free Quote</span>
+          <h2 class="section-title">Let's Find the Right Coverage for You</h2>
+          <p class="section-subtitle">
+            No pressure, no jargon &mdash; just a straight answer from someone who knows
+            Cypress and genuinely wants to help your family stay protected.
+          </p>
+
+          <div style="margin-top: 2rem;">
+            <div class="contact-info-card">
+              <h3>Reach Favorite Directly</h3>
+
+              <div class="contact-row">
+                <div class="contact-row-icon">
+                  <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                </div>
+                <div class="contact-row-text">
+                  <strong>Phone</strong>
+                  <a href="tel:2812560818">(281) 256-0818</a>
+                </div>
+              </div>
+
+              <div class="contact-row">
+                <div class="contact-row-icon">
+                  <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div class="contact-row-text">
+                  <strong>Address</strong>
+                  9740 Barker Cypress Rd, Suite 109A<br />Cypress, TX 77433
+                </div>
+              </div>
+
+              <div class="contact-row">
+                <div class="contact-row-icon">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </div>
+                <div class="contact-row-text">
+                  <strong>Office Hours</strong>
+                  Mon&ndash;Thu: 8:30 AM &ndash; 7:00 PM<br />
+                  Fri: 9:00 AM &ndash; 5:00 PM<br />
+                  <span style="font-size: 0.82rem; color: var(--blue); font-weight:600;">After-hours appointments available</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="quote-form reveal reveal-delay-2">
+          <div class="quote-form-badge">No Obligation</div>
+          <h3>Get a Free Quote</h3>
+          <p class="form-subtitle">Fill out the form and Favorite's team will be in touch shortly.</p>
+
+          <form onsubmit="handleSubmit(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="fname" placeholder="Jane" required />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lname" placeholder="Smith" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(281) 555-0100" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" />
+            </div>
+
+            <div class="form-group">
+              <label for="coverage">Type of Coverage</label>
+              <select id="coverage" name="coverage" required>
+                <option value="" disabled selected>Select coverage type...</option>
+                <option value="auto">Auto Insurance</option>
+                <option value="home">Homeowners Insurance</option>
+                <option value="life">Life Insurance</option>
+                <option value="renters">Renters Insurance</option>
+                <option value="business">Business Insurance</option>
+                <option value="condo">Condo Insurance</option>
+                <option value="motorcycle">Motorcycle Insurance</option>
+                <option value="bundle">Bundle (Auto + Home)</option>
+                <option value="other">Other / Not Sure</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Anything else Favorite should know? (optional)</label>
+              <textarea id="message" name="message" placeholder="E.g., I have two cars, a home in Towne Lake, and I'm looking to bundle..."></textarea>
+            </div>
+
+            <button type="submit" class="form-submit-btn">Send My Request to Favorite</button>
+          </form>
+
+          <p class="form-privacy">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Your information stays with Favorite's office &mdash; never sold or shared.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===========================
+       CONTACT / MAP
+  =========================== -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="contact-header reveal">
+        <span class="section-label center">Find Us</span>
+        <h2 class="section-title">Come See Us in Cypress</h2>
+        <p class="section-subtitle" style="margin: 0 auto;">
+          We're located on Barker Cypress Rd, just down the street from the Towne Lake Boardwalk.
+          Stop in, call, or request a quote online &mdash; whatever is most convenient for you.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+
+        <div class="contact-details-panel reveal">
+
+          <div class="contact-detail-block">
+            <h4>Address</h4>
+            <p>
+              9740 Barker Cypress Rd, Suite 109A<br />
+              Cypress, TX 77433<br />
+              <span style="font-size: 0.85rem; color: var(--gray-text);">Near the Towne Lake Boardwalk</span>
+            </p>
+          </div>
+
+          <div class="contact-detail-block">
+            <h4>Phone</h4>
+            <p>
+              <a href="tel:2812560818">(281) 256-0818</a> &mdash; Main<br />
+              <a href="tel:8324217000">(832) 421-7000</a> &mdash; Mobile
+            </p>
+          </div>
+
+          <div class="contact-detail-block">
+            <h4>Office Hours</h4>
+            <p>
+              Monday &ndash; Thursday: 8:30 AM &ndash; 7:00 PM<br />
+              Friday: 9:00 AM &ndash; 5:00 PM<br />
+              Saturday &ndash; Sunday: Closed<br />
+              <span style="font-size: 0.85rem; color: var(--blue); font-weight: 600;">After-hours appointments available</span>
+            </p>
+          </div>
+
+          <div class="contact-detail-block">
+            <h4>Areas Served</h4>
+            <div class="service-area-list">
+              <span class="area-chip">Cypress</span>
+              <span class="area-chip">Houston</span>
+              <span class="area-chip">Katy</span>
+              <span class="area-chip">Tomball</span>
+              <span class="area-chip">Spring</span>
+              <span class="area-chip">Prairie View</span>
+              <span class="area-chip">Richmond</span>
+              <span class="area-chip">Bellville</span>
+              <span class="area-chip">Hockley</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="map-container reveal reveal-delay-2">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.123!2d-95.71000!3d29.96000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640d9b3c5e9b8d1%3A0x1!2s9740+Barker+Cypress+Rd+Suite+109A%2C+Cypress%2C+TX+77433!5e0!3m2!1sen!2sus!4v1"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="F&amp;F Agency of Cypress location map"
+          ></iframe>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===========================
+       FOOTER
+  =========================== -->
+  <footer id="footer">
+    <div class="footer-accent"></div>
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <div class="brand-name">F&amp;F Agency of Cypress</div>
+          <div class="brand-allstate">Allstate Insurance Agent</div>
+          <p>
+            Favorite Felder has been protecting Cypress families with Allstate insurance since 2007.
+            Auto, home, life, renters, and business coverage &mdash; personal service you can count on.
+          </p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/people/Hope-Favorite-Felder-Allstate-Insurance/100089837178632/" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about">About Favorite</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#why">Why F&amp;F Agency</a></li>
+            <li><a href="#reviews">Client Reviews</a></li>
+            <li><a href="#quote">Get a Free Quote</a></li>
+            <li><a href="#contact">Contact &amp; Location</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Coverage</h4>
+          <ul>
+            <li><a href="#services">Auto Insurance</a></li>
+            <li><a href="#services">Home Insurance</a></li>
+            <li><a href="#services">Life Insurance</a></li>
+            <li><a href="#services">Renters Insurance</a></li>
+            <li><a href="#services">Business Insurance</a></li>
+            <li><a href="#services">Condo &amp; More</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Office Hours</h4>
+          <div class="footer-hours">
+            <div class="footer-hours-row"><span class="day">Monday</span><span>8:30 AM - 7:00 PM</span></div>
+            <div class="footer-hours-row"><span class="day">Tuesday</span><span>8:30 AM - 7:00 PM</span></div>
+            <div class="footer-hours-row"><span class="day">Wednesday</span><span>8:30 AM - 7:00 PM</span></div>
+            <div class="footer-hours-row"><span class="day">Thursday</span><span>8:30 AM - 7:00 PM</span></div>
+            <div class="footer-hours-row"><span class="day">Friday</span><span>9:00 AM - 5:00 PM</span></div>
+            <div class="footer-hours-row"><span class="day">Sat - Sun</span><span>Closed</span></div>
+          </div>
+          <div style="margin-top:1.25rem;">
+            <a href="tel:2812560818" style="color:#7eb3ff; font-weight:600; font-size:0.9rem;">(281) 256-0818</a>
+            <p style="font-size:0.8rem; margin-top:0.25rem; color:rgba(255,255,255,0.4);">9740 Barker Cypress Rd, Ste 109A<br/>Cypress, TX 77433</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          &copy; 2025 F&amp;F Agency of Cypress. Hope Favorite Felder is a licensed Allstate Insurance agent in Texas.<br />
+          Allstate and the Allstate logo are registered trademarks of Allstate Insurance Company.
+        </p>
+        <p>
+          "You're in Good Hands with Allstate."
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ===========================
+       STICKY MOBILE CTA
+  =========================== -->
+  <div class="sticky-cta" id="stickyCta">
+    <div class="sticky-cta-inner">
+      <a href="tel:2812560818" class="btn btn-call">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Call Now
+      </a>
+      <a href="#quote" class="btn btn-primary">Get a Free Quote</a>
+    </div>
+  </div>
+
+
+  <!-- ===========================
+       JAVASCRIPT
+  =========================== -->
+  <script>
+    // ---------------------------
+    // Hamburger menu toggle
+    // ---------------------------
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    function toggleMenu() {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    }
+
+    function closeMenu() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+
+    // Close menu on outside click
+    document.addEventListener('click', function(e) {
+      if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+        closeMenu();
+      }
+    });
+
+    // ---------------------------
+    // IntersectionObserver scroll reveal
+    // ---------------------------
+    var revealElements = document.querySelectorAll('.reveal');
+
+    var observer = new IntersectionObserver(
+      function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
+    );
+
+    revealElements.forEach(function(el) {
+      observer.observe(el);
+    });
+
+    // Make hero visible immediately
+    document.querySelectorAll('#hero .reveal').forEach(function(el) {
+      el.classList.add('visible');
+    });
+
+    // ---------------------------
+    // Animated counters
+    // ---------------------------
+    function animateCounters() {
+      var counters = document.querySelectorAll('.counter');
+      counters.forEach(function(counter) {
+        if (counter.dataset.animated) return;
+        var target = parseInt(counter.getAttribute('data-target'));
+        if (isNaN(target)) return;
+
+        var rect = counter.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          counter.dataset.animated = 'true';
+          var duration = 2000;
+          var start = 0;
+          var startTime = null;
+
+          function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var progress = Math.min((timestamp - startTime) / duration, 1);
+            // Ease out cubic
+            var eased = 1 - Math.pow(1 - progress, 3);
+            counter.textContent = Math.floor(eased * target);
+            if (progress < 1) {
+              requestAnimationFrame(step);
+            } else {
+              counter.textContent = target;
+            }
+          }
+          requestAnimationFrame(step);
+        }
+      });
+    }
+
+    window.addEventListener('scroll', animateCounters);
+    window.addEventListener('load', animateCounters);
+
+    // ---------------------------
+    // Navbar scroll effect
+    // ---------------------------
+    var navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 30) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // ---------------------------
+    // Form submission handler
+    // ---------------------------
+    function handleSubmit(e) {
+      e.preventDefault();
+      var btn = e.target.querySelector('.form-submit-btn');
+      var originalText = btn.textContent;
+
+      btn.textContent = 'Sending...';
+      btn.style.background = 'var(--blue-mid)';
+      btn.disabled = true;
+
+      setTimeout(function() {
+        btn.textContent = 'Request Sent! Favorite will be in touch soon.';
+        btn.style.background = 'var(--green)';
+        e.target.reset();
+
+        setTimeout(function() {
+          btn.textContent = originalText;
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 5000);
+      }, 1200);
+    }
+
+    // ---------------------------
+    // Active nav link highlight
+    // ---------------------------
+    var sections = document.querySelectorAll('section[id]');
+    var navLinks = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', function() {
+      var current = '';
+      sections.forEach(function(section) {
+        var sectionTop = section.offsetTop - 100;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(function(link) {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // ---------------------------
+    // Parallax-like hero scroll
+    // ---------------------------
+    var heroBg = document.querySelector('.hero-bg');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY < window.innerHeight) {
+        heroBg.style.transform = 'scale(' + (1 + window.scrollY * 0.0001) + ') translateY(' + (window.scrollY * 0.3) + 'px)';
+      }
+    });
+
+    // ---------------------------
+    // Sticky CTA visibility
+    // ---------------------------
+    var stickyCta = document.getElementById('stickyCta');
+    var heroSection = document.getElementById('hero');
+
+    window.addEventListener('scroll', function() {
+      if (window.innerWidth <= 768) {
+        if (window.scrollY > heroSection.offsetHeight * 0.5) {
+          stickyCta.style.display = 'block';
+        } else {
+          stickyCta.style.display = 'none';
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

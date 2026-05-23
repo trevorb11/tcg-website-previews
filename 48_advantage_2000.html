@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advantage 2000 Consultants — Social Security Disability Representation | St. Louis, MO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #1e3a5f;
+      --blue-mid: #2a5080;
+      --blue-light: #3b72a8;
+      --blue-pale: #eef4fa;
+      --red: #c0392b;
+      --red-light: #d44333;
+      --white: #ffffff;
+      --gray-light: #f4f6f8;
+      --gray-mid: #6c757d;
+      --border: #dee2e6;
+      --text: #2c3e50;
+      --charcoal: #1a2332;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 16px;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Merriweather', serif;
+      line-height: 1.2;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-36px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(36px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: none; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: var(--blue);
+      border-bottom: 3px solid var(--red);
+      padding: 0 5%;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Merriweather', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .nav-logo span {
+      font-weight: 300;
+      font-style: italic;
+      display: block;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.05em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--red) !important;
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 4px;
+    }
+    .nav-cta:hover { background: var(--red-light) !important; }
+    .nav-phone {
+      color: rgba(255,255,255,0.6) !important;
+      font-size: 0.82rem !important;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      background: var(--blue);
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-image-wrap {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 50%;
+      height: 100%;
+    }
+    .hero-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.18;
+      filter: saturate(0.5);
+    }
+    .hero-image-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--blue) 0%, transparent 50%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 130px 5% 80px;
+      max-width: 700px;
+    }
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      color: var(--white);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: #6db3e0;
+    }
+    .hero p {
+      font-family: 'Merriweather', serif;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.72);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      line-height: 1.85;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .btn-red {
+      background: var(--red);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 0.95rem;
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-red:hover { background: var(--red-light); transform: translateY(-2px); }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.85);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-radius: 4px;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.7); }
+    .hero-trust {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .trust-num {
+      font-family: 'Merriweather', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+    .trust-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 0.2rem;
+    }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 90px 5%; }
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+    }
+
+    /* ===== MISSION ===== */
+    .mission {
+      background: var(--gray-light);
+      padding: 70px 5%;
+    }
+    .mission-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .mission-text h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    .mission-text p {
+      color: var(--gray-mid);
+      margin-bottom: 1.25rem;
+      font-family: 'Merriweather', serif;
+      font-weight: 300;
+      font-size: 0.95rem;
+    }
+    .mission-image img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+    }
+
+    /* ===== PROCESS ===== */
+    .process { background: var(--white); }
+    .process-inner { max-width: 1100px; margin: 0 auto; }
+    .process-header { text-align: center; margin-bottom: 4rem; }
+    .process-header h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .process-header p { color: var(--gray-mid); max-width: 560px; margin: 0 auto; }
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .p-step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .p-step:last-child { border-bottom: none; }
+    .p-step-num {
+      width: 72px;
+      height: 72px;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Merriweather', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .p-step-content h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 0.5rem;
+    }
+    .p-step-content p {
+      color: var(--gray-mid);
+      font-size: 0.95rem;
+    }
+
+    /* ===== WHO WE HELP ===== */
+    .who { background: var(--blue); color: var(--white); }
+    .who-inner { max-width: 1100px; margin: 0 auto; }
+    .who-header { text-align: center; margin-bottom: 3.5rem; }
+    .who-header h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--white);
+    }
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .who-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: background 0.3s;
+    }
+    .who-card:hover { background: rgba(255,255,255,0.12); }
+    .who-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+    .who-card p { font-size: 0.88rem; color: rgba(255,255,255,0.5); }
+
+    /* ===== CONDITIONS ===== */
+    .conditions { background: var(--gray-light); }
+    .conditions-inner { max-width: 1100px; margin: 0 auto; }
+    .conditions-header { text-align: center; margin-bottom: 3.5rem; }
+    .conditions-header h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+    }
+    .conditions-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .condition-tag {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--blue);
+      padding: 1rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .condition-tag:hover {
+      border-left-color: var(--red);
+      background: var(--blue-pale);
+    }
+
+    /* ===== WHY ===== */
+    .why { background: var(--white); }
+    .why-inner { max-width: 1100px; margin: 0 auto; }
+    .why-grid-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .why-text h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+    .why-text p {
+      color: var(--gray-mid);
+      margin-bottom: 1.75rem;
+      font-family: 'Merriweather', serif;
+      font-weight: 300;
+      font-size: 0.95rem;
+    }
+    .why-points {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .why-point {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .why-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--blue-pale);
+      border-radius: 8px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .why-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--blue);
+      fill: none;
+      stroke-width: 2;
+    }
+    .why-point-text strong {
+      display: block;
+      font-weight: 900;
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .why-point-text span {
+      font-size: 0.88rem;
+      color: var(--gray-mid);
+    }
+    .why-image img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials { background: var(--gray-light); }
+    .testimonials-inner { max-width: 1100px; margin: 0 auto; }
+    .testimonials-header { text-align: center; margin-bottom: 3.5rem; }
+    .testimonials-header h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .t-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      border-top: 3px solid var(--blue);
+    }
+    .t-quote {
+      font-family: 'Merriweather', serif;
+      font-size: 3rem;
+      color: var(--blue);
+      line-height: 0.7;
+      opacity: 0.25;
+      margin-bottom: 0.75rem;
+    }
+    .t-card p {
+      font-family: 'Merriweather', serif;
+      font-size: 0.92rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      line-height: 1.85;
+    }
+    .t-author { font-weight: 900; font-size: 0.9rem; }
+    .t-outcome {
+      font-size: 0.8rem;
+      color: var(--red);
+      font-weight: 700;
+      margin-top: 0.25rem;
+    }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      background: var(--red);
+      padding: 80px 5%;
+    }
+    .cta-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .cta-inner h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .cta-inner p {
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 2rem;
+      font-family: 'Merriweather', serif;
+      font-weight: 300;
+      font-size: 1rem;
+    }
+    .cta-phone {
+      font-family: 'Merriweather', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      display: block;
+      margin-bottom: 1.25rem;
+      text-decoration: none;
+    }
+    .btn-white {
+      background: var(--white);
+      color: var(--red);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 1rem;
+      border-radius: 4px;
+      display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-white:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+
+    /* ===== CONTACT ===== */
+    .contact { background: var(--white); }
+    .contact-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-info h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+    .contact-info p { color: var(--gray-mid); margin-bottom: 2rem; }
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .cd {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .cd-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--blue-pale);
+      border-radius: 8px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cd-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--blue);
+      fill: none;
+      stroke-width: 2;
+    }
+    .cd-text strong {
+      display: block;
+      font-weight: 900;
+      font-size: 0.88rem;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+    .cd-text span { font-size: 0.88rem; color: var(--gray-mid); }
+    .no-fee-note {
+      margin-top: 1.5rem;
+      background: var(--blue-pale);
+      border-left: 3px solid var(--blue);
+      padding: 1rem 1.25rem;
+      font-size: 0.88rem;
+      color: var(--blue-mid);
+      font-weight: 700;
+    }
+    .contact-form {
+      background: var(--gray-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.5rem;
+    }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      color: var(--text);
+      padding: 0.75rem 1rem;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      border-radius: 4px;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--blue); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit {
+      width: 100%;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 1rem;
+      font-family: 'Lato', sans-serif;
+      font-weight: 900;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    .form-submit:hover { background: var(--red-light); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--charcoal);
+      padding: 4rem 5% 2rem;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .f-logo {
+      font-family: 'Merriweather', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .f-tagline {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+      display: block;
+      margin-bottom: 1.25rem;
+    }
+    .footer-brand p {
+      color: rgba(255,255,255,0.35);
+      font-size: 0.88rem;
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+    .footer-disclaimer {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.2);
+      line-height: 1.7;
+      font-style: italic;
+    }
+    .footer-col h4 {
+      font-weight: 900;
+      color: var(--white);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      font-family: 'Lato', sans-serif;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul a {
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: rgba(255,255,255,0.7); }
+    .footer-bottom {
+      padding-top: 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom p { color: rgba(255,255,255,0.25); font-size: 0.8rem; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .mission-inner, .why-grid-wrap, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-image-wrap { display: none; }
+      .who-grid { grid-template-columns: 1fr 1fr; }
+      .conditions-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 70px 5%; }
+      .nav-links { display: none; }
+      .who-grid, .conditions-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      Advantage 2000 Consultants
+      <span>Social Security Disability Representation</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="tel:8008993433" class="nav-phone">(800) 899-3433</a></li>
+      <li><a href="#process">How We Help</a></li>
+      <li><a href="#why">Why A2K</a></li>
+      <li><a href="#contact" class="nav-cta">Free Case Review</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-image-wrap">
+      <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=900&auto=format&fit=crop&q=80" alt="Compassionate professional consultation" />
+    </div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">St. Louis, MO — Serving Clients Nationwide Since 1995</div>
+      <h1>You Deserve Your Benefits.<br><em>We'll Help You Get Them.</em></h1>
+      <p>Since 1995, Advantage 2000 Consultants has helped more than 100,000 people win their Social Security Disability claims. If you have been denied — or don't know where to start — we are here.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-red">Get a Free Case Review</a>
+        <a href="#process" class="btn-outline">See How We Help</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item">
+          <div class="trust-num">1995</div>
+          <div class="trust-label">Year Founded</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-num">100K+</div>
+          <div class="trust-label">Claims Approved</div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-num">$0</div>
+          <div class="trust-label">Upfront Cost</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <div class="mission">
+    <div class="mission-inner">
+      <div class="mission-text reveal-left">
+        <div class="section-label">Our Mission</div>
+        <h2>Fighting for the People Who Need It Most</h2>
+        <p>Social Security Disability is not just a government program. For millions of Americans, it is the difference between keeping the lights on and losing everything when a health condition takes away their ability to work.</p>
+        <p>The Social Security Administration denies the majority of initial applications — even legitimate ones. The process is complex, the paperwork is overwhelming, and the hearings can feel impossibly intimidating without representation. That is why Advantage 2000 Consultants exists.</p>
+        <p>We have spent 30 years learning this system inside and out. We know what the SSA looks for, how to build a compelling case, and how to advocate effectively at every stage from application through appeal. You focus on your health. We fight for your benefits.</p>
+      </div>
+      <div class="mission-image reveal-right">
+        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&auto=format&fit=crop&q=80" alt="Professional consulting and advocacy team" />
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="process-inner">
+      <div class="process-header reveal">
+        <div class="section-label">How We Help</div>
+        <h2>From Application to Approval</h2>
+        <p>We guide you through every step of the Social Security Disability process — from gathering your first medical records to representing you at a hearing if necessary.</p>
+      </div>
+      <div class="process-steps">
+        <div class="p-step reveal">
+          <div class="p-step-num">1</div>
+          <div class="p-step-content">
+            <h3>Free Case Evaluation</h3>
+            <p>Your first conversation with Advantage 2000 is completely free and carries no obligation. We review your situation, help you understand your options, and give you an honest assessment of your claim's strength. There are no promises we cannot keep and no fine print you need to worry about at this stage.</p>
+          </div>
+        </div>
+        <div class="p-step reveal">
+          <div class="p-step-num">2</div>
+          <div class="p-step-content">
+            <h3>Application Preparation &amp; Filing</h3>
+            <p>A properly prepared application makes a significant difference. We help you document your condition accurately, gather the right records, and complete the SSA's paperwork in a way that gives your claim the strongest possible foundation from the start.</p>
+          </div>
+        </div>
+        <div class="p-step reveal">
+          <div class="p-step-num">3</div>
+          <div class="p-step-content">
+            <h3>Gathering Medical Evidence</h3>
+            <p>The SSA's decision depends heavily on your medical records and documentation. We work with your healthcare providers to obtain the right records, request necessary statements, and ensure your medical history tells the complete, accurate story of how your condition affects your ability to work.</p>
+          </div>
+        </div>
+        <div class="p-step reveal">
+          <div class="p-step-num">4</div>
+          <div class="p-step-content">
+            <h3>Hearing Representation</h3>
+            <p>If your claim is denied and reaches the hearing level, you should not face an administrative law judge alone. Our experienced representatives appear with you, present your evidence, question vocational and medical experts, and advocate clearly and confidently on your behalf.</p>
+          </div>
+        </div>
+        <div class="p-step reveal">
+          <div class="p-step-num">5</div>
+          <div class="p-step-content">
+            <h3>Appeals — If Needed</h3>
+            <p>A denial at the initial or reconsideration stage is not the end. The SSA's appeals process has multiple levels, and many claims that were denied early are ultimately approved on appeal. We evaluate every denial for appeal potential and pursue every viable path forward.</p>
+          </div>
+        </div>
+        <div class="p-step reveal">
+          <div class="p-step-num">6</div>
+          <div class="p-step-content">
+            <h3>Benefits Secured</h3>
+            <p>When your claim is approved, we help you understand your benefits, the onset date, and any back pay you may be entitled to receive. We celebrate your win and make sure you fully understand what you have earned. And remember — we only get paid when you do.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE HELP -->
+  <section class="who" id="who">
+    <div class="who-inner">
+      <div class="who-header reveal">
+        <div class="section-label" style="color:rgba(255,255,255,0.4);">Who We Represent</div>
+        <h2>We Are Here for You — Wherever You Are in the Process</h2>
+      </div>
+      <div class="who-grid">
+        <div class="who-card reveal">
+          <h3>First-Time Applicants</h3>
+          <p>Starting the process for the first time can be overwhelming. We walk alongside you from the very beginning, helping you avoid the common mistakes that lead to unnecessary denials.</p>
+        </div>
+        <div class="who-card reveal">
+          <h3>Those Who Have Been Denied</h3>
+          <p>Most people are denied on their first application. A denial does not mean your claim is without merit — it often means it needed better preparation and representation. We can help you appeal.</p>
+        </div>
+        <div class="who-card reveal">
+          <h3>People Waiting for a Decision</h3>
+          <p>The SSA process can take months or even years. If your claim has been pending without resolution, we can review your case and help move things forward with additional documentation or follow-up.</p>
+        </div>
+        <div class="who-card reveal">
+          <h3>Workers Injured on the Job</h3>
+          <p>A workplace injury that has left you unable to return to your previous work may qualify you for Social Security Disability benefits in addition to any workers' compensation you receive.</p>
+        </div>
+        <div class="who-card reveal">
+          <h3>People with Mental Health Conditions</h3>
+          <p>Mental health conditions — depression, bipolar disorder, PTSD, schizophrenia — can be just as disabling as physical conditions. The SSA recognizes them, and so do we.</p>
+        </div>
+        <div class="who-card reveal">
+          <h3>Veterans with Service-Related Disabilities</h3>
+          <p>If you are a veteran with a service-connected disability that prevents you from working, you may be entitled to Social Security Disability benefits in addition to your VA benefits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONDITIONS -->
+  <section class="conditions" id="conditions">
+    <div class="conditions-inner">
+      <div class="conditions-header reveal">
+        <div class="section-label">Conditions We Handle</div>
+        <h2>We Have Seen These Cases. We Know How to Build Them.</h2>
+        <p style="color:var(--gray-mid);max-width:560px;margin:0 auto;">The Social Security Administration evaluates disability claims based on specific medical evidence. Our experience across these conditions means we know exactly what documentation matters.</p>
+      </div>
+      <div class="conditions-grid">
+        <div class="condition-tag reveal">Back &amp; Spine Disorders</div>
+        <div class="condition-tag reveal">Heart &amp; Cardiovascular</div>
+        <div class="condition-tag reveal">Depression &amp; Anxiety</div>
+        <div class="condition-tag reveal">Bipolar Disorder</div>
+        <div class="condition-tag reveal">Cancer</div>
+        <div class="condition-tag reveal">Diabetes</div>
+        <div class="condition-tag reveal">COPD &amp; Respiratory</div>
+        <div class="condition-tag reveal">Arthritis</div>
+        <div class="condition-tag reveal">PTSD</div>
+        <div class="condition-tag reveal">Neuropathy</div>
+        <div class="condition-tag reveal">Lupus &amp; Fibromyalgia</div>
+        <div class="condition-tag reveal">Neurological Conditions</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY A2K -->
+  <section class="why" id="why">
+    <div class="why-inner">
+      <div class="why-grid-wrap">
+        <div class="why-text reveal-left">
+          <div class="section-label">Why Advantage 2000</div>
+          <h2>30 Years of Experience on Your Side</h2>
+          <p>There are many disability representatives. What makes Advantage 2000 worth choosing comes down to track record, depth of knowledge, and how we treat the people we serve. When you are dealing with a serious health condition, you deserve a team that treats your case with the seriousness it deserves.</p>
+          <div class="why-points">
+            <div class="why-point">
+              <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <div class="why-point-text">
+                <strong>30 Years in Practice</strong>
+                <span>Founded 1995 — one of the most experienced disability representation firms in Missouri.</span>
+              </div>
+            </div>
+            <div class="why-point">
+              <div class="why-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="why-point-text">
+                <strong>100,000+ Approvals</strong>
+                <span>Over 100,000 people have been approved for disability benefits with our help.</span>
+              </div>
+            </div>
+            <div class="why-point">
+              <div class="why-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+              <div class="why-point-text">
+                <strong>No Upfront Fees</strong>
+                <span>We only get paid when you win. No win, no fee — ever.</span>
+              </div>
+            </div>
+            <div class="why-point">
+              <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+              <div class="why-point-text">
+                <strong>Real People, Real Answers</strong>
+                <span>You will always speak with a knowledgeable person — not a call center script.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="why-image reveal-right">
+          <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=800&auto=format&fit=crop&q=80" alt="Professional and compassionate client consultation" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="testimonials-inner">
+      <div class="testimonials-header reveal">
+        <div class="section-label">Client Stories</div>
+        <h2>What Our Clients Say</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="t-card reveal">
+          <div class="t-quote">"</div>
+          <p>"I had been denied twice when I found Advantage 2000. I honestly did not think I had a chance. They reviewed my case, found the medical records that had been missed, and represented me at my hearing. I got approved for back pay going back three years. I will be forever grateful."</p>
+          <div class="t-author">Robert H., St. Louis, MO</div>
+          <div class="t-outcome">Approved after two prior denials</div>
+        </div>
+        <div class="t-card reveal">
+          <div class="t-quote">"</div>
+          <p>"My back injury made it impossible to keep working, but I had no idea how to navigate Social Security. The team at Advantage 2000 walked me through everything, filed my paperwork, and handled every single detail. I was approved without ever having to go to a hearing."</p>
+          <div class="t-author">Patricia L., Kansas City, MO</div>
+          <div class="t-outcome">Approved at initial application stage</div>
+        </div>
+        <div class="t-card reveal">
+          <div class="t-quote">"</div>
+          <p>"I didn't think my depression and anxiety would qualify for disability. Advantage 2000 helped me understand that they absolutely can, built the case with my psychiatrist's records, and got me approved. It changed everything for my family."</p>
+          <div class="t-author">Marcus W., Springfield, MO</div>
+          <div class="t-outcome">Mental health disability approved</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <div class="cta-inner reveal">
+      <h2>Don't Give Up on Your Benefits.</h2>
+      <p>A denial is not the final answer. Thousands of clients we have helped were denied before they found us. Call us today — it is completely free, there is no commitment, and we will give you an honest answer about your options.</p>
+      <a href="tel:8008993433" class="cta-phone">(800) 899-3433 — Call Us, It's Free</a>
+      <a href="#contact" class="btn-white">Get a Free Online Case Review</a>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-info reveal-left">
+        <div class="section-label">Free Case Review</div>
+        <h2>Start Your Review Today</h2>
+        <p>Fill out the form below and one of our representatives will contact you within one business day. Everything is confidential, there is no charge, and there is absolutely no obligation — just an honest conversation about where you stand and what your options are.</p>
+        <div class="contact-details">
+          <div class="cd">
+            <div class="cd-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 6.29 6.29l.87-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.92 16.92z"/></svg></div>
+            <div class="cd-text">
+              <strong>Call Us Free — No Obligation</strong>
+              <span><a href="tel:8008993433" style="color:inherit;">(800) 899-3433</a></span>
+            </div>
+          </div>
+          <div class="cd">
+            <div class="cd-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 6.29 6.29l.87-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.92 16.92z"/></svg></div>
+            <div class="cd-text">
+              <strong>Local</strong>
+              <span>(314) 845-5202</span>
+            </div>
+          </div>
+          <div class="cd">
+            <div class="cd-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div class="cd-text">
+              <strong>Email</strong>
+              <span>ca.smith@advantage2k.com</span>
+            </div>
+          </div>
+          <div class="cd">
+            <div class="cd-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div class="cd-text">
+              <strong>Location</strong>
+              <span>St. Louis, Missouri — Serving Clients Nationwide</span>
+            </div>
+          </div>
+        </div>
+        <div class="no-fee-note">No upfront fees. We only get paid when you win. If you do not receive benefits, you owe us nothing.</div>
+      </div>
+      <div class="contact-form reveal-right">
+        <form>
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="First and last name" />
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="Best number to reach you" />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label>Primary Condition or Disability</label>
+            <input type="text" placeholder="Main health condition affecting your ability to work" />
+          </div>
+          <div class="form-group">
+            <label>Have You Been Denied?</label>
+            <select>
+              <option value="">Where are you in the process?</option>
+              <option>I haven't applied yet</option>
+              <option>I applied and am waiting</option>
+              <option>I was denied once</option>
+              <option>I was denied twice or more</option>
+              <option>I have a hearing scheduled</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tell Us More</label>
+            <textarea placeholder="How long have you been unable to work? Any other details about your situation..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Get My Free Case Review</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="f-logo">Advantage 2000 Consultants</a>
+          <span class="f-tagline">Social Security Disability Representation — St. Louis, MO — Since 1995</span>
+          <p>Advantage 2000 Consultants Inc. (A2K) has helped more than 100,000 people win Social Security Disability benefits since 1995. No upfront fees. No obligation. Just experienced, dedicated representation.</p>
+          <p class="footer-disclaimer">This website is for informational purposes only and does not constitute legal advice or create an attorney-client relationship. Results may vary based on individual circumstances.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#process">Initial Applications</a></li>
+            <li><a href="#process">Reconsideration</a></li>
+            <li><a href="#process">Hearing Representation</a></li>
+            <li><a href="#process">Appeals</a></li>
+            <li><a href="#conditions">Conditions We Handle</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:8008993433">(800) 899-3433 Toll-Free</a></li>
+            <li><a href="tel:3148455202">(314) 845-5202 Local</a></li>
+            <li><a href="mailto:ca.smith@advantage2k.com">ca.smith@advantage2k.com</a></li>
+            <li><a href="#contact">Free Case Review</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Advantage 2000 Consultants Inc. All rights reserved. St. Louis, MO.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

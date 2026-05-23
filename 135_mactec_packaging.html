@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MacTec Packaging | Unit Dose Packaging Equipment | Made in USA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --steel-blue: #1A4F72;
+      --steel-dark: #0F3248;
+      --orange: #E87722;
+      --orange-light: #F08C3A;
+      --steel-light: #D9E2EC;
+      --dark: #1E1E1E;
+      --white: #FFFFFF;
+      --off: #F8FAFB;
+      --text: #1E2733;
+      --text-light: #5A6575;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Barlow', sans-serif; font-weight: 700; line-height: 1.2; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--steel-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 66px;
+      border-bottom: 2px solid var(--orange);
+    }
+
+    .nav-logo {
+      font-family: 'Barlow', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .nav-logo span { color: var(--orange); }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--orange); }
+
+    .nav-cta {
+      background: var(--orange) !important;
+      color: var(--white) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 2px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 90vh;
+      background: var(--steel-dark);
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.2;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(15,50,72,0.97) 55%, rgba(15,50,72,0.5) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 5%;
+      padding-top: 66px;
+      max-width: 720px;
+    }
+
+    .hero-made-usa {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(232,119,34,0.15);
+      border: 1px solid rgba(232,119,34,0.4);
+      color: var(--orange);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+      font-weight: 800;
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      line-height: 1.05;
+    }
+
+    .hero h1 span { color: var(--orange); }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-orange {
+      background: var(--orange);
+      color: var(--white);
+      padding: 0.9rem 2.2rem;
+      border: none;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-orange:hover { background: var(--orange-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 0.9rem 2.2rem;
+      border: 1px solid rgba(255,255,255,0.3);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+    /* SPEC STRIP */
+    .spec-strip { background: var(--orange); padding: 1.5rem 5%; }
+
+    .spec-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .spec-item { text-align: center; }
+
+    .spec-item strong {
+      font-family: 'Barlow', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--white);
+      display: block;
+    }
+
+    .spec-item span { font-size: 0.75rem; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* SECTIONS */
+    section { padding: 5.5rem 5%; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .overline {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--text-light);
+      max-width: 580px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* ABOUT */
+    .about { background: var(--off); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3.5rem;
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+    }
+
+    .about-text p {
+      font-size: 0.98rem;
+      color: var(--text-light);
+      margin-bottom: 1.2rem;
+      line-height: 1.8;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .timeline-year {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--orange);
+      min-width: 50px;
+      padding-top: 2px;
+    }
+
+    .timeline-item p { font-size: 0.88rem; color: var(--text-light); line-height: 1.6; }
+
+    /* PRODUCTS */
+    .products { background: var(--white); }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .product-card {
+      border: 2px solid var(--steel-light);
+      padding: 2.5rem 2rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .product-card:hover {
+      border-color: var(--orange);
+      box-shadow: 0 8px 32px rgba(232,119,34,0.12);
+    }
+
+    .product-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--steel-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .product-icon svg { width: 26px; height: 26px; fill: none; stroke: var(--orange); stroke-width: 2; }
+
+    .product-card h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--steel-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .product-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.75; margin-bottom: 1.2rem; }
+
+    .product-specs {
+      list-style: none;
+      border-top: 1px solid var(--steel-light);
+      padding-top: 1rem;
+    }
+
+    .product-specs li {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      padding: 0.35rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .product-specs li::before { content: ''; width: 6px; height: 6px; min-width: 6px; background: var(--orange); }
+
+    /* INDUSTRIES */
+    .industries { background: var(--steel-dark); }
+    .industries .section-title { color: var(--white); }
+    .industries .section-desc { color: rgba(255,255,255,0.55); }
+    .industries .overline { color: var(--orange); }
+
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .industry-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 2rem;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .industry-card:hover { background: rgba(232,119,34,0.08); }
+
+    .industry-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--white); margin-top: 1rem; text-transform: uppercase; }
+    .industry-card p { font-size: 0.8rem; color: rgba(255,255,255,0.45); margin-top: 0.4rem; }
+
+    /* WHY MACTEC */
+    .why { background: var(--off); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .why-card {
+      background: var(--white);
+      padding: 2rem;
+      border-top: 5px solid var(--orange);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+
+    .why-card h3 { font-size: 1rem; font-weight: 800; text-transform: uppercase; color: var(--steel-dark); margin-bottom: 0.75rem; }
+    .why-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; }
+
+    /* CUSTOM */
+    .custom { background: var(--white); }
+
+    .custom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3.5rem;
+    }
+
+    .custom-img img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+    }
+
+    .custom-text p {
+      font-size: 0.98rem;
+      color: var(--text-light);
+      margin-bottom: 1.2rem;
+      line-height: 1.8;
+    }
+
+    .custom-points { list-style: none; margin-top: 1.5rem; display: grid; gap: 0.75rem; }
+
+    .custom-points li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .custom-points li::before { content: ''; width: 8px; height: 8px; min-width: 8px; background: var(--orange); margin-top: 6px; }
+
+    /* CERTIFICATIONS */
+    .certs { background: var(--off); }
+
+    .certs-grid {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+    }
+
+    .cert-badge {
+      background: var(--white);
+      border: 2px solid var(--steel-light);
+      padding: 1.2rem 2rem;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--steel-dark);
+      transition: border-color 0.2s;
+    }
+
+    .cert-badge:hover { border-color: var(--orange); }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--white); }
+
+    .test-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .test-card {
+      background: var(--off);
+      padding: 2.5rem;
+      border-left: 5px solid var(--orange);
+    }
+
+    .test-card p {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.8;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+
+    .test-client strong { font-size: 0.88rem; font-weight: 700; display: block; }
+    .test-client span { font-size: 0.78rem; color: var(--text-light); }
+
+    /* CONTACT */
+    .contact { background: var(--steel-dark); }
+    .contact .section-title { color: var(--white); }
+    .contact .section-desc { color: rgba(255,255,255,0.55); }
+    .contact .overline { color: var(--orange); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 5rem;
+      margin-top: 3.5rem;
+    }
+
+    .contact-info h3 {
+      font-family: 'Barlow', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--orange);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-detail svg { width: 16px; height: 16px; min-width: 16px; fill: none; stroke: var(--orange); stroke-width: 2; margin-top: 3px; }
+
+    .contact-form { display: grid; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+
+    .form-group label {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.8rem 1rem;
+      color: var(--white);
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--orange); }
+    .form-group select option { background: var(--steel-dark); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    /* FOOTER */
+    footer {
+      background: #0A1D2B;
+      color: rgba(255,255,255,0.3);
+      padding: 2.5rem 5%;
+      text-align: center;
+    }
+
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+    .footer-logo {
+      font-family: 'Barlow', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo span { color: var(--orange); }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--orange); }
+    .footer-copy { font-size: 0.72rem; }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .spec-inner { grid-template-columns: 1fr 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
+      .industries-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .custom-grid { grid-template-columns: 1fr; }
+      .test-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 580px) {
+      .industries-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Mac<span>Tec</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#custom">Custom</a></li>
+      <li><a href="#contact" class="nav-cta">Request Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1600&q=80" alt="Packaging machinery" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-made-usa">Made in the USA &mdash; Sayreville, New Jersey</div>
+      <h1>Precision <span>Packaging</span> Built for Your Production.</h1>
+      <p>MacTec designs and manufactures blister packaging, pouch packaging, and rotary filling equipment for small-to-medium output operations. Operator-friendly machines, fast changeover, and 20 years of American engineering behind every unit.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-orange">Request a Quote</a>
+        <a href="#products" class="btn-outline">Explore Our Machines</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEC STRIP -->
+  <div class="spec-strip">
+    <div class="spec-inner">
+      <div class="spec-item">
+        <strong>100+</strong>
+        <span>Products Per Minute</span>
+      </div>
+      <div class="spec-item">
+        <strong>Minutes</strong>
+        <span>Changeover Time</span>
+      </div>
+      <div class="spec-item">
+        <strong>20 Yrs</strong>
+        <span>Engineering Experience</span>
+      </div>
+      <div class="spec-item">
+        <strong>USA</strong>
+        <span>Designed and Built</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-img reveal">
+          <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=900&q=80" alt="Manufacturing facility" />
+        </div>
+        <div class="about-text reveal reveal-delay-2">
+          <div class="overline">Our Story</div>
+          <h2 class="section-title">Built for the Markets Big Machines Overlooked</h2>
+          <p>MacTec Packaging Technologies was founded in 2004 in Sayreville, New Jersey after identifying a real gap in the packaging equipment market: the companies that needed small-to-medium output unit dose machines were being forced to buy large-scale equipment they didn't need, or accept compromised alternatives.</p>
+          <p>We built machines designed specifically for this production range — fast, flexible, easy to operate, and engineered in the USA. Over the last two decades, that focus has made us the trusted partner for pharmaceutical manufacturers, nutraceutical producers, R&D labs, and a growing range of specialty industries.</p>
+          <div class="timeline">
+            <div class="timeline-item">
+              <span class="timeline-year">2004</span>
+              <p>MacTec Packaging Technologies founded in Sayreville, NJ — filling a gap in small-to-medium output packaging machinery.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-year">2013</span>
+              <p>Introduction of the K-Cup Monobloc Filler — expanding into the fast-growing single-serve coffee and beverage market.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-year">2020</span>
+              <p>Relocated to a larger New Jersey facility to meet increasing demand and expand production capacity.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-year">2023</span>
+              <p>Strengthened leadership team to support continued growth across pharmaceutical, nutraceutical, and specialty markets.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Product Lines</div>
+        <h2 class="section-title">Three Core Machine Types. Infinite Configurations.</h2>
+        <p class="section-desc">Every MacTec machine is designed to be operator-friendly, compact, and fast to changeover — so your production team spends time producing, not troubleshooting.</p>
+      </div>
+      <div class="products-grid">
+        <div class="product-card reveal reveal-delay-1">
+          <div class="product-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+          </div>
+          <h3>Blister Packaging Machines</h3>
+          <p>From table-top units to full-scale blister packaging lines, MacTec's blister machines handle unit dose pharmaceutical, nutraceutical, and consumer health products with speed and precision.</p>
+          <ul class="product-specs">
+            <li>Speeds exceeding 100 products per minute</li>
+            <li>Quick tooling changeover — minutes by one operator</li>
+            <li>Compatible with cold-form and thermoform materials</li>
+            <li>Table-top to full-production scale options</li>
+            <li>GMP-compatible design</li>
+          </ul>
+        </div>
+        <div class="product-card reveal reveal-delay-2">
+          <div class="product-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v2"/><path d="M3 10l9 5 9-5"/><path d="M3 14l9 5 9-5"/></svg>
+          </div>
+          <h3>Pouch Packaging Solutions</h3>
+          <p>Flexible sachet and pouch packaging equipment for powders, granules, liquids, and solid dose products. Adjustable for multiple formats and product types within the same machine.</p>
+          <ul class="product-specs">
+            <li>Sachet, stick pack, and pouch formats</li>
+            <li>Compatible with heat-seal and specialty laminated films</li>
+            <li>Adjustable fill weight and format width</li>
+            <li>Nutraceutical, pharmaceutical, and food-grade applications</li>
+            <li>Compact footprint for limited production space</li>
+          </ul>
+        </div>
+        <div class="product-card reveal reveal-delay-3">
+          <div class="product-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="8"/></svg>
+          </div>
+          <h3>Rotary Filling Equipment</h3>
+          <p>High-speed rotary filling monoblocks for capsules, tablets, and single-serve formats including the K-Cup compatible filler. Designed for reliable, high-throughput continuous production.</p>
+          <ul class="product-specs">
+            <li>Monobloc filling systems with integrated sealing</li>
+            <li>K-Cup and single-serve coffee/beverage compatible</li>
+            <li>Continuous rotary motion for consistent output</li>
+            <li>Bottle, capsule, and pod filling configurations</li>
+            <li>Made in USA, service-backed</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="industries" id="industries">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Industries Served</div>
+        <h2 class="section-title">Built for Industries That Demand Precision</h2>
+        <p class="section-desc">MacTec machines are trusted across a wide range of regulated and specialty industries — anywhere that consistent, accurate unit-dose packaging is essential.</p>
+      </div>
+      <div class="industries-grid">
+        <div class="industry-card reveal reveal-delay-1">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <h3>Pharmaceutical</h3>
+          <p>GMP-compliant blister and pouch packaging for solid and semi-solid dosage forms</p>
+        </div>
+        <div class="industry-card reveal reveal-delay-2">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          <h3>Nutraceutical</h3>
+          <p>Vitamins, supplements, and functional foods in unit dose and bulk formats</p>
+        </div>
+        <div class="industry-card reveal reveal-delay-3">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          <h3>Cannabis and CBD</h3>
+          <p>Compliant unit-dose packaging for regulated cannabis and hemp-derived products</p>
+        </div>
+        <div class="industry-card reveal reveal-delay-4">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          <h3>Pet Medications</h3>
+          <p>Accurate, single-dose packaging for veterinary pharmaceuticals and supplements</p>
+        </div>
+        <div class="industry-card reveal reveal-delay-1">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          <h3>Coffee and Tea</h3>
+          <p>K-Cup and single-serve pod filling, sealing, and packaging for specialty beverage brands</p>
+        </div>
+        <div class="industry-card reveal reveal-delay-2">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>
+          <h3>Health and Beauty</h3>
+          <p>Unit-dose packaging for cosmetics, personal care samples, and beauty products</p>
+        </div>
+        <div class="industry-card reveal reveal-delay-3">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M9 12l2 2 4-4"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+          <h3>Medical Devices</h3>
+          <p>Sterile and cleanroom-compatible packaging for medical device components and kits</p>
+        </div>
+        <div class="industry-card reveal reveal-delay-4">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          <h3>R&D and Clinical</h3>
+          <p>Small-batch packaging for clinical trials, formulation development, and laboratory applications</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY MACTEC -->
+  <section class="why">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Why MacTec</div>
+        <h2 class="section-title">Four Reasons Customers Choose Us and Stay</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal reveal-delay-1">
+          <h3>Made in the USA</h3>
+          <p>Every MacTec machine is designed, built, and supported from our Sayreville, New Jersey facility. That means faster service, better parts availability, and direct access to our engineering team.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-2">
+          <h3>Operator-Friendly Design</h3>
+          <p>Our machines are built for the operators who run them, not just the engineers who spec them. Controls are intuitive, maintenance is accessible, and training is fast — even for new production staff.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-3">
+          <h3>Fast Changeover</h3>
+          <p>Changeover in minutes — by a single operator — means you can run multiple products on the same machine without losing a full shift to setup. That flexibility is especially valuable for smaller runs and contract packagers.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-4">
+          <h3>Custom Engineering</h3>
+          <p>If your product doesn't fit a standard solution, we build one that does. Our engineering team works directly with customers to develop custom tooling, machine modifications, and application-specific configurations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOM ENGINEERING -->
+  <section class="custom" id="custom">
+    <div class="section-inner">
+      <div class="custom-grid">
+        <div class="custom-img reveal">
+          <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=900&q=80" alt="Engineering and design" />
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div class="overline">Custom Solutions</div>
+          <h2 class="section-title">Your Product. Your Format. Our Engineering.</h2>
+          <p style="color:var(--text-light);margin-bottom:1.2rem;line-height:1.8;">Standard machines solve most problems. But some products — unusual shapes, specialty materials, proprietary format requirements — need something purpose-built. That's where MacTec's custom engineering capability sets us apart from catalog-only suppliers.</p>
+          <p style="color:var(--text-light);margin-bottom:1.2rem;line-height:1.8;">Our engineering team works collaboratively with your production and R&D staff to understand exactly what you need, then designs tooling and machine modifications that deliver it — with the same operator-friendly approach and Made in USA manufacturing that defines every MacTec machine.</p>
+          <ul class="custom-points">
+            <li>Custom tooling design for non-standard blister and pouch formats</li>
+            <li>Machine modifications for specialty materials or dosage forms</li>
+            <li>Integration with existing packaging lines or conveyors</li>
+            <li>Application-specific engineering consultation</li>
+            <li>Prototype and R&D runs supported by our facility</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="certs">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Standards and Compliance</div>
+        <h2 class="section-title">Built to the Standards Your Industry Requires</h2>
+        <p class="section-desc">MacTec machines are designed with pharmaceutical-grade compliance in mind — so your packaging equipment doesn't become an obstacle to regulatory approval.</p>
+      </div>
+      <div class="certs-grid">
+        <span class="cert-badge reveal reveal-delay-1">FDA-Compatible Design</span>
+        <span class="cert-badge reveal reveal-delay-2">GMP Standards</span>
+        <span class="cert-badge reveal reveal-delay-3">Pharmaceutical Grade</span>
+        <span class="cert-badge reveal reveal-delay-1">Food-Grade Materials</span>
+        <span class="cert-badge reveal reveal-delay-2">Made in the USA</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Customer Success</div>
+        <h2 class="section-title">What Our Customers Tell Us</h2>
+      </div>
+      <div class="test-grid">
+        <div class="test-card reveal reveal-delay-1">
+          <p>"We were running a line that required four operators and two hours of changeover between formats. The MacTec machine we installed cut changeover to under fifteen minutes and one operator handles it. The ROI was faster than we projected."</p>
+          <div class="test-client">
+            <strong>VP of Operations</strong>
+            <span>Nutraceutical Manufacturer — Northeast</span>
+          </div>
+        </div>
+        <div class="test-card reveal reveal-delay-2">
+          <p>"MacTec's engineering team built a custom tooling solution for a product format none of their standard machines accommodated. They did it on time, within budget, and the machine has been running flawlessly for two years. That level of responsiveness is rare."</p>
+          <div class="test-client">
+            <strong>Director of Manufacturing</strong>
+            <span>Contract Packaging Organization</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Get Your Quote</div>
+        <h2 class="section-title">Tell Us About Your Packaging Challenge</h2>
+        <p class="section-desc">Share your product, production requirements, and any application-specific needs. Our team will respond with options and pricing within two business days.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal reveal-delay-1">
+          <h3>MacTec Packaging Technologies</h3>
+          <div class="contact-detail">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Sayreville, New Jersey
+          </div>
+          <div class="contact-detail">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            mcastaldo@mactecpackaging.com
+          </div>
+        </div>
+        <form class="contact-form reveal reveal-delay-2">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" placeholder="Full name" />
+            </div>
+            <div class="form-group">
+              <label>Company</label>
+              <input type="text" placeholder="Company name" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="your@email.com" />
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" placeholder="(555) 000-0000" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Industry</label>
+            <select>
+              <option value="">Select your industry</option>
+              <option>Pharmaceutical</option>
+              <option>Nutraceutical</option>
+              <option>Cannabis / CBD</option>
+              <option>Pet Medications</option>
+              <option>Coffee / Tea</option>
+              <option>Health and Beauty</option>
+              <option>Medical Device</option>
+              <option>R&D / Clinical</option>
+              <option>Contract Packaging</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Machine Interest</label>
+            <select>
+              <option value="">Select machine type</option>
+              <option>Blister Packaging Machine</option>
+              <option>Pouch Packaging Machine</option>
+              <option>Rotary Filling Equipment</option>
+              <option>K-Cup / Single-Serve Filler</option>
+              <option>Custom / Not Sure Yet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Production Requirements</label>
+            <textarea placeholder="Describe your product, target output speed, dosage form, packaging format, and any specific requirements or challenges..."></textarea>
+          </div>
+          <button type="submit" class="btn-orange" style="width:100%;text-align:center;border:none;cursor:pointer;font-size:0.88rem;">Request a Quote</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Mac<span>Tec</span> Packaging Technologies</div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#industries">Industries</a>
+        <a href="#custom">Custom</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 MacTec Packaging Technologies, LLC. All rights reserved. Sayreville, New Jersey &bull; Made in the USA</p>
+    </div>
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

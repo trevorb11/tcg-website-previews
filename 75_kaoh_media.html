@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KAOH Media — The Winningest Firm in Renewable Energy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Nunito+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest: #2D6A4F;
+      --forest-dark: #1B4332;
+      --sky: #457B9D;
+      --sky-light: #5B97C2;
+      --cream: #F8F5F0;
+      --warm-white: #FDFCFA;
+      --charcoal: #1A1A1A;
+      --text-mid: #4A5568;
+      --text-light: #718096;
+      --border: #DDD8D0;
+      --leaf: #74C69D;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito Sans', sans-serif;
+      color: var(--charcoal);
+      background: var(--warm-white);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(27,67,50,0.97);
+      backdrop-filter: blur(8px);
+      padding: 0 2rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--leaf);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo span { color: rgba(255,255,255,0.85); font-weight: 400; font-size: 0.7rem; display: block; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1; }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.78); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--leaf); }
+
+    .nav-cta {
+      background: var(--leaf);
+      color: var(--forest-dark) !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 6px;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover { background: #95D5B2 !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--forest-dark);
+      position: relative;
+      overflow: hidden;
+      padding: 100px 2rem 60px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.15;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(27,67,50,0.95) 0%, rgba(27,67,50,0.7) 60%, rgba(45,106,79,0.5) 100%);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to top, var(--warm-white), transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+    }
+
+    .hero-owned-badge {
+      display: inline-block;
+      background: rgba(116,198,157,0.15);
+      border: 1px solid rgba(116,198,157,0.4);
+      color: var(--leaf);
+      font-size: 0.77rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 30px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+      font-weight: 800;
+      color: var(--warm-white);
+      line-height: 1.12;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--leaf);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+      max-width: 580px;
+    }
+
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+
+    .btn-primary {
+      background: var(--leaf);
+      color: var(--forest-dark);
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      font-family: 'Sora', sans-serif;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: #95D5B2; transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.35);
+      color: var(--warm-white);
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--leaf); color: var(--leaf); }
+
+    .hero-proof {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.5rem;
+    }
+
+    .proof-item span {
+      display: block;
+      font-family: 'Sora', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--leaf);
+    }
+
+    .proof-item p { font-size: 0.8rem; color: rgba(255,255,255,0.55); }
+
+    /* SECTIONS */
+    section { padding: 90px 2rem; }
+    .container { max-width: 1120px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.77rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      color: var(--forest-dark);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      max-width: 580px;
+      line-height: 1.8;
+    }
+
+    /* DIFFERENCE */
+    .difference { background: var(--cream); }
+
+    .difference-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .difference-image { border-radius: 14px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.1); }
+    .difference-image img { width: 100%; height: 420px; object-fit: cover; display: block; }
+
+    .difference-text p { color: var(--text-mid); font-size: 0.97rem; line-height: 1.85; margin-bottom: 1rem; }
+
+    .diff-stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .diff-stat {
+      background: var(--warm-white);
+      border-radius: 10px;
+      padding: 1.2rem;
+      border-left: 3px solid var(--forest);
+    }
+
+    .diff-stat span {
+      display: block;
+      font-family: 'Sora', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--forest);
+    }
+
+    .diff-stat p { font-size: 0.82rem; color: var(--text-light); }
+
+    /* SERVICES */
+    .services { background: var(--warm-white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .service-card:hover { border-color: var(--forest); transform: translateY(-4px); }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--forest-dark);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .service-icon svg { width: 24px; height: 24px; fill: var(--leaf); }
+
+    .service-card h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--forest-dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .service-card p { color: var(--text-mid); font-size: 0.9rem; line-height: 1.7; }
+
+    /* INDUSTRIES */
+    .industries { background: var(--forest-dark); }
+    .industries .section-title { color: var(--warm-white); }
+    .industries .section-label { color: var(--leaf); }
+
+    .industries-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 2.5rem;
+    }
+
+    .industry-tag {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(116,198,157,0.1);
+      border: 1px solid rgba(116,198,157,0.25);
+      color: rgba(255,255,255,0.85);
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 0.5rem 1.1rem;
+      border-radius: 30px;
+      transition: background 0.2s;
+    }
+
+    .industry-tag:hover { background: rgba(116,198,157,0.2); color: var(--leaf); }
+
+    .industry-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--leaf);
+      border-radius: 50%;
+    }
+
+    /* APPROACH */
+    .approach { background: var(--cream); }
+
+    .approach-pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .approach-pillar {
+      text-align: center;
+      padding: 2.5rem 1.8rem;
+      background: var(--warm-white);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+    }
+
+    .pillar-num {
+      font-family: 'Sora', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: rgba(45,106,79,0.15);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .approach-pillar h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--forest-dark);
+      margin-bottom: 0.8rem;
+    }
+
+    .approach-pillar p { color: var(--text-mid); font-size: 0.92rem; line-height: 1.72; }
+
+    /* TRACK RECORD */
+    .track { background: var(--warm-white); }
+
+    .track-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .track-image { border-radius: 14px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.1); }
+    .track-image img { width: 100%; height: 400px; object-fit: cover; display: block; }
+
+    .case-study {
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border-left: 4px solid var(--forest);
+      margin-bottom: 1.2rem;
+    }
+
+    .case-study h4 {
+      font-family: 'Sora', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--forest-dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .case-study p { color: var(--text-mid); font-size: 0.88rem; line-height: 1.65; }
+
+    .case-tag {
+      display: inline-block;
+      background: var(--forest);
+      color: var(--warm-white);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.6rem;
+    }
+
+    /* ABOUT */
+    .about { background: var(--cream); }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image { border-radius: 14px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.1); }
+    .about-image img { width: 100%; height: 400px; object-fit: cover; display: block; }
+
+    .about-text p { color: var(--text-mid); font-size: 0.97rem; line-height: 1.85; margin-bottom: 1rem; }
+
+    .team-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .team-tag {
+      background: rgba(45,106,79,0.1);
+      color: var(--forest);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.3rem 0.8rem;
+      border-radius: 30px;
+      border: 1px solid rgba(45,106,79,0.2);
+    }
+
+    /* CONTACT */
+    .contact { background: var(--forest-dark); }
+    .contact .section-title { color: var(--warm-white); }
+    .contact .section-label { color: var(--leaf); }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info h3 {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--warm-white);
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p { color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.5rem; }
+
+    .contact-detail { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; }
+    .contact-detail-icon { width: 20px; height: 20px; fill: var(--leaf); flex-shrink: 0; margin-top: 2px; }
+    .contact-detail p { color: rgba(255,255,255,0.65) !important; font-size: 0.93rem !important; margin-bottom: 0 !important; }
+    .contact-detail a { color: var(--leaf); text-decoration: none; }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      color: var(--warm-white);
+      font-size: 0.92rem;
+      font-family: 'Nunito Sans', sans-serif;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,0.35); }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus { outline: none; border-color: var(--leaf); }
+    .contact-form select option { background: var(--forest-dark); }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--leaf);
+      color: var(--forest-dark);
+      border: none;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Sora', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-submit:hover { background: #95D5B2; transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      background: #0D1F18;
+      padding: 3rem 2rem 2rem;
+      color: rgba(255,255,255,0.45);
+      font-size: 0.87rem;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .footer-brand p { margin-top: 0.8rem; line-height: 1.7; max-width: 300px; }
+
+    .footer-col h4 {
+      color: var(--warm-white);
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.5rem; }
+    .footer-col ul a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .footer-col ul a:hover { color: var(--leaf); }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .difference-inner { grid-template-columns: 1fr; }
+      .track-inner { grid-template-columns: 1fr; }
+      .about-inner { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      section { padding: 60px 1.2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">KAOH <span>media enterprises</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Talk to Our Team</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-owned-badge">100% Employee Owned &nbsp;|&nbsp; Chicago, IL</div>
+      <h1>The <em>Winningest Firm</em><br/>in Renewable Energy</h1>
+      <p>KAOH Media helps clean energy developers win community trust, secure land-use permits, and build the projects that power tomorrow. More permits won in North America than any other agency in our space.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Tell Us Your Story</a>
+        <a href="#services" class="btn-outline">See Our Work</a>
+      </div>
+      <div class="hero-proof">
+        <div class="proof-item"><span>#1</span><p>Renewable Energy PR Firm in North America</p></div>
+        <div class="proof-item"><span>100%</span><p>Employee Owned &amp; Operated</p></div>
+        <div class="proof-item"><span>Full</span><p>Spectrum: PR, Affairs, Digital, Creative</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE KAOH DIFFERENCE -->
+  <section class="difference" id="difference">
+    <div class="container">
+      <div class="difference-inner">
+        <div class="difference-image reveal">
+          <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&q=80" alt="Clean energy project approval" />
+        </div>
+        <div class="difference-text reveal">
+          <div class="section-label">Why KAOH</div>
+          <h2 class="section-title">We Don't Just Do PR. We Win.</h2>
+          <p>Most PR firms will tell a good story. KAOH Media delivers the outcome that matters: projects approved, permits secured, and communities genuinely on board with what's being built.</p>
+          <p>We're 100% employee-owned and operated, which means everyone here has real skin in the game. Our team brings together backgrounds in politics, digital marketing, journalism, environmental law, technology, and energy development — and we apply all of it to every campaign we take on.</p>
+          <p>KAOH has helped renewable energy developers win more land-use permits and secure more new project developments than any agency in North America. That record didn't come from luck — it came from a disciplined approach to resonance, strategy, and execution.</p>
+          <div class="diff-stat-row">
+            <div class="diff-stat"><span>#1</span><p>Most permits won in North America</p></div>
+            <div class="diff-stat"><span>100%</span><p>Employee owned and operated</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Our Services</div>
+        <h2 class="section-title">Full-Spectrum Communications for Clean Energy</h2>
+        <p class="section-lead">We are a full-service agency that consults, manages, and implements across every discipline your project needs to succeed — from the community meeting room to the statehouse.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <h3>Public Relations</h3>
+          <p>Strategic media relations, earned press coverage, and story development that positions your project and organization accurately and favorably in the public narrative.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Public Affairs &amp; Advocacy</h3>
+          <p>Grassroots organizing, coalition building, lobbying, community outreach, ballot initiatives, and legislative advocacy — building the local trust that turns opposition into support.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>Digital Marketing</h3>
+          <p>SEO, social media strategy, targeted digital advertising, content marketing, and email campaigns that reach and persuade the audiences that matter most to your project.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          </div>
+          <h3>Website &amp; Video Production</h3>
+          <p>Full creative production — project websites, stakeholder videos, documentary content, and visual storytelling that communicates your vision to any audience.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>ESG Communications</h3>
+          <p>Communicating environmental, social, and governance commitments to investors, regulators, communities, and the public — building long-term trust in your brand.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h3>Crisis Communications</h3>
+          <p>When opposition mobilizes, misinformation spreads, or a project faces unexpected challenges, our crisis communications team protects your project's timeline and reputation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="industries" id="industries">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Industries We Serve</div>
+        <h2 class="section-title">Built for the Energy Transition</h2>
+        <p class="section-lead" style="color:rgba(255,255,255,0.65); max-width:580px;">KAOH Media works with developers and investors across the full spectrum of clean energy and sustainable infrastructure — wherever local trust and public approval are essential to success.</p>
+      </div>
+      <div class="industries-grid reveal">
+        <div class="industry-tag">Solar Energy</div>
+        <div class="industry-tag">Wind Energy</div>
+        <div class="industry-tag">Natural Gas</div>
+        <div class="industry-tag">Nuclear Energy</div>
+        <div class="industry-tag">Battery Storage</div>
+        <div class="industry-tag">Green Hydrogen</div>
+        <div class="industry-tag">Blue Hydrogen</div>
+        <div class="industry-tag">Transmission Lines</div>
+        <div class="industry-tag">Data Centers</div>
+        <div class="industry-tag">Aquaculture</div>
+        <div class="industry-tag">Public Education Initiatives</div>
+        <div class="industry-tag">Land Use &amp; Development</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="approach" id="approach">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:0;">
+        <div class="section-label">Our Approach</div>
+        <h2 class="section-title">Three Things We Never Compromise</h2>
+        <p class="section-lead" style="margin:0 auto;">Every KAOH campaign is built on the same three pillars. Strip any one of them away and you get a campaign that looks good on paper but fails in the field.</p>
+      </div>
+      <div class="approach-pillars">
+        <div class="approach-pillar reveal reveal-delay-1">
+          <div class="pillar-num">01</div>
+          <h3>Resonance</h3>
+          <p>A message that doesn't connect with the people who matter doesn't exist. We spend time understanding communities — their values, their concerns, their history — before we develop a single talking point. Messages that resonate are messages that persuade.</p>
+        </div>
+        <div class="approach-pillar reveal reveal-delay-2">
+          <div class="pillar-num">02</div>
+          <h3>Strategy</h3>
+          <p>We are disciplined project managers before we are creative storytellers. Every campaign begins with a data-driven strategic plan — objectives, audiences, tactics, timelines, and metrics. We know where we're going before we take a single step.</p>
+        </div>
+        <div class="approach-pillar reveal reveal-delay-3">
+          <div class="pillar-num">03</div>
+          <h3>Execution</h3>
+          <p>The best strategy in the world is worth nothing without relentless, professional execution. KAOH is known for doing what we say we'll do, on the timeline we commit to — from the first community meeting to the permit approval hearing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACK RECORD -->
+  <section class="track" id="track">
+    <div class="container">
+      <div class="track-inner">
+        <div class="track-image reveal">
+          <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&q=80" alt="Wind energy project success" />
+        </div>
+        <div class="reveal">
+          <div class="section-label">Our Track Record</div>
+          <h2 class="section-title">Wins That Speak for Themselves</h2>
+          <p class="section-lead" style="margin-bottom:2rem;">KAOH has delivered for developers building some of the most significant renewable energy projects in North America. Here are the kinds of outcomes we achieve for our clients.</p>
+          <div class="case-study">
+            <div class="case-tag">Solar</div>
+            <h4>Utility-Scale Solar Permitting</h4>
+            <p>Navigated significant rural community opposition to help a major solar developer secure land-use approval on a 200+ MW project through sustained grassroots engagement and accurate local messaging.</p>
+          </div>
+          <div class="case-study">
+            <div class="case-tag">Wind</div>
+            <h4>Wind Farm Community Buy-In</h4>
+            <p>Turned a contentious public process around through a 6-month community engagement campaign — resulting in a favorable county board vote and project permit issuance on schedule.</p>
+          </div>
+          <div class="case-study">
+            <div class="case-tag">ESG / Crisis</div>
+            <h4>Project Narrative Repair</h4>
+            <p>Responded rapidly to a coordinated misinformation campaign against an energy client, correcting the public record and protecting the project's timeline from costly delays.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-image reveal">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=80" alt="KAOH Media team meeting" />
+        </div>
+        <div class="reveal">
+          <div class="section-label">Our Team</div>
+          <h2 class="section-title">People Who Have Actually Done This Work</h2>
+          <p>KAOH Media is 100% employee-owned and operated. That ownership structure isn't just a detail — it shapes everything about how we work and who we hire. Every person here is invested in outcomes, not just activities.</p>
+          <p>Our team comes from the disciplines that actually move public opinion and political processes: politics, digital marketing, journalism, media, technology, environmental law, design, lobbying, and energy development. We know the playbook from every angle.</p>
+          <p>Allan Hug, Co-Founder and Chief Growth Officer, has built KAOH around a simple philosophy: the message has to connect. Not just sound good, not just look polished — it has to genuinely connect with the people whose support you need. That's the difference between a firm that looks busy and a firm that wins.</p>
+          <div class="team-tags">
+            <div class="team-tag">Political Strategy</div>
+            <div class="team-tag">Digital Marketing</div>
+            <div class="team-tag">Environmental Law</div>
+            <div class="team-tag">Journalism</div>
+            <div class="team-tag">Lobbying</div>
+            <div class="team-tag">Energy Development</div>
+            <div class="team-tag">Community Organizing</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Let's Work Together</div>
+        <h2 class="section-title">Tell Us Your Story</h2>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-info reveal">
+          <h3>Talk to Allan: (312) 316-2999</h3>
+          <p>Tell us about your project — the type of energy development, the region, the stage you're at, and what you're up against. KAOH will give you an honest read on whether we're a fit and what we'd recommend. We don't take every project — only the ones we can win.</p>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.08 2.2 2 2 0 012.06.06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            <p><a href="tel:3123162999">(312) 316-2999</a></p>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <p><a href="mailto:allan@kaohmedia.com">allan@kaohmedia.com</a></p>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <p>Chicago, IL &nbsp;|&nbsp; National &amp; International Offices</p>
+          </div>
+        </div>
+        <div class="reveal">
+          <form class="contact-form">
+            <div class="form-row">
+              <input type="text" placeholder="Your Name" />
+              <input type="email" placeholder="Email Address" />
+            </div>
+            <input type="text" placeholder="Organization / Company" />
+            <div class="form-row">
+              <select>
+                <option value="" disabled selected>Project Type</option>
+                <option>Solar</option>
+                <option>Wind</option>
+                <option>Natural Gas</option>
+                <option>Nuclear</option>
+                <option>Battery Storage</option>
+                <option>Hydrogen</option>
+                <option>Transmission Lines</option>
+                <option>Data Center</option>
+                <option>Other</option>
+              </select>
+              <select>
+                <option value="" disabled selected>Primary Need</option>
+                <option>Public Relations</option>
+                <option>Public Affairs / Advocacy</option>
+                <option>Digital Marketing</option>
+                <option>Crisis Communications</option>
+                <option>ESG Communications</option>
+                <option>Full Campaign</option>
+              </select>
+            </div>
+            <textarea placeholder="Tell us about your project — location, stage, challenges, timeline..."></textarea>
+            <button type="submit" class="btn-submit">Send My Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="font-size:1.3rem;">KAOH <span style="color:rgba(255,255,255,0.6); font-size:0.6rem;">media enterprises</span></a>
+        <p>KAOH Media Enterprises — the nation's leading PR and public affairs firm for clean energy, sustainable infrastructure, and ESG investment. 100% employee owned. Chicago, IL.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Public Relations</a></li>
+          <li><a href="#services">Public Affairs</a></li>
+          <li><a href="#services">Digital Marketing</a></li>
+          <li><a href="#services">ESG Communications</a></li>
+          <li><a href="#services">Crisis Communications</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#difference">Why KAOH</a></li>
+          <li><a href="#approach">Our Approach</a></li>
+          <li><a href="#about">Our Team</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Chicago, IL &nbsp;|&nbsp; (312) 316-2999 &nbsp;|&nbsp; allan@kaohmedia.com</p>
+      <p>&copy; 2025 Kaoh Media Enterprises. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

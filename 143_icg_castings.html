@@ -1,0 +1,2183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ICG Castings, Inc. | Precision Aluminum Die-Casting | Dowagiac, MI</title>
+  <meta name="description" content="ICG Castings (Inverness Castings Group) — precision aluminum die-cast parts for automotive OEMs and Tier 1/2 suppliers. Based in Dowagiac, MI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Upgrade 1: Syne + Instrument Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Instrument+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Custom Properties ─────────────────────────────────────────── */
+    :root {
+      --color-charcoal:    #13151a;
+      --color-dark:        #1c1f26;
+      --color-steel:       #2e3440;
+      --color-steel-mid:   #4a5568;
+      --color-silver:      #8a94a6;
+      --color-silver-lt:   #c4cdd8;
+      --color-white:       #f0f4f8;
+      --color-pure-white:  #ffffff;
+      --color-blue:        #1e6fc7;
+      --color-blue-lt:     #3b9eff;
+      --color-blue-dk:     #124d96;
+      --color-accent:      #e8a020;
+      --color-spark:       #ffd166;
+
+      /* Upgrade 1: new font stack */
+      --font-heading: 'Syne', sans-serif;
+      --font-body:    'Instrument Sans', sans-serif;
+
+      --nav-h: 72px;
+      --radius: 6px;
+      /* Upgrade 10: premium cubic-bezier transitions everywhere */
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+      --transition: 0.35s var(--ease-out-expo);
+      --transition-slow: 0.65s var(--ease-out-expo);
+      --shadow: 0 8px 40px rgba(0,0,0,0.5);
+      --shadow-card: 0 4px 24px rgba(0,0,0,0.35);
+      --shadow-glow: 0 0 32px rgba(59,158,255,0.18);
+    }
+
+    /* ─── Reset & Base ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--color-charcoal);
+      color: var(--color-white);
+      font-family: var(--font-body);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-blue-lt);
+      margin-bottom: 12px;
+    }
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 2px;
+      background: var(--color-blue-lt);
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-size: clamp(1.9rem, 3.4vw, 2.75rem);
+      font-weight: 800;
+      color: var(--color-pure-white);
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--color-silver-lt);
+      max-width: 560px;
+      line-height: 1.75;
+    }
+
+    /* ─── Buttons ───────────────────────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: var(--radius);
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition),
+                  transform var(--transition), box-shadow var(--transition),
+                  border-color var(--transition);
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: var(--color-blue);
+      color: var(--color-pure-white);
+      border-color: var(--color-blue);
+      box-shadow: 0 0 0 0 rgba(59,158,255,0);
+    }
+    .btn-primary:hover {
+      background: var(--color-blue-lt);
+      border-color: var(--color-blue-lt);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(59,158,255,0.38);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-pure-white);
+      border-color: rgba(255,255,255,0.5);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: var(--color-pure-white);
+      transform: translateY(-3px);
+    }
+
+    /* ─── Scroll Reveal ─────────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity var(--transition-slow), transform var(--transition-slow);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+    .reveal-delay-5 { transition-delay: 0.40s; }
+
+    /* ─── Upgrade 3: Blueprint Grid Overlay ─────────────────────────── */
+    .grid-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(59,158,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,158,255,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      background-position: center center;
+      z-index: 0;
+    }
+    .grid-overlay-fine {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(59,158,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,158,255,0.025) 1px, transparent 1px);
+      background-size: 12px 12px;
+      z-index: 0;
+    }
+
+    /* ─── Upgrade 9: Gradient Mesh Backgrounds ──────────────────────── */
+    .mesh-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 10% 20%, rgba(30,111,199,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 90% 80%, rgba(59,158,255,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 60% at 50% 50%, rgba(18,77,150,0.06) 0%, transparent 70%);
+    }
+
+    /* ─── Navigation ────────────────────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      z-index: 1000;
+      background: rgba(19, 21, 26, 0.82);
+      backdrop-filter: blur(18px) saturate(1.4);
+      -webkit-backdrop-filter: blur(18px) saturate(1.4);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    #navbar.scrolled {
+      background: rgba(19, 21, 26, 0.97);
+      box-shadow: 0 2px 28px rgba(0,0,0,0.55);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-h);
+    }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .nav-logo-main {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-pure-white);
+    }
+    .nav-logo-sub {
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-blue-lt);
+      margin-top: 3px;
+    }
+    .nav-logo-accent {
+      display: inline-block;
+      width: 32px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-blue-lt), transparent);
+      margin-top: 5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-silver-lt);
+      transition: color var(--transition);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px; left: 0; right: 0;
+      height: 2px;
+      background: var(--color-blue-lt);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .nav-links a:hover { color: var(--color-pure-white); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-cta { margin-left: 14px; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px; height: 36px;
+      background: none; border: none;
+      cursor: pointer; padding: 4px;
+    }
+    .hamburger span {
+      display: block; height: 2px;
+      background: var(--color-silver-lt);
+      border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h); left: 0; right: 0;
+      background: var(--color-dark);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 20px 24px 28px;
+      z-index: 999;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 12px 0;
+      font-size: 1rem;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-silver-lt);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color var(--transition);
+    }
+    .mobile-menu a:hover { color: var(--color-pure-white); }
+    .mobile-menu .btn { margin-top: 16px; text-align: center; width: 100%; }
+
+    /* ─── Hero ──────────────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1565689954206-4a1536eb1468?w=1800&auto=format&fit=crop&q=80');
+      background-size: cover;
+      background-position: center 40%;
+      transform: scale(1.06);
+      transition: transform 9s var(--ease-out-expo);
+    }
+    #hero.loaded .hero-bg { transform: scale(1); }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        108deg,
+        rgba(10,12,16,0.92) 0%,
+        rgba(19,21,26,0.76) 52%,
+        rgba(8,12,18,0.58) 100%
+      );
+    }
+
+    /* Upgrade 5: Particle / spark canvas sits between bg and overlay */
+    #spark-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 700px;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .hero-eyebrow-line {
+      width: 44px; height: 2px;
+      background: linear-gradient(90deg, var(--color-blue-lt), transparent);
+    }
+    .hero-eyebrow span {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--color-blue-lt);
+      font-family: var(--font-body);
+    }
+
+    /* Upgrade 2: Metallic shimmer headline */
+    .hero-title {
+      font-size: clamp(2.5rem, 5.8vw, 4.5rem);
+      font-weight: 800;
+      color: var(--color-pure-white);
+      margin-bottom: 24px;
+      line-height: 1.05;
+      text-transform: uppercase;
+      position: relative;
+      display: inline-block;
+    }
+    .hero-title .shimmer-text {
+      background: linear-gradient(
+        105deg,
+        #ffffff 0%,
+        #c8d8e8 20%,
+        #ffffff 35%,
+        #ddeeff 45%,
+        var(--color-blue-lt) 50%,
+        #ffffff 55%,
+        #c8d8e8 70%,
+        #ffffff 100%
+      );
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: metalShimmer 4s linear infinite;
+    }
+    @keyframes metalShimmer {
+      0%   { background-position: 200% center; }
+      100% { background-position: -100% center; }
+    }
+    .hero-title em {
+      font-style: normal;
+      color: var(--color-blue-lt);
+      -webkit-text-fill-color: var(--color-blue-lt);
+      display: block;
+    }
+
+    .hero-desc {
+      font-size: 1.06rem;
+      color: rgba(255,255,255,0.76);
+      line-height: 1.78;
+      margin-bottom: 38px;
+      max-width: 520px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 38px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-family: var(--font-body);
+    }
+    .hero-scroll-arrow {
+      width: 22px; height: 22px;
+      border-right: 2px solid rgba(255,255,255,0.3);
+      border-bottom: 2px solid rgba(255,255,255,0.3);
+      transform: rotate(45deg);
+      animation: scrollBounce 2.2s var(--ease-in-out-quart) infinite;
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.4; }
+      50%       { transform: rotate(45deg) translateY(7px); opacity: 1; }
+    }
+
+    /* Upgrade 5: Spark particles (CSS fallback dots) */
+    .spark-dot {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffd166 0%, rgba(255,160,30,0.6) 50%, transparent 100%);
+      box-shadow: 0 0 6px 2px rgba(255,200,60,0.5);
+      pointer-events: none;
+      z-index: 2;
+      animation: sparkFloat linear infinite;
+      will-change: transform, opacity;
+    }
+    @keyframes sparkFloat {
+      0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+      10%  { opacity: 1; }
+      80%  { opacity: 0.6; }
+      100% { transform: translateY(-160px) translateX(var(--drift-x, 20px)) scale(0.3); opacity: 0; }
+    }
+
+    /* ─── Trust Strip ───────────────────────────────────────────────── */
+    #trust {
+      background: var(--color-blue-dk);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    #trust .mesh-bg {
+      background:
+        radial-gradient(ellipse 80% 100% at 0% 50%, rgba(255,255,255,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 80% at 100% 50%, rgba(0,0,0,0.15) 0%, transparent 60%);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      position: relative;
+      z-index: 1;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 24px 28px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+      transition: background var(--transition);
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-item:hover { background: rgba(255,255,255,0.05); }
+
+    .trust-icon {
+      flex-shrink: 0;
+      width: 42px; height: 42px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .trust-item:hover .trust-icon {
+      background: rgba(255,255,255,0.2);
+      transform: scale(1.08);
+    }
+    .trust-icon svg { width: 20px; height: 20px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .trust-text strong {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-pure-white);
+    }
+    .trust-text span { font-size: 0.72rem; color: rgba(255,255,255,0.62); }
+
+    /* ─── Capabilities ──────────────────────────────────────────────── */
+    #capabilities {
+      padding: 100px 0 84px;
+      background: var(--color-charcoal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cap-header { margin-bottom: 60px; }
+
+    .cap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Upgrade 6: metallic border shimmer on hover */
+    .cap-card {
+      background: var(--color-dark);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 34px 30px;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    /* Shimmer pseudo-element for border effect */
+    .cap-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius);
+      padding: 1px;
+      background: linear-gradient(
+        135deg,
+        transparent 0%,
+        rgba(59,158,255,0) 30%,
+        rgba(180,210,255,0.7) 50%,
+        rgba(59,158,255,0) 70%,
+        transparent 100%
+      );
+      background-size: 300% 300%;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity var(--transition);
+      animation: none;
+    }
+    .cap-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-blue-dk), var(--color-blue-lt), var(--color-blue-dk));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.45s var(--ease-out-expo);
+    }
+    .cap-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card), var(--shadow-glow);
+      border-color: rgba(59,158,255,0.25);
+    }
+    .cap-card:hover::before {
+      opacity: 1;
+      animation: borderShimmer 1.4s var(--ease-in-out-quart) forwards;
+    }
+    .cap-card:hover::after { transform: scaleX(1); }
+
+    @keyframes borderShimmer {
+      0%   { background-position: 200% 200%; }
+      100% { background-position: -100% -100%; }
+    }
+
+    .cap-icon {
+      width: 54px; height: 54px;
+      background: rgba(30,111,199,0.14);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 22px;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .cap-card:hover .cap-icon {
+      background: rgba(59,158,255,0.22);
+      transform: scale(1.06);
+    }
+    .cap-icon svg { width: 26px; height: 26px; fill: none; stroke: var(--color-blue-lt); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    .cap-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-pure-white);
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .cap-card p {
+      font-size: 0.87rem;
+      color: var(--color-silver);
+      line-height: 1.72;
+    }
+
+    /* ─── Process ───────────────────────────────────────────────────── */
+    /* Upgrade 4: dramatic process section */
+    #process {
+      padding: 100px 0;
+      background: var(--color-dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .process-header { margin-bottom: 70px; position: relative; z-index: 1; }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      position: relative;
+      z-index: 1;
+      align-items: flex-start;
+    }
+
+    /* Upgrade 4: animated connecting line */
+    .process-track {
+      position: absolute;
+      top: 34px;
+      left: calc(10% + 30px);
+      right: calc(10% + 30px);
+      height: 2px;
+      background: rgba(255,255,255,0.06);
+      z-index: 0;
+      overflow: hidden;
+    }
+    .process-track-fill {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--color-blue-dk) 0%, var(--color-blue-lt) 50%, var(--color-blue-dk) 100%);
+      background-size: 200% 100%;
+      animation: trackFlow 3s linear infinite;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 1.4s var(--ease-out-expo) 0.6s;
+    }
+    .process-steps.visible .process-track-fill {
+      transform: scaleX(1);
+    }
+    @keyframes trackFlow {
+      0%   { background-position: 100% 0; }
+      100% { background-position: -100% 0; }
+    }
+
+    /* Animated dots travelling along the track */
+    .process-track-dot {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 8px 3px rgba(59,158,255,0.8);
+      animation: dotTravel 3s linear infinite;
+      opacity: 0;
+    }
+    .process-track-dot:nth-child(2) { animation-delay: 1s; }
+    .process-track-dot:nth-child(3) { animation-delay: 2s; }
+
+    @keyframes dotTravel {
+      0%   { left: 0%; opacity: 0; }
+      5%   { opacity: 1; }
+      95%  { opacity: 1; }
+      100% { left: 100%; opacity: 0; }
+    }
+
+    .process-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .process-num {
+      width: 68px; height: 68px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-blue-dk), var(--color-blue));
+      border: 2px solid rgba(59,158,255,0.5);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--color-pure-white);
+      margin-bottom: 22px;
+      box-shadow: 0 0 0 8px var(--color-dark), 0 0 20px rgba(59,158,255,0.3);
+      transition: transform var(--transition), box-shadow var(--transition);
+      position: relative;
+    }
+    .process-num::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 1px solid rgba(59,158,255,0.2);
+      animation: numPulse 2.5s ease-in-out infinite;
+    }
+    @keyframes numPulse {
+      0%, 100% { transform: scale(1); opacity: 0.4; }
+      50%       { transform: scale(1.12); opacity: 0.9; }
+    }
+    .process-step:hover .process-num {
+      transform: scale(1.08);
+      box-shadow: 0 0 0 8px var(--color-dark), 0 0 32px rgba(59,158,255,0.55);
+    }
+
+    .process-step h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--color-pure-white);
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .process-step p {
+      font-size: 0.79rem;
+      color: var(--color-silver);
+      line-height: 1.62;
+    }
+
+    /* ─── Industries ────────────────────────────────────────────────── */
+    #industries {
+      padding: 100px 0;
+      background: var(--color-charcoal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .industries-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .industries-img-wrap {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .industries-img-wrap img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      filter: brightness(0.7) saturate(0.8);
+      transition: transform 0.8s var(--ease-out-expo), filter 0.6s var(--ease-out-expo);
+    }
+    .industries-img-wrap:hover img {
+      transform: scale(1.03);
+      filter: brightness(0.8) saturate(0.9);
+    }
+    .industries-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(59,158,255,0.35);
+      border-radius: var(--radius);
+      pointer-events: none;
+      transition: border-color var(--transition);
+    }
+    .industries-img-wrap:hover::after {
+      border-color: rgba(59,158,255,0.7);
+    }
+
+    .industries-content h2 { margin-bottom: 18px; }
+    .industries-content .section-sub { margin-bottom: 14px; }
+
+    .industry-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .industry-tag {
+      padding: 7px 16px;
+      background: rgba(30,111,199,0.1);
+      border: 1px solid rgba(59,158,255,0.3);
+      border-radius: 3px;
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-blue-lt);
+      font-family: var(--font-body);
+      transition: background var(--transition), border-color var(--transition), color var(--transition);
+    }
+    .industry-tag:hover {
+      background: rgba(59,158,255,0.18);
+      border-color: var(--color-blue-lt);
+      color: #fff;
+    }
+
+    /* ─── Upgrade 7: Full-Bleed Photo Break / Parallax Quote ────────── */
+    #photo-break {
+      position: relative;
+      height: 480px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .photo-break-bg {
+      position: absolute;
+      inset: -80px 0;
+      background-image: url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=1800&auto=format&fit=crop&q=80');
+      background-size: cover;
+      background-position: center 30%;
+      background-attachment: fixed;
+      filter: brightness(0.35) saturate(0.6);
+    }
+    .photo-break-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(10,12,18,0.75) 0%,
+        rgba(18,77,150,0.25) 50%,
+        rgba(10,12,18,0.75) 100%
+      );
+    }
+    .photo-break-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 28px;
+      max-width: 860px;
+    }
+    .photo-break-quote {
+      font-family: var(--font-heading);
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      color: var(--color-pure-white);
+      line-height: 1.15;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 24px;
+    }
+    .photo-break-quote span {
+      background: linear-gradient(90deg, var(--color-blue-lt), #8ecfff, var(--color-blue-lt));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: metalShimmer 5s linear infinite;
+    }
+    .photo-break-attr {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+    .photo-break-line {
+      width: 60px; height: 2px;
+      background: var(--color-blue-lt);
+      margin: 0 auto 20px;
+      opacity: 0.7;
+    }
+
+    /* ─── About ─────────────────────────────────────────────────────── */
+    #about {
+      padding: 100px 0;
+      background: var(--color-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    #about::before {
+      content: 'ICG';
+      position: absolute;
+      right: -40px; bottom: -70px;
+      font-family: var(--font-heading);
+      font-size: 20rem;
+      font-weight: 800;
+      color: rgba(255,255,255,0.016);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-content h2 { margin-bottom: 24px; }
+    .about-content p {
+      color: var(--color-silver-lt);
+      font-size: 0.96rem;
+      line-height: 1.82;
+      margin-bottom: 18px;
+    }
+    .about-content p:last-of-type { margin-bottom: 36px; }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .about-stat {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      transition: border-color var(--transition), background var(--transition);
+    }
+    .about-stat:hover {
+      background: rgba(59,158,255,0.06);
+      border-color: rgba(59,158,255,0.3);
+    }
+    .about-stat strong {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--color-blue-lt);
+      letter-spacing: 0.02em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .about-stat span {
+      font-size: 0.76rem;
+      color: var(--color-silver);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+    }
+
+    .about-img-wrap { position: relative; }
+    .about-img-wrap img {
+      width: 100%; height: 490px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      filter: brightness(0.68) saturate(0.75);
+      transition: filter 0.6s var(--ease-out-expo);
+    }
+    .about-img-wrap:hover img { filter: brightness(0.78) saturate(0.85); }
+
+    .about-img-badge {
+      position: absolute;
+      bottom: -20px; left: -20px;
+      background: linear-gradient(135deg, var(--color-blue-dk), var(--color-blue));
+      padding: 20px 26px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .about-img-badge strong {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+    }
+    .about-img-badge span {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.72);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    /* ─── Quality ───────────────────────────────────────────────────── */
+    #quality {
+      padding: 100px 0;
+      background: var(--color-charcoal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quality-layout {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 72px;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .quality-sidebar h2 { margin-bottom: 18px; }
+    .quality-sidebar .section-sub { font-size: 0.9rem; }
+
+    .quality-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .quality-card {
+      background: var(--color-dark);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 24px 22px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .quality-card:hover {
+      border-color: rgba(59,158,255,0.35);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    .quality-check {
+      flex-shrink: 0;
+      width: 34px; height: 34px;
+      background: rgba(30,111,199,0.16);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .quality-card:hover .quality-check {
+      background: rgba(59,158,255,0.26);
+      transform: scale(1.1);
+    }
+    .quality-check svg { width: 16px; height: 16px; fill: none; stroke: var(--color-blue-lt); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    .quality-card h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--color-pure-white);
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .quality-card p {
+      font-size: 0.8rem;
+      color: var(--color-silver);
+      line-height: 1.62;
+    }
+
+    /* ─── Upgrade 8: Improved RFQ / Contact section ─────────────────── */
+    #contact {
+      padding: 100px 0;
+      background: var(--color-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    #contact .mesh-bg {
+      background:
+        radial-gradient(ellipse 60% 70% at 0% 100%, rgba(18,77,150,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 100% 0%, rgba(59,158,255,0.08) 0%, transparent 55%);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 72px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-info h2 { margin-bottom: 18px; }
+    .contact-info .section-sub { margin-bottom: 40px; }
+
+    /* Upgrade 8: visual trust indicators in contact */
+    .contact-promise {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 36px;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .contact-promise-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+      transition: background var(--transition);
+    }
+    .contact-promise-item:last-child { border-bottom: none; }
+    .contact-promise-item:hover { background: rgba(59,158,255,0.06); }
+    .contact-promise-icon {
+      flex-shrink: 0;
+      width: 34px; height: 34px;
+      background: rgba(30,111,199,0.16);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-promise-icon svg { width: 16px; height: 16px; fill: none; stroke: var(--color-blue-lt); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .contact-promise-item strong {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--color-pure-white);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1px;
+    }
+    .contact-promise-item span { font-size: 0.76rem; color: var(--color-silver); }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .contact-detail-icon {
+      flex-shrink: 0;
+      width: 38px; height: 38px;
+      background: rgba(30,111,199,0.16);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-detail-icon svg { width: 18px; height: 18px; fill: none; stroke: var(--color-blue-lt); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .contact-detail strong {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-silver);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 2px;
+    }
+    .contact-detail span { font-size: 0.9rem; color: var(--color-white); }
+
+    /* Upgrade 8: elevated RFQ form */
+    .rfq-form {
+      background: rgba(19,21,26,0.85);
+      border: 1px solid rgba(59,158,255,0.15);
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 60px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,255,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+    .rfq-form::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-blue-dk), var(--color-blue-lt), var(--color-blue-dk));
+      background-size: 200% 100%;
+      animation: gradientShift 4s linear infinite;
+    }
+    @keyframes gradientShift {
+      0%   { background-position: 0% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    .rfq-form-header {
+      margin-bottom: 28px;
+    }
+    .rfq-form-header h3 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--color-pure-white);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .rfq-form-header p {
+      font-size: 0.82rem;
+      color: var(--color-silver);
+      line-height: 1.6;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 14px;
+    }
+    .form-group label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-silver);
+      transition: color var(--transition);
+    }
+    .form-group:focus-within label { color: var(--color-blue-lt); }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 12px 15px;
+      font-size: 0.88rem;
+      color: var(--color-white);
+      font-family: var(--font-body);
+      transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+      outline: none;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--color-blue-lt);
+      background: rgba(59,158,255,0.06);
+      box-shadow: 0 0 0 3px rgba(59,158,255,0.12);
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .form-group select option { background: var(--color-dark); color: var(--color-white); }
+    .form-group textarea { resize: vertical; min-height: 96px; }
+    .form-group.full { grid-column: 1 / -1; }
+
+    .rfq-form .btn {
+      width: 100%;
+      text-align: center;
+      margin-top: 6px;
+      padding: 16px 32px;
+      font-size: 0.9rem;
+    }
+
+    /* ─── Footer ────────────────────────────────────────────────────── */
+    footer {
+      background: #0e1014;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 60px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 44px;
+      margin-bottom: 52px;
+    }
+
+    .footer-brand .nav-logo-main { font-size: 1.25rem; }
+    .footer-brand p {
+      font-size: 0.82rem;
+      color: var(--color-silver);
+      line-height: 1.72;
+      margin-top: 14px;
+      max-width: 260px;
+    }
+
+    .footer-col h5 {
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-pure-white);
+      margin-bottom: 18px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a {
+      font-size: 0.81rem;
+      color: var(--color-silver);
+      transition: color var(--transition), padding-left var(--transition);
+      display: inline-block;
+    }
+    .footer-col ul li a:hover {
+      color: var(--color-blue-lt);
+      padding-left: 6px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p { font-size: 0.74rem; color: var(--color-steel-mid); }
+    .footer-bottom a { color: var(--color-silver); transition: color var(--transition); }
+    .footer-bottom a:hover { color: var(--color-blue-lt); }
+
+    /* ─── Responsive: 960px ─────────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+
+      .trust-grid { grid-template-columns: 1fr 1fr; }
+      .trust-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .trust-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.08); }
+      .trust-item:nth-child(3), .trust-item:nth-child(4) { border-bottom: none; }
+
+      .cap-grid { grid-template-columns: 1fr 1fr; }
+
+      .process-steps {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+      .process-track { display: none; }
+      .process-step { flex-direction: row; text-align: left; gap: 20px; align-items: flex-start; }
+      .process-num { margin-bottom: 0; flex-shrink: 0; }
+
+      .industries-layout { grid-template-columns: 1fr; }
+      .industries-img-wrap img { height: 300px; }
+
+      .photo-break-bg { background-attachment: scroll; }
+      #photo-break { height: 360px; }
+
+      .about-layout { grid-template-columns: 1fr; }
+      .about-img-wrap img { height: 340px; }
+      .about-img-badge { left: 16px; bottom: -16px; }
+
+      .quality-layout { grid-template-columns: 1fr; }
+
+      .contact-layout { grid-template-columns: 1fr; }
+
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ─── Responsive: 640px ─────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      :root { --nav-h: 60px; }
+
+      .hero-title { font-size: 2.2rem; }
+      .hero-buttons { flex-direction: column; }
+      .hero-buttons .btn { text-align: center; }
+
+      .trust-grid { grid-template-columns: 1fr; }
+      .trust-item { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .trust-item:last-child { border-bottom: none; }
+
+      .cap-grid { grid-template-columns: 1fr; }
+      .quality-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      #photo-break { height: 300px; }
+      .rfq-form { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── Navigation ──────────────────────────────────────────────────── -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#hero" class="nav-logo" aria-label="ICG Castings Home">
+      <span class="nav-logo-main">ICG Castings</span>
+      <span class="nav-logo-sub">Inverness Castings Group</span>
+      <span class="nav-logo-accent"></span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#capabilities">Capabilities</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#quality">Quality</a></li>
+    </ul>
+
+    <a href="#contact" class="btn btn-primary nav-cta">Request a Quote</a>
+
+    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation">
+  <a href="#capabilities">Capabilities</a>
+  <a href="#process">Process</a>
+  <a href="#industries">Industries</a>
+  <a href="#about">About</a>
+  <a href="#quality">Quality</a>
+  <a href="#contact" class="btn btn-primary">Request a Quote</a>
+</div>
+
+<!-- ─── Hero ─────────────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <!-- Upgrade 5: Spark particle canvas -->
+  <canvas id="spark-canvas" aria-hidden="true"></canvas>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow reveal">
+        <span class="hero-eyebrow-line"></span>
+        <span>Dowagiac, MI &mdash; Automotive Aluminum Die-Casting</span>
+      </div>
+      <!-- Upgrade 2: shimmer headline -->
+      <h1 class="hero-title reveal reveal-delay-1">
+        <span class="shimmer-text">Precision Casting.</span><br />
+        <em>Built for Automotive.</em>
+      </h1>
+      <p class="hero-desc reveal reveal-delay-2">
+        ICG Castings delivers high-integrity aluminum die-cast components for OEMs and Tier 1 &amp; 2 automotive suppliers. From tooling design to final inspection, we engineer quality into every pour.
+      </p>
+      <div class="hero-buttons reveal reveal-delay-3">
+        <a href="#contact" class="btn btn-primary">Request a Quote</a>
+        <a href="#capabilities" class="btn btn-outline">Our Capabilities</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <span class="hero-scroll-arrow"></span>
+  </div>
+</section>
+
+<!-- ─── Trust Strip ──────────────────────────────────────────────────── -->
+<section id="trust">
+  <div class="mesh-bg"></div>
+  <div class="trust-grid">
+    <div class="trust-item reveal">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="trust-text">
+        <strong>Automotive Grade</strong>
+        <span>OEM &amp; Tier 1/2 Supplier</span>
+      </div>
+    </div>
+    <div class="trust-item reveal reveal-delay-1">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 1 0 21 12"/><path d="M16 12l3-3 3 3"/></svg>
+      </div>
+      <div class="trust-text">
+        <strong>Precision Tolerances</strong>
+        <span>Tight-Spec Die Casting</span>
+      </div>
+    </div>
+    <div class="trust-item reveal reveal-delay-2">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </div>
+      <div class="trust-text">
+        <strong>Quality Certified</strong>
+        <span>Rigorous Inspection Standards</span>
+      </div>
+    </div>
+    <div class="trust-item reveal reveal-delay-3">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <div class="trust-text">
+        <strong>Prototype to Production</strong>
+        <span>Full-Lifecycle Casting Partner</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Capabilities ─────────────────────────────────────────────────── -->
+<section id="capabilities">
+  <!-- Upgrade 3: blueprint grid overlay -->
+  <div class="grid-overlay"></div>
+  <div class="grid-overlay-fine"></div>
+  <div class="container">
+    <div class="cap-header reveal">
+      <span class="section-label">What We Do</span>
+      <h2 class="section-title">Core Capabilities</h2>
+      <p class="section-sub">From prototype to high-volume production, ICG Castings provides the full spectrum of aluminum die-casting services under one roof.</p>
+    </div>
+
+    <div class="cap-grid">
+      <!-- Upgrade 6: metallic border shimmer on hover for all cards -->
+      <div class="cap-card reveal">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3>Aluminum Die-Casting</h3>
+        <p>High-pressure aluminum die-casting for complex geometries, tight tolerances, and superior surface finish. Designed for automotive durability and performance standards.</p>
+      </div>
+
+      <div class="cap-card reveal reveal-delay-1">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <h3>Tooling &amp; Die Design</h3>
+        <p>In-house tooling engineering and die design capabilities. We build, maintain, and optimize dies to ensure consistent part quality throughout the production lifecycle.</p>
+      </div>
+
+      <div class="cap-card reveal reveal-delay-2">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Precision Machining</h3>
+        <p>Secondary CNC machining operations to achieve final dimensional requirements, ensuring cast parts meet strict automotive assembly specifications.</p>
+      </div>
+
+      <div class="cap-card reveal reveal-delay-3">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3>Prototype Development</h3>
+        <p>Rapid prototype casting services to validate designs early in the development cycle. Reduce time-to-launch with fast iteration and engineering collaboration.</p>
+      </div>
+
+      <div class="cap-card reveal reveal-delay-4">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Quality Inspection</h3>
+        <p>CMM measurement, X-ray inspection, leak testing, and visual quality audits at every stage. Zero-defect commitment backed by documented process control.</p>
+      </div>
+
+      <div class="cap-card reveal reveal-delay-5">
+        <div class="cap-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h18M3 15h18M15 3v18"/></svg>
+        </div>
+        <h3>High-Volume Production</h3>
+        <p>Scalable production capacity to support automotive supply chain demands. Consistent cycle times, optimized process flows, and on-time delivery performance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Process ───────────────────────────────────────────────────────── -->
+<!-- Upgrade 3 + 4: blueprint grid + animated timeline -->
+<section id="process">
+  <div class="grid-overlay"></div>
+  <div class="mesh-bg"></div>
+  <div class="container">
+    <div class="process-header reveal">
+      <span class="section-label">How We Work</span>
+      <h2 class="section-title">Our Manufacturing Process</h2>
+      <p class="section-sub">A disciplined, repeatable process from initial design review through final delivery &mdash; engineered for automotive-grade consistency.</p>
+    </div>
+
+    <!-- Upgrade 4: process track sits inside .process-steps wrapper -->
+    <div class="process-steps" id="processSteps">
+      <div class="process-track" aria-hidden="true">
+        <div class="process-track-fill"></div>
+        <div class="process-track-dot"></div>
+        <div class="process-track-dot"></div>
+        <div class="process-track-dot"></div>
+      </div>
+
+      <div class="process-step reveal">
+        <div class="process-num">01</div>
+        <div>
+          <h4>Design &amp; Engineering</h4>
+          <p>DFM review, mold flow simulation, and co-engineering with customer design teams.</p>
+        </div>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="process-num">02</div>
+        <div>
+          <h4>Tooling &amp; Die Build</h4>
+          <p>In-house die construction, tryout, and validation to production-ready qualification.</p>
+        </div>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="process-num">03</div>
+        <div>
+          <h4>Aluminum Casting</h4>
+          <p>High-pressure die-casting with real-time process monitoring and parameter control.</p>
+        </div>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="process-num">04</div>
+        <div>
+          <h4>Finishing &amp; Machining</h4>
+          <p>Trimming, deburring, shot blasting, and secondary CNC machining as required.</p>
+        </div>
+      </div>
+      <div class="process-step reveal reveal-delay-4">
+        <div class="process-num">05</div>
+        <div>
+          <h4>Inspection &amp; Delivery</h4>
+          <p>Full dimensional audit, functional testing, and certified shipment to your facility.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Industries ───────────────────────────────────────────────────── -->
+<section id="industries">
+  <div class="mesh-bg"></div>
+  <div class="container">
+    <div class="industries-layout">
+      <div class="industries-img-wrap reveal">
+        <img
+          src="https://images.unsplash.com/photo-1617469955246-25b4b6ebe585?w=900&auto=format&fit=crop&q=80"
+          alt="Automotive manufacturing facility"
+          loading="lazy"
+        />
+      </div>
+      <div class="industries-content reveal reveal-delay-2">
+        <span class="section-label">Who We Serve</span>
+        <h2 class="section-title">Automotive Industry Partners</h2>
+        <p class="section-sub">
+          ICG Castings is a trusted casting partner to major automotive OEMs and their supply chains. We manufacture structural, powertrain, thermal management, and chassis components that meet the demanding requirements of modern vehicle platforms.
+        </p>
+        <p class="section-sub" style="margin-top:14px;">
+          Our engineering team understands automotive quality systems and works collaboratively with procurement, engineering, and quality teams to accelerate launch timelines and reduce total cost.
+        </p>
+        <div class="industry-tags">
+          <span class="industry-tag">OEM Automotive</span>
+          <span class="industry-tag">Tier 1 Suppliers</span>
+          <span class="industry-tag">Tier 2 Suppliers</span>
+          <span class="industry-tag">Powertrain</span>
+          <span class="industry-tag">Chassis &amp; Structural</span>
+          <span class="industry-tag">Thermal Management</span>
+          <span class="industry-tag">EV / Electrification</span>
+          <span class="industry-tag">Defense Adjacent</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Upgrade 7: Full-Bleed Photo Break ───────────────────────────── -->
+<section id="photo-break" aria-label="Company philosophy">
+  <div class="photo-break-bg"></div>
+  <div class="photo-break-overlay"></div>
+  <div class="photo-break-content reveal">
+    <div class="photo-break-line"></div>
+    <p class="photo-break-quote">
+      We don't just pour metal.<br />
+      We build the parts that <span>move North America.</span>
+    </p>
+    <p class="photo-break-attr">ICG Castings &mdash; Dowagiac, Michigan</p>
+  </div>
+</section>
+
+<!-- ─── About ────────────────────────────────────────────────────────── -->
+<section id="about">
+  <div class="grid-overlay"></div>
+  <div class="container">
+    <div class="about-layout">
+      <div class="about-content reveal">
+        <span class="section-label">Who We Are</span>
+        <h2 class="section-title">Michigan Manufacturing Heritage</h2>
+        <p>
+          ICG Castings, Inc. &mdash; the Inverness Castings Group &mdash; is rooted in the manufacturing tradition of southwest Michigan. Located in Dowagiac, we operate at the heart of the Great Lakes automotive corridor, giving us proximity to the OEM and Tier 1 supplier base that drives North American vehicle production.
+        </p>
+        <p>
+          Our facility combines experienced metalworking talent with modern die-casting equipment and rigorous process controls. We are structured to serve as a long-term, strategic casting partner: capable, responsive, and committed to the continuous improvement standards that the automotive industry demands.
+        </p>
+        <div class="about-stats">
+          <div class="about-stat">
+            <strong>AL</strong>
+            <span>Aluminum Alloy Specialists</span>
+          </div>
+          <div class="about-stat">
+            <strong>MI</strong>
+            <span>Dowagiac, Michigan</span>
+          </div>
+          <div class="about-stat">
+            <strong>OEM</strong>
+            <span>Direct OEM Experience</span>
+          </div>
+          <div class="about-stat">
+            <strong>T1/2</strong>
+            <span>Tier 1 &amp; 2 Supplier</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-img-wrap reveal reveal-delay-2">
+        <img
+          src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=900&auto=format&fit=crop&q=80"
+          alt="Manufacturing facility interior"
+          loading="lazy"
+        />
+        <div class="about-img-badge">
+          <strong>Dowagiac, MI</strong>
+          <span>Southwest Michigan</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Quality ──────────────────────────────────────────────────────── -->
+<section id="quality">
+  <div class="grid-overlay"></div>
+  <div class="mesh-bg"></div>
+  <div class="container">
+    <div class="quality-layout">
+      <div class="reveal">
+        <span class="section-label">Quality Commitment</span>
+        <h2 class="section-title">Built on Precision &amp; Process</h2>
+        <p class="section-sub">
+          Every part that leaves our facility is backed by documented quality control, traceable data, and inspection records that meet automotive supply chain standards.
+        </p>
+      </div>
+
+      <div class="quality-grid">
+        <div class="quality-card reveal">
+          <div class="quality-check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h4>CMM Dimensional Inspection</h4>
+            <p>Coordinate measuring machine verification against customer GD&amp;T requirements at first-article and production sampling.</p>
+          </div>
+        </div>
+
+        <div class="quality-card reveal reveal-delay-1">
+          <div class="quality-check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h4>X-Ray &amp; Porosity Testing</h4>
+            <p>Radiographic inspection to detect internal voids, porosity, and inclusions in safety-critical and structural castings.</p>
+          </div>
+        </div>
+
+        <div class="quality-card reveal reveal-delay-2">
+          <div class="quality-check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h4>Pressure &amp; Leak Testing</h4>
+            <p>Functional leak testing for fluid-carrying and pressure-retaining cast components to confirm seal integrity.</p>
+          </div>
+        </div>
+
+        <div class="quality-card reveal reveal-delay-3">
+          <div class="quality-check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h4>Process FMEA &amp; Control Plans</h4>
+            <p>Risk-based process design with documented control plans, reaction instructions, and PPAP-aligned documentation packages.</p>
+          </div>
+        </div>
+
+        <div class="quality-card reveal reveal-delay-4">
+          <div class="quality-check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h4>Statistical Process Control</h4>
+            <p>Real-time SPC monitoring of critical casting parameters to maintain process stability and detect drift before nonconformance.</p>
+          </div>
+        </div>
+
+        <div class="quality-card reveal reveal-delay-5">
+          <div class="quality-check">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h4>Traceability &amp; PPAP</h4>
+            <p>Full part traceability from melt heat to finished shipment, with PPAP submission capability to automotive Tier 1 and OEM standards.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Contact / RFQ ────────────────────────────────────────────────── -->
+<!-- Upgrade 8: improved visual hierarchy, Upgrade 9: gradient mesh -->
+<section id="contact">
+  <div class="mesh-bg"></div>
+  <div class="grid-overlay"></div>
+  <div class="container">
+    <div class="contact-layout">
+      <div class="contact-info reveal">
+        <span class="section-label">Get in Touch</span>
+        <h2 class="section-title">Request a Quote or Start a Conversation</h2>
+        <p class="section-sub">
+          Whether you're sourcing a new casting program, looking to qualify a second supplier, or developing a prototype, our team responds quickly with technical capability and commercial detail.
+        </p>
+
+        <!-- Upgrade 8: promise strip -->
+        <div class="contact-promise" style="margin-top:28px;">
+          <div class="contact-promise-item">
+            <div class="contact-promise-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <strong>2-Business-Day Response</strong>
+              <span>Technical review and reply guaranteed within 2 business days</span>
+            </div>
+          </div>
+          <div class="contact-promise-item">
+            <div class="contact-promise-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <strong>Confidential &amp; Secure</strong>
+              <span>All RFQ information treated with full NDA-level discretion</span>
+            </div>
+          </div>
+          <div class="contact-promise-item">
+            <div class="contact-promise-icon">
+              <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div>
+              <strong>Engineering-First Review</strong>
+              <span>Your request goes directly to our applications engineering team</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-details" style="margin-top:28px;">
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <strong>Location</strong>
+              <span>Dowagiac, Michigan &mdash; Southwest MI Automotive Corridor</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.55a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16l.42.92z"/></svg>
+            </div>
+            <div>
+              <strong>Phone</strong>
+              <span>Contact us for current direct line</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <strong>Email / RFQ</strong>
+              <span>Use the form to submit your casting requirements</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upgrade 8: elevated form with section header and animated top bar -->
+      <div class="rfq-form reveal reveal-delay-2">
+        <div class="rfq-form-header">
+          <h3>Submit an RFQ</h3>
+          <p>Fill out the fields below and we'll connect you with the right team member for your program.</p>
+        </div>
+        <form>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="fname" placeholder="John" />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lname" placeholder="Smith" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" placeholder="Acme Automotive" />
+            </div>
+            <div class="form-group">
+              <label for="title">Title / Role</label>
+              <input type="text" id="title" name="title" placeholder="Purchasing Manager" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="j.smith@company.com" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="service">Service Interest</label>
+            <select id="service" name="service">
+              <option value="">Select a service...</option>
+              <option>Aluminum Die-Casting</option>
+              <option>Tooling &amp; Die Design</option>
+              <option>Prototype Development</option>
+              <option>Precision Machining</option>
+              <option>Quality / Inspection Services</option>
+              <option>High-Volume Production</option>
+              <option>Multiple / Not Sure Yet</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="volume">Estimated Annual Volume</label>
+            <select id="volume" name="volume">
+              <option value="">Select volume range...</option>
+              <option>Prototype / Tooling Only</option>
+              <option>Under 10,000 parts/yr</option>
+              <option>10,000 – 100,000 parts/yr</option>
+              <option>100,000 – 500,000 parts/yr</option>
+              <option>500,000+ parts/yr</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Project Details / Requirements</label>
+            <textarea id="message" name="message" placeholder="Describe your part, alloy preferences, annual volume estimate, quality requirements, and timeline..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit Request for Quote</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ───────────────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <span class="nav-logo-main">ICG Castings</span>
+          <span class="nav-logo-sub">Inverness Castings Group</span>
+          <span class="nav-logo-accent"></span>
+        </div>
+        <p>Precision aluminum die-casting for automotive OEMs and Tier 1/2 suppliers. Manufactured in Dowagiac, Michigan.</p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Capabilities</h5>
+        <ul>
+          <li><a href="#capabilities">Aluminum Die-Casting</a></li>
+          <li><a href="#capabilities">Tooling &amp; Die Design</a></li>
+          <li><a href="#capabilities">Precision Machining</a></li>
+          <li><a href="#capabilities">Prototype Development</a></li>
+          <li><a href="#capabilities">Quality Inspection</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#about">About ICG</a></li>
+          <li><a href="#process">Our Process</a></li>
+          <li><a href="#industries">Industries Served</a></li>
+          <li><a href="#quality">Quality &amp; Standards</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="#contact">Request a Quote</a></li>
+          <li><a href="#contact">Supplier Inquiry</a></li>
+          <li><a href="#contact">Engineering Support</a></li>
+          <li><a href="#contact">General Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2024 ICG Castings, Inc. (Inverness Castings Group) &mdash; Dowagiac, Michigan. All rights reserved.</p>
+      <p><a href="#hero">Back to Top</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── Scripts ──────────────────────────────────────────────────────── -->
+<script>
+  // ── Hero ken-burns trigger ──────────────────────────────────────────
+  window.addEventListener('load', () => {
+    document.getElementById('hero').classList.add('loaded');
+  });
+
+  // ── Navbar scroll state ─────────────────────────────────────────────
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // ── Hamburger / mobile menu ─────────────────────────────────────────
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu   = document.getElementById('mobileMenu');
+
+  hamburgerBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburgerBtn.classList.toggle('open', isOpen);
+    hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburgerBtn.classList.remove('open');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ── Scroll reveal via IntersectionObserver ──────────────────────────
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // ── Upgrade 4: Trigger process track fill on section visibility ─────
+  const processSteps = document.getElementById('processSteps');
+  if (processSteps) {
+    const processObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          processSteps.classList.add('visible');
+          processObserver.unobserve(processSteps);
+        }
+      });
+    }, { threshold: 0.2 });
+    processObserver.observe(processSteps);
+  }
+
+  // ── Smooth scroll for anchor links ─────────────────────────────────
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ── RFQ form submit (demo) ──────────────────────────────────────────
+  document.querySelector('form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn');
+    btn.textContent = 'Request Submitted — We\'ll Be in Touch';
+    btn.style.background = 'linear-gradient(135deg, #1a6e3a, #22a052)';
+    btn.style.borderColor = '#1a6e3a';
+    btn.style.boxShadow = '0 0 24px rgba(34,160,82,0.35)';
+    btn.disabled = true;
+  });
+
+  // ── Upgrade 5: Canvas spark / particle effect in hero ───────────────
+  (function initSparks() {
+    const canvas = document.getElementById('spark-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+
+    // Particle class
+    class Spark {
+      constructor() { this.reset(); }
+      reset() {
+        // Spawn at random bottom area (simulating floor level of foundry)
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height * (0.55 + Math.random() * 0.45);
+        this.radius = 0.8 + Math.random() * 2.2;
+        this.speedY = -(0.4 + Math.random() * 1.6);
+        this.speedX = (Math.random() - 0.5) * 0.8;
+        this.life = 0;
+        this.maxLife = 80 + Math.random() * 140;
+        // Colour cycles through gold → orange → white-hot
+        const hue = 30 + Math.random() * 30;
+        this.color = `hsl(${hue}, 100%, 70%)`;
+        this.glowColor = `hsl(${hue}, 100%, 55%)`;
+      }
+      update() {
+        this.life++;
+        this.x += this.speedX;
+        this.y += this.speedY;
+        // slight gravity counter-effect: sparks decelerate as they rise
+        this.speedY *= 0.995;
+        // slight horizontal drift
+        this.speedX += (Math.random() - 0.5) * 0.04;
+        if (this.life >= this.maxLife) this.reset();
+      }
+      draw() {
+        const alpha = Math.sin((this.life / this.maxLife) * Math.PI);
+        ctx.save();
+        ctx.globalAlpha = alpha * 0.85;
+        // Glow
+        ctx.shadowBlur  = 8;
+        ctx.shadowColor = this.glowColor;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    // Create 60 sparks staggered
+    const sparks = Array.from({ length: 60 }, () => {
+      const s = new Spark();
+      s.life = Math.floor(Math.random() * s.maxLife); // start mid-life so not all pop at once
+      return s;
+    });
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      sparks.forEach(s => { s.update(); s.draw(); });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  })();
+</script>
+
+</body>
+</html>

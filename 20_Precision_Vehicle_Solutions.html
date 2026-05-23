@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Precision Vehicle Solutions | Finished Vehicle Logistics | Precision Vehicle Holdings</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:       #0a0a0a;
+      --dark:        #111213;
+      --dark-2:      #1a1c1e;
+      --dark-3:      #242729;
+      --red:         #d42b2b;
+      --red-bright:  #f03535;
+      --red-light:   #ff5252;
+      --chrome:      #c8cfd8;
+      --chrome-light:#e8edf2;
+      --silver:      #6a7280;
+      --silver-light:#9aa3ae;
+      --white:       #ffffff;
+      --text:        #e8ecf0;
+      --text-muted:  #6a7280;
+      --yellow:      #f5c518;
+      --radius:      8px;
+      --radius-lg:   14px;
+      --shadow:      0 6px 28px rgba(0,0,0,0.5);
+      --shadow-lg:   0 20px 60px rgba(0,0,0,0.6);
+      --red-glow:    0 0 30px rgba(212,43,43,0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Work Sans', sans-serif; color: var(--text); background: var(--black); overflow-x: hidden; }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-36px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(36px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 96px 0; }
+    .section-label { font-family: 'Chakra Petch', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+    .section-title { font-family: 'Chakra Petch', sans-serif; font-size: clamp(26px, 3.8vw, 46px); font-weight: 700; color: var(--white); line-height: 1.1; margin-bottom: 16px; }
+    .section-sub { font-size: 16px; color: var(--silver-light); line-height: 1.75; max-width: 560px; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10,10,10,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; padding: 0 28px; max-width: 1180px; margin: 0 auto; }
+    .nav-logo-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo-mark { width: 36px; height: 36px; background: var(--red); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .nav-logo-mark span { font-family: 'Chakra Petch', sans-serif; font-size: 14px; font-weight: 700; color: white; }
+    .nav-logo-text { font-family: 'Chakra Petch', sans-serif; font-size: 16px; font-weight: 700; color: var(--white); letter-spacing: 0.04em; line-height: 1.1; }
+    .nav-logo-sub { font-size: 9px; font-weight: 400; color: var(--silver); letter-spacing: 0.18em; text-transform: uppercase; display: block; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { color: var(--silver-light); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--red-light); }
+    .nav-cta { background: var(--red); color: var(--white); padding: 10px 20px; border-radius: 4px; font-family: 'Chakra Petch', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-decoration: none; text-transform: uppercase; transition: background 0.2s, transform 0.15s; }
+    .nav-cta:hover { background: var(--red-bright); transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: white; border-radius: 2px; }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 68px; background: var(--black); }
+    .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0a0a0a 0%, #0f0f10 40%, #13090a 100%); }
+    .hero-photo-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80');
+      background-size: cover; background-position: center;
+      opacity: 0.12;
+    }
+    .hero-grid-lines { position: absolute; inset: 0; background-image: linear-gradient(rgba(212,43,43,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(212,43,43,0.04) 1px, transparent 1px); background-size: 60px 60px; }
+    .hero-spotlight { position: absolute; top: -200px; right: -100px; width: 800px; height: 800px; background: radial-gradient(circle, rgba(212,43,43,0.12) 0%, transparent 60%); }
+    .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(212,43,43,0.4); border-radius: 4px; padding: 8px 16px; margin-bottom: 24px; background: rgba(212,43,43,0.08); }
+    .hero-badge-pulse { width: 8px; height: 8px; background: var(--red-bright); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+    .hero-badge-text { font-family: 'Chakra Petch', sans-serif; font-size: 11px; font-weight: 600; color: var(--red-light); letter-spacing: 0.15em; text-transform: uppercase; }
+    .hero h1 { font-family: 'Chakra Petch', sans-serif; font-size: clamp(36px, 5.5vw, 68px); font-weight: 700; color: var(--white); line-height: 1.02; margin-bottom: 22px; letter-spacing: -0.01em; }
+    .hero h1 .red { color: var(--red); }
+    .hero h1 .chrome { color: var(--chrome); }
+    .hero-desc { font-size: 17px; color: var(--silver-light); line-height: 1.75; margin-bottom: 36px; max-width: 480px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+    .btn-red { background: var(--red); color: var(--white); padding: 15px 32px; border-radius: 4px; font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 14px; text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; box-shadow: 0 4px 24px rgba(212,43,43,0.4); }
+    .btn-red:hover { background: var(--red-bright); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(212,43,43,0.5); }
+    .btn-outline-chrome { background: transparent; color: var(--chrome-light); padding: 15px 32px; border-radius: 4px; font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 14px; text-decoration: none; border: 1px solid rgba(200,207,216,0.3); letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+    .btn-outline-chrome:hover { border-color: var(--chrome); background: rgba(200,207,216,0.06); }
+    .hero-creds { display: flex; gap: 32px; flex-wrap: wrap; }
+    .hero-cred { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--silver); letter-spacing: 0.04em; }
+    .hero-cred-line { width: 24px; height: 1px; background: var(--red); }
+    .hero-visual { display: flex; flex-direction: column; gap: 14px; }
+    .hero-visual-main { background: var(--dark-2); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius-lg); padding: 28px; position: relative; overflow: hidden; }
+    .hero-visual-main::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--red), transparent); }
+    .hero-visual-title { font-family: 'Chakra Petch', sans-serif; font-size: 13px; font-weight: 600; color: var(--silver); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 16px; }
+    .hero-service-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .hero-pill { background: var(--dark-3); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 6px 14px; font-family: 'Chakra Petch', sans-serif; font-size: 12px; font-weight: 600; color: var(--silver-light); letter-spacing: 0.05em; transition: border-color 0.2s, color 0.2s; }
+    .hero-pill:hover { border-color: var(--red); color: var(--red-light); }
+    .hero-stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .hero-stat-box { background: var(--dark-2); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius); padding: 18px; text-align: center; transition: border-color 0.3s; }
+    .hero-stat-box:hover { border-color: rgba(212,43,43,0.4); }
+    .hero-stat-num { font-family: 'Chakra Petch', sans-serif; font-size: 22px; font-weight: 700; color: var(--white); }
+    .hero-stat-label { font-size: 11px; color: var(--silver); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* SERVICES */
+    .services-bg { background: var(--dark); }
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 52px; border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius-lg); overflow: hidden; }
+    .service-item { background: var(--dark-2); padding: 40px 36px; transition: background 0.3s; position: relative; cursor: default; }
+    .service-item:hover { background: var(--dark-3); }
+    .service-item::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--red); transform: scaleY(0); transition: transform 0.3s; transform-origin: bottom; }
+    .service-item:hover::after { transform: scaleY(1); }
+    .service-number { font-family: 'Chakra Petch', sans-serif; font-size: 11px; font-weight: 600; color: var(--red); letter-spacing: 0.2em; margin-bottom: 16px; }
+    .service-title { font-family: 'Chakra Petch', sans-serif; font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+    .service-desc { font-size: 15px; color: var(--silver-light); line-height: 1.7; margin-bottom: 22px; }
+    .service-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .service-features li { font-size: 13px; color: var(--silver); display: flex; align-items: center; gap: 10px; }
+    .service-features li::before { content: ''; width: 16px; height: 1px; background: var(--red); flex-shrink: 0; }
+
+    /* WHY PRECISION */
+    .why-bg { background: var(--black); padding: 96px 0; }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .why-visual { background: var(--dark-2); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius-lg); padding: 40px; position: relative; overflow: hidden; }
+    .why-visual::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--red) 50%, transparent); }
+    .why-visual-title { font-family: 'Chakra Petch', sans-serif; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--red); margin-bottom: 28px; }
+    .why-metric { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .why-metric:last-child { border-bottom: none; }
+    .why-metric-label { font-size: 14px; color: var(--silver-light); }
+    .why-metric-bar-wrap { flex: 1; margin: 0 20px; height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+    .why-metric-bar { height: 100%; background: var(--red); border-radius: 2px; }
+    .why-metric-val { font-family: 'Chakra Petch', sans-serif; font-size: 14px; font-weight: 700; color: var(--white); white-space: nowrap; }
+    .why-points { display: flex; flex-direction: column; gap: 22px; }
+    .why-point { display: flex; gap: 20px; }
+    .why-point-num { font-family: 'Chakra Petch', sans-serif; font-size: 28px; font-weight: 700; color: rgba(212,43,43,0.25); line-height: 1; flex-shrink: 0; width: 36px; }
+    .why-point-title { font-family: 'Chakra Petch', sans-serif; font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .why-point-desc { font-size: 14px; color: var(--silver-light); line-height: 1.7; }
+
+    /* FAMILY OF COMPANIES */
+    .family-bg { background: var(--dark); padding: 96px 0; }
+    .family-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-bottom: 52px; }
+    .brands-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .brand-item { background: var(--dark-2); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius); padding: 22px; transition: border-color 0.3s, background 0.3s; }
+    .brand-item:hover { border-color: rgba(212,43,43,0.3); background: var(--dark-3); }
+    .brand-item.featured { border-color: rgba(212,43,43,0.4); background: rgba(212,43,43,0.06); }
+    .brand-name { font-family: 'Chakra Petch', sans-serif; font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .brand-item.featured .brand-name { color: var(--red-light); }
+    .brand-desc { font-size: 12px; color: var(--silver); line-height: 1.5; }
+
+    /* COMPLIANCE -->
+    .compliance-bg { background: var(--dark-2); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 96px 0; }
+    .compliance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .compliance-items { display: flex; flex-direction: column; gap: 18px; margin-top: 28px; }
+    .compliance-item { display: flex; gap: 16px; align-items: flex-start; background: var(--dark-3); border: 1px solid rgba(255,255,255,0.05); border-radius: var(--radius); padding: 20px; transition: border-color 0.3s; }
+    .compliance-item:hover { border-color: rgba(212,43,43,0.3); }
+    .compliance-item-icon { width: 40px; height: 40px; background: rgba(212,43,43,0.12); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .compliance-item-title { font-family: 'Chakra Petch', sans-serif; font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 5px; }
+    .compliance-item-desc { font-size: 13px; color: var(--silver-light); line-height: 1.6; }
+    .compliance-stat-block { background: var(--dark-3); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius-lg); padding: 36px; }
+    .compliance-stat-title { font-family: 'Chakra Petch', sans-serif; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--red); margin-bottom: 28px; }
+    .compliance-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .compliance-stat { text-align: center; padding: 20px; background: var(--dark-2); border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.04); }
+    .compliance-stat-num { font-family: 'Chakra Petch', sans-serif; font-size: 26px; font-weight: 700; color: var(--white); line-height: 1; }
+    .compliance-stat-label { font-size: 11px; color: var(--silver); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1.4; }
+
+    /* CONTACT FORM */
+    .appt-bg { background: var(--dark); padding: 96px 0; }
+    .appt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+    .appt-info-tag { font-family: 'Chakra Petch', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.22em; color: var(--red); margin-bottom: 14px; }
+    .appt-info-title { font-family: 'Chakra Petch', sans-serif; font-size: clamp(26px, 3.5vw, 40px); font-weight: 700; color: var(--white); margin-bottom: 14px; line-height: 1.1; }
+    .appt-info-sub { font-size: 16px; color: var(--silver-light); line-height: 1.75; margin-bottom: 32px; }
+    .appt-contact-item { display: flex; gap: 14px; align-items: center; margin-bottom: 16px; }
+    .appt-contact-icon { width: 40px; height: 40px; background: rgba(212,43,43,0.1); border: 1px solid rgba(212,43,43,0.2); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+    .appt-contact-label { font-family: 'Chakra Petch', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--silver); font-weight: 600; }
+    .appt-contact-value { color: var(--chrome-light); font-weight: 600; font-size: 15px; margin-top: 2px; }
+    .form-card { background: var(--dark-2); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-lg); padding: 36px; position: relative; overflow: hidden; }
+    .form-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--red) 50%, transparent); }
+    .form-card-title { font-family: 'Chakra Petch', sans-serif; font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .form-card-sub { font-size: 14px; color: var(--silver); margin-bottom: 24px; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+    .form-group label { font-family: 'Chakra Petch', sans-serif; font-size: 10px; font-weight: 600; color: var(--silver); text-transform: uppercase; letter-spacing: 0.15em; }
+    .form-group input, .form-group select, .form-group textarea {
+      border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); padding: 12px 14px;
+      font-family: 'Work Sans', sans-serif; font-size: 14px; color: var(--text);
+      background: var(--dark-3); transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none; border-color: var(--red); box-shadow: 0 0 0 3px rgba(212,43,43,0.15);
+    }
+    .form-group select option { background: var(--dark-3); }
+    .form-group textarea { min-height: 90px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-submit { width: 100%; background: var(--red); color: white; border: none; padding: 15px; border-radius: var(--radius); font-family: 'Chakra Petch', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; margin-top: 4px; box-shadow: 0 4px 20px rgba(212,43,43,0.3); }
+    .form-submit:hover { background: var(--red-bright); transform: translateY(-1px); box-shadow: 0 8px 28px rgba(212,43,43,0.4); }
+
+    /* FOOTER */
+    footer { background: #060607; padding: 60px 0 28px; border-top: 1px solid rgba(255,255,255,0.05); }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-logo { font-family: 'Chakra Petch', sans-serif; font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .footer-logo-sub { font-family: 'Chakra Petch', sans-serif; font-size: 9px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.2em; color: var(--silver); margin-bottom: 16px; }
+    .footer-desc { font-size: 14px; color: rgba(255,255,255,0.35); line-height: 1.75; }
+    .footer-col-title { font-family: 'Chakra Petch', sans-serif; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--red-light); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+    .footer-badge { background: rgba(212,43,43,0.1); border: 1px solid rgba(212,43,43,0.25); border-radius: 4px; padding: 4px 14px; font-family: 'Chakra Petch', sans-serif; font-size: 11px; color: var(--red-light); letter-spacing: 0.1em; font-weight: 600; }
+
+    @media (max-width: 960px) {
+      .hero-inner, .why-grid, .compliance-grid, .appt-grid { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .family-intro { grid-template-columns: 1fr; }
+      .brands-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .brands-grid { grid-template-columns: 1fr; }
+      .compliance-stats { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .section { padding: 64px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo-wrap" href="#">
+      <div class="nav-logo-mark"><span>PV</span></div>
+      <div class="nav-logo-text">Precision Vehicle Solutions<span class="nav-logo-sub">Precision Vehicle Holdings &mdash; USDOT #3288980</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why PVS</a></li>
+      <li><a href="#family">Our Companies</a></li>
+      <li><a href="#compliance">Compliance</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Request a Consultation</a>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-photo-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-spotlight"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge"><div class="hero-badge-pulse"></div><span class="hero-badge-text">Precision Vehicle Holdings &mdash; USDOT #3288980</span></div>
+        <h1>Finished Vehicle<br><span class="red">Logistics.</span><br><span class="chrome">Precision-Built.</span></h1>
+        <p class="hero-desc">Precision Vehicle Solutions is part of the Precision Vehicle Holdings family &mdash; a DOT-registered carrier (USDOT #3288980) embedded in the automotive supply chain. We move finished vehicles from assembly plants to dealer networks, manage yards at manufacturing facilities, and support rail operations near the industry&rsquo;s major production hubs in Michigan, Ohio, and beyond.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-red">Request a Logistics Consultation</a>
+          <a href="tel:7069730175" class="btn-outline-chrome">Call (706) 973-0175</a>
+        </div>
+        <div class="hero-creds">
+          <div class="hero-cred"><div class="hero-cred-line"></div>USDOT Registered Carrier</div>
+          <div class="hero-cred"><div class="hero-cred-line"></div>OEM Automotive Logistics</div>
+          <div class="hero-cred"><div class="hero-cred-line"></div>Multi-Location Operations</div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-visual-main">
+          <div class="hero-visual-title">Core Services</div>
+          <div class="hero-service-pills">
+            <div class="hero-pill">Finished Vehicle Logistics</div>
+            <div class="hero-pill">Assembly Plant to Dealer</div>
+            <div class="hero-pill">Yard Management</div>
+            <div class="hero-pill">Vehicle Processing</div>
+            <div class="hero-pill">Rail Transportation</div>
+            <div class="hero-pill">OEM Support</div>
+            <div class="hero-pill">Railcar Switching</div>
+            <div class="hero-pill">Pre-Delivery Inspection</div>
+          </div>
+        </div>
+        <div class="hero-stat-row">
+          <div class="hero-stat-box"><div class="hero-stat-num">DOT</div><div class="hero-stat-label">USDOT #3288980</div></div>
+          <div class="hero-stat-box"><div class="hero-stat-num">6+</div><div class="hero-stat-label">Brand Network</div></div>
+          <div class="hero-stat-box"><div class="hero-stat-num">OEM</div><div class="hero-stat-label">Automotive Focused</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services-bg" id="services">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">From the Assembly Line<br>to the Dealer Lot</h2>
+      <p class="section-sub">Every vehicle that rolls off a plant floor needs to reach a dealer in perfect condition, on time, with a documented chain of custody. That is the discipline Precision Vehicle Solutions is built around &mdash; and it is all we do.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-item reveal" style="transition-delay:0.05s">
+        <div class="service-number">01</div>
+        <div class="service-title">Finished Vehicle Logistics</div>
+        <div class="service-desc">Moving new vehicles from automotive assembly plants to dealerships across the distribution network. Fleet managers and plant operations directors rely on documented chain of custody, damage-free delivery protocols, and FMCSA-compliant carrier operations &mdash; every vehicle, every route.</div>
+        <ul class="service-features">
+          <li>Assembly plant to dealership transport</li>
+          <li>OEM direct distribution support</li>
+          <li>Multi-make and multi-model capability</li>
+          <li>Damage-free delivery protocols</li>
+          <li>Chain-of-custody documentation</li>
+          <li>FMCSA-compliant carrier operations</li>
+        </ul>
+      </div>
+      <div class="service-item reveal" style="transition-delay:0.10s">
+        <div class="service-number">02</div>
+        <div class="service-title">Yard Management &amp; Processing</div>
+        <div class="service-desc">On-site yard management at manufacturing facilities and distribution centers. When throughput velocity and OEM compliance standards are non-negotiable, plant operations directors need a partner who runs the yard like it&rsquo;s their own.</div>
+        <ul class="service-features">
+          <li>Vehicle yard operations management</li>
+          <li>Pre-delivery inspection (PDI) support</li>
+          <li>Vehicle staging and sequencing</li>
+          <li>Inventory tracking and reporting</li>
+          <li>Damage assessment and documentation</li>
+          <li>Surface solutions (via FWL Surface Solutions)</li>
+        </ul>
+      </div>
+      <div class="service-item reveal" style="transition-delay:0.15s">
+        <div class="service-number">03</div>
+        <div class="service-title">Rail Transportation Support</div>
+        <div class="service-desc">Industrial railcar switching and rail transportation support coordinated through our FLEXRail platform. For operations where rail is part of the distribution equation, PVS provides the integration point between plant rail sidings and the road network.</div>
+        <ul class="service-features">
+          <li>Industrial railcar switching services</li>
+          <li>Rail-to-road transition coordination</li>
+          <li>Automotive rail siding operations</li>
+          <li>FLEXRail platform (sister brand)</li>
+          <li>Plant rail operations support</li>
+          <li>Intermodal logistics coordination</li>
+        </ul>
+      </div>
+      <div class="service-item reveal" style="transition-delay:0.20s">
+        <div class="service-number">04</div>
+        <div class="service-title">OEM &amp; Dealer Network Support</div>
+        <div class="service-desc">Integrated logistics across the OEM-to-dealer supply chain, backed by the full Precision Vehicle Holdings network. AutoVentive provides the technology layer; PVS and its sister brands provide the operational execution across multi-location footprints in Michigan, Ohio, Georgia, and beyond.</div>
+        <ul class="service-features">
+          <li>OEM manufacturer partnerships</li>
+          <li>Dealer network delivery coordination</li>
+          <li>AutoVentive platform integration</li>
+          <li>Multi-location operations (MI, OH, GA)</li>
+          <li>Volume throughput scalability</li>
+          <li>Compliance reporting and documentation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VEHICLE LOGISTICS PHOTO STRIP -->
+<div style="display:grid;grid-template-columns:2fr 1fr;height:380px;overflow:hidden;gap:2px;background:var(--dark);">
+  <div style="position:relative;overflow:hidden;">
+    <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1200&q=80" alt="Car carrier truck transporting vehicles on highway" style="width:100%;height:100%;object-fit:cover;display:block;" />
+    <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(10,10,10,0.75) 0%, rgba(10,10,10,0.25) 60%, rgba(10,10,10,0.1) 100%);"></div>
+    <div style="position:absolute;bottom:32px;left:32px;">
+      <div style="font-family:'Chakra Petch',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:10px;">Finished Vehicle Logistics</div>
+      <div style="font-family:'Chakra Petch',sans-serif;font-size:clamp(20px,2.5vw,30px);font-weight:700;color:white;line-height:1.2;">Assembly Plant to Dealer.<br>Every Vehicle. Every Route.</div>
+    </div>
+  </div>
+  <div style="position:relative;overflow:hidden;">
+    <img src="https://images.unsplash.com/photo-1486006920555-c77dcf18193c?w=600&q=80" alt="Large vehicle yard and auto manufacturing operations" style="width:100%;height:100%;object-fit:cover;display:block;" />
+    <div style="position:absolute;inset:0;background:rgba(10,10,10,0.55);"></div>
+    <div style="position:absolute;bottom:24px;left:24px;">
+      <div style="font-family:'Chakra Petch',sans-serif;font-size:14px;font-weight:700;color:white;line-height:1.3;">Yard Management &amp; Processing</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:6px;line-height:1.5;">On-site operations at<br>manufacturing facilities</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY PRECISION -->
+<section class="why-bg" id="why">
+  <div class="container">
+    <div class="why-grid">
+      <div class="reveal-left">
+        <div class="why-visual">
+          <div class="why-visual-title">Operational Standards</div>
+          <div class="why-metric"><span class="why-metric-label">FMCSA Compliance</span><div class="why-metric-bar-wrap"><div class="why-metric-bar" style="width:100%"></div></div><span class="why-metric-val">USDOT Registered</span></div>
+          <div class="why-metric"><span class="why-metric-label">OEM Alignment</span><div class="why-metric-bar-wrap"><div class="why-metric-bar" style="width:95%"></div></div><span class="why-metric-val">Primary Focus</span></div>
+          <div class="why-metric"><span class="why-metric-label">Network Coverage</span><div class="why-metric-bar-wrap"><div class="why-metric-bar" style="width:88%"></div></div><span class="why-metric-val">Multi-State</span></div>
+          <div class="why-metric"><span class="why-metric-label">Brand Portfolio</span><div class="why-metric-bar-wrap"><div class="why-metric-bar" style="width:100%"></div></div><span class="why-metric-val">6 Companies</span></div>
+          <div class="why-metric"><span class="why-metric-label">Automotive Focus</span><div class="why-metric-bar-wrap"><div class="why-metric-bar" style="width:100%"></div></div><span class="why-metric-val">Dedicated</span></div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="section-label">Why Precision Matters</div>
+        <h2 class="section-title">Built Into the<br>Automotive Supply Chain</h2>
+        <p class="section-sub" style="margin-bottom:32px">Finished vehicle logistics is a specialized discipline. OEMs and their tier-one partners cannot afford a logistics provider that is learning the business. Precision Vehicle Holdings operates where vehicles are built &mdash; near the plants, inside the yards, on the sidings &mdash; with the compliance record and network depth to match.</p>
+        <div class="why-points">
+          <div class="why-point">
+            <div class="why-point-num">01</div>
+            <div><div class="why-point-title">DOT-Registered Carrier &mdash; USDOT #3288980</div><div class="why-point-desc">Active registration in the FMCSA SAFER system, publicly verifiable. Fleet managers and compliance teams can confirm carrier credentials before a single vehicle moves. That accountability is not optional in this industry &mdash; it is the baseline.</div></div>
+          </div>
+          <div class="why-point">
+            <div class="why-point-num">02</div>
+            <div><div class="why-point-title">Positioned at the Plant, Not the Periphery</div><div class="why-point-desc">Operations near major automotive manufacturing plants in Michigan, Ohio, and Georgia. When a plant director needs a logistics partner, proximity and familiarity with the facility&rsquo;s rhythm matters as much as capacity.</div></div>
+          </div>
+          <div class="why-point">
+            <div class="why-point-num">03</div>
+            <div><div class="why-point-title">Six Brands. One Integrated Network.</div><div class="why-point-desc">As part of Precision Vehicle Holdings, PVS draws on sister brands across trucking (Precision Trucking Solutions), rail (FLEXRail), surface treatment (FWL Surface Solutions), and logistics technology (AutoVentive). A single point of contact for multi-modal automotive logistics needs.</div></div>
+          </div>
+          <div class="why-point">
+            <div class="why-point-num">04</div>
+            <div><div class="why-point-title">OEM-Grade Documentation and Standards</div><div class="why-point-desc">Major manufacturers require documentation, performance standards, and compliance that most logistics providers cannot deliver. PVS structures its operations around the requirements of the OEM environment &mdash; because that is the environment we operate in every day.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPERATIONS PHOTO STRIP -->
+<div style="position:relative;height:340px;overflow:hidden;">
+  <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1600&q=80" alt="Auto manufacturing plant and vehicle logistics operations" style="width:100%;height:100%;object-fit:cover;display:block;object-position:center 50%;" />
+  <div style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.5) 50%, rgba(10,10,10,0.2) 100%);"></div>
+  <div style="position:absolute;inset:0;display:flex;align-items:center;">
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px;">
+      <div style="max-width:560px;">
+        <div style="font-family:'Chakra Petch',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--red);margin-bottom:14px;">Precision Vehicle Holdings Network</div>
+        <div style="font-family:'Chakra Petch',sans-serif;font-size:clamp(22px,3vw,38px);font-weight:700;color:white;line-height:1.1;margin-bottom:14px;">Operating Where Vehicles Are Built</div>
+        <div style="font-size:15px;color:rgba(255,255,255,0.7);line-height:1.7;">Multi-location operations near major automotive manufacturing hubs in Michigan, Ohio, Georgia, and beyond. Positioned at the center of US automotive production.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAMILY OF COMPANIES -->
+<section class="family-bg" id="family">
+  <div class="container">
+    <div class="family-intro">
+      <div class="reveal-left">
+        <div class="section-label">Precision Vehicle Holdings</div>
+        <h2 class="section-title">A Family of<br>Automotive Companies</h2>
+      </div>
+      <div class="reveal-right">
+        <p class="section-sub">Precision Vehicle Holdings is a holding company purpose-built for the automotive logistics sector &mdash; six brands covering every stage of finished vehicle movement, from the plant to the dealer lot and every point in between. Headquartered at 4401 Fletcher Street, Wayne, MI 48184, at the center of US automotive manufacturing.</p>
+        <div style="margin-top:24px">
+          <a href="#contact" class="btn-red" style="font-size:13px;padding:12px 24px">Request a Logistics Consultation</a>
+        </div>
+      </div>
+    </div>
+    <div class="brands-grid">
+      <div class="brand-item featured reveal" style="transition-delay:0.05s">
+        <div class="brand-name">Precision Vehicle Solutions</div>
+        <div class="brand-desc">Finished vehicle logistics and distribution. Assembly plant to dealership. DOT registered carrier.</div>
+      </div>
+      <div class="brand-item reveal" style="transition-delay:0.08s">
+        <div class="brand-name">Precision Vehicle Logistics</div>
+        <div class="brand-desc">Core finished vehicle logistics operations across the Precision Vehicle Holdings network.</div>
+      </div>
+      <div class="brand-item reveal" style="transition-delay:0.11s">
+        <div class="brand-name">Precision Trucking Solutions</div>
+        <div class="brand-desc">Road transport and trucking services supporting automotive OEM and dealer distribution.</div>
+      </div>
+      <div class="brand-item reveal" style="transition-delay:0.14s">
+        <div class="brand-name">FWL Surface Solutions</div>
+        <div class="brand-desc">Vehicle surface treatment and processing services for assembly plant and distribution center operations.</div>
+      </div>
+      <div class="brand-item reveal" style="transition-delay:0.17s">
+        <div class="brand-name">AutoVentive</div>
+        <div class="brand-desc">Automotive logistics technology and platform solutions supporting the Precision Vehicle Holdings network.</div>
+      </div>
+      <div class="brand-item reveal" style="transition-delay:0.20s">
+        <div class="brand-name">FLEXRail</div>
+        <div class="brand-desc">Industrial railcar switching and rail transportation solutions for automotive manufacturing facilities.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section class="compliance-bg" id="compliance">
+  <div class="container">
+    <div class="compliance-grid">
+      <div class="reveal-left">
+        <div class="section-label">Carrier Credentials</div>
+        <h2 class="section-title">Compliance You Can<br>Verify, Not Just Claim</h2>
+        <p class="section-sub">OEMs and fleet managers are not looking for promises &mdash; they need verifiable credentials. Precision Vehicle Solutions is an active, DOT-registered carrier with a publicly searchable FMCSA record. Look us up: USDOT #3288980.</p>
+        <div class="compliance-items">
+          <div class="compliance-item">
+            <div class="compliance-item-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div><div class="compliance-item-title">USDOT #3288980</div><div class="compliance-item-desc">Active registration in the FMCSA SAFER database. Verifiable carrier snapshot available publicly through the DOT.</div></div>
+          </div>
+          <div class="compliance-item">
+            <div class="compliance-item-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+            <div><div class="compliance-item-title">Parent HQ: Wayne, MI</div><div class="compliance-item-desc">Precision Vehicle Holdings is headquartered at 4401 Fletcher Street, Wayne, MI 48184 &mdash; at the center of the US automotive manufacturing region.</div></div>
+          </div>
+          <div class="compliance-item">
+            <div class="compliance-item-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            <div><div class="compliance-item-title">Multi-State Operations</div><div class="compliance-item-desc">Operating locations in Michigan, Ohio, Georgia, and beyond &mdash; positioned near automotive assembly plants across the Midwest, South, and Mid-Atlantic.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="compliance-stat-block">
+          <div class="compliance-stat-title">Network Overview</div>
+          <div class="compliance-stats">
+            <div class="compliance-stat"><div class="compliance-stat-num">6</div><div class="compliance-stat-label">Brands in Holding Network</div></div>
+            <div class="compliance-stat"><div class="compliance-stat-num">3288980</div><div class="compliance-stat-label">USDOT Registration</div></div>
+            <div class="compliance-stat"><div class="compliance-stat-num">Wayne, MI</div><div class="compliance-stat-label">Parent HQ Location</div></div>
+            <div class="compliance-stat"><div class="compliance-stat-num">OEM</div><div class="compliance-stat-label">Automotive Specialization</div></div>
+          </div>
+          <div style="margin-top:22px;font-size:14px;color:var(--silver-light);line-height:1.65">Fleet managers and plant operations directors: reach out directly to discuss capacity, compliance documentation, and service capabilities. We respond within one business day.</div>
+        </div>
+        <div style="margin-top:20px;background:rgba(212,43,43,0.08);border:1px solid rgba(212,43,43,0.2);border-radius:var(--radius);padding:20px">
+          <div style="font-family:'Chakra Petch',sans-serif;font-size:13px;font-weight:700;color:var(--white);margin-bottom:6px">OEM &amp; Dealer Partnerships</div>
+          <div style="font-size:13px;color:var(--silver-light);line-height:1.6">Precision Vehicle Holdings works with automotive manufacturers and their dealer networks. Contact us to discuss specific logistics requirements and service capabilities.</div>
+          <div style="margin-top:12px;font-size:13px;color:var(--silver)">Email: <a href="mailto:bgriffin@precisionvl.com" style="color:var(--red-light);font-weight:700;text-decoration:none">bgriffin@precisionvl.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section id="contact" class="appt-bg">
+  <div class="container">
+    <div class="appt-grid">
+      <div class="reveal-left">
+        <div class="appt-info-tag">Get in Touch</div>
+        <div class="appt-info-title">Request a Logistics Consultation</div>
+        <div class="appt-info-sub">Fleet managers, plant operations directors, OEM logistics teams: tell us about your operation and we&rsquo;ll come prepared with relevant capabilities, compliance documentation, and a clear picture of how Precision Vehicle Holdings fits into your supply chain.</div>
+        <div class="appt-contact-item">
+          <div class="appt-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--red-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="appt-contact-label">Phone</div><div class="appt-contact-value">(706) 973-0175</div></div>
+        </div>
+        <div class="appt-contact-item">
+          <div class="appt-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--red-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="appt-contact-label">Email</div><div class="appt-contact-value">bgriffin@precisionvl.com</div></div>
+        </div>
+        <div class="appt-contact-item">
+          <div class="appt-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--red-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="appt-contact-label">Parent HQ</div><div class="appt-contact-value">4401 Fletcher Street</div><div style="font-size:13px;color:var(--silver);margin-top:2px">Wayne, MI 48184</div></div>
+        </div>
+        <div style="margin-top:32px;background:rgba(212,43,43,0.08);border:1px solid rgba(212,43,43,0.2);border-radius:var(--radius);padding:20px">
+          <div style="font-family:'Chakra Petch',sans-serif;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;color:var(--red);margin-bottom:8px">USDOT #3288980</div>
+          <div style="font-size:13px;color:var(--silver-light);line-height:1.6;">Precision Vehicle Solutions is an active, DOT-registered carrier. Carrier information is publicly verifiable through the FMCSA SAFER database.</div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="form-card">
+          <div class="form-card-title">Start a Conversation</div>
+          <div class="form-card-sub">Describe your logistics requirements and we will respond within one business day with relevant capabilities and next steps.</div>
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input type="text" placeholder="John" /></div>
+            <div class="form-group"><label>Last Name</label><input type="text" placeholder="Doe" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Phone</label><input type="tel" placeholder="(706) 555-0000" /></div>
+            <div class="form-group"><label>Email</label><input type="email" placeholder="you@company.com" /></div>
+          </div>
+          <div class="form-group"><label>Company / Organization</label><input type="text" placeholder="Automotive OEM, Dealer Group, Manufacturer..." /></div>
+          <div class="form-group"><label>Service Inquiry</label>
+            <select>
+              <option value="">Select a service...</option>
+              <option>Finished Vehicle Logistics</option>
+              <option>Yard Management Services</option>
+              <option>Vehicle Processing</option>
+              <option>Rail Transportation Support</option>
+              <option>OEM Partnership Inquiry</option>
+              <option>Dealer Network Delivery</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Message</label><textarea placeholder="Describe your logistics requirements: volume, plant locations, distribution network, timeline, or any operational specifics..."></textarea></div>
+          <button class="form-submit" type="button">Request a Logistics Consultation</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Precision Vehicle Solutions</div>
+        <div class="footer-logo-sub">A Precision Vehicle Holdings Company &mdash; USDOT #3288980</div>
+        <div class="footer-desc">A Precision Vehicle Holdings company &mdash; DOT-registered carrier (USDOT #3288980) specializing in finished vehicle logistics, yard management, vehicle processing, and rail transportation support. Positioned near major automotive plants in Michigan, Ohio, and Georgia. Parent HQ: 4401 Fletcher Street, Wayne, MI 48184.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="#services">Finished Vehicle Logistics</a></li>
+          <li><a href="#services">Yard Management</a></li>
+          <li><a href="#services">Vehicle Processing</a></li>
+          <li><a href="#services">Rail Transportation</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#why">Why Precision</a></li>
+          <li><a href="#family">Our Companies</a></li>
+          <li><a href="#compliance">DOT Compliance</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="tel:7069730175">(706) 973-0175</a></li>
+          <li><a href="mailto:bgriffin@precisionvl.com">bgriffin@precisionvl.com</a></li>
+          <li><a href="#">Wayne, MI 48184 (HQ)</a></li>
+          <li><a href="#contact">Send a Message</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2025 Precision Vehicle Solutions | Precision Vehicle Holdings. All rights reserved. | USDOT #3288980</div>
+      <div class="footer-badge">DOT Registered Carrier</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

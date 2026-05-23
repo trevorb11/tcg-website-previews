@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cordoba Corporation | Program &amp; Construction Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --terracotta: #8B3A2A;
+      --terracotta-light: #A84A36;
+      --navy: #0D2240;
+      --navy-mid: #162E52;
+      --navy-light: #1E3D6A;
+      --gold: #C9932A;
+      --gold-light: #DBA83D;
+      --concrete: #EBEBEB;
+      --white: #FFFFFF;
+      --text-light: #F4F4F4;
+      --text-muted: #9BAEC4;
+      --text-dark: #1A1A1A;
+      --text-body: #3D3D3D;
+      --border: rgba(255,255,255,0.08);
+
+      --font-heading: 'Oswald', sans-serif;
+      --font-body: 'Lato', sans-serif;
+
+      --section-pad: clamp(64px, 8vw, 112px) clamp(20px, 5vw, 80px);
+      --radius: 4px;
+      --transition: 0.35s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* =============================================
+       SCROLL REVEAL
+    ============================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.10s; }
+    .reveal-delay-2 { transition-delay: 0.20s; }
+    .reveal-delay-3 { transition-delay: 0.30s; }
+    .reveal-delay-4 { transition-delay: 0.40s; }
+    .reveal-delay-5 { transition-delay: 0.50s; }
+
+    /* =============================================
+       NAV
+    ============================================= */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(20px, 4vw, 72px);
+      height: 72px;
+      background: rgba(13, 34, 64, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .nav-logo-mark {
+      width: 42px;
+      height: 42px;
+      background: var(--terracotta);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-logo-mark span {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.5px;
+    }
+
+    .nav-wordmark {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .nav-wordmark span {
+      display: block;
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 2.5px;
+      color: var(--text-muted);
+      margin-top: -2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--terracotta);
+      color: var(--white) !important;
+      padding: 9px 22px;
+      letter-spacing: 1.5px;
+      transition: background var(--transition) !important;
+    }
+
+    .nav-cta:hover { background: var(--terracotta-light) !important; }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: clamp(60px, 8vw, 100px);
+      overflow: hidden;
+      background: var(--navy);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center 30%;
+      opacity: 0.35;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(13, 34, 64, 0.98) 0%,
+        rgba(13, 34, 64, 0.70) 45%,
+        rgba(13, 34, 64, 0.30) 100%
+      );
+    }
+
+    .hero-accent-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+      background: var(--terracotta);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 clamp(28px, 6vw, 96px);
+      max-width: 1180px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(42px, 6.5vw, 88px);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 28px;
+      max-width: 820px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--terracotta);
+    }
+
+    .hero-desc {
+      font-size: clamp(16px, 1.5vw, 19px);
+      font-weight: 300;
+      color: var(--text-light);
+      max-width: 540px;
+      line-height: 1.8;
+      margin-bottom: 44px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--terracotta);
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px 38px;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .btn-primary:hover {
+      background: var(--terracotta-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.35);
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px 38px;
+      transition: border-color var(--transition), color var(--transition);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--white);
+      color: var(--white);
+    }
+
+    .hero-stats {
+      position: absolute;
+      right: clamp(28px, 6vw, 96px);
+      bottom: clamp(60px, 8vw, 100px);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      z-index: 2;
+      text-align: right;
+    }
+
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .hero-stat-num {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.0;
+    }
+
+    .hero-stat-num em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero-stat-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 2px;
+      margin-bottom: 18px;
+    }
+
+    /* =============================================
+       RECOGNITION BAR
+    ============================================= */
+    .recognition-bar {
+      background: var(--terracotta);
+      padding: 18px clamp(20px, 5vw, 80px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .recognition-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .recognition-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .recognition-text {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .recognition-divider {
+      width: 1px;
+      height: 32px;
+      background: rgba(255,255,255,0.3);
+    }
+
+    /* =============================================
+       ABOUT
+    ============================================= */
+    .about {
+      padding: var(--section-pad);
+      background: var(--white);
+    }
+
+    .about-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-eyebrow::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 2px;
+      background: var(--terracotta);
+    }
+
+    .section-heading {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 3.5vw, 46px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 24px;
+    }
+
+    .section-heading em {
+      font-style: normal;
+      color: var(--terracotta);
+    }
+
+    .about-body p {
+      font-size: 16px;
+      color: var(--text-body);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .about-body p:last-child { margin-bottom: 0; }
+
+    .about-quote {
+      margin-top: 32px;
+      padding: 24px 28px;
+      border-left: 4px solid var(--gold);
+      background: #FDF8F0;
+    }
+
+    .about-quote p {
+      font-size: 17px;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.7;
+      margin-bottom: 10px !important;
+    }
+
+    .about-quote cite {
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-body);
+    }
+
+    .about-image-col {
+      position: relative;
+    }
+
+    .about-image-main {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -24px;
+      left: -24px;
+      background: var(--navy);
+      color: var(--white);
+      padding: 24px 28px;
+      min-width: 180px;
+    }
+
+    .about-badge-num {
+      font-family: var(--font-heading);
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.0;
+      color: var(--gold);
+    }
+
+    .about-badge-label {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* =============================================
+       METRICS
+    ============================================= */
+    .metrics {
+      background: var(--navy);
+      padding: 64px clamp(20px, 5vw, 80px);
+    }
+
+    .metrics-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    .metric-card {
+      background: var(--navy-mid);
+      padding: 40px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--terracotta);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+
+    .metric-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .metric-num {
+      font-family: var(--font-heading);
+      font-size: clamp(36px, 4vw, 56px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.0;
+      margin-bottom: 4px;
+    }
+
+    .metric-num em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .metric-label {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    .metric-sub {
+      font-size: 13px;
+      color: rgba(155,174,196,0.7);
+      margin-top: 4px;
+    }
+
+    /* =============================================
+       SERVICES
+    ============================================= */
+    .services {
+      padding: var(--section-pad);
+      background: var(--concrete);
+    }
+
+    .section-header {
+      max-width: 1200px;
+      margin: 0 auto 56px;
+    }
+
+    .section-header-flex {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .services-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3px;
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 48px 44px;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow var(--transition);
+    }
+
+    .service-card:hover {
+      box-shadow: 0 12px 40px rgba(13,34,64,0.12);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--terracotta);
+    }
+
+    .service-num {
+      font-family: var(--font-heading);
+      font-size: 60px;
+      font-weight: 700;
+      color: rgba(13,34,64,0.06);
+      line-height: 1;
+      position: absolute;
+      top: 24px;
+      right: 32px;
+    }
+
+    .service-title {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+
+    .service-desc {
+      font-size: 15px;
+      color: var(--text-body);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .service-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .service-list li {
+      font-size: 14px;
+      color: var(--text-body);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .service-list li::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      background: var(--terracotta);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    /* =============================================
+       SECTORS
+    ============================================= */
+    .sectors {
+      padding: var(--section-pad);
+      background: var(--navy);
+    }
+
+    .sectors .section-heading { color: var(--white); }
+    .sectors .section-eyebrow { color: var(--gold); }
+    .sectors .section-eyebrow::after { background: var(--gold); }
+
+    .sectors-header {
+      max-width: 1200px;
+      margin: 0 auto 56px;
+    }
+
+    .sectors-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+
+    .sector-card {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+
+    .sector-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .sector-card:hover .sector-img {
+      transform: scale(1.06);
+    }
+
+    .sector-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(13, 34, 64, 0.92) 0%,
+        rgba(13, 34, 64, 0.40) 55%,
+        transparent 100%
+      );
+    }
+
+    .sector-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 28px 28px 24px;
+    }
+
+    .sector-label {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .sector-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* =============================================
+       PROJECTS
+    ============================================= */
+    .projects {
+      padding: var(--section-pad);
+      background: var(--white);
+    }
+
+    .projects-header {
+      max-width: 1200px;
+      margin: 0 auto 56px;
+    }
+
+    .projects-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--white);
+      border: 1px solid #E0E0E0;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(13,34,64,0.12);
+    }
+
+    .project-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+
+    .project-body {
+      padding: 28px 28px 32px;
+    }
+
+    .project-sector {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      background: rgba(139,58,42,0.08);
+      padding: 5px 12px;
+      margin-bottom: 16px;
+    }
+
+    .project-title {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--text-body);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .project-meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-meta-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .project-meta-value {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-top: 2px;
+    }
+
+    /* =============================================
+       PHOTO BAND
+    ============================================= */
+    .photo-band {
+      height: 420px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo-band img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+
+    .photo-band-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(13, 34, 64, 0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .photo-band-content {
+      max-width: 700px;
+      padding: 0 24px;
+    }
+
+    .photo-band-content p {
+      font-family: var(--font-heading);
+      font-size: clamp(22px, 3.5vw, 38px);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1.3;
+    }
+
+    .photo-band-content p em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    /* =============================================
+       VALUES
+    ============================================= */
+    .values {
+      padding: var(--section-pad);
+      background: var(--concrete);
+    }
+
+    .values-header {
+      max-width: 1200px;
+      margin: 0 auto 56px;
+      text-align: center;
+    }
+
+    .values-header .section-eyebrow {
+      justify-content: center;
+    }
+
+    .values-header .section-eyebrow::after { display: none; }
+    .values-header .section-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 2px;
+      background: var(--terracotta);
+    }
+
+    .values-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .value-card {
+      background: var(--white);
+      padding: 36px 28px;
+      text-align: center;
+      border-top: 3px solid transparent;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .value-card:hover {
+      border-top-color: var(--terracotta);
+      transform: translateY(-4px);
+    }
+
+    .value-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(139,58,42,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .value-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--terracotta);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .value-title {
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .value-desc {
+      font-size: 14px;
+      color: var(--text-body);
+      line-height: 1.75;
+    }
+
+    /* =============================================
+       TEAM
+    ============================================= */
+    .team {
+      padding: var(--section-pad);
+      background: var(--navy);
+    }
+
+    .team .section-heading { color: var(--white); }
+    .team .section-eyebrow { color: var(--gold); }
+    .team .section-eyebrow::after { background: var(--gold); }
+
+    .team-header {
+      max-width: 1200px;
+      margin: 0 auto 56px;
+    }
+
+    .team-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .team-card {
+      background: var(--navy-mid);
+    }
+
+    .team-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .team-body {
+      padding: 24px 24px 28px;
+    }
+
+    .team-name {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .team-title {
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .team-bio {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    /* =============================================
+       OFFICES
+    ============================================= */
+    .offices {
+      padding: var(--section-pad);
+      background: var(--white);
+    }
+
+    .offices-header {
+      max-width: 1200px;
+      margin: 0 auto 48px;
+    }
+
+    .offices-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .office-card {
+      background: var(--concrete);
+      padding: 28px 28px 32px;
+      border-bottom: 3px solid transparent;
+      transition: border-color var(--transition);
+    }
+
+    .office-card:hover {
+      border-bottom-color: var(--terracotta);
+    }
+
+    .office-city {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .office-type {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .office-address {
+      font-size: 14px;
+      color: var(--text-body);
+      line-height: 1.7;
+    }
+
+    /* =============================================
+       CONTACT
+    ============================================= */
+    .contact {
+      padding: var(--section-pad);
+      background: var(--navy-mid);
+    }
+
+    .contact-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact .section-heading { color: var(--white); }
+    .contact .section-eyebrow { color: var(--gold); }
+    .contact .section-eyebrow::after { background: var(--gold); }
+
+    .contact-intro {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    .contact-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(201,147,42,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .contact-item-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+
+    .contact-item-value {
+      font-size: 15px;
+      color: var(--white);
+      font-weight: 400;
+    }
+
+    .contact-item-value a {
+      color: var(--white);
+      transition: color var(--transition);
+    }
+
+    .contact-item-value a:hover { color: var(--gold); }
+
+    .contact-form {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 44px 40px;
+    }
+
+    .form-heading {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 15px;
+      padding: 13px 16px;
+      outline: none;
+      transition: border-color var(--transition);
+      width: 100%;
+    }
+
+    .form-group select option {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(155,174,196,0.5);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-submit {
+      display: block;
+      width: 100%;
+      background: var(--terracotta);
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px;
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition);
+      margin-top: 8px;
+    }
+
+    .form-submit:hover { background: var(--terracotta-light); }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      background: var(--navy);
+      padding: 40px clamp(20px, 5vw, 80px);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-brand {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .footer-brand span {
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 1.5px;
+      display: block;
+      margin-top: 2px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .hero-stats { display: none; }
+      .about-inner { grid-template-columns: 1fr; gap: 48px; }
+      .about-badge { bottom: -16px; left: -16px; }
+      .metrics-inner { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: 1fr; }
+      .sectors-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .offices-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .form-row { grid-template-columns: 1fr; }
+      .recognition-bar { gap: 24px; }
+      .recognition-divider { display: none; }
+    }
+
+    @media (max-width: 580px) {
+      .metrics-inner { grid-template-columns: 1fr 1fr; }
+      .values-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+      .offices-grid { grid-template-columns: 1fr; }
+      .sectors-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 36px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .section-header-flex { flex-direction: column; align-items: flex-start; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+      .contact-form { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand">
+      <div class="nav-logo-mark"><span>C</span></div>
+      <div class="nav-wordmark">
+        Cordoba
+        <span>Corporation</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#sectors">Sectors</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-accent-bar"></div>
+
+    <div class="hero-content reveal">
+      <div class="hero-eyebrow">Building California Since 1983</div>
+      <h1>Managing <em>Infrastructure</em> That Moves the World</h1>
+      <p class="hero-desc">
+        Cordoba Corporation is a leading program, project, and construction management firm dedicated to delivering complex public infrastructure across California and beyond. Founded by George L. Pla, we have spent four decades earning the trust of the communities we serve.
+      </p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">Our Services</a>
+        <a href="#projects" class="btn-outline">Notable Projects</a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">$<em>125</em>B<em>+</em></div>
+        <div class="hero-stat-label">Capital Programs Managed</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num"><em>40</em>+</div>
+        <div class="hero-stat-label">Years in Practice</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num"><em>600</em></div>
+        <div class="hero-stat-label">Professionals</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECOGNITION BAR -->
+  <div class="recognition-bar">
+    <div class="recognition-item reveal">
+      <div class="recognition-icon">ENR</div>
+      <div class="recognition-text">ENR Top 50 Program Management Firm</div>
+    </div>
+    <div class="recognition-divider"></div>
+    <div class="recognition-item reveal reveal-delay-1">
+      <div class="recognition-icon">DBE</div>
+      <div class="recognition-text">Certified Disadvantaged Business Enterprise</div>
+    </div>
+    <div class="recognition-divider"></div>
+    <div class="recognition-item reveal reveal-delay-2">
+      <div class="recognition-icon">CA</div>
+      <div class="recognition-text">9 California Offices</div>
+    </div>
+    <div class="recognition-divider"></div>
+    <div class="recognition-item reveal reveal-delay-3">
+      <div class="recognition-icon">MBE</div>
+      <div class="recognition-text">Minority Business Enterprise</div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-image-col reveal">
+        <img
+          src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=900&q=80&auto=format&fit=crop"
+          alt="Construction professionals reviewing infrastructure plans"
+          class="about-image-main"
+        />
+        <div class="about-badge">
+          <div class="about-badge-num">1983</div>
+          <div class="about-badge-label">Year Founded</div>
+        </div>
+      </div>
+      <div class="about-body reveal reveal-delay-2">
+        <div class="section-eyebrow">Our Story</div>
+        <h2 class="section-heading">A Legacy of <em>Excellence</em> in Public Service</h2>
+        <p>
+          Cordoba Corporation was founded in 1983 by George L. Pla with a clear mission: to build a firm that combines technical excellence with an authentic commitment to the communities it serves. Over four decades, that commitment has shaped every project we touch and every team we build.
+        </p>
+        <p>
+          Headquartered in Los Angeles, we have grown to nearly 600 professionals working across nine California offices. We serve the full spectrum of public infrastructure — from high-speed rail corridors and metro transit systems to water reclamation facilities and public school campuses. No matter the sector, our approach remains the same: listen deeply, plan rigorously, and deliver.
+        </p>
+        <p>
+          As a certified Disadvantaged and Minority Business Enterprise, Cordoba stands as proof that excellence and community representation are not competing ideals. We are proud to be a model for diversity in the engineering and construction management professions.
+        </p>
+        <div class="about-quote">
+          <p>"We built this company on the belief that great infrastructure starts with people — the people who build it and the people who depend on it every day."</p>
+          <cite>George L. Pla, Founder &amp; Chief Executive Officer</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <div class="metrics">
+    <div class="metrics-inner">
+      <div class="metric-card reveal">
+        <div class="metric-num">$<em>125</em>B+</div>
+        <div class="metric-label">Capital Programs Managed</div>
+        <div class="metric-sub">Across all sectors</div>
+      </div>
+      <div class="metric-card reveal reveal-delay-1">
+        <div class="metric-num"><em>600</em>+</div>
+        <div class="metric-label">Professionals</div>
+        <div class="metric-sub">Engineers, managers, planners</div>
+      </div>
+      <div class="metric-card reveal reveal-delay-2">
+        <div class="metric-num"><em>9</em></div>
+        <div class="metric-label">California Offices</div>
+        <div class="metric-sub">Statewide reach</div>
+      </div>
+      <div class="metric-card reveal reveal-delay-3">
+        <div class="metric-num"><em>40</em>+</div>
+        <div class="metric-label">Years of Practice</div>
+        <div class="metric-sub">Founded 1983</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-header reveal">
+      <div class="section-header-flex">
+        <div>
+          <div class="section-eyebrow">What We Do</div>
+          <h2 class="section-heading">End-to-End <em>Program</em> Delivery</h2>
+        </div>
+        <p style="max-width:440px; font-size:15px; color:var(--text-body); line-height:1.8; flex-shrink:0;">
+          From the earliest planning stages through construction completion and closeout, Cordoba provides the full range of management services that complex public infrastructure demands.
+        </p>
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <div class="service-title">Program Management</div>
+        <p class="service-desc">
+          We serve as the owner's trusted representative for large-scale, multi-project capital programs — providing strategic oversight, budget control, schedule governance, and stakeholder coordination from inception through delivery.
+        </p>
+        <ul class="service-list">
+          <li>Capital program planning and governance</li>
+          <li>Owner's Representative services</li>
+          <li>Multi-project portfolio oversight</li>
+          <li>Long-range cost and schedule modeling</li>
+          <li>Grant funding management and reporting</li>
+        </ul>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-num">02</div>
+        <div class="service-title">Project Management</div>
+        <p class="service-desc">
+          At the individual project level, our project managers bring discipline and clarity to delivery — managing scope, budget, schedule, and risk with precision while keeping all stakeholders informed and aligned.
+        </p>
+        <ul class="service-list">
+          <li>Scope definition and control</li>
+          <li>Schedule development and monitoring</li>
+          <li>Budget management and change control</li>
+          <li>Risk identification and mitigation</li>
+          <li>Third-party coordination and permitting</li>
+        </ul>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-num">03</div>
+        <div class="service-title">Construction Management</div>
+        <p class="service-desc">
+          Our construction managers operate at the field level, maintaining safety standards, quality controls, and schedule adherence. We are the bridge between design intent and built reality, protecting the owner's interests every step of the way.
+        </p>
+        <ul class="service-list">
+          <li>Resident engineering and inspection</li>
+          <li>Quality assurance and quality control</li>
+          <li>Safety compliance oversight</li>
+          <li>Contractor relations and RFI management</li>
+          <li>Claims avoidance and dispute resolution</li>
+        </ul>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-num">04</div>
+        <div class="service-title">Engineering Support</div>
+        <p class="service-desc">
+          Our engineering professionals provide analytical and technical support across the project lifecycle, from feasibility assessments and preliminary design reviews to constructability analysis and systems integration.
+        </p>
+        <ul class="service-list">
+          <li>Feasibility and alternatives analysis</li>
+          <li>Design review and value engineering</li>
+          <li>Constructability assessments</li>
+          <li>Systems integration support</li>
+          <li>Technical studies and reports</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTORS -->
+  <section class="sectors" id="sectors">
+    <div class="sectors-header reveal">
+      <div class="section-eyebrow">Industry Expertise</div>
+      <h2 class="section-heading">The Sectors We Serve</h2>
+    </div>
+    <div class="sectors-grid">
+      <div class="sector-card reveal">
+        <img
+          src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=75&auto=format&fit=crop"
+          alt="Transportation infrastructure"
+          class="sector-img"
+        />
+        <div class="sector-overlay"></div>
+        <div class="sector-content">
+          <div class="sector-label">Transportation</div>
+          <div class="sector-sub">Rail, metro, highways, bridges</div>
+        </div>
+      </div>
+      <div class="sector-card reveal reveal-delay-1">
+        <img
+          src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=75&auto=format&fit=crop"
+          alt="Energy infrastructure"
+          class="sector-img"
+        />
+        <div class="sector-overlay"></div>
+        <div class="sector-content">
+          <div class="sector-label">Energy</div>
+          <div class="sector-sub">Utilities, power, sustainability</div>
+        </div>
+      </div>
+      <div class="sector-card reveal reveal-delay-2">
+        <img
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75&auto=format&fit=crop"
+          alt="Water infrastructure"
+          class="sector-img"
+        />
+        <div class="sector-overlay"></div>
+        <div class="sector-content">
+          <div class="sector-label">Water &amp; Environment</div>
+          <div class="sector-sub">Treatment plants, stormwater, LASAN</div>
+        </div>
+      </div>
+      <div class="sector-card reveal reveal-delay-1">
+        <img
+          src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=75&auto=format&fit=crop"
+          alt="Education facilities"
+          class="sector-img"
+        />
+        <div class="sector-overlay"></div>
+        <div class="sector-content">
+          <div class="sector-label">Education</div>
+          <div class="sector-sub">K-12 schools, universities, campus</div>
+        </div>
+      </div>
+      <div class="sector-card reveal reveal-delay-2">
+        <img
+          src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=75&auto=format&fit=crop"
+          alt="Public facilities"
+          class="sector-img"
+        />
+        <div class="sector-overlay"></div>
+        <div class="sector-content">
+          <div class="sector-label">Public Facilities</div>
+          <div class="sector-sub">Civic centers, courts, public safety</div>
+        </div>
+      </div>
+      <div class="sector-card reveal reveal-delay-3">
+        <img
+          src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=75&auto=format&fit=crop"
+          alt="Technology and innovation"
+          class="sector-img"
+        />
+        <div class="sector-overlay"></div>
+        <div class="sector-content">
+          <div class="sector-label">Technology &amp; Innovation</div>
+          <div class="sector-sub">Smart infrastructure, data centers</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <div class="projects-header reveal">
+      <div class="section-eyebrow">Featured Work</div>
+      <h2 class="section-heading">Projects That <em>Define</em> California</h2>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <img
+          src="https://images.unsplash.com/photo-1531175570183-d7eea0cf7b0d?w=800&q=75&auto=format&fit=crop"
+          alt="High-speed rail construction"
+          class="project-img"
+        />
+        <div class="project-body">
+          <span class="project-sector">Transportation</span>
+          <div class="project-title">California High-Speed Rail</div>
+          <p class="project-desc">
+            Cordoba serves as a key program management contractor on the California High-Speed Rail Authority's Central Valley segment — the largest public infrastructure investment in the state's history. Our team supports environmental review, design oversight, right-of-way coordination, and construction management across hundreds of miles of alignment.
+          </p>
+          <div class="project-meta">
+            <div class="project-meta-item">
+              <span class="project-meta-label">Client</span>
+              <span class="project-meta-value">CA HSR Authority</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label">Role</span>
+              <span class="project-meta-value">Program Management</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-1">
+        <img
+          src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=75&auto=format&fit=crop"
+          alt="Metro rail eastside extension"
+          class="project-img"
+        />
+        <div class="project-body">
+          <span class="project-sector">Transportation</span>
+          <div class="project-title">LA Metro Eastside Extension</div>
+          <p class="project-desc">
+            The Metro Gold Line Eastside Extension brought light rail service to East Los Angeles for the first time, connecting communities long underserved by regional transit. Cordoba provided program and project management support across design, construction, and systems integration phases of this landmark project.
+          </p>
+          <div class="project-meta">
+            <div class="project-meta-item">
+              <span class="project-meta-label">Client</span>
+              <span class="project-meta-value">LA Metro</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label">Role</span>
+              <span class="project-meta-value">Project Management</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-2">
+        <img
+          src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&q=75&auto=format&fit=crop"
+          alt="Water infrastructure project"
+          class="project-img"
+        />
+        <div class="project-body">
+          <span class="project-sector">Water &amp; Environment</span>
+          <div class="project-title">LASAN Safe Clean Water Program</div>
+          <p class="project-desc">
+            The City of Los Angeles Bureau of Sanitation's Safe Clean Water Program represents a multi-billion dollar investment in sustainable water infrastructure. Cordoba provides program management services for capital projects spanning stormwater capture, watershed restoration, and regional water recycling.
+          </p>
+          <div class="project-meta">
+            <div class="project-meta-item">
+              <span class="project-meta-label">Client</span>
+              <span class="project-meta-value">City of Los Angeles</span>
+            </div>
+            <div class="project-meta-item">
+              <span class="project-meta-label">Role</span>
+              <span class="project-meta-value">Program Management</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO BAND -->
+  <div class="photo-band">
+    <img
+      src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=75&auto=format&fit=crop"
+      alt="Infrastructure construction team at work"
+    />
+    <div class="photo-band-overlay">
+      <div class="photo-band-content reveal">
+        <p>When communities need infrastructure that works for <em>generations</em>, they call Cordoba.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VALUES -->
+  <section class="values">
+    <div class="values-header reveal">
+      <div class="section-eyebrow">What Drives Us</div>
+      <h2 class="section-heading">Our Core <em>Values</em></h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="value-title">Integrity</div>
+        <p class="value-desc">We do what we say we will do. Our clients trust us because our word is our commitment, and our reputation was earned over four decades, not four months.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-1">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="value-title">Excellence</div>
+        <p class="value-desc">Every deliverable carries our name. We hold ourselves to standards that go beyond the contract, because the infrastructure we build will serve communities for decades.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-2">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="value-title">Community</div>
+        <p class="value-desc">Founded as a minority-owned business, diversity and inclusion are not policies at Cordoba — they are part of our DNA. We create opportunity at every level of our organization.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-3">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="value-title">Innovation</div>
+        <p class="value-desc">We continuously improve our methods, adopt emerging technologies, and invest in our people — because the infrastructure challenges of tomorrow demand solutions that go beyond yesterday's playbook.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team">
+    <div class="team-header reveal">
+      <div class="section-eyebrow">Leadership</div>
+      <h2 class="section-heading">The People Who <em>Lead</em></h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <img
+          src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=75&auto=format&fit=crop"
+          alt="George L. Pla, Founder and CEO"
+          class="team-img"
+        />
+        <div class="team-body">
+          <div class="team-name">George L. Pla</div>
+          <div class="team-title">Founder &amp; Chief Executive Officer</div>
+          <p class="team-bio">George founded Cordoba in 1983 with a vision of a minority-owned firm that could compete at the highest levels of public infrastructure management. Over four decades, he has led the firm to national recognition while never losing sight of its community roots.</p>
+        </div>
+      </div>
+      <div class="team-card reveal reveal-delay-1">
+        <img
+          src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=75&auto=format&fit=crop"
+          alt="Chief Operating Officer"
+          class="team-img"
+        />
+        <div class="team-body">
+          <div class="team-name">Operations Leadership</div>
+          <div class="team-title">Chief Operating Officer</div>
+          <p class="team-bio">Our COO oversees the day-to-day operations of Cordoba's nine California offices, ensuring each region is staffed with seasoned professionals and aligned to the firm's quality and client service standards.</p>
+        </div>
+      </div>
+      <div class="team-card reveal reveal-delay-2">
+        <img
+          src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=600&q=75&auto=format&fit=crop"
+          alt="Chief Program Officer"
+          class="team-img"
+        />
+        <div class="team-body">
+          <div class="team-name">Technical Excellence</div>
+          <div class="team-title">Chief Program Officer</div>
+          <p class="team-bio">Leading Cordoba's technical practice, our CPO ensures that project management methodologies, quality systems, and engineering standards are consistently applied across all active programs and client engagements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFICES -->
+  <section class="offices">
+    <div class="offices-header reveal">
+      <div class="section-eyebrow">Our Locations</div>
+      <h2 class="section-heading">Nine Offices Across <em>California</em></h2>
+    </div>
+    <div class="offices-grid">
+      <div class="office-card reveal">
+        <div class="office-city">Los Angeles</div>
+        <div class="office-type">Headquarters</div>
+        <div class="office-address">555 South Flower Street<br />Suite 4400<br />Los Angeles, CA 90071</div>
+      </div>
+      <div class="office-card reveal reveal-delay-1">
+        <div class="office-city">Sacramento</div>
+        <div class="office-type">Regional Office</div>
+        <div class="office-address">1415 L Street<br />Suite 600<br />Sacramento, CA 95814</div>
+      </div>
+      <div class="office-card reveal reveal-delay-2">
+        <div class="office-city">San Francisco</div>
+        <div class="office-type">Regional Office</div>
+        <div class="office-address">101 Second Street<br />Suite 1100<br />San Francisco, CA 94105</div>
+      </div>
+      <div class="office-card reveal reveal-delay-3">
+        <div class="office-city">San Diego</div>
+        <div class="office-type">Regional Office</div>
+        <div class="office-address">600 West Broadway<br />Suite 700<br />San Diego, CA 92101</div>
+      </div>
+      <div class="office-card reveal reveal-delay-1">
+        <div class="office-city">Fresno</div>
+        <div class="office-type">Field Office — HSR</div>
+        <div class="office-address">1990 East Gettysburg<br />Suite 104<br />Fresno, CA 93726</div>
+      </div>
+      <div class="office-card reveal reveal-delay-2">
+        <div class="office-city">Riverside</div>
+        <div class="office-type">Regional Office</div>
+        <div class="office-address">3801 University Avenue<br />Suite 100<br />Riverside, CA 92501</div>
+      </div>
+      <div class="office-card reveal reveal-delay-3">
+        <div class="office-city">Oakland</div>
+        <div class="office-type">Regional Office</div>
+        <div class="office-address">1999 Harrison Street<br />Suite 1800<br />Oakland, CA 94612</div>
+      </div>
+      <div class="office-card reveal reveal-delay-4">
+        <div class="office-city">Bakersfield</div>
+        <div class="office-type">Field Office</div>
+        <div class="office-address">2400 Truxtun Avenue<br />Suite 320<br />Bakersfield, CA 93301</div>
+      </div>
+      <div class="office-card reveal reveal-delay-5">
+        <div class="office-city">Long Beach</div>
+        <div class="office-type">Regional Office</div>
+        <div class="office-address">100 West Broadway<br />Suite 900<br />Long Beach, CA 90802</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-left reveal">
+        <div class="section-eyebrow">Get in Touch</div>
+        <h2 class="section-heading">Let's Talk About Your <em>Program</em></h2>
+        <p class="contact-intro">
+          Whether you are planning a major capital program, need a trusted owner's representative, or want to explore how Cordoba can support your next infrastructure project, we are ready to listen.
+        </p>
+        <div class="contact-detail">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Headquarters</div>
+              <div class="contact-item-value">555 S. Flower Street, Suite 4400<br />Los Angeles, CA 90071</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.09 6.09l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Phone</div>
+              <div class="contact-item-value"><a href="tel:+12138921200">(213) 892-1200</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-value"><a href="mailto:luis.cruz@cordobacorp.com">luis.cruz@cordobacorp.com</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal reveal-delay-2">
+        <div class="form-heading">Request a Consultation</div>
+        <form>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="fname" placeholder="Jane" />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lname" placeholder="Smith" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="org">Organization / Agency</label>
+            <input type="text" id="org" name="org" placeholder="City of Los Angeles" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="jane@agency.gov" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(213) 555-0100" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="sector">Project Sector</label>
+            <select id="sector" name="sector">
+              <option value="" disabled selected>Select a sector</option>
+              <option value="transportation">Transportation</option>
+              <option value="water">Water &amp; Environment</option>
+              <option value="energy">Energy &amp; Utilities</option>
+              <option value="education">Education</option>
+              <option value="public-facilities">Public Facilities</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Project Description</label>
+            <textarea id="message" name="message" placeholder="Tell us about your project, program size, timeline, and how we can help..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        Cordoba Corporation
+        <span>Program &amp; Construction Management Since 1983</span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#sectors">Sectors</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2024 Cordoba Corporation. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var revealEls = document.querySelectorAll('.reveal');
+      if (!revealEls.length) return;
+
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      );
+
+      revealEls.forEach(function (el) {
+        observer.observe(el);
+      });
+    })();
+  </script>
+
+</body>
+</html>

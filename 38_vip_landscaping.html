@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VIP Landscaping &amp; Plowing | Worcester, MA | Lawn Care, Hardscaping &amp; Snow Removal</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark: #1e4620;
+      --green-mid: #2d6a4f;
+      --green-light: #52b788;
+      --green-pale: #d8f3dc;
+      --brown: #6b4226;
+      --brown-light: #a0522d;
+      --sky: #74b9ff;
+      --cream: #f6f3ec;
+      --cream-dark: #ede9df;
+      --white: #ffffff;
+      --text: #1c2b1e;
+      --text-mid: #4a5e50;
+      --border: #c8d8cb;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Merriweather', serif; background: var(--cream); color: var(--text); line-height: 1.75; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      background: rgba(30, 70, 32, 0.97); padding: 0 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px; border-bottom: 3px solid var(--green-light);
+    }
+    .nav-logo { text-decoration: none; display: flex; align-items: center; gap: 12px; }
+    .nav-logo-leaf { font-size: 1.4rem; color: var(--green-light); font-family: 'Raleway', sans-serif; font-weight: 800; }
+    .nav-logo-text { display: flex; flex-direction: column; }
+    .nav-logo-name { font-family: 'Raleway', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--white); letter-spacing: 0.04em; line-height: 1; }
+    .nav-logo-sub { font-size: 0.62rem; color: var(--green-light); letter-spacing: 0.16em; text-transform: uppercase; font-family: 'Raleway', sans-serif; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.88rem; font-family: 'Raleway', sans-serif; font-weight: 600; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--green-light); }
+    .nav-cta {
+      background: var(--green-light); color: var(--green-dark);
+      padding: 10px 24px; font-family: 'Raleway', sans-serif; font-weight: 800;
+      font-size: 0.88rem; text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #76d6a0; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 120px 48px 80px; position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1600&q=80') center/cover no-repeat;
+    }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(125deg, rgba(30,70,32,0.92) 35%, rgba(30,70,32,0.60) 100%); }
+    .hero-content { position: relative; z-index: 2; max-width: 680px; }
+    .hero-award {
+      display: inline-block; background: var(--green-light); color: var(--green-dark);
+      padding: 8px 18px; font-family: 'Raleway', sans-serif; font-weight: 800;
+      font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: 'Raleway', sans-serif; font-size: clamp(2.6rem, 5vw, 4.2rem);
+      color: var(--white); line-height: 1.15; margin-bottom: 20px; font-weight: 800;
+    }
+    .hero h1 span { color: var(--green-light); }
+    .hero-sub { font-family: 'Raleway', sans-serif; font-size: 0.88rem; color: rgba(255,255,255,0.65); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin-bottom: 24px; }
+    .hero p { font-size: 1rem; color: rgba(255,255,255,0.82); max-width: 560px; margin-bottom: 44px; line-height: 1.85; font-weight: 300; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-green {
+      display: inline-block; background: var(--green-light); color: var(--green-dark);
+      padding: 15px 36px; font-family: 'Raleway', sans-serif; font-weight: 800;
+      font-size: 0.9rem; text-decoration: none; transition: background 0.2s;
+    }
+    .btn-green:hover { background: #76d6a0; }
+    .btn-outline {
+      display: inline-block; border: 2px solid rgba(255,255,255,0.4); color: var(--white);
+      padding: 15px 36px; font-family: 'Raleway', sans-serif; font-weight: 600;
+      font-size: 0.9rem; text-decoration: none; transition: border-color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--green-light); color: var(--green-light); }
+    .hero-stats {
+      display: flex; gap: 0; margin-top: 64px;
+      border-top: 1px solid rgba(255,255,255,0.15); padding-top: 36px;
+    }
+    .h-stat { padding-right: 44px; margin-right: 44px; border-right: 1px solid rgba(255,255,255,0.15); }
+    .h-stat:last-child { border-right: none; }
+    .h-stat-num { font-family: 'Raleway', sans-serif; font-size: 2rem; color: var(--green-light); font-weight: 800; }
+    .h-stat-label { font-family: 'Raleway', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* SECTION COMMONS */
+    section { padding: 96px 48px; }
+    .container { max-width: 1160px; margin: 0 auto; }
+    .section-label { font-family: 'Raleway', sans-serif; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--green-mid); margin-bottom: 10px; font-weight: 700; }
+    .section-title { font-family: 'Raleway', sans-serif; font-size: clamp(2rem, 3.2vw, 2.8rem); color: var(--green-dark); margin-bottom: 20px; line-height: 1.2; font-weight: 800; }
+    .section-title.light { color: var(--white); }
+    .section-sub { font-size: 0.97rem; color: var(--text-mid); max-width: 580px; margin-bottom: 56px; line-height: 1.85; font-weight: 300; }
+
+    /* SEASONAL TABS (visual) */
+    .seasonal { background: var(--green-dark); padding: 0; }
+    .seasonal-tabs { display: flex; }
+    .season-tab { flex: 1; padding: 28px; text-align: center; font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.12em; border-bottom: 3px solid transparent; cursor: pointer; transition: all 0.2s; color: rgba(255,255,255,0.5); }
+    .season-tab.spring { border-bottom-color: var(--green-light); color: var(--green-light); }
+    .season-tab.summer { color: rgba(255,255,255,0.55); }
+    .season-tab.fall { color: rgba(255,255,255,0.45); }
+    .season-tab.winter { color: var(--sky); }
+
+    /* SERVICES */
+    .services { background: var(--white); }
+    .services-split { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .services-group { padding: 56px 48px; }
+    .services-group-title {
+      font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 1.15rem;
+      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 32px;
+      padding-bottom: 16px; border-bottom: 2px solid var(--border);
+    }
+    .services-group.green { background: var(--green-pale); }
+    .services-group.green .services-group-title { color: var(--green-dark); }
+    .services-group.snow { background: #e8f4fb; }
+    .services-group.snow .services-group-title { color: #1a4a6e; }
+    .service-list { list-style: none; }
+    .service-list li {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px 0; border-bottom: 1px solid var(--border);
+      font-size: 0.95rem; color: var(--text-mid);
+    }
+    .service-list li:last-child { border-bottom: none; }
+    .service-list li::before {
+      content: ''; display: block; width: 8px; height: 8px; border-radius: 50%;
+      flex-shrink: 0; margin-top: 8px;
+    }
+    .services-group.green .service-list li::before { background: var(--green-mid); }
+    .services-group.snow .service-list li::before { background: var(--sky); }
+
+    /* WHY VIP */
+    .why { background: var(--cream-dark); }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .why-img img { width: 100%; height: 480px; object-fit: cover; }
+    .why-points { margin-top: 32px; }
+    .why-point { display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .why-point:last-child { border-bottom: none; }
+    .why-icon { width: 40px; height: 40px; background: var(--green-mid); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .why-icon svg { width: 18px; height: 18px; stroke: white; fill: none; stroke-width: 2; }
+    .why-point h4 { font-family: 'Raleway', sans-serif; font-size: 1rem; font-weight: 700; color: var(--green-dark); margin-bottom: 4px; }
+    .why-point p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; font-weight: 300; }
+
+    /* ABOUT BRETT */
+    .about { background: var(--green-dark); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-img img { width: 100%; height: 480px; object-fit: cover; }
+    .about-text p { font-size: 0.97rem; color: rgba(255,255,255,0.75); line-height: 1.9; margin-bottom: 20px; font-weight: 300; }
+    .about-highlight {
+      margin: 28px 0; padding: 24px 28px;
+      background: rgba(82,183,136,0.12); border-left: 4px solid var(--green-light);
+    }
+    .about-highlight p { font-style: italic; font-size: 1.05rem; color: var(--green-light); line-height: 1.7; margin: 0; font-weight: 300; }
+    .community-badge {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: rgba(255,255,255,0.08); padding: 14px 20px; margin-top: 8px;
+    }
+    .community-badge p { font-family: 'Raleway', sans-serif; font-size: 0.88rem; font-weight: 600; color: rgba(255,255,255,0.72); }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--white); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+    .testimonial-card {
+      padding: 36px 28px; background: var(--cream);
+      border-top: 4px solid var(--green-light);
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .testimonial-card.visible { opacity: 1; transform: translateY(0); }
+    .testimonial-card blockquote { font-size: 0.93rem; color: var(--text-mid); line-height: 1.85; font-style: italic; font-weight: 300; margin-bottom: 24px; }
+    .testimonial-author { font-family: 'Raleway', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--green-dark); }
+    .testimonial-role { font-family: 'Raleway', sans-serif; font-size: 0.78rem; color: var(--text-mid); margin-top: 4px; }
+    .testimonial-stars { color: #f4a261; font-size: 0.9rem; margin-bottom: 16px; letter-spacing: 0.1em; }
+
+    /* AWARDS */
+    .awards { background: var(--cream-dark); padding: 56px 48px; }
+    .awards-inner { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+    .award-card {
+      background: var(--white); padding: 32px 24px; text-align: center;
+      border-bottom: 3px solid var(--green-light);
+    }
+    .award-card-label { font-family: 'Raleway', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--green-mid); margin-bottom: 8px; font-weight: 700; }
+    .award-card-value { font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 1.05rem; color: var(--green-dark); line-height: 1.4; }
+
+    /* CONTACT */
+    .contact-section { background: var(--green-mid); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .contact-info p { font-size: 0.98rem; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 32px; font-weight: 300; }
+    .contact-detail { margin-bottom: 22px; }
+    .contact-label { font-family: 'Raleway', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--green-light); margin-bottom: 4px; font-weight: 700; }
+    .contact-value { font-size: 1rem; color: var(--white); }
+    form { display: flex; flex-direction: column; gap: 16px; }
+    form input, form textarea, form select {
+      padding: 13px 16px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      font-family: 'Merriweather', serif; font-size: 0.9rem; color: var(--white);
+      outline: none; transition: border-color 0.2s;
+    }
+    form input::placeholder, form textarea::placeholder { color: rgba(255,255,255,0.4); }
+    form select { color: rgba(255,255,255,0.65); }
+    form select option { background: var(--green-mid); }
+    form input:focus, form textarea:focus { border-color: var(--green-light); }
+    form textarea { height: 120px; resize: vertical; }
+    form button {
+      background: var(--green-light); color: var(--green-dark);
+      padding: 14px 36px; font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem; font-weight: 800;
+      border: none; cursor: pointer; transition: background 0.2s; align-self: flex-start;
+    }
+    form button:hover { background: #76d6a0; }
+
+    /* FOOTER */
+    footer { background: var(--green-dark); padding: 56px 48px 28px; border-top: 3px solid var(--green-light); }
+    .footer-inner { max-width: 1160px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 56px; margin-bottom: 40px; }
+    .footer-brand p { margin-top: 14px; font-size: 0.86rem; color: rgba(255,255,255,0.42); line-height: 1.75; max-width: 280px; font-weight: 300; }
+    .footer-col h4 { font-family: 'Raleway', sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--green-light); margin-bottom: 16px; font-weight: 700; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 9px; }
+    .footer-col ul li a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--green-light); }
+    .footer-bottom { display: flex; justify-content: space-between; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.28); font-family: 'Raleway', sans-serif; }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .services-split, .why-grid, .about-grid, .contact-grid, .footer-grid, .awards-inner { grid-template-columns: 1fr; gap: 0; }
+      .awards-inner { gap: 2px; }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 64px 20px; }
+      .hero { padding: 100px 20px 56px; }
+      .hero-stats { flex-wrap: wrap; }
+      .h-stat { border-right: none; }
+      .awards { padding: 48px 20px; }
+    }
+    @media (max-width: 580px) {
+      .testimonials-grid, .awards-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-leaf">V</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">VIP Landscaping &amp; Plowing</span>
+        <span class="nav-logo-sub">Worcester, MA &mdash; Since 2009</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About Brett</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get a Seasonal Quote</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-award">Best of Worcester Landscaping &mdash; Multiple Award Winner</div>
+      <h1>Worcester's<br>Lawn Care &amp; Snow<br><span>Experts Since 2009</span></h1>
+      <p class="hero-sub">Residential &amp; Commercial &mdash; Landscaping, Hardscaping &amp; Snow Removal</p>
+      <p>When it snows in Worcester, Brett Bartelson is already out there. VIP Landscaping has been keeping Central Massachusetts properties looking great &mdash; and commercial lots clear and safe &mdash; through every season since 2009. Locally owned, deeply rooted, and always reliable when New England weather does its worst.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-green">Get a Seasonal Quote</a>
+        <a href="#services" class="btn-outline">See Our Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="h-stat">
+          <div class="h-stat-num">2009</div>
+          <div class="h-stat-label">Year Founded</div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-num">15+</div>
+          <div class="h-stat-label">Years Serving Worcester</div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-num">7x</div>
+          <div class="h-stat-label">Best of Worcester Award</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEASONAL BANNER -->
+  <div class="seasonal">
+    <div class="seasonal-tabs">
+      <div class="season-tab spring">Spring Cleanups</div>
+      <div class="season-tab summer">Summer Lawn Care</div>
+      <div class="season-tab fall">Fall Cleanup &amp; Prep</div>
+      <div class="season-tab winter">Snow Plowing &amp; Removal</div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <p class="section-label reveal">What We Do</p>
+      <h2 class="section-title reveal">Year-Round Property Care<br>for Home and Business</h2>
+      <p class="section-sub reveal">VIP handles everything your property needs through every season &mdash; from spring planting to fall cleanup to 24/7 winter storm response. Worcester winters are not a joke. We take snow plowing contracts seriously, and our commercial clients know we will be there before their first employee arrives.</p>
+    </div>
+    <div class="services-split">
+      <div class="services-group green">
+        <div class="services-group-title">Landscaping &amp; Hardscaping</div>
+        <ul class="service-list">
+          <li>Lawn maintenance and mowing programs</li>
+          <li>Landscape design and planting installation</li>
+          <li>Shrub trimming and tree care</li>
+          <li>Spring cleanup — debris removal, bed prep, edging</li>
+          <li>Fall cleanup — leaf removal, bed winterization</li>
+          <li>Seeding and fertilization programs</li>
+          <li>Custom patio and outdoor living area installation</li>
+          <li>Walkway and pathway design and construction</li>
+          <li>Retaining wall design and installation</li>
+          <li>Mulching and decorative stone</li>
+        </ul>
+      </div>
+      <div class="services-group snow">
+        <div class="services-group-title" style="color: #1a4a6e;">Snow Plowing &amp; Removal</div>
+        <ul class="service-list">
+          <li>Commercial parking lot plowing — 24/7 storm coverage</li>
+          <li>Residential driveway clearing</li>
+          <li>Walkway and sidewalk snow removal</li>
+          <li>Ice melt and salt application</li>
+          <li>Snow stacking and haul-away services</li>
+          <li>Seasonal contracts with guaranteed response times</li>
+          <li>Emergency spot plowing for businesses and homes</li>
+          <li>Pre-treatment before major storms</li>
+          <li>Roof snow removal (available for residential)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY VIP -->
+  <section class="why">
+    <div class="container">
+      <div class="why-grid">
+        <div class="reveal">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="VIP Landscaping crew working on a Worcester property" loading="lazy" style="width:100%; height:480px; object-fit:cover;" />
+        </div>
+        <div>
+          <p class="section-label">Why VIP</p>
+          <h2 class="section-title">A Worcester Business<br>Serving Worcester Neighbors</h2>
+          <p style="color: var(--text-mid); font-size: 0.97rem; line-height: 1.85; margin-bottom: 32px; font-weight: 300;" class="reveal">Brett Bartelson grew up in Worcester and built VIP Landscaping here. He is not managing from a regional office somewhere. He knows these streets, he knows these winters, and when a nor'easter hits at 2 a.m. his trucks are rolling. That is what local accountability actually looks like.</p>
+          <div class="why-points">
+            <div class="why-point">
+              <div class="why-icon">
+                <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+              </div>
+              <div>
+                <h4>Licensed, Bonded &amp; Insured</h4>
+                <p>Fully licensed, bonded, and insured for both landscaping and snow plowing work. Your property — and your liability — are protected on every job.</p>
+              </div>
+            </div>
+            <div class="why-point">
+              <div class="why-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
+              </div>
+              <div>
+                <h4>Local Roots, Local Accountability</h4>
+                <p>Brett attended Flagg Street Elementary, Forest Grove Middle School, and Doherty Memorial High School. This is his community — that means something.</p>
+              </div>
+            </div>
+            <div class="why-point">
+              <div class="why-icon">
+                <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <div>
+                <h4>Award-Winning Service</h4>
+                <p>Best of Worcester Landscaping award — recognized multiple years from 2013 through 2019. These are customer-driven awards, and they reflect what our clients actually experience.</p>
+              </div>
+            </div>
+            <div class="why-point">
+              <div class="why-icon">
+                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </div>
+              <div>
+                <h4>Community Commitment</h4>
+                <p>VIP has participated in and donated to the Walk to End Alzheimer's every year since 2011 — raising thousands of dollars for research and demonstrating what it means to invest in your community.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img reveal">
+          <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80" alt="Brett Bartelson VIP Landscaping founder Worcester MA" loading="lazy" />
+        </div>
+        <div class="about-text reveal">
+          <p class="section-label" style="color: var(--green-light);">About Brett</p>
+          <h2 class="section-title light">A Worcester Kid Who<br>Built Something Real</h2>
+          <p>Brett Bartelson grew up right here &mdash; Flagg Street Elementary, Forest Grove Middle, Doherty Memorial High School. He earned his degree in Business Administration from Worcester State and in 2009 started VIP Landscaping with a straightforward idea: do excellent work, be honest, and take care of the people in your community. No shortcuts. No excuses.</p>
+          <p>More than fifteen years later, VIP is one of Central Massachusetts' most recognized landscaping and snow removal companies. The commercial snow contracts are the backbone of the business &mdash; Brett's clients depend on clear lots before they open their doors, and he does not miss. Residential landscaping is where the creativity shows. Both matter equally to him.</p>
+          <div class="about-highlight">
+            <p>"I grew up on these streets. When I maintain your yard or plow your lot, it is not just a job &mdash; it is my neighborhood. That changes how you approach the work."</p>
+          </div>
+          <p>Brett is still hands-on in the business, and the team he has built reflects who he is: responsive when it counts, reliable when it is inconvenient, and genuinely proud of what they leave behind.</p>
+          <div class="community-badge">
+            <p>Walk to End Alzheimer's Supporter &mdash; Every Year Since 2011</p>
+          </div>
+          <a href="#contact" class="btn-green" style="margin-top: 28px; display: inline-block; color: var(--green-dark);">Get a Free Estimate</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <p class="section-label reveal">Customer Reviews</p>
+      <h2 class="section-title reveal">What Worcester Says<br>About VIP</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"Brett and his crew built us a new patio and walkway last spring. Professional from start to finish, done on schedule, and the work is beautiful. We have had more compliments from neighbors on that patio than anything else we have ever done to the house."</blockquote>
+          <div class="testimonial-author">Maria &amp; Joe F.</div>
+          <div class="testimonial-role">Worcester, MA &mdash; Hardscaping Installation</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"We had the storm in February where half the city was still buried at 8 a.m. Our lot was already cleared and salted before we arrived. That is the VIP snow contract in one sentence. Three years in and they have not missed a single time."</blockquote>
+          <div class="testimonial-author">Tom R., Property Manager</div>
+          <div class="testimonial-role">Commercial Property, Worcester, MA</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"Four years of weekly lawn care and the yard has never looked better. Brett is easy to reach, the crew is friendly, and they actually pay attention to the little things without being asked. That is what separates a great local contractor from the rest."</blockquote>
+          <div class="testimonial-author">Linda C.</div>
+          <div class="testimonial-role">Residential Client, Shrewsbury, MA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS BAR -->
+  <div class="awards reveal">
+    <div class="awards-inner">
+      <div class="award-card">
+        <div class="award-card-label">Recognition</div>
+        <div class="award-card-value">Best of Worcester Landscaping — Multiple Years</div>
+      </div>
+      <div class="award-card">
+        <div class="award-card-label">Founded</div>
+        <div class="award-card-value">Worcester-Owned Since 2009</div>
+      </div>
+      <div class="award-card">
+        <div class="award-card-label">Credentials</div>
+        <div class="award-card-value">Licensed, Bonded &amp; Insured</div>
+      </div>
+      <div class="award-card">
+        <div class="award-card-label">Community</div>
+        <div class="award-card-value">Walk to End Alzheimer's — Since 2011</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="reveal">
+          <p class="section-label" style="color: var(--green-light);">Get in Touch</p>
+          <h2 class="section-title light">Get a Seasonal Quote</h2>
+          <p>Whether you need a spring landscaping plan, a new patio installed, or a commercial snow contract locked in before winter hits &mdash; reach out and we will get back to you quickly with a straightforward estimate. No pressure, no surprises. Brett or someone on his team will get back to you the same day.</p>
+          <div class="contact-detail">
+            <div class="contact-label">Call Brett Directly</div>
+            <div class="contact-value"><a href="tel:5087693015" style="color: var(--green-light); text-decoration: none; font-size: 1.1rem; font-weight: 700;">(508) 769-3015</a></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">bbartelson@viplandscapes.com</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-label">Location</div>
+            <div class="contact-value">Worcester, MA 01606<br>Serving Worcester and surrounding communities</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-label">Website</div>
+            <div class="contact-value">viplandscapes.com</div>
+          </div>
+        </div>
+        <div class="reveal">
+          <form>
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Email Address" required />
+            <input type="tel" placeholder="Phone Number" />
+            <input type="text" placeholder="Property Address" />
+            <select>
+              <option value="">Service I'm Interested In</option>
+              <option>Lawn Care &amp; Maintenance</option>
+              <option>Landscape Design &amp; Installation</option>
+              <option>Hardscaping (Patio, Walkway, Retaining Wall)</option>
+              <option>Spring or Fall Cleanup</option>
+              <option>Snow Plowing &amp; Removal Contract</option>
+              <option>Commercial Property Services</option>
+              <option>Something Else</option>
+            </select>
+            <textarea placeholder="Tell us about your property and what you're looking for..."></textarea>
+            <button type="submit">Request a Seasonal Quote</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">
+            <div class="nav-logo-leaf">V</div>
+            <div class="nav-logo-text">
+              <span class="nav-logo-name">VIP Landscaping &amp; Plowing</span>
+              <span class="nav-logo-sub">Worcester, MA &mdash; Since 2009</span>
+            </div>
+          </a>
+          <p>Award-winning landscaping, hardscaping, and snow plowing serving Worcester and Central Massachusetts since 2009. Licensed, bonded, and insured. Worcester-owned and operated.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Lawn Care</a></li>
+            <li><a href="#">Landscape Design</a></li>
+            <li><a href="#">Hardscaping</a></li>
+            <li><a href="#">Seasonal Cleanups</a></li>
+            <li><a href="#">Snow Plowing</a></li>
+            <li><a href="#">Commercial Services</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:5087693015">(508) 769-3015</a></li>
+            <li><a href="mailto:bbartelson@viplandscapes.com">bbartelson@viplandscapes.com</a></li>
+            <li><a href="#">Worcester, MA 01606</a></li>
+            <li><a href="#">viplandscapes.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 VIP Landscaping LLC. All rights reserved.</p>
+        <p>Worcester, MA &mdash; Landscaping &amp; Snow Plowing</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal, .testimonial-card').forEach(el => observer.observe(el));
+    document.querySelectorAll('.testimonial-card').forEach((el, i) => { el.style.transitionDelay = `${i * 0.15}s`; });
+  </script>
+</body>
+</html>

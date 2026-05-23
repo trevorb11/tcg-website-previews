@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GloTech Corporation | Precision Flow Technology for Water & Wastewater</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&family=Roboto:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --teal: #006d7a;
+      --teal-dark: #004d58;
+      --teal-light: #00a3b5;
+      --aqua: #00c2d4;
+      --charcoal: #1e2830;
+      --charcoal-mid: #2c3a45;
+      --bg: #f2f6f8;
+      --white: #ffffff;
+      --text: #1e2830;
+      --text-light: #4a5f6e;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--charcoal);
+      border-bottom: 3px solid var(--teal-light);
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    .nav-logo span { color: var(--aqua); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--aqua); }
+    .nav-cta {
+      background: var(--teal-light);
+      color: var(--white);
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.5rem 1.4rem;
+      border-radius: 2px;
+      text-decoration: none;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--aqua); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-top: 68px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1468421870903-4df1664ac249?w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, rgba(0,77,88,0.94) 0%, rgba(0,109,122,0.82) 50%, rgba(0,194,212,0.2) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2.5rem;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--aqua);
+      border: 1px solid rgba(0,194,212,0.5);
+      padding: 0.35rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 1.8rem;
+    }
+    .hero h1 {
+      font-family: 'Exo 2', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      max-width: 640px;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+    .hero h1 span { color: var(--aqua); }
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.82);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+    .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-teal {
+      background: var(--teal-light);
+      color: var(--white);
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 0.9rem 2.2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-teal:hover { background: var(--aqua); transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.9rem 2.2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      border: 2px solid rgba(255,255,255,0.4);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--white); transform: translateY(-2px); }
+    .hero-specs {
+      display: flex;
+      gap: 3rem;
+      margin-top: 4rem;
+      flex-wrap: wrap;
+    }
+    .hero-spec .val {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--aqua);
+    }
+    .hero-spec .key {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 0.6rem;
+    }
+    h2.section-title {
+      font-family: 'Exo 2', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      color: var(--charcoal);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+    h2.section-title.light { color: var(--white); }
+    .divider { width: 48px; height: 3px; background: var(--teal-light); margin-bottom: 2rem; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s, transform 0.65s; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-left { opacity: 0; transform: translateX(-28px); transition: opacity 0.65s, transform 0.65s; }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right { opacity: 0; transform: translateX(28px); transition: opacity 0.65s, transform 0.65s; }
+    .reveal-right.visible { opacity: 1; transform: none; }
+
+    /* ABOUT */
+    .about-section { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-img { border-radius: 3px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 16px 50px rgba(30,40,48,0.18); }
+    .about-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-text p { color: var(--text-light); margin-bottom: 1.1rem; font-size: 1rem; }
+    .founded-row {
+      display: flex; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap;
+    }
+    .founded-item { text-align: center; }
+    .founded-item .val {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--teal);
+      display: block;
+    }
+    .founded-item .key { font-size: 0.78rem; color: var(--text-light); letter-spacing: 0.06em; text-transform: uppercase; }
+
+    /* TECHNOLOGY */
+    .tech-section { background: var(--bg); }
+    .tech-feature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-bottom: 5rem;
+    }
+    .tech-feature:last-child { margin-bottom: 0; }
+    .tech-feature.reverse { direction: rtl; }
+    .tech-feature.reverse > * { direction: ltr; }
+    .tech-img { border-radius: 3px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 12px 40px rgba(30,40,48,0.14); }
+    .tech-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .tech-text p { color: var(--text-light); margin-bottom: 1rem; font-size: 1rem; }
+    .spec-list { list-style: none; margin-top: 1.2rem; }
+    .spec-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(0,109,122,0.1);
+      color: var(--text-light);
+      font-size: 0.93rem;
+    }
+    .spec-list li::before {
+      content: '&#9658;';
+      color: var(--teal-light);
+      font-size: 0.65rem;
+      margin-top: 0.4rem;
+      flex-shrink: 0;
+    }
+
+    /* SERVICES */
+    .services-section { background: var(--teal-dark); }
+    .services-section .section-label { color: var(--aqua); }
+    .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-top: 2.5rem; }
+    .service-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(0,194,212,0.2);
+      border-radius: 3px;
+      padding: 2rem;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .service-card:hover { background: rgba(255,255,255,0.12); transform: translateY(-4px); }
+    .service-num {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--aqua);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    .service-card h3 {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.7rem;
+    }
+    .service-card p { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.65; }
+
+    /* INDUSTRIES */
+    .industries-section { background: var(--white); }
+    .industries-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .industry-block {
+      background: var(--bg);
+      border-radius: 3px;
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 3px solid var(--teal-light);
+      transition: transform 0.3s;
+    }
+    .industry-block:hover { transform: translateY(-4px); }
+    .industry-icon { font-size: 2rem; margin-bottom: 0.8rem; display: block; }
+    .industry-block h3 {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--teal-dark);
+      margin-bottom: 0.5rem;
+    }
+    .industry-block p { font-size: 0.82rem; color: var(--text-light); }
+
+    /* WHY */
+    .why-section { background: var(--charcoal); }
+    .why-section .section-label { color: var(--aqua); }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2.5rem; }
+    .why-card {
+      background: rgba(255,255,255,0.06);
+      border-radius: 3px;
+      padding: 2rem;
+      border-left: 4px solid var(--teal-light);
+    }
+    .why-card h3 {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+    .why-card p { font-size: 0.92rem; color: rgba(255,255,255,0.65); line-height: 1.65; }
+
+    /* CONTACT */
+    .contact-section { background: var(--bg); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+    .contact-info h3 { font-family: 'Exo 2', sans-serif; font-weight: 700; color: var(--charcoal); font-size: 1.1rem; margin-bottom: 1rem; }
+    .contact-info p { color: var(--text-light); margin-bottom: 0.5rem; font-size: 0.97rem; }
+    .contact-info a { color: var(--teal); text-decoration: none; }
+    .contact-info a:hover { color: var(--teal-light); }
+    .contact-form { display: flex; flex-direction: column; gap: 0.9rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+    .contact-form input, .contact-form select, .contact-form textarea {
+      padding: 0.85rem 1rem;
+      background: var(--white);
+      border: 1px solid #c8d4da;
+      border-radius: 2px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--teal-light); }
+    .contact-form textarea { min-height: 110px; resize: vertical; }
+    .btn-teal-form {
+      background: var(--teal);
+      color: var(--white);
+      padding: 0.95rem 2rem;
+      border: none;
+      border-radius: 2px;
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-teal-form:hover { background: var(--teal-dark); }
+    .contact-img-block { margin-top: 2rem; border-radius: 3px; overflow: hidden; aspect-ratio: 4/3; }
+    .contact-img-block img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* FOOTER */
+    footer { background: var(--charcoal); color: rgba(255,255,255,0.5); padding: 3rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 4rem; justify-content: space-between; flex-wrap: wrap; }
+    .footer-logo { font-family: 'Exo 2', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--white); margin-bottom: 0.8rem; letter-spacing: 0.05em; }
+    .footer-logo span { color: var(--aqua); }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.8; max-width: 260px; }
+    .footer-col h4 { color: var(--white); font-family: 'Exo 2', sans-serif; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1rem; }
+    .footer-col p, .footer-col a { font-size: 0.87rem; color: rgba(255,255,255,0.45); text-decoration: none; display: block; line-height: 2.1; }
+    .footer-col a:hover { color: var(--aqua); }
+    .footer-bottom { max-width: 1100px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+
+    @media (max-width: 900px) {
+      .about-grid, .contact-grid, .tech-feature, .tech-feature.reverse { grid-template-columns: 1fr; gap: 2rem; direction: ltr; }
+      .services-grid, .industries-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .services-grid, .industries-grid, .why-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .nav-links, .nav-cta { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Glo<span>Tech</span> Corporation</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#technology">Technology</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#industries">Industries</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Request a Consultation</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Water &amp; Wastewater Technology Since 1996</div>
+      <h1>Flow Measurement You Can Trust. <span>Delivered Fast.</span></h1>
+      <p>GloTech Corporation designs and manufactures precision flow monitoring technology and turnkey water and wastewater equipment. Founded in 1996, we bring nearly three decades of engineering depth to every project.</p>
+      <div class="btn-row">
+        <a href="#technology" class="btn-teal">See the GEM2 Series</a>
+        <a href="#contact" class="btn-ghost">Request a Consultation</a>
+      </div>
+      <div class="hero-specs">
+        <div class="hero-spec"><div class="val">1996</div><div class="key">Founded</div></div>
+        <div class="hero-spec"><div class="val">28+</div><div class="key">Years of Expertise</div></div>
+        <div class="hero-spec"><div class="val">Global</div><div class="key">Market Reach</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal-left">
+          <div class="about-img">
+            <img src="https://images.unsplash.com/photo-1581093577421-f561a654a353?w=800&q=80" alt="Engineering and manufacturing" />
+          </div>
+        </div>
+        <div class="reveal-right">
+          <div class="section-label">About GloTech</div>
+          <h2 class="section-title">Engineering Excellence Since 1996</h2>
+          <div class="divider"></div>
+          <p>GloTech Corporation was founded in 1996 by Dr. Wang Zhao with a single purpose: deliver accurate, cost-effective, and reliable flow monitoring technology for the water and wastewater industry. In nearly three decades, that purpose has never wavered. We have simply gotten better at it.</p>
+          <p>Headquartered in Rockville, Maryland, GloTech provides rapid-turnaround, turnkey product development and manufacturing. We design and build components used in water and wastewater applications around the world, combining deep engineering expertise with efficient manufacturing that keeps lead times short and quality high.</p>
+          <p>Rongying Cui serves as Founder and CFO, overseeing strategic growth and ensuring GloTech continues to invest in the technologies that matter most to our customers and to the health of the water systems communities depend on. Call us at (516) 225-8348 to talk through your project requirements.</p>
+          <div class="founded-row">
+            <div class="founded-item"><span class="val">1996</span><span class="key">Founded</span></div>
+            <div class="founded-item"><span class="val">USA</span><span class="key">Headquartered</span></div>
+            <div class="founded-item"><span class="val">Global</span><span class="key">Clients Served</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNOLOGY -->
+  <section class="tech-section" id="technology">
+    <div class="container">
+      <div class="reveal" style="max-width:560px; margin-bottom:4rem;">
+        <div class="section-label">Core Technology</div>
+        <h2 class="section-title">Built for Precision</h2>
+        <div class="divider"></div>
+        <p style="color:var(--text-light);">Our technology portfolio is designed for accuracy, durability, and ease of deployment in demanding water and wastewater environments.</p>
+      </div>
+
+      <div class="tech-feature">
+        <div class="reveal-left tech-img">
+          <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80" alt="Flow meter technology" />
+        </div>
+        <div class="reveal-right tech-text">
+          <div class="section-label">GEM2 Series</div>
+          <h2 class="section-title">Electromagnetic Flow Meters</h2>
+          <div class="divider"></div>
+          <p>The GEM2 Series is GloTech's flagship electromagnetic flow meter line and a direct result of nearly 30 years of focused engineering in this specific application. Built for accuracy across variable flow rates and demanding installation conditions, the GEM2 is trusted by utilities and equipment providers who cannot afford measurement errors.</p>
+          <ul class="spec-list">
+            <li>Superior measurement accuracy across variable flow rates</li>
+            <li>Flexible installation options for diverse site conditions</li>
+            <li>Premium materials and workmanship for long service life</li>
+            <li>Suitable for water, wastewater, and industrial process applications</li>
+            <li>Compatible with multiple industries and pipe configurations</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tech-feature reverse" style="margin-top:4rem;">
+        <div class="reveal-right tech-img">
+          <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80" alt="Manufacturing and casting" />
+        </div>
+        <div class="reveal-left tech-text">
+          <div class="section-label">Advanced Manufacturing</div>
+          <h2 class="section-title">Pumps &amp; Component Engineering</h2>
+          <div class="divider"></div>
+          <p>GloTech specializes in advanced casting for pumps and related components used in water and wastewater infrastructure. We develop complete pump product families using precision manufacturing methods that consistently meet or exceed industry standards for performance and service life. Rapid prototyping means your product moves from concept to production faster than with traditional suppliers.</p>
+          <ul class="spec-list">
+            <li>Precision casting with advanced materials and techniques</li>
+            <li>Full pump product family design and development</li>
+            <li>Rapid prototyping and turnkey manufacturing</li>
+            <li>Quality control integrated at every stage of production</li>
+            <li>OEM and custom engineering solutions available</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="reveal" style="max-width:560px; margin-bottom:1rem;">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title light">Turnkey Solutions from Concept to Delivery</h2>
+        <div class="divider"></div>
+        <p style="color:rgba(255,255,255,0.72);">From initial design brief to finished product ready for market, GloTech manages the complete development and manufacturing lifecycle.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-num">01</div>
+          <h3>Turnkey Product Design</h3>
+          <p>End-to-end product development from initial concept through prototyping, testing, and final design validation.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:.1s">
+          <div class="service-num">02</div>
+          <h3>Manufacturing Solutions</h3>
+          <p>High-quality manufacturing with rigorous quality control for water and wastewater components and systems.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:.2s">
+          <div class="service-num">03</div>
+          <h3>Flow Monitoring Technology</h3>
+          <p>Electromagnetic and other flow measurement solutions configured for your specific application and environment.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:.3s">
+          <div class="service-num">04</div>
+          <h3>OEM Custom Engineering</h3>
+          <p>Custom OEM engineering and manufacturing partnerships for equipment providers requiring specialized components.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="industries-section" id="industries">
+    <div class="container">
+      <div class="reveal" style="text-align:center; max-width:560px; margin:0 auto 1rem;">
+        <div class="section-label">Industries Served</div>
+        <h2 class="section-title">Where Our Technology Works</h2>
+        <div class="divider" style="margin:0 auto 1.5rem;"></div>
+      </div>
+      <div class="industries-grid">
+        <div class="industry-block reveal">
+          <span class="industry-icon">&#9874;</span>
+          <h3>Municipal Water Utilities</h3>
+          <p>Accurate metering and monitoring for drinking water distribution systems at scale.</p>
+        </div>
+        <div class="industry-block reveal" style="transition-delay:.1s">
+          <span class="industry-icon">&#9878;</span>
+          <h3>Wastewater Treatment</h3>
+          <p>Flow measurement and equipment solutions for municipal and industrial wastewater operations.</p>
+        </div>
+        <div class="industry-block reveal" style="transition-delay:.2s">
+          <span class="industry-icon">&#9773;</span>
+          <h3>Industrial Process</h3>
+          <p>Precision components and monitoring systems for industrial fluid handling applications.</p>
+        </div>
+        <div class="industry-block reveal" style="transition-delay:.3s">
+          <span class="industry-icon">&#127973;</span>
+          <h3>Infrastructure Projects</h3>
+          <p>Engineering and manufacturing support for large-scale municipal and infrastructure development.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY GLOTECH -->
+  <section class="why-section" id="why">
+    <div class="container">
+      <div class="reveal" style="max-width:560px; margin-bottom:1rem;">
+        <div class="section-label">Why GloTech</div>
+        <h2 class="section-title light">The GloTech Difference</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <h3>Nearly 30 Years of Focused Expertise</h3>
+          <p>Since 1996, GloTech has focused exclusively on water and wastewater applications. That depth means we have seen your problem before, and we have a solution that has already been tested in the field.</p>
+        </div>
+        <div class="why-card reveal" style="transition-delay:.1s">
+          <h3>Rapid Turnaround, Turnkey Delivery</h3>
+          <p>Our streamlined development and manufacturing processes are designed for speed without sacrificing quality. We move fast so your equipment reaches market faster.</p>
+        </div>
+        <div class="why-card reveal" style="transition-delay:.2s">
+          <h3>Cost-Effective Precision</h3>
+          <p>Cutting-edge performance doesn't have to mean cutting budgets. GloTech's engineering and manufacturing efficiency delivers premium technology at competitive prices.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="reveal" style="max-width:500px; margin-bottom:3rem;">
+        <div class="section-label">Get in Touch</div>
+        <h2 class="section-title">Request a Consultation</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="contact-grid">
+        <div class="reveal-left">
+          <div class="contact-info">
+            <h3>GloTech Corporation</h3>
+            <p>Rockville, MD</p>
+            <p style="margin-top:0.8rem;"><strong>Phone:</strong> <a href="tel:5162258348">(516) 225-8348</a></p>
+            <p><strong>Email:</strong> <a href="mailto:dyang@glotech-corp.com">dyang@glotech-corp.com</a></p>
+            <p style="margin-top:1.5rem; color:var(--text-light);">We welcome inquiries from water and wastewater equipment providers, municipal utilities, and OEM partners. Describe your project requirements and our engineering team will respond promptly with a tailored solution and honest timeline.</p>
+          </div>
+          <div class="contact-img-block">
+            <img src="https://images.unsplash.com/photo-1569025591289-8ebe4905d0fc?w=700&q=80" alt="Water infrastructure" />
+          </div>
+        </div>
+        <div class="reveal-right">
+          <form class="contact-form" onsubmit="return false;">
+            <div class="form-row">
+              <input type="text" placeholder="First Name" />
+              <input type="text" placeholder="Last Name" />
+            </div>
+            <input type="text" placeholder="Company / Organization" />
+            <input type="email" placeholder="Email Address" />
+            <input type="tel" placeholder="Phone Number" />
+            <select>
+              <option value="" disabled selected>Project Type</option>
+              <option>Flow Meter Inquiry</option>
+              <option>Pump / Component Manufacturing</option>
+              <option>OEM Partnership</option>
+              <option>Turnkey Product Development</option>
+              <option>General Inquiry</option>
+            </select>
+            <textarea placeholder="Describe your project or requirements..."></textarea>
+            <button class="btn-teal-form" type="submit">Request a Consultation</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">Glo<span>Tech</span> Corporation</div>
+        <p>Precision flow monitoring and manufacturing solutions for the global water and wastewater industry. Founded 1996.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>Rockville, MD</p>
+        <a href="tel:5162258348">(516) 225-8348</a>
+        <a href="mailto:dyang@glotech-corp.com">dyang@glotech-corp.com</a>
+        <a href="https://glotech-corp.com">glotech-corp.com</a>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <a href="#technology">GEM2 Flow Meters</a>
+        <a href="#technology">Pump Components</a>
+        <a href="#services">Turnkey Design</a>
+        <a href="#services">OEM Manufacturing</a>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2024 GloTech Corporation. All rights reserved.</div>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

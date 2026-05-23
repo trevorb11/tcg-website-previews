@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Red7 Systems | Full-Service Software, Design &amp; IT | Irvine, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #cc2200;
+    --red-bright: #ff3311;
+    --red-dark: #8a1600;
+    --near-black: #0d0d0f;
+    --dark: #141416;
+    --dark-mid: #1e1e22;
+    --dark-surface: #252528;
+    --border: rgba(255,255,255,0.08);
+    --white: #ffffff;
+    --off-white: #f0eff0;
+    --gray: #9a9aa8;
+    --gray-light: #f5f5f7;
+    --text: #1a1a1e;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+    background: var(--white);
+  }
+
+  h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; line-height: 1.15; font-weight: 700; }
+
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  .container {
+    width: 90%;
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left { opacity: 0; transform: translateX(-24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+  .reveal-right { opacity: 0; transform: translateX(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+  /* HEADER */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(13,13,15,0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.15rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+
+  .logo span { color: var(--red-bright); }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  nav a {
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    font-size: 0.87rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--white); }
+
+  .btn-nav {
+    background: var(--red);
+    color: var(--white) !important;
+    padding: 9px 20px;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+  .btn-nav:hover { background: var(--red-bright) !important; }
+
+  /* HERO */
+  .hero {
+    background: var(--near-black);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 0 80px;
+  }
+
+  /* Animated grid background */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(204,34,0,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(204,34,0,0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Gradient glow */
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: -200px;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(204,34,0,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(204,34,0,0.15);
+    border: 1px solid rgba(204,34,0,0.35);
+    color: #ff6644;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    padding: 6px 14px;
+    border-radius: 4px;
+    margin-bottom: 22px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--white);
+    margin-bottom: 22px;
+    line-height: 1.05;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--red-bright);
+    position: relative;
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    color: var(--gray);
+    margin-bottom: 36px;
+    line-height: 1.75;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: var(--white);
+    padding: 13px 28px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--red-bright); transform: translateY(-2px); }
+
+  .btn-ghost {
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.75);
+    padding: 12px 26px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--red-bright); color: var(--white); }
+
+  .hero-image {
+    border-radius: 12px;
+    overflow: hidden;
+    height: 500px;
+    border: 1px solid rgba(204,34,0,0.2);
+    position: relative;
+  }
+
+  .hero-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(204,34,0,0.08) 0%, transparent 60%);
+  }
+
+  /* SECTIONS */
+  section { padding: 90px 0; }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    color: var(--red);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .section-lead {
+    font-size: 1rem;
+    color: #666;
+    max-width: 640px;
+    line-height: 1.78;
+    margin-bottom: 50px;
+  }
+
+  /* SERVICES */
+  .services-section { background: var(--gray-light); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .service-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 28px 22px;
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--red);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    border-color: rgba(204,34,0,0.15);
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--red);
+    margin-bottom: 14px;
+    opacity: 0.7;
+  }
+
+  .service-card h3 {
+    font-size: 1.05rem;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .service-card p {
+    font-size: 0.87rem;
+    color: #666;
+    line-height: 1.65;
+  }
+
+  /* PROCESS */
+  .process-section { background: var(--dark); }
+
+  .process-section .section-title { color: var(--white); }
+  .process-section .section-label { color: #ff6644; }
+  .process-section .section-lead { color: var(--gray); }
+
+  .process-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    position: relative;
+  }
+
+  .process-row::before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: rgba(204,34,0,0.3);
+  }
+
+  .process-step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .process-dot {
+    width: 48px;
+    height: 48px;
+    background: var(--dark-surface);
+    border: 1px solid rgba(204,34,0,0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--red-bright);
+  }
+
+  .process-step h4 {
+    font-size: 0.9rem;
+    color: var(--white);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  .process-step p {
+    font-size: 0.78rem;
+    color: var(--gray);
+    line-height: 1.55;
+  }
+
+  /* ABOUT */
+  .about-section { background: var(--white); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .about-image {
+    height: 460px;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .about-content p {
+    font-size: 0.94rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+
+  .tech-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .tech-tag {
+    background: var(--gray-light);
+    border: 1px solid rgba(0,0,0,0.08);
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    padding: 5px 12px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .tech-tag:hover { background: rgba(204,34,0,0.07); border-color: rgba(204,34,0,0.25); }
+
+  /* CLIENTS / INDUSTRIES */
+  .clients-section { background: var(--dark-mid); }
+
+  .clients-section .section-title { color: var(--white); }
+  .clients-section .section-label { color: #ff6644; }
+  .clients-section .section-lead { color: var(--gray); }
+
+  .client-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .client-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .client-card:hover {
+    border-color: rgba(204,34,0,0.4);
+    background: rgba(204,34,0,0.04);
+  }
+
+  .client-card h4 {
+    font-size: 1rem;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .client-card p {
+    font-size: 0.84rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* CONTACT */
+  .contact-section { background: var(--gray-light); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .contact-info p { font-size: 0.94rem; color: #555; line-height: 1.78; margin-bottom: 26px; }
+  .contact-details { display: flex; flex-direction: column; gap: 12px; }
+  .c-row { font-size: 0.9rem; color: #555; display: flex; gap: 10px; }
+  .c-row strong { color: var(--text); min-width: 65px; }
+
+  .contact-form {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 36px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    border-top: 3px solid var(--red);
+  }
+
+  .form-group { margin-bottom: 18px; }
+
+  .form-group label {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: 0.08em;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #e0e0e4;
+    border-radius: 6px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--red); }
+
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  .btn-submit {
+    width: 100%;
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    padding: 13px;
+    border-radius: 6px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    letter-spacing: 0.04em;
+  }
+  .btn-submit:hover { background: var(--red-bright); }
+
+  /* FOOTER */
+  footer {
+    background: var(--near-black);
+    color: rgba(255,255,255,0.55);
+    padding: 50px 0 26px;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+  }
+
+  .footer-brand p { margin-top: 12px; font-size: 0.86rem; line-height: 1.7; }
+
+  .footer-col h4 {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--white);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .footer-col a {
+    display: block;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    font-size: 0.86rem;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--white); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.28);
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .process-row { grid-template-columns: 1fr 1fr; }
+    .process-row::before { display: none; }
+    .client-grid { grid-template-columns: 1fr; }
+    .hero-image { height: 320px; order: -1; }
+    .about-image { height: 300px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  }
+
+  @media (max-width: 640px) {
+    nav { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    .process-row { grid-template-columns: 1fr; }
+    section { padding: 60px 0; }
+    .hero { padding: 100px 0 70px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container header-inner">
+    <a href="#" class="logo"><span>Red7</span>Systems</a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="btn-nav">Get a Free Estimate</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="reveal-left">
+        <div class="hero-tag">// Irvine, CA | Full-Service Technology</div>
+        <h1>One Partner.<br><em>Every Solution.</em></h1>
+        <p>Custom software. Web development. Creative design. Managed IT. Online marketing. Red7 Systems delivers end-to-end technology solutions for businesses of every size — so you can focus on what you do best.</p>
+        <div class="hero-ctas">
+          <a href="#services" class="btn-primary">Explore Services</a>
+          <a href="#contact" class="btn-ghost">Get a Free Estimate</a>
+        </div>
+      </div>
+      <div class="hero-image reveal-right">
+        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&q=80" alt="Technology development team collaborating in a modern office">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="container">
+    <span class="section-label reveal">// what we build</span>
+    <h2 class="section-title reveal">Everything Your Business Needs</h2>
+    <p class="section-lead reveal">From the first line of code to the launch day press release, Red7 Systems has the people and the expertise to get you there — without the complexity of managing multiple vendors.</p>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <h3>Custom Software Development</h3>
+        <p>Tailored software built to solve your specific business challenges — web apps, enterprise systems, mobile platforms, and everything in between.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">02</div>
+        <h3>Web Development</h3>
+        <p>High-performance websites and web applications built with modern frameworks, optimized for speed, accessibility, and long-term maintainability.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">03</div>
+        <h3>Creative Design</h3>
+        <p>Brand identity, UI/UX design, and visual communication crafted by designers who understand both aesthetics and the technical requirements of what they build.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">04</div>
+        <h3>Online Marketing</h3>
+        <p>Search engine optimization, digital advertising, content marketing, and analytics — driving real results for your business online.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">05</div>
+        <h3>Managed IT Services</h3>
+        <p>Proactive IT management, monitoring, support, and security for businesses that want reliable technology without the overhead of an in-house team.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">06</div>
+        <h3>Telecom Services</h3>
+        <p>Business telecommunications solutions including VoIP, unified communications, and vendor management to keep your teams connected and productive.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section" id="process">
+  <div class="container">
+    <span class="section-label reveal">// how we work</span>
+    <h2 class="section-title reveal">A Process Built for Results</h2>
+    <p class="section-lead reveal">Every project follows a clear, collaborative process — so you always know what is happening, what comes next, and where we stand.</p>
+    <div class="process-row">
+      <div class="process-step reveal">
+        <div class="process-dot">01</div>
+        <h4>Discovery</h4>
+        <p>We dig into your business, goals, and technical landscape to understand the problem we are really solving.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-dot">02</div>
+        <h4>Strategy</h4>
+        <p>A clear plan, timeline, and budget — agreed on before a single line of code is written.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-dot">03</div>
+        <h4>Build</h4>
+        <p>Expert development with regular check-ins, transparent progress, and no surprises.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-dot">04</div>
+        <h4>Launch</h4>
+        <p>Thorough testing, smooth deployment, and a handoff that actually prepares you to succeed.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-dot">05</div>
+        <h4>Support</h4>
+        <p>Ongoing maintenance, optimization, and support — we stay with you long after go-live.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image reveal-left">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=80" alt="Red7 Systems technology team working together in Irvine CA">
+      </div>
+      <div class="reveal-right">
+        <span class="section-label">// about us</span>
+        <h2 class="section-title">Built by People Who Love Building</h2>
+        <p>Red7 Systems was founded by Michael Huck, a technology veteran with more than 15 years of experience working with clients ranging from community pharmacies to the United States Department of Defense. What Mike built at Red7 is a team that brings that same breadth of experience — and genuine enthusiasm for solving hard problems — to every client engagement.</p>
+        <p>Based in Irvine, California, we operate as a true full-service technology partner. That means you get a single team that understands your software, your design, your marketing, and your IT — all aligned toward your goals, not siloed into separate conversations.</p>
+        <p>We believe the best technology is the kind that works so well you stop thinking about it — and we design every solution with that standard in mind.</p>
+        <div class="tech-row">
+          <span class="tech-tag">React</span>
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">AWS</span>
+          <span class="tech-tag">.NET</span>
+          <span class="tech-tag">iOS / Android</span>
+          <span class="tech-tag">PostgreSQL</span>
+          <span class="tech-tag">WordPress</span>
+          <span class="tech-tag">Figma</span>
+          <span class="tech-tag">Google Ads</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section class="clients-section">
+  <div class="container">
+    <span class="section-label reveal">// our clients</span>
+    <h2 class="section-title reveal">Built for Organizations of Every Size</h2>
+    <p class="section-lead reveal">From independent businesses to federal agencies, Red7 Systems has delivered across every scale and sector.</p>
+    <div class="client-grid">
+      <div class="client-card reveal">
+        <h4>Small &amp; Mid-Size Businesses</h4>
+        <p>Turnkey technology solutions that give growing companies enterprise capabilities without enterprise complexity or cost.</p>
+      </div>
+      <div class="client-card reveal">
+        <h4>Enterprise Organizations</h4>
+        <p>Scalable custom software, infrastructure management, and digital strategy for large organizations with complex requirements.</p>
+      </div>
+      <div class="client-card reveal">
+        <h4>Government &amp; Defense</h4>
+        <p>Secure, compliant technology solutions for government clients — backed by experience working directly with the U.S. Department of Defense.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE ROW -->
+<div style="display:grid;grid-template-columns:repeat(3,1fr);height:240px;">
+  <div class="reveal"><img src="https://images.unsplash.com/photo-1573167507387-6b4b98cb7c13?w=700&q=80" alt="Developer at dual monitor setup writing code"></div>
+  <div class="reveal"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=700&q=80" alt="Creative team collaborating on design work"></div>
+  <div class="reveal"><img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=700&q=80" alt="Technology professional in a modern Irvine office"></div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <span class="section-label">// get in touch</span>
+        <h2 class="section-title">Ready to Build Something Great?</h2>
+        <p>Tell us about your project. We will get back to you quickly with a clear sense of what we can do, how long it will take, and what it will cost — no vague estimates, no sales pressure.</p>
+        <div class="contact-details">
+          <div class="c-row"><strong>Phone:</strong><span>(951) 847-5989</span></div>
+          <div class="c-row"><strong>Email:</strong><span>mike.huck@evarus.com</span></div>
+          <div class="c-row"><strong>Location:</strong><span>Irvine, CA | Serving clients nationwide</span></div>
+        </div>
+      </div>
+      <div class="contact-form reveal-right">
+        <div class="form-group">
+          <label>YOUR_NAME</label>
+          <input type="text" placeholder="Your full name">
+        </div>
+        <div class="form-group">
+          <label>COMPANY</label>
+          <input type="text" placeholder="Your company">
+        </div>
+        <div class="form-group">
+          <label>EMAIL</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>PROJECT_TYPE</label>
+          <select>
+            <option value="">Select a service area</option>
+            <option>Custom Software Development</option>
+            <option>Web Development</option>
+            <option>Creative Design</option>
+            <option>Online Marketing</option>
+            <option>Managed IT Services</option>
+            <option>Telecom Services</option>
+            <option>Full-Service Technology Partnership</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>DESCRIBE_YOUR_PROJECT</label>
+          <textarea placeholder="Tell us about your project, goals, and timeline..."></textarea>
+        </div>
+        <button class="btn-submit">Submit Inquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo"><span>Red7</span>Systems</a>
+        <p>Full-service custom software development, creative design, online marketing, and managed IT services for businesses of every size — based in Irvine, CA.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#">Custom Software</a>
+        <a href="#">Web Development</a>
+        <a href="#">Creative Design</a>
+        <a href="#">Online Marketing</a>
+        <a href="#">Managed IT</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:9518475989">(951) 847-5989</a>
+        <a href="mailto:mike.huck@evarus.com">mike.huck@evarus.com</a>
+        <a href="#">Irvine, CA</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 Red7 Systems, Inc. All rights reserved.</span>
+      <span>// We Do It All</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

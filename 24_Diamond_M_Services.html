@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diamond M Services | Cleaning &amp; Property Maintenance | Foley, AL</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ocean: #0EA5E9;
+      --ocean-dark: #0284C7;
+      --teal: #0D9488;
+      --teal-light: #CCFBF1;
+      --sand: #F5E6D3;
+      --sand-dark: #E8C9A0;
+      --white: #FFFFFF;
+      --charcoal: #1E293B;
+      --mid: #64748B;
+      --light: #F8FAFC;
+      --border: #E2E8F0;
+    }
+
+    body { font-family: 'Open Sans', sans-serif; color: var(--charcoal); background: #fff; }
+
+    /* NAV */
+    nav {
+      background: #fff;
+      padding: 18px 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo { font-family: 'Nunito', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--ocean-dark); }
+    .nav-logo span { color: var(--teal); }
+    .nav-tag { font-size: 0.7rem; color: var(--mid); display: block; margin-top: 1px; letter-spacing: 0.06em; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--charcoal); text-decoration: none; font-size: 0.92rem; font-family: 'Nunito', sans-serif; font-weight: 600; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--ocean-dark); }
+    .nav-phone { font-family: 'Nunito', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--mid); }
+    .nav-cta {
+      background: var(--ocean);
+      color: #fff;
+      padding: 11px 22px;
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--ocean-dark); transform: translateY(-1px); }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #E0F7FA 0%, var(--sand) 60%, #fff 100%);
+      padding: 80px 50px;
+      display: flex;
+      align-items: center;
+      min-height: 88vh;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-wave {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
+      background: #fff;
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+    .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; width: 100%; }
+    .hero-text { position: relative; z-index: 2; }
+    .hero-badge {
+      display: inline-block;
+      background: var(--teal-light);
+      color: var(--teal);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-weight: 800;
+      color: var(--charcoal);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--ocean-dark); }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--mid);
+      line-height: 1.75;
+      margin-bottom: 36px;
+      max-width: 460px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-ocean {
+      background: var(--ocean);
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 4px 16px rgba(14,165,233,0.3);
+    }
+    .btn-ocean:hover { background: var(--ocean-dark); transform: translateY(-2px); }
+    .btn-teal-outline {
+      border: 2px solid var(--teal);
+      color: var(--teal);
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-teal-outline:hover { background: var(--teal); color: #fff; }
+    .hero-img { border-radius: 20px; overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,0.12); position: relative; }
+    .hero-img img { width: 100%; height: 480px; object-fit: cover; display: block; }
+    .hero-trust {
+      position: absolute; bottom: 20px; left: 20px; right: 20px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-around;
+      backdrop-filter: blur(6px);
+    }
+    .trust-item { text-align: center; }
+    .trust-num { font-family: 'Nunito', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--ocean-dark); }
+    .trust-label { font-size: 0.72rem; color: var(--mid); }
+
+    /* SERVICES */
+    .services-section { background: #fff; padding: 90px 50px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .eyebrow {
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 800;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .section-sub { font-size: 1rem; color: var(--mid); line-height: 1.7; max-width: 560px; margin-bottom: 52px; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; }
+    .svc-card {
+      border-radius: 18px;
+      padding: 32px 26px;
+      background: var(--light);
+      border: 1.5px solid var(--border);
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      text-align: center;
+    }
+    .svc-card:hover { border-color: var(--ocean); box-shadow: 0 8px 30px rgba(14,165,233,0.12); transform: translateY(-5px); }
+    .svc-icon {
+      width: 60px; height: 60px;
+      background: linear-gradient(135deg, var(--ocean), var(--teal));
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+      margin: 0 auto 16px;
+    }
+    .svc-card h3 { font-family: 'Nunito', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--charcoal); margin-bottom: 8px; }
+    .svc-card p { font-size: 0.88rem; color: var(--mid); line-height: 1.6; }
+
+    /* ABOUT */
+    .about-section { background: var(--light); padding: 90px 50px; }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .about-img { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 56px rgba(0,0,0,0.1); }
+    .about-img img { width: 100%; height: 460px; object-fit: cover; display: block; }
+    .about-text .section-sub { margin-bottom: 24px; }
+    .check-list { list-style: none; margin-bottom: 36px; }
+    .check-list li { padding: 11px 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; color: var(--charcoal); display: flex; align-items: center; gap: 12px; }
+    .check-ocean { color: var(--ocean); font-weight: 700; font-size: 1.2rem; }
+    .btn-ocean-solid {
+      display: inline-block;
+      background: var(--ocean);
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-ocean-solid:hover { background: var(--ocean-dark); }
+
+    /* PHOTO BANNER */
+    .photo-banner { display: grid; grid-template-columns: 1fr 1fr 1fr; height: 280px; }
+    .photo-banner-item { overflow: hidden; }
+    .photo-banner-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+    .photo-banner-item:hover img { transform: scale(1.06); }
+
+    /* TESTIMONIALS */
+    .testimonials-section { background: var(--charcoal); padding: 90px 50px; }
+    .testimonials-section .eyebrow { color: var(--ocean); }
+    .testimonials-section .section-title { color: #fff; }
+    .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+    .test-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 28px; }
+    .test-stars { color: #FCD34D; font-size: 0.95rem; letter-spacing: 2px; margin-bottom: 12px; }
+    .test-card p { font-size: 0.95rem; color: rgba(255,255,255,0.82); line-height: 1.75; margin-bottom: 16px; font-style: italic; }
+    .test-author { font-family: 'Nunito', sans-serif; font-size: 0.87rem; font-weight: 700; color: var(--ocean); }
+
+    /* CTA */
+    .cta-section { background: linear-gradient(135deg, var(--ocean), var(--teal)); padding: 80px 50px; text-align: center; color: #fff; }
+    .cta-section h2 { font-family: 'Nunito', sans-serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; margin-bottom: 16px; }
+    .cta-section p { font-size: 1.1rem; opacity: 0.92; max-width: 480px; margin: 0 auto 36px; line-height: 1.7; }
+    .btn-white-pill {
+      background: #fff;
+      color: var(--ocean-dark);
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+    }
+    .btn-white-pill:hover { transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer { background: #0F172A; color: rgba(255,255,255,0.65); padding: 60px 50px 30px; }
+    .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-logo-name { font-family: 'Nunito', sans-serif; font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .footer-logo-name span { color: var(--ocean); }
+    .footer-brand p { font-size: 0.9rem; line-height: 1.7; }
+    footer h4 { font-family: 'Nunito', sans-serif; color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 16px; }
+    footer ul { list-style: none; }
+    footer ul li { margin-bottom: 10px; }
+    footer ul li a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+    footer ul li a:hover { color: var(--ocean); }
+    .footer-bottom { max-width: 1100px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; font-size: 0.82rem; text-align: center; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 960px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .nav-phone { display: none; }
+      section, .services-section, .about-section, .testimonials-section { padding: 70px 24px; }
+      .hero { padding: 60px 24px; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-img { display: none; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .photo-banner { height: 200px; }
+    }
+    @media (max-width: 600px) {
+      .photo-banner { grid-template-columns: 1fr; height: auto; }
+      .photo-banner-item img { height: 180px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div>
+      <div class="nav-logo">Diamond <span>M</span> Services</div>
+      <div class="nav-tag">Foley, Alabama &mdash; Gulf Coast Cleaning &amp; Maintenance</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Vacation Rentals</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Reviews</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <span class="nav-phone">(251) 284-1398</span>
+    <a href="#" class="nav-cta">Get a Quote</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">Family-Owned &amp; Operated Since 2011 &mdash; Gulf Coast, Alabama</div>
+        <h1>Your Property,<br><span>Spotless</span> Between Every Guest</h1>
+        <p>Diamond M Services has been the trusted cleaning and property maintenance team for vacation rental owners, property managers, and homeowners across Baldwin County since 2011. Same-day turnovers, thorough deep cleans, and the kind of reliability that keeps your guests leaving five-star reviews.</p>
+        <div class="hero-btns">
+          <a href="#" class="btn-ocean">Get a Quote for Your Property</a>
+          <a href="#" class="btn-teal-outline">See Our Services</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80" alt="Professional cleaning service" />
+        <div class="hero-trust">
+          <div class="trust-item"><div class="trust-num">13+</div><div class="trust-label">Years Serving</div></div>
+          <div class="trust-item"><div class="trust-num">7</div><div class="trust-label">Days a Week</div></div>
+          <div class="trust-item"><div class="trust-num">100%</div><div class="trust-label">Insured</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-wave"></div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services-section">
+    <div class="container">
+      <p class="eyebrow reveal">What We Do</p>
+      <h2 class="section-title reveal">Gulf Coast Cleaning Built Around Your Schedule</h2>
+      <p class="section-sub reveal">Whether you need a quick guest turnover between bookings or a thorough move-out clean for a rental, we work around your timeline &mdash; seven days a week, 9am to 6pm. Property managers especially: we know turnaround time is everything.</p>
+      <div class="services-grid">
+        <div class="svc-card reveal">
+          <div class="svc-icon">&#127968;</div>
+          <h3>Residential Cleaning</h3>
+          <p>Recurring and one-time house cleaning tailored to your home and your schedule.</p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon">&#127970;</div>
+          <h3>Commercial Cleaning</h3>
+          <p>Professional cleaning for offices, retail spaces, and commercial facilities along the Gulf Coast.</p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon">&#9749;</div>
+          <h3>Vacation Rental Cleaning</h3>
+          <p>Same-day turnovers for Airbnb, VRBO, and short-term rental properties. We know the Gulf Coast rental market &mdash; your guests expect spotless, and that's what we deliver every time.</p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon">&#128682;</div>
+          <h3>Move-In / Move-Out</h3>
+          <p>Deep cleaning for rental turnovers, new homeowners, and property managers.</p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon">&#128692;</div>
+          <h3>Post-Construction Cleanup</h3>
+          <p>Final cleanup after renovations or new construction. We remove dust, debris, and residue so your space is ready.</p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon">&#127807;</div>
+          <h3>Landscaping &amp; Maintenance</h3>
+          <p>Lawn care, landscaping, and exterior maintenance to keep your property looking its best year-round.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO BANNER -->
+  <div class="photo-banner">
+    <div class="photo-banner-item">
+      <img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?w=700&q=80" alt="Clean bright home interior" />
+    </div>
+    <div class="photo-banner-item">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80" alt="Cleaning team at work" />
+    </div>
+    <div class="photo-banner-item">
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80" alt="Sparkling clean kitchen" />
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-img reveal">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="Diamond M Services team" />
+        </div>
+        <div class="about-text reveal">
+          <p class="eyebrow">Our Story</p>
+          <h2 class="section-title">Miranda Built This Business the Hard Way</h2>
+          <p class="section-sub">Miranda, the founder of Diamond M Services, spent 13 years working FEMA disaster assistance &mdash; coordinating logistics, managing people, and making sure things got done right under pressure. When she started Diamond M in 2011, she brought all of that into a cleaning and property maintenance company built on process, reliability, and real accountability.</p>
+          <p style="font-size:0.97rem; color:var(--mid); line-height:1.7; margin-bottom:28px;">More than a decade later, Diamond M is one of Baldwin County's most trusted names for vacation rental cleaning, move-out services, and property maintenance. Miranda also operates Diamond M Properties LLC, which means she understands the short-term rental business from both sides. When she says she knows what property managers need, she means it.</p>
+          <ul class="check-list">
+            <li><span class="check-ocean">&#10003;</span> Family-owned and operated since 2011</li>
+            <li><span class="check-ocean">&#10003;</span> Licensed and fully insured</li>
+            <li><span class="check-ocean">&#10003;</span> Open 7 days a week, 9am to 6pm</li>
+            <li><span class="check-ocean">&#10003;</span> Same-day vacation rental turnovers available</li>
+            <li><span class="check-ocean">&#10003;</span> Serving Baldwin County, Gulf Shores, Orange Beach, and surrounding areas</li>
+          </ul>
+          <a href="#" class="btn-ocean-solid">Get a Quote for Your Property</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="container">
+      <p class="eyebrow reveal" style="text-align:center;">Happy Clients</p>
+      <h2 class="section-title reveal" style="text-align:center; max-width:500px; margin:0 auto 48px;">What Our Customers Say</h2>
+      <div class="test-grid">
+        <div class="test-card reveal">
+          <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"I manage three properties in Orange Beach and I was constantly stressed about turnovers during peak season. Diamond M takes that completely off my plate. They know the timing, they communicate when they're done, and I've never once had a guest complain about cleanliness. That's all I need."</p>
+          <div class="test-author">Short-Term Rental Manager, Orange Beach, AL</div>
+        </div>
+        <div class="test-card reveal">
+          <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Move-out clean for a property I'd been renting for three years. I was nervous because it needed serious work. They did the baseboards, the oven, behind the fridge &mdash; things I didn't even ask for. Got my full deposit back and the landlord asked who I used."</p>
+          <div class="test-author">Former Tenant, Foley, AL</div>
+        </div>
+        <div class="test-card reveal">
+          <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"What I appreciate most is that they actually show up when they say they will. I've gone through two other services in the last few years and scheduling was always a battle. Diamond M is just reliable. It sounds like a low bar but in this industry it really isn't."</p>
+          <div class="test-author">Homeowner, Gulf Shores, AL</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Let's Keep Your Property Guest-Ready</h2>
+    <p>Whether you manage one rental or a dozen, or just need your home or business cleaned right &mdash; we'd love to give you a quote. No pressure, no contracts required to get started.</p>
+    <a href="#" class="btn-white-pill">Get a Quote for Your Property</a>
+    <p style="margin-top:20px; font-size:0.95rem; opacity:0.85;">Call or text us directly: <a href="tel:2512841398" style="color:#fff;font-weight:700;">(251) 284-1398</a></p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo-name">Diamond <span>M</span> Services</div>
+        <p>Family-owned cleaning and property maintenance services for the Alabama Gulf Coast. Serving Baldwin County and surrounding areas since 2011.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Residential Cleaning</a></li>
+          <li><a href="#">Commercial Cleaning</a></li>
+          <li><a href="#">Vacation Rentals</a></li>
+          <li><a href="#">Move-In / Move-Out</a></li>
+          <li><a href="#">Post-Construction</a></li>
+          <li><a href="#">Landscaping</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">Foley, AL</a></li>
+          <li><a href="tel:2512841398">(251) 284-1398</a></li>
+          <li><a href="mailto:johnnie@diamondmservices.com">Email Us</a></li>
+          <li><a href="#">Hours: Mon-Sun 9am-6pm</a></li>
+          <li><a href="#">Request a Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Diamond M Services, Inc. All rights reserved. | Foley, Alabama | Serving the Gulf Coast Since 2011</p>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

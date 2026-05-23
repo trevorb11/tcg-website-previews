@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloudzzure Technologies — Salesforce Partner | Cloud IT Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #0d2040;
+      --blue: #2563eb;
+      --blue-light: #3b82f6;
+      --cyan: #06b6d4;
+      --cyan-light: #22d3ee;
+      --white: #ffffff;
+      --gray-light: #f8fafc;
+      --gray-mid: #64748b;
+      --gray-border: #e2e8f0;
+      --text: #0f172a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.15;
+    }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-36px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(36px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: none; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(10, 22, 40, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 0 5%;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-logo .logo-accent { color: var(--cyan); }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cyan-light); }
+    .nav-cta {
+      background: var(--blue);
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--blue-light) !important; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .hero-bg-gradient {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(37,99,235,0.25) 0%, transparent 70%),
+                  radial-gradient(ellipse 50% 50% at 80% 80%, rgba(6,182,212,0.15) 0%, transparent 60%);
+    }
+    /* Floating orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.18;
+      animation: float 8s ease-in-out infinite;
+    }
+    .orb-1 { width: 400px; height: 400px; background: var(--blue); top: -100px; right: 10%; animation-delay: 0s; }
+    .orb-2 { width: 280px; height: 280px; background: var(--cyan); bottom: 5%; right: 30%; animation-delay: 3s; }
+    .orb-3 { width: 200px; height: 200px; background: var(--blue-light); top: 50%; left: 5%; animation-delay: 5s; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 130px 5% 80px;
+      max-width: 780px;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(6,182,212,0.1);
+      border: 1px solid rgba(6,182,212,0.3);
+      color: var(--cyan-light);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.75rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+      color: var(--white);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--blue-light), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.68);
+      max-width: 580px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.75;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      padding: 0.9rem 2.2rem;
+      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--blue-light); transform: translateY(-2px); }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.85);
+      padding: 0.9rem 2.2rem;
+      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover {
+      border-color: var(--cyan);
+      background: rgba(6,182,212,0.08);
+    }
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .hero-stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 0.25rem;
+      letter-spacing: 0.04em;
+    }
+    .hero-image-side {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 45%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .hero-image-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.25;
+    }
+    .hero-image-side::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--navy) 0%, transparent 40%);
+      z-index: 1;
+    }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 100px 5%; }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.75rem;
+    }
+    .section-center { text-align: center; }
+    .section-center .section-label { display: block; }
+
+    /* ===== INTRO ===== */
+    .intro {
+      background: var(--gray-light);
+    }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .intro-text h2 {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    .intro-text p {
+      color: var(--gray-mid);
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+    }
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+    .badge {
+      background: rgba(37,99,235,0.08);
+      border: 1px solid rgba(37,99,235,0.2);
+      color: var(--blue);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+    }
+    .intro-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .intro-img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+    }
+    .mini-stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+    .mini-stat {
+      background: var(--navy);
+      padding: 1.25rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .mini-stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--cyan);
+    }
+    .mini-stat-text {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.2rem;
+    }
+
+    /* ===== SERVICES ===== */
+    .services {
+      background: var(--white);
+    }
+    .services-inner { max-width: 1200px; margin: 0 auto; }
+    .services-header {
+      max-width: 620px;
+      margin: 0 auto 3.5rem;
+      text-align: center;
+    }
+    .services-header h2 {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    .services-header p {
+      color: var(--gray-mid);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--gray-light);
+      border: 1px solid var(--gray-border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+    }
+    .service-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 12px 40px rgba(37,99,235,0.1);
+      transform: translateY(-4px);
+    }
+    .service-icon-wrap {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .service-icon-wrap svg {
+      width: 26px;
+      height: 26px;
+      stroke: white;
+      fill: none;
+      stroke-width: 2;
+    }
+    .service-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+    .service-card p {
+      color: var(--gray-mid);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* ===== SALESFORCE DEEP DIVE ===== */
+    .sf-section {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .sf-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .sf-text h2 {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .sf-text p {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 2rem;
+    }
+    .sf-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .sf-chip {
+      background: rgba(37,99,235,0.2);
+      border: 1px solid rgba(37,99,235,0.4);
+      color: var(--blue-light);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      letter-spacing: 0.02em;
+    }
+    .sf-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .sf-feature {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: background 0.3s;
+    }
+    .sf-feature:hover { background: rgba(37,99,235,0.15); }
+    .sf-feature-icon {
+      width: 36px;
+      height: 36px;
+      color: var(--cyan);
+      margin-bottom: 0.75rem;
+    }
+    .sf-feature-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+    }
+    .sf-feature h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+    .sf-feature p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ===== WHY CLOUDZZURE ===== */
+    .why-section {
+      background: var(--gray-light);
+    }
+    .why-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .why-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .why-header h2 {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .why-card {
+      background: var(--white);
+      border: 1px solid var(--gray-border);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: box-shadow 0.3s;
+    }
+    .why-card:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+    }
+    .why-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .why-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+    .why-card p {
+      font-size: 0.88rem;
+      color: var(--gray-mid);
+    }
+
+    /* ===== PROCESS ===== */
+    .process-section {
+      background: var(--white);
+    }
+    .process-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .process-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .process-header h2 {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .process-track {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1rem;
+      position: relative;
+    }
+    .process-track::before {
+      content: '';
+      position: absolute;
+      top: 30px;
+      left: 8%;
+      right: 8%;
+      height: 2px;
+      background: linear-gradient(to right, var(--blue), var(--cyan));
+      opacity: 0.3;
+    }
+    .p-step {
+      text-align: center;
+      padding: 0 0.5rem;
+      position: relative;
+    }
+    .p-step-dot {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      position: relative;
+      z-index: 1;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: white;
+    }
+    .p-step h4 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+    .p-step p {
+      font-size: 0.78rem;
+      color: var(--gray-mid);
+      line-height: 1.5;
+    }
+
+    /* ===== INDUSTRIES ===== */
+    .industries {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .industries-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .industries-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .industries-header h2 {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .industry-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 1.75rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: background 0.3s;
+    }
+    .industry-card:hover { background: rgba(37,99,235,0.15); }
+    .industry-icon {
+      font-size: 1.5rem;
+      min-width: 36px;
+      color: var(--cyan);
+    }
+    .industry-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+    }
+    .industry-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.35rem;
+    }
+    .industry-card p {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      background: var(--gray-light);
+    }
+    .testimonials-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .testimonials-header h2 {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .t-card {
+      background: var(--white);
+      border: 1px solid var(--gray-border);
+      border-radius: 12px;
+      padding: 2rem;
+    }
+    .t-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 1rem;
+    }
+    .t-star {
+      width: 16px;
+      height: 16px;
+      background: #f59e0b;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+    .t-card p {
+      font-size: 0.92rem;
+      color: #374151;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      line-height: 1.75;
+    }
+    .t-author {
+      font-weight: 700;
+      font-size: 0.88rem;
+      font-style: normal;
+      color: var(--text);
+    }
+    .t-role {
+      font-size: 0.8rem;
+      color: var(--gray-mid);
+      margin-top: 0.2rem;
+    }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--cyan) 100%);
+      padding: 80px 5%;
+    }
+    .cta-banner-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .cta-banner h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .cta-banner p {
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+    }
+    .btn-white {
+      background: var(--white);
+      color: var(--blue);
+      padding: 0.9rem 2.5rem;
+      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 8px;
+      display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-white:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    }
+
+    /* ===== CONTACT ===== */
+    .contact {
+      background: var(--white);
+    }
+    .contact-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-info h2 {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .contact-info p {
+      color: var(--gray-mid);
+      margin-bottom: 2.5rem;
+    }
+    .contact-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .c-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      border-radius: 10px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .c-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: white;
+      fill: none;
+      stroke-width: 2;
+    }
+    .c-text strong {
+      display: block;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 0.2rem;
+    }
+    .c-text span {
+      color: var(--gray-mid);
+      font-size: 0.9rem;
+    }
+    .contact-form {
+      background: var(--gray-light);
+      border: 1px solid var(--gray-border);
+      border-radius: 16px;
+      padding: 2.5rem;
+    }
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.02em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--white);
+      border: 1px solid var(--gray-border);
+      color: var(--text);
+      padding: 0.7rem 1rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      border-radius: 8px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      color: var(--white);
+      border: none;
+      padding: 0.9rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .form-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--navy);
+      padding: 4rem 5% 2rem;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-logo-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      display: block;
+      text-decoration: none;
+    }
+    .footer-logo-text .logo-accent { color: var(--cyan); }
+    .footer-brand p {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.88rem;
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+    .footer-col h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .footer-col ul a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: var(--cyan-light); }
+    .footer-bottom {
+      padding-top: 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom p { color: rgba(255,255,255,0.3); font-size: 0.8rem; }
+    .sf-badge {
+      background: rgba(6,182,212,0.1);
+      border: 1px solid rgba(6,182,212,0.3);
+      color: var(--cyan-light);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .intro-grid, .sf-inner, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-image-side { display: none; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .industries-grid { grid-template-columns: 1fr 1fr; }
+      .process-track { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+      .process-track::before { display: none; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 70px 5%; }
+      .nav-links { display: none; }
+      .services-grid, .why-grid, .industries-grid { grid-template-columns: 1fr; }
+      .process-track { grid-template-columns: repeat(2, 1fr); }
+      .sf-visual { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Cloud<span class="logo-accent">zzure</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#salesforce">Salesforce</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#contact" class="nav-cta">Schedule a Strategy Session</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-gradient"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="hero-content">
+      <div class="hero-pill">Salesforce Certified Implementation Partner</div>
+      <h1>Cloud-Powered Solutions.<br><span class="highlight">Salesforce Expertise.</span><br>Real Results.</h1>
+      <p>Cloudzzure delivers tailored Salesforce implementations, mobile applications, and cloud IT solutions that scale with your business. Founded by technology practitioners who lead with clarity, not complexity.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Schedule a Cloud Strategy Session</a>
+        <a href="#services" class="btn-outline">View Our Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat-item">
+          <div class="hero-stat-num">2019</div>
+          <div class="hero-stat-label">Founded</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num">SF</div>
+          <div class="hero-stat-label">AppExchange Partner</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num">360</div>
+          <div class="hero-stat-label">Full-Stack Delivery</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image-side">
+      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&auto=format&fit=crop&q=80" alt="Technology team at work" />
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro" id="about">
+    <div class="intro-grid">
+      <div class="intro-text reveal-left">
+        <div class="section-label">Who We Are</div>
+        <h2>Built to Deliver Cloud Solutions That Actually Work</h2>
+        <p>Cloudzzure Technologies was founded in 2019 by Chirag Jain with a mission that has not changed: build technology solutions that create tangible value for the businesses that use them. Too many IT implementations look good on paper but fall apart in practice. We build differently — starting with your goals, not a generic template.</p>
+        <p>As a certified Salesforce Implementation Partner listed on the Salesforce AppExchange, we bring deep CRM expertise alongside full-stack mobile and web development capabilities. Whether you are deploying Salesforce for the first time or migrating a complex legacy system, our team has done it before and knows where the challenges hide.</p>
+        <div class="badge-row">
+          <span class="badge">Salesforce Implementation Partner</span>
+          <span class="badge">AppExchange Listed</span>
+          <span class="badge">iOS Mobile Development</span>
+          <span class="badge">Cloud Architecture</span>
+        </div>
+      </div>
+      <div class="intro-visual reveal-right">
+        <img class="intro-img" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&auto=format&fit=crop&q=80" alt="Software development team collaborating" />
+        <div class="mini-stats-grid">
+          <div class="mini-stat">
+            <div class="mini-stat-num">SF</div>
+            <div class="mini-stat-text">Certified Partner</div>
+          </div>
+          <div class="mini-stat">
+            <div class="mini-stat-num">6+</div>
+            <div class="mini-stat-text">Service Areas</div>
+          </div>
+          <div class="mini-stat">
+            <div class="mini-stat-num">100%</div>
+            <div class="mini-stat-text">Cloud Native</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-inner">
+      <div class="services-header reveal">
+        <div class="section-label">What We Deliver</div>
+        <h2>Comprehensive Cloud &amp; Salesforce Services</h2>
+        <p>From Salesforce configuration to custom mobile apps, we offer the breadth of technical services growing businesses need — all under one roof.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <h3>Salesforce CRM Development</h3>
+          <p>Custom Salesforce implementations configured to match your exact business processes — not the other way around. Full development, customization, and integration services.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3>Salesforce Lightning &amp; Migration</h3>
+          <p>Smooth, risk-managed migrations to Salesforce Lightning Experience. We handle the complexity so your team experiences a clean, modern CRM from day one.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <h3>Data Migration &amp; Integration</h3>
+          <p>Clean, reliable data migration into Salesforce with thorough validation. We also build API integrations that connect Salesforce with the other platforms your business depends on.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+          <h3>Mobile App Development</h3>
+          <p>Native iOS mobile applications built with clean architecture and a focus on usability. From concept through App Store deployment, we manage the full development lifecycle.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Web Development</h3>
+          <p>Modern web applications and business websites built with current technologies. Whether you need a corporate site or a full-scale web platform, we deliver quality and performance.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3>Digital Marketing</h3>
+          <p>Strategic digital marketing that complements your technology investments. SEO, content strategy, and analytics setup to help you attract and convert the right audiences.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SALESFORCE DEEP DIVE -->
+  <section class="sf-section" id="salesforce">
+    <div class="sf-inner">
+      <div class="sf-text reveal-left">
+        <div class="section-label" style="color:var(--cyan-light);">Salesforce Partner</div>
+        <h2>Certified Salesforce Expertise You Can Count On</h2>
+        <p>Cloudzzure is a certified Salesforce Implementation Partner listed on the Salesforce AppExchange. Our team brings hands-on experience with the full Salesforce platform — from Sales Cloud to Service Cloud to custom Lightning development. We have navigated the edge cases and the common pitfalls, which means your implementation benefits from that accumulated knowledge from the very first call.</p>
+        <div class="sf-chips">
+          <span class="sf-chip">Sales Cloud</span>
+          <span class="sf-chip">Service Cloud</span>
+          <span class="sf-chip">Lightning Experience</span>
+          <span class="sf-chip">Apex Development</span>
+          <span class="sf-chip">Visualforce</span>
+          <span class="sf-chip">Data Migration</span>
+          <span class="sf-chip">API Integration</span>
+          <span class="sf-chip">Admin Support</span>
+        </div>
+      </div>
+      <div class="sf-visual reveal-right">
+        <div class="sf-feature">
+          <div class="sf-feature-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h4>Administrator Support</h4>
+          <p>Ongoing Salesforce admin services to keep your org clean and efficient.</p>
+        </div>
+        <div class="sf-feature">
+          <div class="sf-feature-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <h4>Custom Development</h4>
+          <p>Apex, Visualforce, and Lightning components built for your business logic.</p>
+        </div>
+        <div class="sf-feature">
+          <div class="sf-feature-icon"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+          <h4>Data Migration</h4>
+          <p>Clean, validated data migration from legacy CRM systems into Salesforce.</p>
+        </div>
+        <div class="sf-feature">
+          <div class="sf-feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <h4>System Integration</h4>
+          <p>API-based integrations connecting Salesforce with ERP, marketing, and billing platforms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CLOUDZZURE -->
+  <section class="why-section" id="why">
+    <div class="why-inner">
+      <div class="why-header reveal">
+        <div class="section-label">Why Cloudzzure</div>
+        <h2>Four Principles That Drive Every Project</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-number">01</div>
+          <h3>Certified Salesforce Partner</h3>
+          <p>Our partnership and AppExchange listing are not titles — they reflect the level of technical rigor and accountability we bring to every engagement.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-number">02</div>
+          <h3>End-to-End Delivery</h3>
+          <p>From the initial discovery conversation to post-launch support, we stay engaged through every phase of your project without handing you off to a different team.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-number">03</div>
+          <h3>Agile Development</h3>
+          <p>Iterative sprints with regular check-ins mean you see progress early and can redirect the work before problems become expensive. No black boxes.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-number">04</div>
+          <h3>Transparent Communication</h3>
+          <p>You will always know where your project stands. We communicate proactively about timelines, blockers, and decisions — because surprises are never welcome.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process-section">
+    <div class="process-inner">
+      <div class="process-header reveal">
+        <div class="section-label">How We Work</div>
+        <h2>A Delivery Process Designed for Clarity</h2>
+        <p style="color:var(--gray-mid);max-width:500px;margin:0 auto;">Every project follows a proven process that keeps your team informed and the work moving forward without unnecessary delays.</p>
+      </div>
+      <div class="process-track">
+        <div class="p-step reveal">
+          <div class="p-step-dot">1</div>
+          <h4>Discovery</h4>
+          <p>Understand your goals, systems, and users before writing a single line of code.</p>
+        </div>
+        <div class="p-step reveal">
+          <div class="p-step-dot">2</div>
+          <h4>Strategy</h4>
+          <p>Architecture plan, timeline, and scope defined collaboratively.</p>
+        </div>
+        <div class="p-step reveal">
+          <div class="p-step-dot">3</div>
+          <h4>Development</h4>
+          <p>Agile sprints with regular demos and feedback loops.</p>
+        </div>
+        <div class="p-step reveal">
+          <div class="p-step-dot">4</div>
+          <h4>Testing</h4>
+          <p>Thorough QA including UAT with your team before any launch.</p>
+        </div>
+        <div class="p-step reveal">
+          <div class="p-step-dot">5</div>
+          <h4>Launch</h4>
+          <p>Smooth go-live with training and documentation provided.</p>
+        </div>
+        <div class="p-step reveal">
+          <div class="p-step-dot">6</div>
+          <h4>Support</h4>
+          <p>Ongoing support and optimization to maximize your ROI over time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="industries" id="industries">
+    <div class="industries-inner">
+      <div class="industries-header reveal">
+        <div class="section-label" style="color:var(--cyan-light);">Industries We Serve</div>
+        <h2>Technology That Understands Your Sector</h2>
+      </div>
+      <div class="industries-grid">
+        <div class="industry-card reveal">
+          <div class="industry-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <div>
+            <h3>Healthcare</h3>
+            <p>Patient management, care coordination, and compliance-aware CRM solutions for healthcare organizations.</p>
+          </div>
+        </div>
+        <div class="industry-card reveal">
+          <div class="industry-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <div>
+            <h3>Finance &amp; Banking</h3>
+            <p>Client relationship management, pipeline tracking, and regulatory reporting tools for financial services firms.</p>
+          </div>
+        </div>
+        <div class="industry-card reveal">
+          <div class="industry-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+          <div>
+            <h3>Education</h3>
+            <p>Student relationship management, enrollment pipelines, and alumni engagement platforms built on Salesforce Education Cloud.</p>
+          </div>
+        </div>
+        <div class="industry-card reveal">
+          <div class="industry-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div>
+            <h3>Legal Services</h3>
+            <p>Matter management, client intake, and document workflow automation for law firms and legal tech companies.</p>
+          </div>
+        </div>
+        <div class="industry-card reveal">
+          <div class="industry-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <div>
+            <h3>Government &amp; Nonprofits</h3>
+            <p>Constituent relationship management, grant tracking, and program delivery platforms tailored to public-sector needs.</p>
+          </div>
+        </div>
+        <div class="industry-card reveal">
+          <div class="industry-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div>
+            <h3>Technology Startups</h3>
+            <p>Fast-moving startups need infrastructure that grows with them. We build scalable Salesforce and cloud architectures for the road ahead.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="testimonials-inner">
+      <div class="testimonials-header reveal">
+        <div class="section-label">What Clients Say</div>
+        <h2>Results That Speak for Themselves</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="t-card reveal">
+          <div class="t-stars"><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div></div>
+          <p>"We had tried two other Salesforce implementations before Cloudzzure. What they did differently was spend the first two weeks actually understanding our sales process before touching the org. The result was a system our reps use without being forced to."</p>
+          <div class="t-author">James R.</div>
+          <div class="t-role">CRO, B2B SaaS Company</div>
+        </div>
+        <div class="t-card reveal">
+          <div class="t-stars"><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div></div>
+          <p>"As CIO, I've seen a lot of vendors overpromise and underdeliver. Cloudzzure did the opposite — they scoped conservatively, flagged risks early, and came in on budget. The migration from our legacy system was cleaner than I expected. I'd bring them back without hesitation."</p>
+          <div class="t-author">Priya S.</div>
+          <div class="t-role">CIO, Regional Healthcare Organization</div>
+        </div>
+        <div class="t-card reveal">
+          <div class="t-stars"><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div></div>
+          <p>"I brought Cloudzzure in to evaluate our Salesforce org after years of ad-hoc customization by multiple admins. They rebuilt our core architecture in a way our whole IT team understood. Six months out, our support ticket volume related to Salesforce has dropped significantly."</p>
+          <div class="t-author">Michael T.</div>
+          <div class="t-role">VP of Information Technology, Financial Services Firm</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <div class="cta-banner-inner reveal">
+      <h2>Let's Build Something Remarkable Together</h2>
+      <p>Schedule a free 30-minute consultation to discuss your project. No pressure, no commitment — just an honest conversation about how Cloudzzure can help.</p>
+      <a href="#contact" class="btn-white">Schedule a Cloud Strategy Session</a>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-info reveal-left">
+        <div class="section-label">Get in Touch</div>
+        <h2>Start the Conversation</h2>
+        <p>Tell us about your project and we will respond within one business day with an honest assessment of how we can help. Every engagement starts with listening.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div class="c-text">
+              <strong>Email</strong>
+              <span>chirag@cloudzzure.com</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div class="c-text">
+              <strong>Headquarters</strong>
+              <span>Noida, Uttar Pradesh, India</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg></div>
+            <div class="c-text">
+              <strong>Speak with Chirag</strong>
+              <span><a href="mailto:chirag@cloudzzure.com" style="color:inherit;">chirag@cloudzzure.com</a> — responds within one business day</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+            <div class="c-text">
+              <strong>Partnership</strong>
+              <span>Salesforce AppExchange Certified Implementation Partner</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal-right">
+        <form>
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" placeholder="Your company name" />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="your@company.com" />
+          </div>
+          <div class="form-group">
+            <label>Service Interest</label>
+            <select>
+              <option value="">What are you looking for?</option>
+              <option>Salesforce Implementation</option>
+              <option>Salesforce Migration / Lightning</option>
+              <option>Data Migration &amp; Integration</option>
+              <option>Mobile App Development</option>
+              <option>Web Development</option>
+              <option>Digital Marketing</option>
+              <option>Not Sure — Let's Talk</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tell Us About Your Project</label>
+            <textarea placeholder="What are you trying to solve? Where are you in the process? Any helpful context..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Schedule My Strategy Session</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="footer-logo-text">Cloud<span class="logo-accent">zzure</span></a>
+          <p>Certified Salesforce Implementation Partner delivering cloud solutions, mobile applications, and digital transformation services. Founded 2019 by Chirag Jain.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Salesforce CRM</a></li>
+            <li><a href="#salesforce">Lightning Migration</a></li>
+            <li><a href="#services">Data Migration</a></li>
+            <li><a href="#services">Mobile Apps</a></li>
+            <li><a href="#services">Web Development</a></li>
+            <li><a href="#services">Digital Marketing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#industries">Industries</a></li>
+            <li><a href="#why">Why Cloudzzure</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="mailto:chirag@cloudzzure.com">chirag@cloudzzure.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Cloudzzure Technologies. All rights reserved.</p>
+        <span class="sf-badge">Salesforce AppExchange Partner</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

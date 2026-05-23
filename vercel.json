@@ -1,0 +1,24 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "chippewafarmsupplies.com" }],
+      "destination": "/17_Chippewa_Farm_Supply.html"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "www.chippewafarmsupplies.com" }],
+      "destination": "/17_Chippewa_Farm_Supply.html"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "eatpizzalove.com" }],
+      "destination": "/144_pizza_love.html"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "www.eatpizzalove.com" }],
+      "destination": "/144_pizza_love.html"
+    }
+  ]
+}

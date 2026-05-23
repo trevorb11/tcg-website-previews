@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snowhill Partners | Investment and Strategic Advisory</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest: #1a3122;
+      --forest-mid: #254a35;
+      --forest-light: #3d6b50;
+      --gold: #b8962e;
+      --gold-light: #d4af5a;
+      --gold-pale: #f9f4e8;
+      --cream: #fdfaf4;
+      --ivory: #f7f3ea;
+      --charcoal: #2a2a2a;
+      --gray: #6b7280;
+      --gray-light: #e8e4dc;
+      --text: #1a1a1a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Libre Baskerville', serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.8;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    h4 { font-family: 'Libre Baskerville', serif; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(26, 49, 34, 0.98);
+      backdrop-filter: blur(8px);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      border-bottom: 1px solid rgba(184,150,46,0.25);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--cream);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-logo span { color: var(--gold-light); font-weight: 300; }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: rgba(253,250,244,0.78);
+      text-decoration: none;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold-light); }
+
+    .nav-cta {
+      border: 1px solid var(--gold) !important;
+      color: var(--gold-light) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold) !important;
+      color: var(--forest) !important;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--forest);
+      display: flex;
+      align-items: center;
+      padding: 120px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .hero-content { max-width: 580px; }
+
+    .hero-rule {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-rule::before,
+    .hero-rule::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    .hero-rule span {
+      color: var(--gold-light);
+      font-size: 0.7rem;
+      font-family: 'Libre Baskerville', serif;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      color: var(--cream);
+      line-height: 1.15;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+      font-weight: 300;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: rgba(253,250,244,0.72);
+      margin-bottom: 2.5rem;
+      font-style: italic;
+      line-height: 1.9;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: transparent;
+      color: var(--cream);
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      padding: 0.9rem 2.2rem;
+      border: 1px solid rgba(184,150,46,0.5);
+      text-decoration: none;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .hero-cta:hover {
+      background: rgba(184,150,46,0.12);
+      border-color: var(--gold-light);
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 2px;
+      opacity: 0.75;
+    }
+
+    /* GOLD LINE */
+    .gold-line {
+      background: var(--gold);
+      height: 3px;
+      width: 100%;
+    }
+
+    /* SECTIONS */
+    section { padding: 90px 5%; }
+
+    .section-eyebrow {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.7rem;
+      font-style: italic;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-eyebrow::after {
+      content: '';
+      flex: none;
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-heading {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--forest);
+      margin-bottom: 1rem;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+
+    .section-intro {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 580px;
+      margin-bottom: 3rem;
+      font-style: italic;
+    }
+
+    /* ABOUT */
+    .about { background: var(--ivory); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    .about-text p {
+      color: var(--gray);
+      margin-bottom: 1.3rem;
+      font-size: 0.97rem;
+    }
+
+    .about-text blockquote {
+      border-left: 3px solid var(--gold);
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      background: var(--gold-pale);
+    }
+
+    .about-text blockquote p {
+      color: var(--forest);
+      font-style: italic;
+      font-size: 1.05rem;
+      margin: 0;
+    }
+
+    /* WHAT WE DO */
+    .services { background: var(--cream); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--ivory);
+      border-radius: 2px;
+      padding: 2.5rem 2rem;
+      border-top: 2px solid var(--gold);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(26,49,34,0.1);
+    }
+
+    .service-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      color: rgba(184,150,46,0.25);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.2rem;
+      color: var(--forest);
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--gray);
+      line-height: 1.75;
+    }
+
+    /* WHO WE WORK WITH */
+    .clients { background: var(--forest); }
+
+    .clients .section-heading { color: var(--cream); }
+
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .client-card {
+      background: rgba(253,250,244,0.06);
+      border: 1px solid rgba(184,150,46,0.2);
+      border-radius: 2px;
+      padding: 2rem 1.5rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .client-card:hover {
+      background: rgba(253,250,244,0.1);
+      border-color: var(--gold);
+    }
+
+    .client-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .client-card p {
+      font-size: 0.85rem;
+      color: rgba(253,250,244,0.6);
+      line-height: 1.7;
+    }
+
+    /* PROCESS */
+    .process { background: var(--ivory); }
+
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .process-step {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 48px;
+      text-align: right;
+      font-weight: 300;
+    }
+
+    .step-content {
+      padding-top: 0.2rem;
+      border-top: 1px solid var(--gray-light);
+      padding-top: 0.75rem;
+      flex: 1;
+    }
+
+    .step-content h4 {
+      font-size: 0.95rem;
+      color: var(--forest);
+      margin-bottom: 0.3rem;
+    }
+
+    .step-content p {
+      font-size: 0.88rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* PERSPECTIVES */
+    .perspectives { background: var(--cream); }
+
+    .perspectives-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .perspective-card {
+      background: var(--ivory);
+      border-radius: 2px;
+      padding: 2rem;
+      border-left: 3px solid var(--gold);
+    }
+
+    .perspective-tag {
+      font-size: 0.68rem;
+      font-style: italic;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .perspective-card h3 {
+      font-size: 1.15rem;
+      color: var(--forest);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .perspective-card p {
+      font-size: 0.87rem;
+      color: var(--gray);
+      line-height: 1.75;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--ivory); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--cream);
+      border-radius: 2px;
+      padding: 2.5rem;
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 6rem;
+      color: var(--gold);
+      opacity: 0.15;
+      position: absolute;
+      top: 0.5rem;
+      left: 1.5rem;
+      line-height: 1;
+    }
+
+    .testimonial-card p {
+      font-size: 0.97rem;
+      color: var(--text);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+      padding-top: 1rem;
+    }
+
+    .testimonial-author strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--forest);
+      font-weight: 600;
+    }
+
+    .testimonial-author span {
+      font-size: 0.8rem;
+      color: var(--gray);
+      font-style: italic;
+    }
+
+    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+
+    .testimonial-author img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      opacity: 0.85;
+    }
+
+    /* CONTACT */
+    .contact { background: var(--cream); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .contact-info h2 { font-size: 2rem; color: var(--forest); margin-bottom: 1rem; }
+    .contact-info p { color: var(--gray); margin-bottom: 2rem; font-size: 0.92rem; font-style: italic; }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: var(--ivory);
+      border-radius: 2px;
+      margin-bottom: 0.75rem;
+      border-left: 2px solid var(--gold);
+    }
+
+    .contact-detail strong {
+      display: block;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.72rem;
+      font-style: italic;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-detail span { font-size: 0.9rem; color: var(--text); }
+
+    .confidential-note {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: var(--gold-pale);
+      border-radius: 2px;
+      font-size: 0.85rem;
+      color: var(--forest);
+      font-style: italic;
+    }
+
+    .contact-form {
+      background: var(--forest);
+      padding: 2.5rem;
+      border-radius: 2px;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.2rem; }
+
+    .form-group label {
+      display: block;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.72rem;
+      font-style: italic;
+      color: rgba(253,250,244,0.65);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(184,150,46,0.25);
+      border-radius: 2px;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.9rem;
+      color: var(--cream);
+      background: rgba(253,250,244,0.06);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold-light); }
+
+    .form-group select option { background: var(--forest); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    /* CTA */
+    .cta-section {
+      background: var(--ivory);
+      text-align: center;
+      padding: 90px 5%;
+    }
+
+    .cta-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .cta-inner h2 { font-size: clamp(2rem, 4vw, 3rem); color: var(--forest); margin-bottom: 1rem; font-weight: 400; }
+    .cta-inner p { color: var(--gray); font-size: 1rem; margin-bottom: 2.5rem; font-style: italic; }
+
+    /* FOOTER */
+    footer {
+      background: var(--forest);
+      color: rgba(253,250,244,0.55);
+      padding: 60px 5% 30px;
+      border-top: 1px solid rgba(184,150,46,0.2);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+    }
+
+    .footer-brand p { font-size: 0.87rem; margin-top: 1rem; line-height: 1.8; font-style: italic; }
+
+    .footer-col h4 {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--gold-light);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.6rem; }
+    .footer-col ul li a {
+      color: rgba(253,250,244,0.5);
+      text-decoration: none;
+      font-size: 0.87rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--gold-light); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(184,150,46,0.15);
+      text-align: center;
+      font-size: 0.8rem;
+      font-style: italic;
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-visual { display: none; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      section { padding: 65px 5%; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Snowhill<span> Partners</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">What We Do</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#contact" class="nav-cta">Begin a Conversation</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-rule"><span>Investment and Advisory</span></div>
+        <h1>Strategic Capital.<br><em>Trusted Counsel.</em><br>Long-Term Partnership.</h1>
+        <p>Boutique investment advisory for founders and investors who think in decades, not quarters. We bring independent perspective, honest counsel, and deep relationships to every engagement.</p>
+        <a href="#contact" class="hero-cta">Begin a Conversation</a>
+      </div>
+      <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&q=80" alt="Strategic business advisory" />
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-line"></div>
+
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="about-image reveal">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Professional business meeting" />
+      </div>
+      <div class="about-text reveal">
+        <div class="section-eyebrow">Who We Are</div>
+        <h2 class="section-heading">An Independent Boutique Advisory Built for Those Who Value Candor</h2>
+        <p>Snowhill Partners is an independent investment and strategic advisory firm serving founder-led businesses, private equity-backed companies, and family offices in the greater Philadelphia area and beyond.</p>
+        <p>Founded by James — a seasoned advisor with deep experience in capital markets, M&A transactions, and business strategy — Snowhill Partners operates on a simple principle: our clients deserve genuinely independent counsel, not advice shaped by conflicts of interest or institutional mandates.</p>
+        <p>We are boutique by design. Every engagement receives senior-level attention. Every recommendation is made with your interests, your timeline, and your values as the primary guide. Whether you're evaluating a sale, considering a capital raise, or navigating a period of significant strategic change, we provide the perspective and the relationships to help you make the right decisions.</p>
+        <blockquote>
+          <p>The best advisory relationships are built on trust earned over time — not on a transaction completed last quarter.</p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div class="section-eyebrow reveal">What We Do</div>
+      <h2 class="section-heading reveal">Advisory Services Tailored to Your Situation</h2>
+      <p class="section-intro reveal">Every engagement is different. We take the time to understand your specific circumstances before we recommend any course of action.</p>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-num">I</div>
+          <h3>M&amp;A Advisory</h3>
+          <p>Sell-side and buy-side M&A advisory for founder-led businesses and established companies seeking growth through acquisition or a carefully managed exit.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">II</div>
+          <h3>Growth Capital Advisory</h3>
+          <p>Capital raise facilitation connecting growth-stage businesses with private equity firms, family offices, and strategic investors who are the right fit.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">III</div>
+          <h3>Strategic Business Advisory</h3>
+          <p>Ongoing strategic counsel for business owners and leadership teams navigating inflection points, competitive shifts, and significant decisions.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">IV</div>
+          <h3>Private Equity Transaction Support</h3>
+          <p>Transaction support and independent analysis for PE-backed businesses, management teams, and portfolio company leadership during buy-side and sell-side processes.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">V</div>
+          <h3>Family Office Services</h3>
+          <p>Thoughtful advisory for family offices evaluating direct investments, portfolio construction, and succession considerations.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">VI</div>
+          <h3>Portfolio Company Consulting</h3>
+          <p>Operational and strategic consulting for portfolio companies at critical stages of their development, restructuring, or preparation for a liquidity event.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="clients" id="clients">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div class="section-eyebrow reveal" style="color:var(--gold-light);">Who We Serve</div>
+      <h2 class="section-heading reveal">The Clients We Work With</h2>
+      <p class="section-intro reveal" style="color:rgba(253,250,244,0.62);">We focus our practice on a specific profile of client where we can deliver genuine value and where the relationship can be built on honesty and trust.</p>
+      <div class="clients-grid">
+        <div class="client-card reveal">
+          <h4>Founder-Led Businesses</h4>
+          <p>Owners who have built something meaningful and are now evaluating their options — whether that's growth capital, a strategic partner, or a full exit.</p>
+        </div>
+        <div class="client-card reveal">
+          <h4>Growth-Stage Companies</h4>
+          <p>Companies with $5M to $50M in revenue navigating their next stage of growth and needing strategic and capital advisory support.</p>
+        </div>
+        <div class="client-card reveal">
+          <h4>Management Teams</h4>
+          <p>Leadership teams considering a management buyout or needing independent perspective on a PE sponsor's strategic direction.</p>
+        </div>
+        <div class="client-card reveal">
+          <h4>Family Offices</h4>
+          <p>Family offices and high-net-worth investors evaluating direct investment opportunities and seeking independent analysis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="process">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div class="section-eyebrow reveal">Our Approach</div>
+      <h2 class="section-heading reveal">How We Work With Clients</h2>
+      <p class="section-intro reveal">We don't follow a rigid process. But there is a framework that guides how we engage with every client — beginning with listening.</p>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="step-num">I</div>
+          <div class="step-content">
+            <h4>Confidential Discovery Meeting</h4>
+            <p>A candid, no-obligation conversation to understand your situation, objectives, and timeline. All discussions are strictly confidential.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">II</div>
+          <div class="step-content">
+            <h4>Situation Assessment</h4>
+            <p>An honest assessment of your current position, the strategic landscape, and the options realistically available to you.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">III</div>
+          <div class="step-content">
+            <h4>Strategic Options Review</h4>
+            <p>We develop and present a clear-eyed review of your strategic options, with the trade-offs and implications of each spelled out plainly.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">IV</div>
+          <div class="step-content">
+            <h4>Execution Planning</h4>
+            <p>Once a path is chosen, we develop a detailed execution plan and begin the introductions and process steps required to execute it.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">V</div>
+          <div class="step-content">
+            <h4>Transaction Support and Close</h4>
+            <p>We stay with you through closing — advising, problem-solving, and advocating for your interests until the transaction is complete.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="perspectives" id="perspectives">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div class="section-eyebrow reveal">Perspectives</div>
+      <h2 class="section-heading reveal">Thinking on Capital and Strategy</h2>
+      <div class="perspectives-grid">
+        <div class="perspective-card reveal">
+          <div class="perspective-tag">M&A Insight</div>
+          <h3>Why Preparation Determines Transaction Value</h3>
+          <p>The single greatest driver of outcomes in a sale process is how well prepared the business is before the first buyer conversation — not which buyers are in the room.</p>
+        </div>
+        <div class="perspective-card reveal">
+          <div class="perspective-tag">Capital Markets</div>
+          <h3>Choosing a Capital Partner vs. a Capital Source</h3>
+          <p>The difference between a financial sponsor who aligns with your values and one who simply offers the highest initial valuation becomes obvious the moment the relationship is tested.</p>
+        </div>
+        <div class="perspective-card reveal">
+          <div class="perspective-tag">Strategy</div>
+          <h3>The Value of an Independent Voice at the Table</h3>
+          <p>In significant transactions, the most valuable thing an advisor can do is tell you what no one else will — clearly, directly, and without an agenda of their own.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonials" style="background:var(--cream);">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div class="section-eyebrow reveal">Client Perspectives</div>
+      <h2 class="section-heading reveal">What Clients Say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <p>James told us things no one else was willing to say. That candor was exactly what we needed. We made a decision we might otherwise have deferred for years — and the outcome exceeded what we thought was possible.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80" alt="Client" />
+            <div>
+              <strong>Robert H.</strong>
+              <span>Founder, Services Company &mdash; Philadelphia Region</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>Snowhill Partners is not a firm that tells you what you want to hear. They tell you the truth, help you think through your options carefully, and then work harder than anyone else to get the outcome you've set your sights on.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&q=80" alt="Client" />
+            <div>
+              <strong>Catherine L.</strong>
+              <span>Managing Partner, Family Office</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>The introduction to our eventual growth capital partner came through Snowhill. It wasn't the firm we would have found on our own — and it turned out to be the right one by a significant margin. That kind of relationship-driven work is rare.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Client" />
+            <div>
+              <strong>Diane M.</strong>
+              <span>CEO, Growth-Stage Technology Company</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <div class="cta-inner">
+      <div class="section-eyebrow" style="justify-content:center;">Begin Here</div>
+      <h2>Every Significant Decision Deserves an Independent Perspective.</h2>
+      <p>All conversations with Snowhill Partners are strictly confidential. There is no obligation, and no pressure, in an initial discussion.</p>
+      <a href="#contact" class="hero-cta" style="color:var(--forest);border-color:rgba(26,49,34,0.4);">Begin a Confidential Conversation</a>
+    </div>
+  </div>
+
+  <section class="contact" id="contact">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="section-eyebrow">Contact</div>
+        <h2>Let's Have a Conversation</h2>
+        <p>Tell us about your situation. The first conversation is always confidential, always candid, and always without obligation.</p>
+        <div class="contact-detail">
+          <div>
+            <strong>Phone</strong>
+            <span>(610) 573-1321</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div>
+            <strong>Email</strong>
+            <span>james@wemberly.com</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div>
+            <strong>Location</strong>
+            <span>Greater Philadelphia Area, Pennsylvania</span>
+          </div>
+        </div>
+        <div class="confidential-note">
+          All inquiries and conversations are strictly confidential. We will not share your information with any third party without your explicit consent.
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--cream);font-weight:400;margin-bottom:1.5rem;">Begin a Conversation</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Full name" />
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" placeholder="Company name" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="your@company.com" />
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" placeholder="Direct line preferred" />
+        </div>
+        <div class="form-group">
+          <label>Nature of Inquiry</label>
+          <select>
+            <option value="">Select...</option>
+            <option>M&A / Sell-Side Advisory</option>
+            <option>Growth Capital Advisory</option>
+            <option>Strategic Advisory</option>
+            <option>Family Office Services</option>
+            <option>Management Buyout</option>
+            <option>Other / Exploratory</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Brief Description</label>
+          <textarea placeholder="Share as much or as little as you'd like about your situation. All information will be kept in strict confidence."></textarea>
+        </div>
+        <a href="#" style="display:block;background:var(--gold);color:var(--forest);text-align:center;padding:1rem;font-family:'Libre Baskerville',serif;font-size:0.9rem;text-decoration:none;letter-spacing:0.5px;transition:background 0.2s;" onmouseover="this.style.background='#d4af5a'" onmouseout="this.style.background='#b8962e'">Submit in Confidence</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">Snowhill<span> Partners</span></a>
+        <p>Independent investment and strategic advisory. Greater Philadelphia, Pennsylvania. All conversations are held in strict confidence.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">M&A Advisory</a></li>
+          <li><a href="#">Growth Capital</a></li>
+          <li><a href="#">Strategic Advisory</a></li>
+          <li><a href="#">PE Transaction Support</a></li>
+          <li><a href="#">Family Office</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:6105731321">(610) 573-1321</a></li>
+          <li><a href="mailto:james@wemberly.com">james@wemberly.com</a></li>
+          <li><a href="#">Philadelphia Area, PA</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Snowhill Partners. All rights reserved. All client information is held in strict confidence.</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

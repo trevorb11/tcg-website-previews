@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Goldline Carriers Inc | Nationwide Freight Solutions from Cleveland, OH</title>
+  <meta name="description" content="Goldline Carriers Inc – DOT-authorized interstate freight carrier based in Cleveland, OH. FTL, LTL, flatbed, expedited shipping, and warehousing nationwide." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Custom Properties ───────────────────────────────────────────── */
+    :root {
+      --navy:      #0d1b2a;
+      --navy-mid:  #1a2f46;
+      --navy-lite: #243b55;
+      --gold:      #f5a623;
+      --gold-dark: #d4891a;
+      --gold-lite: #fbbf46;
+      --white:     #ffffff;
+      --off-white: #f4f6f9;
+      --steel:     #6b7a8d;
+      --steel-lite:#a8b3c1;
+      --text:      #1e2d3d;
+      --radius:    6px;
+      --shadow:    0 4px 24px rgba(13,27,42,0.13);
+      --transition:0.3s ease;
+    }
+
+    /* ── Reset & Base ────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ── Utility ─────────────────────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--navy);
+    }
+    .section-title.light { color: var(--white); }
+    .section-intro {
+      font-size: 1.05rem;
+      color: var(--steel);
+      line-height: 1.7;
+      max-width: 560px;
+      margin-top: 14px;
+    }
+    .section-intro.light { color: var(--steel-lite); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: background var(--transition), color var(--transition), border-color var(--transition), transform 0.15s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold);
+    }
+    .btn-gold:hover { background: var(--gold-dark); border-color: var(--gold-dark); }
+    .btn-outline-white {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255,255,255,0.7);
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.12); border-color: var(--white); }
+    .btn-navy {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+    }
+    .btn-navy:hover { background: var(--navy-mid); border-color: var(--navy-mid); }
+
+    /* ── Scroll Reveal ───────────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ══════════════════════════════════════════════════════════════════
+       NAV
+    ══════════════════════════════════════════════════════════════════ */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(13, 27, 42, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(245,166,35,0.18);
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    #navbar.scrolled {
+      background: var(--navy);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.35);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+    .nav-logo-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--gold);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-logo-icon svg { width: 24px; height: 24px; fill: var(--navy); }
+    .nav-logo-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: 0.03em;
+      line-height: 1.1;
+    }
+    .nav-logo-text span { color: var(--gold); }
+    .nav-logo-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 500;
+      color: var(--steel-lite);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.82);
+      transition: color var(--transition);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta { margin-left: 8px; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--navy);
+      border-top: 1px solid rgba(245,166,35,0.15);
+      padding: 20px 24px 28px;
+      gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: color var(--transition);
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu .btn { margin-top: 14px; width: 100%; justify-content: center; }
+
+    /* ══════════════════════════════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════════════════════════════ */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1800&q=80');
+      background-size: cover;
+      background-position: center 60%;
+      z-index: 0;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(13,27,42,0.93) 45%, rgba(13,27,42,0.65) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 660px;
+      padding-top: 68px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245,166,35,0.15);
+      border: 1px solid rgba(245,166,35,0.4);
+      border-radius: 30px;
+      padding: 6px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gold-lite);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.03;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .hero-title em {
+      font-style: normal;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: 1.08rem;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.7;
+      margin-bottom: 34px;
+      max-width: 520px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 36px;
+      margin-top: 52px;
+      flex-wrap: wrap;
+    }
+    .hero-stat-item {
+      border-left: 3px solid var(--gold);
+      padding-left: 14px;
+    }
+    .hero-stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ══════════════════════════════════════════════════════════════════
+       TRUST STRIP
+    ══════════════════════════════════════════════════════════════════ */
+    #trust {
+      background: var(--gold);
+      padding: 18px 0;
+    }
+    .trust-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 30px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .trust-item + .trust-item {
+      border-left: 1px solid rgba(13,27,42,0.2);
+    }
+    .trust-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    .trust-icon svg { fill: var(--navy); width: 20px; height: 20px; }
+
+    /* ══════════════════════════════════════════════════════════════════
+       SERVICES
+    ══════════════════════════════════════════════════════════════════ */
+    #services {
+      padding: 96px 0;
+      background: var(--off-white);
+    }
+    .services-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .services-header .section-intro { margin: 14px auto 0; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px 28px 32px;
+      box-shadow: var(--shadow);
+      border-bottom: 4px solid transparent;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .service-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 36px rgba(13,27,42,0.14);
+    }
+    .service-icon-wrap {
+      width: 54px;
+      height: 54px;
+      background: rgba(245,166,35,0.12);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .service-icon-wrap svg { width: 26px; height: 26px; fill: var(--gold-dark); }
+    .service-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      font-size: 0.93rem;
+      color: var(--steel);
+      line-height: 1.65;
+    }
+
+    /* ══════════════════════════════════════════════════════════════════
+       WHY CHOOSE US
+    ══════════════════════════════════════════════════════════════════ */
+    #why {
+      padding: 96px 0;
+      background: var(--navy);
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .why-image-block {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      min-height: 420px;
+    }
+    .why-image-block img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: var(--radius);
+    }
+    .why-image-badge {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      background: var(--gold);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .why-image-badge strong {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .why-image-badge span {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 3px;
+    }
+    .why-content { }
+    .why-features {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+    }
+    .why-feature {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .why-feature-icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      background: rgba(245,166,35,0.15);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .why-feature-icon svg { width: 22px; height: 22px; fill: var(--gold); }
+    .why-feature-text h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 5px;
+    }
+    .why-feature-text p {
+      font-size: 0.91rem;
+      color: var(--steel-lite);
+      line-height: 1.6;
+    }
+
+    /* ══════════════════════════════════════════════════════════════════
+       COVERAGE / SERVICE AREA
+    ══════════════════════════════════════════════════════════════════ */
+    #coverage {
+      padding: 96px 0;
+      background: var(--white);
+    }
+    .coverage-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .coverage-map-block {
+      background: var(--off-white);
+      border-radius: var(--radius);
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #e2e7ef;
+    }
+    .map-svg-wrap {
+      padding: 24px;
+      width: 100%;
+    }
+    .coverage-map-block .map-label {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--navy);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .coverage-content .section-intro { max-width: 100%; }
+    .coverage-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 32px;
+    }
+    .cov-stat {
+      background: var(--off-white);
+      border-radius: var(--radius);
+      padding: 20px;
+      border-left: 4px solid var(--gold);
+    }
+    .cov-stat strong {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--navy);
+      display: block;
+      line-height: 1;
+    }
+    .cov-stat span {
+      font-size: 0.82rem;
+      color: var(--steel);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+    .corridors {
+      margin-top: 28px;
+    }
+    .corridors h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 12px;
+    }
+    .corridor-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .corridor-tag {
+      background: var(--navy);
+      color: rgba(255,255,255,0.88);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ══════════════════════════════════════════════════════════════════
+       ABOUT
+    ══════════════════════════════════════════════════════════════════ */
+    #about {
+      padding: 96px 0;
+      background: var(--off-white);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .about-image {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .about-image img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+    }
+    .about-content .section-intro { max-width: 100%; }
+    .about-values {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .about-value {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .about-value::before {
+      content: '';
+      flex-shrink: 0;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .dot-info {
+      margin-top: 30px;
+      padding: 16px 20px;
+      background: var(--navy);
+      border-radius: var(--radius);
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .dot-info svg { fill: var(--gold); width: 22px; height: 22px; flex-shrink: 0; }
+    .dot-info p {
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.88);
+      font-weight: 500;
+    }
+    .dot-info strong { color: var(--gold-lite); }
+
+    /* ══════════════════════════════════════════════════════════════════
+       TESTIMONIALS
+    ══════════════════════════════════════════════════════════════════ */
+    #testimonials {
+      padding: 96px 0;
+      background: var(--navy-mid);
+    }
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+    .testimonials-header .section-intro { margin: 14px auto 0; }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testi-card {
+      background: var(--navy-lite);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      border-top: 4px solid var(--gold);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .testi-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.25);
+    }
+    .testi-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+    .testi-stars span {
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+    .testi-card blockquote {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 22px;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testi-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      flex-shrink: 0;
+    }
+    .testi-author-info strong {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .testi-author-info span {
+      font-size: 0.8rem;
+      color: var(--steel-lite);
+    }
+
+    /* ══════════════════════════════════════════════════════════════════
+       CONTACT / QUOTE
+    ══════════════════════════════════════════════════════════════════ */
+    #contact {
+      padding: 96px 0;
+      background: var(--white);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 64px;
+      align-items: flex-start;
+    }
+    .contact-info .section-intro { max-width: 100%; }
+    .contact-details {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .contact-detail-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(245,166,35,0.12);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-detail-icon svg { width: 20px; height: 20px; fill: var(--gold-dark); }
+    .contact-detail-text strong {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--steel);
+      margin-bottom: 3px;
+    }
+    .contact-detail-text span {
+      font-size: 0.97rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .quote-form {
+      background: var(--off-white);
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      border: 1px solid #e2e7ef;
+    }
+    .quote-form h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 24px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--steel);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 11px 14px;
+      border: 1.5px solid #d0d8e4;
+      border-radius: var(--radius);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(245,166,35,0.15);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit { margin-top: 6px; width: 100%; justify-content: center; padding: 14px; font-size: 1rem; }
+
+    /* ══════════════════════════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════════════════════════ */
+    #footer {
+      background: var(--navy);
+      padding: 60px 0 0;
+      border-top: 1px solid rgba(245,166,35,0.2);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 40px;
+      padding-bottom: 48px;
+    }
+    .footer-brand .nav-logo { margin-bottom: 16px; }
+    .footer-brand p {
+      font-size: 0.88rem;
+      color: var(--steel-lite);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .footer-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245,166,35,0.1);
+      border: 1px solid rgba(245,166,35,0.25);
+      border-radius: 4px;
+      padding: 7px 12px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gold-lite);
+      letter-spacing: 0.05em;
+    }
+    .footer-col h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 18px;
+    }
+    .footer-col ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-col ul li a {
+      font-size: 0.88rem;
+      color: var(--steel-lite);
+      transition: color var(--transition);
+    }
+    .footer-col ul li a:hover { color: var(--gold); }
+    .footer-col address {
+      font-style: normal;
+      font-size: 0.88rem;
+      color: var(--steel-lite);
+      line-height: 1.7;
+    }
+    .footer-col address strong {
+      display: block;
+      color: rgba(255,255,255,0.75);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p {
+      font-size: 0.82rem;
+      color: var(--steel);
+    }
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-bottom-links a {
+      font-size: 0.82rem;
+      color: var(--steel);
+      transition: color var(--transition);
+    }
+    .footer-bottom-links a:hover { color: var(--gold); }
+
+    /* ══════════════════════════════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════════════════════════════ */
+    @media (max-width: 960px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid,
+      .coverage-grid,
+      .about-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .testi-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .why-image-block { min-height: 300px; }
+      .why-image-block img { height: 300px; }
+      .about-image img { height: 300px; }
+    }
+
+    @media (max-width: 640px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .trust-item { padding: 8px 16px; }
+      .trust-item + .trust-item { border-left: none; border-top: 1px solid rgba(13,27,42,0.15); }
+      .trust-inner { flex-direction: column; }
+      .hero-stats { gap: 22px; }
+      .form-row { grid-template-columns: 1fr; }
+      .coverage-stats { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .quote-form { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       NAVIGATION
+  ════════════════════════════════════════════════════════════════ -->
+  <nav id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo">
+          <div class="nav-logo-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="nav-logo-text"><span>Goldline</span> Carriers</div>
+            <div class="nav-logo-sub">Inc &bull; Cleveland, OH</div>
+          </div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#coverage">Coverage</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="btn btn-gold nav-cta">Get a Quote</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#services" class="mobile-nav-link">Services</a>
+      <a href="#why" class="mobile-nav-link">Why Us</a>
+      <a href="#coverage" class="mobile-nav-link">Coverage</a>
+      <a href="#about" class="mobile-nav-link">About</a>
+      <a href="#contact" class="mobile-nav-link">Contact</a>
+      <a href="#contact" class="btn btn-gold">Get a Quote</a>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">DOT# 2981380 &bull; Interstate Authorized</div>
+        <h1 class="hero-title">
+          Freight That Moves <em>With You,</em><br>Not Against You.
+        </h1>
+        <p class="hero-sub">
+          Goldline Carriers Inc delivers reliable, coast-to-coast freight solutions from our Cleveland, OH hub. FTL, LTL, flatbed, expedited — we keep your supply chain moving on time, every time.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-gold">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            Get a Free Quote
+          </a>
+          <a href="tel:+18005550000" class="btn btn-outline-white">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            Track Shipment
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat-item">
+            <div class="hero-stat-num">48</div>
+            <div class="hero-stat-label">States Covered</div>
+          </div>
+          <div class="hero-stat-item">
+            <div class="hero-stat-num">98%</div>
+            <div class="hero-stat-label">On-Time Delivery</div>
+          </div>
+          <div class="hero-stat-item">
+            <div class="hero-stat-num">24/7</div>
+            <div class="hero-stat-label">Dispatch Support</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       TRUST STRIP
+  ════════════════════════════════════════════════════════════════ -->
+  <div id="trust">
+    <div class="container">
+      <div class="trust-inner">
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+          </div>
+          FMCSA DOT Authorized
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          Nationwide Service
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
+          </div>
+          98% On-Time Rate
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/></svg>
+          </div>
+          24/7 Live Dispatch
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+          </div>
+          Fully Insured Loads
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       SERVICES
+  ════════════════════════════════════════════════════════════════ -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header">
+        <div class="section-label reveal">What We Haul</div>
+        <h2 class="section-title reveal reveal-delay-1">Freight Solutions Built<br>for Every Load</h2>
+        <p class="section-intro reveal reveal-delay-2">From single pallets to full truckloads, Goldline Carriers has the equipment and expertise to move your freight safely and on schedule.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg>
+          </div>
+          <h3>Full Truckload (FTL)</h3>
+          <p>Dedicated trailer capacity for large shipments that need direct, non-stop service. Maximum efficiency for time-sensitive or high-volume freight.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/></svg>
+          </div>
+          <h3>Less-Than-Truckload (LTL)</h3>
+          <p>Cost-effective shipping for smaller loads. Share trailer space with other shippers and pay only for what you use — without sacrificing reliability.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+          </div>
+          <h3>Dedicated Freight</h3>
+          <p>Committed capacity with scheduled routes and a dedicated driver — ideal for businesses with predictable, recurring shipping needs.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
+          </div>
+          <h3>Dry Van</h3>
+          <p>Our core equipment type for general freight. Enclosed trailers protect your cargo from the elements with maximum security and versatility.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-5h2v5h6v-8h3L12 3zm0 12.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+          </div>
+          <h3>Flatbed</h3>
+          <p>Open-deck trailers for oversized, heavy, or uniquely shaped cargo. Ideal for construction materials, machinery, steel coils, and more.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M13 2.05V4.07c3.39.49 6 3.39 6 6.93 0 2.68-1.43 5.02-3.56 6.36L17 19c2.64-1.59 4.43-4.45 4.43-7.68 0-5.02-3.7-9.17-8.43-9.27zM11 2.05C6.27 2.95 2.57 7.1 2.57 12.08c0 3.23 1.79 6.09 4.43 7.68L8.56 18C6.43 16.66 5 14.32 5 11.64c0-3.54 2.61-6.44 6-6.93V2.05zM12 19c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <h3>Expedited Shipping</h3>
+          <p>When time is critical, our expedited service keeps your freight moving with priority handling, direct routing, and real-time updates.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3" style="grid-column: 1 / -1; max-width: 540px; margin: 0 auto;">
+          <div class="service-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-3 10H7v-2h10v2zm0-3H7V7h10v2z"/></svg>
+          </div>
+          <h3>Warehousing &amp; Cross-Docking</h3>
+          <p>Short-term storage, inventory management, and cross-docking services from our Cleveland hub. Streamline your supply chain with flexible logistics support between loads.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       WHY CHOOSE US
+  ════════════════════════════════════════════════════════════════ -->
+  <section id="why">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-image-block reveal">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=900&q=80" alt="Semi truck on open highway at sunset" loading="lazy" />
+          <div class="why-image-badge">
+            <strong>15+</strong>
+            <span>Years of Experience</span>
+          </div>
+        </div>
+        <div class="why-content">
+          <div class="section-label reveal">Why Goldline</div>
+          <h2 class="section-title light reveal reveal-delay-1">The Carrier That Delivers More Than Freight</h2>
+          <p class="section-intro light reveal reveal-delay-2">Our clients choose Goldline Carriers because we treat every load like it's the most important one — because to your business, it is.</p>
+          <div class="why-features">
+            <div class="why-feature reveal reveal-delay-1">
+              <div class="why-feature-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+              </div>
+              <div class="why-feature-text">
+                <h4>Proven Reliability</h4>
+                <p>We maintain a 98% on-time delivery rate through disciplined route planning, well-maintained equipment, and experienced drivers who know the road.</p>
+              </div>
+            </div>
+            <div class="why-feature reveal reveal-delay-2">
+              <div class="why-feature-icon">
+                <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+              </div>
+              <div class="why-feature-text">
+                <h4>Transparent Communication</h4>
+                <p>Real-time load tracking, proactive status updates, and a live dispatch team available 24/7. You always know where your freight is.</p>
+              </div>
+            </div>
+            <div class="why-feature reveal reveal-delay-3">
+              <div class="why-feature-icon">
+                <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+              </div>
+              <div class="why-feature-text">
+                <h4>Competitive, Honest Rates</h4>
+                <p>No hidden fees. No surprise charges. We provide clear, upfront pricing that reflects the value of dependable, professional freight service.</p>
+              </div>
+            </div>
+            <div class="why-feature reveal reveal-delay-4">
+              <div class="why-feature-icon">
+                <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+              </div>
+              <div class="why-feature-text">
+                <h4>Experienced, Professional Drivers</h4>
+                <p>Our drivers are vetted, trained, and take pride in their work. Safe handling, professional conduct, and care for your cargo from pickup to delivery.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       COVERAGE / SERVICE AREA
+  ════════════════════════════════════════════════════════════════ -->
+  <section id="coverage">
+    <div class="container">
+      <div class="coverage-grid">
+        <div class="coverage-map-block reveal">
+          <div class="map-svg-wrap">
+            <!-- Stylized US map concept with highlight dot for Cleveland -->
+            <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
+              <rect width="600" height="380" fill="#f4f6f9" rx="6"/>
+              <!-- Very simplified US silhouette shape -->
+              <path d="M60,120 L80,60 L160,50 L200,40 L280,35 L360,38 L440,42 L520,55 L555,80 L560,120 L555,160 L540,200 L520,230 L500,260 L470,290 L430,310 L390,320 L350,330 L300,335 L250,330 L200,320 L160,305 L120,280 L90,250 L70,210 L55,170 Z" fill="#dce4ef" stroke="#c1ccd9" stroke-width="2"/>
+              <!-- Great Lakes rough area -->
+              <ellipse cx="340" cy="130" rx="30" ry="14" fill="#b8cfe0" opacity="0.7"/>
+              <ellipse cx="310" cy="120" rx="18" ry="9" fill="#b8cfe0" opacity="0.7"/>
+              <!-- Coverage highlight — nationwide pulse -->
+              <circle cx="345" cy="150" r="80" fill="rgba(245,166,35,0.07)" stroke="rgba(245,166,35,0.18)" stroke-width="1.5"/>
+              <circle cx="345" cy="150" r="140" fill="rgba(245,166,35,0.04)" stroke="rgba(245,166,35,0.1)" stroke-width="1"/>
+              <!-- Cleveland hub dot -->
+              <circle cx="345" cy="150" r="10" fill="#f5a623" opacity="0.25"/>
+              <circle cx="345" cy="150" r="6" fill="#f5a623" opacity="0.6"/>
+              <circle cx="345" cy="150" r="3.5" fill="#d4891a"/>
+              <!-- Hub label -->
+              <text x="355" y="145" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#0d1b2a" opacity="0.8">Cleveland, OH</text>
+              <text x="355" y="158" font-family="Inter, sans-serif" font-size="9" fill="#6b7a8d">HQ Hub</text>
+              <!-- Route lines -->
+              <line x1="345" y1="150" x2="130" y2="200" stroke="rgba(245,166,35,0.35)" stroke-width="1.5" stroke-dasharray="5,4"/>
+              <line x1="345" y1="150" x2="500" y2="240" stroke="rgba(245,166,35,0.35)" stroke-width="1.5" stroke-dasharray="5,4"/>
+              <line x1="345" y1="150" x2="460" y2="100" stroke="rgba(245,166,35,0.35)" stroke-width="1.5" stroke-dasharray="5,4"/>
+              <line x1="345" y1="150" x2="180" y2="95" stroke="rgba(245,166,35,0.35)" stroke-width="1.5" stroke-dasharray="5,4"/>
+              <line x1="345" y1="150" x2="350" y2="280" stroke="rgba(245,166,35,0.35)" stroke-width="1.5" stroke-dasharray="5,4"/>
+              <!-- Destination dots -->
+              <circle cx="130" cy="200" r="3" fill="#6b7a8d" opacity="0.7"/>
+              <circle cx="500" cy="240" r="3" fill="#6b7a8d" opacity="0.7"/>
+              <circle cx="460" cy="100" r="3" fill="#6b7a8d" opacity="0.7"/>
+              <circle cx="180" cy="95" r="3" fill="#6b7a8d" opacity="0.7"/>
+              <circle cx="350" cy="280" r="3" fill="#6b7a8d" opacity="0.7"/>
+            </svg>
+          </div>
+          <div class="map-label">Nationwide Coverage from Cleveland, OH</div>
+        </div>
+        <div class="coverage-content">
+          <div class="section-label reveal">Service Area</div>
+          <h2 class="section-title reveal reveal-delay-1">Hauling Across All 48 Contiguous States</h2>
+          <p class="section-intro reveal reveal-delay-2">Strategically located in Cleveland, Ohio, Goldline Carriers is positioned at the crossroads of the Midwest — within a day's drive of over a third of the U.S. population and the nation's most active freight corridors.</p>
+          <div class="coverage-stats reveal reveal-delay-2">
+            <div class="cov-stat">
+              <strong>48</strong>
+              <span>States Served</span>
+            </div>
+            <div class="cov-stat">
+              <strong>1-Day</strong>
+              <span>Midwest Reach</span>
+            </div>
+            <div class="cov-stat">
+              <strong>2-Day</strong>
+              <span>East/West Coast</span>
+            </div>
+            <div class="cov-stat">
+              <strong>500+</strong>
+              <span>Lanes Active</span>
+            </div>
+          </div>
+          <div class="corridors reveal reveal-delay-3">
+            <h4>Key Freight Corridors</h4>
+            <div class="corridor-tags">
+              <span class="corridor-tag">Cleveland &rarr; Chicago</span>
+              <span class="corridor-tag">Cleveland &rarr; NYC / NJ</span>
+              <span class="corridor-tag">Midwest &rarr; Southeast</span>
+              <span class="corridor-tag">Cleveland &rarr; Dallas</span>
+              <span class="corridor-tag">I-80 &bull; I-90 &bull; I-71</span>
+              <span class="corridor-tag">Great Lakes Region</span>
+              <span class="corridor-tag">Cleveland &rarr; Los Angeles</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       ABOUT
+  ════════════════════════════════════════════════════════════════ -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <div class="section-label reveal">About Us</div>
+          <h2 class="section-title reveal reveal-delay-1">Cleveland Roots.<br>Nationwide Reach.</h2>
+          <p class="section-intro reveal reveal-delay-2">Goldline Carriers Inc was built on a straightforward belief: freight carriers should be partners, not just vendors. Based in the Cleveland/Wesley Chapel area of Ohio, we've grown from a regional operation into a nationwide interstate carrier — without losing the personal touch that sets us apart.</p>
+          <p class="section-intro reveal reveal-delay-2" style="margin-top: 12px;">Every decision we make is guided by three commitments: protect the freight, respect the shipper's timeline, and communicate every step of the way. That's the Goldline standard.</p>
+          <div class="about-values reveal reveal-delay-3">
+            <div class="about-value">FMCSA-compliant operations and fully maintained equipment</div>
+            <div class="about-value">GPS-tracked fleet for real-time shipment visibility</div>
+            <div class="about-value">Comprehensive cargo and liability insurance on all loads</div>
+            <div class="about-value">Experienced drivers with clean safety records</div>
+            <div class="about-value">Dedicated account management for regular shippers</div>
+          </div>
+          <div class="dot-info reveal reveal-delay-4">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+            <p>USDOT Number: <strong>2981380</strong> &nbsp;&bull;&nbsp; Interstate Operating Authority Authorized</p>
+          </div>
+        </div>
+        <div class="about-image reveal reveal-delay-1">
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80" alt="Truck driver reviewing logistics at truck cab" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       TESTIMONIALS
+  ════════════════════════════════════════════════════════════════ -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="testimonials-header">
+        <div class="section-label reveal">Client Reviews</div>
+        <h2 class="section-title light reveal reveal-delay-1">What Our Shippers Are Saying</h2>
+        <p class="section-intro light reveal reveal-delay-2">Relationships built on results. Here's what businesses across the country have to say about shipping with Goldline Carriers.</p>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <div class="testi-stars">
+            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+          </div>
+          <blockquote>"We've been using Goldline for our steel coil shipments out of the Midwest for two years now. Not once have they missed a delivery window. Their flatbed team is professional, and the communication is outstanding — we always know exactly where our load is."</blockquote>
+          <div class="testi-author">
+            <div class="testi-avatar">RH</div>
+            <div class="testi-author-info">
+              <strong>Randy H.</strong>
+              <span>Logistics Manager &mdash; Industrial Metals Co., Pittsburgh, PA</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal reveal-delay-1">
+          <div class="testi-stars">
+            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+          </div>
+          <blockquote>"I run a mid-size distribution business and we've tried several carriers over the years. Goldline is in a different league when it comes to reliability and responsiveness. Their rates are competitive and they actually pick up the phone. Highly recommend for any LTL or FTL needs."</blockquote>
+          <div class="testi-author">
+            <div class="testi-avatar">MC</div>
+            <div class="testi-author-info">
+              <strong>Maria C.</strong>
+              <span>Owner &mdash; Cascade Supply Group, Columbus, OH</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal reveal-delay-2">
+          <div class="testi-stars">
+            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+          </div>
+          <blockquote>"Had an urgent, time-sensitive load that needed to move from Cleveland to Dallas overnight. Goldline's expedited team had a driver dispatched within hours. Freight arrived on time and in perfect condition. That kind of service builds trust fast — they're our go-to carrier now."</blockquote>
+          <div class="testi-author">
+            <div class="testi-avatar">JT</div>
+            <div class="testi-author-info">
+              <strong>James T.</strong>
+              <span>Supply Chain Director &mdash; Meridian Equipment Corp, Dallas, TX</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       CONTACT / QUOTE
+  ════════════════════════════════════════════════════════════════ -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="section-label reveal">Get in Touch</div>
+          <h2 class="section-title reveal reveal-delay-1">Ready to Move<br>Your Freight?</h2>
+          <p class="section-intro reveal reveal-delay-2">Request a free, no-obligation freight quote or reach out to our team directly. We respond fast — usually within the hour during business hours.</p>
+          <div class="contact-details reveal reveal-delay-3">
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <strong>Headquarters</strong>
+                <span>Cleveland / Wesley Chapel Area, Ohio</span>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <strong>Dispatch &amp; Sales</strong>
+                <span>(800) 555-0180 &mdash; Available 24/7</span>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <strong>Email</strong>
+                <span>dispatch@goldlinecarriers.com</span>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <strong>DOT Number</strong>
+                <span>USDOT #2981380 &mdash; Interstate Authorized</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quote-form reveal reveal-delay-1">
+          <h3>Request a Freight Quote</h3>
+          <form onsubmit="return false;">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" placeholder="John" />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" placeholder="Smith" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="john@company.com" />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="(555) 000-0000" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="origin">Origin City / State</label>
+                <input type="text" id="origin" placeholder="Cleveland, OH" />
+              </div>
+              <div class="form-group">
+                <label for="dest">Destination City / State</label>
+                <input type="text" id="dest" placeholder="Chicago, IL" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="service">Service Type</label>
+                <select id="service">
+                  <option value="">Select a service...</option>
+                  <option>Full Truckload (FTL)</option>
+                  <option>Less-Than-Truckload (LTL)</option>
+                  <option>Dedicated Freight</option>
+                  <option>Flatbed</option>
+                  <option>Expedited Shipping</option>
+                  <option>Warehousing / Cross-Dock</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="weight">Estimated Weight (lbs)</label>
+                <input type="text" id="weight" placeholder="e.g. 12,000" />
+              </div>
+            </div>
+            <div class="form-group full">
+              <label for="notes">Additional Details</label>
+              <textarea id="notes" placeholder="Describe your freight, dimensions, special handling requirements, or preferred pickup date..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-gold form-submit">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+              Submit Quote Request
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════════════════════ -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <div class="nav-logo-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="nav-logo-text"><span>Goldline</span> Carriers</div>
+              <div class="nav-logo-sub">Inc &bull; Cleveland, OH</div>
+            </div>
+          </div>
+          <p>Interstate freight carrier delivering reliable, nationwide shipping solutions from our Cleveland, Ohio hub. FTL, LTL, flatbed, expedited, and warehousing — all under one roof.</p>
+          <div class="footer-dot">USDOT #2981380 &nbsp;&bull;&nbsp; Interstate Authorized</div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Full Truckload (FTL)</a></li>
+            <li><a href="#services">Less-Than-Truckload (LTL)</a></li>
+            <li><a href="#services">Dedicated Freight</a></li>
+            <li><a href="#services">Flatbed</a></li>
+            <li><a href="#services">Expedited Shipping</a></li>
+            <li><a href="#services">Warehousing &amp; Cross-Dock</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#why">Why Choose Us</a></li>
+            <li><a href="#coverage">Coverage Map</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Careers</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <address>
+            <strong>Headquarters</strong>
+            Cleveland / Wesley Chapel Area<br>
+            Ohio, United States<br><br>
+            <strong>Phone</strong>
+            (800) 555-0180<br><br>
+            <strong>Email</strong>
+            dispatch@goldlinecarriers.com
+          </address>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Goldline Carriers Inc. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Safety &amp; Compliance</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       JAVASCRIPT
+  ════════════════════════════════════════════════════════════════ -->
+  <script>
+    // ── Navbar scroll effect ───────────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // ── Hamburger menu ─────────────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+    // Close mobile menu if clicking a btn inside it
+    mobileMenu.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // ── Scroll reveal (IntersectionObserver) ───────────────────────
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // ── Active nav link highlighting ───────────────────────────────
+    const sections = document.querySelectorAll('section[id], div[id="trust"]');
+    const navAnchors = document.querySelectorAll('.nav-links a');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navAnchors.forEach(a => {
+            a.style.color = '';
+            if (a.getAttribute('href') === '#' + entry.target.id) {
+              a.style.color = '#f5a623';
+            }
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => sectionObserver.observe(s));
+  </script>
+</body>
+</html>

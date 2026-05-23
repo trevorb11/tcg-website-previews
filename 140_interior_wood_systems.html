@@ -1,0 +1,2432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interior Wood Systems, Inc. | Custom Cabinetry & Millwork | Sonoma County</title>
+  <meta name="description" content="Interior Wood Systems, Inc. crafts custom cabinets, millwork, and finish carpentry across Sonoma County and the North Bay. CA License #495608." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================================
+       ROOT & RESET
+    ========================================================= */
+    :root {
+      --clr-wood-dark:   #3B2314;
+      --clr-wood-mid:    #6B3A2A;
+      --clr-wood-warm:   #8C4F30;
+      --clr-wood-light:  #C47D4E;
+      --clr-wood-pale:   #E8C9A0;
+      --clr-wood-gold:   #D4A853;
+      --clr-green-deep:  #2C3E2D;
+      --clr-green-mid:   #3D5C3A;
+      --clr-green-soft:  #5A7A55;
+      --clr-cream:       #F9F4ED;
+      --clr-cream-dark:  #EDE5D8;
+      --clr-text-dark:   #1E1208;
+      --clr-text-mid:    #4A3728;
+      --clr-text-light:  #7A6250;
+      --clr-white:       #FFFFFF;
+
+      --ff-heading: 'Cormorant Garamond', Georgia, serif;
+      --ff-body:    'Jost', system-ui, sans-serif;
+
+      --shadow-sm:  0 2px 8px rgba(59,35,20,.12);
+      --shadow-md:  0 6px 24px rgba(59,35,20,.18);
+      --shadow-lg:  0 16px 56px rgba(59,35,20,.26);
+      --shadow-xl:  0 32px 80px rgba(59,35,20,.32);
+
+      --radius-sm:  6px;
+      --radius-md:  12px;
+      --radius-lg:  20px;
+
+      --transition: .35s cubic-bezier(.4,0,.2,1);
+      --max-w: 1200px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--ff-body);
+      background-color: var(--clr-cream);
+      color: var(--clr-text-dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(var(--max-w), 100%);
+      padding-inline: 28px;
+      margin-inline: auto;
+    }
+
+    /* =========================================================
+       WOOD GRAIN TEXTURE (CSS pattern overlay)
+    ========================================================= */
+    .wood-grain-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: .045;
+      background-image:
+        repeating-linear-gradient(
+          92deg,
+          transparent 0px,
+          transparent 2px,
+          rgba(200,140,60,.9) 2px,
+          rgba(200,140,60,.9) 3px,
+          transparent 3px,
+          transparent 18px,
+          rgba(160,100,30,.6) 18px,
+          rgba(160,100,30,.6) 19px,
+          transparent 19px,
+          transparent 34px,
+          rgba(220,160,80,.7) 34px,
+          rgba(220,160,80,.7) 36px,
+          transparent 36px,
+          transparent 52px
+        ),
+        repeating-linear-gradient(
+          88deg,
+          transparent 0px,
+          transparent 8px,
+          rgba(180,120,50,.4) 8px,
+          rgba(180,120,50,.4) 9px,
+          transparent 9px,
+          transparent 28px
+        );
+      background-size: 400px 100%, 300px 100%;
+      mix-blend-mode: overlay;
+    }
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: .12s; }
+    .reveal-delay-2 { transition-delay: .24s; }
+    .reveal-delay-3 { transition-delay: .36s; }
+    .reveal-delay-4 { transition-delay: .48s; }
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 28px;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(27,15,5,0.0);
+      backdrop-filter: blur(0px);
+      transition: background var(--transition), backdrop-filter var(--transition), box-shadow var(--transition);
+    }
+    #nav.scrolled {
+      background: rgba(22,11,3,.97);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 24px rgba(0,0,0,.4);
+    }
+
+    .nav-logo { display: flex; flex-direction: column; line-height: 1.15; }
+    .nav-logo .logo-main {
+      font-family: var(--ff-heading);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--clr-white);
+      letter-spacing: .02em;
+    }
+    .nav-logo .logo-sub {
+      font-size: .65rem;
+      font-weight: 400;
+      color: var(--clr-wood-pale);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-family: var(--ff-body);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 38px;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: .78rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.82);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 3px;
+      transition: color var(--transition);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--clr-wood-gold);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover { color: var(--clr-white); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta { display: flex; align-items: center; gap: 18px; }
+    .nav-phone {
+      font-size: .88rem;
+      font-weight: 500;
+      color: var(--clr-wood-pale);
+      letter-spacing: .04em;
+      transition: color var(--transition);
+    }
+    .nav-phone:hover { color: var(--clr-white); }
+
+    .btn-nav {
+      padding: 10px 22px;
+      background: linear-gradient(135deg, var(--clr-wood-warm), var(--clr-wood-mid));
+      color: var(--clr-white);
+      border-radius: var(--radius-sm);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 4px 16px rgba(140,79,48,.35);
+      white-space: nowrap;
+    }
+    .btn-nav:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(140,79,48,.5);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px; height: 2px;
+      background: var(--clr-white);
+      border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 76px; left: 0; right: 0;
+      background: rgba(22,11,3,.98);
+      padding: 24px 28px;
+      z-index: 999;
+      flex-direction: column;
+      gap: 6px;
+      border-top: 1px solid rgba(255,255,255,.07);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: .95rem;
+      font-weight: 400;
+      color: rgba(255,255,255,.85);
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      letter-spacing: .06em;
+    }
+    .mobile-menu .mob-phone {
+      margin-top: 14px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--clr-wood-pale);
+      text-align: center;
+      font-family: var(--ff-heading);
+    }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1800&q=85&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center 40%;
+      transform: scale(1.06);
+      animation: heroZoom 16s ease-in-out infinite alternate;
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1.06); }
+      to   { transform: scale(1.12); }
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        145deg,
+        rgba(20,8,2,.88) 0%,
+        rgba(38,20,6,.72) 45%,
+        rgba(22,32,14,.78) 100%
+      );
+      z-index: 1;
+    }
+    /* gradient mesh accent */
+    .hero-mesh {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        radial-gradient(ellipse 60% 50% at 15% 80%, rgba(140,79,48,.18) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 85% 20%, rgba(44,62,45,.22) 0%, transparent 55%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      color: var(--clr-white);
+      max-width: 860px;
+      padding: 130px 28px 90px;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: var(--ff-body);
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--clr-wood-gold);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(212,168,83,.3);
+      padding: 7px 20px;
+      border-radius: 50px;
+      margin-bottom: 32px;
+    }
+    .hero-title {
+      font-family: var(--ff-heading);
+      font-size: clamp(2.8rem, 6.5vw, 5rem);
+      font-weight: 600;
+      line-height: 1.12;
+      margin-bottom: 24px;
+      text-shadow: 0 4px 32px rgba(0,0,0,.5);
+      letter-spacing: .01em;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--clr-wood-pale);
+    }
+    .hero-subtitle {
+      font-size: clamp(.95rem, 1.8vw, 1.1rem);
+      font-weight: 300;
+      color: rgba(255,255,255,.78);
+      max-width: 600px;
+      margin: 0 auto 44px;
+      line-height: 1.82;
+      letter-spacing: .02em;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+    .btn-primary {
+      padding: 16px 38px;
+      background: linear-gradient(135deg, var(--clr-wood-warm) 0%, var(--clr-wood-mid) 100%);
+      color: var(--clr-white);
+      border-radius: var(--radius-sm);
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 6px 28px rgba(140,79,48,.5);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(140,79,48,.62);
+    }
+    .btn-outline {
+      padding: 16px 38px;
+      border: 1.5px solid rgba(255,255,255,.45);
+      color: var(--clr-white);
+      border-radius: var(--radius-sm);
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+    }
+    .btn-outline:hover {
+      border-color: var(--clr-wood-gold);
+      background: rgba(212,168,83,.1);
+      transform: translateY(-3px);
+    }
+
+    /* Hero stats */
+    .hero-stats {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .stat-badge {
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: var(--radius-md);
+      padding: 16px 26px;
+      text-align: center;
+      min-width: 136px;
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .stat-badge:hover {
+      background: rgba(255,255,255,.12);
+      border-color: rgba(212,168,83,.35);
+      transform: translateY(-2px);
+    }
+    .stat-badge .stat-num {
+      font-family: var(--ff-heading);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--clr-wood-pale);
+      display: block;
+      line-height: 1;
+    }
+    .stat-badge .stat-label {
+      font-size: .65rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.65);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-top: 6px;
+      font-family: var(--ff-body);
+    }
+
+    /* BuildZoom badge — animated pulse */
+    .stat-badge.buildzoom {
+      border-color: rgba(212,168,83,.4);
+      background: rgba(212,168,83,.1);
+      position: relative;
+    }
+    .stat-badge.buildzoom::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: calc(var(--radius-md) + 3px);
+      border: 1.5px solid rgba(212,168,83,.5);
+      animation: bzPulse 2.8s ease-in-out infinite;
+    }
+    .stat-badge.buildzoom::after {
+      content: '';
+      position: absolute;
+      inset: -7px;
+      border-radius: calc(var(--radius-md) + 7px);
+      border: 1px solid rgba(212,168,83,.22);
+      animation: bzPulse 2.8s ease-in-out infinite .5s;
+    }
+    .stat-badge.buildzoom .stat-num {
+      color: var(--clr-wood-gold);
+      text-shadow: 0 0 20px rgba(212,168,83,.4);
+    }
+    @keyframes bzPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.04); }
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 34px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,.42);
+      font-size: .62rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      font-family: var(--ff-body);
+      animation: scrollBounce 2.4s infinite;
+    }
+    .hero-scroll svg { width: 20px; height: 20px; stroke: rgba(255,255,255,.42); }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(9px); }
+    }
+
+    /* =========================================================
+       TRUST STRIP
+    ========================================================= */
+    #trust {
+      background: var(--clr-green-deep);
+      padding: 20px 0;
+      border-top: 2px solid var(--clr-wood-warm);
+      position: relative;
+      overflow: hidden;
+    }
+    #trust::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent 0px, transparent 3px,
+        rgba(255,255,255,.015) 3px, rgba(255,255,255,.015) 4px,
+        transparent 4px, transparent 20px
+      );
+    }
+    .trust-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 44px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,.84);
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .trust-item svg {
+      width: 18px; height: 18px;
+      stroke: var(--clr-wood-gold);
+      flex-shrink: 0;
+    }
+    .trust-divider { width: 1px; height: 24px; background: rgba(255,255,255,.14); }
+
+    /* =========================================================
+       SECTION SHARED
+    ========================================================= */
+    section { padding: 104px 0; }
+
+    .section-label {
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--clr-wood-warm);
+      margin-bottom: 14px;
+      display: block;
+      font-family: var(--ff-body);
+    }
+    .section-title {
+      font-family: var(--ff-heading);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 600;
+      color: var(--clr-wood-dark);
+      line-height: 1.18;
+      margin-bottom: 18px;
+    }
+    .section-desc {
+      font-size: .96rem;
+      color: var(--clr-text-light);
+      max-width: 560px;
+      line-height: 1.82;
+      font-weight: 300;
+    }
+    .section-header { margin-bottom: 60px; }
+    .section-header.centered { text-align: center; }
+    .section-header.centered .section-desc { margin-inline: auto; }
+
+    /* =========================================================
+       SERVICES
+    ========================================================= */
+    #services {
+      background: var(--clr-cream);
+      position: relative;
+    }
+    /* subtle gradient mesh */
+    #services::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 0% 100%, rgba(140,79,48,.05) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 100% 0%, rgba(44,62,45,.04) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      position: relative;
+    }
+    .service-card {
+      background: var(--clr-white);
+      border-radius: var(--radius-md);
+      padding: 38px 30px;
+      border: 1px solid rgba(140,79,48,.1);
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    /* border reveal on hover */
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 0;
+      background: linear-gradient(180deg, var(--clr-wood-gold), var(--clr-wood-warm));
+      transition: height .45s cubic-bezier(.4,0,.2,1);
+    }
+    /* bottom border reveal */
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 0; height: 3px;
+      background: linear-gradient(270deg, var(--clr-wood-gold), var(--clr-wood-warm));
+      transition: width .45s cubic-bezier(.4,0,.2,1) .15s;
+    }
+    .service-card:hover {
+      transform: translateY(-8px) scale(1.005);
+      box-shadow: 0 20px 56px rgba(59,35,20,.2), 0 4px 16px rgba(59,35,20,.1);
+      border-color: rgba(140,79,48,.22);
+    }
+    .service-card:hover::before { height: 100%; }
+    .service-card:hover::after { width: 100%; }
+
+    .service-icon {
+      width: 54px; height: 54px;
+      background: linear-gradient(135deg, var(--clr-cream) 0%, var(--clr-cream-dark) 100%);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      border: 1px solid rgba(140,79,48,.1);
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    .service-card:hover .service-icon {
+      background: linear-gradient(135deg, var(--clr-cream-dark), #ddd0be);
+      box-shadow: 0 4px 12px rgba(59,35,20,.12);
+    }
+    .service-icon svg { width: 26px; height: 26px; stroke: var(--clr-wood-warm); stroke-width: 1.6; }
+    .service-card h3 {
+      font-family: var(--ff-heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--clr-wood-dark);
+      margin-bottom: 12px;
+    }
+    .service-card p { font-size: .88rem; color: var(--clr-text-light); line-height: 1.76; font-weight: 300; }
+
+    /* =========================================================
+       PORTFOLIO — Lightbox-style hover with overlay details
+    ========================================================= */
+    #portfolio {
+      background: var(--clr-cream-dark);
+      position: relative;
+    }
+    #portfolio::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,35,20,.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 300px 300px;
+      gap: 14px;
+    }
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+    }
+    .portfolio-item:first-child { grid-column: span 2; }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .7s cubic-bezier(.4,0,.2,1), filter .7s ease;
+      filter: brightness(.95) saturate(1.05);
+    }
+    .portfolio-item:hover img {
+      transform: scale(1.09);
+      filter: brightness(1) saturate(1.15);
+    }
+
+    /* Full lightbox-style overlay */
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(20,8,2,.92) 0%,
+        rgba(59,35,20,.6) 40%,
+        rgba(59,35,20,.1) 75%,
+        transparent 100%
+      );
+      opacity: 0;
+      transition: opacity .45s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px 26px;
+    }
+    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+
+    .portfolio-overlay-tag {
+      font-family: var(--ff-body);
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--clr-wood-gold);
+      margin-bottom: 8px;
+      transform: translateY(12px);
+      transition: transform .45s ease .05s;
+    }
+    .portfolio-item:hover .portfolio-overlay-tag { transform: translateY(0); }
+
+    .portfolio-overlay-title {
+      font-family: var(--ff-heading);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--clr-white);
+      line-height: 1.25;
+      transform: translateY(14px);
+      transition: transform .45s ease;
+      margin-bottom: 10px;
+    }
+    .portfolio-item:hover .portfolio-overlay-title { transform: translateY(0); }
+
+    .portfolio-overlay-desc {
+      font-size: .78rem;
+      color: rgba(255,255,255,.72);
+      line-height: 1.6;
+      transform: translateY(16px);
+      transition: transform .45s ease .08s;
+      font-weight: 300;
+    }
+    .portfolio-item:hover .portfolio-overlay-desc { transform: translateY(0); }
+
+    .portfolio-view-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 14px;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--clr-wood-gold);
+      border-bottom: 1px solid rgba(212,168,83,.4);
+      padding-bottom: 2px;
+      width: fit-content;
+      transform: translateY(18px);
+      opacity: 0;
+      transition: transform .45s ease .12s, opacity .45s ease .12s;
+    }
+    .portfolio-item:hover .portfolio-view-btn { transform: translateY(0); opacity: 1; }
+
+    /* =========================================================
+       SHOWCASE MARQUEE STRIP
+    ========================================================= */
+    #showcase {
+      background: var(--clr-wood-dark);
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    #showcase .wood-grain-overlay { opacity: .06; }
+
+    .showcase-label {
+      text-align: center;
+      padding: 48px 0 32px;
+      position: relative;
+      z-index: 2;
+    }
+    .showcase-label span {
+      font-family: var(--ff-body);
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--clr-wood-gold);
+    }
+    .showcase-label h2 {
+      font-family: var(--ff-heading);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--clr-cream);
+      margin-top: 8px;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: marqueeScroll 34s linear infinite;
+      padding-bottom: 48px;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marqueeScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .marquee-item {
+      width: 380px;
+      height: 260px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      flex-shrink: 0;
+      position: relative;
+      box-shadow: 0 8px 32px rgba(0,0,0,.45);
+    }
+    .marquee-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s ease;
+    }
+    .marquee-item:hover img { transform: scale(1.06); }
+    .marquee-item-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 14px 16px;
+      background: linear-gradient(to top, rgba(20,8,2,.85), transparent);
+      font-family: var(--ff-heading);
+      font-size: .95rem;
+      font-weight: 400;
+      font-style: italic;
+      color: rgba(255,255,255,.9);
+    }
+
+    /* fade edges */
+    .marquee-wrapper {
+      position: relative;
+    }
+    .marquee-wrapper::before,
+    .marquee-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 120px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .marquee-wrapper::before {
+      left: 0;
+      background: linear-gradient(to right, var(--clr-wood-dark), transparent);
+    }
+    .marquee-wrapper::after {
+      right: 0;
+      background: linear-gradient(to left, var(--clr-wood-dark), transparent);
+    }
+
+    /* =========================================================
+       BEFORE / AFTER CONCEPT SECTION
+    ========================================================= */
+    #before-after {
+      background: var(--clr-cream);
+      position: relative;
+      overflow: hidden;
+    }
+    #before-after::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 100% 50%, rgba(140,79,48,.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .ba-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+    }
+    .ba-panel {
+      position: relative;
+      height: 520px;
+      overflow: hidden;
+    }
+    .ba-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .8s ease;
+    }
+    .ba-panel:hover img { transform: scale(1.04); }
+    .ba-panel-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 36px 32px;
+    }
+    .ba-panel.raw .ba-panel-overlay {
+      background: linear-gradient(to top, rgba(59,35,20,.82), rgba(59,35,20,.15) 55%, transparent);
+    }
+    .ba-panel.finished .ba-panel-overlay {
+      background: linear-gradient(to top, rgba(20,32,16,.85), rgba(44,62,45,.2) 55%, transparent);
+    }
+    .ba-label {
+      font-family: var(--ff-body);
+      font-size: .6rem;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .ba-panel.raw .ba-label { color: var(--clr-wood-pale); }
+    .ba-panel.finished .ba-label { color: #a8d4a0; }
+    .ba-title {
+      font-family: var(--ff-heading);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--clr-white);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .ba-desc {
+      font-size: .84rem;
+      color: rgba(255,255,255,.72);
+      line-height: 1.7;
+      font-weight: 300;
+      max-width: 320px;
+    }
+    .ba-divider {
+      position: absolute;
+      left: 50%; top: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, transparent, var(--clr-wood-gold) 30%, var(--clr-wood-gold) 70%, transparent);
+      transform: translateX(-50%);
+      z-index: 5;
+    }
+    .ba-divider-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--clr-wood-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,.4);
+      z-index: 6;
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--clr-wood-dark);
+      letter-spacing: -.02em;
+    }
+    .ba-caption {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .ba-caption h3 {
+      font-family: var(--ff-heading);
+      font-size: 1.8rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--clr-wood-dark);
+      margin-bottom: 12px;
+    }
+    .ba-caption p {
+      font-size: .9rem;
+      color: var(--clr-text-light);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* =========================================================
+       MATERIALS SECTION
+    ========================================================= */
+    #materials {
+      background: var(--clr-wood-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    #materials .wood-grain-overlay { opacity: .07; }
+    #materials .section-title { color: var(--clr-cream); }
+    #materials .section-label { color: var(--clr-wood-gold); }
+    #materials .section-desc { color: rgba(255,255,255,.58); }
+
+    /* layered bg depth */
+    #materials::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 20% 50%, rgba(140,79,48,.12) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 80% 30%, rgba(44,62,45,.1) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .materials-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      position: relative;
+      z-index: 2;
+    }
+    .material-card {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      position: relative;
+      cursor: default;
+      box-shadow: 0 8px 32px rgba(0,0,0,.35);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .material-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 20px 56px rgba(0,0,0,.5);
+    }
+    .material-swatch {
+      height: 180px;
+      position: relative;
+    }
+    .material-swatch img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s ease;
+    }
+    .material-card:hover .material-swatch img { transform: scale(1.06); }
+
+    .material-info {
+      padding: 20px 18px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      border-top: none;
+    }
+    .material-name {
+      font-family: var(--ff-heading);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--clr-cream);
+      margin-bottom: 6px;
+    }
+    .material-trait {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--clr-wood-gold);
+      margin-bottom: 8px;
+    }
+    .material-desc {
+      font-size: .8rem;
+      color: rgba(255,255,255,.5);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* =========================================================
+       ABOUT
+    ========================================================= */
+    #about {
+      background: var(--clr-white);
+      position: relative;
+      overflow: hidden;
+    }
+    #about::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 80% at 0% 50%, rgba(140,79,48,.04) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+    }
+    .about-img-stack { position: relative; }
+    .about-img-main {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+    }
+    .about-img-accent {
+      position: absolute;
+      bottom: -32px;
+      right: -32px;
+      width: 210px;
+      height: 170px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      border: 5px solid var(--clr-white);
+      box-shadow: var(--shadow-lg);
+    }
+    .about-badge {
+      position: absolute;
+      top: 28px;
+      left: -24px;
+      background: linear-gradient(135deg, var(--clr-green-deep), var(--clr-green-mid));
+      color: var(--clr-white);
+      border-radius: var(--radius-md);
+      padding: 16px 22px;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+      border: 1px solid rgba(255,255,255,.1);
+    }
+    .about-badge strong {
+      font-family: var(--ff-heading);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--clr-wood-pale);
+      display: block;
+    }
+    .about-badge span {
+      font-size: .65rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      font-family: var(--ff-body);
+    }
+    .about-content .section-desc { max-width: 100%; }
+    .about-name {
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid var(--clr-cream-dark);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .about-avatar {
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--clr-wood-pale);
+      box-shadow: var(--shadow-sm);
+    }
+    .about-name-text strong {
+      display: block;
+      font-family: var(--ff-heading);
+      font-size: 1.1rem;
+      color: var(--clr-wood-dark);
+    }
+    .about-name-text span { font-size: .8rem; color: var(--clr-text-light); font-weight: 300; }
+    .license-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--clr-cream);
+      border: 1px solid var(--clr-cream-dark);
+      border-radius: 50px;
+      padding: 10px 18px;
+      font-size: .78rem;
+      font-weight: 500;
+      color: var(--clr-text-mid);
+      margin-top: 20px;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .license-pill:hover {
+      border-color: rgba(140,79,48,.3);
+      box-shadow: 0 4px 16px rgba(59,35,20,.1);
+    }
+    .license-pill svg { width: 15px; height: 15px; stroke: var(--clr-green-soft); }
+
+    /* =========================================================
+       REVIEWS
+    ========================================================= */
+    #reviews {
+      background: var(--clr-green-deep);
+      position: relative;
+      overflow: hidden;
+    }
+    #reviews .wood-grain-overlay { opacity: .055; }
+    #reviews::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 5% 50%, rgba(93,125,58,.12) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 70% at 95% 30%, rgba(140,79,48,.1) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    #reviews .section-title { color: var(--clr-cream); }
+    #reviews .section-label { color: var(--clr-wood-gold); }
+    #reviews .section-desc { color: rgba(255,255,255,.58); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      position: relative;
+      z-index: 2;
+    }
+    .review-card {
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-md);
+      padding: 34px 30px;
+      backdrop-filter: blur(6px);
+      transition: background var(--transition), transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+      position: relative;
+    }
+    .review-card::before {
+      content: '\201C';
+      position: absolute;
+      top: 16px; right: 24px;
+      font-family: var(--ff-heading);
+      font-size: 5rem;
+      line-height: 1;
+      color: rgba(212,168,83,.12);
+      pointer-events: none;
+    }
+    .review-card:hover {
+      background: rgba(255,255,255,.09);
+      border-color: rgba(212,168,83,.2);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 48px rgba(0,0,0,.25);
+    }
+    .stars { display: flex; gap: 3px; margin-bottom: 20px; }
+    .stars svg { width: 16px; height: 16px; fill: var(--clr-wood-gold); stroke: none; }
+    .review-card blockquote {
+      font-size: .92rem;
+      color: rgba(255,255,255,.84);
+      line-height: 1.82;
+      font-style: italic;
+      margin-bottom: 24px;
+      font-family: var(--ff-heading);
+      font-weight: 300;
+    }
+    .reviewer { display: flex; align-items: center; gap: 12px; }
+    .reviewer-initial {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--clr-wood-warm), var(--clr-wood-mid));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--clr-white);
+      flex-shrink: 0;
+    }
+    .reviewer-info strong { display: block; font-size: .86rem; font-weight: 600; color: var(--clr-white); }
+    .reviewer-info span { font-size: .74rem; color: rgba(255,255,255,.46); }
+
+    /* =========================================================
+       WHY CHOOSE US
+    ========================================================= */
+    #why {
+      background: var(--clr-cream);
+      position: relative;
+      overflow: hidden;
+    }
+    #why::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 100% 100%, rgba(44,62,45,.05) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      position: relative;
+    }
+    .why-card {
+      display: flex;
+      gap: 22px;
+      align-items: flex-start;
+      background: var(--clr-white);
+      border-radius: var(--radius-md);
+      padding: 30px 26px;
+      border: 1px solid rgba(140,79,48,.08);
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+    }
+    .why-card:hover {
+      box-shadow: 0 16px 48px rgba(59,35,20,.18);
+      transform: translateY(-4px) scale(1.005);
+      border-color: rgba(140,79,48,.2);
+    }
+    .why-icon {
+      width: 50px; height: 50px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--clr-green-deep), var(--clr-green-mid));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(44,62,45,.3);
+    }
+    .why-icon svg { width: 22px; height: 22px; stroke: var(--clr-wood-pale); stroke-width: 1.7; }
+    .why-text h3 {
+      font-family: var(--ff-heading);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--clr-wood-dark);
+      margin-bottom: 8px;
+    }
+    .why-text p { font-size: .86rem; color: var(--clr-text-light); line-height: 1.72; font-weight: 300; }
+
+    /* =========================================================
+       CONTACT — Premium form styling
+    ========================================================= */
+    #contact {
+      background: var(--clr-cream-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    #contact::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 0% 100%, rgba(140,79,48,.06) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 50% at 100% 0%, rgba(44,62,45,.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 72px;
+      align-items: start;
+      position: relative;
+    }
+    .contact-info-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      margin-top: 36px;
+    }
+    .contact-info-list li {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .contact-icon-wrap {
+      width: 40px; height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--clr-white);
+      border: 1px solid rgba(140,79,48,.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+    }
+    .contact-icon-wrap svg { width: 18px; height: 18px; stroke: var(--clr-wood-warm); }
+    .contact-info-list strong {
+      display: block;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--clr-text-light);
+      margin-bottom: 3px;
+      font-family: var(--ff-body);
+    }
+    .contact-info-list a, .contact-info-list span { font-size: .94rem; color: var(--clr-text-dark); font-weight: 300; }
+    .contact-info-list a:hover { color: var(--clr-wood-warm); }
+
+    .contact-form {
+      background: var(--clr-white);
+      border-radius: var(--radius-lg);
+      padding: 48px 44px;
+      box-shadow: 0 20px 64px rgba(59,35,20,.16), 0 4px 20px rgba(59,35,20,.08);
+      border: 1px solid rgba(140,79,48,.08);
+      position: relative;
+    }
+    /* gold accent bar */
+    .contact-form::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 44px; right: 44px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--clr-wood-gold), transparent);
+      border-radius: 0 0 3px 3px;
+    }
+    .contact-form h3 {
+      font-family: var(--ff-heading);
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: var(--clr-wood-dark);
+      margin-bottom: 8px;
+    }
+    .contact-form-sub {
+      font-size: .84rem;
+      color: var(--clr-text-light);
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+    .form-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--clr-cream-dark), transparent);
+      margin-bottom: 28px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--clr-text-mid);
+      font-family: var(--ff-body);
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 13px 16px;
+      border: 1.5px solid var(--clr-cream-dark);
+      border-radius: var(--radius-sm);
+      font-family: var(--ff-body);
+      font-size: .9rem;
+      font-weight: 300;
+      color: var(--clr-text-dark);
+      background: var(--clr-cream);
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+      resize: none;
+      line-height: 1.5;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(122,98,80,.45); }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--clr-wood-warm);
+      box-shadow: 0 0 0 4px rgba(140,79,48,.1);
+      background: var(--clr-white);
+    }
+    .form-group textarea { height: 120px; }
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--clr-wood-warm) 0%, var(--clr-wood-mid) 100%);
+      color: var(--clr-white);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: var(--ff-body);
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition);
+      margin-top: 6px;
+      box-shadow: 0 6px 24px rgba(140,79,48,.35);
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(140,79,48,.5);
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    footer {
+      background: var(--clr-wood-dark);
+      color: rgba(255,255,255,.72);
+      padding: 72px 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+    footer .wood-grain-overlay { opacity: .05; }
+    footer::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(107,58,42,.2) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 52px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      position: relative;
+      z-index: 2;
+    }
+    .footer-brand .logo-main {
+      font-family: var(--ff-heading);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--clr-white);
+    }
+    .footer-brand .logo-sub {
+      font-size: .65rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--clr-wood-pale);
+      font-family: var(--ff-body);
+    }
+    .footer-brand p {
+      margin-top: 16px;
+      font-size: .84rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,.5);
+      font-weight: 300;
+    }
+    .footer-license {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 20px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 50px;
+      padding: 7px 15px;
+      font-size: .73rem;
+      color: rgba(255,255,255,.55);
+      font-family: var(--ff-body);
+    }
+    .footer-license svg { width: 14px; height: 14px; stroke: var(--clr-green-soft); }
+    .footer-col h4 {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--clr-white);
+      margin-bottom: 20px;
+      font-family: var(--ff-body);
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .footer-col ul li a {
+      font-size: .83rem;
+      color: rgba(255,255,255,.5);
+      transition: color var(--transition);
+      font-weight: 300;
+    }
+    .footer-col ul li a:hover { color: var(--clr-wood-pale); }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 13px; }
+    .footer-contact-item svg { width: 15px; height: 15px; stroke: var(--clr-wood-light); flex-shrink: 0; margin-top: 3px; }
+    .footer-contact-item span { font-size: .83rem; color: rgba(255,255,255,.52); line-height: 1.6; font-weight: 300; }
+    .footer-bottom {
+      padding: 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+    .footer-bottom p { font-size: .76rem; color: rgba(255,255,255,.3); }
+    .footer-bottom a { color: rgba(255,255,255,.4); transition: color var(--transition); }
+    .footer-bottom a:hover { color: var(--clr-wood-pale); }
+
+    /* =========================================================
+       RESPONSIVE — 1024px
+    ========================================================= */
+    @media (max-width: 1024px) {
+      .materials-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* =========================================================
+       RESPONSIVE — 960px
+    ========================================================= */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .btn-nav  { display: none; }
+      .hamburger { display: flex; }
+
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 260px 260px 260px;
+      }
+      .portfolio-item:first-child { grid-column: span 2; }
+
+      .ba-grid { grid-template-columns: 1fr; }
+      .ba-panel { height: 360px; }
+      .ba-divider { display: none; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 52px; }
+      .about-img-accent { right: 16px; }
+
+      .reviews-grid { grid-template-columns: 1fr; gap: 18px; }
+      .why-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 44px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .footer-brand { grid-column: span 2; }
+    }
+
+    /* =========================================================
+       RESPONSIVE — 640px
+    ========================================================= */
+    @media (max-width: 640px) {
+      section { padding: 80px 0; }
+
+      .hero-stats { gap: 10px; }
+      .stat-badge { min-width: 116px; padding: 14px 18px; }
+
+      .trust-inner { gap: 18px; }
+      .trust-divider { display: none; }
+
+      .services-grid { grid-template-columns: 1fr; }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+      .portfolio-item { height: 240px; }
+      .portfolio-item:first-child { grid-column: span 1; }
+
+      .about-img-accent { display: none; }
+      .about-badge { left: 12px; }
+
+      .materials-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form { padding: 32px 24px; }
+
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-brand { grid-column: span 1; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+
+      .marquee-item { width: 280px; height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAV ===================== -->
+  <nav id="nav">
+    <a href="#hero" class="nav-logo">
+      <span class="logo-main">Interior Wood Systems</span>
+      <span class="logo-sub">Fine Cabinetry &amp; Millwork</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#materials">Materials</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:7072493915" class="nav-phone">(707) 249-3915</a>
+      <a href="#contact" class="btn-nav">Free Estimate</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" class="mob-link">Services</a>
+    <a href="#portfolio" class="mob-link">Portfolio</a>
+    <a href="#materials" class="mob-link">Materials</a>
+    <a href="#about" class="mob-link">About</a>
+    <a href="#reviews" class="mob-link">Reviews</a>
+    <a href="#contact" class="mob-link">Contact</a>
+    <a href="tel:7072493915" class="mob-phone">(707) 249-3915</a>
+  </div>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-mesh"></div>
+    <div class="wood-grain-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">Sonoma County's Custom Cabinet Craftsmen</span>
+      <h1 class="hero-title">Where <em>Craftsmanship</em><br>Meets Every Room</h1>
+      <p class="hero-subtitle">From our Rohnert Park workshop, Interior Wood Systems builds custom cabinets, millwork, and finish carpentry that look and feel like heirloom furniture — crafted entirely in-house.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Request a Free Estimate</a>
+        <a href="#portfolio" class="btn-outline">View Our Work</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-badge buildzoom">
+          <span class="stat-num">98</span>
+          <span class="stat-label">BuildZoom Score</span>
+        </div>
+        <div class="stat-badge">
+          <span class="stat-num">Top 16%</span>
+          <span class="stat-label">CA Contractors</span>
+        </div>
+        <div class="stat-badge">
+          <span class="stat-num">Active</span>
+          <span class="stat-label">CA Lic. #495608</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ===================== TRUST STRIP ===================== -->
+  <div id="trust">
+    <div class="container">
+      <div class="trust-inner">
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          CA Licensed &amp; Insured
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          BuildZoom Score 98 — Top 16%
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          In-House Manufacturing
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Serving Sonoma County
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          Furniture-Quality Results
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header centered">
+        <span class="section-label reveal">What We Build</span>
+        <h2 class="section-title reveal reveal-delay-1">Complete Custom Woodworking<br>Under One Roof</h2>
+        <p class="section-desc reveal reveal-delay-2">Every project — from initial design to final installation — is handled by our skilled craftsmen in our Rohnert Park shop. No subcontracting. No surprises.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="9.5" y1="14.5" x2="14.5" y2="14.5"/>
+            </svg>
+          </div>
+          <h3>Custom Cabinet Manufacturing</h3>
+          <p>Designed and built to your exact specifications in our Rohnert Park shop. From face-frame to frameless, painted to natural wood — every cabinet is a piece of furniture.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
+          </div>
+          <h3>Cabinet Installation</h3>
+          <p>Expert installation ensures perfect level, plumb, and fit. Our installers are the same craftsmen who built your cabinets — so they know every detail of every piece.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/>
+            </svg>
+          </div>
+          <h3>Millwork</h3>
+          <p>Crown moldings, wainscoting, ceiling beams, built-in shelving, and architectural details that transform a house into a home with lasting character and depth.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M5.34 18.66l-1.41 1.41M12 2v2M12 20v2M4.93 4.93l1.41 1.41M18.66 18.66l1.41 1.41M2 12h2M20 12h2"/>
+            </svg>
+          </div>
+          <h3>Finish Carpentry</h3>
+          <p>The details that define a room. Baseboards, casing, chair rails, and custom built-ins installed with the precision and care that separate good work from exceptional work.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><rect x="9" y="14" width="6" height="8"/>
+            </svg>
+          </div>
+          <h3>Door Installation</h3>
+          <p>Interior and exterior door hanging done right the first time. Proper fitting, weather sealing, and hardware alignment for doors that operate smoothly for decades.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+            </svg>
+          </div>
+          <h3>Custom Trim</h3>
+          <p>Window casings, coffered ceilings, decorative columns, and one-of-a-kind trim profiles. If you can envision it, we can mill it and install it to perfection.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PORTFOLIO ===================== -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="section-header centered">
+        <span class="section-label reveal">Our Work</span>
+        <h2 class="section-title reveal reveal-delay-1">Craftsmanship You Can See</h2>
+        <p class="section-desc reveal reveal-delay-2">A selection of custom cabinetry and woodworking projects completed across Sonoma County and the North Bay.</p>
+      </div>
+      <div class="portfolio-grid reveal">
+
+        <div class="portfolio-item">
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=82&auto=format&fit=crop" alt="Custom kitchen cabinetry with island" loading="lazy" />
+          <div class="portfolio-overlay">
+            <span class="portfolio-overlay-tag">Kitchen Remodel</span>
+            <div class="portfolio-overlay-title">Full Kitchen — Santa Rosa</div>
+            <div class="portfolio-overlay-desc">Custom shaker cabinets in painted maple, soft-close hardware, and a statement island in contrasting walnut stain.</div>
+            <span class="portfolio-view-btn">View Project &rarr;</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=82&auto=format&fit=crop" alt="Built-in shelving unit" loading="lazy" />
+          <div class="portfolio-overlay">
+            <span class="portfolio-overlay-tag">Built-Ins</span>
+            <div class="portfolio-overlay-title">Library Built-Ins — Petaluma</div>
+            <div class="portfolio-overlay-desc">Floor-to-ceiling white oak shelving with integrated lighting and a rolling library ladder.</div>
+            <span class="portfolio-view-btn">View Project &rarr;</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=82&auto=format&fit=crop" alt="Bathroom vanity cabinetry" loading="lazy" />
+          <div class="portfolio-overlay">
+            <span class="portfolio-overlay-tag">Bath Vanity</span>
+            <div class="portfolio-overlay-title">Master Bath — Healdsburg</div>
+            <div class="portfolio-overlay-desc">Double vanity in hand-applied white lacquer with book-matched walnut drawer fronts and brass pulls.</div>
+            <span class="portfolio-view-btn">View Project &rarr;</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&q=82&auto=format&fit=crop" alt="White shaker kitchen cabinets" loading="lazy" />
+          <div class="portfolio-overlay">
+            <span class="portfolio-overlay-tag">Kitchen</span>
+            <div class="portfolio-overlay-title">Shaker Kitchen — Sonoma</div>
+            <div class="portfolio-overlay-desc">Classic five-piece shaker doors in Benjamin Moore White Dove, with integrated pantry and custom range hood surround.</div>
+            <span class="portfolio-view-btn">View Project &rarr;</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item">
+          <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=900&q=82&auto=format&fit=crop" alt="Custom millwork and trim" loading="lazy" />
+          <div class="portfolio-overlay">
+            <span class="portfolio-overlay-tag">Millwork</span>
+            <div class="portfolio-overlay-title">Crown Molding &amp; Millwork — Windsor</div>
+            <div class="portfolio-overlay-desc">Full-room millwork package: coffered ceiling, wainscoting, crown, and custom window casing throughout.</div>
+            <span class="portfolio-view-btn">View Project &rarr;</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SHOWCASE MARQUEE ===================== -->
+  <div id="showcase">
+    <div class="wood-grain-overlay"></div>
+    <div class="showcase-label reveal">
+      <span>The Work Speaks</span>
+      <h2>A Glimpse Inside Our Projects</h2>
+    </div>
+    <div class="marquee-wrapper">
+      <div class="marquee-track">
+        <!-- First set -->
+        <div class="marquee-item">
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=760&q=75&auto=format&fit=crop" alt="Custom kitchen" loading="lazy" />
+          <div class="marquee-item-label">Custom Kitchen, Santa Rosa</div>
+        </div>
+        <div class="marquee-item">
+          <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=760&q=75&auto=format&fit=crop" alt="Built-in shelving" loading="lazy" />
+          <div class="marquee-item-label">Library Built-Ins, Petaluma</div>
+        </div>
+        <div class="marquee-item">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=760&q=75&auto=format&fit=crop" alt="Bathroom vanity" loading="lazy" />
+          <div class="marquee-item-label">Master Bath Vanity, Healdsburg</div>
+        </div>
+        <div class="marquee-item">
+          <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=760&q=75&auto=format&fit=crop" alt="Shaker cabinets" loading="lazy" />
+          <div class="marquee-item-label">Shaker Kitchen, Sonoma</div>
+        </div>
+        <div class="marquee-item">
+          <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=760&q=75&auto=format&fit=crop" alt="Crown molding" loading="lazy" />
+          <div class="marquee-item-label">Crown Molding, Windsor</div>
+        </div>
+        <div class="marquee-item">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=760&q=75&auto=format&fit=crop" alt="Craftsman at work" loading="lazy" />
+          <div class="marquee-item-label">In the Shop, Rohnert Park</div>
+        </div>
+        <!-- Duplicate for seamless loop -->
+        <div class="marquee-item">
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=760&q=75&auto=format&fit=crop" alt="Custom kitchen" loading="lazy" />
+          <div class="marquee-item-label">Custom Kitchen, Santa Rosa</div>
+        </div>
+        <div class="marquee-item">
+          <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=760&q=75&auto=format&fit=crop" alt="Built-in shelving" loading="lazy" />
+          <div class="marquee-item-label">Library Built-Ins, Petaluma</div>
+        </div>
+        <div class="marquee-item">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=760&q=75&auto=format&fit=crop" alt="Bathroom vanity" loading="lazy" />
+          <div class="marquee-item-label">Master Bath Vanity, Healdsburg</div>
+        </div>
+        <div class="marquee-item">
+          <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=760&q=75&auto=format&fit=crop" alt="Shaker cabinets" loading="lazy" />
+          <div class="marquee-item-label">Shaker Kitchen, Sonoma</div>
+        </div>
+        <div class="marquee-item">
+          <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=760&q=75&auto=format&fit=crop" alt="Crown molding" loading="lazy" />
+          <div class="marquee-item-label">Crown Molding, Windsor</div>
+        </div>
+        <div class="marquee-item">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=760&q=75&auto=format&fit=crop" alt="Craftsman at work" loading="lazy" />
+          <div class="marquee-item-label">In the Shop, Rohnert Park</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== BEFORE / AFTER ===================== -->
+  <section id="before-after">
+    <div class="container">
+      <div class="section-header centered">
+        <span class="section-label reveal">The Transformation</span>
+        <h2 class="section-title reveal reveal-delay-1">Raw Wood to Refined Beauty</h2>
+        <p class="section-desc reveal reveal-delay-2">Every piece we build begins as raw lumber in our Rohnert Park shop and leaves as something that could stand in a fine furniture gallery.</p>
+      </div>
+      <div class="ba-grid reveal">
+        <div class="ba-panel raw">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=82&auto=format&fit=crop" alt="Raw wood lumber in the workshop" loading="lazy" />
+          <div class="ba-panel-overlay">
+            <div class="ba-label">Before — Raw Material</div>
+            <div class="ba-title">Rough-Cut Lumber</div>
+            <div class="ba-desc">Hand-selected hardwoods arrive at our shop. Every board is graded, dried, and assessed by our craftsmen before a single cut is made.</div>
+          </div>
+        </div>
+        <div class="ba-panel finished">
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=82&auto=format&fit=crop" alt="Finished custom kitchen cabinetry" loading="lazy" />
+          <div class="ba-panel-overlay">
+            <div class="ba-label">After — Finished Installation</div>
+            <div class="ba-title">Heirloom Cabinetry</div>
+            <div class="ba-desc">The same wood, transformed through skill and care into cabinetry built to last generations — with every joint, finish, and detail considered.</div>
+          </div>
+        </div>
+        <div class="ba-divider">
+          <div class="ba-divider-icon">vs</div>
+        </div>
+      </div>
+      <div class="ba-caption reveal reveal-delay-1">
+        <h3>The difference is in the hands that build it.</h3>
+        <p>Interior Wood Systems brings master-level craftsmanship to every project — from a single vanity to a whole-house millwork package. The result is always the same: woodwork that looks and feels like furniture.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MATERIALS ===================== -->
+  <section id="materials">
+    <div class="wood-grain-overlay"></div>
+    <div class="container">
+      <div class="section-header centered">
+        <span class="section-label reveal">Premium Materials</span>
+        <h2 class="section-title reveal reveal-delay-1">Wood That Ages<br>Into an Heirloom</h2>
+        <p class="section-desc reveal reveal-delay-2">We work with the finest domestic and imported hardwoods, selected by hand for each project. Your choice of species defines the soul of the piece.</p>
+      </div>
+      <div class="materials-grid">
+
+        <div class="material-card reveal">
+          <div class="material-swatch">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&auto=format&fit=crop" alt="White Oak wood grain" loading="lazy" />
+          </div>
+          <div class="material-info">
+            <div class="material-name">White Oak</div>
+            <div class="material-trait">Timeless &amp; Versatile</div>
+            <div class="material-desc">Open, cathedral grain with warm, honeyed tones. Takes stain beautifully and ages to a rich patina. The choice for transitional and Craftsman styles.</div>
+          </div>
+        </div>
+
+        <div class="material-card reveal reveal-delay-1">
+          <div class="material-swatch">
+            <img src="https://images.unsplash.com/photo-1615529162924-f8605388461d?w=600&q=80&auto=format&fit=crop" alt="Walnut wood grain" loading="lazy" />
+          </div>
+          <div class="material-info">
+            <div class="material-name">Black Walnut</div>
+            <div class="material-trait">Rich &amp; Dramatic</div>
+            <div class="material-desc">Deep chocolate tones with swirling figure. North America's most prized cabinet wood — extraordinary as a statement piece or island top.</div>
+          </div>
+        </div>
+
+        <div class="material-card reveal reveal-delay-2">
+          <div class="material-swatch">
+            <img src="https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=600&q=80&auto=format&fit=crop" alt="Maple wood grain" loading="lazy" />
+          </div>
+          <div class="material-info">
+            <div class="material-name">Hard Maple</div>
+            <div class="material-trait">Clean &amp; Contemporary</div>
+            <div class="material-desc">Tight, consistent grain with a creamy white face. The gold standard for painted cabinetry — holds finish flawlessly and machines to perfect edges.</div>
+          </div>
+        </div>
+
+        <div class="material-card reveal reveal-delay-3">
+          <div class="material-swatch">
+            <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80&auto=format&fit=crop" alt="Cherry wood grain" loading="lazy" />
+          </div>
+          <div class="material-info">
+            <div class="material-name">Cherry</div>
+            <div class="material-trait">Warm &amp; Refined</div>
+            <div class="material-desc">Begins a blush pink and deepens to a rich auburn over years of light exposure. A living finish that grows more beautiful with time.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-stack reveal">
+          <div class="about-badge">
+            <strong>#1</strong>
+            <span>Top-Ranked Sonoma Co.</span>
+          </div>
+          <img class="about-img-main"
+            src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=82&auto=format&fit=crop"
+            alt="Master carpenter at work in the shop" loading="lazy" />
+          <img class="about-img-accent"
+            src="https://images.unsplash.com/photo-1615529162924-f8605388461d?w=400&q=80&auto=format&fit=crop"
+            alt="Custom cabinet detail" loading="lazy" />
+        </div>
+        <div class="about-content reveal reveal-delay-2">
+          <span class="section-label">About Us</span>
+          <h2 class="section-title">Built on Craft.<br>Driven by Pride.</h2>
+          <p class="section-desc">Interior Wood Systems, Inc. is a Rohnert Park-based custom cabinet and millwork company serving the entire Sonoma County and North Bay region. Founded by master craftsman Dave Ghiglieri, the company was built on a simple principle: every piece of woodwork we touch should look and feel like fine furniture.</p>
+          <p class="section-desc" style="margin-top: 18px;">From our 137-B Utility Court workshop, we design, mill, and build everything in-house — giving us complete control over quality at every stage. No middlemen. No outsourced production. Just skilled hands and an unwavering commitment to the craft.</p>
+          <a href="tel:7072493915" class="license-pill" style="text-decoration:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            CA License #495608 — Active &amp; Verified
+          </a>
+          <div class="about-name">
+            <img class="about-avatar"
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80&auto=format&fit=crop&face"
+              alt="Dave Ghiglieri" loading="lazy" />
+            <div class="about-name-text">
+              <strong>Dave Ghiglieri</strong>
+              <span>Owner &amp; Master Craftsman, Interior Wood Systems, Inc.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REVIEWS ===================== -->
+  <section id="reviews">
+    <div class="wood-grain-overlay"></div>
+    <div class="container">
+      <div class="section-header centered">
+        <span class="section-label reveal">What Clients Say</span>
+        <h2 class="section-title reveal reveal-delay-1">Work That Speaks for Itself</h2>
+        <p class="section-desc reveal reveal-delay-2">Our clients come to us through referrals — and they stay because the results are exactly what we promised.</p>
+      </div>
+      <div class="reviews-grid">
+
+        <div class="review-card reveal">
+          <div class="stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote>These guys are polite, excellent craftsmen. Our cabinets look like furniture. We had three other bids and chose Interior Wood Systems because Dave took the time to understand what we wanted. Not once did we regret it.</blockquote>
+          <div class="reviewer">
+            <div class="reviewer-initial">M</div>
+            <div class="reviewer-info">
+              <strong>Margaret T.</strong>
+              <span>Kitchen Remodel — Santa Rosa, CA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-1">
+          <div class="stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote>The built-in shelving and crown molding they installed in our living room are absolutely stunning. Guests always ask who did the work — and we're always proud to refer Interior Wood Systems. The attention to detail is extraordinary.</blockquote>
+          <div class="reviewer">
+            <div class="reviewer-initial">R</div>
+            <div class="reviewer-info">
+              <strong>Robert &amp; Lisa K.</strong>
+              <span>Built-Ins &amp; Millwork — Petaluma, CA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-2">
+          <div class="stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote>As a general contractor I've worked with a lot of cabinet shops. Interior Wood Systems is at the top of the list. They deliver on time, the fit and finish is perfect every time, and the crew is professional on the job site. Highly recommended.</blockquote>
+          <div class="reviewer">
+            <div class="reviewer-initial">J</div>
+            <div class="reviewer-info">
+              <strong>James V., General Contractor</strong>
+              <span>Multi-Project Partner — Sonoma County</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY CHOOSE US ===================== -->
+  <section id="why">
+    <div class="container">
+      <div class="section-header centered">
+        <span class="section-label reveal">Why Interior Wood Systems</span>
+        <h2 class="section-title reveal reveal-delay-1">The Standard Others<br>Are Compared To</h2>
+        <p class="section-desc reveal reveal-delay-2">Our commitment to quality isn't a tagline — it's the foundation of how we work, from the first measurement to the final coat of finish.</p>
+      </div>
+      <div class="why-grid">
+
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+            </svg>
+          </div>
+          <div class="why-text">
+            <h3>100% In-House Manufacturing</h3>
+            <p>We design, mill, and build every cabinet and piece of millwork in our own Rohnert Park shop. Full control from raw lumber to finished piece means no quality shortcuts.</p>
+          </div>
+        </div>
+
+        <div class="why-card reveal reveal-delay-1">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <div class="why-text">
+            <h3>Top-Ranked in California</h3>
+            <p>A BuildZoom score of 98 puts us in the top 16% of over 336,000 licensed California contractors. Independent verification of our consistent track record.</p>
+          </div>
+        </div>
+
+        <div class="why-card reveal reveal-delay-2">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div class="why-text">
+            <h3>Licensed, Bonded &amp; Insured</h3>
+            <p>CA License #495608 is active and verified. We carry full liability insurance and workers' comp — protecting you, your property, and our team on every job.</p>
+          </div>
+        </div>
+
+        <div class="why-card reveal reveal-delay-3">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <div class="why-text">
+            <h3>Furniture-Quality Results</h3>
+            <p>We hold our cabinets and woodwork to furniture standards, not just construction standards. Tight joinery, flawless finishes, and details that age gracefully for decades.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="reveal">
+          <span class="section-label">Get in Touch</span>
+          <h2 class="section-title">Start Your Project Today</h2>
+          <p class="section-desc">Ready to bring your vision to life? Reach out for a free consultation and estimate. We serve all of Sonoma County and the North Bay.</p>
+          <ul class="contact-info-list">
+            <li>
+              <div class="contact-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.5 5.5l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2z"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Phone</strong>
+                <a href="tel:7072493915">(707) 249-3915</a>
+              </div>
+            </li>
+            <li>
+              <div class="contact-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Shop Address</strong>
+                <span>137-B Utility Ct, Rohnert Park, CA 94928</span>
+              </div>
+            </li>
+            <li>
+              <div class="contact-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Business Hours</strong>
+                <span>Monday – Friday: 7:00 AM – 5:00 PM</span>
+              </div>
+            </li>
+            <li>
+              <div class="contact-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <div>
+                <strong>License</strong>
+                <span>CA Contractor License #495608 (Active)</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="contact-form reveal reveal-delay-2">
+          <h3>Request a Free Estimate</h3>
+          <p class="contact-form-sub">Tell us about your project and we'll be in touch within one business day.</p>
+          <div class="form-divider"></div>
+          <form action="#" method="post" onsubmit="return false;">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="fname" placeholder="Jane" autocomplete="given-name" />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lname" placeholder="Smith" autocomplete="family-name" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="jane@example.com" autocomplete="email" />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" placeholder="(707) 555-0100" autocomplete="tel" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="service">Service Needed</label>
+              <select id="service" name="service">
+                <option value="" disabled selected>Select a service…</option>
+                <option>Custom Cabinet Manufacturing</option>
+                <option>Cabinet Installation</option>
+                <option>Millwork</option>
+                <option>Finish Carpentry</option>
+                <option>Door Installation</option>
+                <option>Custom Trim</option>
+                <option>Multiple / Unsure</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Project Details</label>
+              <textarea id="message" name="message" placeholder="Tell us about your project — room, style, timeline, any specifics…"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Send My Request</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="wood-grain-overlay"></div>
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <div class="logo-main">Interior Wood Systems, Inc.</div>
+          <div class="logo-sub">Fine Cabinetry &amp; Millwork</div>
+          <p>Handcrafted custom cabinets, millwork, and finish carpentry built in Rohnert Park and installed across Sonoma County and the North Bay. Quality that looks and feels like furniture.</p>
+          <div class="footer-license">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            CA License #495608 — Active
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Custom Cabinet Manufacturing</a></li>
+            <li><a href="#services">Cabinet Installation</a></li>
+            <li><a href="#services">Millwork</a></li>
+            <li><a href="#services">Finish Carpentry</a></li>
+            <li><a href="#services">Door Installation</a></li>
+            <li><a href="#services">Custom Trim</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#materials">Materials</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#why">Why Choose Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.5 5.5l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2z"/>
+            </svg>
+            <span><a href="tel:7072493915" style="color:inherit;">(707) 249-3915</a></span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>137-B Utility Ct<br>Rohnert Park, CA 94928</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Interior Wood Systems, Inc. All rights reserved.</p>
+        <p>Serving Sonoma County &amp; the North Bay &nbsp;|&nbsp; <a href="tel:7072493915">(707) 249-3915</a> &nbsp;|&nbsp; CA Lic. #495608</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script>
+    // --- Sticky Nav ---
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 52);
+    }, { passive: true });
+
+    // --- Hamburger Menu ---
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.mob-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // --- Scroll Reveal ---
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

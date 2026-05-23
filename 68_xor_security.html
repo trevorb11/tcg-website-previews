@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XOR Security | Federal Cybersecurity Operations &amp; Engineering | Fairfax, VA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #050a0e;
+      --dark: #0a1520;
+      --dark-2: #0e1c2a;
+      --dark-card: #121f30;
+      --navy: #0d2240;
+      --cyan: #00d4ff;
+      --cyan-dim: #00a8cc;
+      --cyan-pale: rgba(0,212,255,0.08);
+      --green: #00e676;
+      --white: #f0f4f8;
+      --gray: #7a9ab0;
+      --gray-light: #a8c0d0;
+      --border: rgba(0,212,255,0.15);
+      --border-dim: rgba(255,255,255,0.06);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: var(--white);
+      background: var(--black);
+      line-height: 1.65;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      background: rgba(5, 10, 14, 0.95);
+      backdrop-filter: blur(12px);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 66px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+    }
+
+    .nav-logo {
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 500;
+      font-size: 1.3rem;
+      color: var(--white);
+      letter-spacing: 0.08em;
+    }
+
+    .nav-logo .xor { color: var(--cyan); }
+
+    .nav-tagline {
+      font-size: 0.68rem;
+      color: var(--gray);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+
+    .nav-links a {
+      color: var(--gray-light);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      border: 1px solid var(--cyan) !important;
+      color: var(--cyan) !important;
+      padding: 0.45rem 1.1rem;
+      font-size: 0.82rem !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--cyan-pale) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--dark);
+      display: flex;
+      align-items: center;
+      padding: 100px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animated grid background */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 20%;
+      left: 20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--cyan);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      color: var(--white);
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--cyan);
+    }
+
+    .hero p {
+      color: var(--gray-light);
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+      max-width: 500px;
+    }
+
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-cyan {
+      display: inline-block;
+      background: var(--cyan);
+      color: var(--dark);
+      padding: 0.85rem 2rem;
+      font-weight: 600;
+      font-size: 0.92rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-cyan:hover { background: #33ddff; transform: translateY(-2px); }
+
+    .btn-ghost {
+      display: inline-block;
+      border: 1px solid var(--border);
+      color: var(--gray-light);
+      padding: 0.85rem 2rem;
+      font-size: 0.92rem;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: var(--cyan); color: var(--white); }
+
+    .hero-terminal {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .terminal-header {
+      background: var(--dark-2);
+      border-bottom: 1px solid var(--border-dim);
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .terminal-dot:nth-child(1) { background: #ff5f57; }
+    .terminal-dot:nth-child(2) { background: #ffbd2e; }
+    .terminal-dot:nth-child(3) { background: #28c840; }
+
+    .terminal-title { font-size: 0.75rem; color: var(--gray); margin-left: 0.5rem; letter-spacing: 0.06em; }
+
+    .terminal-body { padding: 2rem; }
+
+    .terminal-line {
+      font-size: 0.82rem;
+      line-height: 2.2;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .t-prompt { color: var(--cyan); flex-shrink: 0; }
+    .t-cmd { color: var(--white); }
+    .t-output { color: var(--green); }
+    .t-muted { color: var(--gray); }
+    .t-warn { color: #ffbd2e; }
+
+    .t-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 16px;
+      background: var(--cyan);
+      animation: blink 1s step-end infinite;
+      vertical-align: text-bottom;
+    }
+
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* STATS */
+    .stats {
+      background: var(--dark-2);
+      padding: 2.5rem 5%;
+      border-top: 1px solid var(--border-dim);
+      border-bottom: 1px solid var(--border-dim);
+    }
+
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stat-item .num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--cyan);
+    }
+
+    .stat-item .label {
+      font-size: 0.78rem;
+      color: var(--gray);
+      margin-top: 0.3rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* SECTION COMMONS */
+    section { padding: 90px 5%; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-sub {
+      font-size: 0.97rem;
+      color: var(--gray-light);
+      line-height: 1.85;
+      max-width: 600px;
+    }
+
+    /* ABOUT */
+    .about { background: var(--dark); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.6) brightness(0.7);
+    }
+
+    .about p { color: var(--gray-light); line-height: 1.85; margin-bottom: 1.25rem; font-size: 0.97rem; }
+
+    .acq-note {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+
+    .acq-note strong { color: var(--white); }
+
+    /* CAPABILITIES */
+    .capabilities { background: var(--dark-2); }
+
+    .capabilities-header { margin-bottom: 3.5rem; }
+
+    .cap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border-dim);
+    }
+
+    .cap-card {
+      background: var(--dark-card);
+      padding: 2.5rem;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .cap-card:hover { border-color: var(--cyan); background: rgba(0,212,255,0.04); }
+
+    .cap-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--cyan);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .cap-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.85rem;
+    }
+
+    .cap-card p { font-size: 0.87rem; color: var(--gray-light); line-height: 1.8; }
+
+    /* WHO WE SERVE */
+    .clients { background: var(--dark); }
+
+    .clients-header { margin-bottom: 3.5rem; }
+
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .client-card {
+      border: 1px solid var(--border-dim);
+      border-radius: 4px;
+      padding: 2.5rem 1.75rem;
+      text-align: center;
+      transition: border-color 0.3s;
+    }
+
+    .client-card:hover { border-color: var(--border); }
+
+    .client-icon {
+      font-size: 2rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .client-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 0.6rem; }
+
+    .client-card p { font-size: 0.82rem; color: var(--gray); line-height: 1.75; }
+
+    /* CONTRACT VEHICLES */
+    .contracts { background: var(--navy); }
+
+    .contracts-header { margin-bottom: 3rem; }
+
+    .contracts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .contract-card {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(0,212,255,0.2);
+      border-radius: 4px;
+      padding: 2rem;
+    }
+
+    .contract-card h4 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1rem;
+      color: var(--cyan);
+      margin-bottom: 0.5rem;
+    }
+
+    .contract-card p { font-size: 0.87rem; color: rgba(255,255,255,0.6); line-height: 1.75; }
+
+    .contract-badge {
+      display: inline-block;
+      background: rgba(0,212,255,0.1);
+      border: 1px solid rgba(0,212,255,0.25);
+      color: var(--cyan);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      margin-top: 0.75rem;
+    }
+
+    /* NOTABLE */
+    .notable { background: var(--dark-2); }
+
+    .notable-inner {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 3.5rem;
+      display: flex;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .notable-num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 4rem;
+      font-weight: 500;
+      color: var(--cyan);
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .notable-label { font-size: 0.72rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.12em; margin-top: 0.4rem; }
+
+    .notable-divider { width: 1px; height: 80px; background: var(--border); flex-shrink: 0; }
+
+    .notable-text p { color: var(--gray-light); font-size: 0.97rem; line-height: 1.85; }
+
+    /* CONTACT */
+    .contact { background: var(--dark); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-info .section-sub { margin-bottom: 2.5rem; }
+
+    .contact-detail {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border-dim);
+    }
+
+    .contact-detail:last-child { border-bottom: none; }
+
+    .contact-detail strong {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--cyan);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-detail span { color: var(--gray-light); font-size: 0.95rem; }
+
+    .contact-form {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 3rem;
+    }
+
+    .contact-form h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 2rem;
+    }
+
+    .form-group { margin-bottom: 1.25rem; }
+
+    .form-group label {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: var(--dark-2);
+      border: 1px solid var(--border-dim);
+      border-radius: 2px;
+      font-size: 0.92rem;
+      font-family: inherit;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--cyan); }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--gray); }
+
+    .form-group select option { background: var(--dark-2); }
+
+    .form-group textarea { min-height: 100px; resize: vertical; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--cyan);
+      color: var(--dark);
+      border: none;
+      padding: 0.9rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
+    }
+
+    .form-submit:hover { background: #33ddff; }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--border-dim);
+      padding: 50px 5% 30px;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border-dim);
+    }
+
+    .footer-logo {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1.3rem;
+      color: var(--white);
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo .xor { color: var(--cyan); }
+
+    .footer-brand p { font-size: 0.88rem; color: var(--gray); line-height: 1.75; max-width: 320px; }
+
+    .footer-col h4 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .footer-col a { color: var(--gray); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--cyan); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.2);
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-terminal { max-width: 580px; }
+      .cap-grid { grid-template-columns: repeat(2, 1fr); }
+      .clients-grid { grid-template-columns: repeat(2, 1fr); }
+      .contracts-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .cap-grid { grid-template-columns: 1fr; }
+      .clients-grid { grid-template-columns: 1fr 1fr; }
+      .contracts-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .notable-inner { flex-direction: column; gap: 2rem; }
+      .notable-divider { width: 100%; height: 1px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-brand">
+      <span class="nav-logo"><span class="xor">XOR</span> Security</span>
+      <span class="nav-tagline">An Agile Defense Company</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#capabilities">Capabilities</a></li>
+      <li><a href="#clients">Who We Serve</a></li>
+      <li><a href="#contact" class="nav-cta">Discuss Your Requirements</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
+      <div class="reveal">
+        <p class="hero-eyebrow">// Cyber Operations &amp; Engineering | Fairfax, VA</p>
+        <h1>Cyber Threats<br />Don't Wait.<br /><em>Neither Do We.</em></h1>
+        <p>Federal-grade cybersecurity operations, engineering, and advisory services. XOR Security has protected government agencies and critical organizations since 2012 — and the mission hasn't changed.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn-cyan">Discuss Your Security Requirements</a>
+          <a href="#capabilities" class="btn-ghost">Our Capabilities</a>
+        </div>
+      </div>
+      <div class="hero-terminal reveal reveal-delay-2">
+        <div class="terminal-header">
+          <div class="terminal-dot"></div>
+          <div class="terminal-dot"></div>
+          <div class="terminal-dot"></div>
+          <span class="terminal-title">xor-soc-operations.sh</span>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-line">
+            <span class="t-prompt">$</span>
+            <span class="t-cmd">./threat-monitor --live --federal</span>
+          </div>
+          <div class="terminal-line">
+            <span class="t-prompt"> </span>
+            <span class="t-output">[+] SOC monitoring active</span>
+          </div>
+          <div class="terminal-line">
+            <span class="t-prompt"> </span>
+            <span class="t-output">[+] 24/7 VSOC coverage: ENABLED</span>
+          </div>
+          <div class="terminal-line">
+            <span class="t-prompt"> </span>
+            <span class="t-muted">[~] Threat intelligence feeds: 47 sources</span>
+          </div>
+          <div class="terminal-line">
+            <span class="t-prompt"> </span>
+            <span class="t-warn">[!] Anomaly detected: lateral movement</span>
+          </div>
+          <div class="terminal-line">
+            <span class="t-prompt"> </span>
+            <span class="t-output">[+] IR team notified: T+00:00:34</span>
+          </div>
+          <div class="terminal-line">
+            <span class="t-prompt"> </span>
+            <span class="t-output">[+] Containment initiated</span>
+          </div>
+          <div class="terminal-line">
+            <span class="t-prompt">$</span>
+            <span class="t-cmd"> <span class="t-cursor"></span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stats-inner">
+      <div class="stat-item reveal">
+        <div class="num">2012</div>
+        <div class="label">Year Founded</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="num">$31.4M</div>
+        <div class="label">USPTO Contract Award</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="num">GSA</div>
+        <div class="label">Schedule 47QTCB21D0197</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="num">24/7</div>
+        <div class="label">SOC / VSOC Coverage</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80" alt="Server room operations center" loading="lazy" />
+        </div>
+        <div class="reveal reveal-delay-1">
+          <p class="section-label">// About XOR Security</p>
+          <h2 class="section-title">Built for the Hardest Missions in Cyber</h2>
+          <p>XOR Security was founded in 2012 in Falls Church, Virginia, by professionals who understood that federal cybersecurity wasn't being served well by generalist contractors. We built an organization around a single focus: understanding the complexity of cyber threats and taking innovative, technically rigorous approaches to defeating them.</p>
+          <p>Over a decade, we've earned the trust of federal agencies and commercial clients through consistent performance on high-stakes cybersecurity engagements — including a $31.4 million single-award contract to provide Cybersecurity Operations Support Services to the U.S. Patent and Trademark Office.</p>
+          <p>In 2023, XOR Security was acquired by Agile Defense — expanding our resources and reach while maintaining the specialized expertise and team culture that made XOR effective. We operate as an Agile Defense company, combining two exceptional teams into one formidable capability set.</p>
+          <div class="acq-note">
+            <strong>Now part of Agile Defense.</strong> XOR Security was acquired in May 2023, bringing together complementary federal cybersecurity capabilities under a single team committed to mission-first performance.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="capabilities" id="capabilities">
+    <div class="section-inner">
+      <div class="capabilities-header reveal">
+        <p class="section-label">// Core Capabilities</p>
+        <h2 class="section-title">What We Do</h2>
+        <p class="section-sub">Comprehensive cybersecurity operations and engineering for federal agencies and critical organizations. If it involves cyber, we've done it at mission scale.</p>
+      </div>
+      <div class="cap-grid">
+        <div class="cap-card reveal">
+          <div class="cap-tag">Operations</div>
+          <h3>Security Operations Center (SOC / VSOC)</h3>
+          <p>24/7 virtual and physical Security Operations Center management, threat monitoring, alert triage, and coordinated incident response for federal and commercial clients.</p>
+        </div>
+        <div class="cap-card reveal reveal-delay-1">
+          <div class="cap-tag">Network Security</div>
+          <h3>Network Security Operations (NSOC)</h3>
+          <p>Network-level monitoring, intrusion detection, traffic analysis, and incident management. Deep expertise in federal network architectures and compliance requirements.</p>
+        </div>
+        <div class="cap-card reveal reveal-delay-2">
+          <div class="cap-tag">Intelligence</div>
+          <h3>Threat Intelligence &amp; Hunting</h3>
+          <p>Real-time threat actor profiling, intelligence feed integration, proactive threat hunting operations, and intelligence dissemination to decision-makers and defenders.</p>
+        </div>
+        <div class="cap-card reveal">
+          <div class="cap-tag">Response</div>
+          <h3>Incident Response &amp; Breach Recovery</h3>
+          <p>Rapid containment and forensic investigation when incidents occur. Evidence preservation, root cause analysis, remediation execution, and post-incident reporting for regulatory compliance.</p>
+        </div>
+        <div class="cap-card reveal reveal-delay-1">
+          <div class="cap-tag">Offensive Security</div>
+          <h3>Penetration Testing &amp; Red Team</h3>
+          <p>Adversary simulation, vulnerability exploitation, and red team operations to identify weaknesses before real threat actors do. Realistic attack scenarios against federal-grade targets.</p>
+        </div>
+        <div class="cap-card reveal reveal-delay-2">
+          <div class="cap-tag">Engineering</div>
+          <h3>Security Engineering &amp; Architecture</h3>
+          <p>SIEM deployment and tuning, security tool integration, architecture review and hardening, zero trust implementation, and technical capability development for cyber programs.</p>
+        </div>
+        <div class="cap-card reveal">
+          <div class="cap-tag">Program</div>
+          <h3>Insider Threat Programs</h3>
+          <p>Insider threat detection, behavior analytics, investigation support, and program development. Protecting organizations from threats that originate inside the perimeter.</p>
+        </div>
+        <div class="cap-card reveal reveal-delay-1">
+          <div class="cap-tag">Analysis</div>
+          <h3>Malware Analysis &amp; Reverse Engineering</h3>
+          <p>Static and dynamic malware analysis, reverse engineering of malicious code, IOC development, and technical reporting for forensic and intelligence purposes.</p>
+        </div>
+        <div class="cap-card reveal reveal-delay-2">
+          <div class="cap-tag">Application</div>
+          <h3>Application Security</h3>
+          <p>Secure software development lifecycle (SSDLC) integration, application code review, web application security testing, and API security assessment for government systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTABLE CONTRACT -->
+  <section class="notable">
+    <div class="section-inner">
+      <div class="notable-inner reveal">
+        <div>
+          <div class="notable-num">$31.4M</div>
+          <div class="notable-label">Single-Award Federal Contract</div>
+        </div>
+        <div class="notable-divider"></div>
+        <div class="notable-text">
+          <p>XOR Security was awarded a $31.4 million single-award task order to provide Cybersecurity Operations Support Services to the United States Patent and Trademark Office (USPTO) within the Department of Commerce — one of the federal government's most significant single-award cybersecurity contracts. This engagement demonstrates XOR's ability to execute mission-critical cybersecurity operations at scale, with full accountability and proven performance on a high-profile federal mission.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE SERVE -->
+  <section class="clients" id="clients">
+    <div class="section-inner">
+      <div class="clients-header reveal">
+        <p class="section-label">// Who We Serve</p>
+        <h2 class="section-title">Mission Partners</h2>
+        <p class="section-sub">We are built for federal missions — but our capabilities extend to any organization that takes cybersecurity as seriously as we do.</p>
+      </div>
+      <div class="clients-grid">
+        <div class="client-card reveal">
+          <div class="client-icon">&#127963;</div>
+          <h4>Federal Civilian Agencies</h4>
+          <p>Decades of combined experience supporting civilian agency missions across multiple departments and bureaus</p>
+        </div>
+        <div class="client-card reveal reveal-delay-1">
+          <div class="client-icon">&#128737;</div>
+          <h4>Defense &amp; IC</h4>
+          <p>Cleared personnel and mission-ready capabilities for defense and intelligence community cyber programs</p>
+        </div>
+        <div class="client-card reveal reveal-delay-2">
+          <div class="client-icon">&#127981;</div>
+          <h4>Critical Infrastructure</h4>
+          <p>Energy, transportation, finance, and healthcare organizations with high-consequence security requirements</p>
+        </div>
+        <div class="client-card reveal reveal-delay-3">
+          <div class="client-icon">&#128200;</div>
+          <h4>Commercial Enterprise</h4>
+          <p>Complex commercial organizations that need federal-grade cybersecurity expertise applied to their threat environment</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTRACTS -->
+  <section class="contracts">
+    <div class="section-inner">
+      <div class="contracts-header reveal">
+        <p class="section-label">// Contract Vehicles</p>
+        <h2 class="section-title">How to Engage</h2>
+        <p class="section-sub">We hold contract vehicles that streamline federal acquisition and support efficient engagement across agency missions.</p>
+      </div>
+      <div class="contracts-grid">
+        <div class="contract-card reveal">
+          <h4>GSA MAS</h4>
+          <p>GSA Multiple Award Schedule — streamlined procurement for federal agencies. Schedule contract number 47QTCB21D0197.</p>
+          <span class="contract-badge">Active</span>
+        </div>
+        <div class="contract-card reveal reveal-delay-1">
+          <h4>GWAC Vehicles</h4>
+          <p>Government-wide acquisition contract vehicles enabling efficient task order placement for cybersecurity requirements across agencies.</p>
+          <span class="contract-badge">Available</span>
+        </div>
+        <div class="contract-card reveal reveal-delay-2">
+          <h4>Direct Award</h4>
+          <p>Sole-source and competitive bidding on agency-specific requirements. We have experience with both large single-award and IDIQ task order structures.</p>
+          <span class="contract-badge">Experienced</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p class="section-label">// Get in Touch</p>
+          <h2 class="section-title">Discuss Your Security Requirements</h2>
+          <p class="section-sub">Whether you're looking to establish a SOC, respond to an active incident, or evaluate your organization's security architecture — call Jonathan directly or send a message and we'll respond promptly.</p>
+          <div class="contact-detail">
+            <strong>Direct Line — Jonathan Kazmierczyk</strong>
+            <span><a href="tel:7036508853" style="color:inherit;text-decoration:none;">(703) 650-8853</a></span>
+          </div>
+          <div class="contact-detail">
+            <strong>Email</strong>
+            <span>jonathan.kazmierczyk@xorsecurity.com</span>
+          </div>
+          <div class="contact-detail">
+            <strong>Location</strong>
+            <span>Fairfax / Falls Church, Virginia</span>
+          </div>
+          <div class="contact-detail">
+            <strong>GSA Schedule</strong>
+            <span>47QTCB21D0197</span>
+          </div>
+        </div>
+        <div class="contact-form reveal reveal-delay-1">
+          <h3>Request a Briefing</h3>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Full name" />
+          </div>
+          <div class="form-group">
+            <label for="org">Organization</label>
+            <input type="text" id="org" placeholder="Agency or company name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="your.name@agency.gov" />
+          </div>
+          <div class="form-group">
+            <label for="need">Capability Area</label>
+            <select id="need">
+              <option value="">Select area of interest</option>
+              <option>SOC / VSOC Operations</option>
+              <option>Incident Response</option>
+              <option>Penetration Testing</option>
+              <option>Threat Intelligence</option>
+              <option>Security Engineering</option>
+              <option>Insider Threat</option>
+              <option>Contract / Procurement Info</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Tell us about your mission requirements or current challenge..."></textarea>
+          </div>
+          <button class="form-submit" type="submit">Send Request</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo"><span class="xor">XOR</span> Security</span>
+        <p>A cyber operations and engineering firm built for the federal mission. Specializing in SOC operations, threat intelligence, incident response, penetration testing, and security engineering. An Agile Defense Company. Fairfax, VA.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Capabilities</h4>
+        <ul>
+          <li><a href="#">SOC / VSOC</a></li>
+          <li><a href="#">Incident Response</a></li>
+          <li><a href="#">Penetration Testing</a></li>
+          <li><a href="#">Threat Intelligence</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About XOR</a></li>
+          <li><a href="#">Contract Vehicles</a></li>
+          <li><a href="#">Agile Defense</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>2025 XOR Security, LLC | An Agile Defense Company. All rights reserved.</span>
+      <span>Fairfax, VA | GSA 47QTCB21D0197</span>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

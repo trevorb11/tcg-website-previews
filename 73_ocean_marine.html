@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ocean Marine Service International — Florida Port Logistics & Ship Supply</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #003366;
+      --navy-deep: #001F3F;
+      --teal: #0096A0;
+      --teal-light: #00B4BF;
+      --white: #FFFFFF;
+      --off-white: #F4F8FB;
+      --light-grey: #E8EEF4;
+      --text-dark: #0D1B2A;
+      --text-mid: #3A4A5C;
+      --text-light: #6B7F96;
+      --gold: #C8A96A;
+      --border: #D0DCE8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(0, 31, 63, 0.97);
+      backdrop-filter: blur(8px);
+      padding: 0 2rem;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-logo span { color: var(--teal); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal-light); }
+
+    .nav-cta {
+      background: var(--teal);
+      color: var(--white) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 4px;
+    }
+    .nav-cta:hover { background: var(--teal-light) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 100px 2rem 60px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1605745341112-85968b19335b?w=1600&q=80') center/cover no-repeat;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(0,31,63,0.92) 0%, rgba(0,31,63,0.75) 60%, rgba(0,150,160,0.3) 100%);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to top, var(--white), transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(0,150,160,0.2);
+      border: 1px solid rgba(0,150,160,0.5);
+      color: var(--teal-light);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.01em;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--teal-light);
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 2rem;
+      line-height: 1.75;
+      max-width: 540px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--teal-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.45);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--teal-light); color: var(--teal-light); }
+
+    .hero-certifications {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .cert-item {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .cert-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--teal-light);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* SECTIONS */
+    section { padding: 90px 2rem; }
+    .container { max-width: 1120px; margin: 0 auto; }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.01em;
+    }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      max-width: 580px;
+      line-height: 1.75;
+    }
+
+    /* CLIENTS */
+    .clients { background: var(--off-white); }
+
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .client-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .client-card:hover {
+      border-color: var(--teal);
+      transform: translateY(-4px);
+    }
+
+    .client-icon {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, var(--navy), var(--teal));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+    }
+
+    .client-icon svg { width: 26px; height: 26px; fill: var(--white); }
+
+    .client-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+
+    .client-card p {
+      color: var(--text-light);
+      font-size: 0.88rem;
+    }
+
+    /* SERVICES */
+    .services { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover { transform: translateY(-5px); }
+
+    .service-card-img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .service-card-body {
+      padding: 1.8rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 12px 12px;
+    }
+
+    .service-card-body h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.01em;
+    }
+
+    .service-card-body p {
+      color: var(--text-mid);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    /* WHY US */
+    .why { background: var(--navy); }
+    .why .section-title { color: var(--white); }
+    .why .section-label { color: var(--teal-light); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .why-item {
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .why-number {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .why-item h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.01em;
+    }
+
+    .why-item p { color: rgba(255,255,255,0.65); font-size: 0.9rem; line-height: 1.65; }
+
+    /* PORTS */
+    .ports { background: var(--off-white); }
+
+    .ports-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .ports-image {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+    }
+
+    .ports-image img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .ports-list { margin-top: 1.5rem; }
+
+    .port-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .port-item:last-child { border-bottom: none; }
+
+    .port-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--teal);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .port-item span {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.01em;
+    }
+
+    .port-item p { color: var(--text-mid); font-size: 0.88rem; }
+
+    /* HOW WE WORK */
+    .process { background: var(--white); }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 2rem;
+      border-radius: 12px;
+      background: var(--off-white);
+      border: 1px solid var(--border);
+    }
+
+    .process-num {
+      width: 56px;
+      height: 56px;
+      background: var(--navy);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--teal-light);
+    }
+
+    .process-step h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+
+    .process-step p { color: var(--text-mid); font-size: 0.9rem; line-height: 1.65; }
+
+    /* TEAM */
+    .team { background: var(--off-white); }
+
+    .team-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .team-image {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 32px rgba(0,0,0,0.12);
+    }
+
+    .team-image img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .team-text h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .team-text p {
+      color: var(--text-mid);
+      font-size: 0.97rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    /* CONTACT */
+    .contact { background: var(--navy-deep); }
+    .contact .section-title { color: var(--white); }
+    .contact .section-label { color: var(--teal-light); }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.01em;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-detail-icon { width: 20px; height: 20px; fill: var(--teal-light); flex-shrink: 0; margin-top: 2px; }
+    .contact-detail p { color: rgba(255,255,255,0.7); font-size: 0.93rem; line-height: 1.5; }
+    .contact-detail a { color: var(--teal-light); text-decoration: none; }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      padding: 0.85rem 1rem;
+      color: var(--white);
+      font-size: 0.92rem;
+      font-family: 'Source Sans 3', sans-serif;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,0.35); }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus { outline: none; border-color: var(--teal); }
+    .contact-form select option { background: var(--navy-deep); }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--teal);
+      color: var(--white);
+      border: none;
+      padding: 1rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-submit:hover { background: var(--teal-light); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      background: #00111F;
+      padding: 3rem 2rem 2rem;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.87rem;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-brand p { margin-top: 0.8rem; line-height: 1.7; max-width: 300px; }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.5rem; }
+    .footer-col ul a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.87rem; transition: color 0.2s; }
+    .footer-col ul a:hover { color: var(--teal-light); }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .ports-inner { grid-template-columns: 1fr; }
+      .team-inner { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      section { padding: 60px 1.2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">OMS <span>International</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#ports">Port Coverage</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Request Services</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">FMCSA Registered &nbsp;|&nbsp; Active Since 2017 &nbsp;|&nbsp; Miami, FL</div>
+      <h1>Ships Need Supplies.<br/><em>Florida's Ports</em><br/>Need a Partner They Can Count On.</h1>
+      <p>Ocean Marine Service International provides provisioning, supply, and logistics to container ships, cargo vessels, and cruise ships across Florida's ports. When a vessel is in port, turnaround time matters — and we're built for exactly that.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Request a Supply Quote</a>
+        <a href="#services" class="btn-outline">Our Services</a>
+      </div>
+      <div class="hero-certifications">
+        <div class="cert-item"><div class="cert-dot"></div>FMCSA Certified Carrier & Broker</div>
+        <div class="cert-item"><div class="cert-dot"></div>Interstate & Intrastate Operations</div>
+        <div class="cert-item"><div class="cert-dot"></div>Florida Port Expertise</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE SERVE -->
+  <section class="clients" id="clients">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Who We Serve</div>
+        <h2 class="section-title">Built for Vessels That Can't Afford Delays</h2>
+        <p class="section-lead">We work with commercial maritime operators of all kinds — from the world's largest cargo carriers to cruise lines moving thousands of passengers through Florida's waters. Every call has a schedule. We help you keep it.</p>
+      </div>
+      <div class="clients-grid">
+        <div class="client-card reveal reveal-delay-1">
+          <div class="client-icon">
+            <svg viewBox="0 0 24 24"><path d="M2 20h20l-2-6H4L2 20zm18-8l-4-8H8L4 12h16zM12 4v4m-4 0h8"/></svg>
+          </div>
+          <h3>Container Ships</h3>
+          <p>Full provisioning and supply for container vessels calling at Florida ports</p>
+        </div>
+        <div class="client-card reveal reveal-delay-2">
+          <div class="client-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 17h18M5 17l-2 4M19 17l2 4M7 17V8a5 5 0 0110 0v9M12 8v4m0 0l3-2m-3 2l-3-2"/></svg>
+          </div>
+          <h3>General Cargo Vessels</h3>
+          <p>Logistics and supply coordination for general cargo operations</p>
+        </div>
+        <div class="client-card reveal reveal-delay-3">
+          <div class="client-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 18h18v2H3zM5 18V10h14v8M12 6a2 2 0 100-4 2 2 0 000 4zm0 0v4m-4 0h8"/></svg>
+          </div>
+          <h3>Cruise Ships</h3>
+          <p>Timely, professional provisioning for cruise lines in Florida's home ports</p>
+        </div>
+        <div class="client-card reveal reveal-delay-4">
+          <div class="client-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>Maritime Operators</h3>
+          <p>Comprehensive logistics support for any commercial maritime operation in Florida</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Our Services</div>
+        <h2 class="section-title">End-to-End Maritime Solutions</h2>
+        <p class="section-lead">From ship supply to freight logistics, OMS International provides the operational backbone that keeps vessels moving and ports productive.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=600&q=80" alt="Ship provisioning and supply" />
+          <div class="service-card-body">
+            <h3>Ship Provisioning & Supply</h3>
+            <p>Direct delivery of goods and supplies to vessels in port — food, equipment, materials, and consumables coordinated precisely to your vessel's schedule and specifications.</p>
+          </div>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=600&q=80" alt="Maritime freight logistics" />
+          <div class="service-card-body">
+            <h3>Maritime Logistics</h3>
+            <p>Coordinating complex freight and cargo movements across Florida's port network. Our logistics expertise ensures on-time delivery and seamless port operations.</p>
+          </div>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Carrier and brokerage services" />
+          <div class="service-card-body">
+            <h3>Carrier & Brokerage Services</h3>
+            <p>FMCSA-certified interstate and intrastate carrier and broker operations. We connect cargo with reliable transportation across Florida and beyond state lines.</p>
+          </div>
+        </div>
+        <div class="service-card reveal reveal-delay-4">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600&q=80" alt="Marine management support" />
+          <div class="service-card-body">
+            <h3>Marine Management Support</h3>
+            <p>Operational support services for vessel operators navigating Florida's waters and port systems. We provide the local expertise and coordination that keeps your operation running smoothly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why" id="why">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Why OMS International</div>
+        <h2 class="section-title">Why Maritime Operators Choose OMS International</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-item reveal reveal-delay-1">
+          <div class="why-number">2017</div>
+          <h3>In Florida's Ports Since 2017</h3>
+          <p>We've been operating in Florida's maritime corridor since 2017 — long enough to know the local rhythms, build the relationships, and understand what port operations actually require on the ground.</p>
+        </div>
+        <div class="why-item reveal reveal-delay-2">
+          <div class="why-number">FMCSA</div>
+          <h3>FMCSA Certified — Carrier and Broker</h3>
+          <p>Registered and active with the FMCSA as both a carrier and broker since 2018. We handle interstate and intrastate operations, so the moment a shipment leaves the dock, we're still your partner.</p>
+        </div>
+        <div class="why-item reveal reveal-delay-3">
+          <div class="why-number">5+</div>
+          <h3>Major Florida Ports Served</h3>
+          <p>From PortMiami to Port Tampa Bay, we have the geographic reach and local knowledge to serve vessels across Florida's entire port system, not just one location.</p>
+        </div>
+        <div class="why-item reveal reveal-delay-4">
+          <div class="why-number">24/7</div>
+          <h3>Port-Ready Responsiveness</h3>
+          <p>Maritime doesn't run on a 9-to-5 schedule, and neither do we. We're structured to respond to your vessel's timeline, not the other way around.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORT COVERAGE -->
+  <section class="ports" id="ports">
+    <div class="container">
+      <div class="ports-inner">
+        <div class="ports-image reveal">
+          <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800&q=80" alt="Florida port operations" />
+        </div>
+        <div class="reveal">
+          <div class="section-label">Port Coverage</div>
+          <h2 class="section-title">Serving Florida's Busiest Ports</h2>
+          <p class="section-lead">We operate across the ports that drive Florida's maritime economy — each with its own operational rhythms, requirements, and logistics considerations that our team knows well.</p>
+          <div class="ports-list">
+            <div class="port-item">
+              <div class="port-dot"></div>
+              <div>
+                <span>PortMiami</span>
+                <p>The Cruise Capital of the World — container and cruise operations</p>
+              </div>
+            </div>
+            <div class="port-item">
+              <div class="port-dot"></div>
+              <div>
+                <span>Port Everglades</span>
+                <p>One of the busiest cargo ports on the East Coast</p>
+              </div>
+            </div>
+            <div class="port-item">
+              <div class="port-dot"></div>
+              <div>
+                <span>Port Tampa Bay</span>
+                <p>Florida's largest port by cargo tonnage</p>
+              </div>
+            </div>
+            <div class="port-item">
+              <div class="port-dot"></div>
+              <div>
+                <span>Port Canaveral</span>
+                <p>Major cruise and cargo gateway on Florida's Space Coast</p>
+              </div>
+            </div>
+            <div class="port-item">
+              <div class="port-dot"></div>
+              <div>
+                <span>Additional Florida Ports</span>
+                <p>Serving vessels at additional Florida port locations upon request</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:0;">
+        <div class="section-label">How We Work</div>
+        <h2 class="section-title">From First Call to Last Delivery</h2>
+        <p class="section-lead" style="margin:0 auto;">No guesswork. No delays. Here is exactly how we handle every engagement from first contact through completed delivery.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal reveal-delay-1">
+          <div class="process-num">01</div>
+          <h3>Initial Consultation</h3>
+          <p>We learn about your vessel type, port schedule, specific supply or logistics needs, and any special requirements before we propose anything.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="process-num">02</div>
+          <h3>Custom Logistics Plan</h3>
+          <p>Our team develops a tailored service plan built around your vessel's schedule, cargo specifications, and port requirements — nothing generic.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="process-num">03</div>
+          <h3>Coordinated Execution</h3>
+          <p>We coordinate delivery, provisioning, or logistics precisely to your timeline. Our team stays in communication throughout to ensure nothing is left to chance.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-4">
+          <div class="process-num">04</div>
+          <h3>Ongoing Partnership</h3>
+          <p>We build long-term relationships with the maritime operators we serve, improving with each call and becoming a reliable extension of your port operations team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team" id="about">
+    <div class="container">
+      <div class="team-inner">
+        <div class="team-image reveal">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80" alt="OMS International maritime team" />
+        </div>
+        <div class="reveal">
+          <div class="section-label">About Us</div>
+          <h2>If It Floats Through Florida, We Can Supply It.</h2>
+          <p>OMS International was built around one simple idea: when a ship is in port, it needs supplies, coordination, and logistics handled by people who already know the dock — not someone learning on the fly.</p>
+          <p>We're based in Miami's maritime corridor, which puts us close to PortMiami and Port Everglades — two of the busiest ports in the Western Hemisphere. Our team knows the schedules, the vendors, the regulatory environment, and how to move fast when a vessel's turnaround window is tight.</p>
+          <p>As an FMCSA-certified carrier and broker, we also handle the inland transportation piece — so a single call to our team covers provisioning, cargo coordination, and ground logistics. That's one partner, not four.</p>
+          <p>C. Ruiz and the OMS team have been doing this since 2017. If you're operating in Florida's ports, give us a call at <a href="tel:7868283832">(786) 828-3832</a> — we'll get you what you need.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">Request a Supply Quote</h2>
+        <p class="section-lead" style="color:rgba(255,255,255,0.65);">Tell us your vessel type, port schedule, and what you need. We'll respond fast — because in maritime, timing is everything.</p>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-info reveal">
+          <h3>Call C. Ruiz: (786) 828-3832</h3>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.08 2.2 2 2 0 012.06.06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            <p><a href="tel:7868283832">(786) 828-3832</a></p>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <p><a href="mailto:cruiz@oceanmarineservice.net">cruiz@oceanmarineservice.net</a></p>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <p>Miami, FL 33172<br/>Serving all Florida ports</p>
+          </div>
+        </div>
+        <div class="reveal">
+          <form class="contact-form">
+            <div class="form-row">
+              <input type="text" placeholder="Your Name" />
+              <input type="text" placeholder="Company / Vessel Operator" />
+            </div>
+            <div class="form-row">
+              <input type="email" placeholder="Email Address" />
+              <input type="tel" placeholder="Phone Number" />
+            </div>
+            <select>
+              <option value="" disabled selected>Vessel Type</option>
+              <option>Container Ship</option>
+              <option>General Cargo Vessel</option>
+              <option>Cruise Ship</option>
+              <option>Other Commercial Vessel</option>
+            </select>
+            <select>
+              <option value="" disabled selected>Service Needed</option>
+              <option>Ship Provisioning & Supply</option>
+              <option>Maritime Logistics</option>
+              <option>Carrier / Brokerage Services</option>
+              <option>Marine Management Support</option>
+              <option>Multiple Services</option>
+            </select>
+            <textarea placeholder="Describe your port schedule, location, and what you need from our team..."></textarea>
+            <button type="submit" class="btn-submit">Send Request</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">OMS <span style="color:#00B4BF;">International</span></a>
+        <p>Ocean Marine Service International LLC — supplying goods, provisioning, and logistics to ships operating across Florida's port network since 2017. Miami, FL.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Ship Provisioning</a></li>
+          <li><a href="#services">Maritime Logistics</a></li>
+          <li><a href="#services">Carrier & Brokerage</a></li>
+          <li><a href="#services">Marine Management</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About OMS</a></li>
+          <li><a href="#ports">Port Coverage</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Miami, FL 33172 &nbsp;|&nbsp; (786) 828-3832 &nbsp;|&nbsp; cruiz@oceanmarineservice.net</p>
+      <p>&copy; 2025 Ocean Marine Service International LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

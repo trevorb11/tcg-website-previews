@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Envision Downhole | Well Intervention and Downhole Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal: #1a1e24;
+      --dark: #0d1117;
+      --teal: #0e7490;
+      --teal-light: #06b6d4;
+      --teal-pale: #cffafe;
+      --orange: #ea580c;
+      --orange-light: #f97316;
+      --white: #ffffff;
+      --off-white: #f8f9fa;
+      --gray: #6b7280;
+      --gray-light: #2a2f38;
+      --gray-mid: #374151;
+      --text: #e2e8f0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: var(--text);
+      background: var(--charcoal);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(13, 17, 23, 0.97);
+      backdrop-filter: blur(8px);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      border-bottom: 1px solid var(--gray-light);
+    }
+
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .nav-logo span { color: var(--teal-light); }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.72);
+      text-decoration: none;
+      font-size: 0.83rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--teal-light); }
+
+    .nav-cta {
+      background: var(--teal);
+      color: var(--white) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 4px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--teal-light) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--dark);
+      display: flex;
+      align-items: center;
+      padding: 120px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1508615039623-a25605d2b022?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.2;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(13,17,23,0.95) 55%, transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(14, 116, 144, 0.2);
+      border: 1px solid var(--teal);
+      color: var(--teal-light);
+      font-size: 0.73rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+      color: var(--white);
+      line-height: 1.05;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 .accent { color: var(--teal-light); }
+    .hero h1 .accent2 { color: var(--orange-light); }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2.5rem;
+      max-width: 500px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--teal-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.35);
+      transition: border-color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--teal-light); }
+
+    /* STATS */
+    .stats-bar {
+      background: var(--gray-light);
+      border-top: 3px solid var(--teal);
+      padding: 35px 5%;
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-item strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--teal-light);
+      letter-spacing: 1px;
+    }
+
+    .stat-item span {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* SECTIONS */
+    section { padding: 90px 5%; }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-heading {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--white);
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+
+    .section-intro {
+      font-size: 0.98rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 580px;
+      margin-bottom: 3rem;
+    }
+
+    /* ABOUT */
+    .about {
+      background: var(--charcoal);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--gray-light);
+    }
+
+    .about-text p {
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 1.2rem;
+      font-size: 0.97rem;
+    }
+
+    .about-pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .about-pillar {
+      padding: 1.2rem;
+      background: var(--gray-light);
+      border-radius: 4px;
+      border-left: 3px solid var(--teal);
+    }
+
+    .about-pillar h4 {
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 0.25rem;
+    }
+
+    .about-pillar p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+      margin: 0;
+    }
+
+    /* SERVICES */
+    .services {
+      background: var(--dark);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5px;
+      max-width: 1100px;
+      margin: 0 auto;
+      background: var(--gray-light);
+    }
+
+    .service-card {
+      background: var(--charcoal);
+      padding: 2.5rem 2rem;
+      transition: background 0.2s;
+      border-top: 3px solid transparent;
+    }
+
+    .service-card:hover {
+      background: var(--gray-mid);
+      border-top-color: var(--teal);
+    }
+
+    .service-card h3 {
+      font-size: 1.15rem;
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .service-card p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    .service-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      border: 1px solid var(--teal);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      margin-bottom: 1rem;
+    }
+
+    /* INVISION */
+    .invision {
+      background: var(--charcoal);
+    }
+
+    .invision-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .invision-image img {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--gray-light);
+    }
+
+    .invision-text p {
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 1.2rem;
+      font-size: 0.97rem;
+    }
+
+    .invision-features {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+
+    .invision-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.85rem;
+      font-size: 0.92rem;
+      padding: 0.75rem;
+      background: var(--gray-light);
+      border-radius: 4px;
+    }
+
+    .invision-features li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--teal-light);
+      border-radius: 50%;
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    /* SAFETY */
+    .safety {
+      background: var(--dark);
+    }
+
+    .safety-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .safety-card {
+      background: var(--charcoal);
+      border: 1px solid var(--gray-light);
+      border-radius: 4px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border-top: 4px solid var(--orange);
+      transition: transform 0.2s;
+    }
+
+    .safety-card:hover { transform: translateY(-4px); }
+
+    .safety-card h3 {
+      font-size: 1rem;
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .safety-card p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--gray-light);
+      border-radius: 4px;
+      padding: 2rem;
+      border-left: 3px solid var(--teal);
+    }
+
+    .testimonial-card p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.95rem;
+      color: var(--teal-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .testimonial-author span {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .testimonial-author img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* CONTACT */
+    .contact {
+      background: var(--charcoal);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      font-size: 2rem;
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p { color: rgba(255,255,255,0.6); margin-bottom: 2rem; font-size: 0.95rem; }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding: 1rem 1.2rem;
+      background: var(--gray-light);
+      border-radius: 4px;
+      border-left: 3px solid var(--teal);
+    }
+
+    .contact-detail div strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--teal-light);
+    }
+
+    .contact-detail div span { font-size: 0.92rem; color: rgba(255,255,255,0.75); }
+
+    .contact-form {
+      background: var(--gray-light);
+      padding: 2.5rem;
+      border-radius: 4px;
+      border-top: 4px solid var(--teal);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group { margin-bottom: 1.2rem; }
+
+    .form-group label {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--gray-mid);
+      border-radius: 4px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.92rem;
+      color: var(--white);
+      background: var(--charcoal);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--teal-light); }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, var(--teal-dark, #0a5954) 0%, var(--teal) 100%);
+      text-align: center;
+      padding: 90px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=1400&q=80') center/cover no-repeat;
+      opacity: 0.08;
+    }
+
+    .cta-section > * { position: relative; z-index: 2; }
+
+    .cta-section h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      color: rgba(255,255,255,0.75);
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.5);
+      padding: 60px 5% 30px;
+      border-top: 1px solid var(--gray-light);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+    }
+
+    .footer-brand p { font-size: 0.85rem; margin-top: 1rem; line-height: 1.7; }
+
+    .footer-col h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      color: var(--teal-light);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.55rem; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--teal-light); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid var(--gray-light);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .about-grid,
+      .invision-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      section { padding: 65px 5%; }
+      .stats-bar { gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .about-pillars { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Envision <span>Downhole</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#invision">InVision</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-badge">30+ Years of Downhole Expertise</div>
+      <h1>Downhole<br><span class="accent">Precision.</span><br><span class="accent2">Zero</span> Compromise.</h1>
+      <p>Well intervention, fishing operations, completions, and workover solutions — delivered by a team that has spent three decades solving the industry's hardest problems downhole.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Request a Consultation</a>
+        <a href="#services" class="btn-outline">Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat-item">
+      <strong>30+</strong>
+      <span>Years Experience</span>
+    </div>
+    <div class="stat-item">
+      <strong>5K/10K</strong>
+      <span>Pump Capabilities</span>
+    </div>
+    <div class="stat-item">
+      <strong>100%</strong>
+      <span>Safety First Culture</span>
+    </div>
+    <div class="stat-item">
+      <strong>24/7</strong>
+      <span>Field Availability</span>
+    </div>
+  </div>
+
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p class="section-label">Who We Are</p>
+        <h2 class="section-heading">Three Decades of Downhole Solutions</h2>
+        <p>Envision Downhole was built by downhole specialists who grew tired of solutions that fell short of the real demands of the wellbore. We bring over 30 years of experience to every job — whether it's a routine workover or a complex fishing operation that's stumped other crews.</p>
+        <p>Our approach is solutions-driven. We don't show up with a script. We show up with experience, the right tools, and the discipline to work safely and efficiently every single time. The InVision ERP system we've developed gives our clients real-time visibility into every job from anywhere in the field.</p>
+        <p>From completions to saltwater disposal well workover and everything in between, we do the work that keeps your assets producing.</p>
+        <div class="about-pillars">
+          <div class="about-pillar">
+            <h4>Precision</h4>
+            <p>Every decision in the wellbore is made with care and experience behind it.</p>
+          </div>
+          <div class="about-pillar">
+            <h4>Safety</h4>
+            <p>Zero-incident is the only acceptable goal. We plan for it on every job.</p>
+          </div>
+          <div class="about-pillar">
+            <h4>Quality</h4>
+            <p>We don't take shortcuts. Not underground, not on the surface.</p>
+          </div>
+          <div class="about-pillar">
+            <h4>Expertise</h4>
+            <p>Three decades of downhole experience behind every crew we field.</p>
+          </div>
+        </div>
+      </div>
+      <div class="about-image reveal">
+        <img src="https://images.unsplash.com/photo-1565704134685-5c4ece53b9f3?w=800&q=80" alt="Oil field operations" />
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">What We Do</p>
+      <h2 class="section-heading reveal">Downhole Services Built for Real Conditions</h2>
+      <p class="section-intro reveal">Every service we offer has been refined over decades of actual field work — not in a boardroom, but at the wellhead where the decisions matter.</p>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-tag">Intervention</div>
+          <h3>Fishing and Well Intervention</h3>
+          <p>Complex fishing operations and wellbore intervention solutions. When something is stuck, lost, or in the way of production, we have the experience and tools to solve it.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-tag">Completions</div>
+          <h3>Cased Hole Completions</h3>
+          <p>Bridge plug runs for isolation and remedial work. Retrievable packer systems. Cased hole tools designed for precision placement and reliable performance.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-tag">Workover</div>
+          <h3>Workover Services</h3>
+          <p>Full-scope wellbore workover including SWD (Saltwater Disposal) well specialization. We restore well integrity and return assets to productive capacity.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-tag">Pumping</div>
+          <h3>High-Pressure Pumping</h3>
+          <p>5,000 and 10,000 PSI pump capabilities for a range of wellbore applications requiring precise pressure control.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-tag">Equipment</div>
+          <h3>Power Swivels and Laydown</h3>
+          <p>Power swivel operations and pipe laydown unit services integrated with your tubing and rod string workover programs.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-tag">SWD Wells</div>
+          <h3>SWD Well Services</h3>
+          <p>Specialized workover and completion services for saltwater disposal wells, including mechanical integrity testing and remediation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="invision" id="invision">
+    <div class="invision-grid">
+      <div class="invision-image reveal">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="InVision real-time operations dashboard" />
+      </div>
+      <div class="invision-text reveal">
+        <p class="section-label">Proprietary Technology</p>
+        <h2 class="section-heading">InVision: Real-Time Field Intelligence</h2>
+        <p>InVision is the enterprise resource planning and field tracking system we built specifically for the downhole and well intervention sector — because the generic off-the-shelf platforms don't understand what happens at 10,000 feet.</p>
+        <p>Developed by our own downhole specialists, InVision gives operators and clients secure, real-time access to job status, compliance documentation, and operational data from any device.</p>
+        <ul class="invision-features">
+          <li>Real-time job tracking accessible from any device in the field</li>
+          <li>Secure data access with role-based permissions</li>
+          <li>Reduces operational risk through better information flow</li>
+          <li>Creates efficiency across multi-well programs</li>
+          <li>Delivers audit-ready documentation automatically</li>
+          <li>Built by downhole engineers — not generic software developers</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="safety" id="safety">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">Safety Commitment</p>
+      <h2 class="section-heading reveal">Safety Is Not an Add-On. It Is the Job.</h2>
+      <p class="section-intro reveal">Our safety culture is embedded in every pre-job meeting, every equipment check, and every decision made at the wellhead. Zero incidents is not a goal — it is the baseline.</p>
+      <div class="safety-grid">
+        <div class="safety-card reveal">
+          <h3>Pre-Job Safety Planning</h3>
+          <p>Every job starts with a detailed job safety analysis. No crew moves until we've talked through every hazard and every control.</p>
+        </div>
+        <div class="safety-card reveal">
+          <h3>Continuous Training</h3>
+          <p>Our field crews receive ongoing safety training and certification updates. Competency is maintained, not assumed.</p>
+        </div>
+        <div class="safety-card reveal">
+          <h3>OSHA Compliance</h3>
+          <p>Full OSHA and regulatory compliance across all operations. Documentation is maintained and available on request.</p>
+        </div>
+        <div class="safety-card reveal">
+          <h3>Incident Review</h3>
+          <p>Every near-miss and incident is reviewed and used to improve our procedures. We learn from close calls before they become consequences.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" style="background:var(--charcoal);">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">Field Experience</p>
+      <h2 class="section-heading reveal">What Operators Say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <p>We had a stuck tool situation that had already cost us 36 hours with another crew. Envision Downhole came in, assessed the situation calmly, and had us back on track in less than a day. Their experience is the difference.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Operator" />
+            <div>
+              <strong>Kyle R.</strong>
+              <span>Production Superintendent, Texas Basin</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>InVision changed how we track workover operations across our portfolio. For the first time, I can see what's happening on multiple wells from one screen, with documentation I can actually trust.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=100&q=80" alt="Operations manager" />
+            <div>
+              <strong>Dana M.</strong>
+              <span>VP Operations, Independent Operator</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>Three years, dozens of SWD well jobs, not a single safety incident. That's the Envision Downhole standard. Their crews don't cut corners, and their safety record proves it.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&q=80" alt="Engineering manager" />
+            <div>
+              <strong>Laura S.</strong>
+              <span>Completions Engineer, E&P Company</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <h2>Ready to Solve Your Downhole Challenge?</h2>
+    <p>Tell us what you're facing. We've probably seen it before — and we know how to handle it.</p>
+    <a href="#contact" class="btn-primary">Contact Our Team</a>
+  </div>
+
+  <section class="contact" id="contact">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p class="section-label">Get in Touch</p>
+        <h2>Talk to an Expert</h2>
+        <p>Whether you have an active well problem or you're planning an upcoming workover program, reach out. We respond quickly — because in this business, timing matters.</p>
+        <div class="contact-detail">
+          <div>
+            <strong>Email</strong>
+            <span>cblanchard@envisiondownhole.com</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div>
+            <strong>Website</strong>
+            <span>envisiondownhole.com</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div>
+            <strong>Availability</strong>
+            <span>24/7 for active well emergencies</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;color:var(--white);text-transform:uppercase;margin-bottom:1.5rem;">Contact Envision Downhole</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="First" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Last" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Company</label>
+          <input type="text" placeholder="Operating company" />
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" placeholder="Direct line preferred" />
+        </div>
+        <div class="form-group">
+          <label>Service Needed</label>
+          <select>
+            <option value="">Select...</option>
+            <option>Fishing / Well Intervention</option>
+            <option>Completions</option>
+            <option>Workover Services</option>
+            <option>SWD Well Services</option>
+            <option>InVision ERP System</option>
+            <option>General Inquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Describe the Well Situation</label>
+          <textarea placeholder="Basin, formation, depth, issue description — whatever you can share helps us respond faster..."></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;padding:1rem;font-size:1rem;">Submit Request</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">Envision <span style="color:var(--teal-light);">Downhole</span></a>
+        <p>Envision Downhole LLC &mdash; 30+ years of well intervention, fishing, completions, and workover expertise. Proprietary InVision technology for real-time field intelligence.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Fishing & Intervention</a></li>
+          <li><a href="#">Completions</a></li>
+          <li><a href="#">Workover</a></li>
+          <li><a href="#">SWD Services</a></li>
+          <li><a href="#">Pumping</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Technology</h4>
+        <ul>
+          <li><a href="#">InVision ERP</a></li>
+          <li><a href="#">Real-Time Tracking</a></li>
+          <li><a href="#">Field Documentation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:cblanchard@envisiondownhole.com">cblanchard@envisiondownhole.com</a></li>
+          <li><a href="#">envisiondownhole.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Envision Downhole LLC. All rights reserved.</p>
+      <p>Downhole Solutions with Unmatched Precision and Safety</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

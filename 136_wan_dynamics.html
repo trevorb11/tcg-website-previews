@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WAN Dynamics | Managed Network Services and SD-WAN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #071E40;
+      --navy-mid: #0D2E5A;
+      --cyan: #00B4D8;
+      --cyan-light: #48CAE4;
+      --blue: #1565C0;
+      --gray-light: #EEF2F7;
+      --white: #FFFFFF;
+      --text: #0D1B2A;
+      --text-light: #5A6B7A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; line-height: 1.15; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(7,30,64,0.98);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 66px;
+      border-bottom: 1px solid rgba(0,180,216,0.15);
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--cyan); }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--cyan); }
+
+    .nav-cta {
+      background: var(--cyan) !important;
+      color: var(--navy) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 3px;
+      font-weight: 600 !important;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 95vh;
+      background: var(--navy);
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.1;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,180,216,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,180,216,0.06) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(7,30,64,0.98) 0%, rgba(7,30,64,0.65) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 5%;
+      padding-top: 66px;
+      max-width: 750px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(0,180,216,0.1);
+      border: 1px solid rgba(0,180,216,0.25);
+      color: var(--cyan);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.3rem;
+    }
+
+    .hero h1 span { color: var(--cyan); }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 540px;
+      margin-bottom: 2.5rem;
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-cyan {
+      background: var(--cyan);
+      color: var(--navy);
+      padding: 0.9rem 2.2rem;
+      border: none;
+      border-radius: 3px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-cyan:hover { background: var(--cyan-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 0.9rem 2.2rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 3px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
+
+    /* RECOGNITION BAR */
+    .recognition { background: var(--navy-mid); padding: 2.5rem 5%; border-top: 1px solid rgba(0,180,216,0.15); border-bottom: 1px solid rgba(0,180,216,0.15); }
+
+    .recognition-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .recognition-text {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .recognition-badge {
+      background: rgba(0,180,216,0.08);
+      border: 1px solid rgba(0,180,216,0.2);
+      padding: 0.75rem 1.5rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--cyan);
+      letter-spacing: 0.04em;
+    }
+
+    /* SECTIONS */
+    section { padding: 5.5rem 5%; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .overline {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--text-light);
+      max-width: 580px;
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    /* ABOUT */
+    .about { background: var(--gray-light); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3.5rem;
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .about-text p {
+      font-size: 0.98rem;
+      color: var(--text-light);
+      margin-bottom: 1.2rem;
+      line-height: 1.85;
+    }
+
+    .about-facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .fact {
+      background: var(--white);
+      padding: 1.2rem;
+      border-left: 3px solid var(--cyan);
+    }
+
+    .fact strong { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); display: block; }
+    .fact span { font-size: 0.8rem; color: var(--text-light); }
+
+    /* SERVICES */
+    .services { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .service-card {
+      background: var(--gray-light);
+      padding: 2.5rem;
+      border-radius: 4px;
+      border-left: 4px solid var(--cyan);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--navy);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .service-icon svg { width: 22px; height: 22px; fill: none; stroke: var(--cyan); stroke-width: 2; }
+
+    .service-card h3 { font-size: 1.2rem; margin-bottom: 0.75rem; color: var(--navy); }
+    .service-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.75; margin-bottom: 1.2rem; }
+
+    .service-features { list-style: none; }
+    .service-features li { font-size: 0.82rem; color: var(--text-light); padding: 0.3rem 0; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .service-features li::before { content: ''; width: 5px; height: 5px; min-width: 5px; background: var(--cyan); border-radius: 50%; }
+
+    /* DYNAWAN */
+    .dynawan { background: var(--navy); }
+    .dynawan .section-title { color: var(--white); }
+    .dynawan .section-desc { color: rgba(255,255,255,0.55); }
+    .dynawan .overline { color: var(--cyan); }
+
+    .dynawan-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3.5rem;
+    }
+
+    .dynawan-img img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .dynawan-features { display: grid; gap: 1.5rem; }
+
+    .dynawan-feature {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(0,180,216,0.12);
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .dynawan-feature:hover { background: rgba(0,180,216,0.07); }
+
+    .df-icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      background: rgba(0,180,216,0.12);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .df-icon svg { width: 18px; height: 18px; fill: none; stroke: var(--cyan); stroke-width: 2; }
+
+    .dynawan-feature h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 0.3rem; }
+    .dynawan-feature p { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
+
+    /* WHY SD-WAN */
+    .sdwan { background: var(--gray-light); }
+
+    .sdwan-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .sdwan-card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      border-radius: 4px;
+      border-top: 3px solid var(--cyan);
+      text-align: center;
+    }
+
+    .sdwan-card h3 { font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--navy); }
+    .sdwan-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; }
+
+    /* PROCESS */
+    .process { background: var(--white); }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 12%;
+      right: 12%;
+      height: 1px;
+      background: rgba(0,180,216,0.2);
+    }
+
+    .process-step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-dot {
+      width: 56px;
+      height: 56px;
+      background: var(--navy);
+      border: 2px solid var(--cyan);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--cyan);
+    }
+
+    .process-step h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--navy); }
+    .process-step p { font-size: 0.82rem; color: var(--text-light); line-height: 1.65; }
+
+    /* INDUSTRIES */
+    .industries { background: var(--gray-light); }
+
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      margin-top: 3.5rem;
+    }
+
+    .industry-badge {
+      background: var(--white);
+      padding: 1.5rem 1rem;
+      text-align: center;
+      border-radius: 4px;
+      border-bottom: 3px solid transparent;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .industry-badge:hover {
+      border-color: var(--cyan);
+      box-shadow: 0 4px 16px rgba(0,180,216,0.12);
+    }
+
+    .industry-badge h3 { font-size: 0.85rem; font-weight: 600; color: var(--navy); margin-top: 0.75rem; }
+    .industry-badge p { font-size: 0.75rem; color: var(--text-light); margin-top: 0.25rem; }
+
+    /* TESTIMONIAL */
+    .testimonials { background: var(--white); }
+
+    .test-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .test-card {
+      background: var(--gray-light);
+      border-radius: 4px;
+      padding: 2.5rem;
+      border-left: 4px solid var(--cyan);
+    }
+
+    .test-card p {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.8;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+
+    .test-client strong { font-size: 0.88rem; font-weight: 700; display: block; color: var(--navy); }
+    .test-client span { font-size: 0.78rem; color: var(--text-light); }
+
+    /* CONTACT */
+    .contact { background: var(--navy); }
+    .contact .section-title { color: var(--white); }
+    .contact .section-desc { color: rgba(255,255,255,0.55); }
+    .contact .overline { color: var(--cyan); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 5rem;
+      margin-top: 3.5rem;
+    }
+
+    .contact-info h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      color: var(--cyan);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-detail svg { width: 16px; height: 16px; min-width: 16px; fill: none; stroke: var(--cyan); stroke-width: 2; margin-top: 3px; }
+
+    .contact-form { display: grid; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+
+    .form-group label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 3px;
+      padding: 0.8rem 1rem;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--cyan); }
+    .form-group select option { background: var(--navy); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    /* FOOTER */
+    footer {
+      background: #030F20;
+      color: rgba(255,255,255,0.3);
+      padding: 2.5rem 5%;
+      text-align: center;
+    }
+
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+    .footer-logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 1rem; }
+    .footer-logo span { color: var(--cyan); }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-links a { color: rgba(255,255,255,0.3); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--cyan); }
+    .footer-copy { font-size: 0.72rem; }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .recognition-inner { flex-direction: column; align-items: flex-start; }
+      .about-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .dynawan-grid { grid-template-columns: 1fr; }
+      .sdwan-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+      .industries-grid { grid-template-columns: 1fr 1fr; }
+      .test-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 580px) {
+      .about-facts { grid-template-columns: 1fr 1fr; }
+      .industries-grid { grid-template-columns: 1fr 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">WAN<span>Dynamics</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#dynawan">DynaWAN</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#contact" class="nav-cta">Get Assessment</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img class="hero-bg" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1600&q=80" alt="Network infrastructure" />
+    <div class="hero-grid"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Managed Network Services and SD-WAN</div>
+      <h1>Enterprise Networking. <span>Managed End to End.</span></h1>
+      <p>WAN Dynamics helps organizations transition from legacy network infrastructure to modern, software-defined WAN solutions — with managed services, 24/7 NOC support, and enterprise cloud connectivity built for the way businesses actually operate.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-cyan">Talk to a Network Expert</a>
+        <a href="#dynawan" class="btn-outline">Learn About DynaWAN</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECOGNITION -->
+  <div class="recognition">
+    <div class="recognition-inner">
+      <span class="recognition-text">Industry Recognition</span>
+      <div class="recognition-badge">Gartner Magic Quadrant &mdash; Managed Network Services 2023</div>
+      <div class="recognition-badge">Gartner Magic Quadrant &mdash; Global WAN Services 2024</div>
+      <div class="recognition-badge">National Enterprise Client Base</div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-img reveal">
+          <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=900&q=80" alt="Network engineering team" />
+        </div>
+        <div class="about-text reveal reveal-delay-2">
+          <div class="overline">Who We Are</div>
+          <h2 class="section-title">Built to Help Organizations Use Enterprise Networking the Right Way</h2>
+          <p>WAN Dynamics was founded in 2016 in Cleveland, Ohio by Jason Gintert with a clear mission: help organizations effectively leverage enterprise networking technologies — SD-WAN, cloud applications, and SaaS platforms — without the complexity that typically comes with them.</p>
+          <p>The company grew rapidly by combining deep technical expertise with a managed services model that takes the ongoing operational burden off client IT teams. Recognition in two consecutive Gartner Magic Quadrants reflects the credibility the team built in the managed network services and SD-WAN markets.</p>
+          <p>WAN Dynamics is now part of Nitel's enterprise network portfolio, bringing expanded resources and national carrier relationships to the managed networking solutions that established the WAN Dynamics brand.</p>
+          <div class="about-facts">
+            <div class="fact">
+              <strong>2016</strong>
+              <span>Founded, Cleveland, OH</span>
+            </div>
+            <div class="fact">
+              <strong>Gartner</strong>
+              <span>Magic Quadrant Recognition</span>
+            </div>
+            <div class="fact">
+              <strong>24/7</strong>
+              <span>NOC Management</span>
+            </div>
+            <div class="fact">
+              <strong>National</strong>
+              <span>Enterprise Client Base</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Core Services</div>
+        <h2 class="section-title">Network Solutions Built for Modern Enterprise</h2>
+        <p class="section-desc">From full SD-WAN deployment to ongoing managed infrastructure, WAN Dynamics provides the services modern organizations need to run reliable, high-performance networks across distributed locations.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M1.05 12H23"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+          <h3>Managed SD-WAN</h3>
+          <p>Software-defined WAN deployment and ongoing management — replacing rigid, expensive MPLS with an intelligent, cloud-ready alternative that improves performance while reducing cost.</p>
+          <ul class="service-features">
+            <li>Dynamic path selection across all circuit types</li>
+            <li>Application-aware traffic prioritization</li>
+            <li>Zero-touch provisioning at remote sites</li>
+            <li>Centralized policy management</li>
+            <li>Real-time visibility and reporting</li>
+          </ul>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>
+          </div>
+          <h3>Cloud Connectivity</h3>
+          <p>Direct, optimized connectivity to Microsoft 365, Azure, AWS, and major SaaS platforms — so cloud applications perform the way they should across all locations, not just headquarters.</p>
+          <ul class="service-features">
+            <li>Microsoft 365 and Teams optimization</li>
+            <li>Azure and AWS cloud on-ramps</li>
+            <li>SaaS traffic breakout and steering</li>
+            <li>Secure direct internet access</li>
+            <li>Latency and jitter reduction for cloud apps</li>
+          </ul>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+          </div>
+          <h3>Managed Network Infrastructure</h3>
+          <p>End-to-end management of WAN and LAN infrastructure — routers, switches, firewalls, wireless — with 24/7 NOC monitoring, proactive alerts, and rapid issue resolution.</p>
+          <ul class="service-features">
+            <li>24/7 NOC monitoring and management</li>
+            <li>Proactive health and performance monitoring</li>
+            <li>Device management and firmware maintenance</li>
+            <li>Incident response and escalation management</li>
+            <li>Monthly performance reporting</li>
+          </ul>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Professional Consulting</h3>
+          <p>Network assessments, design, and migration planning for organizations evaluating SD-WAN, planning cloud transitions, or optimizing existing infrastructure before adding managed services.</p>
+          <ul class="service-features">
+            <li>Current-state network assessment</li>
+            <li>SD-WAN readiness evaluation</li>
+            <li>Vendor-neutral technology selection</li>
+            <li>Migration design and planning</li>
+            <li>Post-implementation optimization</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DYNAWAN -->
+  <section class="dynawan" id="dynawan">
+    <div class="section-inner">
+      <div class="dynawan-grid">
+        <div class="reveal">
+          <div class="overline">Flagship Product</div>
+          <h2 class="section-title">DynaWAN: Custom-Designed. 24/7 Managed.</h2>
+          <p class="section-desc" style="color:rgba(255,255,255,0.55);margin-bottom:2.5rem;">DynaWAN is WAN Dynamics' fully managed enterprise WAN solution — custom-engineered for each client's specific environment and actively managed by our NOC around the clock.</p>
+          <div class="dynawan-features">
+            <div class="dynawan-feature">
+              <div class="df-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              <div>
+                <h4>Custom Engineered for You</h4>
+                <p>DynaWAN isn't a catalog product. It's designed around your locations, applications, and performance requirements from day one.</p>
+              </div>
+            </div>
+            <div class="dynawan-feature">
+              <div class="df-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <div>
+                <h4>24/7 NOC Management</h4>
+                <p>Our Network Operations Center monitors your DynaWAN deployment continuously — proactively addressing issues before they affect your users.</p>
+              </div>
+            </div>
+            <div class="dynawan-feature">
+              <div class="df-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+              <div>
+                <h4>Cloud-Ready by Design</h4>
+                <p>DynaWAN is built to deliver consistent, high-performance connectivity to cloud platforms, SaaS applications, and distributed data environments.</p>
+              </div>
+            </div>
+            <div class="dynawan-feature">
+              <div class="df-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+              <div>
+                <h4>Scales With Your Business</h4>
+                <p>Adding locations, adjusting bandwidth, or integrating new applications — DynaWAN adapts to your growth without requiring infrastructure overhauls.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dynawan-img reveal reveal-delay-2">
+          <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80" alt="Network operations center" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY SD-WAN -->
+  <section class="sdwan">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Why SD-WAN</div>
+        <h2 class="section-title">The Business Case for Moving Beyond MPLS</h2>
+        <p class="section-desc">MPLS served organizations well for years. But cloud-first businesses need a network architecture designed for the world they're actually operating in today.</p>
+      </div>
+      <div class="sdwan-grid">
+        <div class="sdwan-card reveal reveal-delay-1">
+          <h3>Cost Reduction</h3>
+          <p>SD-WAN combines affordable broadband circuits with intelligent software to replace expensive MPLS connections — delivering equivalent or better performance at significantly lower cost per location.</p>
+        </div>
+        <div class="sdwan-card reveal reveal-delay-2">
+          <h3>Cloud Performance</h3>
+          <p>MPLS was designed to route traffic through a central hub — not to cloud platforms. SD-WAN enables direct, optimized access to SaaS and cloud applications from every location.</p>
+        </div>
+        <div class="sdwan-card reveal reveal-delay-3">
+          <h3>Operational Agility</h3>
+          <p>Software-defined management makes provisioning new sites, adjusting bandwidth, and changing policies a matter of hours rather than weeks of circuit provisioning and configuration changes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">How We Work</div>
+        <h2 class="section-title">From Assessment to Ongoing Management</h2>
+        <p class="section-desc">Our structured engagement process ensures every deployment is designed correctly from day one — and optimized continuously from day two forward.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal reveal-delay-1">
+          <div class="step-dot">01</div>
+          <h3>Network Assessment</h3>
+          <p>We evaluate your current state — topology, traffic patterns, application needs, and performance pain points — before recommending anything.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="step-dot">02</div>
+          <h3>Custom Design</h3>
+          <p>We engineer a solution tailored to your environment — selecting the right SD-WAN platform, circuits, and architecture for your specific requirements.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="step-dot">03</div>
+          <h3>Deployment</h3>
+          <p>Zero-disruption implementation with coordinated circuit provisioning, device configuration, and testing before any cutover to production traffic.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-4">
+          <div class="step-dot">04</div>
+          <h3>Managed Ongoing</h3>
+          <p>24/7 NOC monitoring, proactive optimization, and a named account team managing your network so your IT team can focus on higher-value work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="industries" id="industries">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Industries We Serve</div>
+        <h2 class="section-title">Enterprise Networking Across Every Sector</h2>
+      </div>
+      <div class="industries-grid">
+        <div class="industry-badge reveal reveal-delay-1">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+          <h3>Retail and Franchise</h3>
+          <p>Multi-location consistency</p>
+        </div>
+        <div class="industry-badge reveal reveal-delay-2">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <h3>Healthcare</h3>
+          <p>Compliant, reliable networks</p>
+        </div>
+        <div class="industry-badge reveal reveal-delay-3">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          <h3>Financial Services</h3>
+          <p>Security and low-latency</p>
+        </div>
+        <div class="industry-badge reveal reveal-delay-4">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <h3>Manufacturing</h3>
+          <p>OT and IT convergence</p>
+        </div>
+        <div class="industry-badge reveal reveal-delay-1">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          <h3>Professional Services</h3>
+          <p>Distributed teams, cloud-first</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Client Perspective</div>
+        <h2 class="section-title">What Enterprise Clients Experience with WAN Dynamics</h2>
+      </div>
+      <div class="test-grid">
+        <div class="test-card reveal reveal-delay-1">
+          <p>"We had 47 locations on MPLS, and the performance issues with our cloud applications were becoming a real business problem. WAN Dynamics designed and deployed an SD-WAN solution across all 47 sites in under eight weeks. The performance improvement was immediate and significant."</p>
+          <div class="test-client">
+            <strong>IT Director</strong>
+            <span>Regional Retail Organization &mdash; Midwest</span>
+          </div>
+        </div>
+        <div class="test-card reveal reveal-delay-2">
+          <p>"The 24/7 NOC management was what sold us. We don't have the internal staff to monitor network health around the clock. WAN Dynamics catches issues before they become outages — and when something does happen, the response time is measured in minutes, not hours."</p>
+          <div class="test-client">
+            <strong>Chief Information Officer</strong>
+            <span>Multi-State Healthcare Network</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Start the Conversation</div>
+        <h2 class="section-title">Request a Network Assessment</h2>
+        <p class="section-desc">Tell us about your organization's network environment and what challenges you're facing. Our team will respond with a structured assessment proposal within two business days.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal reveal-delay-1">
+          <h3>WAN Dynamics</h3>
+          <p style="font-size:0.82rem;color:rgba(255,255,255,0.35);margin-bottom:1.5rem;">A Nitel Company &bull; Cleveland, Ohio</p>
+          <div class="contact-detail">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            jvalore@wandynamics.com
+          </div>
+        </div>
+        <form class="contact-form reveal reveal-delay-2">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" placeholder="Full name" />
+            </div>
+            <div class="form-group">
+              <label>Company</label>
+              <input type="text" placeholder="Organization name" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="your@email.com" />
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" placeholder="(555) 000-0000" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Number of Locations</label>
+              <select>
+                <option value="">Select range</option>
+                <option>1 - 5</option>
+                <option>6 - 25</option>
+                <option>26 - 100</option>
+                <option>100+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Primary Challenge</label>
+              <select>
+                <option value="">Select one</option>
+                <option>SD-WAN / MPLS Replacement</option>
+                <option>Cloud Application Performance</option>
+                <option>Network Reliability / Uptime</option>
+                <option>Managed Services / NOC</option>
+                <option>Network Assessment</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Tell Us More</label>
+            <textarea placeholder="Describe your current network environment, performance challenges, or what's driving this conversation..."></textarea>
+          </div>
+          <button type="submit" class="btn-cyan" style="width:100%;text-align:center;border:none;cursor:pointer;font-size:0.88rem;">Request Network Assessment</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">WAN<span>Dynamics</span></div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#dynawan">DynaWAN</a>
+        <a href="#industries">Industries</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 WAN Dynamics, Inc. A Nitel Company. All rights reserved. Cleveland, Ohio &bull; National Enterprise Coverage</p>
+    </div>
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

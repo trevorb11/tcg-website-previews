@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abundant Life HCS — Home and Community-Based Services in Texas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #2a8c7a;
+      --teal-dark: #1e6b5c;
+      --teal-light: #3aad96;
+      --gold: #e8a020;
+      --gold-light: #f0b84a;
+      --cream: #faf7f2;
+      --charcoal: #2d3748;
+      --sage: #e8f5f0;
+      --sage-mid: #b2d8ce;
+      --text: #3d4852;
+      --muted: #718096;
+      --white: #ffffff;
+      --border: #e2ebe8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Serif 4', serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 17px;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Lato', sans-serif;
+      line-height: 1.2;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-36px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(36px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: none; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Lato', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--teal-dark);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-logo span {
+      color: var(--gold);
+      font-weight: 300;
+      font-size: 0.9rem;
+      display: block;
+      letter-spacing: 0.05em;
+      line-height: 1;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      color: var(--charcoal);
+      text-decoration: none;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-cta {
+      background: var(--teal) !important;
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+    }
+    .nav-cta:hover { background: var(--teal-dark) !important; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1576765608622-067973a79f53?w=1800&auto=format&fit=crop&q=80');
+      background-size: cover;
+      background-position: center 20%;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(30,107,92,0.88) 40%, rgba(30,107,92,0.4) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 130px 5% 80px;
+      max-width: 700px;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.9);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.75rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--white);
+      font-weight: 900;
+      margin-bottom: 1.25rem;
+      line-height: 1.1;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--charcoal);
+      padding: 0.9rem 2.2rem;
+      text-decoration: none;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-radius: 6px;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.6);
+      color: var(--white);
+      padding: 0.9rem 2.2rem;
+      text-decoration: none;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-radius: 6px;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.1);
+    }
+    .hero-cert {
+      position: relative;
+      z-index: 1;
+      background: rgba(255,255,255,0.12);
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding: 1.25rem 5%;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .cert-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.85);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .cert-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 90px 5%; }
+
+    .section-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+
+    /* ===== MISSION ===== */
+    .mission {
+      background: var(--teal-dark);
+      text-align: center;
+      padding: 70px 5%;
+    }
+    .mission-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .mission blockquote {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-style: italic;
+      color: var(--white);
+      font-weight: 300;
+      line-height: 1.5;
+      margin-bottom: 2rem;
+    }
+    .mission p {
+      color: rgba(255,255,255,0.65);
+      font-size: 1rem;
+    }
+
+    /* ===== ABOUT ===== */
+    .about {
+      background: var(--white);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .about-text h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      color: var(--charcoal);
+      margin-bottom: 1.25rem;
+    }
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .a-stat {
+      background: var(--sage);
+      padding: 1.5rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .a-stat-num {
+      font-family: 'Lato', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--teal);
+      line-height: 1;
+    }
+    .a-stat-text {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .about-image img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+    }
+
+    /* ===== SERVICES ===== */
+    .services {
+      background: var(--cream);
+    }
+    .services-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .services-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .services-header h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+    .services-header p {
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(42,140,122,0.15);
+    }
+    .service-card-top {
+      height: 180px;
+      overflow: hidden;
+    }
+    .service-card-top img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .service-card:hover .service-card-top img {
+      transform: scale(1.06);
+    }
+    .service-card-body {
+      padding: 2rem;
+    }
+    .service-tag {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--teal);
+      margin-bottom: 0.6rem;
+    }
+    .service-card h3 {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--charcoal);
+      margin-bottom: 0.75rem;
+    }
+    .service-card p {
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.75;
+    }
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--teal);
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      margin-top: 1.25rem;
+      transition: gap 0.2s;
+    }
+    .service-link:hover { gap: 0.6rem; }
+
+    /* ===== HOW IT WORKS ===== */
+    .process {
+      background: var(--white);
+    }
+    .process-inner { max-width: 1100px; margin: 0 auto; }
+    .process-header { text-align: center; margin-bottom: 3.5rem; }
+    .process-header h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      margin-bottom: 0.75rem;
+    }
+    .process-header p { color: var(--muted); max-width: 500px; margin: 0 auto; }
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .process-step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .process-step:last-child { border-bottom: none; }
+    .step-num-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--sage);
+      border: 2px solid var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lato', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+    .step-content h3 {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+    .step-content p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* ===== WHO WE SERVE ===== */
+    .serve {
+      background: var(--sage);
+    }
+    .serve-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .serve-image img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+    }
+    .serve-text h2 {
+      font-size: clamp(2rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      color: var(--charcoal);
+      margin-bottom: 1.25rem;
+    }
+    .serve-text p {
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+    .serve-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    .serve-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--charcoal);
+    }
+    .serve-check {
+      width: 22px;
+      height: 22px;
+      background: var(--teal);
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .serve-check svg {
+      width: 12px;
+      height: 12px;
+      stroke: white;
+      fill: none;
+      stroke-width: 2.5;
+    }
+
+    /* ===== LOCATIONS ===== */
+    .locations {
+      background: var(--white);
+    }
+    .locations-inner { max-width: 1100px; margin: 0 auto; }
+    .locations-header { text-align: center; margin-bottom: 3rem; }
+    .locations-header h2 {
+      font-size: clamp(2rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      margin-bottom: 0.75rem;
+    }
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .location-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .location-card:hover {
+      border-color: var(--teal);
+      box-shadow: 0 8px 24px rgba(42,140,122,0.1);
+    }
+    .location-card.hq {
+      border-color: var(--teal);
+      background: var(--sage);
+    }
+    .location-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--teal);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+    }
+    .location-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: white;
+      fill: none;
+      stroke-width: 2;
+    }
+    .location-card h3 {
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--charcoal);
+      margin-bottom: 0.4rem;
+    }
+    .hq-label {
+      font-size: 0.7rem;
+      font-family: 'Lato', sans-serif;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .location-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    /* ===== FAQ ===== */
+    .faq {
+      background: var(--cream);
+    }
+    .faq-inner { max-width: 900px; margin: 0 auto; }
+    .faq-header { text-align: center; margin-bottom: 3rem; }
+    .faq-header h2 {
+      font-size: clamp(2rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      margin-bottom: 0.75rem;
+    }
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      background: var(--white);
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--charcoal);
+      gap: 1rem;
+      transition: background 0.2s;
+    }
+    .faq-question:hover { background: var(--sage); }
+    .faq-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      background: var(--teal);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s;
+    }
+    .faq-icon svg {
+      width: 14px;
+      height: 14px;
+      stroke: white;
+      fill: none;
+      stroke-width: 2.5;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s;
+      padding: 0 2rem;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding: 0 2rem 1.5rem;
+    }
+    .faq-answer p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact {
+      background: var(--teal-dark);
+      color: var(--white);
+    }
+    .contact-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-text h2 {
+      font-size: clamp(2rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+    .contact-text p {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-detail {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .c-icon-round {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .c-icon-round svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--gold-light);
+      fill: none;
+      stroke-width: 2;
+    }
+    .c-info strong {
+      display: block;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 0.15rem;
+    }
+    .c-info span {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.55);
+    }
+    .contact-form {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2.5rem;
+    }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label {
+      display: block;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--cream);
+      border: 1.5px solid var(--border);
+      color: var(--text);
+      padding: 0.75rem 1rem;
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.95rem;
+      outline: none;
+      border-radius: 8px;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--teal); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit {
+      width: 100%;
+      background: var(--teal);
+      color: var(--white);
+      border: none;
+      padding: 1rem;
+      font-family: 'Lato', sans-serif;
+      font-weight: 900;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border-radius: 8px;
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
+    }
+    .form-submit:hover { background: var(--teal-dark); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #1a3530;
+      padding: 4rem 5% 2rem;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-logo {
+      font-family: 'Lato', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--white);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .footer-tag {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.75rem;
+      color: var(--gold-light);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+    .footer-brand p {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.88rem;
+      line-height: 1.8;
+    }
+    .footer-col h4 {
+      font-family: 'Lato', sans-serif;
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .footer-col ul a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: var(--sage-mid); }
+    .footer-bottom {
+      padding-top: 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom p { color: rgba(255,255,255,0.3); font-size: 0.8rem; }
+    .tx-cert {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .about-grid, .serve-inner, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .locations-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 70px 5%; }
+      .nav-links { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .locations-grid { grid-template-columns: 1fr 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      Abundant Life HCS
+      <span>HCS in Texas</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">How It Works</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact" class="nav-cta">Reach Out When Ready</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Home and Community-Based Services — Texas</div>
+      <h1>Individualized Care.<br>Genuine Compassion.<br>Real Community.</h1>
+      <p>Abundant Life HCS has provided Home and Community-based Services to Texans with intellectual disabilities for more than 15 years — one family, one person at a time.</p>
+      <div class="hero-buttons">
+        <a href="#services" class="btn-primary">Learn About Our Services</a>
+        <a href="#contact" class="btn-outline">Reach Out When You're Ready</a>
+      </div>
+    </div>
+    <div class="hero-cert">
+      <div class="cert-item"><div class="cert-dot"></div>15+ Years Serving Texas</div>
+      <div class="cert-item"><div class="cert-dot"></div>TX Health &amp; Human Services Certified</div>
+      <div class="cert-item"><div class="cert-dot"></div>Available 24/7 — Call Mack Anytime</div>
+      <div class="cert-item"><div class="cert-dot"></div>Mount Pleasant | Dallas | Paris | Texarkana</div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <div class="mission">
+    <div class="mission-inner reveal">
+      <blockquote>"We believe every person deserves to live a full, abundant life — surrounded by people who genuinely care."</blockquote>
+      <p>That belief guides every care plan we build, every family relationship we nurture, and every decision we make on behalf of the individuals we serve.</p>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="about-text reveal-left">
+        <div class="section-label">Who We Are</div>
+        <h2>A Trusted Partner for Texas Families for Over 15 Years</h2>
+        <p>Mack Jones founded Abundant Life HCS after spending years working alongside individuals with intellectual disabilities and watching how often the systems meant to help them fell short — not from lack of funding, but from lack of genuine care. He started this organization because he believed people with disabilities deserve to be seen as whole people, not cases to be managed. That belief still shapes everything we do.</p>
+        <p>We are fully certified by the Texas Health and Human Services Commission and have served individuals across Texas through offices in Mount Pleasant, Dallas, Paris, and Texarkana. Our approach is always individualized — every person we serve has a unique story, unique strengths, and unique needs, and our care plans reflect that reality.</p>
+        <p>We are available 24 hours a day, 7 days a week. When something comes up — whether it is a question about your loved one's care or an urgent situation that cannot wait — Mack and our team are reachable. We greatly encourage family involvement at every step. No one knows your loved one better than you do, and that insight makes every care plan we build stronger.</p>
+        <div class="about-stats">
+          <div class="a-stat">
+            <div class="a-stat-num">15+</div>
+            <div class="a-stat-text">Years Serving TX</div>
+          </div>
+          <div class="a-stat">
+            <div class="a-stat-num">4</div>
+            <div class="a-stat-text">Regional Offices</div>
+          </div>
+          <div class="a-stat">
+            <div class="a-stat-num">100%</div>
+            <div class="a-stat-text">TX HHS Certified</div>
+          </div>
+          <div class="a-stat">
+            <div class="a-stat-num">3</div>
+            <div class="a-stat-text">Care Programs</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-image reveal-right">
+        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&auto=format&fit=crop&q=80" alt="Caregiver supporting individual with care" />
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-inner">
+      <div class="services-header reveal">
+        <div class="section-label">Our Programs</div>
+        <h2>Three Paths to Individualized Support</h2>
+        <p>Every family's situation is different. We offer three HCS program models so we can match the right level of support to each individual's needs and living situation.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-card-top">
+            <img src="https://images.unsplash.com/photo-1580281657702-257584239a55?w=600&auto=format&fit=crop&q=80" alt="Group home community living" />
+          </div>
+          <div class="service-card-body">
+            <div class="service-tag">Program One</div>
+            <h3>Group Homes</h3>
+            <p>Safe, warm homes where up to four individuals live together in a community setting. Each home is staffed by dedicated caregivers who support daily living, personal goals, and participation in community activities. Residents build friendships, develop independence, and live full lives within their neighborhoods.</p>
+            <a href="#contact" class="service-link">Learn more &#8594;</a>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-top">
+            <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&auto=format&fit=crop&q=80" alt="Family care and companion support" />
+          </div>
+          <div class="service-card-body">
+            <div class="service-tag">Program Two</div>
+            <h3>Foster / Companion Care</h3>
+            <p>A foster or companion family welcomes an individual into their home, providing support within a nurturing family environment. This model is well-suited to individuals who thrive in a family setting and benefit from consistent one-on-one attention and a stable home life.</p>
+            <a href="#contact" class="service-link">Learn more &#8594;</a>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-top">
+            <img src="https://images.unsplash.com/photo-1567168544230-8ae56e5e6168?w=600&auto=format&fit=crop&q=80" alt="Home-based supportive care" />
+          </div>
+          <div class="service-card-body">
+            <div class="service-tag">Program Three</div>
+            <h3>Supported Home Living</h3>
+            <p>For individuals living with family or independently, Supported Home Living provides in-home support services that help build daily living skills, encourage community participation, and ensure individuals have the assistance they need to thrive where they are most comfortable.</p>
+            <a href="#contact" class="service-link">Learn more &#8594;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="process-inner">
+      <div class="process-header reveal">
+        <div class="section-label">Getting Started</div>
+        <h2>How the HCS Program Works</h2>
+        <p>We know the process can feel overwhelming. Here is what to expect when you reach out to Abundant Life HCS.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="step-num-circle">1</div>
+          <div class="step-content">
+            <h3>Inquiry &amp; First Conversation</h3>
+            <p>Contact us by phone or email. We will listen to your situation, answer your initial questions, and help you understand whether the HCS program is the right fit for your loved one. There is no pressure — just an honest conversation about what is possible.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num-circle">2</div>
+          <div class="step-content">
+            <h3>Needs Assessment</h3>
+            <p>Our team conducts a thorough assessment of the individual's needs, strengths, goals, and living preferences. This assessment forms the foundation of a care plan that is truly individualized — not a generic template.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num-circle">3</div>
+          <div class="step-content">
+            <h3>Care Planning with Your Family</h3>
+            <p>We build the care plan together with the individual and their family. You bring knowledge of your loved one that no one else has. We bring clinical expertise and program knowledge. Together, we create a plan that reflects both.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num-circle">4</div>
+          <div class="step-content">
+            <h3>Services Begin</h3>
+            <p>Once approved and planned, services begin in the care setting that best meets your loved one's needs — whether a group home, foster family, or in-home support. Our case managers stay closely involved from the start.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num-circle">5</div>
+          <div class="step-content">
+            <h3>Ongoing Support &amp; Adjustment</h3>
+            <p>Care needs evolve over time, and we evolve with them. Regular reviews, open communication with families, and responsive case management ensure that the care we provide always fits the person receiving it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE SERVE -->
+  <section class="serve" id="serve">
+    <div class="serve-inner">
+      <div class="serve-image reveal-left">
+        <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=800&auto=format&fit=crop&q=80" alt="Community support and connection" />
+      </div>
+      <div class="serve-text reveal-right">
+        <div class="section-label">Who We Support</div>
+        <h2>Every Person Deserves the Right Level of Support</h2>
+        <p>Abundant Life HCS serves individuals with intellectual disabilities of all ages who are eligible for the Texas HCS waiver program. Our services are designed to support individuals at every stage of life and in every living situation.</p>
+        <p>We work closely with families who are seeking better options for their loved ones, as well as individuals who are looking to build more independence and community connection on their own terms.</p>
+        <div class="serve-list">
+          <div class="serve-item">
+            <div class="serve-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Individuals with intellectual disabilities
+          </div>
+          <div class="serve-item">
+            <div class="serve-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Adults seeking greater independence
+          </div>
+          <div class="serve-item">
+            <div class="serve-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Families looking for supported living options
+          </div>
+          <div class="serve-item">
+            <div class="serve-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Individuals on the HCS waiting list seeking information
+          </div>
+          <div class="serve-item">
+            <div class="serve-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Families transitioning from one care setting to another
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section class="locations">
+    <div class="locations-inner">
+      <div class="locations-header reveal">
+        <div class="section-label">Where We Serve</div>
+        <h2>Four Offices Across Texas</h2>
+        <p style="color:var(--muted);max-width:500px;margin:0 auto;">Our regional offices allow us to maintain close, responsive relationships with the families and individuals we serve throughout Texas.</p>
+      </div>
+      <div class="locations-grid">
+        <div class="location-card hq reveal">
+          <div class="location-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <span class="hq-label">Headquarters</span>
+          <h3>Mount Pleasant, TX</h3>
+          <p>Our founding home and main administrative hub serving East Texas families.</p>
+        </div>
+        <div class="location-card reveal">
+          <div class="location-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <h3>Dallas, TX</h3>
+          <p>Corporate office at 4575 S. Westmoreland Road, serving the DFW metroplex and surrounding areas.</p>
+        </div>
+        <div class="location-card reveal">
+          <div class="location-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <h3>Paris, TX</h3>
+          <p>Serving individuals and families in the Paris region and surrounding communities of Northeast Texas.</p>
+        </div>
+        <div class="location-card reveal">
+          <div class="location-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <h3>Texarkana, TX</h3>
+          <p>Our border-region office serving families in Texarkana and the broader Ark-Tex area.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="faq-inner">
+      <div class="faq-header reveal">
+        <div class="section-label">Family Resources</div>
+        <h2>Common Questions Answered</h2>
+      </div>
+      <div class="reveal">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            What is the HCS program?
+            <div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          </div>
+          <div class="faq-answer">
+            <p>The Home and Community-based Services (HCS) program is a Texas Medicaid waiver program that provides services and supports to people with intellectual disabilities who live with their families, in their own homes, or in small community settings. The goal is to support individuals to live as independently as possible in the community of their choice.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            Who qualifies for HCS services?
+            <div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          </div>
+          <div class="faq-answer">
+            <p>To qualify for the HCS program, an individual must have an intellectual disability, be eligible for Medicaid, and meet certain functional requirements established by the Texas Health and Human Services Commission. An official assessment will determine eligibility. Contact us and we will help you understand whether your loved one may qualify.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            How long is the HCS waiting list?
+            <div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          </div>
+          <div class="faq-answer">
+            <p>The HCS waiver program has a waitlist that can vary significantly in length depending on where the individual lives and when they applied. Wait times can range from several months to several years. We encourage families to get their loved one on the waitlist as early as possible and to contact us about current status and any available alternatives in the meantime.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            What does HCS cost for families?
+            <div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          </div>
+          <div class="faq-answer">
+            <p>HCS services are funded through Medicaid, so most families do not pay out-of-pocket costs for program services. The individual must be Medicaid-eligible to participate. We can help your family understand the financial aspects of the program during an initial conversation.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            How do I get started?
+            <div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          </div>
+          <div class="faq-answer">
+            <p>The best first step is to reach out to us directly by phone or through the contact form below. We will have a conversation about your loved one's situation, answer your questions, and help you understand what next steps look like. There is no commitment — just a conversation with people who understand what your family is going through.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-text reveal-left">
+        <div class="section-label" style="color:var(--gold-light);">Reach Out</div>
+        <h2>We Would Love to Talk With Your Family</h2>
+        <p>Whether you are just beginning to explore options or ready to start the enrollment process, we are here to help. Every conversation is confidential and comes with no pressure or commitment.</p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="c-icon-round"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 6.29 6.29l.87-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.92 16.92z"/></svg></div>
+            <div class="c-info">
+              <strong>Call Mack — Available 24/7</strong>
+              <span><a href="tel:5016726968" style="color:inherit;">(501) 672-6968</a></span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="c-icon-round"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div class="c-info">
+              <strong>Email</strong>
+              <span>mjones@hcsintexas.com | info@hcsintexas.com</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="c-icon-round"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div class="c-info">
+              <strong>Corporate Office</strong>
+              <span>4575 S. Westmoreland Road, Dallas, TX 75237</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="c-icon-round"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div class="c-info">
+              <strong>Additional Offices</strong>
+              <span>Mount Pleasant | Paris | Texarkana, TX</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal-right">
+        <form>
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="(xxx) xxx-xxxx" />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label>County or City in Texas</label>
+            <input type="text" placeholder="Where does your loved one live?" />
+          </div>
+          <div class="form-group">
+            <label>How Can We Help?</label>
+            <textarea placeholder="Tell us a little about your situation. What are you looking for? What questions do you have?"></textarea>
+          </div>
+          <button type="submit" class="form-submit">Reach Out When You're Ready</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="footer-logo">Abundant Life HCS</a>
+          <span class="footer-tag">HCS in Texas — Serving Individuals with Intellectual Disabilities</span>
+          <p>Providing Home and Community-based Services to individuals with intellectual disabilities across Texas for over 15 years. Fully certified by the Texas Health and Human Services Commission.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Group Homes</a></li>
+            <li><a href="#services">Foster / Companion Care</a></li>
+            <li><a href="#services">Supported Home Living</a></li>
+            <li><a href="#process">How It Works</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:5016726968">(501) 672-6968</a></li>
+            <li><a href="mailto:mjones@hcsintexas.com">mjones@hcsintexas.com</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Abundant Life HCS. All rights reserved.</p>
+        <span class="tx-cert">Texas HHS Commission Certified</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      item.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>

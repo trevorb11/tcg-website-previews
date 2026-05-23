@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DNA Solutions & Consulting | IT Consulting & Enterprise Solutions | Baltimore, MD</title>
+  <meta name="description" content="DNA Solutions & Consulting delivers enterprise IT consulting, cybersecurity compliance (NIST 800-53, 800-171, CMMC), custom software development, and managed IT services across Baltimore and the DMV region." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-primary: #0a0e1a;
+      --bg-secondary: #0d1224;
+      --bg-card: rgba(15, 23, 50, 0.6);
+      --navy: #0f172a;
+      --navy-light: #1e293b;
+      --accent: #3b82f6;
+      --accent-bright: #60a5fa;
+      --accent-glow: rgba(59, 130, 246, 0.3);
+      --cyan: #06b6d4;
+      --cyan-glow: rgba(6, 182, 212, 0.2);
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --border: rgba(148, 163, 184, 0.1);
+      --border-hover: rgba(59, 130, 246, 0.4);
+      --glass: rgba(15, 23, 42, 0.7);
+      --glass-border: rgba(148, 163, 184, 0.08);
+      --gradient-accent: linear-gradient(135deg, #3b82f6, #06b6d4);
+      --gradient-bg: linear-gradient(180deg, #0a0e1a 0%, #0d1224 50%, #0a0e1a 100%);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Sans 3', 'Segoe UI', sans-serif;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ============ DOT GRID BACKGROUND ============ */
+    .dot-bg {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: radial-gradient(rgba(59, 130, 246, 0.07) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    /* ============ ANIMATED GRADIENT ORB ============ */
+    .orb {
+      position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0;
+      animation: orbFloat 20s ease-in-out infinite;
+    }
+    .orb-1 { width: 600px; height: 600px; background: rgba(59, 130, 246, 0.08); top: -200px; right: -200px; }
+    .orb-2 { width: 500px; height: 500px; background: rgba(6, 182, 212, 0.06); bottom: -150px; left: -150px; animation-delay: -10s; }
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -30px) scale(1.05); }
+      66% { transform: translate(-20px, 20px) scale(0.95); }
+    }
+
+    /* ============ NAV ============ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(10, 14, 26, 0.85);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 0 48px;
+      transition: all 0.3s ease;
+    }
+    nav.scrolled { background: rgba(10, 14, 26, 0.95); box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+    .nav-inner {
+      max-width: 1240px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem;
+      color: #fff; letter-spacing: -0.03em; display: flex; align-items: center; gap: 4px;
+    }
+    .nav-logo .dot {
+      display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gradient-accent); margin: 0 2px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+    .nav-tagline {
+      font-size: 0.65rem; color: var(--text-muted); letter-spacing: 0.15em;
+      text-transform: uppercase; margin-top: 1px;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+    .nav-links a {
+      color: var(--text-secondary); text-decoration: none; font-size: 0.88rem;
+      font-family: 'Inter', sans-serif; font-weight: 500; transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+      background: var(--gradient-accent); transition: width 0.3s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .nav-phone {
+      color: var(--text-secondary); font-size: 0.88rem; font-weight: 600;
+      text-decoration: none; transition: color 0.3s; font-family: 'Inter', sans-serif;
+    }
+    .nav-phone:hover { color: var(--accent-bright); }
+    .nav-cta {
+      background: var(--gradient-accent); color: #fff;
+      padding: 10px 24px; border-radius: 8px; font-weight: 600;
+      font-family: 'Inter', sans-serif; font-size: 0.88rem;
+      text-decoration: none; transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .nav-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .nav-cta:hover::before { opacity: 1; }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px var(--accent-glow); }
+
+    /* Mobile menu toggle */
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: #fff; margin: 6px 0; transition: all 0.3s; border-radius: 2px; }
+
+    /* ============ HERO ============ */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      position: relative; overflow: hidden; padding-top: 72px;
+    }
+    .hero-grid-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse at 30% 50%, black 20%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at 30% 50%, black 20%, transparent 70%);
+    }
+    .hero-glow {
+      position: absolute; width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+      top: -200px; left: -200px; z-index: 0;
+    }
+    .hero-glow-2 {
+      position: absolute; width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%);
+      bottom: -100px; right: -100px; z-index: 0;
+    }
+    /* Animated connection lines */
+    .hero-lines {
+      position: absolute; inset: 0; z-index: 0; overflow: hidden; opacity: 0.4;
+    }
+    .hero-line {
+      position: absolute; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      animation: lineSweep 8s ease-in-out infinite;
+    }
+    .hero-line:nth-child(1) { top: 20%; left: -100%; width: 60%; animation-delay: 0s; }
+    .hero-line:nth-child(2) { top: 45%; left: -100%; width: 40%; animation-delay: 2.5s; }
+    .hero-line:nth-child(3) { top: 70%; left: -100%; width: 55%; animation-delay: 5s; }
+    .hero-line:nth-child(4) { top: 85%; left: -100%; width: 35%; animation-delay: 1s; opacity: 0.3; }
+    @keyframes lineSweep {
+      0% { transform: translateX(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateX(calc(100vw + 200%)); opacity: 0; }
+    }
+
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 1240px; margin: 0 auto; padding: 80px 48px;
+      display: grid; grid-template-columns: 1.2fr 0.8fr;
+      gap: 80px; align-items: center; width: 100%;
+    }
+    .hero-text { color: #fff; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.25);
+      color: var(--accent-bright); font-family: 'Inter', sans-serif;
+      font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 8px 18px; border-radius: 100px; margin-bottom: 28px;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .hero h1 {
+      font-family: 'Inter', sans-serif; font-size: clamp(2.6rem, 5vw, 3.8rem);
+      font-weight: 900; letter-spacing: -0.04em; line-height: 1.1;
+      margin-bottom: 24px;
+      animation: fadeInUp 0.8s ease 0.15s forwards; opacity: 0;
+    }
+    .hero h1 .gradient-text {
+      background: var(--gradient-accent); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.15rem; line-height: 1.8; color: var(--text-secondary);
+      margin-bottom: 40px; max-width: 520px;
+      animation: fadeInUp 0.8s ease 0.3s forwards; opacity: 0;
+    }
+    .hero-btns {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      animation: fadeInUp 0.8s ease 0.45s forwards; opacity: 0;
+    }
+    .btn-primary {
+      background: var(--gradient-accent); color: #fff;
+      padding: 16px 32px; border-radius: 10px; font-weight: 700;
+      font-family: 'Inter', sans-serif; font-size: 1rem;
+      text-decoration: none; transition: all 0.3s; position: relative; overflow: hidden;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--accent-glow); }
+    .btn-outline {
+      border: 1.5px solid rgba(148,163,184,0.2); color: var(--text-secondary);
+      padding: 16px 32px; border-radius: 10px; font-weight: 600;
+      font-family: 'Inter', sans-serif; font-size: 1rem;
+      text-decoration: none; transition: all 0.3s; background: transparent;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: #fff; background: rgba(59,130,246,0.05); }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero stats card (glassmorphism) */
+    .hero-glass-card {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: 20px; padding: 40px; position: relative; overflow: hidden;
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      animation: fadeInUp 0.8s ease 0.5s forwards; opacity: 0;
+    }
+    .hero-glass-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(59,130,246,0.5), transparent);
+    }
+    .hero-card-title {
+      font-family: 'Inter', sans-serif; font-size: 0.72rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--accent-bright); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hero-card-title::before {
+      content: ''; width: 20px; height: 1px; background: var(--accent);
+    }
+    .hero-stat { padding: 18px 0; border-bottom: 1px solid var(--border); }
+    .hero-stat:last-child { border-bottom: none; padding-bottom: 0; }
+    .hero-stat-num {
+      font-family: 'Inter', sans-serif; font-size: 2.2rem; font-weight: 900;
+      background: var(--gradient-accent); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.1;
+    }
+    .hero-stat-label { font-size: 0.88rem; color: var(--text-muted); margin-top: 4px; }
+
+    /* ============ TRUST BAR ============ */
+    .trust-bar {
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 24px 48px; position: relative; z-index: 1;
+      background: rgba(13, 18, 36, 0.8);
+      backdrop-filter: blur(10px);
+    }
+    .trust-inner {
+      max-width: 1240px; margin: 0 auto;
+      display: flex; align-items: center; gap: 40px; flex-wrap: wrap;
+      justify-content: center;
+    }
+    .trust-label {
+      font-family: 'Inter', sans-serif; font-size: 0.72rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-muted); white-space: nowrap;
+    }
+    .trust-badges { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; justify-content: center; }
+    .trust-badge {
+      border: 1px solid var(--border); border-radius: 8px;
+      padding: 8px 20px; font-family: 'Inter', sans-serif;
+      font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);
+      transition: all 0.3s; background: rgba(15, 23, 42, 0.5);
+    }
+    .trust-badge:hover { border-color: var(--accent); color: var(--accent-bright); background: rgba(59,130,246,0.05); }
+
+    /* ============ SHARED SECTION ============ */
+    section { padding: 120px 48px; position: relative; z-index: 1; }
+    .container { max-width: 1240px; margin: 0 auto; }
+    .eyebrow {
+      font-family: 'Inter', sans-serif; font-size: 0.75rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      background: var(--gradient-accent); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+      font-weight: 700; margin-bottom: 12px; display: inline-block;
+    }
+    .section-title {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 900; letter-spacing: -0.04em;
+      color: #fff; margin-bottom: 18px; line-height: 1.15;
+    }
+    .section-sub {
+      font-size: 1.05rem; color: var(--text-secondary);
+      line-height: 1.75; max-width: 580px; margin-bottom: 60px;
+    }
+
+    /* ============ SERVICES ============ */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .svc-card {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: 16px; padding: 36px 30px;
+      transition: all 0.4s ease; position: relative; overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+    .svc-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--gradient-accent); opacity: 0; transition: opacity 0.4s;
+    }
+    .svc-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(59,130,246,0.1), 0 0 0 1px rgba(59,130,246,0.15);
+    }
+    .svc-card:hover::before { opacity: 1; }
+    .svc-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; transition: all 0.4s;
+    }
+    .svc-card:hover .svc-icon { background: rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.4); }
+    .svc-icon svg { width: 24px; height: 24px; stroke: var(--accent-bright); fill: none; stroke-width: 1.5; }
+    .svc-card h3 {
+      font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 700;
+      color: #fff; margin-bottom: 12px;
+    }
+    .svc-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ============ STATS COUNTER ============ */
+    .stats-section {
+      padding: 80px 48px; position: relative; z-index: 1;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(59,130,246,0.03) 0%, transparent 100%);
+    }
+    .stats-grid {
+      max-width: 1240px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; text-align: center;
+    }
+    .stat-item { position: relative; }
+    .stat-item::after {
+      content: ''; position: absolute; right: 0; top: 10%; height: 80%;
+      width: 1px; background: var(--border);
+    }
+    .stat-item:last-child::after { display: none; }
+    .stat-number {
+      font-family: 'Inter', sans-serif; font-size: clamp(2.4rem, 4vw, 3.2rem);
+      font-weight: 900; background: var(--gradient-accent);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      line-height: 1; margin-bottom: 8px;
+    }
+    .stat-label {
+      font-size: 0.88rem; color: var(--text-muted);
+      font-family: 'Inter', sans-serif; font-weight: 500;
+    }
+
+    /* ============ ABOUT ============ */
+    .about-inner {
+      display: grid; grid-template-columns: 1fr 1.1fr;
+      gap: 80px; align-items: center;
+    }
+    .about-img-wrap { position: relative; }
+    .about-img-wrap img {
+      width: 100%; height: 500px; object-fit: cover;
+      border-radius: 16px; display: block;
+      border: 1px solid var(--glass-border);
+    }
+    .about-img-wrap::after {
+      content: ''; position: absolute; inset: 0; border-radius: 16px;
+      background: linear-gradient(180deg, transparent 60%, rgba(10,14,26,0.6) 100%);
+    }
+    .about-img-badge {
+      position: absolute; bottom: 24px; left: 24px; z-index: 2;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      backdrop-filter: blur(16px); padding: 16px 24px; border-radius: 12px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .about-img-badge-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--gradient-accent); display: flex; align-items: center; justify-content: center;
+    }
+    .about-img-badge-icon svg { width: 20px; height: 20px; stroke: #fff; fill: none; stroke-width: 2; }
+    .about-img-badge-text { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.9rem; color: #fff; }
+    .about-img-badge-sub { font-size: 0.75rem; color: var(--text-muted); }
+
+    .about-text .section-sub { margin-bottom: 32px; }
+    .feature-list { list-style: none; margin-bottom: 36px; }
+    .feature-list li {
+      padding: 14px 0; border-bottom: 1px solid var(--border);
+      font-size: 0.95rem; display: flex; align-items: flex-start;
+      gap: 14px; color: var(--text-secondary);
+    }
+    .feature-list li:last-child { border-bottom: none; }
+    .tick {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 22px; height: 22px; border-radius: 6px;
+      background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3);
+      color: var(--accent-bright); font-size: 0.65rem; flex-shrink: 0; margin-top: 2px;
+    }
+
+    /* ============ PROCESS / HOW WE WORK ============ */
+    .process-section { background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(59,130,246,0.02) 50%, var(--bg-primary) 100%); }
+    .process-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+      position: relative;
+    }
+    .process-grid::before {
+      content: ''; position: absolute; top: 50px; left: 10%; right: 10%;
+      height: 2px; background: linear-gradient(90deg, transparent, var(--accent), var(--cyan), transparent);
+      opacity: 0.2;
+    }
+    .process-step {
+      text-align: center; position: relative; padding-top: 24px;
+    }
+    .process-num {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.1rem;
+      background: var(--gradient-accent); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+      margin: 0 auto 20px; position: relative;
+    }
+    .process-num::before {
+      content: ''; position: absolute; inset: -1px; border-radius: 14px;
+      background: var(--gradient-accent); z-index: -1; opacity: 0.15;
+    }
+    .process-step h3 {
+      font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 700;
+      color: #fff; margin-bottom: 10px;
+    }
+    .process-step p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ============ INDUSTRIES ============ */
+    .industries-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+    }
+    .ind-card {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: 16px; padding: 32px 24px; text-align: center;
+      transition: all 0.4s; position: relative; overflow: hidden;
+    }
+    .ind-card:hover {
+      border-color: var(--border-hover); transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(59,130,246,0.08);
+    }
+    .ind-icon {
+      width: 56px; height: 56px; border-radius: 14px; margin: 0 auto 16px;
+      background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.15);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ind-icon svg { width: 28px; height: 28px; stroke: var(--accent-bright); fill: none; stroke-width: 1.5; }
+    .ind-card h3 {
+      font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700;
+      color: #fff; margin-bottom: 8px;
+    }
+    .ind-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ============ CASE STUDIES ============ */
+    .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .case-card {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: 16px; padding: 36px; transition: all 0.4s; position: relative;
+    }
+    .case-card::before {
+      content: ''; position: absolute; top: 0; left: 32px; right: 32px; height: 2px;
+      background: var(--gradient-accent); opacity: 0; transition: opacity 0.4s;
+    }
+    .case-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
+    .case-card:hover::before { opacity: 1; }
+    .case-tag {
+      font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--cyan);
+      margin-bottom: 16px; display: flex; align-items: center; gap: 6px;
+    }
+    .case-tag::before {
+      content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--cyan);
+    }
+    .case-card h3 {
+      font-family: 'Inter', sans-serif; font-size: 1.15rem; font-weight: 700;
+      color: #fff; margin-bottom: 12px; line-height: 1.35;
+    }
+    .case-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; }
+    .case-result {
+      padding: 14px 18px; border-radius: 10px;
+      background: rgba(59,130,246,0.06); border: 1px solid rgba(59,130,246,0.1);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .case-result-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: var(--gradient-accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .case-result-icon svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2; }
+    .case-result span { font-size: 0.85rem; color: var(--accent-bright); font-weight: 600; font-family: 'Inter', sans-serif; }
+
+    /* ============ TESTIMONIALS ============ */
+    .testimonials-section { background: linear-gradient(180deg, rgba(59,130,246,0.02) 0%, var(--bg-primary) 100%); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .t-card {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: 16px; padding: 36px; position: relative; transition: all 0.4s;
+    }
+    .t-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
+    .t-stars { display: flex; gap: 4px; margin-bottom: 20px; }
+    .t-stars svg { width: 16px; height: 16px; fill: #f59e0b; }
+    .t-card blockquote {
+      font-size: 0.95rem; color: var(--text-secondary); line-height: 1.8;
+      margin-bottom: 24px; font-style: italic; position: relative; padding-left: 0;
+    }
+    .t-card blockquote::before {
+      content: '\201C'; position: absolute; top: -20px; left: -4px;
+      font-size: 4rem; color: rgba(59,130,246,0.15); font-family: Georgia, serif; line-height: 1;
+    }
+    .t-author { display: flex; align-items: center; gap: 12px; }
+    .t-author-avatar {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--gradient-accent); display: flex; align-items: center; justify-content: center;
+      font-family: 'Inter', sans-serif; font-weight: 800; font-size: 0.85rem; color: #fff;
+    }
+    .t-author-info h4 {
+      font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 700; color: #fff;
+    }
+    .t-author-info p { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* ============ CONTACT / CTA ============ */
+    .contact-section {
+      background: linear-gradient(180deg, var(--bg-primary), rgba(59,130,246,0.04));
+      position: relative; overflow: hidden;
+    }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+    }
+    .contact-info h2 { margin-bottom: 20px; }
+    .contact-info > p { font-size: 1.05rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 40px; max-width: 460px; }
+    .contact-methods { display: flex; flex-direction: column; gap: 20px; }
+    .contact-method {
+      display: flex; align-items: center; gap: 16px;
+      padding: 20px; border-radius: 12px;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      text-decoration: none; transition: all 0.3s;
+    }
+    .contact-method:hover { border-color: var(--border-hover); transform: translateX(4px); }
+    .contact-method-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .contact-method-icon svg { width: 20px; height: 20px; stroke: var(--accent-bright); fill: none; stroke-width: 1.5; }
+    .contact-method-label { font-size: 0.78rem; color: var(--text-muted); font-family: 'Inter', sans-serif; font-weight: 500; }
+    .contact-method-value { font-size: 1rem; color: #fff; font-weight: 600; font-family: 'Inter', sans-serif; }
+
+    /* Contact form */
+    .contact-form-wrap {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: 20px; padding: 44px; position: relative; overflow: hidden;
+      backdrop-filter: blur(20px);
+    }
+    .contact-form-wrap::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--gradient-accent);
+    }
+    .contact-form-wrap h3 {
+      font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 800;
+      color: #fff; margin-bottom: 8px;
+    }
+    .contact-form-wrap > p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 32px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block; font-family: 'Inter', sans-serif; font-size: 0.8rem;
+      font-weight: 600; color: var(--text-secondary); margin-bottom: 8px;
+      letter-spacing: 0.03em;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 14px 18px; border-radius: 10px;
+      border: 1px solid var(--border); background: rgba(15,23,42,0.5);
+      color: #fff; font-family: 'Source Sans 3', sans-serif; font-size: 0.95rem;
+      transition: all 0.3s; outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--accent); box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-muted); }
+    .form-group select { cursor: pointer; }
+    .form-group select option { background: var(--navy); color: #fff; }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .btn-submit {
+      width: 100%; padding: 16px; border: none; border-radius: 10px;
+      background: var(--gradient-accent); color: #fff;
+      font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: all 0.3s;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--accent-glow); }
+
+    /* ============ FINAL CTA BAND ============ */
+    .cta-band {
+      padding: 100px 48px; text-align: center; position: relative; z-index: 1;
+      background: linear-gradient(180deg, transparent, rgba(59,130,246,0.06), transparent);
+    }
+    .cta-band h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 900; color: #fff; margin-bottom: 18px; letter-spacing: -0.03em;
+    }
+    .cta-band p {
+      font-size: 1.1rem; color: var(--text-secondary);
+      max-width: 540px; margin: 0 auto 40px; line-height: 1.75;
+    }
+    .cta-band .btn-primary { display: inline-block; font-size: 1.1rem; padding: 18px 40px; }
+    .cta-phone-note { margin-top: 20px; font-size: 0.92rem; color: var(--text-muted); }
+    .cta-phone-note a { color: var(--accent-bright); font-weight: 700; text-decoration: none; }
+    .cta-phone-note a:hover { text-decoration: underline; }
+
+    /* ============ FOOTER ============ */
+    footer {
+      background: rgba(8, 11, 20, 0.9); border-top: 1px solid var(--border);
+      color: var(--text-muted); padding: 72px 48px 32px; position: relative; z-index: 1;
+    }
+    .footer-grid {
+      max-width: 1240px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 56px;
+      margin-bottom: 56px;
+    }
+    .footer-brand-name {
+      font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 900;
+      color: #fff; margin-bottom: 14px; display: flex; align-items: center; gap: 4px;
+    }
+    .footer-brand-name .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gradient-accent); display: inline-block;
+    }
+    .footer-brand p { font-size: 0.9rem; line-height: 1.7; max-width: 280px; }
+    footer h4 {
+      font-family: 'Inter', sans-serif; color: #fff; font-size: 0.85rem;
+      font-weight: 700; margin-bottom: 20px; letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    footer ul { list-style: none; }
+    footer ul li { margin-bottom: 12px; }
+    footer ul li a {
+      color: var(--text-muted); text-decoration: none; font-size: 0.88rem;
+      transition: all 0.3s; display: inline-flex; align-items: center; gap: 4px;
+    }
+    footer ul li a:hover { color: var(--accent-bright); transform: translateX(3px); }
+    .footer-bottom {
+      max-width: 1240px; margin: 0 auto;
+      border-top: 1px solid var(--border); padding-top: 24px;
+      display: flex; justify-content: space-between; font-size: 0.82rem; flex-wrap: wrap; gap: 8px;
+    }
+
+    /* ============ STICKY MOBILE CTA ============ */
+    .mobile-cta {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+      padding: 12px 16px; background: rgba(10,14,26,0.95);
+      backdrop-filter: blur(20px); border-top: 1px solid var(--glass-border);
+    }
+    .mobile-cta a {
+      display: block; width: 100%; text-align: center;
+      background: var(--gradient-accent); color: #fff;
+      padding: 14px; border-radius: 10px; font-family: 'Inter', sans-serif;
+      font-weight: 700; font-size: 0.95rem; text-decoration: none;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    /* ============ SCROLL REVEAL ============ */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .cases-grid { grid-template-columns: repeat(2, 1fr); }
+      .cases-grid .case-card:last-child { grid-column: span 2; }
+      .process-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .process-grid::before { display: none; }
+      .industries-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .stat-item:nth-child(2)::after { display: none; }
+    }
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .nav-toggle { display: block; }
+      .nav-phone { display: none; }
+      section { padding: 80px 24px; }
+      .hero-content { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .mobile-cta { display: block; }
+      footer { padding-bottom: 80px; }
+    }
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .cases-grid { grid-template-columns: 1fr; }
+      .cases-grid .case-card:last-child { grid-column: span 1; }
+      .process-grid { grid-template-columns: 1fr; }
+      .industries-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr; gap: 32px; }
+      .stat-item::after { display: none; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.2rem; }
+      .trust-badges { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background elements -->
+  <div class="dot-bg"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <div>
+        <div class="nav-logo">DNA<span class="dot"></span>Solutions</div>
+        <div class="nav-tagline">Technological Hospitality Specialists</div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#industries">Industries</a></li>
+        <li><a href="#results">Case Studies</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="tel:4438312136" class="nav-phone">(443) 831-2136</a>
+        <a href="#contact" class="nav-cta">Start a Conversation</a>
+        <button class="nav-toggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+    <div class="hero-lines">
+      <div class="hero-line"></div>
+      <div class="hero-line"></div>
+      <div class="hero-line"></div>
+      <div class="hero-line"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          IT Consulting & Cybersecurity Compliance &mdash; Baltimore / DMV
+        </div>
+        <h1>Complex Challenges Deserve <span class="gradient-text">Engineered Solutions.</span></h1>
+        <p class="hero-sub">DNA Solutions & Consulting was founded by engineers who were tired of seeing clients get sold products instead of solutions. Since 2015, we've been the team government contractors, healthcare organizations, and growing businesses call when the stakes are real and the deadlines aren't moving.</p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-primary">Schedule a Free Consultation</a>
+          <a href="#services" class="btn-outline">Explore Our Services</a>
+        </div>
+      </div>
+      <div class="hero-glass-card">
+        <div class="hero-card-title">Why DNA Solutions</div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">10+</div>
+          <div class="hero-stat-label">Years solving complex IT challenges</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">NIST</div>
+          <div class="hero-stat-label">800-53 & 800-171 compliance expertise</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">Client-first engagement model</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">DMV</div>
+          <div class="hero-stat-label">Serving the entire mid-Atlantic region</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-inner">
+      <span class="trust-label">Compliance & Standards</span>
+      <div class="trust-badges">
+        <div class="trust-badge">NIST 800-53</div>
+        <div class="trust-badge">NIST 800-171</div>
+        <div class="trust-badge">CMMC Ready</div>
+        <div class="trust-badge">ISO Aligned</div>
+        <div class="trust-badge">Federal Contractor Approved</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <p class="eyebrow reveal">What We Do</p>
+      <h2 class="section-title reveal">Practical Solutions for Organizations<br>That Can't Afford Guesswork</h2>
+      <p class="section-sub reveal">Since 2015, DNA Solutions has worked with government contractors navigating NIST compliance, healthcare organizations managing sensitive data, and growing businesses that need real IT strategy &mdash; not another vendor with a slide deck.</p>
+      <div class="services-grid">
+        <div class="svc-card reveal reveal-delay-1">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <h3>IT Consulting & Strategy</h3>
+          <p>We assess your current environment and develop a roadmap that aligns technology investments with your organizational priorities.</p>
+        </div>
+        <div class="svc-card reveal reveal-delay-2">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3>Custom Software Development</h3>
+          <p>Purpose-built applications designed to solve the specific operational challenges your off-the-shelf tools cannot address.</p>
+        </div>
+        <div class="svc-card reveal reveal-delay-3">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Cybersecurity & NIST Compliance</h3>
+          <p>NIST 800-53, NIST 800-171, and CMMC compliance &mdash; from gap assessment through remediation, documentation, and audit readiness.</p>
+        </div>
+        <div class="svc-card reveal reveal-delay-1">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Talent & Staffing Solutions</h3>
+          <p>Technical talent placement that maximizes value for your organization while providing career stability for qualified candidates.</p>
+        </div>
+        <div class="svc-card reveal reveal-delay-2">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Managed IT Services</h3>
+          <p>Ongoing infrastructure management, monitoring, and support so your team can focus on what they do best.</p>
+        </div>
+        <div class="svc-card reveal reveal-delay-3">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+          </div>
+          <h3>Cloud & Infrastructure</h3>
+          <p>Architecture, migration, and optimization services for organizations moving to or improving cloud-based environments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-number" data-target="10">10+</div>
+        <div class="stat-label">Years of Experience</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-number">200+</div>
+        <div class="stat-label">Projects Delivered</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Clients Served</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-number">6</div>
+        <div class="stat-label">Industries Served</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-img-wrap reveal">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="DNA Solutions team at work" />
+          <div class="about-img-badge">
+            <div class="about-img-badge-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div>
+              <div class="about-img-badge-text">Engineering-Led Since 2015</div>
+              <div class="about-img-badge-sub">Bel Air, MD</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-text reveal">
+          <p class="eyebrow">About DNA Solutions</p>
+          <h2 class="section-title">Founded by Engineers.<br>Run Like a Partnership.</h2>
+          <p class="section-sub">Constantine (Dean) Hadjis founded DNA Solutions in 2015 after years watching organizations struggle with IT vendors who over-promised and under-delivered. His background spans IT leadership and financial operations &mdash; which means he understands that every technology decision is also a business decision.</p>
+          <p style="font-size:0.95rem; color:var(--text-muted); line-height:1.75; margin-bottom:28px;">We call ourselves "Technological Hospitality Specialists" because we believe you should feel like a valued partner at every step &mdash; not a support ticket. Our office is in Bel Air, MD, and we serve organizations across the Baltimore region and the broader DMV corridor.</p>
+          <ul class="feature-list">
+            <li><span class="tick">&#10003;</span> Engineering-led team with real implementation experience</li>
+            <li><span class="tick">&#10003;</span> NIST 800-53 and 800-171 compliance including CMMC readiness</li>
+            <li><span class="tick">&#10003;</span> Bel Air, MD &mdash; serving Baltimore, DC, and the entire DMV</li>
+            <li><span class="tick">&#10003;</span> Project-based, retainer, or staff augmentation models</li>
+            <li><span class="tick">&#10003;</span> Government contractors, healthcare, and private sector clients</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process-section" id="process">
+    <div class="container">
+      <div style="text-align:center; margin-bottom:64px;">
+        <p class="eyebrow reveal">How We Work</p>
+        <h2 class="section-title reveal">A Proven Engagement Process</h2>
+        <p class="section-sub reveal" style="margin: 0 auto 0;">No surprises, no hidden fees. Here's how every DNA engagement unfolds.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step reveal reveal-delay-1">
+          <div class="process-num">01</div>
+          <h3>Discovery Call</h3>
+          <p>We listen first. A 30-minute conversation to understand your challenges, environment, and goals &mdash; no sales pitch.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="process-num">02</div>
+          <h3>Assessment & Scoping</h3>
+          <p>We map your current state, identify gaps, and deliver a clear scope of work with honest timelines and pricing.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="process-num">03</div>
+          <h3>Implementation</h3>
+          <p>Our engineering team executes with weekly check-ins, documented milestones, and zero surprises along the way.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-4">
+          <div class="process-num">04</div>
+          <h3>Ongoing Partnership</h3>
+          <p>We stay for the long haul &mdash; managed services, compliance monitoring, or on-call support when you need us.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section id="industries">
+    <div class="container">
+      <div style="text-align:center; margin-bottom:64px;">
+        <p class="eyebrow reveal">Industries We Serve</p>
+        <h2 class="section-title reveal">Deep Expertise Across Sectors</h2>
+        <p class="section-sub reveal" style="margin: 0 auto 0;">We understand the regulatory, operational, and security nuances of each industry we serve.</p>
+      </div>
+      <div class="industries-grid">
+        <div class="ind-card reveal reveal-delay-1">
+          <div class="ind-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M9 8h1"/><path d="M9 12h1"/><path d="M9 16h1"/><path d="M14 8h1"/><path d="M14 12h1"/><path d="M14 16h1"/><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/></svg>
+          </div>
+          <h3>Government & Federal</h3>
+          <p>NIST compliance, CMMC readiness, and secure infrastructure for government contractors.</p>
+        </div>
+        <div class="ind-card reveal reveal-delay-2">
+          <div class="ind-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3>Healthcare</h3>
+          <p>HIPAA-aligned systems, EHR integrations, and data protection for healthcare organizations.</p>
+        </div>
+        <div class="ind-card reveal reveal-delay-3">
+          <div class="ind-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Financial Services</h3>
+          <p>Secure platforms, regulatory compliance, and custom tools for financial institutions.</p>
+        </div>
+        <div class="ind-card reveal reveal-delay-4">
+          <div class="ind-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+          </div>
+          <h3>Small & Mid-Size Business</h3>
+          <p>Scalable IT strategy and managed services for growing organizations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES -->
+  <section id="results">
+    <div class="container">
+      <p class="eyebrow reveal">Case Studies</p>
+      <h2 class="section-title reveal">Real Results, Real Organizations</h2>
+      <p class="section-sub reveal">Anonymized highlights from actual DNA Solutions engagements.</p>
+      <div class="cases-grid">
+        <div class="case-card reveal reveal-delay-1">
+          <div class="case-tag">Government Contractor</div>
+          <h3>NIST 800-171 Compliance in 12 Weeks</h3>
+          <p>A Maryland defense contractor was facing a contract renewal deadline with zero compliance documentation. We mapped gaps, built the SSP, and delivered full audit readiness.</p>
+          <div class="case-result">
+            <div class="case-result-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span>Passed DIBCAC assessment on first attempt</span>
+          </div>
+        </div>
+        <div class="case-card reveal reveal-delay-2">
+          <div class="case-tag">Healthcare</div>
+          <h3>Custom Platform Replaced 3 Legacy Systems</h3>
+          <p>A Baltimore healthcare org was losing hours weekly to manual data entry across disconnected systems. We built a unified platform in 8 weeks.</p>
+          <div class="case-result">
+            <div class="case-result-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span>40+ hours saved per month after go-live</span>
+          </div>
+        </div>
+        <div class="case-card reveal reveal-delay-3">
+          <div class="case-tag">Financial Services</div>
+          <h3>Cloud Migration with Zero Downtime</h3>
+          <p>A regional financial services firm needed to move from on-prem to cloud without disrupting daily operations or compromising security posture.</p>
+          <div class="case-result">
+            <div class="case-result-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span>Seamless transition with 99.99% uptime</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="container">
+      <div style="text-align:center; margin-bottom:64px;">
+        <p class="eyebrow reveal">Client Perspectives</p>
+        <h2 class="section-title reveal">What Our Partners Say</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="t-card reveal reveal-delay-1">
+          <div class="t-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote>"We were in the middle of a NIST 800-171 assessment and scrambling. Dean's team came in, mapped our gaps honestly &mdash; didn't sugarcoat it &mdash; and built out a remediation plan that actually held up through our audit. DNA is the only consultant I've called back."</blockquote>
+          <div class="t-author">
+            <div class="t-author-avatar">ID</div>
+            <div class="t-author-info">
+              <h4>IT Director</h4>
+              <p>Maryland Government Contractor</p>
+            </div>
+          </div>
+        </div>
+        <div class="t-card reveal reveal-delay-2">
+          <div class="t-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote>"We were running three different systems that didn't talk to each other and losing hours every week to manual data entry. DNA built us something custom in about eight weeks. First quarter after go-live we got those hours back."</blockquote>
+          <div class="t-author">
+            <div class="t-author-avatar">OM</div>
+            <div class="t-author-info">
+              <h4>Operations Manager</h4>
+              <p>Healthcare Organization &mdash; Baltimore, MD</p>
+            </div>
+          </div>
+        </div>
+        <div class="t-card reveal reveal-delay-3">
+          <div class="t-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote>"What I appreciate most is that they communicate like colleagues, not like vendors trying to protect their hours. When something came up mid-project they called us before we even knew there was an issue. That kind of transparency is rare."</blockquote>
+          <div class="t-author">
+            <div class="t-author-avatar">CT</div>
+            <div class="t-author-info">
+              <h4>CTO</h4>
+              <p>Financial Services Firm &mdash; DMV Region</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p class="eyebrow">Get in Touch</p>
+          <h2 class="section-title">Let's Talk About<br>Your Challenges</h2>
+          <p>Whether you're facing a compliance deadline, trying to get a handle on your infrastructure, or just not sure where your vulnerabilities are &mdash; we're a good first call. No jargon, no pressure, just an honest conversation.</p>
+          <div class="contact-methods">
+            <a href="tel:4438312136" class="contact-method">
+              <div class="contact-method-icon">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <div class="contact-method-label">Call Dean Directly</div>
+                <div class="contact-method-value">(443) 831-2136</div>
+              </div>
+            </a>
+            <a href="mailto:dean@dnabaltimore.com" class="contact-method">
+              <div class="contact-method-icon">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div class="contact-method-label">Email</div>
+                <div class="contact-method-value">dean@dnabaltimore.com</div>
+              </div>
+            </a>
+            <a href="https://maps.google.com/?q=150+Nichols+St+Bel+Air+MD+21014" target="_blank" rel="noopener" class="contact-method">
+              <div class="contact-method-icon">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <div class="contact-method-label">Office</div>
+                <div class="contact-method-value">150 Nichols St, Bel Air, MD 21014</div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="contact-form-wrap reveal reveal-delay-2">
+          <h3>Request a Consultation</h3>
+          <p>Fill out the form and we'll reach out within one business day.</p>
+          <form onsubmit="return false;">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" placeholder="John" />
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" placeholder="Smith" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="john@company.com" />
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" placeholder="(555) 123-4567" />
+            </div>
+            <div class="form-group">
+              <label>What Do You Need Help With?</label>
+              <select>
+                <option value="">Select a service area...</option>
+                <option>IT Consulting & Strategy</option>
+                <option>Cybersecurity & NIST Compliance</option>
+                <option>Custom Software Development</option>
+                <option>Managed IT Services</option>
+                <option>Cloud & Infrastructure</option>
+                <option>Talent & Staffing</option>
+                <option>Other / Not Sure</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Tell Us More (Optional)</label>
+              <textarea placeholder="Describe your situation, timeline, or any questions..."></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Schedule My Free Consultation</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <div class="cta-band">
+    <h2 class="reveal">Your IT Problems Are Solvable.<br>Let's Prove It.</h2>
+    <p class="reveal">No jargon, no pressure &mdash; just an honest conversation about where you are and how we can help.</p>
+    <a href="#contact" class="btn-primary reveal">Start a Conversation Today</a>
+    <p class="cta-phone-note reveal">Prefer to call? Reach Dean directly: <a href="tel:4438312136">(443) 831-2136</a></p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-name">DNA<span class="dot"></span>Solutions</div>
+        <p>Technological Hospitality Specialists. Enterprise IT consulting, custom software, and cybersecurity compliance for organizations across the mid-Atlantic.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">IT Consulting</a></li>
+          <li><a href="#services">Custom Software</a></li>
+          <li><a href="#services">Cybersecurity</a></li>
+          <li><a href="#services">NIST Compliance</a></li>
+          <li><a href="#services">Staffing Solutions</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="#industries">Government</a></li>
+          <li><a href="#industries">Healthcare</a></li>
+          <li><a href="#industries">Financial Services</a></li>
+          <li><a href="#industries">Small Business</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://maps.google.com/?q=150+Nichols+St+Bel+Air+MD+21014" target="_blank" rel="noopener">150 Nichols St, Bel Air, MD 21014</a></li>
+          <li><a href="tel:4438312136" style="color:var(--accent-bright);font-weight:600;">(443) 831-2136</a></li>
+          <li><a href="mailto:dean@dnabaltimore.com">dean@dnabaltimore.com</a></li>
+          <li><a href="#contact">Schedule a Free Consultation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 DNA Solutions & Consulting, LLC. All rights reserved.</span>
+      <span>Bel Air, MD | Serving the Mid-Atlantic Region</span>
+    </div>
+  </footer>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="mobile-cta">
+    <a href="#contact">Schedule a Free Consultation</a>
+  </div>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Animated counters
+    function animateCounters() {
+      const counters = document.querySelectorAll('.stat-number');
+      counters.forEach(counter => {
+        const text = counter.textContent;
+        const match = text.match(/(\d+)/);
+        if (!match) return;
+        const target = parseInt(match[0]);
+        const suffix = text.replace(match[0], '');
+        let current = 0;
+        const duration = 2000;
+        const step = target / (duration / 16);
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          counter.textContent = Math.floor(current) + suffix;
+        }, 16);
+      });
+    }
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    const statsSection = document.querySelector('.stats-section');
+    if (statsSection) statsObserver.observe(statsSection);
+  </script>
+</body>
+</html>

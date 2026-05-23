@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advantage Tax & Business Services | Lancaster, PA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:        #0d1f3c;
+      --navy-light:  #162d56;
+      --blue-mid:    #1a3a6e;
+      --gold:        #c9a84c;
+      --gold-light:  #e0c06a;
+      --white:       #ffffff;
+      --off-white:   #f5f7fa;
+      --gray-100:    #eef1f6;
+      --gray-300:    #c8cdd8;
+      --gray-600:    #6b7280;
+      --gray-800:    #1f2937;
+      --text-dark:   #111827;
+      --text-muted:  #4b5563;
+      --shadow-sm:   0 2px 8px rgba(13,31,60,0.08);
+      --shadow-md:   0 4px 20px rgba(13,31,60,0.14);
+      --shadow-lg:   0 8px 40px rgba(13,31,60,0.18);
+      --radius:      10px;
+      --radius-lg:   18px;
+      --transition:  0.35s ease;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── UTILITY ─────────────────────────────────────── */
+    .container {
+      width: 90%;
+      max-width: 1160px;
+      margin-inline: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.75rem;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background var(--transition), transform 0.2s ease, box-shadow var(--transition);
+      border: 2px solid transparent;
+      letter-spacing: 0.02em;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold);
+    }
+    .btn-gold:hover {
+      background: var(--gold-light);
+      border-color: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(201,168,76,0.45);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255,255,255,0.7);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.22;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 560px;
+    }
+
+    /* ── SCROLL REVEAL ───────────────────────────────── */
+    .reveal, .reveal-left, .reveal-right {
+      opacity: 0;
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal        { transform: translateY(36px); }
+    .reveal-left   { transform: translateX(-40px); }
+    .reveal-right  { transform: translateX(40px); }
+    .reveal.visible,
+    .reveal-left.visible,
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translate(0);
+    }
+
+    /* ── NAVBAR ──────────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: var(--navy);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: box-shadow var(--transition);
+    }
+    #navbar.scrolled {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.22);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .nav-logo-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .nav-logo-sub {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.82);
+      transition: color var(--transition);
+      letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .nav-phone {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+    .nav-phone:hover { color: var(--gold-light); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--navy-light);
+      padding: 1rem 1.5rem 1.5rem;
+      gap: 0.75rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu .mobile-phone {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1rem;
+      margin-top: 0.25rem;
+    }
+
+    /* ── HERO ────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1800&auto=format&fit=crop&q=80');
+      background-size: cover;
+      background-position: center top;
+      padding-top: 70px;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        120deg,
+        rgba(13,31,60,0.91) 0%,
+        rgba(22,45,86,0.80) 55%,
+        rgba(13,31,60,0.55) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      padding: 5rem 0;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(201,168,76,0.18);
+      border: 1px solid rgba(201,168,76,0.5);
+      border-radius: 50px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1.4rem;
+    }
+    .hero-tag::before {
+      content: '';
+      display: inline-block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.16;
+      margin-bottom: 1.2rem;
+    }
+    .hero-title em {
+      font-style: normal;
+      color: var(--gold);
+    }
+    .hero-desc {
+      font-size: 1.08rem;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 2rem;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .stat-badge {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+    .stat-badge .stat-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-badge .stat-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.68);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .stat-divider {
+      width: 1px;
+      background: rgba(255,255,255,0.15);
+      align-self: stretch;
+    }
+
+    /* ── TRUST STRIP ─────────────────────────────────── */
+    #trust {
+      background: var(--gold);
+      padding: 1rem 0;
+    }
+    .trust-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--navy);
+    }
+    .trust-item svg {
+      width: 18px; height: 18px;
+      fill: var(--navy);
+      flex-shrink: 0;
+    }
+    .trust-sep { color: var(--navy); opacity: 0.35; font-size: 1.1rem; }
+
+    /* ── SERVICES ────────────────────────────────────── */
+    #services {
+      padding: 6rem 0;
+      background: var(--off-white);
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .section-header .section-subtitle {
+      margin-inline: auto;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-100);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+    .service-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--navy), var(--blue-mid));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .service-icon svg {
+      width: 26px; height: 26px;
+      fill: var(--gold);
+    }
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.13rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* ── ABOUT ───────────────────────────────────────── */
+    #about {
+      padding: 6rem 0;
+      background: var(--white);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .about-img-wrap img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+    }
+    .about-img-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--gold);
+      border-radius: 10px;
+      padding: 0.75rem 1.2rem;
+      text-align: center;
+    }
+    .about-img-badge .badge-num {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .about-img-badge .badge-text {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--navy);
+    }
+    .about-content .section-label { display: block; }
+    .about-content .section-title { margin-bottom: 0.5rem; }
+    .about-name {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 1.2rem;
+    }
+    .about-name span {
+      color: var(--gold);
+      font-style: italic;
+    }
+    .about-content p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-size: 0.97rem;
+    }
+    .about-credentials {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-top: 1.5rem;
+    }
+    .credential-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+    .credential-item::before {
+      content: '';
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ── TESTIMONIALS ────────────────────────────────── */
+    #testimonials {
+      padding: 6rem 0;
+      background: var(--navy);
+    }
+    #testimonials .section-label { color: var(--gold); }
+    #testimonials .section-title { color: var(--white); }
+    #testimonials .section-subtitle { color: rgba(255,255,255,0.65); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .review-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem;
+      transition: background var(--transition);
+    }
+    .review-card:hover {
+      background: rgba(255,255,255,0.10);
+    }
+    .review-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 1.1rem;
+    }
+    .review-stars svg {
+      width: 17px; height: 17px;
+      fill: var(--gold);
+    }
+    .review-quote {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .review-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .review-author-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--white);
+    }
+    .review-author-desc {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.1rem;
+    }
+
+    /* ── WHY CHOOSE US ───────────────────────────────── */
+    #why {
+      padding: 6rem 0;
+      background: var(--off-white);
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .why-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 1.75rem;
+      border-top: 4px solid var(--gold);
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .why-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .why-icon {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy), var(--blue-mid));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+    }
+    .why-icon svg {
+      width: 28px; height: 28px;
+      fill: var(--gold);
+    }
+    .why-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+    .why-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* ── HOURS & LOCATION ────────────────────────────── */
+    #location {
+      padding: 6rem 0;
+      background: var(--white);
+    }
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+    }
+    .hours-table td {
+      padding: 0.7rem 0;
+      font-size: 0.93rem;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .hours-table td:first-child {
+      font-weight: 600;
+      color: var(--navy);
+      width: 55%;
+    }
+    .hours-table td:last-child {
+      color: var(--text-muted);
+    }
+    .hours-note {
+      margin-top: 1rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    .location-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 1.2rem;
+    }
+    .loc-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .loc-detail svg {
+      width: 20px; height: 20px;
+      fill: var(--gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .loc-detail span {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .loc-detail a {
+      color: var(--blue-mid);
+      font-weight: 600;
+      transition: color var(--transition);
+    }
+    .loc-detail a:hover { color: var(--gold); }
+    .map-embed {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-100);
+      height: 220px;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      text-align: center;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    #footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.75);
+      padding: 4rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 2rem;
+    }
+    .footer-brand .nav-logo-name { font-size: 1.2rem; margin-bottom: 0.25rem; }
+    .footer-brand p {
+      margin-top: 0.9rem;
+      font-size: 0.87rem;
+      line-height: 1.65;
+      max-width: 300px;
+    }
+    .footer-col h4 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.1rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li {
+      margin-bottom: 0.55rem;
+    }
+    .footer-col ul li a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.68);
+      transition: color var(--transition);
+    }
+    .footer-col ul li a:hover { color: var(--gold); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-bottom p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+    }
+    .footer-bottom a {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.8rem;
+      transition: color var(--transition);
+    }
+    .footer-bottom a:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE: 960px ───────────────────────────── */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .reviews-grid  { grid-template-columns: repeat(2, 1fr); }
+      .why-grid      { grid-template-columns: repeat(2, 1fr); }
+      .about-grid    { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-img-wrap img { height: 360px; }
+      .location-grid { grid-template-columns: 1fr; }
+      .footer-grid   { grid-template-columns: 1fr 1fr; }
+      .footer-brand  { grid-column: 1 / -1; }
+    }
+
+    /* ── RESPONSIVE: 640px ───────────────────────────── */
+    @media (max-width: 640px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .reviews-grid  { grid-template-columns: 1fr; }
+      .why-grid      { grid-template-columns: 1fr; }
+      .footer-grid   { grid-template-columns: 1fr; }
+      .footer-brand  { grid-column: auto; }
+      .hero-stats    { gap: 1.25rem; }
+      .stat-divider  { display: none; }
+      .trust-inner   { gap: 1.2rem; }
+      .trust-sep     { display: none; }
+      .hero-content  { padding: 3.5rem 0; }
+      .btn { padding: 0.7rem 1.3rem; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ──────────────────────────────────────────── -->
+<header id="navbar">
+  <div class="container nav-inner">
+    <a href="#hero" class="nav-logo" aria-label="Advantage Tax Home">
+      <span class="nav-logo-name">Advantage Tax & Business</span>
+      <span class="nav-logo-sub">Services, Inc. &mdash; Lancaster, PA</span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#location">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="tel:7172997176" class="nav-phone">(717) 299-7176</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#why">Why Us</a>
+    <a href="#location">Contact</a>
+    <a href="tel:7172997176" class="mobile-phone">(717) 299-7176</a>
+  </nav>
+</header>
+
+<!-- ── HERO ────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-tag">Lancaster, PA &mdash; Serving Individuals &amp; Businesses</div>
+      <h1 class="hero-title">
+        Tax Expertise You Can<br /><em>Trust All Year Long</em>
+      </h1>
+      <p class="hero-desc">
+        Advantage Tax &amp; Business Services provides accurate tax preparation, strategic planning, and comprehensive business financial services — tailored to your unique situation.
+      </p>
+      <div class="hero-btns">
+        <a href="tel:7172997176" class="btn btn-gold">Call (717) 299-7176</a>
+        <a href="#services" class="btn btn-outline">Explore Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-badge">
+          <span class="stat-num">12+</span>
+          <span class="stat-label">Years in Business</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-badge">
+          <span class="stat-num">100s</span>
+          <span class="stat-label">of Clients Served</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-badge">
+          <span class="stat-num">IRS</span>
+          <span class="stat-label">Registered Preparer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST STRIP ──────────────────────────────────────── -->
+<div id="trust">
+  <div class="container trust-inner">
+    <span class="trust-item">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+      IRS Registered Tax Preparer
+    </span>
+    <span class="trust-sep">&bull;</span>
+    <span class="trust-item">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+      In Business Since 2013
+    </span>
+    <span class="trust-sep">&bull;</span>
+    <span class="trust-item">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+      Personalized Service
+    </span>
+    <span class="trust-sep">&bull;</span>
+    <span class="trust-item">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+      Individual &amp; Business Returns
+    </span>
+  </div>
+</div>
+
+<!-- ── SERVICES ─────────────────────────────────────────── -->
+<section id="services">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">What We Offer</span>
+      <h2 class="section-title">Comprehensive Tax &amp; Financial Services</h2>
+      <p class="section-subtitle">From personal returns to complex business financials, we provide the full range of services Lancaster families and businesses need to succeed.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+        </div>
+        <h3>Individual Tax Returns</h3>
+        <p>Accurate, thorough preparation of federal and state personal income tax returns, maximizing your refund and minimizing your liability.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+        </div>
+        <h3>Business Tax Returns</h3>
+        <p>Expert preparation for sole proprietors, LLCs, S-Corps, C-Corps, and partnerships — ensuring full compliance and smart deductions.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+        </div>
+        <h3>Tax Planning</h3>
+        <p>Proactive strategies to reduce your tax burden year-round — not just at filing time. We help individuals and businesses plan ahead with confidence.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.35C18 2.53 15.5 0 12.35 0 10.5 0 8.95.93 8 2.28L7 3.49l-1-.02C2.8 3.49 0 6.3 0 9.5S2.8 15.5 6 15.5h14c2.21 0 4-1.79 4-4s-1.79-4-4-4z"/></svg>
+        </div>
+        <h3>Payroll Services</h3>
+        <p>Reliable payroll processing, direct deposit, quarterly filings, and year-end W-2/1099 preparation so you can focus on running your business.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+        </div>
+        <h3>Bookkeeping</h3>
+        <p>Organized, accurate bookkeeping services that keep your financials in order — monthly reconciliations, financial statements, and clean records year-round.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Estate, Trust &amp; CFO Services</h3>
+        <p>Specialized preparation for estate and trust tax returns, plus strategic CFO/advisory services to guide your business's financial decision-making.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ─────────────────────────────────────────────── -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal-left">
+        <img
+          src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&auto=format&fit=crop&q=80"
+          alt="Professional businessman representing Bryan Struckmann"
+          loading="lazy"
+        />
+        <div class="about-img-badge">
+          <div class="badge-num">12+</div>
+          <div class="badge-text">Years of<br />Excellence</div>
+        </div>
+      </div>
+      <div class="about-content reveal-right">
+        <span class="section-label">About Us</span>
+        <h2 class="section-title">Led by a Trusted Local Expert</h2>
+        <p class="about-name">Bryan Struckmann &mdash; <span>IRS Registered Tax Preparer</span></p>
+        <p>Since founding Advantage Tax &amp; Business Services in 2013, Bryan Struckmann has built a reputation in Lancaster County for delivering honest, accurate, and personalized financial services that truly make a difference for clients.</p>
+        <p>Bryan holds IRS registration as an authorized tax preparer, bringing professional accountability and a commitment to continuing education to every client relationship. Whether you're a first-time filer or a growing business, Bryan takes the time to understand your complete financial picture.</p>
+        <p>Located in the heart of Lancaster at 2137 Embassy Drive, Advantage Tax is a community-focused firm where you're always a priority — never just a number in a queue.</p>
+        <div class="about-credentials">
+          <div class="credential-item">IRS Registered Tax Preparer (PTIN holder)</div>
+          <div class="credential-item">12+ years serving Lancaster County</div>
+          <div class="credential-item">Individual, business, estate &amp; trust expertise</div>
+          <div class="credential-item">Year-round availability — not just tax season</div>
+          <div class="credential-item">Direct, one-on-one client relationships</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ─────────────────────────────────────── -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Client Reviews</span>
+      <h2 class="section-title" style="color:var(--white);">What Our Clients Are Saying</h2>
+      <p class="section-subtitle" style="margin-inline:auto;">Real feedback from real Lancaster-area clients who trust us with their taxes year after year.</p>
+    </div>
+    <div class="reviews-grid">
+
+      <div class="review-card reveal">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p class="review-quote">"Bryan has done our family's taxes for the past six years and I wouldn't trust anyone else. He catches deductions we never knew we were missing and takes the time to actually explain our return. Absolutely outstanding service."</p>
+        <div class="review-author">
+          <div class="review-avatar">MH</div>
+          <div>
+            <div class="review-author-name">Margaret H.</div>
+            <div class="review-author-desc">Lancaster, PA &mdash; Individual Client</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p class="review-quote">"As a small business owner, I was drowning in bookkeeping and quarterly taxes. Advantage Tax stepped in and completely transformed how I manage my finances. Bryan is knowledgeable, responsive, and genuinely cares about his clients' success."</p>
+        <div class="review-author">
+          <div class="review-avatar">DP</div>
+          <div>
+            <div class="review-author-name">David P.</div>
+            <div class="review-author-desc">Mountville, PA &mdash; Small Business Owner</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p class="review-quote">"I came to Bryan after a messy estate situation with years of unfiled trust returns. He handled everything professionally and efficiently, with patience I didn't expect. The process was far less stressful than I feared. Highly recommend."</p>
+        <div class="review-author">
+          <div class="review-avatar">SL</div>
+          <div>
+            <div class="review-author-name">Susan L.</div>
+            <div class="review-author-desc">Lancaster, PA &mdash; Estate Tax Client</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY CHOOSE US ─────────────────────────────────────── -->
+<section id="why">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Why Advantage Tax</span>
+      <h2 class="section-title">The Advantage Difference</h2>
+      <p class="section-subtitle" style="margin-inline:auto;">We combine professional credentials, local roots, and genuine care to deliver a tax and financial experience unlike any other in Lancaster County.</p>
+    </div>
+    <div class="why-grid">
+
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+        </div>
+        <h3>IRS Registered &amp; Credentialed</h3>
+        <p>Bryan holds active IRS registration as a tax preparer, meaning you work with a professional who is accountable, vetted, and committed to ethical standards.</p>
+      </div>
+
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+        </div>
+        <h3>12+ Years of Local Experience</h3>
+        <p>Since 2013, we've built deep expertise in Pennsylvania tax law and a track record of helping hundreds of Lancaster-area clients navigate complex tax situations.</p>
+      </div>
+
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        </div>
+        <h3>One-on-One Attention</h3>
+        <p>You work directly with Bryan — not a rotating staff of strangers. We take time to understand your full situation and remember you from year to year.</p>
+      </div>
+
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+        </div>
+        <h3>Full-Service Capabilities</h3>
+        <p>From your personal 1040 to payroll, bookkeeping, and estate taxes — we handle it all under one roof, eliminating the need to juggle multiple providers.</p>
+      </div>
+
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+        </div>
+        <h3>Year-Round Availability</h3>
+        <p>Tax questions don't wait until April. We're here throughout the year for planning, payroll, bookkeeping, and any financial concern that comes up.</p>
+      </div>
+
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19h.5v3c4.86-2.34 8-7 8-11.5C20 5.81 16.19 2 11.5 2zm1 14.5h-2v-2h2v2zm0-4h-2c0-3.25 3-3 3-5 0-1.1-.9-2-2-2s-2 .9-2 2h-2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 2.5-3 2.75-3 5z"/></svg>
+        </div>
+        <h3>Clear, Transparent Communication</h3>
+        <p>We explain your return in plain language, keep you informed at every step, and never leave you wondering what you owe or why.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── HOURS & LOCATION ──────────────────────────────────── -->
+<section id="location">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:left; margin-bottom:2.5rem;">
+      <span class="section-label">Find Us</span>
+      <h2 class="section-title">Hours &amp; Location</h2>
+    </div>
+    <div class="location-grid">
+
+      <div class="reveal-left">
+        <h3 style="font-family:var(--font-display);font-size:1.4rem;color:var(--navy);margin-bottom:1.25rem;">Office Hours</h3>
+        <table class="hours-table">
+          <tbody>
+            <tr><td>Monday &ndash; Friday</td><td>9:00 AM &ndash; 5:00 PM</td></tr>
+            <tr><td>Saturday (Tax Season)</td><td>By Appointment</td></tr>
+            <tr><td>Sunday</td><td>Closed</td></tr>
+          </tbody>
+        </table>
+        <p class="hours-note">Extended hours available during peak tax season (January &ndash; April). Evening appointments may be available upon request.</p>
+        <div style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap;">
+          <a href="tel:7172997176" class="btn btn-gold">Call to Schedule</a>
+        </div>
+      </div>
+
+      <div class="reveal-right">
+        <div class="location-info">
+          <h3>Advantage Tax &amp; Business Services, Inc.</h3>
+          <div class="loc-detail">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>2137 Embassy Drive, Suite 208<br />Lancaster, PA 17603</span>
+          </div>
+          <div class="loc-detail">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            <span><a href="tel:7172997176">(717) 299-7176</a></span>
+          </div>
+          <div class="loc-detail">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" opacity="0"/><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <span>Lancaster, PA and surrounding areas</span>
+          </div>
+        </div>
+        <div class="map-embed">
+          <div>
+            <svg viewBox="0 0 24 24" style="width:36px;height:36px;fill:var(--gray-300);margin:0 auto 0.5rem;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <div>2137 Embassy Dr, Suite 208<br />Lancaster, PA 17603</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ────────────────────────────────────────────── -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo-name" style="font-family:var(--font-display);font-size:1.25rem;color:var(--white);">Advantage Tax &amp; Business Services, Inc.</div>
+        <span class="nav-logo-sub">Lancaster, PA &mdash; Serving the Community Since 2013</span>
+        <p>Providing reliable, personalized tax preparation and financial services to individuals and businesses in Lancaster, PA and surrounding areas. Bryan Struckmann &mdash; IRS Registered Tax Preparer.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#services">Individual Tax Returns</a></li>
+          <li><a href="#services">Business Tax Returns</a></li>
+          <li><a href="#services">Tax Planning</a></li>
+          <li><a href="#services">Payroll Services</a></li>
+          <li><a href="#services">Bookkeeping</a></li>
+          <li><a href="#services">Estate &amp; Trust Taxes</a></li>
+          <li><a href="#services">CFO / Advisory Services</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:7172997176">(717) 299-7176</a></li>
+          <li><a href="#location">2137 Embassy Dr, Ste 208</a></li>
+          <li><a href="#location">Lancaster, PA 17603</a></li>
+        </ul>
+        <h4 style="margin-top:1.5rem;">Navigate</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About Bryan</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#location">Hours &amp; Location</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Advantage Tax &amp; Business Services, Inc. All rights reserved.</p>
+      <p>2137 Embassy Dr, Suite 208, Lancaster, PA 17603 &mdash; <a href="tel:7172997176">(717) 299-7176</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ── SCRIPTS ───────────────────────────────────────────── -->
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Hamburger menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+  });
+
+  // Close mobile menu on link click
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Scroll reveal via IntersectionObserver
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSL Consulting Services LLC | Strategic Management & Marketing Consulting | Roseland, NJ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES
+    ============================================================ */
+    :root {
+      --charcoal:   #1c1c1e;
+      --navy:       #0d2240;
+      --navy-mid:   #153358;
+      --teal:       #0f8080;
+      --teal-light: #12a0a0;
+      --teal-glow:  #0f808033;
+      --white:      #ffffff;
+      --off-white:  #f5f6f8;
+      --slate:      #8899aa;
+      --border:     #d6dce6;
+      --font-head:  'Playfair Display', Georgia, serif;
+      --font-body:  'Inter', system-ui, sans-serif;
+      --radius:     8px;
+      --shadow-sm:  0 2px 8px rgba(0,0,0,.08);
+      --shadow-md:  0 6px 24px rgba(0,0,0,.12);
+      --shadow-lg:  0 16px 48px rgba(0,0,0,.18);
+      --transition: 0.35s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--white);
+      color: var(--charcoal);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.25; }
+
+    /* ============================================================
+       UTILITIES
+    ============================================================ */
+    .container {
+      width: 100%;
+      max-width: 1160px;
+      margin-inline: auto;
+      padding-inline: 2rem;
+    }
+    .section-label {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: .75rem;
+    }
+    .section-title {
+      font-size: clamp(1.75rem, 3vw, 2.6rem);
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--slate);
+      max-width: 560px;
+      line-height: 1.75;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .78rem 1.7rem;
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+    .btn-primary {
+      background: var(--teal);
+      color: var(--white);
+    }
+    .btn-primary:hover {
+      background: var(--teal-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(15,128,128,.35);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255,255,255,.55);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,.12);
+      border-color: var(--white);
+    }
+    .btn-navy {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .btn-navy:hover {
+      background: var(--navy-mid);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(13,34,64,.3);
+    }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: transparent;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    .nav.scrolled {
+      background: var(--navy);
+      box-shadow: 0 2px 20px rgba(0,0,0,.25);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    .nav-logo-main {
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: .01em;
+    }
+    .nav-logo-sub {
+      font-size: .65rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-size: .88rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.82);
+      letter-spacing: .02em;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta { margin-left: 1rem; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: var(--navy);
+      padding: 1.5rem 2rem 2rem;
+      z-index: 999;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: .75rem 0;
+      font-size: 1rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.85);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .mobile-menu .btn { margin-top: 1.25rem; width: 100%; justify-content: center; }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center 30%;
+      transform: scale(1.04);
+      transition: transform 8s ease;
+    }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        125deg,
+        rgba(13,34,64,.88) 0%,
+        rgba(13,34,64,.72) 50%,
+        rgba(15,128,128,.25) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 1.25rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1.5px;
+      background: var(--teal-light);
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+      line-height: 1.15;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--teal-light);
+    }
+    .hero-desc {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.8);
+      max-width: 520px;
+      margin-bottom: 2rem;
+      line-height: 1.75;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      color: rgba(255,255,255,.5);
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      z-index: 2;
+      animation: bounce 2s infinite;
+    }
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 1.5px;
+      height: 40px;
+      background: rgba(255,255,255,.3);
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ============================================================
+       TRUST STRIP
+    ============================================================ */
+    .trust {
+      background: var(--navy);
+      padding: 2rem 0;
+    }
+    .trust-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem 4rem;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      color: rgba(255,255,255,.75);
+      font-size: .88rem;
+      font-weight: 500;
+      letter-spacing: .02em;
+    }
+    .trust-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--teal-glow);
+      border: 1px solid var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .trust-icon svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--teal-light);
+    }
+    .trust-divider {
+      width: 1px;
+      height: 28px;
+      background: rgba(255,255,255,.15);
+    }
+
+    /* ============================================================
+       SERVICES
+    ============================================================ */
+    .services {
+      padding: 6rem 0;
+      background: var(--off-white);
+    }
+    .services-header {
+      max-width: 540px;
+      margin-bottom: 3.5rem;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 2rem 1.75rem;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-light));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: transparent;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: var(--teal-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .service-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--teal);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .service-card h3 {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: .6rem;
+    }
+    .service-card p {
+      font-size: .9rem;
+      color: var(--slate);
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       ABOUT
+    ============================================================ */
+    .about {
+      padding: 6rem 0;
+      background: var(--white);
+    }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
+    }
+    .about-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow-md);
+      text-align: center;
+    }
+    .about-badge-num {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--teal-light);
+      line-height: 1;
+    }
+    .about-badge-label {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.65);
+      margin-top: .25rem;
+    }
+    .about-text { }
+    .about-text .section-sub { max-width: 100%; }
+    .about-text p { margin-bottom: 1rem; font-size: .95rem; color: #4a5568; line-height: 1.8; }
+    .about-partner {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      margin-top: 1.5rem;
+      padding: .85rem 1.25rem;
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .about-partner span { color: var(--teal); }
+    .partner-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       RESULTS / CASE STUDIES
+    ============================================================ */
+    .results {
+      padding: 6rem 0;
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+    .results::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 480px; height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(15,128,128,.18) 0%, transparent 70%);
+    }
+    .results-header { margin-bottom: 3.5rem; }
+    .results-header .section-label { color: var(--teal-light); }
+    .results-header .section-title { color: var(--white); }
+    .results-header .section-sub { color: rgba(255,255,255,.6); }
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .result-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 12px;
+      padding: 2rem 1.75rem;
+      transition: var(--transition);
+    }
+    .result-card:hover {
+      background: rgba(255,255,255,.09);
+      border-color: rgba(15,160,160,.4);
+      transform: translateY(-4px);
+    }
+    .result-tag {
+      display: inline-block;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      background: var(--teal-glow);
+      border: 1px solid rgba(15,128,128,.3);
+      border-radius: 4px;
+      padding: .2rem .6rem;
+      margin-bottom: 1.25rem;
+    }
+    .result-stat {
+      font-family: var(--font-head);
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: .4rem;
+    }
+    .result-stat span { color: var(--teal-light); }
+    .result-card h3 {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 700;
+      color: rgba(255,255,255,.9);
+      margin-bottom: .6rem;
+    }
+    .result-card p {
+      font-size: .875rem;
+      color: rgba(255,255,255,.55);
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       TESTIMONIALS
+    ============================================================ */
+    .testimonials {
+      padding: 6rem 0;
+      background: var(--off-white);
+    }
+    .testimonials-header {
+      max-width: 500px;
+      margin-bottom: 3.5rem;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .testimonial-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      transition: var(--transition);
+    }
+    .testimonial-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+    .stars {
+      display: flex;
+      gap: 3px;
+    }
+    .star {
+      width: 14px; height: 14px;
+      fill: #f59e0b;
+    }
+    .quote-mark {
+      font-family: var(--font-head);
+      font-size: 3.5rem;
+      line-height: .6;
+      color: var(--teal);
+      opacity: .3;
+      user-select: none;
+    }
+    .testimonial-text {
+      font-size: .92rem;
+      color: #4a5568;
+      line-height: 1.8;
+      flex: 1;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: .875rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .author-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .author-name {
+      font-weight: 700;
+      font-size: .9rem;
+      color: var(--navy);
+    }
+    .author-title {
+      font-size: .78rem;
+      color: var(--slate);
+      margin-top: .1rem;
+    }
+
+    /* ============================================================
+       CONTACT
+    ============================================================ */
+    .contact {
+      padding: 6rem 0;
+      background: var(--white);
+    }
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-info .section-sub { max-width: 100%; margin-bottom: 2rem; }
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: .875rem;
+      margin-bottom: 1.25rem;
+    }
+    .contact-detail-icon {
+      width: 40px; height: 40px;
+      border-radius: var(--radius);
+      background: var(--teal-glow);
+      border: 1px solid rgba(15,128,128,.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-detail-icon svg {
+      width: 17px; height: 17px;
+      stroke: var(--teal);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .contact-detail-text strong {
+      display: block;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: .15rem;
+    }
+    .contact-detail-text span {
+      font-size: .95rem;
+      color: var(--navy);
+      font-weight: 500;
+    }
+    .contact-form {
+      background: var(--off-white);
+      border-radius: 12px;
+      padding: 2.5rem;
+      border: 1px solid var(--border);
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+      margin-bottom: 1.1rem;
+    }
+    .form-group label {
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-family: var(--font-body);
+      font-size: .9rem;
+      color: var(--charcoal);
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: .7rem 1rem;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      resize: vertical;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px var(--teal-glow);
+    }
+    .form-group textarea { min-height: 110px; }
+    .form-submit { width: 100%; justify-content: center; padding: .9rem; font-size: .95rem; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background: var(--charcoal);
+      padding: 3.5rem 0 2rem;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .footer-brand .nav-logo-main { font-size: 1.2rem; }
+    .footer-brand p {
+      font-size: .875rem;
+      color: rgba(255,255,255,.45);
+      line-height: 1.75;
+      margin-top: .75rem;
+      max-width: 300px;
+    }
+    .footer-col h4 {
+      font-family: var(--font-body);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 1rem;
+    }
+    .footer-col a {
+      display: block;
+      font-size: .88rem;
+      color: rgba(255,255,255,.6);
+      margin-bottom: .55rem;
+      transition: color var(--transition);
+    }
+    .footer-col a:hover { color: var(--teal-light); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1.75rem;
+      font-size: .8rem;
+      color: rgba(255,255,255,.35);
+      flex-wrap: wrap;
+      gap: .75rem;
+    }
+    .footer-bottom a { color: var(--teal-light); }
+
+    /* ============================================================
+       RESPONSIVE — 960px
+    ============================================================ */
+    @media (max-width: 960px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-img { height: 340px; }
+      .about-badge { right: 0; bottom: -1rem; }
+      .results-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ============================================================
+       RESPONSIVE — 640px
+    ============================================================ */
+    @media (max-width: 640px) {
+      .container { padding-inline: 1.25rem; }
+      .services-grid,
+      .results-grid,
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2rem; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { justify-content: center; }
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .trust-divider { display: none; }
+      .trust-inner { gap: 1.5rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <nav class="nav" id="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">
+          <span class="nav-logo-main">DSL Consulting</span>
+          <span class="nav-logo-sub">Services LLC</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#results">Results</a></li>
+          <li><a href="#testimonials">Clients</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="btn btn-primary nav-cta">Get Started</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#results" class="mobile-link">Results</a>
+    <a href="#testimonials" class="mobile-link">Clients</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+    <a href="#contact" class="btn btn-primary">Get Started</a>
+  </div>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero" id="home">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Roseland, NJ &mdash; Since 2009</div>
+        <h1>Driving <em>Strategic Growth</em> Through Expert Consulting</h1>
+        <p class="hero-desc">
+          DSL Consulting Services delivers highly specialized management and marketing consulting,
+          strengthening brand-to-brand and brand-to-consumer relationships for organizations
+          ready to perform at the next level.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Schedule a Consultation</a>
+          <a href="#services" class="btn btn-outline">Explore Our Services</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">Scroll</div>
+  </section>
+
+  <!-- ============================================================
+       TRUST STRIP
+  ============================================================ -->
+  <section class="trust">
+    <div class="container">
+      <div class="trust-inner">
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          15+ Years of Expertise
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          Founded 2009 in New Jersey
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87m-4-12a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          Brand-to-Brand Specialists
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          GWP Inc. Global Partner
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          Measurable ROI Focus
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICES
+  ============================================================ -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services-header reveal">
+        <span class="section-label">What We Do</span>
+        <h2 class="section-title">Comprehensive Consulting for Lasting Impact</h2>
+        <p class="section-sub">
+          From C-suite strategy to front-line execution, DSL Consulting bridges vision and results
+          across every layer of your organization.
+        </p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Management Consulting</h3>
+          <p>Strategic advisory services that align leadership, structure, and operations to achieve ambitious organizational goals with clarity and confidence.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3>Marketing Strategy</h3>
+          <p>Data-driven marketing programs that position your brand, deepen audience relationships, and generate measurable pipeline at every stage of the funnel.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>Brand Development</h3>
+          <p>Building powerful brand identities and equity strategies that resonate across consumer segments and differentiate you in competitive marketplaces.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Business Development</h3>
+          <p>Identifying and unlocking new revenue streams, partnership opportunities, and market expansion pathways that drive sustainable top-line growth.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Operational Excellence</h3>
+          <p>Streamlining processes and deploying performance frameworks that eliminate friction, reduce cost, and unlock capacity for strategic reinvestment.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <h3>Performance Analytics</h3>
+          <p>Designing KPI architectures and reporting systems that give leadership real-time visibility into what is working, what is not, and what to do next.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT
+  ============================================================ -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-img-wrap reveal">
+          <img
+            class="about-img"
+            src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=900&q=80"
+            alt="DSL Consulting team strategy session"
+          />
+          <div class="about-badge">
+            <span class="about-badge-num">15+</span>
+            <span class="about-badge-label">Years in Practice</span>
+          </div>
+        </div>
+        <div class="about-text reveal reveal-delay-2">
+          <span class="section-label">About DSL Consulting</span>
+          <h2 class="section-title">A Trusted Partner in Strategic Business Growth</h2>
+          <p>
+            DSL Consulting Services LLC was established in 2009 in Roseland, New Jersey, with a clear
+            mission: deliver highly specialized management and marketing consulting that creates
+            real, lasting value for our clients. Over more than fifteen years, we have built a
+            reputation for rigorous thinking, candid counsel, and executional excellence.
+          </p>
+          <p>
+            Our consultants operate at the intersection of strategy and execution — helping
+            organizations sharpen their competitive positioning, optimize internal performance,
+            and build stronger relationships with the brands and consumers that matter most
+            to their growth.
+          </p>
+          <p>
+            Based at 204 Eagle Rock Ave, Roseland, NJ, we serve clients across the northeast
+            and nationally through our long-standing partnership with global brand agency GWP Inc.
+          </p>
+          <div class="about-partner">
+            <div class="partner-dot"></div>
+            Global Partner: <span>GWP Inc.</span> &mdash; <a href="https://www.gwpinc.com" target="_blank" rel="noopener" style="color:var(--teal);">gwpinc.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       RESULTS
+  ============================================================ -->
+  <section class="results" id="results">
+    <div class="container">
+      <div class="results-header reveal">
+        <span class="section-label">Client Results</span>
+        <h2 class="section-title">Outcomes That Speak for Themselves</h2>
+        <p class="section-sub">
+          Our engagements are designed around measurable outcomes. Here is a snapshot of the
+          impact delivered across recent client partnerships.
+        </p>
+      </div>
+      <div class="results-grid">
+        <div class="result-card reveal reveal-delay-1">
+          <div class="result-tag">Brand Strategy</div>
+          <div class="result-stat">3<span>x</span></div>
+          <h3>Brand Awareness Growth</h3>
+          <p>A regional consumer goods company tripled unaided brand awareness within 18 months following DSL's integrated brand repositioning engagement.</p>
+        </div>
+        <div class="result-card reveal reveal-delay-2">
+          <div class="result-tag">Operations</div>
+          <div class="result-stat">40<span>%</span></div>
+          <h3>Reduction in Operational Costs</h3>
+          <p>A mid-market services firm achieved a 40% reduction in overhead costs through a targeted operational redesign and vendor consolidation program.</p>
+        </div>
+        <div class="result-card reveal reveal-delay-3">
+          <div class="result-tag">Business Development</div>
+          <div class="result-stat">$8<span>M+</span></div>
+          <h3>New Revenue Pipeline Generated</h3>
+          <p>DSL's go-to-market strategy unlocked over $8 million in qualified new business pipeline for a B2B technology client within the first year of engagement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TESTIMONIALS
+  ============================================================ -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="testimonials-header reveal">
+        <span class="section-label">Client Voices</span>
+        <h2 class="section-title">What Our Clients Say</h2>
+        <p class="section-sub">
+          Partnerships built on trust, delivered through results.
+        </p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="stars">
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="quote-mark">&ldquo;</div>
+          <p class="testimonial-text">
+            DSL brought a level of strategic clarity we had been missing for years. Their ability
+            to translate complex market dynamics into a focused, executable plan was remarkable.
+            Six months in, we were already seeing tangible pipeline growth and tighter team alignment.
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">MR</div>
+            <div>
+              <div class="author-name">Michael R.</div>
+              <div class="author-title">Chief Marketing Officer, Regional Healthcare Network</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="stars">
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="quote-mark">&ldquo;</div>
+          <p class="testimonial-text">
+            Working with DSL on our brand-to-retail strategy was transformative. They understood
+            our category, challenged our assumptions, and held us accountable to outcomes. The
+            partnership with GWP added a global perspective we would not have had otherwise.
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">SL</div>
+            <div>
+              <div class="author-name">Sandra L.</div>
+              <div class="author-title">VP Business Development, Consumer Goods Manufacturer</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-3">
+          <div class="stars">
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="quote-mark">&ldquo;</div>
+          <p class="testimonial-text">
+            DSL Consulting helped us overhaul our go-to-market approach at a critical inflection
+            point. Their operational consulting uncovered inefficiencies we had normalized for
+            years. The result was a leaner organization, a sharper market position, and confident leadership.
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">DT</div>
+            <div>
+              <div class="author-name">David T.</div>
+              <div class="author-title">CEO, Mid-Market Financial Services Firm</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT
+  ============================================================ -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-info reveal">
+          <span class="section-label">Get In Touch</span>
+          <h2 class="section-title">Let's Start a Conversation</h2>
+          <p class="section-sub">
+            Ready to accelerate growth or solve a strategic challenge? Reach out to DSL Consulting
+            Services and we will be in touch within one business day.
+          </p>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong>Address</strong>
+              <span>204 Eagle Rock Ave, Roseland, NJ 07068</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong>Phone</strong>
+              <span><a href="tel:+19732285257" style="color:var(--navy)">(973) 228-5257</a></span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong>Email</strong>
+              <span>info@dslconsultingservices.com</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form reveal reveal-delay-2">
+          <form>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" placeholder="Jane" />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" placeholder="Smith" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Business Email</label>
+              <input type="email" id="email" placeholder="jane@company.com" />
+            </div>
+            <div class="form-group">
+              <label for="company">Company</label>
+              <input type="text" id="company" placeholder="Your Organization" />
+            </div>
+            <div class="form-group">
+              <label for="service">Service Area</label>
+              <select id="service">
+                <option value="" disabled selected>Select a service...</option>
+                <option>Management Consulting</option>
+                <option>Marketing Strategy</option>
+                <option>Brand Development</option>
+                <option>Business Development</option>
+                <option>Operational Excellence</option>
+                <option>Performance Analytics</option>
+                <option>Other / General Inquiry</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">How Can We Help?</label>
+              <textarea id="message" placeholder="Tell us about your goals or challenges..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit">Send Message &rarr;</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <span class="nav-logo-main">DSL Consulting</span>
+            <span class="nav-logo-sub">Services LLC</span>
+          </div>
+          <p>
+            Highly specialized management and marketing consulting, strengthening
+            brand-to-brand and brand-to-consumer relationships. Roseland, NJ &mdash; Est. 2009.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="#services">Management Consulting</a>
+          <a href="#services">Marketing Strategy</a>
+          <a href="#services">Brand Development</a>
+          <a href="#services">Business Development</a>
+          <a href="#services">Operational Excellence</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#about">About Us</a>
+          <a href="#results">Client Results</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#contact">Contact</a>
+          <a href="https://www.gwpinc.com" target="_blank" rel="noopener">GWP Inc. Partner</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 DSL Consulting Services LLC. All rights reserved. Roseland, NJ 07068.</span>
+        <span>In partnership with <a href="https://www.gwpinc.com" target="_blank" rel="noopener">GWP Inc.</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    // Nav scroll behavior
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.mobile-link, .mobile-menu .btn').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // Hero background Ken Burns
+    const heroBg = document.getElementById('heroBg');
+    window.addEventListener('load', () => heroBg.classList.add('loaded'));
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // Smooth anchor scroll (fallback for older browsers)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = 80;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Contact form submit handler (placeholder)
+    document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('.form-submit');
+      btn.textContent = 'Message Sent!';
+      btn.style.background = 'var(--navy)';
+      btn.disabled = true;
+    });
+  </script>
+
+</body>
+</html>

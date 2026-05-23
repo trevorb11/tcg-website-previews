@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CS Cargo USA | Cross-Border Freight Forwarding | Laredo, TX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── CSS Custom Properties ─────────────────────────────── */
+    :root {
+      --navy:       #0d1f3c;
+      --navy-mid:   #16325a;
+      --red:        #c8202d;
+      --red-dark:   #a01820;
+      --white:      #ffffff;
+      --off-white:  #f4f6f9;
+      --steel:      #5a6a7e;
+      --steel-light:#8a9ab0;
+      --border:     #dde3ec;
+      --shadow:     0 4px 24px rgba(13,31,60,0.12);
+      --radius:     8px;
+      --font-head:  'Montserrat', sans-serif;
+      --font-body:  'Open Sans', sans-serif;
+      --transition: 0.3s ease;
+    }
+
+    /* ── Reset & Base ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--navy);
+      background: var(--white);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ── Utility ───────────────────────────────────────────── */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    .section-label {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--steel);
+      max-width: 580px;
+      margin-bottom: 48px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-head);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 13px 28px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      border: none;
+    }
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+    }
+    .btn-primary:hover {
+      background: var(--red-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(200,32,45,0.35);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+    .btn-outline:hover {
+      background: var(--white);
+      color: var(--navy);
+      transform: translateY(-2px);
+    }
+
+    /* ── Scroll Reveal ─────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── Navigation ────────────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: transparent;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    #navbar.scrolled {
+      background: var(--navy);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .nav-logo-main {
+      font-family: var(--font-head);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+    .nav-logo-main span { color: var(--red); }
+    .nav-logo-sub {
+      font-family: var(--font-head);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--steel-light);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-family: var(--font-head);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.85);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta { margin-left: 8px; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile nav drawer */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: var(--navy);
+      padding: 24px;
+      z-index: 999;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .mobile-menu.open { display: flex; flex-direction: column; gap: 20px; }
+    .mobile-menu a {
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.88);
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ── Hero ──────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1800&auto=format&fit=crop&q=80');
+      background-size: cover;
+      background-position: center 40%;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, rgba(13,31,60,0.88) 0%, rgba(13,31,60,0.65) 55%, rgba(13,31,60,0.4) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      padding: 120px 0 80px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200,32,45,0.18);
+      border: 1px solid rgba(200,32,45,0.45);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ff8a92;
+      margin-bottom: 24px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--red);
+      border-radius: 50%;
+    }
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 22px;
+    }
+    .hero-title span { color: var(--red); }
+    .hero-desc {
+      font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+      color: rgba(255,255,255,0.8);
+      max-width: 560px;
+      margin-bottom: 36px;
+      line-height: 1.75;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 56px;
+      flex-wrap: wrap;
+    }
+    .hero-stat-num {
+      font-family: var(--font-head);
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .hero-stat-num span { color: var(--red); }
+    .hero-stat-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Trust Strip ───────────────────────────────────────── */
+    #trust {
+      background: var(--navy-mid);
+      padding: 0;
+      overflow: hidden;
+    }
+    .trust-inner {
+      display: flex;
+      align-items: stretch;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      flex: 1;
+      min-width: 180px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 28px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-icon {
+      width: 36px; height: 36px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(200,32,45,0.2);
+      border-radius: 6px;
+      font-size: 1.1rem;
+    }
+    .trust-text-main {
+      font-family: var(--font-head);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.03em;
+      line-height: 1.2;
+    }
+    .trust-text-sub {
+      font-size: 0.68rem;
+      color: var(--steel-light);
+      margin-top: 2px;
+    }
+
+    /* ── Services ──────────────────────────────────────────── */
+    #services {
+      padding: 96px 0;
+      background: var(--off-white);
+    }
+    .services-header { margin-bottom: 56px; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 36px 30px;
+      box-shadow: var(--shadow);
+      border-top: 3px solid transparent;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .service-card:hover {
+      border-top-color: var(--red);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(13,31,60,0.16);
+    }
+    .service-icon {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 22px;
+    }
+    .service-title {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .service-desc {
+      font-size: 0.88rem;
+      color: var(--steel);
+      line-height: 1.7;
+    }
+
+    /* ── About ─────────────────────────────────────────────── */
+    #about {
+      padding: 96px 0;
+      background: var(--white);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .about-image-wrap {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .about-image-wrap img {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+    }
+    .about-badge {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      background: var(--navy);
+      border-radius: 10px;
+      padding: 16px 22px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+    }
+    .about-badge-num {
+      font-family: var(--font-head);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .about-badge-num span { color: var(--red); }
+    .about-badge-label {
+      font-size: 0.72rem;
+      color: var(--steel-light);
+      margin-top: 3px;
+    }
+    .about-points {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .about-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--steel);
+    }
+    .about-point-dot {
+      width: 20px; height: 20px;
+      background: var(--red);
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .about-point-dot::after {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--white);
+      border-radius: 50%;
+    }
+
+    /* ── Why Choose Us ─────────────────────────────────────── */
+    #why {
+      padding: 96px 0;
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+    #why::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(200,32,45,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #why .section-title { color: var(--white); }
+    #why .section-sub { color: var(--steel-light); }
+    #why .section-label { color: #ff8a92; }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .why-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 30px 24px;
+      text-align: center;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .why-card:hover {
+      background: rgba(255,255,255,0.09);
+      transform: translateY(-4px);
+    }
+    .why-number {
+      font-family: var(--font-head);
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .why-card-title {
+      font-family: var(--font-head);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .why-card-desc {
+      font-size: 0.82rem;
+      color: var(--steel-light);
+      line-height: 1.65;
+    }
+
+    /* ── Testimonials ──────────────────────────────────────── */
+    #testimonials {
+      padding: 96px 0;
+      background: var(--off-white);
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .testi-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 36px 30px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .testi-quote {
+      font-size: 3rem;
+      color: var(--red);
+      font-family: Georgia, serif;
+      line-height: 0.6;
+      margin-bottom: 18px;
+      opacity: 0.6;
+    }
+    .testi-text {
+      font-size: 0.9rem;
+      color: var(--steel);
+      line-height: 1.75;
+      margin-bottom: 28px;
+      font-style: italic;
+    }
+    .testi-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 18px;
+    }
+    .testi-star { color: #f5a623; font-size: 0.9rem; }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testi-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .testi-name {
+      font-family: var(--font-head);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .testi-role {
+      font-size: 0.75rem;
+      color: var(--steel-light);
+      margin-top: 2px;
+    }
+
+    /* ── Contact / Quote ───────────────────────────────────── */
+    #contact {
+      padding: 96px 0;
+      background: var(--white);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .contact-info-title {
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .contact-info-desc {
+      font-size: 0.9rem;
+      color: var(--steel);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .contact-detail-icon {
+      width: 40px; height: 40px;
+      background: var(--off-white);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .contact-detail-label {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--steel-light);
+      margin-bottom: 3px;
+    }
+    .contact-detail-value {
+      font-size: 0.9rem;
+      color: var(--navy);
+      font-weight: 600;
+    }
+    .quote-form {
+      background: var(--off-white);
+      border-radius: 16px;
+      padding: 40px 36px;
+      box-shadow: var(--shadow);
+    }
+    .form-title {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .form-sub {
+      font-size: 0.82rem;
+      color: var(--steel);
+      margin-bottom: 28px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .form-label {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+    .form-input, .form-select, .form-textarea {
+      padding: 11px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      color: var(--navy);
+      background: var(--white);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--navy-mid);
+      box-shadow: 0 0 0 3px rgba(22,50,90,0.1);
+    }
+    .form-textarea { resize: vertical; min-height: 90px; }
+    .form-submit { width: 100%; justify-content: center; font-size: 0.92rem; padding: 15px 28px; }
+
+    /* ── Footer ────────────────────────────────────────────── */
+    #footer {
+      background: var(--navy);
+      padding: 64px 0 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand-name {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .footer-brand-name span { color: var(--red); }
+    .footer-brand-sub {
+      font-size: 0.68rem;
+      font-family: var(--font-head);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--steel-light);
+      margin-bottom: 16px;
+    }
+    .footer-brand-desc {
+      font-size: 0.84rem;
+      color: var(--steel-light);
+      line-height: 1.7;
+      max-width: 280px;
+    }
+    .footer-carmi {
+      margin-top: 18px;
+      font-size: 0.75rem;
+      color: var(--steel-light);
+    }
+    .footer-carmi span {
+      color: var(--red);
+      font-weight: 600;
+    }
+    .footer-col-title {
+      font-family: var(--font-head);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--steel-light);
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom {
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--steel-light);
+    }
+    .footer-dot {
+      color: var(--red);
+      margin: 0 6px;
+    }
+
+    /* ── Responsive 960px ──────────────────────────────────── */
+    @media (max-width: 960px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-image-wrap img { height: 320px; }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .trust-item { min-width: 160px; }
+    }
+
+    /* ── Responsive 640px ──────────────────────────────────── */
+    @media (max-width: 640px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .services-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .hero-stats { gap: 28px; }
+      .trust-item { min-width: 50%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ─────────────────────────────────────────── -->
+  <nav id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo">
+          <span class="nav-logo-main">CS <span>Cargo</span> USA</span>
+          <span class="nav-logo-sub">CARMI Logistics Group</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#testimonials">Clients</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="btn btn-primary nav-cta">Get a Quote</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="closeMobile()">Services</a>
+    <a href="#about" onclick="closeMobile()">About</a>
+    <a href="#why" onclick="closeMobile()">Why Us</a>
+    <a href="#testimonials" onclick="closeMobile()">Clients</a>
+    <a href="#contact" onclick="closeMobile()">Contact</a>
+    <a href="#contact" class="btn btn-primary" style="text-align:center;justify-content:center;" onclick="closeMobile()">Get a Quote</a>
+  </div>
+
+  <!-- ── Hero ───────────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge reveal">Laredo, TX &mdash; Gateway to Mexico</div>
+        <h1 class="hero-title reveal reveal-delay-1">
+          Cross-Border Logistics<br /><span>Built for the US-Mexico</span> Corridor
+        </h1>
+        <p class="hero-desc reveal reveal-delay-2">
+          CS Cargo USA delivers seamless freight forwarding, customs brokerage, and supply chain solutions through the world&rsquo;s busiest land port. Part of the CARMI Logistics Group &mdash; trusted since 1983.
+        </p>
+        <div class="hero-actions reveal reveal-delay-3">
+          <a href="#contact" class="btn btn-primary">Request a Free Quote</a>
+          <a href="#services" class="btn btn-outline">Explore Services</a>
+        </div>
+        <div class="hero-stats reveal reveal-delay-4">
+          <div>
+            <div class="hero-stat-num">40<span>+</span></div>
+            <div class="hero-stat-label">Years of Experience</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">2<span>&#x1F310;</span></div>
+            <div class="hero-stat-label">Countries Served</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">24<span>/7</span></div>
+            <div class="hero-stat-label">Border Coverage</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">100<span>%</span></div>
+            <div class="hero-stat-label">Compliance Focus</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Trust Strip ─────────────────────────────────────────── -->
+  <div id="trust">
+    <div class="trust-inner container" style="padding:0 24px;">
+      <div class="trust-item reveal">
+        <div class="trust-icon">&#x1F6C2;</div>
+        <div>
+          <div class="trust-text-main">US &amp; Mexico Customs Brokerage</div>
+          <div class="trust-text-sub">Licensed both sides of the border</div>
+        </div>
+      </div>
+      <div class="trust-item reveal reveal-delay-1">
+        <div class="trust-icon">&#x1F6E1;</div>
+        <div>
+          <div class="trust-text-main">C-TPAT Compliant</div>
+          <div class="trust-text-sub">Trusted supply chain security</div>
+        </div>
+      </div>
+      <div class="trust-item reveal reveal-delay-2">
+        <div class="trust-icon">&#x1F30E;</div>
+        <div>
+          <div class="trust-text-main">IATA Member</div>
+          <div class="trust-text-sub">Air &amp; sea cargo certified</div>
+        </div>
+      </div>
+      <div class="trust-item reveal reveal-delay-3">
+        <div class="trust-icon">&#x1F4E6;</div>
+        <div>
+          <div class="trust-text-main">In-Bond &amp; FTZ Services</div>
+          <div class="trust-text-sub">Foreign Trade Zone operations</div>
+        </div>
+      </div>
+      <div class="trust-item reveal reveal-delay-4">
+        <div class="trust-icon">&#x1F69A;</div>
+        <div>
+          <div class="trust-text-main">USDOT Licensed Carrier</div>
+          <div class="trust-text-sub">MC-1052688 / USDOT 3312910</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Services ───────────────────────────────────────────── -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header">
+        <span class="section-label reveal">What We Do</span>
+        <h2 class="section-title reveal">Full-Spectrum Cross-Border<br />Logistics Services</h2>
+        <p class="section-sub reveal">From customs clearance to final-mile delivery, CS Cargo USA handles every link in your US-Mexico supply chain &mdash; under one roof.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">&#x2708;&#xFE0F;</div>
+          <div class="service-title">International Freight Forwarding</div>
+          <p class="service-desc">Air, ocean, and ground freight coordination across North America and beyond. We manage carrier booking, documentation, and end-to-end shipment visibility.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">&#x1F4CB;</div>
+          <div class="service-title">Customs Brokerage</div>
+          <p class="service-desc">Licensed US and Mexican customs brokers handle all import/export filings, tariff classifications, and regulatory compliance so your cargo clears without delays.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">&#x1F1FA;&#x1F1F8;&#x2194;&#x1F1F2;&#x1F1FD;</div>
+          <div class="service-title">Cross-Border Ground Transport</div>
+          <p class="service-desc">Direct drayage and over-the-road trucking between the US and Mexico using our vetted carrier network through the Laredo&ndash;Nuevo Laredo port of entry.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">&#x1F3ED;</div>
+          <div class="service-title">Warehousing &amp; Distribution</div>
+          <p class="service-desc">Secure short and long-term warehousing, re-dispatch, distribution center management, and inventory control on both sides of the border.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">&#x1F4E6;</div>
+          <div class="service-title">In-Bond &amp; FTZ Operations</div>
+          <p class="service-desc">Specialized bonded transit and Foreign Trade Zone services for manufacturing and maquiladora operations requiring duty-deferred cargo handling.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">&#x1F517;</div>
+          <div class="service-title">Supply Chain Management</div>
+          <p class="service-desc">End-to-end supply chain visibility, freight audit, POD management, collection services, and customs documentation consulting for importers and exporters.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── About ──────────────────────────────────────────────── -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-wrap reveal">
+          <img
+            src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=900&auto=format&fit=crop&q=80"
+            alt="Laredo Texas border crossing freight logistics"
+          />
+          <div class="about-badge">
+            <div class="about-badge-num">1983<span>.</span></div>
+            <div class="about-badge-label">Founded &mdash; CARMI Group</div>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <span class="section-label">Our Story</span>
+          <h2 class="section-title">Laredo&rsquo;s Gateway Position,<br />Your Competitive Advantage</h2>
+          <p style="font-size:0.92rem;color:var(--steel);line-height:1.8;margin-bottom:16px;">
+            CS Cargo USA LLC operates at the heart of the world&rsquo;s busiest land port &mdash; Laredo, Texas. Strategically positioned at 8402 El Gato Road, we leverage decades of cross-border expertise developed within the CARMI Logistics Group since 1983.
+          </p>
+          <p style="font-size:0.92rem;color:var(--steel);line-height:1.8;">
+            What began as a Mexican customs brokerage operation has grown into a full-service international logistics provider. Today, CS Cargo USA serves manufacturers, importers, exporters, and distributors moving product through the US-Mexico corridor under T-MEC/USMCA trade rules.
+          </p>
+          <div class="about-points">
+            <div class="about-point">
+              <div class="about-point-dot"></div>
+              <span>Located in Laredo, TX &mdash; #1 US land port by trade volume</span>
+            </div>
+            <div class="about-point">
+              <div class="about-point-dot"></div>
+              <span>Part of the CARMI Logistics Group, licensed since 1983</span>
+            </div>
+            <div class="about-point">
+              <div class="about-point-dot"></div>
+              <span>US National Customs License &amp; Mexican Customs Broker Patent</span>
+            </div>
+            <div class="about-point">
+              <div class="about-point-dot"></div>
+              <span>PANGEA network member for global maritime forwarding reach</span>
+            </div>
+            <div class="about-point">
+              <div class="about-point-dot"></div>
+              <span>Active IATA member for international air cargo shipments</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Why Choose Us ──────────────────────────────────────── -->
+  <section id="why">
+    <div class="container">
+      <span class="section-label reveal">Why CS Cargo USA</span>
+      <h2 class="section-title reveal">The Border Experts Who Deliver</h2>
+      <p class="section-sub reveal">We combine local border intelligence with international logistics reach &mdash; giving you faster clearances, fewer surprises, and more control.</p>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-number">01</div>
+          <div class="why-card-title">Dual-Border Expertise</div>
+          <p class="why-card-desc">Licensed customs brokers operating simultaneously in the US and Mexico means one point of contact handles both sides of every crossing.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-1">
+          <div class="why-number">02</div>
+          <div class="why-card-title">USMCA / T-MEC Specialists</div>
+          <p class="why-card-desc">Deep knowledge of free trade agreement rules of origin, tariff preference levels, and documentation requirements to maximize duty savings.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-2">
+          <div class="why-number">03</div>
+          <div class="why-card-title">Integrated Network</div>
+          <p class="why-card-desc">Air, ocean, ground, and warehousing services unified under a single relationship &mdash; no fragmented handoffs between providers.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-3">
+          <div class="why-number">04</div>
+          <div class="why-card-title">Compliance First</div>
+          <p class="why-card-desc">C-TPAT aligned security practices and rigorous regulatory compliance keep your supply chain audit-ready and shipments moving.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Testimonials ───────────────────────────────────────── -->
+  <section id="testimonials">
+    <div class="container">
+      <span class="section-label reveal">Client Stories</span>
+      <h2 class="section-title reveal">Trusted by Importers &amp; Exporters<br />on Both Sides of the Border</h2>
+      <p class="section-sub reveal">Real businesses. Real results. Here is what our clients say about moving freight with CS Cargo USA.</p>
+      <div class="testimonials-grid">
+        <div class="testi-card reveal">
+          <div class="testi-quote">&ldquo;</div>
+          <div class="testi-stars">
+            <span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span>
+          </div>
+          <p class="testi-text">CS Cargo USA has been our customs broker for over five years. Their team knows the Laredo port inside and out &mdash; we have not had a single hold or delay that was their fault. They flag issues before they become problems.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">MR</div>
+            <div>
+              <div class="testi-name">Miguel Reyes</div>
+              <div class="testi-role">Supply Chain Director, Auto Parts Manufacturer &mdash; Monterrey</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal reveal-delay-1">
+          <div class="testi-quote">&ldquo;</div>
+          <div class="testi-stars">
+            <span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span>
+          </div>
+          <p class="testi-text">We switched our entire cross-border program to CS Cargo USA after years of dealing with fragmented brokers and truckers. Having one team manage customs, transport, and warehousing on both sides is a game changer for our lead times.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">SL</div>
+            <div>
+              <div class="testi-name">Sandra Liu</div>
+              <div class="testi-role">VP Logistics, Consumer Electronics Distributor &mdash; San Antonio, TX</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal reveal-delay-2">
+          <div class="testi-quote">&ldquo;</div>
+          <div class="testi-stars">
+            <span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span>
+          </div>
+          <p class="testi-text">Their USMCA expertise saved us significant duty costs on our machinery imports from the US. The documentation team is thorough, responsive, and truly understands maquiladora operations. Highly recommend for any In-Bond or FTZ work.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">JC</div>
+            <div>
+              <div class="testi-name">Jorge Carmona</div>
+              <div class="testi-role">Operations Manager, Industrial Maquiladora &mdash; Nuevo Laredo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact / Quote ────────────────────────────────────── -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="reveal">
+          <span class="section-label">Get in Touch</span>
+          <div class="contact-info-title">Ready to Move Your Freight Across the Border?</div>
+          <p class="contact-info-desc">Fill out the quote form or reach our Laredo operations team directly. We respond to all inquiries within one business day.</p>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <div class="contact-detail-icon">&#x1F4CD;</div>
+              <div>
+                <div class="contact-detail-label">Address</div>
+                <div class="contact-detail-value">8402 El Gato Road, Laredo, TX 78045</div>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">&#x1F4DE;</div>
+              <div>
+                <div class="contact-detail-label">Phone</div>
+                <div class="contact-detail-value">(956) 727-1090</div>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">&#x2709;&#xFE0F;</div>
+              <div>
+                <div class="contact-detail-label">Email</div>
+                <div class="contact-detail-value">info@cscargousallc.com</div>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">&#x23F0;</div>
+              <div>
+                <div class="contact-detail-label">Hours</div>
+                <div class="contact-detail-value">Mon&ndash;Fri 7:00 AM &ndash; 6:00 PM CT</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quote-form reveal reveal-delay-1">
+          <div class="form-title">Request a Freight Quote</div>
+          <div class="form-sub">Tell us about your shipment and we will respond with a competitive rate.</div>
+          <div class="form-row">
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label">First Name</label>
+              <input type="text" class="form-input" placeholder="Carlos" />
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label">Last Name</label>
+              <input type="text" class="form-input" placeholder="Mendoza" />
+            </div>
+          </div>
+          <div class="form-row" style="margin-top:16px;">
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label">Company</label>
+              <input type="text" class="form-input" placeholder="Your Company, LLC" />
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label">Phone</label>
+              <input type="tel" class="form-input" placeholder="(956) 555-0100" />
+            </div>
+          </div>
+          <div class="form-group" style="margin-top:16px;">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" placeholder="you@company.com" />
+          </div>
+          <div class="form-row">
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label">Service Needed</label>
+              <select class="form-select">
+                <option value="">Select a service...</option>
+                <option>Freight Forwarding</option>
+                <option>Customs Brokerage</option>
+                <option>Cross-Border Transport</option>
+                <option>Warehousing</option>
+                <option>In-Bond / FTZ</option>
+                <option>Supply Chain Consulting</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label">Direction</label>
+              <select class="form-select">
+                <option value="">Select...</option>
+                <option>US to Mexico</option>
+                <option>Mexico to US</option>
+                <option>Both Directions</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group" style="margin-top:16px;">
+            <label class="form-label">Shipment Details</label>
+            <textarea class="form-textarea" placeholder="Describe your cargo: commodity, weight, dimensions, origin, destination, frequency..."></textarea>
+          </div>
+          <button type="button" class="btn btn-primary form-submit">Send Quote Request &#x2192;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-name">CS <span>Cargo</span> USA</div>
+          <div class="footer-brand-sub">CARMI Logistics Group</div>
+          <p class="footer-brand-desc">Cross-border freight forwarding and customs brokerage specialists operating from Laredo, Texas &mdash; the gateway to Mexico trade.</p>
+          <div class="footer-carmi">A member of the <span>CARMI Logistics</span> family of companies &mdash; trusted since 1983.</div>
+        </div>
+        <div>
+          <div class="footer-col-title">Services</div>
+          <ul class="footer-links">
+            <li><a href="#services">Freight Forwarding</a></li>
+            <li><a href="#services">Customs Brokerage</a></li>
+            <li><a href="#services">Cross-Border Transport</a></li>
+            <li><a href="#services">Warehousing</a></li>
+            <li><a href="#services">In-Bond &amp; FTZ</a></li>
+            <li><a href="#services">Supply Chain Mgmt</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Company</div>
+          <ul class="footer-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#why">Why CS Cargo</a></li>
+            <li><a href="#testimonials">Client Stories</a></li>
+            <li><a href="#contact">Get a Quote</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <ul class="footer-links">
+            <li><a href="tel:+19567271090">(956) 727-1090</a></li>
+            <li><a href="mailto:info@cscargousallc.com">info@cscargousallc.com</a></li>
+            <li>8402 El Gato Road</li>
+            <li>Laredo, TX 78045</li>
+            <li style="margin-top:10px;color:var(--steel-light);font-size:0.75rem;">USDOT: 3312910<br />MC: 1052688</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2025 CS Cargo USA LLC. All rights reserved.<span class="footer-dot">&bull;</span>Part of the CARMI Logistics Group.</div>
+        <div class="footer-copy">
+          <a href="#" style="color:var(--steel-light);transition:color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color=''">Privacy Policy</a>
+          <span class="footer-dot">&bull;</span>
+          <a href="#" style="color:var(--steel-light);transition:color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color=''">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Scripts ────────────────────────────────────────────── -->
+  <script>
+    // Sticky nav
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    function closeMobile() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

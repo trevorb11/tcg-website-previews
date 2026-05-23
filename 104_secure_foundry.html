@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SecureFoundry | US Domestic Semiconductor Foundry | Fort Worth, TX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #08090c;
+      --dark: #0d1117;
+      --dark-mid: #161b22;
+      --dark-panel: #1c2230;
+      --blue: #1e6fe3;
+      --blue-bright: #4d9ef7;
+      --blue-glow: rgba(30,111,227,0.18);
+      --silver: #8b9ab2;
+      --silver-light: #c9d4e8;
+      --red: #d42b2b;
+      --white: #ffffff;
+      --off-white: #e8ecf4;
+      --text: #d0d8e8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--dark);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Rajdhani', sans-serif;
+      line-height: 1.15;
+      letter-spacing: 0.03em;
+    }
+
+    .mono {
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 5%;
+      background: rgba(8,9,12,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(30,111,227,0.2);
+    }
+
+    .nav-logo {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .nav-logo span { color: var(--blue-bright); }
+
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+
+    .nav-links a {
+      color: var(--silver);
+      text-decoration: none;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--blue-bright); }
+
+    .nav-cta {
+      background: var(--blue);
+      color: var(--white) !important;
+      padding: 0.45rem 1.3rem;
+      border-radius: 3px;
+      border: 1px solid rgba(77,158,247,0.3);
+    }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s, transform 0.7s; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(30,111,227,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30,111,227,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(30,111,227,0.15) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.07;
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 5%; padding-top: 8rem;
+    }
+
+    .hero-mono {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--blue-bright);
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+      opacity: 0.8;
+    }
+
+    .hero-mono::before { content: '> '; color: var(--silver); }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5.5vw, 4.8rem);
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      max-width: 780px;
+      margin-bottom: 1.5rem;
+      line-height: 1.05;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--blue-bright);
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--silver);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      padding: 0.88rem 2.2rem;
+      border-radius: 3px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(77,158,247,0.3);
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-bright);
+      box-shadow: 0 0 24px rgba(77,158,247,0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--silver-light);
+      padding: 0.88rem 2.2rem;
+      border-radius: 3px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(139,154,178,0.35);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--blue-bright); color: var(--blue-bright); }
+
+    .hero-compliance {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+      flex-wrap: wrap;
+    }
+
+    .compliance-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--silver);
+      letter-spacing: 0.08em;
+    }
+
+    .compliance-badge::before {
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--blue-bright);
+      flex-shrink: 0;
+    }
+
+    section { padding: 5.5rem 5%; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-tag {
+      display: inline-block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue-bright);
+      margin-bottom: 0.8rem;
+      opacity: 0.8;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.9rem;
+      color: var(--white);
+    }
+
+    .section-lead {
+      font-size: 0.97rem;
+      color: var(--silver);
+      max-width: 580px;
+      line-height: 1.9;
+      margin-bottom: 3rem;
+    }
+
+    /* PROBLEM */
+    .problem { background: var(--dark-mid); }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .problem-text p {
+      font-size: 0.97rem;
+      color: var(--silver);
+      line-height: 1.9;
+      margin-bottom: 1.1rem;
+    }
+
+    .problem-img img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+      border: 1px solid rgba(30,111,227,0.2);
+    }
+
+    /* TECHNOLOGY */
+    .technology { background: var(--dark); }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .tech-visual {
+      background: var(--dark-panel);
+      border: 1px solid rgba(30,111,227,0.2);
+      border-radius: 6px;
+      padding: 2.5rem;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .tech-visual .code-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .code-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+
+    .tech-spec {
+      margin-bottom: 1rem;
+    }
+
+    .tech-spec .ts-label {
+      font-size: 0.7rem;
+      color: var(--blue-bright);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+
+    .tech-spec .ts-value {
+      font-size: 0.88rem;
+      color: var(--silver-light);
+    }
+
+    .tech-text p {
+      font-size: 0.97rem;
+      color: var(--silver);
+      line-height: 1.9;
+      margin-bottom: 1.1rem;
+    }
+
+    /* SERVICES */
+    .services { background: var(--dark-mid); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+    }
+
+    .service-card {
+      background: var(--dark-panel);
+      border: 1px solid rgba(30,111,227,0.15);
+      border-top: 3px solid var(--blue);
+      border-radius: 4px;
+      padding: 2rem;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .service-card:hover {
+      border-color: var(--blue-bright);
+      box-shadow: 0 0 30px rgba(30,111,227,0.12);
+    }
+
+    .service-card svg {
+      width: 32px; height: 32px;
+      stroke: var(--blue-bright); fill: none; stroke-width: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .service-card p {
+      font-size: 0.87rem;
+      color: var(--silver);
+      line-height: 1.75;
+    }
+
+    /* WHO WE SERVE */
+    .clients { background: var(--dark); }
+
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+    }
+
+    .client-item {
+      background: var(--dark-mid);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 4px;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .client-item svg {
+      width: 24px; height: 24px;
+      stroke: var(--blue-bright); fill: none; stroke-width: 1.8;
+      flex-shrink: 0; margin-top: 2px;
+    }
+
+    .client-item h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .client-item p {
+      font-size: 0.85rem;
+      color: var(--silver);
+      line-height: 1.65;
+    }
+
+    /* FOUNDER */
+    .founder { background: var(--dark-mid); }
+
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .founder-text p {
+      font-size: 0.97rem;
+      color: var(--silver);
+      line-height: 1.9;
+      margin-bottom: 1.1rem;
+    }
+
+    .founder-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .founder-title {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--blue-bright);
+      letter-spacing: 0.08em;
+    }
+
+    .founder-img img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+      border: 1px solid rgba(30,111,227,0.2);
+    }
+
+    /* SECURITY */
+    .security { background: var(--dark); }
+
+    .security-strip {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .sec-badge {
+      background: var(--dark-mid);
+      border: 1px solid rgba(30,111,227,0.2);
+      border-radius: 4px;
+      padding: 1rem 1.5rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--blue-bright);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* CONTACT */
+    .contact { background: var(--dark-mid); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p { font-size: 0.95rem; color: var(--silver); line-height: 1.85; margin-bottom: 1.5rem; }
+
+    .cdetail { display: flex; gap: 0.8rem; align-items: flex-start; margin-bottom: 0.7rem; }
+
+    .cdetail svg { width: 18px; height: 18px; stroke: var(--blue-bright); fill: none; stroke-width: 2; flex-shrink: 0; margin-top: 3px; }
+
+    .cdetail span { font-size: 0.9rem; color: var(--silver-light); }
+
+    .form-group { margin-bottom: 1.1rem; }
+
+    .form-group label {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue-bright);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.78rem 1rem;
+      border: 1px solid rgba(139,154,178,0.2);
+      border-radius: 3px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--dark-panel);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--blue); }
+
+    .form-group textarea { height: 120px; resize: vertical; }
+
+    .form-submit {
+      background: var(--blue);
+      color: var(--white);
+      padding: 0.88rem 2.2rem;
+      border: 1px solid rgba(77,158,247,0.3);
+      border-radius: 3px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+
+    .form-submit:hover {
+      background: var(--blue-bright);
+      box-shadow: 0 0 20px rgba(77,158,247,0.25);
+    }
+
+    footer {
+      background: var(--black);
+      color: var(--silver);
+      padding: 3rem 5%;
+      border-top: 1px solid rgba(30,111,227,0.15);
+    }
+
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-logo span { color: var(--blue-bright); }
+
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+
+    .footer-links a {
+      color: rgba(139,154,178,0.5);
+      text-decoration: none;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--blue-bright); }
+
+    .footer-copy {
+      width: 100%; text-align: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem; color: rgba(139,154,178,0.3);
+      margin-top: 1.5rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .problem-grid, .tech-grid, .founder-grid, .contact-grid { grid-template-columns: 1fr; }
+      .services-grid, .clients-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .services-grid, .clients-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Secure<span>Foundry</span></a>
+    <ul class="nav-links">
+      <li><a href="#technology">Technology</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#clients">Who We Serve</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-mono">DOMESTIC SEMICONDUCTOR MANUFACTURING // FORT WORTH, TX // EST. 2016</div>
+      <h1>America's Trusted <em>Domestic</em> Semiconductor Foundry</h1>
+      <p class="hero-sub">Advanced chip manufacturing for defense, academia, and technology — no photomasks, no overseas dependency, no compromises. SecureFoundry exists to keep America's most critical technologies in American hands.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Foundry Services</a>
+        <a href="#contact" class="btn-outline">Contact Our Team</a>
+      </div>
+      <div class="hero-compliance">
+        <div class="compliance-badge">ITAR Compliant</div>
+        <div class="compliance-badge">NIST 800-171</div>
+        <div class="compliance-badge">DoD Trusted</div>
+        <div class="compliance-badge">Domestic Only</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem" id="problem">
+    <div class="section-inner">
+      <div class="problem-grid">
+        <div class="problem-text reveal">
+          <span class="section-tag">// THE CHALLENGE</span>
+          <h2 class="section-title">A Critical Gap in the U.S. Supply Chain</h2>
+          <p>The United States has become dangerously dependent on overseas semiconductor manufacturing for defense-critical components. When overseas fabs face disruption — geopolitical, economic, or otherwise — programs that depend on them face delays, cost overruns, and in some cases, unacceptable security risks.</p>
+          <p>The problem is especially acute for low-volume and mixed-volume requirements. Large overseas foundries optimize for high-volume consumer chip production. Defense programs, research institutions, and technology startups that need small-batch production, obsolete part reproduction, or custom ASIC fabrication often find themselves with nowhere to turn domestically.</p>
+          <p>SecureFoundry was founded specifically to fill that gap — a domestic foundry purpose-built for the needs of defense, academia, and frontier technology applications where security, flexibility, and domestic production are not optional.</p>
+        </div>
+        <div class="reveal">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop" alt="Semiconductor manufacturing technology and circuit board" style="width:100%; height:380px; object-fit:cover; border-radius:4px; display:block; border:1px solid rgba(30,111,227,0.2);" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNOLOGY -->
+  <section class="technology" id="technology">
+    <div class="section-inner">
+      <div class="tech-grid">
+        <div class="tech-text reveal">
+          <span class="section-tag">// HBA TECHNOLOGY</span>
+          <h2 class="section-title">The Hyper-Beam Array Advantage</h2>
+          <p>At the core of SecureFoundry's capabilities is our breakthrough Hyper-Beam Array (HBA) Lithography System — a maskless patterning platform that eliminates the need for traditional photomasks entirely.</p>
+          <p>Traditional chip fabrication requires expensive photomasks for every new design iteration. A single mask set can cost hundreds of thousands of dollars and takes weeks to produce. For defense programs and startups that need rapid design iteration, this is prohibitive.</p>
+          <p>HBA changes that equation. Because our system patterns directly on the wafer without a mask, we can accommodate new designs in days rather than weeks, at costs that make small-batch and prototype production genuinely accessible. The result is faster time-to-silicon, lower iteration costs, and greater flexibility for programs that cannot wait.</p>
+        </div>
+        <div class="tech-visual reveal">
+          <div class="code-header">
+            <div class="code-dot" style="background:#ff5f57;"></div>
+            <div class="code-dot" style="background:#febc2e;"></div>
+            <div class="code-dot" style="background:#28c840;"></div>
+            <span style="font-size:0.72rem; color:var(--silver); margin-left:0.5rem;">HBA_SPECS.sys</span>
+          </div>
+          <div class="tech-spec">
+            <div class="ts-label">// SYSTEM</div>
+            <div class="ts-value">Hyper-Beam Array (HBA) Lithography</div>
+          </div>
+          <div class="tech-spec">
+            <div class="ts-label">// MASK REQUIREMENT</div>
+            <div class="ts-value">NONE — maskless direct patterning</div>
+          </div>
+          <div class="tech-spec">
+            <div class="ts-label">// WAFER RANGE</div>
+            <div class="ts-value">100mm — 300mm (incl. square panels)</div>
+          </div>
+          <div class="tech-spec">
+            <div class="ts-label">// PRODUCTION TYPE</div>
+            <div class="ts-value">Low-volume, mixed-volume, prototype</div>
+          </div>
+          <div class="tech-spec">
+            <div class="ts-label">// COMPLIANCE</div>
+            <div class="ts-value">ITAR | NIST 800-171 | DoD Approved</div>
+          </div>
+          <div class="tech-spec">
+            <div class="ts-label">// LOCATIONS</div>
+            <div class="ts-value">Fort Worth TX | Maryland | Netherlands</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">// CAPABILITIES</span>
+        <h2 class="section-title">Foundry Services</h2>
+        <p class="section-lead">SecureFoundry offers a comprehensive suite of manufacturing and commercialization services for defense, academic, and commercial clients.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="1"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <h3>Low-Volume Chip Manufacturing</h3>
+          <p>Short-run and mixed-volume chip production at scales that commercial fabs will not accommodate — from prototype quantities through multi-wafer production runs for defense and specialty applications.</p>
+        </div>
+        <div class="service-card reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/></svg>
+          <h3>Reverse Engineering</h3>
+          <p>Reproduction of legacy and obsolete components for defense programs that cannot migrate to newer parts. We re-create the chip, validate its functionality, and deliver a domestically sourced replacement.</p>
+        </div>
+        <div class="service-card reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <h3>Cost-Effective Prototyping</h3>
+          <p>Rapid design-to-silicon prototyping without the photomask cost. Iterate on your design quickly, validate functionality, and move to production on a timeline that defense programs require.</p>
+        </div>
+        <div class="service-card reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          <h3>Legacy Part Reproduction</h3>
+          <p>When critical components go end-of-life, we source and reproduce them domestically. Our legacy production capability keeps fielded systems operational without depending on foreign supply chains.</p>
+        </div>
+        <div class="service-card reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          <h3>Commercialization Platform</h3>
+          <p>For academic innovations and startup IP, our commercialization platform handles IP consolidation, design management, risk analysis, supply chain tracking, and production launch — from lab to market.</p>
+        </div>
+        <div class="service-card reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <h3>Secure Facility Production</h3>
+          <p>All production occurs in ITAR-controlled, NIST 800-171-compliant secure facilities with the physical and procedural security infrastructure that classified and sensitive programs require.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE SERVE -->
+  <section class="clients" id="clients">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">// WHO WE SERVE</span>
+        <h2 class="section-title">Our Clients</h2>
+        <p class="section-lead">SecureFoundry serves clients who cannot accept overseas fabrication for their most critical semiconductor needs.</p>
+      </div>
+      <div class="clients-grid">
+        <div class="client-item reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div>
+            <h4>Department of Defense</h4>
+            <p>Providing domestically sourced chips for defense programs, legacy system sustainment, and sensitive applications that require U.S.-controlled supply chains and cleared production facilities.</p>
+          </div>
+        </div>
+        <div class="client-item reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          <div>
+            <h4>Academic Research Institutions</h4>
+            <p>Supporting university semiconductor research and lab-to-production pathways — from custom research wafers to commercialization of academic innovations that need a trusted domestic foundry partner.</p>
+          </div>
+        </div>
+        <div class="client-item reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <div>
+            <h4>Aerospace &amp; Defense Primes</h4>
+            <p>Enabling prime contractors to build domestic supply chain resilience for critical components, custom ASICs, and specialty chips used in aerospace, defense electronics, and advanced weapons systems.</p>
+          </div>
+        </div>
+        <div class="client-item reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          <div>
+            <h4>Technology Startups</h4>
+            <p>Providing accessible domestic fabrication for hardware startups building AI chips, photonics, custom silicon, and emerging semiconductor products — without the minimum-order barriers of commercial fabs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section class="founder" id="founder">
+    <div class="section-inner">
+      <div class="founder-grid">
+        <div class="founder-text reveal">
+          <span class="section-tag">// LEADERSHIP</span>
+          <h2 class="section-title">Built From the Inside of National Security</h2>
+          <div class="founder-name">Lex Keen</div>
+          <div class="founder-title">// FOUNDER | FORMER TECHNICAL DIRECTOR, U.S. CYBER COMMAND</div>
+          <br />
+          <p>SecureFoundry was not founded by a semiconductor industry veteran looking to carve out a niche. It was founded by Lex Keen, a former Technical Director at U.S. Cyber Command who experienced firsthand the vulnerability of American defense technology to foreign supply chain disruption.</p>
+          <p>Lex founded SecureFoundry in 2016 with a mission statement that has not changed: democratize access to critical semiconductor manufacturing technology while ensuring that America's most sensitive applications never have to depend on overseas fabrication. The Hyper-Beam Array was developed specifically in service of that mission — eliminating the photomask barrier that makes domestic low-volume production economically prohibitive.</p>
+          <p>Today, SecureFoundry operates from Fort Worth, Texas with additional facilities in Maryland and the Netherlands — providing trusted domestic production with the geographic coverage that global defense and commercial clients require.</p>
+        </div>
+        <div class="founder-img reveal">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop" alt="Secure Foundry team member working in semiconductor research lab" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECURITY -->
+  <section class="security" id="security">
+    <div class="section-inner reveal">
+      <span class="section-tag">// COMPLIANCE &amp; SECURITY</span>
+      <h2 class="section-title">Security is Not a Feature. It is the Foundation.</h2>
+      <p class="section-lead">Every production run at SecureFoundry occurs within a compliance framework designed to meet the requirements of the most sensitive defense programs.</p>
+      <div class="security-strip">
+        <div class="sec-badge">ITAR Compliant</div>
+        <div class="sec-badge">NIST 800-171</div>
+        <div class="sec-badge">Cleared Personnel</div>
+        <div class="sec-badge">Domestic Production Only</div>
+        <div class="sec-badge">Physical Security Controls</div>
+        <div class="sec-badge">Chain of Custody Tracking</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="reveal">
+          <span class="section-tag">// GET IN TOUCH</span>
+          <h2 class="section-title">Contact Our Team</h2>
+          <div class="contact-info">
+            <p>Whether you have a specific fabrication requirement or want to discuss how SecureFoundry can support your domestic semiconductor needs, we welcome the conversation. Inquiries are handled with appropriate security protocols.</p>
+            <div class="cdetail">
+              <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Fort Worth, TX (Primary) | Maryland | Netherlands</span>
+            </div>
+            <div class="cdetail">
+              <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>lex@securefoundry.com</span>
+            </div>
+          </div>
+        </div>
+        <form class="reveal" onsubmit="return false;">
+          <div class="form-group">
+            <label>// Organization</label>
+            <input type="text" placeholder="Agency, company, or institution" />
+          </div>
+          <div class="form-group">
+            <label>// Your Name</label>
+            <input type="text" placeholder="Name" />
+          </div>
+          <div class="form-group">
+            <label>// Email</label>
+            <input type="email" placeholder="your@email.gov or .com" />
+          </div>
+          <div class="form-group">
+            <label>// Service of Interest</label>
+            <select>
+              <option>Chip Manufacturing (Low/Mixed Volume)</option>
+              <option>Reverse Engineering / Legacy Parts</option>
+              <option>Prototyping</option>
+              <option>Commercialization Platform</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>// Project Description</label>
+            <textarea placeholder="Describe your application, volume requirements, and any relevant classification or compliance constraints..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Secure<span>Foundry</span></div>
+      <ul class="footer-links">
+        <li><a href="#technology">Technology</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#clients">Clients</a></li>
+        <li><a href="#founder">Leadership</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <p class="footer-copy">// &copy; 2025 SecureFoundry | Fort Worth, TX | ITAR Controlled | All inquiries handled under applicable security protocols</p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    reveals.forEach(r => obs.observe(r));
+  </script>
+</body>
+</html>

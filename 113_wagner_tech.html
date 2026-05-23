@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wagner Technical Services | Utility Industry Engineering Support</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #0f2d4e;
+      --blue-mid: #1a3f6b;
+      --steel: #4a6282;
+      --orange: #e87722;
+      --orange-light: #f59340;
+      --white: #ffffff;
+      --off-white: #f4f6f9;
+      --gray: #6b7280;
+      --gray-light: #e5e9ef;
+      --text: #1a2535;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; letter-spacing: 0.5px; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(15, 45, 78, 0.98);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .nav-logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    .nav-logo span { color: var(--orange); }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--orange-light); }
+
+    .nav-cta {
+      background: var(--orange);
+      color: var(--white) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 4px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--orange-light) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--blue);
+      display: flex;
+      align-items: center;
+      padding: 120px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.15;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(15,45,78,0.95) 50%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--orange-light);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 2px;
+      background: var(--orange);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      color: var(--white);
+      line-height: 1.1;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span { color: var(--orange); }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 2.5rem;
+      max-width: 540px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.4);
+      transition: border-color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--orange-light); }
+
+    /* NUMBERS */
+    .numbers-section {
+      background: var(--orange);
+      padding: 50px 5%;
+    }
+
+    .numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .number-item strong {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--blue);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .number-item span {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      opacity: 0.85;
+    }
+
+    /* SECTIONS */
+    section { padding: 90px 5%; }
+
+    .section-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-heading {
+      font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+      color: var(--blue);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .section-intro {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 580px;
+      margin-bottom: 3rem;
+    }
+
+    /* ABOUT */
+    .about { background: var(--off-white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-text p {
+      color: var(--gray);
+      margin-bottom: 1.2rem;
+    }
+
+    .about-quote {
+      border-left: 4px solid var(--orange);
+      padding: 1rem 1.5rem;
+      background: var(--white);
+      border-radius: 0 8px 8px 0;
+      margin: 2rem 0;
+    }
+
+    .about-quote p {
+      font-size: 1.05rem;
+      color: var(--blue-mid);
+      font-style: italic;
+      margin: 0;
+    }
+
+    .about-quote strong {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--orange);
+      margin-top: 0.5rem;
+      font-style: normal;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2px;
+      max-width: 1100px;
+      margin: 0 auto;
+      background: var(--gray-light);
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      transition: background 0.2s;
+      position: relative;
+    }
+
+    .service-card:hover {
+      background: var(--blue);
+    }
+
+    .service-card:hover h3,
+    .service-card:hover p {
+      color: var(--white);
+    }
+
+    .service-card::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 4px;
+      background: var(--orange);
+      margin-bottom: 1.5rem;
+      transition: background 0.2s;
+    }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      color: var(--blue);
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.65;
+      transition: color 0.2s;
+    }
+
+    /* SOFTWARE SPOTLIGHT */
+    .software {
+      background: var(--blue);
+    }
+
+    .software-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .software .section-label { color: var(--orange); }
+    .software .section-heading { color: var(--white); text-transform: uppercase; }
+
+    .software-text p {
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 1.2rem;
+    }
+
+    .software-features {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+
+    .software-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 0.9rem;
+      font-size: 0.95rem;
+    }
+
+    .software-features li::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      background: var(--orange);
+      border-radius: 50%;
+      margin-top: 9px;
+      flex-shrink: 0;
+    }
+
+    .software-image img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 4px;
+      opacity: 0.8;
+    }
+
+    /* INDUSTRIES */
+    .industries { background: var(--off-white); }
+
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .industry-card {
+      background: var(--white);
+      border: 2px solid var(--gray-light);
+      padding: 1.8rem 1.5rem;
+      text-align: center;
+      border-radius: 4px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .industry-card:hover {
+      border-color: var(--orange);
+      transform: translateY(-3px);
+    }
+
+    .industry-card h3 {
+      font-size: 0.95rem;
+      color: var(--blue);
+      text-transform: uppercase;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--off-white);
+      border-radius: 4px;
+      padding: 2rem;
+      border-left: 4px solid var(--orange);
+    }
+
+    .testimonial-card p {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author strong {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      color: var(--blue);
+      text-transform: uppercase;
+    }
+
+    .testimonial-author span {
+      font-size: 0.82rem;
+      color: var(--gray);
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .testimonial-author img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* CONTACT */
+    .contact { background: var(--off-white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      font-size: 1.9rem;
+      color: var(--blue);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .contact-info p { color: var(--gray); margin-bottom: 2rem; }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      background: var(--white);
+      border-radius: 4px;
+      border-left: 3px solid var(--orange);
+    }
+
+    .contact-detail strong {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-detail span { font-size: 0.95rem; color: var(--text); }
+
+    .contact-form {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 4px;
+      border-top: 5px solid var(--orange);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group { margin-bottom: 1.2rem; }
+
+    .form-group label {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--gray-light);
+      border-radius: 4px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--orange); }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    /* CTA */
+    .cta-section {
+      background: var(--blue);
+      text-align: center;
+      padding: 90px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1400&q=80') center/cover no-repeat;
+      opacity: 0.08;
+    }
+
+    .cta-section > * { position: relative; z-index: 2; }
+
+    .cta-section h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      color: rgba(255,255,255,0.72);
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0a1e35;
+      color: rgba(255,255,255,0.6);
+      padding: 60px 5% 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+    }
+
+    .footer-brand p { font-size: 0.87rem; margin-top: 1rem; line-height: 1.7; }
+
+    .footer-col h4 {
+      font-family: 'Oswald', sans-serif;
+      color: var(--orange);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+
+    .footer-col ul li { margin-bottom: 0.55rem; }
+
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.87rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover { color: var(--orange-light); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .about-grid,
+      .software-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .numbers-grid { grid-template-columns: 2fr 2fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      section { padding: 65px 5%; }
+      .numbers-grid { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Wagner<span>Tech</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#software">InVision</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Utility Industry Engineering Support Since 1995</div>
+      <h1>30 Years<br>Powering <span>America's</span><br>Infrastructure</h1>
+      <p>Engineering support, field inspection, and custom technology solutions for electric and gas utilities across the Northeast — and beyond.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Request a Consultation</a>
+        <a href="#services" class="btn-outline">Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="numbers-section">
+    <div class="numbers-grid">
+      <div class="number-item">
+        <strong>30+</strong>
+        <span>Years in Service</span>
+      </div>
+      <div class="number-item">
+        <strong>40K+</strong>
+        <span>Transmission Inspections</span>
+      </div>
+      <div class="number-item">
+        <strong>750K+</strong>
+        <span>Distribution Inspections</span>
+      </div>
+      <div class="number-item">
+        <strong>1995</strong>
+        <span>Year Founded</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-heading">Built by a Utility Engineer. Trusted by the Industry.</h2>
+        <p>Gerald Wagner spent years working in and around utility infrastructure before founding Wagner Technical Services in 1995. He knew the industry's gaps — the need for experienced, on-demand engineering resources that could scale with project demands without the overhead of a full-time hire.</p>
+        <p>Over three decades, that vision has been validated hundreds of times over. We've become one of the Northeast's most trusted engineering resources for electric and gas utilities, handling everything from transmission structure inspections and easement acquisition to plant accounting and custom software development.</p>
+        <p>We're not a generalist staffing firm that happens to do utility work. We're utility specialists — period. Our team knows electric transmission and distribution the way most firms know their own names, and that depth of expertise is what separates us from everyone else.</p>
+        <div class="about-quote">
+          <p>We built this company to give utilities the engineering muscle they need, exactly when they need it — without the bureaucracy that slows everything down.</p>
+          <strong>Gerald Wagner &mdash; Founder, Wagner Technical Services</strong>
+        </div>
+      </div>
+      <div class="about-image reveal">
+        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&q=80" alt="Engineer at work on utility infrastructure" />
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">What We Do</p>
+      <h2 class="section-heading reveal">Engineering Services for the Utility Sector</h2>
+      <p class="section-intro reveal">Three decades of experience concentrated in the services that utility companies need most — delivered by people who've dedicated their careers to this industry.</p>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <h3>Transmission and Distribution Engineering</h3>
+          <p>Design, analysis, and engineering support for electric transmission and distribution systems — from single-line diagrams to complex multi-circuit projects.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Field Inspection Services</h3>
+          <p>Comprehensive inspection programs for transmission structures, distribution poles, and associated equipment. More than 790,000 structures inspected to date.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Easement and Right-of-Way</h3>
+          <p>Easement acquisition, title research coordination, right-of-way document preparation, and stakeholder negotiation support for utility projects of all scales.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Work Order Preparation and Drafting</h3>
+          <p>Detailed work order development, drafting services, and technical documentation for construction, maintenance, and upgrade projects.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Accounting Closeouts and Plant Accounting</h3>
+          <p>Project closeout documentation, asset accounting, and plant ledger support — helping utilities maintain accurate, audit-ready financial records.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Estimating and Cost Analysis</h3>
+          <p>Detailed cost estimating for utility construction projects, supporting planning, budgeting, and contractor procurement processes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="software" id="software">
+    <div class="software-grid">
+      <div class="software-text reveal">
+        <p class="section-label">Proprietary Technology</p>
+        <h2 class="section-heading">Custom Software That Automates Your Workflow</h2>
+        <p>One of the most impactful things Wagner Technical Services has done is build the tools the industry was missing. Our custom work order automation software was developed by utility engineers for utility engineers — and it has changed how our clients manage their field operations.</p>
+        <p>The software integrates directly with existing GIS and asset management systems, automating the creation of work orders that used to require hours of manual entry. The result is faster project delivery, fewer errors, and audit-ready documentation from day one.</p>
+        <ul class="software-features">
+          <li>Automated work order generation from field data and GIS inputs</li>
+          <li>Integrates with existing utility asset management platforms</li>
+          <li>Reduces manual data entry and associated errors</li>
+          <li>Full audit trail and documentation compliance</li>
+          <li>Scalable from single projects to enterprise-wide deployment</li>
+          <li>Developed and supported by our in-house engineering team</li>
+        </ul>
+      </div>
+      <div class="software-image reveal">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Technical software and data analysis" />
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">Client Feedback</p>
+      <h2 class="section-heading reveal">What Utility Professionals Say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <p>Wagner Tech has been our go-to for inspection support for nearly 15 years. They show up, they know what they're doing, and the reports come back clean every time. That kind of consistency is hard to find.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=100&q=80" alt="Utility manager" />
+            <div>
+              <strong>Rob H.</strong>
+              <span>Director of T&D Operations, Northeast Utility</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>Their work order automation software cut our prep time for construction projects by more than half. I honestly don't know how we managed without it for so long. Game-changing for our ops team.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&q=80" alt="Operations manager" />
+            <div>
+              <strong>Patricia L.</strong>
+              <span>VP Operations, Regional Gas Utility</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>Gerry built a team that understands utility work at a deep level. When we bring Wagner Tech in, we're not training anyone — they hit the ground running. That's worth a premium to us every time.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Engineer" />
+            <div>
+              <strong>James M.</strong>
+              <span>Chief Engineer, Electric Cooperative</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <h2>Ready to Bring Expert Engineering to Your Next Project?</h2>
+    <p>Reach out to discuss how Wagner Technical Services can support your utility operations.</p>
+    <a href="#contact" class="btn-primary">Request a Consultation</a>
+  </div>
+
+  <section class="contact" id="contact">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p class="section-label">Get in Touch</p>
+        <h2>Talk to Our Team</h2>
+        <p>Whether you need inspection support, engineering resources, or a conversation about our software, we're ready to listen. We respond to all inquiries within one business day.</p>
+        <div class="contact-detail">
+          <div>
+            <strong>Phone</strong>
+            <span>(845) 566-4018</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div>
+            <strong>Email</strong>
+            <span>gwagner@wagnertech.com</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div>
+            <strong>Headquarters</strong>
+            <span>Newburgh, New York</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div>
+            <strong>Service Area</strong>
+            <span>Northeast U.S. and national projects</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <h3 style="font-family:'Oswald',sans-serif;font-size:1.4rem;color:var(--blue);text-transform:uppercase;margin-bottom:1.5rem;">Contact Us</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="First" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Last" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="you@utility.com" />
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" placeholder="(845) 555-0100" />
+        </div>
+        <div class="form-group">
+          <label>Service of Interest</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>Field Inspection Services</option>
+            <option>T&D Engineering</option>
+            <option>Easement / Right-of-Way</option>
+            <option>Work Order Software</option>
+            <option>Plant Accounting</option>
+            <option>General Inquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Project Details</label>
+          <textarea placeholder="Tell us about your project, timeline, and what you're looking for..."></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;padding:1rem;">Send Inquiry</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">Wagner<span>Tech</span></a>
+        <p>Wagner Technical Services, Inc. &mdash; Engineering and infrastructure support for the utility industry since 1995. Headquartered in Newburgh, New York.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">T&D Engineering</a></li>
+          <li><a href="#">Field Inspection</a></li>
+          <li><a href="#">Right-of-Way</a></li>
+          <li><a href="#">Work Orders</a></li>
+          <li><a href="#">Custom Software</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Gerry Wagner</a></li>
+          <li><a href="#">Our Track Record</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:8455664018">(845) 566-4018</a></li>
+          <li><a href="mailto:gwagner@wagnertech.com">gwagner@wagnertech.com</a></li>
+          <li><a href="#">Newburgh, NY</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Wagner Technical Services, Inc. All rights reserved.</p>
+      <p>Newburgh, New York &bull; Founded 1995</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

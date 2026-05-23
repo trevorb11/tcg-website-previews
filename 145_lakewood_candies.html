@@ -1,0 +1,2216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lakewood Candies LLC – Sweet Traditions Since 2009</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* =============================================
+       CSS CUSTOM PROPERTIES
+    ============================================= */
+    :root {
+      --candy-pink:    #f4618f;
+      --candy-pink-lt: #f9a8c4;
+      --candy-pink-dk: #d93f6e;
+      --rich-purple:   #6b2fa0;
+      --purple-lt:     #9b59d4;
+      --purple-dk:     #4a1a75;
+      --cream:         #fdf6ec;
+      --vanilla:       #fef3d0;
+      --caramel:       #c8862a;
+      --caramel-lt:    #e8a83c;
+      --caramel-dk:    #9a641a;
+      --mint:          #3ecf8e;
+      --sky:           #38bdf8;
+      --white:         #ffffff;
+      --text-dark:     #2a1a35;
+      --text-mid:      #5a3d6e;
+      --text-light:    #8a6fa0;
+      --shadow-sm:     0 2px 12px rgba(107,47,160,0.10);
+      --shadow-md:     0 8px 32px rgba(107,47,160,0.16);
+      --shadow-lg:     0 20px 60px rgba(107,47,160,0.22);
+      --shadow-xl:     0 30px 80px rgba(107,47,160,0.28);
+      --radius-sm:     8px;
+      --radius-md:     18px;
+      --radius-lg:     32px;
+      --radius-pill:   999px;
+      --transition:    0.35s cubic-bezier(0.34,1.56,0.64,1);
+      --transition-std:0.3s cubic-bezier(0.4,0,0.2,1);
+      --font-head:     'Fraunces', Georgia, serif;
+      --font-body:     'Plus Jakarta Sans', system-ui, sans-serif;
+    }
+
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      line-height: 1.65;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { cursor: pointer; font-family: var(--font-body); border: none; }
+
+    /* =============================================
+       GRAIN TEXTURE OVERLAY (global mixin via pseudo)
+    ============================================= */
+    .grain::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      mix-blend-mode: overlay;
+      opacity: 0.55;
+    }
+    .grain { position: relative; }
+
+    /* =============================================
+       SCROLL REVEAL
+    ============================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.45s; }
+
+    /* =============================================
+       LAYOUT HELPERS
+    ============================================= */
+    .container {
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--candy-pink);
+      margin-bottom: 12px;
+    }
+    .section-label::before,
+    .section-label::after {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1.5px;
+      background: var(--candy-pink);
+      opacity: 0.5;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      color: var(--rich-purple);
+      line-height: 1.15;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      max-width: 560px;
+      line-height: 1.75;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 14px 32px;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      letter-spacing: 0.01em;
+    }
+    .btn-primary {
+      background: var(--candy-pink);
+      color: var(--white);
+      box-shadow: 0 6px 24px rgba(244,97,143,0.45);
+    }
+    .btn-primary:hover {
+      background: var(--candy-pink-dk);
+      box-shadow: 0 10px 32px rgba(244,97,143,0.6);
+      transform: translateY(-3px) scale(1.03);
+    }
+    .btn-outline {
+      background: rgba(255,255,255,0.12);
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.6);
+      backdrop-filter: blur(4px);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.22);
+      border-color: var(--white);
+      transform: translateY(-3px) scale(1.03);
+    }
+    .btn-purple {
+      background: var(--rich-purple);
+      color: var(--white);
+      box-shadow: 0 6px 22px rgba(107,47,160,0.42);
+    }
+    .btn-purple:hover {
+      background: var(--purple-dk);
+      transform: translateY(-3px) scale(1.03);
+    }
+
+    /* =============================================
+       NAVIGATION
+    ============================================= */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(253,246,236,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(107,47,160,0.08);
+      transition: box-shadow var(--transition-std);
+    }
+    #navbar.scrolled { box-shadow: var(--shadow-md); }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      gap: 24px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      flex-shrink: 0;
+    }
+    .logo-candy {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--candy-pink), var(--rich-purple));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 14px rgba(244,97,143,0.4);
+    }
+    .logo-text {
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      color: var(--rich-purple);
+      line-height: 1;
+      font-weight: 700;
+    }
+    .logo-text span { color: var(--candy-pink); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+    }
+    .nav-links a {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      position: relative;
+      transition: color var(--transition-std);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--candy-pink), var(--rich-purple));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition-std);
+      border-radius: 2px;
+    }
+    .nav-links a:hover { color: var(--candy-pink); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-shop-nav {
+      background: linear-gradient(135deg, var(--candy-pink), var(--rich-purple));
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.86rem;
+      padding: 10px 24px;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 4px 16px rgba(244,97,143,0.38);
+      transition: var(--transition);
+    }
+    .btn-shop-nav:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 8px 24px rgba(244,97,143,0.55);
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      padding: 6px;
+      border-radius: var(--radius-sm);
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--rich-purple);
+      border-radius: 2px;
+      transition: var(--transition-std);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: var(--cream);
+      border-bottom: 1px solid rgba(107,47,160,0.1);
+      padding: 20px 28px 32px;
+      box-shadow: var(--shadow-md);
+      z-index: 999;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: 13px 0;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text-mid);
+      border-bottom: 1px solid rgba(107,47,160,0.07);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu .btn-shop-nav {
+      display: inline-flex;
+      margin-top: 18px;
+    }
+
+    /* =============================================
+       HERO + CONFETTI ANIMATION
+    ============================================= */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1581798459219-318f5a2e0d37?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.06);
+      transition: transform 10s ease;
+    }
+    #hero:hover .hero-bg { transform: scale(1); }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(74,26,117,0.88) 0%,
+        rgba(107,47,160,0.78) 30%,
+        rgba(200,60,110,0.65) 70%,
+        rgba(200,134,42,0.52) 100%
+      );
+    }
+
+    /* Confetti / sprinkle dots */
+    .confetti-canvas {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .sprinkle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0;
+      animation: floatUp linear infinite;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(0) rotate(0deg) scale(1);   opacity: 0; }
+      8%   { opacity: 1; }
+      90%  { opacity: 0.6; }
+      100% { transform: translateY(-110vh) rotate(720deg) scale(0.5); opacity: 0; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 820px;
+      padding: 130px 28px 90px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(8px);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 8px 22px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 28px;
+    }
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      text-shadow: 0 4px 32px rgba(74,26,117,0.55);
+      font-weight: 700;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--caramel-lt);
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2.2vw, 1.22rem);
+      color: rgba(255,255,255,0.88);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.78;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 34px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .scroll-dot {
+      width: 28px; height: 46px;
+      border: 2px solid rgba(255,255,255,0.45);
+      border-radius: 14px;
+      display: flex;
+      justify-content: center;
+      padding-top: 8px;
+    }
+    .scroll-dot::after {
+      content: '';
+      width: 4px; height: 10px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 2px;
+      animation: scrollBob 1.7s ease-in-out infinite;
+    }
+    @keyframes scrollBob {
+      0%,100% { transform: translateY(0); opacity: 1; }
+      50%      { transform: translateY(9px); opacity: 0.35; }
+    }
+
+    /* =============================================
+       TRUST STRIP
+    ============================================= */
+    #trust {
+      background: linear-gradient(90deg, var(--purple-dk) 0%, var(--rich-purple) 40%, var(--candy-pink-dk) 80%, var(--caramel) 100%);
+      padding: 20px 0;
+      overflow: hidden;
+      position: relative;
+    }
+    #trust::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.04) 0px,
+        rgba(255,255,255,0.04) 1px,
+        transparent 1px,
+        transparent 60px
+      );
+      pointer-events: none;
+    }
+    .trust-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.86rem;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+    .trust-icon { font-size: 1.15rem; flex-shrink: 0; }
+    .trust-sep { color: rgba(255,255,255,0.28); font-size: 1.2rem; }
+
+    /* =============================================
+       MARQUEE SHOWCASE STRIP
+    ============================================= */
+    #showcase {
+      padding: 0;
+      overflow: hidden;
+      background: var(--cream);
+      position: relative;
+    }
+    #showcase::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--candy-pink), var(--rich-purple), var(--caramel-lt), var(--mint), var(--candy-pink));
+      background-size: 200% 100%;
+      animation: rainbowShift 4s linear infinite;
+    }
+    #showcase::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--caramel-lt), var(--mint), var(--candy-pink), var(--rich-purple), var(--caramel-lt));
+      background-size: 200% 100%;
+      animation: rainbowShift 4s linear infinite reverse;
+    }
+    @keyframes rainbowShift {
+      0%   { background-position: 0% 0%; }
+      100% { background-position: 200% 0%; }
+    }
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      width: max-content;
+      animation: marqueeScroll 32s linear infinite;
+      padding: 28px 0;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marqueeScroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 0 28px;
+      white-space: nowrap;
+    }
+    .marquee-img {
+      width: 90px;
+      height: 90px;
+      border-radius: var(--radius-md);
+      object-fit: cover;
+      box-shadow: var(--shadow-sm);
+      flex-shrink: 0;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .marquee-img:hover {
+      transform: scale(1.1) rotate(-2deg);
+      box-shadow: var(--shadow-md);
+    }
+    .marquee-label {
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      color: var(--rich-purple);
+      font-weight: 600;
+      font-style: italic;
+    }
+    .marquee-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--candy-pink-lt);
+      flex-shrink: 0;
+    }
+
+    /* =============================================
+       PRODUCTS SECTION
+    ============================================= */
+    #products {
+      padding: 104px 0 88px;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    #products::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 450px; height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(244,97,143,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #products::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -80px;
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(107,47,160,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .products-head {
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+      z-index: 1;
+    }
+    .products-head .section-sub {
+      margin: 0 auto;
+      text-align: center;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Premium product cards */
+    .product-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition);
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: var(--shadow-xl);
+    }
+    .product-card:hover .product-img { transform: scale(1.08); }
+    .product-card:hover .product-img-shine { opacity: 1; }
+
+    .product-img-wrap {
+      height: 210px;
+      overflow: hidden;
+      position: relative;
+    }
+    .product-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+    .product-img-shine {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    /* Ribbon badge for bestsellers */
+    .ribbon {
+      position: absolute;
+      top: 0; right: 0;
+      width: 0; height: 0;
+      border-style: solid;
+      border-width: 0 80px 80px 0;
+      border-color: transparent var(--candy-pink) transparent transparent;
+      z-index: 3;
+    }
+    .ribbon-text {
+      position: absolute;
+      top: 12px; right: -68px;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--white);
+      transform: rotate(45deg);
+      transform-origin: center;
+      line-height: 1;
+      text-align: center;
+      width: 60px;
+      pointer-events: none;
+      z-index: 4;
+    }
+    .ribbon-gold { border-color: transparent var(--caramel) transparent transparent; }
+
+    /* Simple pill badge */
+    .product-badge-pill {
+      position: absolute;
+      top: 14px; left: 14px;
+      background: var(--mint);
+      color: var(--white);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      z-index: 3;
+      box-shadow: 0 2px 8px rgba(62,207,142,0.4);
+    }
+
+    .product-body {
+      padding: 24px 24px 26px;
+    }
+    .product-icon { font-size: 1.7rem; margin-bottom: 9px; }
+    .product-name {
+      font-family: var(--font-head);
+      font-size: 1.25rem;
+      color: var(--rich-purple);
+      margin-bottom: 9px;
+      font-weight: 700;
+    }
+    .product-desc {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .product-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-weight: 700;
+      font-size: 0.86rem;
+      color: var(--candy-pink);
+      transition: gap var(--transition-std), color var(--transition-std);
+    }
+    .product-link:hover { gap: 12px; color: var(--candy-pink-dk); }
+    .product-link-arrow { font-size: 1rem; }
+
+    /* =============================================
+       SWEET COUNTER (STATS) SECTION
+    ============================================= */
+    #stats {
+      padding: 88px 0;
+      background: linear-gradient(135deg, var(--rich-purple) 0%, var(--purple-dk) 60%, #2a0a50 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    #stats::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(244,97,143,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    #stats::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -60px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,168,60,0.14) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    /* grain on stats */
+    #stats .grain-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      mix-blend-mode: overlay;
+      opacity: 0.4;
+    }
+    .stats-head {
+      text-align: center;
+      margin-bottom: 56px;
+      position: relative;
+      z-index: 1;
+    }
+    .stats-head .section-label { color: var(--candy-pink-lt); }
+    .stats-head .section-label::before,
+    .stats-head .section-label::after { background: var(--candy-pink-lt); }
+    .stats-head .section-title { color: var(--white); }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .stat-card {
+      text-align: center;
+      padding: 40px 24px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-md);
+      backdrop-filter: blur(6px);
+      transition: transform var(--transition), background var(--transition-std);
+    }
+    .stat-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      background: rgba(255,255,255,0.13);
+    }
+    .stat-icon { font-size: 2.2rem; margin-bottom: 14px; }
+    .stat-number {
+      font-family: var(--font-head);
+      font-size: clamp(2.8rem, 4.5vw, 4rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, var(--white) 0%, var(--candy-pink-lt) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-suffix {
+      font-family: var(--font-head);
+      font-size: 0.6em;
+      -webkit-text-fill-color: var(--candy-pink-lt);
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.04em;
+    }
+
+    /* =============================================
+       ABOUT SECTION
+    ============================================= */
+    #about {
+      padding: 104px 0;
+      background: var(--vanilla);
+      position: relative;
+      overflow: hidden;
+    }
+    #about .grain-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      mix-blend-mode: overlay;
+      opacity: 0.45;
+    }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .about-img-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+    }
+    .about-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom right,
+        rgba(107,47,160,0.08) 0%,
+        transparent 60%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+    .about-img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .about-img-wrap:hover .about-img { transform: scale(1.04); }
+    .about-img-badge {
+      position: absolute;
+      bottom: 28px; left: 28px;
+      background: rgba(255,255,255,0.96);
+      border-radius: var(--radius-md);
+      padding: 16px 22px;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      z-index: 2;
+      border: 1px solid rgba(244,97,143,0.15);
+    }
+    .about-badge-num {
+      font-family: var(--font-head);
+      font-size: 2.3rem;
+      color: var(--candy-pink);
+      line-height: 1;
+      font-weight: 700;
+    }
+    .about-badge-text {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-mid);
+      line-height: 1.4;
+    }
+    .about-content .section-sub { margin-bottom: 20px; }
+    .about-features {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 30px;
+    }
+    .about-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 18px 20px;
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      border-left: 4px solid var(--candy-pink);
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .about-feature:nth-child(2) { border-left-color: var(--rich-purple); }
+    .about-feature:nth-child(3) { border-left-color: var(--caramel); }
+    .about-feature:hover {
+      transform: translateX(5px);
+      box-shadow: var(--shadow-md);
+    }
+    .about-feature-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 1px; }
+    .about-feature-text h4 {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+    .about-feature-text p { font-size: 0.84rem; color: var(--text-mid); line-height: 1.6; }
+
+    /* =============================================
+       WHY CHOOSE US
+    ============================================= */
+    #why {
+      padding: 104px 0;
+      background: var(--cream);
+      position: relative;
+    }
+    .why-head {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .why-head .section-sub { margin: 0 auto; text-align: center; }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .why-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 40px 26px 36px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .why-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--candy-pink), var(--rich-purple), var(--caramel-lt));
+      background-size: 200% 100%;
+      animation: rainbowShift 5s linear infinite;
+    }
+    .why-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: var(--shadow-xl);
+    }
+    .why-icon-wrap {
+      width: 76px; height: 76px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(244,97,143,0.12), rgba(107,47,160,0.12));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.9rem;
+      margin: 0 auto 20px;
+      transition: transform var(--transition), background var(--transition);
+    }
+    .why-card:hover .why-icon-wrap {
+      transform: rotate(-8deg) scale(1.15);
+      background: linear-gradient(135deg, rgba(244,97,143,0.2), rgba(107,47,160,0.2));
+    }
+    .why-title {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      color: var(--rich-purple);
+      margin-bottom: 11px;
+      font-weight: 700;
+    }
+    .why-desc { font-size: 0.87rem; color: var(--text-mid); line-height: 1.75; }
+
+    /* =============================================
+       TESTIMONIALS
+    ============================================= */
+    #testimonials {
+      padding: 104px 0;
+      background: linear-gradient(150deg, var(--purple-dk) 0%, var(--rich-purple) 55%, #8a1f6e 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    #testimonials .grain-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      mix-blend-mode: overlay;
+      opacity: 0.45;
+    }
+    #testimonials::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(244,97,143,0.14) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    #testimonials::after {
+      content: '';
+      position: absolute;
+      bottom: -120px; left: -70px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,168,60,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .testi-head {
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+      z-index: 1;
+    }
+    .testi-head .section-label { color: var(--candy-pink-lt); }
+    .testi-head .section-label::before,
+    .testi-head .section-label::after { background: var(--candy-pink-lt); }
+    .testi-head .section-title { color: var(--white); }
+    .testi-head .section-sub { color: rgba(255,255,255,0.7); margin: 0 auto; text-align: center; }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+      position: relative;
+      z-index: 1;
+    }
+    .testi-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius-md);
+      padding: 36px 30px;
+      transition: transform var(--transition), background var(--transition-std), border-color var(--transition-std);
+      position: relative;
+      overflow: hidden;
+    }
+    /* Candy-colored accent top border on hover */
+    .testi-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .testi-card:nth-child(1)::before { background: linear-gradient(90deg, var(--candy-pink), var(--candy-pink-lt)); }
+    .testi-card:nth-child(2)::before { background: linear-gradient(90deg, var(--caramel), var(--caramel-lt)); }
+    .testi-card:nth-child(3)::before { background: linear-gradient(90deg, var(--mint), #38bdf8); }
+    /* Always visible subtle left border */
+    .testi-card:nth-child(1) { border-left: 3px solid rgba(244,97,143,0.4); }
+    .testi-card:nth-child(2) { border-left: 3px solid rgba(200,134,42,0.4); }
+    .testi-card:nth-child(3) { border-left: 3px solid rgba(62,207,142,0.4); }
+    .testi-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      background: rgba(255,255,255,0.13);
+      border-color: rgba(255,255,255,0.25);
+    }
+    .testi-card:hover::before { opacity: 1; }
+    .testi-stars {
+      color: var(--caramel-lt);
+      font-size: 1.05rem;
+      letter-spacing: 3px;
+      margin-bottom: 18px;
+    }
+    .testi-quote {
+      font-size: 0.96rem;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.8;
+      margin-bottom: 26px;
+      font-style: italic;
+      position: relative;
+    }
+    .testi-quote::before {
+      content: '\201C';
+      color: var(--candy-pink-lt);
+      font-size: 3.5rem;
+      font-family: var(--font-head);
+      line-height: 0;
+      vertical-align: -0.7rem;
+      margin-right: 4px;
+      opacity: 0.7;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .testi-avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--white);
+      flex-shrink: 0;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+    .testi-name {
+      font-weight: 700;
+      font-size: 0.93rem;
+      color: var(--white);
+    }
+    .testi-loc {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 2px;
+    }
+
+    /* =============================================
+       CONTACT SECTION
+    ============================================= */
+    #contact {
+      padding: 104px 0;
+      background: var(--vanilla);
+      position: relative;
+      overflow: hidden;
+    }
+    #contact .grain-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      mix-blend-mode: overlay;
+      opacity: 0.4;
+    }
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-info .section-sub { margin-bottom: 38px; }
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .contact-icon-wrap {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--candy-pink), var(--rich-purple));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.15rem;
+      color: var(--white);
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(244,97,143,0.38);
+    }
+    .contact-item-text h4 {
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+    .contact-item-text p, .contact-item-text a {
+      font-size: 0.97rem;
+      color: var(--text-dark);
+      font-weight: 600;
+      transition: color var(--transition-std);
+    }
+    .contact-item-text a:hover { color: var(--candy-pink); }
+    .contact-form-wrap {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 44px 40px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(107,47,160,0.07);
+    }
+    .form-title {
+      font-family: var(--font-head);
+      font-size: 1.55rem;
+      color: var(--rich-purple);
+      margin-bottom: 28px;
+      font-weight: 700;
+    }
+    .form-row { margin-bottom: 20px; }
+    .form-row label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.78rem;
+      color: var(--text-mid);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 7px;
+    }
+    .form-row input,
+    .form-row textarea,
+    .form-row select {
+      width: 100%;
+      padding: 13px 18px;
+      border: 2px solid rgba(107,47,160,0.13);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      background: var(--cream);
+      transition: border-color var(--transition-std), box-shadow var(--transition-std);
+      outline: none;
+    }
+    .form-row input:focus,
+    .form-row textarea:focus,
+    .form-row select:focus {
+      border-color: var(--candy-pink);
+      box-shadow: 0 0 0 4px rgba(244,97,143,0.13);
+    }
+    .form-row textarea { resize: vertical; min-height: 115px; }
+    .form-submit {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, var(--candy-pink), var(--rich-purple));
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 6px 24px rgba(244,97,143,0.42);
+      transition: var(--transition);
+      letter-spacing: 0.02em;
+    }
+    .form-submit:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 36px rgba(244,97,143,0.55);
+    }
+    .walmart-banner {
+      margin-top: 34px;
+      background: linear-gradient(135deg, #0071ce, #004f9a);
+      border-radius: var(--radius-md);
+      padding: 22px 26px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--white);
+      box-shadow: var(--shadow-sm);
+    }
+    .walmart-icon { font-size: 2rem; flex-shrink: 0; }
+    .walmart-text h4 {
+      font-weight: 800;
+      font-size: 0.97rem;
+      margin-bottom: 4px;
+    }
+    .walmart-text p { font-size: 0.82rem; opacity: 0.88; }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      background: var(--text-dark);
+      color: rgba(255,255,255,0.72);
+      padding: 72px 0 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--candy-pink), var(--rich-purple), var(--caramel-lt), var(--mint), var(--candy-pink));
+      background-size: 200% 100%;
+      animation: rainbowShift 5s linear infinite;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 52px;
+      margin-bottom: 52px;
+    }
+    .footer-brand .logo-text { color: var(--white); font-size: 1.4rem; }
+    .footer-brand .logo-text span { color: var(--candy-pink); }
+    .footer-brand p {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      margin-top: 16px;
+      max-width: 260px;
+    }
+    .footer-col h4 {
+      font-weight: 800;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 11px; }
+    .footer-col ul a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.62);
+      transition: color var(--transition-std), padding-left var(--transition-std);
+    }
+    .footer-col ul a:hover { color: var(--candy-pink); padding-left: 4px; }
+    .footer-col .footer-addr {
+      font-size: 0.87rem;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.62);
+    }
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .social-btn {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      transition: var(--transition);
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .social-btn:hover {
+      background: var(--candy-pink);
+      color: var(--white);
+      transform: translateY(-4px) scale(1.1);
+      border-color: var(--candy-pink);
+      box-shadow: 0 6px 18px rgba(244,97,143,0.45);
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer-bottom p { font-size: 0.82rem; }
+    .footer-bottom-links { display: flex; gap: 22px; }
+    .footer-bottom-links a {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      transition: color var(--transition-std);
+    }
+    .footer-bottom-links a:hover { color: var(--candy-pink); }
+
+    /* =============================================
+       RESPONSIVE – 960px
+    ============================================= */
+    @media (max-width: 960px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .testi-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-inner { grid-template-columns: 1fr; gap: 48px; }
+      .about-img { height: 360px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* =============================================
+       RESPONSIVE – 640px
+    ============================================= */
+    @media (max-width: 640px) {
+      .products-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+      .trust-sep { display: none; }
+      .trust-inner { gap: 16px; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .contact-form-wrap { padding: 30px 22px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .why-grid { grid-template-columns: 1fr; }
+    }
+
+    /* =============================================
+       SECTION DIVIDERS (wave shapes)
+    ============================================= */
+    .wave-divider {
+      line-height: 0;
+      overflow: hidden;
+    }
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =============================================
+       NAVIGATION
+  ============================================= -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="logo-candy">&#127852;</div>
+        <div class="logo-text">Lakewood<span>Candies</span></div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <a href="https://www.walmart.com" target="_blank" rel="noopener" class="btn-shop-nav">Shop on Walmart</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#products" class="mobile-nav-link">Products</a>
+    <a href="#about" class="mobile-nav-link">Our Story</a>
+    <a href="#why" class="mobile-nav-link">Why Us</a>
+    <a href="#testimonials" class="mobile-nav-link">Reviews</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+    <a href="https://www.walmart.com" target="_blank" rel="noopener" class="btn-shop-nav">Shop on Walmart</a>
+  </div>
+
+  <!-- =============================================
+       HERO
+  ============================================= -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <!-- Confetti / sprinkle canvas -->
+    <div class="confetti-canvas" id="confettiCanvas"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">&#127852; Family Candy Business Since 2009</div>
+      <h1 class="hero-title">
+        Where Every Bite<br>is a <em>Sweet Tradition</em>
+      </h1>
+      <p class="hero-sub">
+        Handcrafted candies, confections, and chocolates made with love and the finest ingredients — straight from Lakewood, NJ to your door.
+      </p>
+      <div class="hero-ctas">
+        <a href="#products" class="btn btn-primary">Explore Our Sweets</a>
+        <a href="#about" class="btn btn-outline">Our Story</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-dot"></div>
+      Scroll
+    </div>
+  </section>
+
+  <!-- =============================================
+       TRUST STRIP
+  ============================================= -->
+  <div id="trust">
+    <div class="container trust-inner">
+      <div class="trust-item">
+        <span class="trust-icon">&#9733;</span>
+        <span>Family-Owned Since 2009</span>
+      </div>
+      <span class="trust-sep">|</span>
+      <div class="trust-item">
+        <span class="trust-icon">&#128666;</span>
+        <span>Ships Nationwide</span>
+      </div>
+      <span class="trust-sep">|</span>
+      <div class="trust-item">
+        <span class="trust-icon">&#127873;</span>
+        <span>Gift Boxes Available</span>
+      </div>
+      <span class="trust-sep">|</span>
+      <div class="trust-item">
+        <span class="trust-icon">&#128247;</span>
+        <span>On Walmart Marketplace</span>
+      </div>
+      <span class="trust-sep">|</span>
+      <div class="trust-item">
+        <span class="trust-icon">&#128155;</span>
+        <span>Handcrafted with Love</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wave divider -->
+  <div class="wave-divider" style="background: linear-gradient(90deg, #4a1a75, #9b59d4, #d93f6e, #c8862a); height:0;">
+    <svg viewBox="0 0 1440 36" preserveAspectRatio="none" style="height:36px;" fill="#fdf6ec" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,36 C240,0 480,36 720,18 C960,0 1200,36 1440,18 L1440,36 Z"/>
+    </svg>
+  </div>
+
+  <!-- =============================================
+       PRODUCTS SECTION
+  ============================================= -->
+  <section id="products">
+    <div class="container">
+      <div class="products-head">
+        <span class="section-label reveal">Our Collections</span>
+        <h2 class="section-title reveal reveal-delay-1">A World of Sweet Delights</h2>
+        <p class="section-sub reveal reveal-delay-2">From silky chocolates to vibrant gummies, we craft every confection to bring joy to every occasion.</p>
+      </div>
+
+      <div class="products-grid">
+
+        <!-- Card 1: Bestseller ribbon -->
+        <div class="product-card reveal">
+          <div class="product-img-wrap">
+            <img class="product-img" src="https://images.unsplash.com/photo-1548907040-4baa42d10919?auto=format&fit=crop&w=600&q=80" alt="Premium Chocolates"/>
+            <div class="product-img-shine"></div>
+            <div class="ribbon"><span class="ribbon-text">Best&shy;seller</span></div>
+          </div>
+          <div class="product-body">
+            <div class="product-icon">&#127849;</div>
+            <h3 class="product-name">Premium Chocolates</h3>
+            <p class="product-desc">Rich, velvety chocolate confections crafted from the finest cacao. Milk, dark, and white chocolate varieties in elegant assortments.</p>
+            <a href="#contact" class="product-link">Order Now <span class="product-link-arrow">&#8594;</span></a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="product-card reveal reveal-delay-1">
+          <div class="product-img-wrap">
+            <img class="product-img" src="https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?auto=format&fit=crop&w=600&q=80" alt="Gummy Candies"/>
+            <div class="product-img-shine"></div>
+          </div>
+          <div class="product-body">
+            <div class="product-icon">&#129880;</div>
+            <h3 class="product-name">Gummy Candies</h3>
+            <p class="product-desc">Bright, chewy gummies bursting with fruity flavor. Beloved by kids and adults alike — classic bears, worms, rings, and more.</p>
+            <a href="#contact" class="product-link">Order Now <span class="product-link-arrow">&#8594;</span></a>
+          </div>
+        </div>
+
+        <!-- Card 3: gold ribbon -->
+        <div class="product-card reveal reveal-delay-2">
+          <div class="product-img-wrap">
+            <img class="product-img" src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&w=600&q=80" alt="Hard Candies"/>
+            <div class="product-img-shine"></div>
+            <div class="ribbon ribbon-gold"><span class="ribbon-text" style="right:-66px; top:10px;">Classic</span></div>
+          </div>
+          <div class="product-body">
+            <div class="product-icon">&#127850;</div>
+            <h3 class="product-name">Hard Candies</h3>
+            <p class="product-desc">Timeless hard candies in a rainbow of flavors — from tangy citrus to sweet butterscotch. Long-lasting treats that never go out of style.</p>
+            <a href="#contact" class="product-link">Order Now <span class="product-link-arrow">&#8594;</span></a>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="product-card reveal">
+          <div class="product-img-wrap">
+            <img class="product-img" src="https://images.unsplash.com/photo-1611759040056-98a6aff0b7d5?auto=format&fit=crop&w=600&q=80" alt="Specialty Sweets"/>
+            <div class="product-img-shine"></div>
+          </div>
+          <div class="product-body">
+            <div class="product-icon">&#10024;</div>
+            <h3 class="product-name">Specialty Sweets</h3>
+            <p class="product-desc">Unique confections and seasonal specialties that push the boundaries of candy craft. Limited edition flavors and artisan recipes.</p>
+            <a href="#contact" class="product-link">Order Now <span class="product-link-arrow">&#8594;</span></a>
+          </div>
+        </div>
+
+        <!-- Card 5: bestseller ribbon pink -->
+        <div class="product-card reveal reveal-delay-1">
+          <div class="product-img-wrap">
+            <img class="product-img" src="https://images.unsplash.com/photo-1549057446-9f5c6ac91a04?auto=format&fit=crop&w=600&q=80" alt="Gift Boxes"/>
+            <div class="product-img-shine"></div>
+            <div class="ribbon"><span class="ribbon-text">Best Gift</span></div>
+          </div>
+          <div class="product-body">
+            <div class="product-icon">&#127873;</div>
+            <h3 class="product-name">Gift Boxes</h3>
+            <p class="product-desc">Beautifully curated gift boxes perfect for holidays, birthdays, and corporate gifting. Mix-and-match your favorite candy selections.</p>
+            <a href="#contact" class="product-link">Order Now <span class="product-link-arrow">&#8594;</span></a>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="product-card reveal reveal-delay-2">
+          <div class="product-img-wrap">
+            <img class="product-img" src="https://images.unsplash.com/photo-1602573991155-21f0143bb77e?auto=format&fit=crop&w=600&q=80" alt="Seasonal Confections"/>
+            <div class="product-img-shine"></div>
+            <div class="product-badge-pill">Seasonal</div>
+          </div>
+          <div class="product-body">
+            <div class="product-icon">&#127987;</div>
+            <h3 class="product-name">Seasonal Confections</h3>
+            <p class="product-desc">Holiday-themed candies and seasonal confections that celebrate every time of year — from Halloween treats to Valentine's heart boxes.</p>
+            <a href="#contact" class="product-link">Order Now <span class="product-link-arrow">&#8594;</span></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave divider -->
+  <div class="wave-divider" style="background:#fdf6ec;">
+    <svg viewBox="0 0 1440 48" preserveAspectRatio="none" style="height:48px;" fill="#fdf6ec" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 C360,48 1080,0 1440,24 L1440,48 L0,48 Z" fill="#fef3d0"/>
+    </svg>
+  </div>
+
+  <!-- =============================================
+       MARQUEE SHOWCASE STRIP
+  ============================================= -->
+  <div id="showcase">
+    <div class="marquee-track" id="marqueeTrack">
+      <!-- Items duplicated for seamless loop -->
+      <div class="marquee-item">
+        <img class="marquee-img" src="https://images.unsplash.com/photo-1548907040-4baa42d10919?auto=format&fit=crop&w=200&q=70" alt="Chocolates"/>
+        <span class="marquee-label">Premium Chocolates</span>
+        <div class="marquee-dot"></div>
+      </div>
+      <div class="marquee-item">
+        <img class="marquee-img" src="https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?auto=format&fit=crop&w=200&q=70" alt="Gummies"/>
+        <span class="marquee-label">Gummy Bears</span>
+        <div class="marquee-dot"></div>
+      </div>
+      <div class="marquee-item">
+        <img class="marquee-img" src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&w=200&q=70" alt="Hard Candy"/>
+        <span class="marquee-label">Hard Candies</span>
+        <div class="marquee-dot"></div>
+      </div>
+      <div class="marquee-item">
+        <img class="marquee-img" src="https://images.unsplash.com/photo-1549057446-9f5c6ac91a04?auto=format&fit=crop&w=200&q=70" alt="Gift Boxes"/>
+        <span class="marquee-label">Gift Boxes</span>
+        <div class="marquee-dot"></div>
+      </div>
+      <div class="marquee-item">
+        <img class="marquee-img" src="https://images.unsplash.com/photo-1611759040056-98a6aff0b7d5?auto=format&fit=crop&w=200&q=70" alt="Specialty"/>
+        <span class="marquee-label">Specialty Sweets</span>
+        <div class="marquee-dot"></div>
+      </div>
+      <div class="marquee-item">
+        <img class="marquee-img" src="https://images.unsplash.com/photo-1602573991155-21f0143bb77e?auto=format&fit=crop&w=200&q=70" alt="Seasonal"/>
+        <span class="marquee-label">Seasonal Treats</span>
+        <div class="marquee-dot"></div>
+      </div>
+      <div class="marquee-item">
+        <img class="marquee-img" src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&w=200&q=70" alt="Artisan"/>
+        <span class="marquee-label">Artisan Craft</span>
+        <div class="marquee-dot"></div>
+      </div>
+      <!-- Duplicate set for seamless loop -->
+      <div class="marquee-item">
+        <img class="marquee-img" src="https://images.unsplash.com/photo-1548907040-4baa42d10919?auto=format&fit=crop&w=200&q=70" alt="Chocolates"/>
+        <span class="marquee-label">Premium Chocolates</span>
+        <div class="marquee-dot"></div>
+      </div>
+      <div class="marquee-item">
+        <img class="marquee-img" src="https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?auto=format&fit=crop&w=200&q=70" alt="Gummies"/>
+        <span class="marquee-label">Gummy Bears</span>
+        <div class="marquee-dot"></div>
+      </div>
+      <div class="marquee-item">
+        <img class="marquee-img" src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?auto=format&fit=crop&w=200&q=70" alt="Hard Candy"/>
+        <span class="marquee-label">Hard Candies</span>
+        <div class="marquee-dot"></div>
+      </div>
+      <div class="marquee-item">
+        <img class="marquee-img" src="https://images.unsplash.com/photo-1549057446-9f5c6ac91a04?auto=format&fit=crop&w=200&q=70" alt="Gift Boxes"/>
+        <span class="marquee-label">Gift Boxes</span>
+        <div class="marquee-dot"></div>
+      </div>
+      <div class="marquee-item">
+        <img class="marquee-img" src="https://images.unsplash.com/photo-1611759040056-98a6aff0b7d5?auto=format&fit=crop&w=200&q=70" alt="Specialty"/>
+        <span class="marquee-label">Specialty Sweets</span>
+        <div class="marquee-dot"></div>
+      </div>
+      <div class="marquee-item">
+        <img class="marquee-img" src="https://images.unsplash.com/photo-1602573991155-21f0143bb77e?auto=format&fit=crop&w=200&q=70" alt="Seasonal"/>
+        <span class="marquee-label">Seasonal Treats</span>
+        <div class="marquee-dot"></div>
+      </div>
+      <div class="marquee-item">
+        <img class="marquee-img" src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&w=200&q=70" alt="Artisan"/>
+        <span class="marquee-label">Artisan Craft</span>
+        <div class="marquee-dot"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wave divider -->
+  <div class="wave-divider" style="background:#fef3d0;">
+    <svg viewBox="0 0 1440 48" preserveAspectRatio="none" style="height:48px;" fill="#fef3d0" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,24 C480,0 960,48 1440,12 L1440,48 L0,48 Z" fill="#fef3d0"/>
+    </svg>
+  </div>
+
+  <!-- =============================================
+       ABOUT SECTION
+  ============================================= -->
+  <section id="about">
+    <div class="grain-layer"></div>
+    <div class="container">
+      <div class="about-inner">
+
+        <div class="about-img-wrap reveal">
+          <img class="about-img" src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&w=800&q=80" alt="Candy making process"/>
+          <div class="about-img-badge">
+            <div class="about-badge-num">15+</div>
+            <div class="about-badge-text">Years of<br>Sweet Excellence</div>
+          </div>
+        </div>
+
+        <div class="about-content reveal reveal-delay-2">
+          <span class="section-label">Our Story</span>
+          <h2 class="section-title">A Family Passion Born in Lakewood, NJ</h2>
+          <p class="section-sub">
+            Founded in 2009, Lakewood Candies LLC began as a simple family dream — to share the joy of truly exceptional candy with the world. What started as a small operation out of Lakewood, New Jersey has grown into a beloved confectionery brand trusted by candy lovers across the country.
+          </p>
+          <p class="section-sub" style="margin-top:16px;">
+            Our team of dedicated artisans, now nearly a dozen strong, hand-selects every ingredient and refines every recipe. From our kitchen to your home, each piece of candy carries the warmth of family tradition and the pride of craft.
+          </p>
+
+          <div class="about-features">
+            <div class="about-feature">
+              <div class="about-feature-icon">&#128106;</div>
+              <div class="about-feature-text">
+                <h4>Family-Run Business</h4>
+                <p>Every decision we make reflects our family values — quality, honesty, and a love for bringing people together through sweets.</p>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon">&#127981;</div>
+              <div class="about-feature-text">
+                <h4>Rooted in Lakewood, NJ</h4>
+                <p>Proudly based at 1980 Swarthmore Ave, Lakewood — our community inspires everything we create.</p>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon">&#127852;</div>
+              <div class="about-feature-text">
+                <h4>Growing Nationwide</h4>
+                <p>Available on Walmart Marketplace and growing online channels, bringing our treats to candy lovers from coast to coast.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave divider -->
+  <div class="wave-divider" style="background:#fef3d0;">
+    <svg viewBox="0 0 1440 48" preserveAspectRatio="none" style="height:48px;" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 C360,48 1080,0 1440,36 L1440,48 L0,48 Z" fill="#fdf6ec"/>
+    </svg>
+  </div>
+
+  <!-- =============================================
+       WHY CHOOSE US
+  ============================================= -->
+  <section id="why">
+    <div class="container">
+      <div class="why-head">
+        <span class="section-label reveal">Why Lakewood Candies</span>
+        <h2 class="section-title reveal reveal-delay-1">The Sweet Difference</h2>
+        <p class="section-sub reveal reveal-delay-2">We're not just another candy brand. Here's what makes every Lakewood treat worth savoring.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-icon-wrap">&#129360;</div>
+          <h3 class="why-title">Handcrafted Quality</h3>
+          <p class="why-desc">Each confection is made with careful attention to detail. No shortcuts — just real craft, real care, and real flavor in every piece.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-1">
+          <div class="why-icon-wrap">&#128155;</div>
+          <h3 class="why-title">Family Tradition</h3>
+          <p class="why-desc">Over 15 years of refining recipes passed down and improved with love. Our candies carry a legacy of passion that you can actually taste.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-2">
+          <div class="why-icon-wrap">&#127807;</div>
+          <h3 class="why-title">Quality Ingredients</h3>
+          <p class="why-desc">We source premium ingredients and refuse to compromise on what goes into our candies. Great sweets start with great ingredients — period.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-3">
+          <div class="why-icon-wrap">&#128666;</div>
+          <h3 class="why-title">Easy Ordering</h3>
+          <p class="why-desc">Shop conveniently on Walmart Marketplace or contact us directly. Fast, reliable shipping means your sweets arrive fresh and on time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave divider -->
+  <div class="wave-divider" style="background:#fdf6ec;">
+    <svg viewBox="0 0 1440 56" preserveAspectRatio="none" style="height:56px;" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,28 C240,56 600,0 1440,32 L1440,56 L0,56 Z" fill="#4a1a75"/>
+    </svg>
+  </div>
+
+  <!-- =============================================
+       STATS / SWEET COUNTER
+  ============================================= -->
+  <section id="stats">
+    <div class="grain-layer"></div>
+    <div class="container">
+      <div class="stats-head">
+        <span class="section-label reveal">By the Numbers</span>
+        <h2 class="section-title reveal reveal-delay-1">Sweet Success, By Any Measure</h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card reveal">
+          <div class="stat-icon">&#127981;</div>
+          <div class="stat-number"><span class="counter" data-target="15">0</span><span class="stat-suffix">+</span></div>
+          <div class="stat-label">Years in Business</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-1">
+          <div class="stat-icon">&#127852;</div>
+          <div class="stat-number"><span class="counter" data-target="1000">0</span><span class="stat-suffix">+</span></div>
+          <div class="stat-label">Products Crafted</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-2">
+          <div class="stat-icon">&#128155;</div>
+          <div class="stat-number"><span class="counter" data-target="50">0</span><span class="stat-suffix">K+</span></div>
+          <div class="stat-label">Happy Customers</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-3">
+          <div class="stat-icon">&#127873;</div>
+          <div class="stat-number"><span class="counter" data-target="12">0</span></div>
+          <div class="stat-label">Team Members</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave divider -->
+  <div class="wave-divider" style="background:#4a1a75;">
+    <svg viewBox="0 0 1440 56" preserveAspectRatio="none" style="height:56px;" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,24 C480,56 960,0 1440,28 L1440,56 L0,56 Z" fill="#6b2fa0"/>
+    </svg>
+  </div>
+
+  <!-- =============================================
+       TESTIMONIALS
+  ============================================= -->
+  <section id="testimonials">
+    <div class="grain-layer"></div>
+    <div class="container">
+      <div class="testi-head">
+        <span class="section-label reveal">Customer Love</span>
+        <h2 class="section-title reveal reveal-delay-1">Sweet Words from Happy Customers</h2>
+        <p class="section-sub reveal reveal-delay-2">Don't just take our word for it — hear from the candy lovers who keep coming back for more.</p>
+      </div>
+
+      <div class="testi-grid">
+
+        <div class="testi-card reveal">
+          <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testi-quote">
+            I ordered a gift box for my mom's birthday and she was absolutely over the moon. The chocolates were rich and smooth, nothing like the generic stuff you find at grocery stores. You can tell these are made with real love and skill.
+          </p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background: linear-gradient(135deg, #f4618f, #9b59d4);">MR</div>
+            <div>
+              <div class="testi-name">Michelle R.</div>
+              <div class="testi-loc">Edison, NJ</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal reveal-delay-1">
+          <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testi-quote">
+            Found Lakewood Candies on Walmart and decided to give the gummy assortment a shot. Best decision I've made all year! The flavors are so vibrant and fresh. My kids demolished the bag in one afternoon and immediately asked for more.
+          </p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background: linear-gradient(135deg, #c8862a, #e8a83c);">DK</div>
+            <div>
+              <div class="testi-name">David K.</div>
+              <div class="testi-loc">Philadelphia, PA</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal reveal-delay-2">
+          <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testi-quote">
+            We ordered several gift boxes for our office holiday party and every single colleague was impressed. The presentation was beautiful, the variety was perfect, and the quality blew everyone away. Lakewood Candies is our go-to now.
+          </p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background: linear-gradient(135deg, #3ecf8e, #38bdf8);">ST</div>
+            <div>
+              <div class="testi-name">Sandra T.</div>
+              <div class="testi-loc">New York, NY</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave divider -->
+  <div class="wave-divider" style="background:#6b2fa0;">
+    <svg viewBox="0 0 1440 48" preserveAspectRatio="none" style="height:48px;" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,16 C360,48 1080,0 1440,24 L1440,48 L0,48 Z" fill="#fef3d0"/>
+    </svg>
+  </div>
+
+  <!-- =============================================
+       CONTACT SECTION
+  ============================================= -->
+  <section id="contact">
+    <div class="grain-layer"></div>
+    <div class="container">
+      <div class="contact-inner">
+
+        <div class="contact-info reveal">
+          <span class="section-label">Get in Touch</span>
+          <h2 class="section-title">Ready for Something Sweet?</h2>
+          <p class="section-sub">
+            Have a question, a bulk order inquiry, or just want to say hello? We'd love to hear from you. Our family team is ready to make your candy experience exceptional.
+          </p>
+
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon-wrap">&#128205;</div>
+              <div class="contact-item-text">
+                <h4>Address</h4>
+                <p>1980 Swarthmore Ave<br>Lakewood, NJ 08701</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon-wrap">&#128222;</div>
+              <div class="contact-item-text">
+                <h4>Phone</h4>
+                <a href="tel:7322504998">(732) 250-4998</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon-wrap">&#128337;</div>
+              <div class="contact-item-text">
+                <h4>Business Hours</h4>
+                <p>Mon – Fri: 9:00 AM – 5:00 PM<br>Sat: 10:00 AM – 3:00 PM</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="walmart-banner">
+            <div class="walmart-icon">&#127978;</div>
+            <div class="walmart-text">
+              <h4>Shop on Walmart Marketplace</h4>
+              <p>Browse and order our full selection online with fast, reliable shipping to your door.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap reveal reveal-delay-2">
+          <h3 class="form-title">Send Us a Message</h3>
+          <form onsubmit="handleFormSubmit(event)">
+            <div class="form-row">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" required />
+            </div>
+            <div class="form-row">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+            </div>
+            <div class="form-row">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" />
+            </div>
+            <div class="form-row">
+              <label for="interest">Interested In</label>
+              <select id="interest" name="interest">
+                <option value="">-- Select a Category --</option>
+                <option>Premium Chocolates</option>
+                <option>Gummy Candies</option>
+                <option>Hard Candies</option>
+                <option>Gift Boxes</option>
+                <option>Seasonal Confections</option>
+                <option>Bulk / Wholesale Order</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell us what you're looking for..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">Send Message &#8594;</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FOOTER
+  ============================================= -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <div class="nav-logo" style="margin-bottom:0;">
+            <div class="logo-candy">&#127852;</div>
+            <div class="logo-text">Lakewood<span>Candies</span></div>
+          </div>
+          <p>
+            Handcrafted candies and confections made with family love since 2009. Proudly based in Lakewood, NJ, shipping sweetness nationwide.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="social-btn" aria-label="Facebook">&#128100;</a>
+            <a href="#" class="social-btn" aria-label="Instagram">&#128247;</a>
+            <a href="#" class="social-btn" aria-label="Twitter">&#128038;</a>
+            <a href="#" class="social-btn" aria-label="Pinterest">&#128204;</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="#products">Premium Chocolates</a></li>
+            <li><a href="#products">Gummy Candies</a></li>
+            <li><a href="#products">Hard Candies</a></li>
+            <li><a href="#products">Specialty Sweets</a></li>
+            <li><a href="#products">Gift Boxes</a></li>
+            <li><a href="#products">Seasonal Treats</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">Our Story</a></li>
+            <li><a href="#why">Why Choose Us</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="https://www.walmart.com" target="_blank" rel="noopener">Shop on Walmart</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p class="footer-addr">
+            1980 Swarthmore Ave<br>
+            Lakewood, NJ 08701<br><br>
+            <a href="tel:7322504998" style="color:rgba(255,255,255,0.65);transition:color 0.3s;">(732) 250-4998</a><br><br>
+            Mon–Fri: 9 AM – 5 PM<br>
+            Sat: 10 AM – 3 PM
+          </p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Lakewood Candies LLC. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Accessibility</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =============================================
+       JAVASCRIPT
+  ============================================= -->
+  <script>
+    // ── Navbar scroll shadow ──────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // ── Hamburger / mobile menu ───────────────────
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // ── Scroll reveal (IntersectionObserver) ─────
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // ── Smooth scroll for anchor links ───────────
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const top = target.getBoundingClientRect().top + window.pageYOffset - 82;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // ── Contact form ──────────────────────────────
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = "Message Sent! We'll be in touch soon.";
+      btn.style.background = 'linear-gradient(135deg, #34a853, #1e7a3c)';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = 'Send Message \u2192';
+        btn.style.background = '';
+        btn.disabled = false;
+        e.target.reset();
+      }, 4000);
+    }
+
+    // ── Confetti / sprinkle animation ────────────
+    (function() {
+      const canvas = document.getElementById('confettiCanvas');
+      const colors = [
+        '#f4618f','#f9a8c4','#e8a83c','#6b2fa0','#9b59d4',
+        '#3ecf8e','#38bdf8','#ffffff','#fdf6ec','#c8862a'
+      ];
+      const count = 55;
+      for (let i = 0; i < count; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('sprinkle');
+        const size = Math.random() * 7 + 3;   // 3–10px
+        const left = Math.random() * 100;      // 0–100%
+        const delay = Math.random() * 12;      // stagger start
+        const dur   = Math.random() * 10 + 8; // 8–18s per cycle
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        // Mix circles and tiny pill shapes for variety
+        const isLong = Math.random() > 0.6;
+        dot.style.cssText = `
+          width: ${isLong ? size * 2.5 : size}px;
+          height: ${size}px;
+          left: ${left}%;
+          bottom: -${size + 10}px;
+          background: ${color};
+          border-radius: ${isLong ? size / 2 : '50%'}px;
+          animation-duration: ${dur}s;
+          animation-delay: -${delay}s;
+          opacity: 0;
+        `;
+        canvas.appendChild(dot);
+      }
+    })();
+
+    // ── Animated stat counters ────────────────────
+    const counters = document.querySelectorAll('.counter');
+    const statsSection = document.getElementById('stats');
+    let countersStarted = false;
+
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target, 10);
+      const duration = 1800;
+      const start = performance.now();
+      function tick(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target);
+        if (progress < 1) requestAnimationFrame(tick);
+        else el.textContent = target;
+      }
+      requestAnimationFrame(tick);
+    }
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !countersStarted) {
+          countersStarted = true;
+          counters.forEach(counter => animateCounter(counter));
+        }
+      });
+    }, { threshold: 0.3 });
+    if (statsSection) statsObserver.observe(statsSection);
+  </script>
+
+</body>
+</html>

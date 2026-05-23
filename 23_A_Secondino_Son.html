@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A. Secondino &amp; Son Inc | General Contractor | Connecticut</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal: #1C1C1C;
+      --dark: #111111;
+      --amber: #D97706;
+      --amber-light: #F59E0B;
+      --gray: #9CA3AF;
+      --mid: #4B5563;
+      --light-bg: #F5F4F2;
+      --border: #E5E0D8;
+    }
+
+    body { font-family: 'Roboto', sans-serif; color: var(--charcoal); background: #fff; }
+
+    /* NAV */
+    nav {
+      background: var(--dark);
+      padding: 20px 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+    .nav-logo span { color: var(--amber); }
+    .nav-est { font-family: 'Roboto', sans-serif; font-size: 0.72rem; color: rgba(255,255,255,0.45); letter-spacing: 0.15em; text-transform: uppercase; margin-top: 2px; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.03em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--amber); }
+    .nav-cta {
+      background: var(--amber);
+      color: #fff;
+      padding: 11px 24px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s;
+      border-radius: 3px;
+    }
+    .nav-cta:hover { background: var(--amber-light); }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80') center/cover no-repeat;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(17,17,17,0.9) 40%, rgba(17,17,17,0.4) 100%);
+    }
+    .hero-content {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 50px;
+      width: 100%;
+    }
+    .hero-eyebrow {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      line-height: 1.05;
+      margin-bottom: 20px;
+      max-width: 760px;
+    }
+    .hero h1 span { color: var(--amber); }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 520px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-amber {
+      background: var(--amber);
+      color: #fff;
+      padding: 15px 32px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-amber:hover { background: var(--amber-light); transform: translateY(-2px); }
+    .btn-outline-white {
+      border: 2px solid rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.85);
+      padding: 15px 32px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline-white:hover { border-color: #fff; color: #fff; }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--amber);
+      padding: 36px 50px;
+    }
+    .stats-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 24px; }
+    .stat-item { text-align: center; color: #fff; }
+    .stat-num { font-family: 'Oswald', sans-serif; font-size: 2.4rem; font-weight: 700; line-height: 1; }
+    .stat-label { font-size: 0.85rem; opacity: 0.88; margin-top: 4px; letter-spacing: 0.03em; }
+
+    /* SHARED */
+    section { padding: 90px 50px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .eyebrow {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+    }
+    .section-sub { font-size: 1rem; color: var(--mid); line-height: 1.7; max-width: 560px; margin-bottom: 52px; }
+
+    /* SERVICES */
+    .services-section { background: var(--light-bg); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2px; }
+    .svc-tile {
+      background: #fff;
+      padding: 40px 36px;
+      border-left: 4px solid transparent;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .svc-tile:hover { border-left-color: var(--amber); box-shadow: 4px 0 20px rgba(0,0,0,0.06); }
+    .svc-tile h3 { font-family: 'Oswald', sans-serif; font-size: 1.25rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--charcoal); margin-bottom: 10px; }
+    .svc-tile p { font-size: 0.93rem; color: var(--mid); line-height: 1.65; }
+    .svc-icon { font-size: 1.8rem; margin-bottom: 14px; }
+
+    /* ABOUT */
+    .about-section { background: #fff; }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .about-img { position: relative; border-radius: 6px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.14); }
+    .about-img img { width: 100%; height: 500px; object-fit: cover; display: block; }
+    .est-badge {
+      position: absolute; top: 24px; left: 24px;
+      background: var(--amber);
+      color: #fff;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 10px 16px;
+      border-radius: 3px;
+    }
+    .about-text .section-sub { margin-bottom: 28px; }
+    .check-list { list-style: none; margin-bottom: 36px; }
+    .check-list li {
+      padding: 11px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .check-amber { color: var(--amber); font-weight: 700; font-size: 1.1rem; }
+    .btn-dark {
+      display: inline-block;
+      background: var(--charcoal);
+      color: #fff;
+      padding: 14px 30px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background 0.2s;
+    }
+    .btn-dark:hover { background: #333; }
+
+    /* PROJECTS */
+    .projects-section { background: var(--charcoal); }
+    .projects-section .section-title { color: #fff; }
+    .projects-section .eyebrow { color: var(--amber); }
+    .projects-section .section-sub { color: var(--gray); }
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+    .proj-card { position: relative; overflow: hidden; height: 300px; }
+    .proj-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+    .proj-card:hover img { transform: scale(1.07); }
+    .proj-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(17,17,17,0.85) 0%, transparent 50%);
+      display: flex;
+      align-items: flex-end;
+      padding: 22px;
+    }
+    .proj-info { color: #fff; }
+    .proj-type { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); font-family: 'Oswald', sans-serif; margin-bottom: 4px; }
+    .proj-name { font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 600; text-transform: uppercase; }
+
+    /* TESTIMONIAL */
+    .testimonial-section { background: var(--light-bg); }
+    .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 24px; }
+    .test-card { background: #fff; border-radius: 6px; padding: 32px; border-bottom: 3px solid var(--amber); box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+    .test-card p { font-size: 0.97rem; color: var(--charcoal); line-height: 1.75; margin-bottom: 18px; font-style: italic; }
+    .test-author { font-family: 'Oswald', sans-serif; font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--amber); }
+
+    /* CTA */
+    .cta-section { background: var(--charcoal); padding: 90px 50px; }
+    .cta-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .cta-text h2 { font-family: 'Oswald', sans-serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; text-transform: uppercase; color: #fff; margin-bottom: 10px; }
+    .cta-text p { font-size: 1rem; color: var(--gray); max-width: 460px; line-height: 1.7; }
+
+    /* FOOTER */
+    footer { background: var(--dark); color: rgba(255,255,255,0.6); padding: 60px 50px 30px; }
+    .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-logo { font-family: 'Oswald', sans-serif; font-size: 1.3rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+    .footer-logo span { color: var(--amber); }
+    .footer-brand p { font-size: 0.9rem; line-height: 1.7; }
+    footer h4 { font-family: 'Oswald', sans-serif; color: #fff; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+    footer ul { list-style: none; }
+    footer ul li { margin-bottom: 10px; }
+    footer ul li a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+    footer ul li a:hover { color: var(--amber); }
+    .footer-bottom { max-width: 1100px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; font-size: 0.82rem; text-align: center; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 960px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      section { padding: 70px 24px; }
+      .hero-content { padding: 0 24px; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .projects-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .stats-bar { padding: 28px 24px; }
+    }
+    @media (max-width: 600px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      .hero { padding-bottom: 50px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div>
+      <div class="nav-logo">A. Secondino <span>&amp;</span> Son</div>
+      <div class="nav-est">Est. 1895 &mdash; Old Lyme, Connecticut</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Why Us</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <a href="tel:8604341142" style="color:rgba(255,255,255,0.75);font-size:0.9rem;font-weight:500;text-decoration:none;margin-right:8px;">(860) 434-1142</a>
+    <a href="#" class="nav-cta">Let's Talk About Your Project</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">General Contractor &mdash; Old Lyme, Connecticut &mdash; Est. 1895</p>
+      <h1>130 Years.<br><span>Still Building.</span></h1>
+      <p class="hero-sub">A. Secondino &amp; Son has been part of Connecticut's built landscape since 1895. Five generations of the Secondino family have put their name on schools, town halls, firehouses, and industrial facilities across the state. That kind of record doesn't happen by accident.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-amber">Let's Talk About Your Project</a>
+        <a href="#" class="btn-outline-white">See Our Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item"><div class="stat-num">1895</div><div class="stat-label">Year Established</div></div>
+      <div class="stat-item"><div class="stat-num">130+</div><div class="stat-label">Years in Business</div></div>
+      <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">Family Generations</div></div>
+      <div class="stat-item"><div class="stat-num">CT DOT</div><div class="stat-label">Prequalified Contractor</div></div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services-section">
+    <div class="container">
+      <p class="eyebrow reveal">What We Build</p>
+      <h2 class="section-title reveal">Full-Service General Contracting Across Connecticut</h2>
+      <p class="section-sub reveal">From new construction to occupied-building renovations, we have built it. Schools, libraries, fire stations, industrial plants, labs, sports facilities &mdash; if it's in Connecticut, there's a good chance we've worked in your town. We bring over 130 years of experience and a prequalified standing with the State to every project we take on.</p>
+      <div class="services-grid">
+        <div class="svc-tile reveal">
+          <div class="svc-icon">&#127959;</div>
+          <h3>New Construction</h3>
+          <p>Complete new construction services for commercial, institutional, municipal, and industrial facilities of all sizes and complexities.</p>
+        </div>
+        <div class="svc-tile reveal">
+          <div class="svc-icon">&#128295;</div>
+          <h3>Renovation &amp; Modernization</h3>
+          <p>Full renovation services for existing buildings, including occupied facilities. We minimize disruption while delivering modern, functional spaces.</p>
+        </div>
+        <div class="svc-tile reveal">
+          <div class="svc-icon">&#128196;</div>
+          <h3>Design-Build Services</h3>
+          <p>Streamlined delivery from design through completion. One team, one contract, one point of accountability for your entire project.</p>
+        </div>
+        <div class="svc-tile reveal">
+          <div class="svc-icon">&#127982;</div>
+          <h3>Educational Facilities</h3>
+          <p>Extensive experience building and renovating public and private schools throughout Connecticut, meeting all code and accreditation standards.</p>
+        </div>
+        <div class="svc-tile reveal">
+          <div class="svc-icon">&#127963;</div>
+          <h3>Municipal &amp; Public Works</h3>
+          <p>Town halls, libraries, firehouses, police stations, and recreational facilities. A trusted contractor for Connecticut municipalities for generations.</p>
+        </div>
+        <div class="svc-tile reveal">
+          <div class="svc-icon">&#127970;</div>
+          <h3>Commercial &amp; Industrial</h3>
+          <p>Office buildings, warehouses, manufacturing facilities, and labs. We understand the operational requirements that make these projects succeed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-img reveal">
+          <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80" alt="Construction crew at work" />
+          <div class="est-badge">Est. 1895 &mdash; Old Lyme, CT</div>
+        </div>
+        <div class="about-text reveal">
+          <p class="eyebrow">Our Story</p>
+          <h2 class="section-title">130 Years of Connecticut Craftsmanship</h2>
+          <p class="section-sub">A. Secondino &amp; Son was founded in 1895 &mdash; before most of today's largest construction firms existed. What started as a local contracting operation in coastal Connecticut has grown across five generations without ever losing what made it: personal accountability, pride in the work, and the belief that a client's trust is earned on the job site, not in a sales meeting.</p>
+          <p style="font-size:0.95rem; color:var(--mid); line-height:1.7; margin-bottom:28px;">Alfred Secondino leads the company today with the same standards his family established more than a century ago. A. Secondino &amp; Son is prequalified with the Connecticut DOT and maintains active relationships with municipalities and institutions across the state &mdash; the kind of relationships that are only possible when you deliver, project after project, year after year.</p>
+          <ul class="check-list">
+            <li><span class="check-amber">&#9632;</span> Licensed general contractor, State of Connecticut</li>
+            <li><span class="check-amber">&#9632;</span> CT DOT prequalified &mdash; public works and municipal projects</li>
+            <li><span class="check-amber">&#9632;</span> Fully bonded and insured</li>
+            <li><span class="check-amber">&#9632;</span> New construction, complete renovation, and design-build</li>
+            <li><span class="check-amber">&#9632;</span> Five generations serving Connecticut &mdash; headquartered in Old Lyme</li>
+          </ul>
+          <a href="#" class="btn-dark">Our Company History</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects-section">
+    <div class="container">
+      <p class="eyebrow reveal">Our Work</p>
+      <h2 class="section-title reveal">Projects Built to Last in Connecticut</h2>
+      <p class="section-sub reveal">From elementary schools to town halls to industrial facilities, we've built across nearly every project type in Connecticut. These aren't just buildings &mdash; they're the places communities rely on. We take that seriously.</p>
+    </div>
+    <div class="projects-grid">
+      <div class="proj-card reveal">
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=700&q=80" alt="School construction project" />
+        <div class="proj-overlay">
+          <div class="proj-info">
+            <div class="proj-type">Educational</div>
+            <div class="proj-name">K-12 School Renovation</div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-card reveal">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=700&q=80" alt="Commercial office building" />
+        <div class="proj-overlay">
+          <div class="proj-info">
+            <div class="proj-type">Commercial</div>
+            <div class="proj-name">Office Complex, New Haven</div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-card reveal">
+        <img src="https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?w=700&q=80" alt="Municipal building" />
+        <div class="proj-overlay">
+          <div class="proj-info">
+            <div class="proj-type">Municipal</div>
+            <div class="proj-name">Town Hall Restoration</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonial-section">
+    <div class="container">
+      <p class="eyebrow reveal" style="text-align:center;">From Those Who've Worked With Us</p>
+      <h2 class="section-title reveal" style="text-align:center; max-width:520px; margin:0 auto 48px;">130 Years of Earned Trust</h2>
+      <div class="test-grid">
+        <div class="test-card reveal">
+          <p>"We've used other contractors over the years and the difference with Secondino is the foremen. These aren't guys who disappear after the bid. They're on site, they answer the phone, and when something unexpected came up mid-project they had a solution before I even finished asking the question. In school construction you can't afford surprises. They understand that."</p>
+          <div class="test-author">Superintendent, Connecticut School District</div>
+        </div>
+        <div class="test-card reveal">
+          <p>"We brought Secondino in on our town hall restoration and then hired them again for the library expansion. That says it all. The original project came in on budget, the crew kept the building operational throughout, and Alfred was genuinely accessible the entire time. You don't find that everywhere."</p>
+          <div class="test-author">First Selectman, Small Connecticut Town</div>
+        </div>
+        <div class="test-card reveal">
+          <p>"When a company has been operating since 1895 and is still privately owned and family-run, that tells you something. These are people who stand behind their work because their name is literally on the building. The quality shows."</p>
+          <div class="test-author">Project Manager, Industrial Facility &mdash; New Haven County, CT</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h2>Let's Talk About Your Project</h2>
+        <p>New construction, renovation, public works, or design-build &mdash; if you're planning a project in Connecticut, we'd like to hear about it. Alfred and the team are straightforward to work with from the very first call.</p>
+      </div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a href="#" class="btn-amber">Let's Talk About Your Project</a>
+        <a href="tel:8604341142" class="btn-outline-white">(860) 434-1142</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">A. Secondino <span>&amp;</span> Son</div>
+        <p>Connecticut's trusted general contractor since 1895. New construction, renovation, and design-build services for institutional, municipal, commercial, and industrial clients.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">New Construction</a></li>
+          <li><a href="#">Renovation</a></li>
+          <li><a href="#">Design-Build</a></li>
+          <li><a href="#">Educational</a></li>
+          <li><a href="#">Municipal</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">Old Lyme, CT</a></li>
+          <li><a href="tel:8604341142">(860) 434-1142</a></li>
+          <li><a href="mailto:asecondino@asecondinoandson.com">Email Us</a></li>
+          <li><a href="#">Let's Talk About Your Project</a></li>
+          <li><a href="#">View Projects</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 A. Secondino &amp; Son, Inc. All rights reserved. | Old Lyme, Connecticut | Est. 1895</p>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

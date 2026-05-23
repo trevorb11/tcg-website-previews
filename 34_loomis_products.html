@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loomis Products Company | Isostatic Presses &amp; Extrusion Equipment | Levittown, PA</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --steel: #2b3545;
+      --gunmetal: #1a2130;
+      --blue-accent: #3d7fc1;
+      --blue-light: #5b9bd5;
+      --amber: #e8a020;
+      --light: #f2f4f6;
+      --lighter: #f8f9fb;
+      --white: #ffffff;
+      --border: #d8dde6;
+      --text: #1e2535;
+      --text-mid: #4a5568;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Roboto', sans-serif; background: var(--lighter); color: var(--text); line-height: 1.7; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      background: var(--gunmetal); padding: 0 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px; border-bottom: 3px solid var(--blue-accent);
+    }
+    .nav-logo-wrap { display: flex; flex-direction: column; }
+    .nav-logo-main { font-family: 'Roboto Slab', serif; font-size: 1.1rem; font-weight: 700; color: var(--white); letter-spacing: 0.04em; }
+    .nav-logo-sub { font-size: 0.65rem; color: var(--blue-light); letter-spacing: 0.18em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.72); text-decoration: none; font-size: 0.88rem; letter-spacing: 0.06em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--blue-light); }
+    .nav-cta {
+      background: var(--blue-accent); color: var(--white);
+      padding: 10px 24px; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--blue-light); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 120px 48px 80px; position: relative; overflow: hidden;
+      background: var(--gunmetal);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.15;
+    }
+    .hero-content { max-width: 720px; position: relative; z-index: 2; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--blue-accent); color: var(--white);
+      padding: 8px 20px; font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase;
+      font-weight: 500; margin-bottom: 32px;
+    }
+    .hero-badge .dot { width: 6px; height: 6px; background: var(--amber); border-radius: 50%; }
+    .hero h1 {
+      font-family: 'Roboto Slab', serif;
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      color: var(--white); line-height: 1.2; margin-bottom: 12px; font-weight: 700;
+    }
+    .hero h1 span { color: var(--blue-light); }
+    .hero-founded {
+      font-size: 0.88rem; color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 28px; font-weight: 500;
+    }
+    .hero p { font-size: 1.08rem; color: rgba(255,255,255,0.72); margin-bottom: 44px; max-width: 580px; font-weight: 300; line-height: 1.8; }
+    .btn-blue {
+      display: inline-block; background: var(--blue-accent); color: var(--white);
+      padding: 15px 36px; font-weight: 500; letter-spacing: 0.08em;
+      text-decoration: none; font-size: 0.9rem; transition: background 0.2s;
+    }
+    .btn-blue:hover { background: var(--blue-light); }
+    .btn-ghost {
+      display: inline-block; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.85);
+      padding: 15px 36px; font-weight: 400; letter-spacing: 0.08em;
+      text-decoration: none; font-size: 0.9rem; margin-left: 14px;
+      transition: border-color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--blue-light); color: var(--blue-light); }
+
+    .hero-stats { display: flex; gap: 0; margin-top: 64px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 36px; }
+    .h-stat { padding-right: 44px; margin-right: 44px; border-right: 1px solid rgba(255,255,255,0.1); }
+    .h-stat:last-child { border-right: none; }
+    .h-stat-num { font-family: 'Roboto Slab', serif; font-size: 2rem; color: var(--amber); font-weight: 700; }
+    .h-stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* SECTION COMMONS */
+    section { padding: 96px 48px; }
+    .container { max-width: 1160px; margin: 0 auto; }
+    .section-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue-accent); margin-bottom: 12px; font-weight: 500; }
+    .section-title { font-family: 'Roboto Slab', serif; font-size: clamp(1.9rem, 3vw, 2.8rem); color: var(--gunmetal); margin-bottom: 20px; line-height: 1.2; font-weight: 700; }
+    .section-title.light { color: var(--white); }
+    .section-sub { font-size: 1rem; color: var(--text-mid); max-width: 580px; margin-bottom: 56px; line-height: 1.8; }
+
+    /* PRODUCTS */
+    .products { background: var(--lighter); }
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; }
+    .product-card {
+      background: var(--white); padding: 44px 36px;
+      border-top: 4px solid var(--border);
+      transition: border-color 0.2s;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.2s;
+    }
+    .product-card.visible { opacity: 1; transform: translateY(0); }
+    .product-card:hover { border-top-color: var(--blue-accent); }
+    .product-tag {
+      display: inline-block; background: var(--light); color: var(--blue-accent);
+      padding: 4px 12px; font-size: 0.72rem; letter-spacing: 0.12em;
+      text-transform: uppercase; font-weight: 500; margin-bottom: 20px;
+    }
+    .product-card h3 { font-family: 'Roboto Slab', serif; font-size: 1.3rem; color: var(--gunmetal); margin-bottom: 16px; font-weight: 600; }
+    .product-card p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 20px; }
+    .product-spec { font-size: 0.82rem; color: var(--text-mid); border-top: 1px solid var(--border); padding-top: 16px; margin-top: 4px; }
+    .product-spec strong { color: var(--gunmetal); }
+
+    /* APPLICATIONS */
+    .applications { background: var(--steel); }
+    .applications-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .app-img img { width: 100%; height: 460px; object-fit: cover; }
+    .app-list { list-style: none; margin-top: 28px; }
+    .app-list li {
+      display: flex; gap: 16px; padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      align-items: flex-start;
+    }
+    .app-list li:last-child { border-bottom: none; }
+    .app-icon { width: 32px; height: 32px; background: var(--blue-accent); flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .app-icon svg { width: 16px; height: 16px; stroke: white; fill: none; stroke-width: 2; }
+    .app-list-text h4 { font-family: 'Roboto Slab', serif; font-size: 1rem; color: var(--white); margin-bottom: 6px; }
+    .app-list-text p { font-size: 0.88rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+    /* QUALITY */
+    .quality { background: var(--white); }
+    .quality-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 52px; }
+    .quality-card {
+      padding: 40px 28px; background: var(--lighter); text-align: center;
+      border-bottom: 3px solid var(--border); transition: border-color 0.2s;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.2s;
+    }
+    .quality-card.visible { opacity: 1; transform: translateY(0); }
+    .quality-card:hover { border-bottom-color: var(--blue-accent); }
+    .quality-num { font-family: 'Roboto Slab', serif; font-size: 2.4rem; color: var(--blue-accent); font-weight: 700; }
+    .quality-label { font-size: 0.88rem; color: var(--text-mid); margin-top: 8px; line-height: 1.5; }
+
+    /* HISTORY */
+    .history { background: var(--lighter); }
+    .timeline { position: relative; padding-left: 48px; margin-top: 56px; }
+    .timeline::before { content: ''; position: absolute; left: 14px; top: 8px; bottom: 8px; width: 2px; background: var(--border); }
+    .timeline-item { position: relative; padding-bottom: 48px; opacity: 0; transform: translateX(-20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .timeline-item.visible { opacity: 1; transform: translateX(0); }
+    .timeline-dot { position: absolute; left: -42px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--blue-accent); border: 3px solid var(--white); }
+    .timeline-year { font-family: 'Roboto Slab', serif; font-size: 1.15rem; font-weight: 700; color: var(--blue-accent); margin-bottom: 6px; }
+    .timeline-item h3 { font-family: 'Roboto Slab', serif; font-size: 1.05rem; color: var(--gunmetal); margin-bottom: 8px; }
+    .timeline-item p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.75; max-width: 680px; }
+
+    .history-split { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .history-img img { width: 100%; height: 440px; object-fit: cover; }
+    .history-img-caption { background: var(--steel); padding: 16px 20px; }
+    .history-img-caption p { font-size: 0.83rem; color: rgba(255,255,255,0.55); font-style: italic; }
+
+    /* CONTACT */
+    .contact-section { background: var(--gunmetal); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .contact-info p { font-size: 0.98rem; color: rgba(255,255,255,0.68); line-height: 1.8; margin-bottom: 32px; }
+    .contact-detail { margin-bottom: 22px; }
+    .contact-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--blue-light); margin-bottom: 4px; }
+    .contact-value { font-size: 1rem; color: var(--white); }
+    form { display: flex; flex-direction: column; gap: 16px; }
+    form input, form textarea, form select {
+      padding: 13px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15);
+      font-family: 'Roboto', sans-serif; font-size: 0.93rem; color: var(--white);
+      outline: none; transition: border-color 0.2s;
+    }
+    form input:focus, form textarea:focus { border-color: var(--blue-accent); }
+    form input::placeholder, form textarea::placeholder { color: rgba(255,255,255,0.35); }
+    form select { color: rgba(255,255,255,0.6); }
+    form select option { background: var(--gunmetal); }
+    form textarea { height: 130px; resize: vertical; }
+    form button {
+      background: var(--blue-accent); color: var(--white);
+      padding: 14px 36px; font-family: 'Roboto', sans-serif;
+      font-size: 0.9rem; font-weight: 500; letter-spacing: 0.1em;
+      border: none; cursor: pointer; transition: background 0.2s; align-self: flex-start;
+    }
+    form button:hover { background: var(--blue-light); }
+
+    /* FOOTER */
+    footer { background: #111820; padding: 56px 48px 28px; border-top: 3px solid var(--blue-accent); }
+    .footer-inner { max-width: 1160px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 56px; margin-bottom: 40px; }
+    .footer-brand p { margin-top: 14px; font-size: 0.88rem; color: rgba(255,255,255,0.42); line-height: 1.75; max-width: 280px; }
+    .footer-col h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--blue-light); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 9px; }
+    .footer-col ul li a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--blue-light); }
+    .footer-bottom { display: flex; justify-content: space-between; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.28); }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .products-grid, .quality-grid { grid-template-columns: 1fr 1fr; }
+      .applications-grid, .history-split, .contact-grid, .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 64px 20px; }
+      .hero { padding: 100px 20px 56px; }
+      .hero-stats { flex-wrap: wrap; }
+      .h-stat { border-right: none; }
+    }
+    @media (max-width: 580px) {
+      .products-grid, .quality-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo-wrap">
+      <div class="nav-logo-main">Loomis Products Company</div>
+      <div class="nav-logo-sub">Levittown, PA &mdash; Est. 1917</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#products">Products</a></li>
+      <li><a href="#applications">Applications</a></li>
+      <li><a href="#quality">Quality</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Request a Quote</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge"><span class="dot"></span>Precision Forming Machinery</div>
+      <h1>Custom Isostatic Presses<br><span>Built to Your Spec</span><br>Since 1917</h1>
+      <div class="hero-founded">ISO 9001 Certified &mdash; Levittown, PA &mdash; U.S. &amp; European Operations</div>
+      <p>Loomis Products designs and builds custom isostatic presses and ram extrusion equipment for ceramics, advanced materials, and industrial manufacturers who need tight tolerances and equipment that actually matches their process. No off-the-shelf configurations. Every machine is engineered from your specifications.</p>
+      <a href="#contact" class="btn-blue">Request a Quote</a>
+      <a href="#products" class="btn-ghost">View Products</a>
+      <div class="hero-stats">
+        <div class="h-stat">
+          <div class="h-stat-num">1917</div>
+          <div class="h-stat-label">Year Founded</div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-num">1,200+</div>
+          <div class="h-stat-label">Max Tons Capacity</div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-num">2</div>
+          <div class="h-stat-label">Global Operations (USA &amp; Germany)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <div class="container">
+      <p class="section-label reveal">Our Products</p>
+      <h2 class="section-title reveal">Custom High-Pressure Forming<br>Equipment</h2>
+      <p class="section-sub reveal">Procurement managers and process engineers come to Loomis because standard equipment doesn't meet their tolerances. We don't sell off-the-shelf presses. We start with your material, your pressure requirements, and your production volume — then we build the machine your process actually needs.</p>
+      <div class="products-grid">
+        <div class="product-card">
+          <span class="product-tag">Isostatic Press</span>
+          <h3>Dry Bag Isostatic Press</h3>
+          <p>Our dry bag isostatic presses provide uniform, all-around pressure to compact powdered materials into near-net-shape components — ideal for high-volume production environments where speed and consistency are critical.</p>
+          <div class="product-spec"><strong>Applications:</strong> Ceramic insulators, spark plugs, cutting tools, hard metal parts</div>
+        </div>
+        <div class="product-card">
+          <span class="product-tag">Isostatic Press</span>
+          <h3>Wet Bag Isostatic Press</h3>
+          <p>Wet bag presses deliver exceptional flexibility for custom shapes and complex geometries. The flexible tooling conforms to any shape, making this approach ideal for prototype work, specialty parts, and low-to-medium production volumes.</p>
+          <div class="product-spec"><strong>Applications:</strong> Advanced ceramics, metal powder compaction, specialty materials</div>
+        </div>
+        <div class="product-card">
+          <span class="product-tag">Extrusion</span>
+          <h3>Piston / Ram Extruder</h3>
+          <p>Our piston and ram extruders handle plastic powders, ceramics, and other materials that cannot be processed with conventional screw extruders. Available in a wide range of bore sizes and force capacities, configured to your material and output requirements.</p>
+          <div class="product-spec"><strong>Capacity Range:</strong> 16 tons to 1,200+ tons; custom bore and die configurations</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATIONS -->
+  <section class="applications" id="applications">
+    <div class="container">
+      <div class="applications-grid">
+        <div class="app-img reveal">
+          <img src="https://images.unsplash.com/photo-1565689157206-0fddef7589a2?w=800&q=80" alt="Industrial manufacturing facility with precision machinery" loading="lazy" />
+        </div>
+        <div>
+          <p class="section-label">Materials &amp; Applications</p>
+          <h2 class="section-title light">Built for the<br>Most Demanding Materials</h2>
+          <p style="color: rgba(255,255,255,0.68); font-size: 1rem; line-height: 1.8; margin-bottom: 0;">Loomis Products equipment is relied upon across industries where material integrity and dimensional precision are non-negotiable. If you are working with advanced powders, ceramics, or specialty materials, we have the process knowledge to build exactly what you need.</p>
+          <ul class="app-list">
+            <li>
+              <div class="app-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </div>
+              <div class="app-list-text">
+                <h4>Advanced Ceramics</h4>
+                <p>Technical ceramics for electronics, aerospace, and defense applications requiring consistent density and dimensional accuracy.</p>
+              </div>
+            </li>
+            <li>
+              <div class="app-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <div class="app-list-text">
+                <h4>Metal Powder Compaction</h4>
+                <p>Near-net-shape metal powder parts for cutting tools, hard metal components, and powder metallurgy applications.</p>
+              </div>
+            </li>
+            <li>
+              <div class="app-icon">
+                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </div>
+              <div class="app-list-text">
+                <h4>Plastic Powder Processing</h4>
+                <p>PTFE and other engineering plastic powders processed through ram extrusion into rods, tubes, and custom profiles.</p>
+              </div>
+            </li>
+            <li>
+              <div class="app-icon">
+                <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              </div>
+              <div class="app-list-text">
+                <h4>Graphite &amp; Carbon</h4>
+                <p>Custom isostatic graphite components for EDM electrodes, semiconductor processing, and high-temperature applications.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUALITY -->
+  <section class="quality" id="quality">
+    <div class="container">
+      <p class="section-label reveal">Quality &amp; Credentials</p>
+      <h2 class="section-title reveal">Built to Standard. Built to Last.</h2>
+      <p class="section-sub reveal">Over a century in this business means we've built equipment for processes that didn't exist when our competitors were founded. Every Loomis press is engineered in-house, manufactured at our Levittown facility, and tested before it ships. Your process parameters are our starting point — not an afterthought.</p>
+      <div class="quality-grid">
+        <div class="quality-card">
+          <div class="quality-num">ISO</div>
+          <div class="quality-label">ISO 9001:2000 Certified Manufacturing</div>
+        </div>
+        <div class="quality-card">
+          <div class="quality-num">100+</div>
+          <div class="quality-label">Years of High-Pressure Forming Expertise</div>
+        </div>
+        <div class="quality-card">
+          <div class="quality-num">2</div>
+          <div class="quality-label">Manufacturing Operations — USA &amp; Germany</div>
+        </div>
+        <div class="quality-card">
+          <div class="quality-num">100%</div>
+          <div class="quality-label">Custom-Engineered to Customer Specifications</div>
+        </div>
+      </div>
+      <div style="margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;" class="reveal">
+        <div style="padding: 36px; background: var(--lighter); border-left: 4px solid var(--blue-accent);">
+          <h3 style="font-family: 'Roboto Slab', serif; font-size: 1.2rem; color: var(--gunmetal); margin-bottom: 14px;">In-House Engineering</h3>
+          <p style="font-size: 0.93rem; color: var(--text-mid); line-height: 1.75;">Every machine begins with our in-house engineering team, who work directly with customers to define specifications, design tooling, and ensure the finished press matches the process requirements precisely.</p>
+        </div>
+        <div style="padding: 36px; background: var(--lighter); border-left: 4px solid var(--amber);">
+          <h3 style="font-family: 'Roboto Slab', serif; font-size: 1.2rem; color: var(--gunmetal); margin-bottom: 14px;">Global Support</h3>
+          <p style="font-size: 0.93rem; color: var(--text-mid); line-height: 1.75;">With operations in Levittown, PA and Germany (Kahlefeld GmbH), Loomis Products supports customers across North America, Europe, and Asia with installation, service, and parts availability.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE BREAK -->
+  <div style="height: 340px; overflow: hidden; position: relative;">
+    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1600&q=80" alt="Precision machining engineer at workstation" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position: center 55%; opacity:0.75;" />
+    <div style="position:absolute; inset:0; background: linear-gradient(90deg, rgba(26,33,48,0.85) 0%, transparent 60%); display:flex; align-items:center; padding: 0 80px;">
+      <div>
+        <p style="font-family:'Roboto Slab',serif; font-size:clamp(1.4rem,2.5vw,2rem); color:#fff; font-weight:700; line-height:1.3; max-width:520px;">Built in Levittown, PA.<br>Shipped to manufacturers<br>on every continent.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HISTORY -->
+  <section class="history">
+    <div class="container">
+      <div class="history-split">
+        <div>
+          <p class="section-label reveal">Our History</p>
+          <h2 class="section-title reveal">A Century of<br>Precision Engineering</h2>
+          <p style="font-size: 1rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 48px;" class="reveal">Loomis Products has been building high-pressure forming equipment since 1917 — before most of the industries we serve even existed. In 1970, Karl Kahlefeld acquired the company and moved it to Levittown, Pennsylvania, where it operates today. In 1990 he founded Kahlefeld GmbH in Germany to serve growing European demand. Over a century later, the machines are more sophisticated, but the approach hasn't changed: talk to the engineer, understand the process, build exactly what's needed.</p>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">1917</div>
+              <h3>Founded as a High-Pressure Forming Pioneer</h3>
+              <p>Loomis Products Company is established, becoming one of the earliest practitioners of isostatic pressing technology in the United States.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">1970</div>
+              <h3>Acquisition &amp; Relocation to Levittown, PA</h3>
+              <p>Karl Kahlefeld acquires Loomis Products and relocates operations to the current facility at 5500 Bristol Emilie Road in Levittown, Pennsylvania, where the company continues to operate today.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">1990</div>
+              <h3>European Expansion</h3>
+              <p>Karl Kahlefeld founds Loomis Products Kahlefeld GmbH in Germany, establishing a dedicated European manufacturing and service operation to serve growing international demand.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">Today</div>
+              <h3>Serving Global Customers</h3>
+              <p>With over a century of expertise and operations on two continents, Loomis Products continues to engineer and manufacture custom isostatic presses and extrusion equipment for customers in North America, Europe, and Asia.</p>
+            </div>
+          </div>
+        </div>
+        <div class="reveal" style="padding-top: 80px;">
+          <div class="history-img">
+            <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80" alt="Manufacturing engineer reviewing technical drawings" loading="lazy" />
+            <div class="history-img-caption">
+              <p>Loomis Products: Over a century of precision engineering, still made in Levittown, PA.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="reveal">
+          <p class="section-label">Request a Quote</p>
+          <h2 class="section-title light">Tell Us About<br>Your Application</h2>
+          <p style="color: rgba(255,255,255,0.68); font-size: 0.98rem; line-height: 1.8; margin-bottom: 32px;">Every Loomis machine starts with a conversation. Share your material, pressure requirements, and production parameters — Karl and the engineering team will come back with technical recommendations and a detailed quotation. Most inquiries receive a response within one business day.</p>
+          <div class="contact-detail">
+            <div class="contact-label">Call Karl Kahlefeld Directly</div>
+            <div class="contact-value" style="font-size:1.2rem; font-weight:700;">(610) 428-0766</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">kkahlefeld@loomisproducts.com</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-label">Address</div>
+            <div class="contact-value">5500 Bristol Emilie Road<br>Levittown, PA 19057</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-label">Website</div>
+            <div class="contact-value">loomisproducts.com</div>
+          </div>
+        </div>
+        <div class="reveal">
+          <form>
+            <input type="text" placeholder="Your Name" required />
+            <input type="text" placeholder="Company Name" required />
+            <input type="email" placeholder="Email Address" required />
+            <input type="tel" placeholder="Phone Number" />
+            <select>
+              <option value="">Material / Application Type</option>
+              <option>Ceramics / Technical Ceramics</option>
+              <option>Metal Powder Compaction</option>
+              <option>Plastic Powder (PTFE / Engineering Plastics)</option>
+              <option>Graphite / Carbon</option>
+              <option>Other / Not Listed</option>
+            </select>
+            <input type="text" placeholder="Required Pressure / Tonnage (if known)" />
+            <textarea placeholder="Describe your application, current process, and what you are looking to achieve..."></textarea>
+            <button type="submit">Request a Quote</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="font-family: 'Roboto Slab', serif; font-size: 1.15rem; font-weight: 700; color: var(--white);">Loomis Products Company</div>
+          <div style="font-size: 0.7rem; color: var(--blue-light); letter-spacing: 0.15em; text-transform: uppercase; margin-top: 4px;">Established 1917 &mdash; Levittown, PA</div>
+          <p>ISO 9001 certified custom manufacturer of isostatic presses and extrusion equipment. U.S. and European operations. Serving global customers since 1917.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="#">Dry Bag Isostatic Presses</a></li>
+            <li><a href="#">Wet Bag Isostatic Presses</a></li>
+            <li><a href="#">Piston / Ram Extruders</a></li>
+            <li><a href="#">Custom Machinery</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:6104280766">(610) 428-0766</a></li>
+            <li><a href="mailto:kkahlefeld@loomisproducts.com">kkahlefeld@loomisproducts.com</a></li>
+            <li><a href="#">5500 Bristol Emilie Rd</a></li>
+            <li><a href="#">Levittown, PA 19057</a></li>
+            <li><a href="#">loomisproducts.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Loomis Products Company. All rights reserved.</p>
+        <p>Precision Forming Machinery &mdash; Since 1917</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal, .product-card, .quality-card, .timeline-item').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('.product-card').forEach((el, i) => { el.style.transitionDelay = `${i * 0.15}s`; });
+    document.querySelectorAll('.quality-card').forEach((el, i) => { el.style.transitionDelay = `${i * 0.1}s`; });
+    document.querySelectorAll('.timeline-item').forEach((el, i) => { el.style.transitionDelay = `${i * 0.15}s`; });
+  </script>
+</body>
+</html>

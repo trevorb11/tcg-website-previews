@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deveris LLC | Software Development and IT Solutions | Gastonia, NC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0f1729;
+      --navy-mid: #1a2744;
+      --blue: #1d4ed8;
+      --blue-light: #3b82f6;
+      --electric: #60a5fa;
+      --white: #ffffff;
+      --off-white: #f5f7ff;
+      --gray: #6b7280;
+      --gray-light: #e5e7eb;
+      --text: #111827;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Raleway', sans-serif; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(15, 23, 41, 0.97);
+      backdrop-filter: blur(10px);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .nav-logo {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-logo span { color: var(--electric); }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.87rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--electric); }
+
+    .nav-cta {
+      background: var(--blue);
+      color: var(--white) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--blue-light) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      padding: 120px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(29,78,216,0.3) 0%, transparent 70%),
+                  radial-gradient(ellipse at 20% 80%, rgba(96,165,250,0.1) 0%, transparent 50%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(96,165,250,0.15);
+      border: 1px solid rgba(96,165,250,0.4);
+      color: var(--electric);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 20px;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      color: var(--white);
+      line-height: 1.15;
+      font-weight: 800;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(90deg, var(--blue-light), var(--electric));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--blue-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 8px;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.3);
+      transition: border-color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--electric); }
+
+    .hero-visual {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      opacity: 0.85;
+      display: block;
+    }
+
+    /* TRUST BAR */
+    .trust-bar {
+      background: var(--off-white);
+      border-top: 3px solid var(--blue);
+      padding: 20px 5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--navy-mid);
+      letter-spacing: 0.5px;
+    }
+
+    .trust-item span { color: var(--blue-light); font-size: 1rem; margin-right: 0.4rem; }
+
+    /* SECTIONS */
+    section { padding: 90px 5%; }
+
+    .section-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-heading {
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      color: var(--navy);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .section-intro {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 580px;
+      margin-bottom: 3rem;
+    }
+
+    /* ABOUT */
+    .about { background: var(--off-white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    .about-text p {
+      color: var(--gray);
+      margin-bottom: 1.2rem;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .about-stat {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border-left: 4px solid var(--blue);
+    }
+
+    .about-stat strong {
+      display: block;
+      font-family: 'Raleway', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .about-stat span {
+      font-size: 0.82rem;
+      color: var(--gray);
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      border-radius: 14px;
+      padding: 2rem;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--electric));
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(29,78,216,0.12);
+      border-color: rgba(59,130,246,0.3);
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-num {
+      font-family: 'Raleway', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--gray-light);
+      margin-bottom: 0.75rem;
+      line-height: 1;
+    }
+
+    .service-card h3 {
+      font-size: 1rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    /* PROCESS */
+    .process { background: var(--navy); }
+
+    .process .section-heading { color: var(--white); }
+    .process .section-intro { color: rgba(255,255,255,0.6); }
+
+    .process-line {
+      display: flex;
+      gap: 0;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .process-line::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 0; right: 0;
+      height: 2px;
+      background: rgba(96,165,250,0.3);
+      z-index: 0;
+    }
+
+    .process-step {
+      flex: 1;
+      text-align: center;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-circle {
+      width: 56px;
+      height: 56px;
+      background: var(--blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--white);
+    }
+
+    .process-step h4 {
+      font-size: 0.9rem;
+      color: var(--electric);
+      margin-bottom: 0.4rem;
+    }
+
+    .process-step p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+
+    /* INDUSTRIES */
+    .industries { background: var(--off-white); }
+
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .industry-pill {
+      background: var(--white);
+      border: 2px solid var(--gray-light);
+      border-radius: 50px;
+      padding: 0.75rem 1.5rem;
+      text-align: center;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--navy-mid);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .industry-pill:hover {
+      border-color: var(--blue-light);
+      color: var(--blue);
+    }
+
+    /* PORTFOLIO */
+    .portfolio { background: var(--white); }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .portfolio-card {
+      background: var(--navy);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .portfolio-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      opacity: 0.75;
+    }
+
+    .portfolio-body {
+      padding: 1.5rem;
+    }
+
+    .portfolio-tag {
+      display: inline-block;
+      background: rgba(96,165,250,0.15);
+      color: var(--electric);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.7rem;
+    }
+
+    .portfolio-card h3 {
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .portfolio-card p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--off-white); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .testimonial-card p {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+
+    .testimonial-author img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .testimonial-author strong { display: block; font-size: 0.9rem; color: var(--navy); }
+    .testimonial-author span { font-size: 0.8rem; color: var(--gray); }
+
+    /* CONTACT */
+    .contact { background: var(--white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .contact-info h2 { font-size: 1.8rem; color: var(--navy); margin-bottom: 1rem; }
+    .contact-info p { color: var(--gray); margin-bottom: 2rem; }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: var(--off-white);
+      border-radius: 10px;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-item strong {
+      display: block;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-item span { font-size: 0.92rem; color: var(--text); }
+
+    .contact-form {
+      background: var(--navy);
+      padding: 2.5rem;
+      border-radius: 16px;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.2rem; }
+
+    .form-group label {
+      display: block;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      color: var(--white);
+      background: rgba(255,255,255,0.06);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--electric); }
+
+    .form-group select option { background: var(--navy); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      text-align: center;
+      padding: 90px 5%;
+    }
+
+    .cta-section h2 { font-size: clamp(1.7rem, 3.5vw, 2.5rem); color: var(--white); margin-bottom: 1rem; }
+    .cta-section p { color: rgba(255,255,255,0.7); font-size: 1.05rem; margin-bottom: 2.5rem; }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.55);
+      padding: 60px 5% 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+    }
+
+    .footer-brand p { font-size: 0.87rem; margin-top: 1rem; line-height: 1.7; }
+
+    .footer-col h4 {
+      font-family: 'Raleway', sans-serif;
+      color: var(--electric);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.6rem; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.87rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--electric); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-visual { display: none; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .process-line { flex-direction: column; gap: 2rem; }
+      .process-line::before { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      section { padding: 65px 5%; }
+      .form-row { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Dev<span>eris</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact" class="nav-cta">Start a Project</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Software &amp; IT Solutions &mdash; Gastonia, NC</span>
+        <h1>Build <span class="highlight">Smarter.</span><br>Grow Faster.<br>Tech That Moves With You.</h1>
+        <p>Full-scale software development, web design, IT support, and digital strategy for businesses ready to scale. Serving clients nationwide from Gastonia, NC since 2009.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn-primary">Start a Project</a>
+          <a href="#services" class="btn-outline">See Our Services</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80" alt="Software development workspace" />
+      </div>
+    </div>
+  </section>
+
+  <div class="trust-bar">
+    <div class="trust-item"><span>+</span>15 Years in Business</div>
+    <div class="trust-item"><span>+</span>End-to-End Development</div>
+    <div class="trust-item"><span>+</span>Gastonia, NC Based</div>
+    <div class="trust-item"><span>+</span>Medium to Large Clients</div>
+    <div class="trust-item"><span>+</span>Phone: (704) 675-2048</div>
+  </div>
+
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="about-image reveal">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="Development team collaborating" />
+      </div>
+      <div class="about-text reveal">
+        <p class="section-label">Who We Are</p>
+        <h2 class="section-heading">Your Full-Scale Creative Technology Partner</h2>
+        <p>Since 2009, Deveris has been the technology partner that businesses in the Southeast — and across the country — turn to when the work actually matters. We're not an offshore factory or a one-trick-pony web shop. We're a full-scale creative technology company that brings together software engineering, IT infrastructure, web design, and digital strategy under one roof.</p>
+        <p>Based in Gastonia, North Carolina, we've built our reputation on delivering enterprise-caliber work with the personal attention of a boutique firm. When you work with Deveris, you get direct access to the people building your product — not a project manager reading from a script.</p>
+        <p>Whether you need a complex web application, an IT infrastructure overhaul, an SEO strategy, or a complete digital transformation, we have the expertise and the experience to deliver.</p>
+        <div class="about-stats">
+          <div class="about-stat">
+            <strong>2009</strong>
+            <span>Year Founded</span>
+          </div>
+          <div class="about-stat">
+            <strong>15+</strong>
+            <span>Years of Experience</span>
+          </div>
+          <div class="about-stat">
+            <strong>100%</strong>
+            <span>In-House Team</span>
+          </div>
+          <div class="about-stat">
+            <strong>NC</strong>
+            <span>Gastonia Based</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">What We Offer</p>
+      <h2 class="section-heading reveal">Everything Digital, Under One Roof</h2>
+      <p class="section-intro reveal">From your first line of custom code to your SEO ranking and everything in between — Deveris covers the full spectrum of modern technology services.</p>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-num">01</div>
+          <h3>Custom Software Development</h3>
+          <p>End-to-end software architecture and development for complex business applications. We build systems that scale with your business, not against it.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">02</div>
+          <h3>IT Support and Managed Services</h3>
+          <p>Reliable, proactive IT support to keep your infrastructure running smoothly. From helpdesk to enterprise network management.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">03</div>
+          <h3>Web Design and Development</h3>
+          <p>Strategically designed, beautifully built websites that convert visitors into customers. Responsive, fast, and built for your specific goals.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">04</div>
+          <h3>Search Engine Optimization</h3>
+          <p>Technical and content SEO strategies that build durable organic rankings. We focus on sustainable results, not short-term tricks.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">05</div>
+          <h3>Social Media Marketing</h3>
+          <p>Strategy, content, and management for social platforms that align with your broader marketing goals and brand identity.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">06</div>
+          <h3>User Experience Design</h3>
+          <p>Research-driven UX design that makes your digital products intuitive, accessible, and delightful to use.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">07</div>
+          <h3>Database Administration</h3>
+          <p>Database architecture, optimization, and ongoing administration for applications that depend on reliable, fast data access.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">08</div>
+          <h3>Systems Integration</h3>
+          <p>Connecting your existing platforms and third-party tools so your business data flows cleanly and your team works more efficiently.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="process">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal" style="color:var(--electric);">How We Work</p>
+      <h2 class="section-heading reveal">From Idea to Launch &mdash; Our Process</h2>
+      <p class="section-intro reveal">We've refined our development process over 15 years to eliminate surprises and maximize outcomes.</p>
+      <div class="process-line">
+        <div class="process-step reveal">
+          <div class="step-circle">1</div>
+          <h4>Discovery</h4>
+          <p>We dig deep into your requirements, goals, and constraints before writing a single line of code.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-circle">2</div>
+          <h4>Architecture</h4>
+          <p>System design and technical planning that anticipates scale, security, and future needs.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-circle">3</div>
+          <h4>Development</h4>
+          <p>Agile development with regular checkpoints, demos, and direct access to your team.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-circle">4</div>
+          <h4>Launch</h4>
+          <p>Thorough testing, staged deployment, and a smooth go-live process with minimal disruption.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-circle">5</div>
+          <h4>Support</h4>
+          <p>Ongoing optimization, updates, and support to keep your technology competitive.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="industries" id="industries">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">Industries</p>
+      <h2 class="section-heading reveal">We Serve Diverse Industries Nationwide</h2>
+      <p class="section-intro reveal">Our team has built solutions across a broad range of industries, giving us context that generalist developers simply don't have.</p>
+      <div class="industries-grid reveal">
+        <div class="industry-pill">Financial Services</div>
+        <div class="industry-pill">Healthcare</div>
+        <div class="industry-pill">eCommerce and Retail</div>
+        <div class="industry-pill">Professional Services</div>
+        <div class="industry-pill">Government</div>
+        <div class="industry-pill">Nonprofit</div>
+        <div class="industry-pill">Manufacturing</div>
+        <div class="industry-pill">Education</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio" id="portfolio">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">Our Work</p>
+      <h2 class="section-heading reveal">Representative Projects</h2>
+      <div class="portfolio-grid">
+        <div class="portfolio-card reveal">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="Enterprise software project" />
+          <div class="portfolio-body">
+            <span class="portfolio-tag">Custom Software</span>
+            <h3>Multi-Location Inventory Management System</h3>
+            <p>Real-time inventory tracking and purchase order automation for a regional distributor.</p>
+          </div>
+        </div>
+        <div class="portfolio-card reveal">
+          <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&q=80" alt="Web design project" />
+          <div class="portfolio-body">
+            <span class="portfolio-tag">Web Design</span>
+            <h3>Healthcare Provider Digital Rebrand</h3>
+            <p>Patient-focused website redesign with online scheduling and SEO optimization.</p>
+          </div>
+        </div>
+        <div class="portfolio-card reveal">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" alt="IT infrastructure project" />
+          <div class="portfolio-body">
+            <span class="portfolio-tag">IT Infrastructure</span>
+            <h3>Enterprise Network Modernization</h3>
+            <p>Complete IT infrastructure redesign and cloud migration for a financial services firm.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">Client Feedback</p>
+      <h2 class="section-heading reveal">What Clients Say About Deveris</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <p>Deveris took our clunky internal software and rebuilt it into something our team actually enjoys using. The difference in productivity has been measurable from day one. They're an outstanding technology partner.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Client" />
+            <div>
+              <strong>Mark T.</strong>
+              <span>COO, Distribution Company</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>What I appreciate most about Deveris is that they're equal parts technical and creative. They understood not just what we needed to build, but why — and that made a massive difference in the final product.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80" alt="Client" />
+            <div>
+              <strong>Jessica H.</strong>
+              <span>Marketing Director, Healthcare Network</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>We've worked with three other IT firms before landing on Deveris. The difference is accountability. They own the project, they communicate clearly, and they deliver. That's not as common as it should be in this industry.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80" alt="Client" />
+            <div>
+              <strong>David R.</strong>
+              <span>CEO, Professional Services Firm</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <h2>Ready to Build Something Great?</h2>
+    <p>Tell us about your project and we'll put together a plan. No generic proposals — just a real conversation about your specific needs.</p>
+    <a href="#contact" class="btn-primary">Start the Conversation</a>
+  </div>
+
+  <section class="contact" id="contact">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p class="section-label">Get in Touch</p>
+        <h2>Let's Talk About Your Project</h2>
+        <p>We're a small, focused team — which means when you reach out, you'll hear back from someone who actually understands your technology questions.</p>
+        <div class="contact-item">
+          <div>
+            <strong>Phone</strong>
+            <span>(704) 675-2048</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div>
+            <strong>Email</strong>
+            <span>jason@deveris.com</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div>
+            <strong>Location</strong>
+            <span>3816-11 S New Hope Rd, Gastonia, NC 28056</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div>
+            <strong>Founded</strong>
+            <span>2009 &mdash; Serving businesses nationwide</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <h3 style="font-family:'Raleway',sans-serif;font-size:1.3rem;color:var(--white);margin-bottom:1.5rem;">Start a Project</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="First" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Last" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="you@company.com" />
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" placeholder="(704) 555-0100" />
+        </div>
+        <div class="form-group">
+          <label>Service Needed</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>Custom Software Development</option>
+            <option>Web Design and Development</option>
+            <option>IT Support / Managed Services</option>
+            <option>SEO and Digital Marketing</option>
+            <option>Database Administration</option>
+            <option>Systems Integration</option>
+            <option>UX Design</option>
+            <option>Multiple / Not Sure</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Us About Your Project</label>
+          <textarea placeholder="What are you trying to build, fix, or improve? What are your goals and rough timeline?"></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;padding:1rem;font-size:0.95rem;">Send Message</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">Dev<span>eris</span></a>
+        <p>Full-scale creative technology partner based in Gastonia, NC. Custom software, web development, IT support, SEO, and UX — since 2009.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Custom Software</a></li>
+          <li><a href="#">Web Development</a></li>
+          <li><a href="#">IT Support</a></li>
+          <li><a href="#">SEO</a></li>
+          <li><a href="#">UX Design</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Deveris</a></li>
+          <li><a href="#">Our Process</a></li>
+          <li><a href="#">Portfolio</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:7046752048">(704) 675-2048</a></li>
+          <li><a href="mailto:jason@deveris.com">jason@deveris.com</a></li>
+          <li><a href="#">Gastonia, NC</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Deveris LLC. All rights reserved.</p>
+      <p>Gastonia, NC &bull; Founded 2009</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

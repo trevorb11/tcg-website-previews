@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mountain West Consulting | Infrastructure Project Management | Phoenix, AZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest: #1e3d2f;
+      --forest-mid: #2b5040;
+      --forest-light: #e8f2ec;
+      --slate: #2d3e50;
+      --gold: #c49a3a;
+      --gold-light: #fdf7ec;
+      --white: #ffffff;
+      --off-white: #f5f7f5;
+      --gray: #6b7a6e;
+      --gray-light: #dde6df;
+      --text: #1a2822;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Oswald', sans-serif;
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 5%;
+      background: rgba(30,61,47,0.97);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--white) !important;
+      padding: 0.45rem 1.3rem;
+      border-radius: 3px;
+    }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s, transform 0.7s; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--forest);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1600&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.2;
+    }
+
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(30,61,47,0.97) 50%, rgba(30,61,47,0.5));
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 5%; padding-top: 8rem;
+    }
+
+    .hero-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .sdvosb-badge {
+      background: var(--gold);
+      color: var(--white);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 2px;
+    }
+
+    .hero-badge span {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      max-width: 700px;
+      margin-bottom: 1.3rem;
+    }
+
+    .hero h1 span { color: var(--gold); }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 540px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--white);
+      padding: 0.88rem 2rem;
+      border-radius: 3px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.88; }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 0.88rem 2rem;
+      border-radius: 3px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    section { padding: 5.5rem 5%; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-tag {
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+
+    .section-lead {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 560px;
+      line-height: 1.85;
+      margin-bottom: 3rem;
+    }
+
+    /* WHO WE ARE */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-img { position: relative; }
+
+    .about-img img {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .about-img .mil-badge {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: var(--forest);
+      color: var(--white);
+      padding: 1rem 1.5rem;
+      border-left: 4px solid var(--gold);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .about-img .mil-badge .mb-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+
+    .about-img .mil-badge .mb-text {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .about-text p {
+      font-size: 0.97rem;
+      color: var(--gray);
+      line-height: 1.9;
+      margin-bottom: 1.1rem;
+    }
+
+    .values-row {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .value-pill {
+      background: var(--forest-light);
+      color: var(--forest);
+      padding: 0.5rem 1.2rem;
+      border-radius: 4px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-left: 3px solid var(--gold);
+    }
+
+    /* SERVICES */
+    .services { background: var(--off-white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 2.2rem;
+      border: 1px solid var(--gray-light);
+      border-left: 5px solid var(--forest);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(30,61,47,0.1);
+    }
+
+    .service-label {
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--forest);
+      margin-bottom: 0.7rem;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.8;
+    }
+
+    /* SECTORS */
+    .sectors { background: var(--slate); }
+
+    .sectors .section-title { color: var(--white); }
+    .sectors .section-lead { color: rgba(255,255,255,0.55); }
+
+    .sectors-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    .sector-item {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      padding: 1.4rem 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: background 0.2s;
+    }
+
+    .sector-item:hover {
+      background: rgba(196,154,58,0.12);
+      border-color: rgba(196,154,58,0.3);
+    }
+
+    .sector-item svg {
+      width: 26px; height: 26px;
+      stroke: var(--gold); fill: none; stroke-width: 1.8;
+      flex-shrink: 0;
+    }
+
+    .sector-item span {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    /* APPROACH */
+    .approach-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .approach-img img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .approach-text p {
+      font-size: 0.97rem;
+      color: var(--gray);
+      line-height: 1.9;
+      margin-bottom: 1.1rem;
+    }
+
+    .pillar-list {
+      margin-top: 1.5rem;
+    }
+
+    .pillar {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      margin-bottom: 1.2rem;
+    }
+
+    .pillar-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 2px;
+      min-width: 30px;
+    }
+
+    .pillar-body h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--forest);
+      margin-bottom: 0.2rem;
+    }
+
+    .pillar-body p {
+      font-size: 0.87rem;
+      color: var(--gray);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* TEAM PHOTOS */
+    .team-photos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .team-photos img {
+      width: 100%; height: 260px; object-fit: cover; border-radius: 6px; display: block;
+    }
+
+    /* CONTACT */
+    .contact { background: var(--off-white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p { font-size: 0.95rem; color: var(--gray); line-height: 1.85; margin-bottom: 1.5rem; }
+
+    .cdetail { display: flex; gap: 0.8rem; align-items: flex-start; margin-bottom: 0.7rem; }
+
+    .cdetail svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 2; flex-shrink: 0; margin-top: 3px; }
+
+    .cdetail span { font-size: 0.9rem; color: var(--text); }
+
+    .form-group { margin-bottom: 1.1rem; }
+
+    .form-group label {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: 0.35rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.78rem 1rem;
+      border: 1.5px solid var(--gray-light);
+      border-radius: 3px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--forest); }
+
+    .form-group textarea { height: 120px; resize: vertical; }
+
+    .form-submit {
+      background: var(--forest);
+      color: var(--white);
+      padding: 0.88rem 2.2rem;
+      border: none;
+      border-radius: 3px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .form-submit:hover { background: var(--gold); }
+
+    footer {
+      background: var(--forest);
+      color: rgba(255,255,255,0.5);
+      padding: 3rem 5%;
+    }
+
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-logo span { color: var(--gold); }
+
+    .sdvosb-footer {
+      background: rgba(196,154,58,0.12);
+      border: 1px solid rgba(196,154,58,0.25);
+      padding: 0.4rem 0.9rem;
+      border-radius: 3px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy {
+      width: 100%; text-align: center;
+      font-size: 0.78rem; color: rgba(255,255,255,0.28);
+      margin-top: 1.5rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .about-grid, .approach-grid, .contact-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .sectors-grid { grid-template-columns: 1fr 1fr; }
+      .team-photos { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .sectors-grid { grid-template-columns: 1fr; }
+      .team-photos { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Mountain West <span>Consulting</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#sectors">Sectors</a></li>
+      <li><a href="#contact" class="nav-cta">Work With Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="sdvosb-badge">SDVOSB</div>
+        <span>Service-Disabled Veteran-Owned Small Business</span>
+      </div>
+      <h1>Expert Project Leadership for <span>Complex Infrastructure</span></h1>
+      <p class="hero-sub">Mountain West Consulting brings military-grade discipline and decades of hands-on power plant and utility experience to every capital project. Based in Phoenix, serving the nation.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Our Services</a>
+        <a href="#contact" class="btn-outline">Work With Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-img reveal">
+          <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&auto=format&fit=crop" alt="Power plant infrastructure project management site" />
+          <div class="mil-badge">
+            <div class="mb-label">Andrew Schaaf, PMP</div>
+            <div class="mb-text">30 Years Military Service</div>
+          </div>
+        </div>
+        <div class="reveal">
+          <span class="section-tag">Who We Are</span>
+          <h2 class="section-title">Built on Service. Driven by Expertise.</h2>
+          <p style="font-size:0.97rem; color:var(--gray); line-height:1.9; margin-bottom:1.1rem;">Mountain West Consulting was founded by Andrew Schaaf, PMP — a commissioned officer with nearly thirty years of military service and a career spent deep inside the infrastructure that powers American industry. Andrew has not just managed energy projects from an office. He has worked inside power plants, commissioned complex systems, and executed modifications in active operating facilities.</p>
+          <p style="font-size:0.97rem; color:var(--gray); line-height:1.9; margin-bottom:1.1rem;">That experience shapes everything about how MWC approaches projects. We bring accountability and precision to every engagement, integrating directly with your operations rather than working around them. We understand what it means when something has to be right — not just on paper, but in the field.</p>
+          <p style="font-size:0.97rem; color:var(--gray); line-height:1.9;">As a Service-Disabled Veteran-Owned Small Business, MWC also provides set-aside contracting advantages for qualifying federal and utility clients. We take the designation seriously — it reflects the culture of the firm.</p>
+          <div class="values-row">
+            <div class="value-pill">Clarity</div>
+            <div class="value-pill">Accountability</div>
+            <div class="value-pill">Expertise</div>
+            <div class="value-pill">Mission Focus</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">Core Services</span>
+        <h2 class="section-title">What We Deliver</h2>
+        <p class="section-lead">MWC offers four core workstreams designed to fit the full range of infrastructure project delivery needs — from full project management to focused owner's representation.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-label">Project Management</div>
+          <h3>Workstream PM</h3>
+          <p>End-to-end project management for electric utility and industrial infrastructure projects. We own the schedule, budget, and scope — and we integrate directly with your engineering, operations, and construction teams to deliver on all three.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-label">Construction Management</div>
+          <h3>Workstream CM</h3>
+          <p>On-site construction management for complex infrastructure builds. Our team is boots-on-the-ground, managing contractor performance, quality control, safety compliance, and daily progress against the baseline schedule.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-label">Owner Advocacy</div>
+          <h3>Owner's Representation</h3>
+          <p>When you need an experienced advocate in your corner to manage designers and contractors, review submittals, evaluate change orders, and protect your project budget — MWC serves as your Owner's Representative with the technical depth to make a real difference.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-label">Specialized Operations</div>
+          <h3>Outage &amp; Turnaround Management</h3>
+          <p>Planned outages and turnarounds at power plants and industrial facilities are high-stakes, time-compressed events. MWC has the experience to plan, coordinate, and execute outage work — minimizing downtime and keeping every trade on track.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTORS -->
+  <section class="sectors" id="sectors">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag" style="color:rgba(255,255,255,0.5);">Markets We Serve</span>
+        <h2 class="section-title">Sectors We Serve</h2>
+        <p class="section-lead">MWC operates across the energy and infrastructure sectors — wherever complex projects need experienced, accountable leadership.</p>
+      </div>
+      <div class="sectors-grid">
+        <div class="sector-item reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <span>Power Generation</span>
+        </div>
+        <div class="sector-item reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+          <span>Transmission &amp; Distribution</span>
+        </div>
+        <div class="sector-item reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          <span>Renewable Energy</span>
+        </div>
+        <div class="sector-item reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+          <span>EV Infrastructure</span>
+        </div>
+        <div class="sector-item reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+          <span>Microgrids</span>
+        </div>
+        <div class="sector-item reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          <span>Commercial Construction</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section id="approach">
+    <div class="section-inner">
+      <div class="approach-grid">
+        <div class="approach-img reveal">
+          <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&auto=format&fit=crop" alt="Project manager on infrastructure construction site" />
+        </div>
+        <div class="reveal">
+          <span class="section-tag">Our Approach</span>
+          <h2 class="section-title">How We Work</h2>
+          <p style="font-size:0.97rem; color:var(--gray); line-height:1.9; margin-bottom:1.1rem;">Military service teaches you something that most project management theory misses: outcomes depend on people, and people follow clear expectations, consistent accountability, and leadership that earns trust every day. MWC brings that culture to every project.</p>
+          <div class="pillar-list">
+            <div class="pillar">
+              <div class="pillar-num">01</div>
+              <div class="pillar-body">
+                <h4>Integrate With Your Team</h4>
+                <p>We embed with your operations, engineering, and leadership teams rather than working alongside them. We function as an extension of your organization with external accountability.</p>
+              </div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-num">02</div>
+              <div class="pillar-body">
+                <h4>Set Clear Baselines</h4>
+                <p>Every project starts with a scope, schedule, and budget baseline that every stakeholder understands and agrees to. No surprises starts with no ambiguity.</p>
+              </div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-num">03</div>
+              <div class="pillar-body">
+                <h4>Report Accurately and Promptly</h4>
+                <p>We tell you what is happening — good and bad — in real time. Difficult information delivered early saves projects. Difficult information delivered late costs them.</p>
+              </div>
+            </div>
+            <div class="pillar">
+              <div class="pillar-num">04</div>
+              <div class="pillar-body">
+                <h4>Deliver</h4>
+                <p>Our reputation is built on one thing: the projects we manage get completed on time and within budget. We are accountable to that standard on every engagement.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM PHOTOS -->
+  <section style="padding: 0 5% 5.5rem; background: var(--off-white);">
+    <div class="section-inner">
+      <div class="team-photos">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&auto=format&fit=crop" alt="Senior project leader reviewing infrastructure plans" class="reveal" />
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop" alt="Project engineer in the field" class="reveal" />
+        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&auto=format&fit=crop" alt="Infrastructure management team meeting" class="reveal" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="reveal">
+          <span class="section-tag">Work With MWC</span>
+          <h2 class="section-title">Start the Conversation</h2>
+          <div class="contact-info">
+            <p>If you have a capital project in the energy or infrastructure space that needs experienced project or construction management, we want to hear about it. We work with utilities, industrial clients, general contractors, and federal agencies.</p>
+            <div class="cdetail">
+              <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>4602 E University Dr Suite 175, Phoenix, AZ 85034</span>
+            </div>
+            <div class="cdetail">
+              <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.23 1.2 2 2 0 012.2 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.27 7a16 16 0 006.72 6.72l1.08-1.08a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              <span>(623) 738-6988</span>
+            </div>
+            <div class="cdetail">
+              <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>andrew.schaaf@mwconsultllc.com</span>
+            </div>
+          </div>
+        </div>
+        <form class="reveal" onsubmit="return false;">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Name" />
+          </div>
+          <div class="form-group">
+            <label>Company / Organization</label>
+            <input type="text" placeholder="Utility, contractor, or agency" />
+          </div>
+          <div class="form-group">
+            <label>Project Type</label>
+            <select>
+              <option>Power Generation</option>
+              <option>Transmission &amp; Distribution</option>
+              <option>Renewable Energy</option>
+              <option>Outage / Turnaround</option>
+              <option>EV Infrastructure</option>
+              <option>Other Infrastructure</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tell Us About Your Project</label>
+            <textarea placeholder="Scope, timeline, location, and what kind of support you are looking for..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Mountain West <span>Consulting</span></div>
+        <div style="margin-top:0.5rem;"><span class="sdvosb-footer">Service-Disabled Veteran-Owned Small Business</span></div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#sectors">Sectors</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <p class="footer-copy">&copy; 2025 Mountain West Consulting, LLC. Phoenix, Arizona | (623) 738-6988 | SDVOSB | PMP-Certified Leadership</p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => obs.observe(r));
+  </script>
+</body>
+</html>

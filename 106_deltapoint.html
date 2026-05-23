@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delta Point | Sales Transformation &amp; Coaching | Scottsdale, AZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #1a5c58;
+      --teal-mid: #237370;
+      --teal-light: #e6f4f3;
+      --gold: #c4923a;
+      --gold-light: #fdf6ec;
+      --white: #ffffff;
+      --off-white: #f8f6f2;
+      --gray: #717a76;
+      --gray-light: #e2e6e4;
+      --text: #1e2824;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.8;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      line-height: 1.2;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 5%;
+      background: rgba(26,92,88,0.97);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--white) !important;
+      padding: 0.48rem 1.3rem;
+      border-radius: 3px;
+    }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s, transform 0.7s; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--teal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1600&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.12;
+    }
+
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(26,92,88,0.97) 55%, rgba(26,92,88,0.5));
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 5%; padding-top: 8rem;
+    }
+
+    .hero-rule {
+      width: 40px; height: 2px;
+      background: var(--gold);
+      margin-bottom: 1.8rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      color: var(--white);
+      font-weight: 600;
+      max-width: 660px;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.95;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--white);
+      padding: 0.9rem 2.2rem;
+      border-radius: 3px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.88; }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 0.9rem 2.2rem;
+      border-radius: 3px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.35);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-stats {
+      display: flex;
+      gap: 3.5rem;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      flex-wrap: wrap;
+    }
+
+    .stat-item .num {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .stat-item .lbl {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    section { padding: 5.5rem 5%; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-rule {
+      width: 30px; height: 2px;
+      background: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-tag {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal-mid);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .section-lead {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 580px;
+      line-height: 1.9;
+      margin-bottom: 3rem;
+    }
+
+    /* PHILOSOPHY */
+    .philosophy { background: var(--off-white); }
+
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .philosophy-img img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .philosophy-text p {
+      font-size: 0.97rem;
+      color: var(--gray);
+      line-height: 1.95;
+      margin-bottom: 1.1rem;
+    }
+
+    blockquote {
+      border-left: 3px solid var(--gold);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--teal);
+      line-height: 1.75;
+    }
+
+    /* SERVICES */
+    .services { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .service-card {
+      border: 1px solid var(--gray-light);
+      border-radius: 4px;
+      padding: 2.5rem 2rem;
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--teal);
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(26,92,88,0.08);
+    }
+
+    .service-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--gray-light);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--teal);
+      margin-bottom: 0.7rem;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.8;
+    }
+
+    /* INDUSTRIES */
+    .industries { background: var(--teal); color: var(--white); }
+
+    .industries .section-title { color: var(--white); }
+    .industries .section-lead { color: rgba(255,255,255,0.6); }
+
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    .industry-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      padding: 1.5rem 1.8rem;
+      transition: background 0.2s;
+    }
+
+    .industry-card:hover {
+      background: rgba(196,146,58,0.12);
+      border-color: rgba(196,146,58,0.3);
+    }
+
+    .industry-card h4 {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.4rem;
+    }
+
+    .industry-card p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+    }
+
+    /* FOUNDER */
+    .founder { background: var(--off-white); }
+
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .founder-img img {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .founder-text .founder-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--teal);
+      margin-bottom: 0.2rem;
+    }
+
+    .founder-text .founder-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .founder-text p {
+      font-size: 0.97rem;
+      color: var(--gray);
+      line-height: 1.9;
+      margin-bottom: 1.1rem;
+    }
+
+    /* CLIENTS */
+    .clients { background: var(--white); }
+
+    .client-logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .client-badge {
+      background: var(--teal-light);
+      color: var(--teal);
+      border: 1px solid rgba(26,92,88,0.15);
+      border-radius: 50px;
+      padding: 0.5rem 1.4rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--off-white); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 2rem;
+      border: 1px solid var(--gray-light);
+    }
+
+    .testimonial-card blockquote {
+      border-left: none;
+      padding-left: 0;
+      font-size: 1rem;
+      color: var(--text);
+      margin: 0 0 1.2rem;
+    }
+
+    .author {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .author-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--teal-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+
+    .author-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .author-role {
+      font-size: 0.75rem;
+      color: var(--gray);
+    }
+
+    /* CONTACT */
+    .contact { background: var(--teal-light); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--teal);
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p { font-size: 0.95rem; color: var(--gray); line-height: 1.9; margin-bottom: 1.5rem; }
+
+    .cdetail { display: flex; gap: 0.8rem; align-items: flex-start; margin-bottom: 0.7rem; }
+
+    .cdetail svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 2; flex-shrink: 0; margin-top: 3px; }
+
+    .cdetail span { font-size: 0.9rem; color: var(--text); }
+
+    .form-group { margin-bottom: 1.1rem; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.35rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.78rem 1rem;
+      border: 1px solid var(--gray-light);
+      border-radius: 3px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--teal); }
+
+    .form-group textarea { height: 120px; resize: vertical; }
+
+    .form-submit {
+      background: var(--teal);
+      color: var(--white);
+      padding: 0.9rem 2.2rem;
+      border: none;
+      border-radius: 3px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .form-submit:hover { background: var(--gold); }
+
+    footer {
+      background: var(--teal);
+      color: rgba(255,255,255,0.55);
+      padding: 3rem 5%;
+    }
+
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--white);
+    }
+
+    .footer-logo span { color: var(--gold); }
+
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy {
+      width: 100%; text-align: center;
+      font-size: 0.78rem; color: rgba(255,255,255,0.28);
+      margin-top: 1.5rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .philosophy-grid, .founder-grid, .contact-grid { grid-template-columns: 1fr; }
+      .services-grid, .industries-grid, .testimonials-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .services-grid, .industries-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Delta <span>Point</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#founder">Jerry Acuff</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-rule"></div>
+      <h1>Sales Excellence Built on <em>Real Relationships</em></h1>
+      <p class="hero-sub">Delta Point transforms how global organizations engage customers, develop frontline leaders, and drive sustainable commercial growth — through a philosophy rooted in genuine human connection, not pressure tactics.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Our Services</a>
+        <a href="#founder" class="btn-outline">Meet Jerry Acuff</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="num">125+</span>
+          <span class="lbl">International Clients</span>
+        </div>
+        <div class="stat-item">
+          <span class="num">30+</span>
+          <span class="lbl">Years of Excellence</span>
+        </div>
+        <div class="stat-item">
+          <span class="num">F500</span>
+          <span class="lbl">Clients Served</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy" id="philosophy">
+    <div class="section-inner">
+      <div class="philosophy-grid">
+        <div class="philosophy-img reveal">
+          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&auto=format&fit=crop" alt="Sales coaching session with executive leadership team" />
+        </div>
+        <div class="philosophy-text reveal">
+          <div class="section-rule"></div>
+          <span class="section-tag">The Delta Point Difference</span>
+          <h2 class="section-title">The Best Salespeople Help. They Do Not Pressure.</h2>
+          <p>The conventional wisdom about sales — that it is a numbers game, that you need to push harder, that closing techniques are what separates good from great — is wrong. And worse, it is counterproductive. Customers who feel pressured do not become loyal advocates. They become cautious buyers who are always looking for the exit.</p>
+          <p>Delta Point was built around a different belief: that the people who achieve sustainable sales excellence are the ones who focus on genuinely understanding and helping their customers. That mindset, applied consistently and skillfully, builds the kind of relationships that produce not just first sales but long-term partnerships.</p>
+          <p>This is not soft thinking. It is the most commercially effective approach to selling in any market where customer relationships matter — which is to say, virtually every market our clients operate in.</p>
+          <blockquote>"Valued relationships result in business impact. That is the whole philosophy."</blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-rule"></div>
+        <span class="section-tag">Core Services</span>
+        <h2 class="section-title">Three Dimensions of Commercial Excellence</h2>
+        <p class="section-lead">Delta Point's work spans three interconnected areas — because great customer engagement, great coaching, and great commercial strategy only work when they are aligned.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-num">01</div>
+          <h3>Customer Engagement</h3>
+          <p>Building stronger, more consistent customer connections at the point of interaction. We develop the dialogue skills, listening habits, and relationship-building behaviors that turn good representatives into genuinely valued partners from the customer's perspective.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">02</div>
+          <h3>Coaching Excellence</h3>
+          <p>Developing the frontline leaders whose coaching sets the ceiling for their entire team's performance. We work with sales managers and district leaders to build coaching skills that actually change behavior — not just inspection skills that check boxes.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-num">03</div>
+          <h3>Commercial Effectiveness</h3>
+          <p>Aligning marketing, medical affairs, sales, and training functions around a coherent commercial strategy. When these functions work at cross-purposes, the customer experience suffers and revenue potential is lost. Delta Point brings them together.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="industries" id="industries">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-rule" style="background:var(--gold);"></div>
+        <span class="section-tag" style="color:rgba(255,255,255,0.5);">Who We Work With</span>
+        <h2 class="section-title">Industries We Serve</h2>
+        <p class="section-lead">Delta Point specializes in industries where the customer relationship is sophisticated, the buying process is complex, and the stakes of each interaction are high.</p>
+      </div>
+      <div class="industries-grid">
+        <div class="industry-card reveal">
+          <h4>Pharmaceuticals &amp; Biotech</h4>
+          <p>Serving AbbVie, Merck, Novartis, Janssen, GSK, and others with customer engagement, coaching, and commercial effectiveness programs for drug and biologics sales teams</p>
+        </div>
+        <div class="industry-card reveal">
+          <h4>Medical Devices</h4>
+          <p>Building sales excellence for device companies selling into hospital systems, surgical suites, and clinical settings where product knowledge and relationship quality both matter enormously</p>
+        </div>
+        <div class="industry-card reveal">
+          <h4>Veterinary Pharmaceuticals</h4>
+          <p>Supporting animal health companies with tailored sales approaches for the practice-based selling environment, where trust and clinical credibility drive purchasing decisions</p>
+        </div>
+        <div class="industry-card reveal">
+          <h4>Financial Services</h4>
+          <p>Applying relationship-based selling principles to financial products and advisory services — where client trust is the most valuable asset any firm can build</p>
+        </div>
+        <div class="industry-card reveal">
+          <h4>General Commercial</h4>
+          <p>Extending our core methodology to clients in technology, business services, and other industries where complex, high-value sales require sophisticated relationship management</p>
+        </div>
+        <div class="industry-card reveal">
+          <h4>Emerging Markets</h4>
+          <p>Adapting our commercial effectiveness approach for clients entering new markets, launching new products, or repositioning their commercial model after a strategic shift</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section class="founder" id="founder">
+    <div class="section-inner">
+      <div class="founder-grid">
+        <div class="founder-img reveal">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&auto=format&fit=crop" alt="Jerry Acuff, founder of Delta Point and bestselling author" />
+        </div>
+        <div class="founder-text reveal">
+          <div class="section-rule"></div>
+          <span class="section-tag">Founder &amp; Leadership</span>
+          <div class="founder-name">Jerry Acuff</div>
+          <div class="founder-title">Founder | Bestselling Author | Sales Thought Leader</div>
+          <p>Jerry Acuff founded Delta Point on a philosophy he has spent his career proving: the most effective salespeople are genuinely focused on helping the customer. Not appearing to help. Not using helping as a technique. Actually helping — and caring whether they do.</p>
+          <p>Jerry is the bestselling author of "The Relationship Edge" and other works on sales and customer engagement. He has built Delta Point into a firm that serves 125+ international organizations across pharmaceuticals, medical devices, financial services, and beyond — with a repeat business rate that reflects the depth of the relationships his firm builds with its own clients.</p>
+          <p>Based in Scottsdale, Arizona, Delta Point brings the same relationship philosophy it teaches to every client engagement. The team operates with the belief that long-term client success and long-term business results are the same thing.</p>
+          <blockquote>"The best salespeople are the ones who genuinely help."</blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTS -->
+  <section class="clients" id="clients">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-rule"></div>
+        <span class="section-tag">Our Clients</span>
+        <h2 class="section-title">Trusted by the World's Leading Organizations</h2>
+        <p class="section-lead">Delta Point has served 125+ international organizations. Our high client retention rate reflects that the work we do produces results that make clients want to come back.</p>
+      </div>
+      <div class="client-logos reveal">
+        <div class="client-badge">AbbVie</div>
+        <div class="client-badge">Merck</div>
+        <div class="client-badge">Novartis</div>
+        <div class="client-badge">Janssen</div>
+        <div class="client-badge">GSK</div>
+        <div class="client-badge">125+ Organizations Worldwide</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-rule"></div>
+        <span class="section-tag">What Clients Say</span>
+        <h2 class="section-title">Client Perspectives</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <blockquote>"Delta Point did not just train our sales team. They changed how our people think about the customer interaction. That shift in mindset has produced results that training alone never would."</blockquote>
+          <div class="author">
+            <div class="author-avatar">SH</div>
+            <div>
+              <div class="author-name">SVP Commercial Operations</div>
+              <div class="author-role">Global Pharmaceutical Company</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <blockquote>"We have worked with Delta Point for over a decade. The reason we keep coming back is that every engagement produces something real — better conversations, stronger relationships, measurable impact on our results."</blockquote>
+          <div class="author">
+            <div class="author-avatar">KM</div>
+            <div>
+              <div class="author-name">VP Sales</div>
+              <div class="author-role">Medical Device Company</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <blockquote>"Jerry's approach is genuinely different. Most sales training teaches tactics. Delta Point teaches people how to think differently about what they are there to do. Our customers feel the difference."</blockquote>
+          <div class="author">
+            <div class="author-avatar">TL</div>
+            <div>
+              <div class="author-name">National Sales Director</div>
+              <div class="author-role">Specialty Biopharmaceuticals</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="section-rule"></div>
+          <span class="section-tag">Start the Conversation</span>
+          <h2 class="section-title">Let's Talk About Your Commercial Challenge</h2>
+          <div class="contact-info">
+            <p>Whether you are looking to improve customer engagement, develop your frontline coaching culture, or align your commercial functions around a common strategy, Delta Point can help. We welcome the first conversation.</p>
+            <div class="cdetail">
+              <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Scottsdale, Arizona</span>
+            </div>
+            <div class="cdetail">
+              <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.23 1.2 2 2 0 012.2 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.27 7a16 16 0 006.72 6.72l1.08-1.08a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              <span>(877) 805-7909</span>
+            </div>
+            <div class="cdetail">
+              <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>jacuff@deltapoint.com</span>
+            </div>
+          </div>
+        </div>
+        <form class="reveal" onsubmit="return false;">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Name" />
+          </div>
+          <div class="form-group">
+            <label>Organization</label>
+            <input type="text" placeholder="Company name" />
+          </div>
+          <div class="form-group">
+            <label>Your Role</label>
+            <input type="text" placeholder="Title / function" />
+          </div>
+          <div class="form-group">
+            <label>Area of Interest</label>
+            <select>
+              <option>Customer Engagement</option>
+              <option>Coaching Excellence</option>
+              <option>Commercial Effectiveness</option>
+              <option>Not Sure — Let's Talk</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>What Brings You Here?</label>
+            <textarea placeholder="Tell us about your commercial challenge or opportunity..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Delta <span>Point</span></div>
+      <ul class="footer-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#industries">Industries</a></li>
+        <li><a href="#founder">Jerry Acuff</a></li>
+        <li><a href="#clients">Clients</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <p class="footer-copy">&copy; 2025 Delta Point, Inc. Scottsdale, AZ | (877) 805-7909 | Sales Excellence Through Genuine Relationships</p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => obs.observe(r));
+  </script>
+</body>
+</html>

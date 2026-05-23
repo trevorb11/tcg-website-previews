@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buckl Architects | Healthcare Architecture Specialists | Easton, PA &amp; Cherry Hill, NJ</title>
+  <meta name="description" content="Buckl Architects — founded 1971, specializing in healthcare architecture since the 1990s. Two offices: Easton, PA and Cherry Hill, NJ. Serving Northern Virginia to southern New England. Notable projects include Riddle Cancer Center, Simon Cancer Center at Overlook, and Morristown Medical Center." />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Figtree:wght@300;400;500;600&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Figtree', sans-serif;
+      background: #fafaf8;
+      color: #1e1e1e;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    :root {
+      --charcoal:    #1e1e1e;
+      --charcoal-2:  #2a2a2a;
+      --charcoal-3:  #3d3d3d;
+      --warm-white:  #fafaf8;
+      --warm-white-2:#f2f0eb;
+      --warm-white-3:#e8e4db;
+      --wood:        #a07850;
+      --wood-light:  #c49a6c;
+      --wood-pale:   #f0e6d8;
+      --border:      #dedad2;
+      --text-muted:  #8a8278;
+      --text-body:   #4a4540;
+      --radius:      2px;
+      --transition:  0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal { opacity:0; transform:translateY(40px); transition:opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-left { opacity:0; transform:translateX(-40px); transition:opacity 0.8s ease, transform 0.8s ease; }
+    .reveal-left.visible { opacity:1; transform:translateX(0); }
+    .reveal-right { opacity:0; transform:translateX(40px); transition:opacity 0.8s ease, transform 0.8s ease; }
+    .reveal-right.visible { opacity:1; transform:translateX(0); }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top:0; left:0; right:0; z-index:100;
+      display: flex; align-items:center; justify-content:space-between;
+      padding: 0 5%; height: 76px;
+      background: rgba(250,250,248,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700; font-size: 1.3rem;
+      letter-spacing: 0.02em;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .nav-logo-rule { width: 1px; height: 22px; background: var(--border); }
+    .nav-logo-sub {
+      font-family: 'Figtree', sans-serif;
+      font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .nav-links { display:flex; gap:2.5rem; list-style:none; }
+    .nav-links a {
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--text-body);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--charcoal); }
+    .nav-cta {
+      font-size: 0.82rem !important;
+      font-weight: 600 !important;
+      color: var(--charcoal) !important;
+      border-bottom: 1px solid var(--charcoal);
+      padding-bottom: 1px;
+      transition: color var(--transition), border-color var(--transition) !important;
+    }
+    .nav-cta:hover { color: var(--wood) !important; border-color: var(--wood) !important; }
+    .nav-mobile-btn { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+    .nav-mobile-btn span { display:block; width:22px; height:1px; background:var(--charcoal); }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 76px;
+    }
+    .hero-left {
+      background: var(--charcoal);
+      display: flex; flex-direction:column;
+      justify-content: flex-end;
+      padding: 60px 8% 60px 5%;
+      position: relative; overflow: hidden;
+    }
+    .hero-left-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 70%, rgba(160,120,80,0.12) 0%, transparent 60%),
+        repeating-linear-gradient(
+          90deg, transparent, transparent 60px,
+          rgba(255,255,255,0.02) 60px, rgba(255,255,255,0.02) 61px
+        );
+    }
+    .hero-number {
+      position: absolute; top: 5rem; right: 2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 12rem; line-height: 1;
+      color: rgba(255,255,255,0.03);
+      user-select: none;
+    }
+    .hero-eyebrow {
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--wood-light);
+      margin-bottom: 1.75rem;
+      position: relative; z-index: 2;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(3rem, 5vw, 5rem);
+      line-height: 1.08;
+      color: #f5f3ef;
+      position: relative; z-index: 2;
+      margin-bottom: 1.75rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--wood-light); }
+    .hero-tagline {
+      font-size: 0.95rem; font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.8; max-width: 380px;
+      position: relative; z-index: 2;
+      margin-bottom: 2.5rem;
+    }
+    .hero-actions { display:flex; gap:1.5rem; align-items:center; position:relative; z-index:2; }
+    .btn-wood {
+      display: inline-block;
+      background: var(--wood);
+      color: #fff;
+      font-weight: 600; font-size: 0.82rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border: none; cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-wood:hover { background: var(--wood-light); transform: translateY(-2px); }
+    .btn-text-white {
+      display: inline-block;
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.55);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 1px;
+      transition: color var(--transition), border-color var(--transition);
+    }
+    .btn-text-white:hover { color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.4); }
+    .hero-right {
+      background: var(--warm-white-2);
+      display: flex; flex-direction:column;
+    }
+    .hero-right-img {
+      flex: 1;
+      background: linear-gradient(
+        160deg,
+        var(--warm-white-3) 0%,
+        #dfd8c8 40%,
+        #cfc5b0 100%
+      );
+      position: relative; overflow: hidden;
+    }
+    .hero-right-img > img.hero-photo {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero-img-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction:column;
+      align-items: center; justify-content: center;
+      gap: 1rem;
+    }
+    .arch-sketch {
+      width: 60%; max-width: 220px;
+      opacity: 0.18;
+    }
+    .hero-right-caption {
+      padding: 2rem 2.5rem;
+      background: var(--warm-white-2);
+      border-top: 1px solid var(--border);
+    }
+    .hero-caption-label {
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 0.3rem;
+    }
+    .hero-caption-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; color: var(--charcoal);
+    }
+
+    /* ── Sections ── */
+    section { padding: 100px 5%; }
+    .section-eyebrow {
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--wood);
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .section-eyebrow::before { content:''; display:block; width:24px; height:1px; background:var(--wood); }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: var(--charcoal); line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 0.95rem; font-weight: 300;
+      color: var(--text-muted); max-width: 480px;
+      line-height: 1.8;
+    }
+    .section-header { margin-bottom: 4rem; }
+
+    /* ── Portfolio ── */
+    .portfolio { background: var(--warm-white); }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 300px 300px;
+      gap: 1rem;
+    }
+    .portfolio-item {
+      position: relative; overflow: hidden;
+      cursor: pointer;
+      background: var(--warm-white-3);
+    }
+    .portfolio-item:first-child { grid-row: span 2; }
+    .portfolio-bg {
+      position: absolute; inset: 0;
+      transition: transform 0.6s ease;
+    }
+    .portfolio-item:hover .portfolio-bg { transform: scale(1.05); }
+    .pi-1 { background: linear-gradient(145deg, #c8bfaa, #a89880); }
+    .pi-2 { background: linear-gradient(145deg, #b8c4c8, #8898a0); }
+    .pi-3 { background: linear-gradient(145deg, #c4b8a8, #a09080); }
+    .pi-4 { background: linear-gradient(145deg, #a8b4b8, #7890a0); }
+    .pi-5 { background: linear-gradient(145deg, #b8a898, #988070); }
+    .portfolio-item img.pi-photo {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .portfolio-item:hover img.pi-photo { transform: scale(1.05); }
+    .portfolio-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(30,30,30,0.85) 0%, rgba(30,30,30,0) 50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex; flex-direction:column;
+      justify-content: flex-end;
+      padding: 1.75rem;
+    }
+    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+    .po-label {
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--wood-light); margin-bottom: 0.3rem;
+      transform: translateY(10px);
+      transition: transform 0.4s ease 0.05s;
+    }
+    .portfolio-item:hover .po-label { transform: translateY(0); }
+    .po-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; color: #fff;
+      transform: translateY(10px);
+      transition: transform 0.4s ease 0.1s;
+    }
+    .portfolio-item:hover .po-title { transform: translateY(0); }
+    .portfolio-cta {
+      text-align: center; margin-top: 2.5rem;
+    }
+    .btn-outline-dark {
+      display: inline-block;
+      border: 1px solid var(--charcoal);
+      color: var(--charcoal);
+      font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.85rem 2.2rem;
+      transition: background var(--transition), color var(--transition);
+    }
+    .btn-outline-dark:hover { background: var(--charcoal); color: #fff; }
+
+    /* ── Services ── */
+    .services { background: var(--warm-white-2); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .service-card {
+      padding: 2.5rem 2rem;
+      border-top: 1px solid var(--border);
+      position: relative;
+      transition: var(--transition);
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--wood);
+      transition: width 0.5s ease;
+    }
+    .service-card:hover::before { width: 100%; }
+    .service-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.8rem; font-style: italic;
+      color: var(--wood); margin-bottom: 1.25rem;
+    }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; color: var(--charcoal);
+      margin-bottom: 0.75rem;
+    }
+    .service-card p {
+      font-size: 0.88rem; color: var(--text-muted);
+      line-height: 1.8; margin-bottom: 1.25rem;
+    }
+    .service-list {
+      list-style: none;
+      display: flex; flex-direction:column; gap:0.4rem;
+    }
+    .service-list li {
+      font-size: 0.82rem; color: var(--text-body);
+      display: flex; align-items:center; gap:0.6rem;
+    }
+    .service-list li::before { content:'—'; color:var(--wood); }
+
+    /* ── Philosophy ── */
+    .philosophy {
+      background: var(--charcoal);
+      padding: 100px 5%;
+    }
+    .philosophy-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .philosophy h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      color: #f5f3ef; line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    .philosophy h2 em { font-style: italic; color: var(--wood-light); }
+    .philosophy p {
+      font-size: 0.95rem; color: rgba(255,255,255,0.5);
+      line-height: 1.85; margin-bottom: 1.25rem;
+    }
+    .philosophy-principles {
+      display: flex; flex-direction:column; gap:1.5rem;
+    }
+    .principle {
+      display: flex; gap:1.25rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding-bottom: 1.5rem;
+    }
+    .principle:last-child { border-bottom: none; }
+    .principle-num {
+      font-family: 'Playfair Display', serif;
+      font-style: italic; font-size: 1.8rem;
+      color: var(--wood); line-height:1;
+      flex-shrink: 0; min-width: 32px;
+    }
+    .principle-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; color: #f5f3ef;
+      margin-bottom: 0.35rem;
+    }
+    .principle-text { font-size: 0.84rem; color: rgba(255,255,255,0.45); line-height: 1.7; }
+
+    /* ── Team ── */
+    .team { background: var(--warm-white); }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2.5rem;
+    }
+    .team-card { position: relative; }
+    .team-photo {
+      aspect-ratio: 3/4;
+      background: var(--warm-white-3);
+      margin-bottom: 1.25rem;
+      position: relative; overflow: hidden;
+    }
+    .team-photo-inner {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(145deg, var(--warm-white-2), var(--warm-white-3));
+    }
+    .team-initials {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem; color: var(--border);
+    }
+    .team-tag {
+      position: absolute; bottom: 1rem; left: 1rem;
+      background: var(--charcoal); color: #fff;
+      padding: 0.5rem 0.9rem;
+    }
+    .team-tag-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.9rem;
+    }
+    .team-tag-title { font-size: 0.68rem; color: rgba(255,255,255,0.5); }
+    .team-bio {
+      font-size: 0.85rem; color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    /* ── Awards ── */
+    .awards {
+      background: var(--wood-pale);
+      padding: 64px 5%;
+    }
+    .awards-inner {
+      display: flex; flex-wrap:wrap;
+      align-items: center; gap: 3rem;
+      justify-content: space-between;
+    }
+    .awards-label {
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--wood);
+    }
+    .awards-list {
+      display: flex; flex-wrap:wrap; gap:2rem; align-items:center;
+    }
+    .award-item {
+      font-family: 'Playfair Display', serif;
+      font-style: italic; font-size: 0.92rem;
+      color: var(--text-body);
+      padding: 0.6rem 1.2rem;
+      border: 1px solid rgba(160,120,80,0.3);
+      transition: border-color var(--transition), background var(--transition);
+      cursor: default;
+    }
+    .award-item:hover { border-color: var(--wood); background: rgba(160,120,80,0.06); }
+
+    /* ── Contact ── */
+    .contact { background: var(--warm-white-2); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 5rem; align-items: start;
+    }
+    .contact-block { margin-bottom: 2rem; }
+    .contact-block-label {
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--wood); margin-bottom: 0.35rem;
+    }
+    .contact-block-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; color: var(--charcoal);
+    }
+    .contact-block-sub { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.15rem; }
+    .contact-form {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      padding: 3rem;
+    }
+    .contact-form h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; color: var(--charcoal);
+      margin-bottom: 1.75rem;
+    }
+    .fg { margin-bottom: 1rem; }
+    .fg label {
+      display: block; font-size: 0.68rem;
+      font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+    .fg input, .fg select, .fg textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: var(--warm-white-2);
+      color: var(--charcoal);
+      padding: 0.85rem 1rem;
+      font-family: 'Figtree', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color var(--transition);
+      appearance: none;
+    }
+    .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--wood); }
+    .fg textarea { min-height: 110px; resize: vertical; }
+    .form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--charcoal);
+      padding: 3.5rem 5%;
+      display: flex; flex-wrap:wrap;
+      justify-content: space-between; align-items: center;
+      gap: 1.5rem;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; color: #f5f3ef;
+    }
+    .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+    .footer-contact {
+      font-size: 0.82rem; color: rgba(255,255,255,0.5);
+    }
+    .footer-contact strong { color: var(--wood-light); }
+
+    @media (max-width:960px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .portfolio-item:first-child { grid-row: span 1; }
+      .philosophy-inner, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .nav-links { display: none; }
+      .nav-mobile-btn { display: flex; }
+    }
+    @media (max-width:600px) {
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .form-2col { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-logo">
+      Buckl Architects
+      <div class="nav-logo-rule"></div>
+      <div class="nav-logo-sub">Easton, PA &amp; Cherry Hill, NJ &mdash; Since 1971</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#portfolio">Work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#philosophy">Our Approach</a></li>
+      <li><a href="#team">Firm</a></li>
+      <li><a href="#contact" class="nav-cta">Start a Project</a></li>
+    </ul>
+    <div class="nav-mobile-btn"><span></span><span></span><span></span></div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-left-bg"></div>
+      <div class="hero-number">B</div>
+      <div class="hero-eyebrow">Healthcare Architecture &bull; Founded 1971 &bull; Easton, PA &amp; Cherry Hill, NJ</div>
+      <h1>Spaces That<br />Help People<br /><em>Heal.</em></h1>
+      <p class="hero-tagline">We transform overwhelming, sterile hospital environments into wonderful, comfortable places that promote healing. That's not a tagline borrowed from a brochure — it's the question Werner Buckl started asking in 1971, and the one our employee-owners still ask on every project today.</p>
+      <div class="hero-actions">
+        <a href="#portfolio" class="btn-wood">See Our Projects</a>
+        <a href="#contact" class="btn-text-white">Begin a Conversation</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-right-img">
+        <img
+          class="hero-photo"
+          src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=800&q=80"
+          alt="Modern hospital interior corridor with natural light — healthcare architecture"
+          loading="lazy"
+        />
+        <div class="hero-img-placeholder">
+          <svg class="arch-sketch" viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="180" width="160" height="90" stroke="#6b5a45" stroke-width="1.5"/>
+            <path d="M20 180 L100 60 L180 180" stroke="#6b5a45" stroke-width="1.5" fill="none"/>
+            <rect x="80" y="210" width="40" height="60" stroke="#6b5a45" stroke-width="1"/>
+            <rect x="35" y="195" width="30" height="25" stroke="#6b5a45" stroke-width="1"/>
+            <rect x="135" y="195" width="30" height="25" stroke="#6b5a45" stroke-width="1"/>
+            <line x1="100" y1="60" x2="100" y2="30" stroke="#6b5a45" stroke-width="1" stroke-dasharray="4,3"/>
+          </svg>
+        </div>
+      </div>
+      <div class="hero-right-caption">
+        <div class="hero-caption-label">Featured Project</div>
+        <div class="hero-caption-title">Riverview Residence &mdash; Easton, PA &mdash; 2024</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio -->
+  <section class="portfolio" id="portfolio">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Selected Work</div>
+      <h2 class="section-title">Where People Go<br />When It Matters Most</h2>
+      <p class="section-sub">Cancer centers. Cardiac units. Hospice facilities. The weight of this work is not lost on us — every project represents a space where someone will face one of the hardest moments of their life. We design with that in mind.</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-item reveal">
+        <div class="portfolio-bg pi-1"></div>
+        <img class="pi-photo" src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80" alt="Modern cancer treatment center interior with natural light" loading="lazy" />
+        <div class="portfolio-overlay">
+          <div class="po-label">Healthcare &bull; Cancer Care</div>
+          <div class="po-title">Riddle Cancer Center at Thomas Jefferson Cancer Network, Media, PA</div>
+        </div>
+      </div>
+      <div class="portfolio-item reveal">
+        <div class="portfolio-bg pi-2"></div>
+        <img class="pi-photo" src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800&q=80" alt="Hospital medical facility exterior architecture" loading="lazy" />
+        <div class="portfolio-overlay">
+          <div class="po-label">Healthcare &bull; Cancer Care</div>
+          <div class="po-title">Simon Cancer Center at Overlook Medical Center, Summit, NJ</div>
+        </div>
+      </div>
+      <div class="portfolio-item reveal">
+        <div class="portfolio-bg pi-3"></div>
+        <img class="pi-photo" src="https://images.unsplash.com/photo-1629909615957-be38d48fbbe4?w=800&q=80" alt="Modern hospital ICU corridor clean contemporary interior" loading="lazy" />
+        <div class="portfolio-overlay">
+          <div class="po-label">Healthcare &bull; Neuroscience &amp; Critical Care</div>
+          <div class="po-title">Neuroscience Institute &amp; ICU, Overlook Medical Center</div>
+        </div>
+      </div>
+      <div class="portfolio-item reveal">
+        <div class="portfolio-bg pi-4"></div>
+        <img class="pi-photo" src="https://images.unsplash.com/photo-1587351021355-a479a299d2f9?w=800&q=80" alt="Cardiac care unit hospital room modern design" loading="lazy" />
+        <div class="portfolio-overlay">
+          <div class="po-label">Healthcare &bull; Cardiac</div>
+          <div class="po-title">Meade Cardiac Unit at Morristown Medical Center</div>
+        </div>
+      </div>
+      <div class="portfolio-item reveal">
+        <div class="portfolio-bg pi-5"></div>
+        <img class="pi-photo" src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=800&q=80" alt="Hospice care inpatient unit warm calming interior design" loading="lazy" />
+        <div class="portfolio-overlay">
+          <div class="po-label">Healthcare &bull; Hospice &amp; Surgical ICU</div>
+          <div class="po-title">Hospice Inpatient Unit &amp; Surgical ICU, Morristown Medical Center</div>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-cta reveal">
+      <a href="#contact" class="btn-outline-dark">Inquire About Our Portfolio</a>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Services</div>
+      <h2 class="section-title">What We Design</h2>
+      <p class="section-sub">A full-service firm from planning through construction administration. Healthcare is our primary specialty, but our experience spans hospitality, education, institutional, municipal, commercial, and residential work.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-num">No. 01</div>
+        <h3>Healthcare Architecture</h3>
+        <p>Our primary focus since the 1990s. We've designed cancer centers, cardiac units, neuroscience institutes, and hospice facilities — spaces where comfort is not a luxury, it's part of the care. We know what it means to get this work right.</p>
+        <ul class="service-list">
+          <li>Cancer centers &amp; oncology units</li>
+          <li>Cardiac &amp; cardiovascular facilities</li>
+          <li>Neuroscience institutes &amp; ICUs</li>
+          <li>Hospice &amp; palliative care inpatient units</li>
+          <li>Medical center renovations &amp; expansions</li>
+        </ul>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">No. 02</div>
+        <h3>Institutional &amp; Commercial</h3>
+        <p>Five decades of practice means we've designed schools, municipal buildings, hospitality spaces, and commercial interiors alongside our healthcare work. The discipline carries across project types.</p>
+        <ul class="service-list">
+          <li>Educational facilities</li>
+          <li>Municipal &amp; government buildings</li>
+          <li>Hospitality &amp; mixed-use</li>
+          <li>Office &amp; commercial interiors</li>
+          <li>Adaptive reuse &amp; renovations</li>
+        </ul>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-num">No. 03</div>
+        <h3>Full Project Lifecycle</h3>
+        <p>We stay with you from the first napkin sketch through the final punch list. One firm, full accountability at every stage — which matters especially on healthcare projects where continuity of vision is essential.</p>
+        <ul class="service-list">
+          <li>Planning &amp; programming</li>
+          <li>Schematic design &amp; design development</li>
+          <li>Interior design</li>
+          <li>Construction documents &amp; permitting</li>
+          <li>Construction administration &amp; management</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture Studio Banner -->
+  <div style="width:100%; height:260px; overflow:hidden; position:relative;">
+    <img
+      src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=80"
+      alt="Architecture studio drafting table with blueprints and plans"
+      style="width:100%; height:100%; object-fit:cover; object-position:center 55%;"
+      loading="lazy"
+    />
+    <div style="position:absolute; inset:0; background:rgba(30,30,30,0.55);"></div>
+  </div>
+
+  <!-- Philosophy -->
+  <div class="philosophy" id="philosophy">
+    <div class="philosophy-inner">
+      <div class="reveal-left">
+        <div class="section-eyebrow" style="color:var(--wood-light);">
+          <span style="display:block; width:24px; height:1px; background:var(--wood-light);"></span>
+          Our Approach
+        </div>
+        <h2>The Design of<br /><em>Difficult Moments.</em></h2>
+        <p>Since the early 1990s, we've asked a question that most architects don't spend much time with: what does it feel like to be in this space when you're frightened, in pain, or sitting beside someone you love who is sick?</p>
+        <p>Werner Buckl founded this firm in 1971. In 2006, four of its employees purchased it and formed Buckl Architects, Inc. — a transition that wasn't about exit or acquisition, but about stewardship. The people who own it now are the ones who show up to your project every day.</p>
+        <a href="#contact" class="btn-wood" style="display:inline-block; margin-top:1rem;">Begin the Conversation</a>
+      </div>
+      <div class="philosophy-principles reveal-right">
+        <div class="principle">
+          <div class="principle-num">1</div>
+          <div>
+            <div class="principle-title">The Patient Experience</div>
+            <div class="principle-text">Every material choice, every corridor width, every window placement is filtered through a single question: how does this feel to someone who is frightened, in pain, or uncertain? Comfort is not an aesthetic luxury in a healthcare setting — it is a clinical tool that affects outcomes.</div>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="principle-num">2</div>
+          <div>
+            <div class="principle-title">55 Years of Institutional Knowledge</div>
+            <div class="principle-text">Founded in 1971, Buckl has watched healthcare design evolve through multiple eras — and shaped it on projects at Morristown Medical Center, Overlook, Thomas Jefferson, and others. That institutional memory is not decorative. It informs every decision.</div>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="principle-num">3</div>
+          <div>
+            <div class="principle-title">Employee Ownership Since 2006</div>
+            <div class="principle-text">When four employees purchased the firm in 2006, something important shifted — the people signing off on your project's details are the same people whose names are on the ownership papers. That accountability runs through everything.</div>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="principle-num">4</div>
+          <div>
+            <div class="principle-title">Regional Coverage, Local Accountability</div>
+            <div class="principle-text">Two offices — Easton, PA and Cherry Hill, NJ — serve a territory stretching from Northern Virginia to southern New England. Close enough to know your site, large enough to handle complex programs.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firm -->
+  <section class="team" id="team">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">The Firm</div>
+      <h2 class="section-title">55 Years. Two Offices.<br />One Standard of Work.</h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-photo">
+          <div class="team-photo-inner"><div class="team-initials">BA</div></div>
+          <div class="team-tag">
+            <div class="team-tag-name">Buckl Architects, Inc.</div>
+            <div class="team-tag-title">Founded 1971 &bull; Employee-Owned Since 2006</div>
+          </div>
+        </div>
+        <p class="team-bio">Werner Buckl founded this firm in 1971 with a belief that architecture should serve the people inside a building, not just the image on the outside. When four longtime employees purchased the firm in 2006 and formed Buckl Architects, Inc., they carried that belief forward as owners — not as inheritors, but as stewards who chose to continue it.</p>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-photo">
+          <div class="team-photo-inner"><div class="team-initials">EA</div></div>
+          <div class="team-tag">
+            <div class="team-tag-name">Easton, PA Office</div>
+            <div class="team-tag-title">4001 Freemansburg Avenue, Easton, PA 18045</div>
+          </div>
+        </div>
+        <p class="team-bio">Our Easton office at 4001 Freemansburg Avenue is the firm's home base and primary location — the Lehigh Valley team that has been coordinating projects across eastern Pennsylvania and beyond for decades. Licensed in Pennsylvania, and close enough to any site to be there when it matters.</p>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-photo">
+          <div class="team-photo-inner"><div class="team-initials">NJ</div></div>
+          <div class="team-tag">
+            <div class="team-tag-name">Cherry Hill, NJ Office</div>
+            <div class="team-tag-title">Southern New Jersey</div>
+          </div>
+        </div>
+        <p class="team-bio">Our Cherry Hill presence extends Buckl's reach into New Jersey and the greater Philadelphia corridor — communities where we've worked on medical centers including Overlook and Morristown. Dual chamber memberships in the Lehigh Valley and Southern New Jersey aren't networking moves; they're a reflection of where we actually work and who we know.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards -->
+  <div class="awards">
+    <div class="awards-inner">
+      <div class="awards-label">Recognition &amp; Affiliations</div>
+      <div class="awards-list">
+        <div class="award-item">Founded 1971 by Werner Buckl</div>
+        <div class="award-item">Employee-Owned Since 2006</div>
+        <div class="award-item">Lehigh Valley Chamber of Commerce, Member</div>
+        <div class="award-item">Chamber of Commerce of Southern New Jersey, Member</div>
+        <div class="award-item">Healthcare Architecture Specialty Since the 1990s</div>
+        <div class="award-item">Northern Virginia to Southern New England Service Area</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="contact-grid">
+      <div class="reveal-left">
+        <div class="section-eyebrow">Start a Project</div>
+        <h2 class="section-title">Let&rsquo;s Design<br />Something Together</h2>
+        <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.8; margin-bottom:2.5rem;">We welcome inquiries at any stage — whether you have a full program brief or just an early idea. A short introductory call costs nothing and almost always makes the project better. Tell us what you're thinking and we'll tell you honestly whether we're the right fit.</p>
+        <div class="contact-block">
+          <div class="contact-block-label">Contact</div>
+          <div class="contact-block-value">kkammerer@bucklarchitects.com</div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-block-label">Phone</div>
+          <div class="contact-block-value">(856) 391-3829</div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-block-label">Easton Office</div>
+          <div class="contact-block-value">4001 Freemansburg Avenue, Easton, PA 18045</div>
+          <div class="contact-block-sub">Primary office &bull; Licensed in Pennsylvania</div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-block-label">Cherry Hill Office</div>
+          <div class="contact-block-value">Cherry Hill, New Jersey</div>
+          <div class="contact-block-sub">Southern NJ location &bull; Licensed in New Jersey</div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-block-label">Service Area</div>
+          <div class="contact-block-value">Northern Virginia to Southern New England</div>
+          <div class="contact-block-sub">Healthcare architecture throughout the Mid-Atlantic region</div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-block-label">Office Hours</div>
+          <div class="contact-block-value">Mon&ndash;Fri, 9am&ndash;5pm</div>
+          <div class="contact-block-sub">Site visits and client meetings by appointment</div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="contact-form">
+          <h3>Tell Us About Your Project</h3>
+          <form onsubmit="return false;">
+            <div class="form-2col">
+              <div class="fg"><label>First Name</label><input type="text" placeholder="First" /></div>
+              <div class="fg"><label>Last Name</label><input type="text" placeholder="Last" /></div>
+            </div>
+            <div class="form-2col">
+              <div class="fg"><label>Phone</label><input type="tel" placeholder="(856) 000-0000" /></div>
+              <div class="fg"><label>Email</label><input type="email" placeholder="you@email.com" /></div>
+            </div>
+            <div class="fg">
+              <label>Project Type</label>
+              <select>
+                <option value="">Select project type...</option>
+                <option>Healthcare — New Construction</option>
+                <option>Healthcare — Renovation / Expansion</option>
+                <option>Cancer Center / Oncology</option>
+                <option>Cardiac / Cardiovascular</option>
+                <option>ICU / Critical Care</option>
+                <option>Hospice / Palliative Care</option>
+                <option>Institutional / Educational</option>
+                <option>Commercial / Office</option>
+                <option>Hospitality</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>Approximate Budget Range</label>
+              <select>
+                <option value="">Select budget range...</option>
+                <option>Under $100K</option>
+                <option>$100K &ndash; $300K</option>
+                <option>$300K &ndash; $750K</option>
+                <option>$750K &ndash; $2M</option>
+                <option>$2M+</option>
+                <option>Not yet determined</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>Project Location</label>
+              <input type="text" placeholder="City, State or address" />
+            </div>
+            <div class="fg">
+              <label>Tell Us About Your Project</label>
+              <textarea placeholder="Share as much or as little as you'd like — scope, vision, timeline, or just an initial idea..."></textarea>
+            </div>
+            <button type="submit" class="btn-wood" style="width:100%; border:none; cursor:pointer; padding:1rem;">Start the Conversation</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">Buckl Architects</div>
+    <div class="footer-copy">© 2025 Buckl Architects, Inc. All rights reserved. Founded 1971 &bull; Easton, PA &amp; Cherry Hill, NJ</div>
+    <div class="footer-contact">kkammerer@bucklarchitects.com &bull; <strong>(856) 391-3829</strong></div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el, i) => {
+      el.style.transitionDelay = `${(i % 4) * 0.1}s`;
+      obs.observe(el);
+    });
+  </script>
+</body>
+</html>

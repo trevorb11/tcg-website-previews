@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GetMeAV | Astoria Communications | Professional Audio Visual Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #080810;
+      --dark: #0d0d1a;
+      --purple: #6a24cc;
+      --purple-light: #8a44ee;
+      --violet: #b060ff;
+      --silver: #8090a8;
+      --bg: #f2f3f8;
+      --white: #ffffff;
+      --text: #0d0d1a;
+      --text-light: #4a5070;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(8,8,16,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(106,36,204,0.3);
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    .nav-logo span { color: var(--violet); }
+    .nav-sub { font-size: 0.62rem; color: var(--silver); letter-spacing: 0.12em; text-transform: uppercase; display: block; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--violet); }
+    .nav-phone {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--violet);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-top: 68px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1511578314322-379afb476865?w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, rgba(8,8,16,0.96) 0%, rgba(8,8,16,0.85) 50%, rgba(106,36,204,0.2) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2.5rem;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--violet);
+      margin-bottom: 1.8rem;
+    }
+    .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 2px; background: var(--violet); }
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.0;
+      max-width: 700px;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+    .hero h1 span { color: var(--violet); }
+    .hero p {
+      font-size: 1.08rem;
+      color: rgba(255,255,255,0.72);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      line-height: 1.85;
+    }
+    .hero-contact-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .hero-phone {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: 0.04em;
+    }
+    .hero-phone span { color: var(--violet); }
+    .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-violet {
+      background: var(--purple);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 0.9rem 2.2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-violet:hover { background: var(--purple-light); transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.9rem 2.2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border: 1px solid rgba(255,255,255,0.35);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--white); transform: translateY(-2px); }
+    .hero-clients {
+      margin-top: 3.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(106,36,204,0.2);
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .hero-client-pill {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* SECTIONS */
+    section { padding: 5.5rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 0.6rem;
+    }
+    h2.section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 900;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.01em;
+    }
+    h2.section-title.light { color: var(--white); }
+    h2.section-title span { color: var(--purple); }
+    .divider { width: 40px; height: 3px; background: var(--purple); border-radius: 2px; margin-bottom: 2rem; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s, transform 0.65s; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-left { opacity: 0; transform: translateX(-28px); transition: opacity 0.65s, transform 0.65s; }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right { opacity: 0; transform: translateX(28px); transition: opacity 0.65s, transform 0.65s; }
+    .reveal-right.visible { opacity: 1; transform: none; }
+
+    /* ABOUT */
+    .about-section { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-img { border-radius: 3px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 20px 60px rgba(8,8,16,0.2); }
+    .about-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-text p { color: var(--text-light); margin-bottom: 1.1rem; font-size: 1rem; }
+    .coverage-chips { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .coverage-chip {
+      background: var(--bg);
+      border: 1px solid #c8ccda;
+      color: var(--text-light);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.35rem 0.9rem;
+      border-radius: 2px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .coverage-chip.highlight { background: var(--purple); color: var(--white); border-color: var(--purple); }
+
+    /* SERVICES */
+    .services-section { background: var(--dark); }
+    .services-section .section-label { color: var(--violet); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2.5rem; }
+    .service-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(106,36,204,0.2);
+      border-radius: 3px;
+      padding: 2.2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s, border-color 0.3s, transform 0.3s;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--purple);
+    }
+    .service-card:nth-child(2)::after { background: var(--violet); }
+    .service-card:nth-child(3)::after { background: var(--purple-light); }
+    .service-card:nth-child(4)::after { background: var(--purple); }
+    .service-card:nth-child(5)::after { background: var(--violet); }
+    .service-card:nth-child(6)::after { background: var(--purple-light); }
+    .service-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(176,96,255,0.35); transform: translateY(-4px); }
+    .service-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--violet);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    .service-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 0.7rem;
+      letter-spacing: 0.01em;
+    }
+    .service-card p { font-size: 0.88rem; color: rgba(255,255,255,0.58); line-height: 1.65; }
+
+    /* VENUES */
+    .venues-section { background: var(--bg); }
+    .venues-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2.5rem; }
+    .venue-block {
+      background: var(--white);
+      border-radius: 3px;
+      padding: 1.8rem;
+      text-align: center;
+      border-bottom: 3px solid transparent;
+      box-shadow: 0 2px 12px rgba(8,8,16,0.07);
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .venue-block:hover { border-bottom-color: var(--purple); transform: translateY(-4px); box-shadow: 0 10px 35px rgba(8,8,16,0.12); }
+    .venue-icon { font-size: 1.8rem; display: block; margin-bottom: 0.8rem; }
+    .venue-block h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .venue-block p { font-size: 0.82rem; color: var(--text-light); }
+
+    /* COVERAGE */
+    .coverage-section { background: var(--purple); }
+    .coverage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .coverage-text p { color: rgba(255,255,255,0.85); margin-bottom: 1rem; font-size: 1rem; }
+    .coverage-states { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+    .state-card {
+      background: rgba(255,255,255,0.12);
+      border-radius: 3px;
+      padding: 1.5rem;
+    }
+    .state-card h3 { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 800; color: var(--white); margin-bottom: 0.4rem; }
+    .state-card p { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+    .coverage-img { border-radius: 3px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 16px 50px rgba(0,0,0,0.3); }
+    .coverage-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* WHY */
+    .why-section { background: var(--white); }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2.5rem; }
+    .why-card {
+      background: var(--bg);
+      border-radius: 3px;
+      padding: 2.2rem;
+      border-top: 4px solid var(--purple);
+    }
+    .why-card:nth-child(2) { border-top-color: var(--violet); }
+    .why-card:nth-child(3) { border-top-color: var(--purple-light); }
+    .why-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.01em;
+    }
+    .why-card p { font-size: 0.92rem; color: var(--text-light); line-height: 1.65; }
+
+    /* TESTIMONIALS */
+    .testi-section { background: var(--dark); }
+    .testi-section .section-label { color: var(--violet); }
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .testi-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 3px;
+      padding: 2rem;
+      border-left: 3px solid var(--purple);
+    }
+    .testi-card:nth-child(2) { border-left-color: var(--violet); }
+    .testi-card:nth-child(3) { border-left-color: var(--purple-light); }
+    .testi-text { font-style: italic; color: rgba(255,255,255,0.75); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.2rem; }
+    .testi-name { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--violet); font-size: 0.88rem; }
+    .testi-role { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+
+    /* CONTACT */
+    .contact-section { background: var(--bg); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .contact-info h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--text); font-size: 1.1rem; margin-bottom: 1rem; }
+    .contact-info p { color: var(--text-light); margin-bottom: 0.5rem; font-size: 0.97rem; }
+    .contact-info a { color: var(--purple); text-decoration: none; font-weight: 600; }
+    .contact-info a:hover { color: var(--purple-light); }
+    .cta-phone {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--purple);
+      color: var(--white);
+      padding: 1.2rem 1.8rem;
+      border-radius: 3px;
+      margin-top: 1.5rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .cta-phone:hover { background: var(--purple-light); }
+    .cta-phone .ph {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+    }
+    .cta-phone .sub { font-size: 0.78rem; color: rgba(255,255,255,0.7); }
+    .contact-form { display: flex; flex-direction: column; gap: 0.9rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+    .contact-form input, .contact-form select, .contact-form textarea {
+      padding: 0.85rem 1rem;
+      background: var(--white);
+      border: 1px solid #c8ccda;
+      border-radius: 2px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--purple); }
+    .contact-form textarea { min-height: 110px; resize: vertical; }
+    .btn-submit {
+      background: var(--purple);
+      color: var(--white);
+      padding: 0.95rem 2rem;
+      border: none;
+      border-radius: 2px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover { background: var(--purple-light); }
+    .contact-img { border-radius: 3px; overflow: hidden; aspect-ratio: 4/3; margin-top: 1.5rem; }
+    .contact-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* FOOTER */
+    footer { background: var(--black); color: rgba(255,255,255,0.45); padding: 3rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 4rem; justify-content: space-between; flex-wrap: wrap; }
+    .footer-logo { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 900; color: var(--white); margin-bottom: 0.4rem; letter-spacing: 0.05em; }
+    .footer-logo span { color: var(--violet); }
+    .footer-sub { font-size: 0.7rem; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.8rem; }
+    .footer-brand p { font-size: 0.87rem; line-height: 1.85; max-width: 260px; }
+    .footer-col h4 { color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1rem; }
+    .footer-col p, .footer-col a { font-size: 0.87rem; color: rgba(255,255,255,0.4); text-decoration: none; display: block; line-height: 2.1; }
+    .footer-col a:hover { color: var(--violet); }
+    .footer-bottom { max-width: 1100px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.07); font-size: 0.77rem; color: rgba(255,255,255,0.25); }
+
+    @media (max-width: 900px) {
+      .about-grid, .coverage-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .services-grid, .testi-grid { grid-template-columns: 1fr 1fr; }
+      .venues-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .services-grid, .testi-grid, .why-grid { grid-template-columns: 1fr; }
+      .venues-grid { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .coverage-states { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo" style="display:flex; flex-direction:column; text-decoration:none;">
+      <span>Get<span>Me</span>AV</span>
+      <span class="nav-sub">Astoria Communications</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#coverage">Coverage</a></li>
+      <li><a href="#contact">Get a Quote</a></li>
+    </ul>
+    <a href="tel:8774386328" class="nav-phone">877.GET.ME.AV</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Audio Visual Event Technology</div>
+      <h1>Sound.<br><span>Vision.</span><br>Experience.</h1>
+      <p>Astoria Communications delivers custom AV solutions for live events, corporate conferences, permanent installations, and everything in between. Florida and New York. Full service.</p>
+      <div class="hero-contact-row">
+        <div class="hero-phone"><span>877.</span>GET.ME.AV</div>
+      </div>
+      <div class="btn-row">
+        <a href="#contact" class="btn-violet">Tell Us About Your Event</a>
+        <a href="#services" class="btn-ghost">See What We Do</a>
+      </div>
+      <div class="hero-clients">
+        <span class="hero-client-pill">Corporate Events</span>
+        <span class="hero-client-pill">Hotels &amp; Hospitality</span>
+        <span class="hero-client-pill">Concert &amp; Entertainment</span>
+        <span class="hero-client-pill">Houses of Worship</span>
+        <span class="hero-client-pill">Education</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal-left">
+          <div class="about-img">
+            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80" alt="Live event audio visual production" />
+          </div>
+        </div>
+        <div class="reveal-right">
+          <div class="section-label">About GetMeAV</div>
+          <h2 class="section-title">50 Years of Experience. One Number to Call.</h2>
+          <div class="divider"></div>
+          <p>Astoria Communications was founded in 1996 in Astoria, New York, with a simple vision: make world-class audiovisual solutions accessible and seamless for any client, any venue, any event. With over 50 years of combined experience across our team, we've been involved in thousands of events, installations, and productions throughout the country.</p>
+          <p>What started as a New York-based consulting AV firm grew into a full-service operation with a thriving Florida division. We expanded to serve our New York clients hosting winter conferences in Florida, and stayed because the market was there and we were good at what we do.</p>
+          <p>Today, GetMeAV is the single point of contact for audio, video, lighting, staging, and permanent AV installations for clients across the hospitality, corporate, education, entertainment, and house of worship sectors.</p>
+          <div class="coverage-chips">
+            <span class="coverage-chip highlight">Florida Division</span>
+            <span class="coverage-chip highlight">New York Division</span>
+            <span class="coverage-chip">Founded 1996</span>
+            <span class="coverage-chip">50+ Years Combined Experience</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="reveal" style="max-width:580px; margin-bottom:1rem;">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title light">Full Service <span style="color:var(--violet)">AV</span> Solutions</h2>
+        <div class="divider"></div>
+        <p style="color:rgba(255,255,255,0.65);">From permanent commercial installations to one-night events, our team engineers, installs, and operates AV solutions that make an impression.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-num">01</div>
+          <h3>Audio Systems</h3>
+          <p>Concert-grade sound, distributed audio, custom acoustic design, and PA systems for venues of every size. Crystal-clear, every time.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:.08s">
+          <div class="service-num">02</div>
+          <h3>Video &amp; LED Walls</h3>
+          <p>Video distribution systems, LED video walls, projection, and mixed media production for live events and permanent installations.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:.16s">
+          <div class="service-num">03</div>
+          <h3>Conference &amp; Meeting AV</h3>
+          <p>Video conferencing, hybrid meeting room solutions, and presentation systems. From boardrooms to ballrooms.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:.24s">
+          <div class="service-num">04</div>
+          <h3>Staging &amp; Lighting</h3>
+          <p>Theatrical lighting design, custom staging structures, and intelligent lighting treatments that transform any space.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:.32s">
+          <div class="service-num">05</div>
+          <h3>Custom AV Installation</h3>
+          <p>Permanent commercial and hospitality AV system design, installation, and integration. Seamless from the inside out.</p>
+        </div>
+        <div class="service-card reveal" style="transition-delay:.4s">
+          <div class="service-num">06</div>
+          <h3>Live Event Production</h3>
+          <p>End-to-end event AV management. We handle design, delivery, setup, operation, and teardown so you can focus on your event.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENUES -->
+  <section class="venues-section" id="venues">
+    <div class="container">
+      <div class="reveal" style="text-align:center; max-width:560px; margin:0 auto 1rem;">
+        <div class="section-label">Venues &amp; Clients</div>
+        <h2 class="section-title">Wherever You Need Us</h2>
+        <div class="divider" style="margin:0 auto 1.5rem;"></div>
+        <p style="color:var(--text-light);">We've designed and operated AV systems in some of the most demanding environments in Florida and New York. Every venue gets our full attention.</p>
+      </div>
+      <div class="venues-grid">
+        <div class="venue-block reveal">
+          <span class="venue-icon">&#127974;</span>
+          <h3>Corporate Events</h3>
+          <p>Conference, town hall, product launch &mdash; professional and polished</p>
+        </div>
+        <div class="venue-block reveal" style="transition-delay:.08s">
+          <span class="venue-icon">&#127976;</span>
+          <h3>Hotels &amp; Resorts</h3>
+          <p>Ballroom, meeting room, and lobby AV installations and event support</p>
+        </div>
+        <div class="venue-block reveal" style="transition-delay:.16s">
+          <span class="venue-icon">&#127928;</span>
+          <h3>Concert &amp; Music</h3>
+          <p>Concert-grade live sound and light systems for performance venues</p>
+        </div>
+        <div class="venue-block reveal" style="transition-delay:.24s">
+          <span class="venue-icon">&#9961;</span>
+          <h3>Houses of Worship</h3>
+          <p>Exceptional audio and visual systems for congregations of all sizes</p>
+        </div>
+        <div class="venue-block reveal" style="transition-delay:.32s">
+          <span class="venue-icon">&#127979;</span>
+          <h3>Educational Institutions</h3>
+          <p>Classroom, auditorium, and campus AV design and installation</p>
+        </div>
+        <div class="venue-block reveal" style="transition-delay:.4s">
+          <span class="venue-icon">&#127937;</span>
+          <h3>Outdoor &amp; Festivals</h3>
+          <p>AV solutions for outdoor gatherings, festivals, and open-air events</p>
+        </div>
+        <div class="venue-block reveal" style="transition-delay:.48s">
+          <span class="venue-icon">&#127939;</span>
+          <h3>Sports &amp; Entertainment</h3>
+          <p>Stadium, arena, and entertainment venue AV and video systems</p>
+        </div>
+        <div class="venue-block reveal" style="transition-delay:.56s">
+          <span class="venue-icon">&#127960;</span>
+          <h3>Government &amp; Civic</h3>
+          <p>Council chambers, courtrooms, and civic spaces requiring reliable AV</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COVERAGE -->
+  <section class="coverage-section" id="coverage">
+    <div class="container">
+      <div class="coverage-grid">
+        <div class="reveal-left coverage-text">
+          <div class="section-label" style="color:rgba(255,255,255,0.7);">Service Areas</div>
+          <h2 class="section-title light">Florida &amp; New York.<br>Wherever Your Event Is.</h2>
+          <div class="divider" style="background:rgba(255,255,255,0.4);"></div>
+          <p>GetMeAV maintains active operations in both Florida and New York. Whether you're holding a conference at a Miami Beach hotel in January or opening night at a Manhattan venue in July, our teams are local, resourced, and ready.</p>
+          <p>Our Florida division serves the Greater Miami, Fort Lauderdale, Orlando, and Tampa areas. Our New York operation covers the five boroughs, the Tri-State area, and beyond. And for events that need both markets, we coordinate seamlessly.</p>
+          <div class="coverage-states">
+            <div class="state-card">
+              <h3>Florida Division</h3>
+              <p>Miami, Fort Lauderdale, Orlando, Tampa, Palm Beach</p>
+            </div>
+            <div class="state-card">
+              <h3>New York Division</h3>
+              <p>New York City, Tri-State Area, Long Island, Upstate</p>
+            </div>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <div class="coverage-img">
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80" alt="Professional conference AV setup" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY GETMEAV -->
+  <section class="why-section" id="why">
+    <div class="container">
+      <div class="reveal" style="max-width:560px; margin-bottom:1rem;">
+        <div class="section-label">Why GetMeAV</div>
+        <h2 class="section-title">One Call Gets You Everything</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <h3>Seamless Design to Delivery</h3>
+          <p>We handle the entire AV journey &mdash; design, engineering, logistics, installation, operation, and support. No juggling multiple vendors. One team, one point of contact, zero surprises.</p>
+        </div>
+        <div class="why-card reveal" style="transition-delay:.1s">
+          <h3>Expert Engineering Team</h3>
+          <p>Our engineers and technicians bring decades of combined experience across every AV discipline. Whether it's a complex LED wall or a precise acoustic system, we've done it before and we'll do it right.</p>
+        </div>
+        <div class="why-card reveal" style="transition-delay:.2s">
+          <h3>877.GET.ME.AV</h3>
+          <p>It's the most important thing we ever decided. One number. Real people. Fast answers. Try calling a big-box AV vendor when something goes wrong the night before your event. Then try us.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testi-section" id="testimonials">
+    <div class="container">
+      <div class="reveal" style="text-align:center; max-width:500px; margin:0 auto 2.5rem;">
+        <div class="section-label">Client Voices</div>
+        <h2 class="section-title light">What Clients Are Saying</h2>
+        <div class="divider" style="margin:0 auto;"></div>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <p class="testi-text">We brought GetMeAV in for our national sales conference at a Fort Lauderdale hotel and they were extraordinary. The LED backdrop looked incredible on stage, the audio was perfect in a tricky ballroom, and their team was proactive all weekend. We've used them three times since.</p>
+          <div class="testi-name">Karen M.</div>
+          <div class="testi-role">Events Director, National Corporation</div>
+        </div>
+        <div class="testi-card reveal" style="transition-delay:.1s">
+          <p class="testi-text">As a hotel events manager, I've worked with a lot of AV companies. GetMeAV is the first one I'd actually recommend to our clients without hesitation. They show up prepared, they communicate clearly, and their work quality is genuinely excellent. They make us look good.</p>
+          <div class="testi-name">David P.</div>
+          <div class="testi-role">Events Manager, Miami Beach Hotel</div>
+        </div>
+        <div class="testi-card reveal" style="transition-delay:.2s">
+          <p class="testi-text">Our congregation needed a full audio and video upgrade in a historic building with challenging acoustics. GetMeAV walked us through options at every price point, designed something that worked beautifully, and installed it with minimal disruption. Six months in, we're thrilled.</p>
+          <div class="testi-name">Pastor Thomas R.</div>
+          <div class="testi-role">Community Church, New York</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="reveal" style="max-width:560px; margin-bottom:3rem;">
+        <div class="section-label">Get in Touch</div>
+        <h2 class="section-title">Tell Us About Your Event</h2>
+        <div class="divider"></div>
+        <p style="color:var(--text-light);">Give Ron the basics — venue, date, what you're trying to accomplish — and we'll come back with a real plan. Call <a href="tel:8774386328" style="color:var(--purple); font-weight:600;">877.GET.ME.AV</a>, email <a href="mailto:ron@getmeav.com" style="color:var(--purple); font-weight:600;">ron@getmeav.com</a>, or fill out the form below.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="reveal-left">
+          <div class="contact-info">
+            <h3>Astoria Communications / GetMeAV</h3>
+            <p>Serving Florida and New York</p>
+            <p style="margin-top:0.8rem;"><strong>Email:</strong> <a href="mailto:ron@getmeav.com">ron@getmeav.com</a></p>
+          </div>
+          <a href="tel:8774386328" class="cta-phone">
+            <div>
+              <div class="ph">877.GET.ME.AV</div>
+              <div class="sub">Call or text to get started</div>
+            </div>
+          </a>
+          <div class="contact-img">
+            <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=700&q=80" alt="Live event production" />
+          </div>
+        </div>
+        <div class="reveal-right">
+          <form class="contact-form" onsubmit="return false;">
+            <div class="form-row">
+              <input type="text" placeholder="First Name" />
+              <input type="text" placeholder="Last Name" />
+            </div>
+            <input type="text" placeholder="Company / Organization" />
+            <input type="email" placeholder="Email Address" />
+            <input type="tel" placeholder="Phone Number" />
+            <select>
+              <option value="" disabled selected>Service Needed</option>
+              <option>Live Event AV Production</option>
+              <option>Audio Systems</option>
+              <option>Video / LED Walls</option>
+              <option>Conference Room AV</option>
+              <option>Staging &amp; Lighting</option>
+              <option>Permanent AV Installation</option>
+              <option>Multiple Services / Not Sure</option>
+            </select>
+            <select>
+              <option value="" disabled selected>Location / Market</option>
+              <option>Miami / South Florida</option>
+              <option>Orlando / Central Florida</option>
+              <option>Tampa / West Florida</option>
+              <option>New York City</option>
+              <option>Long Island / Tri-State</option>
+              <option>Other</option>
+            </select>
+            <textarea placeholder="Tell us about your event, venue, and timeline..."></textarea>
+            <button class="btn-submit" type="submit">Tell Us About Your Event</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">Get<span>Me</span>AV</div>
+        <div class="footer-sub">Astoria Communications</div>
+        <p>Full-service audio visual event technology and installation. Florida and New York. Since 1996.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:8774386328">877.GET.ME.AV</a>
+        <a href="mailto:ron@getmeav.com">ron@getmeav.com</a>
+        <a href="https://www.getmeav.com">getmeav.com</a>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">Audio Systems</a>
+        <a href="#services">Video &amp; LED Walls</a>
+        <a href="#services">Conference AV</a>
+        <a href="#services">Live Event Production</a>
+        <a href="#services">Permanent Installation</a>
+      </div>
+      <div class="footer-col">
+        <h4>Coverage</h4>
+        <a href="#coverage">Florida Division</a>
+        <a href="#coverage">New York Division</a>
+        <a href="#contact">Get a Quote</a>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2024 Astoria Communications / GetMeAV. All rights reserved.</div>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

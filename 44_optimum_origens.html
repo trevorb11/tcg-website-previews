@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Optimum Origens — Managed IT Services | West Palm Beach, FL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0f1f3d;
+      --navy-mid: #162944;
+      --orange: #f97316;
+      --orange-light: #fb923c;
+      --orange-pale: #fff7ed;
+      --white: #ffffff;
+      --slate: #64748b;
+      --slate-light: #94a3b8;
+      --bg-light: #f0f4f8;
+      --border: #e2e8f0;
+      --text: #1e293b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Outfit', sans-serif;
+      line-height: 1.15;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-36px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(36px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: none; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(15, 31, 61, 0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0 5%;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--orange); }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--orange-light); }
+    .nav-cta {
+      background: var(--orange) !important;
+      color: var(--white) !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 8px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--orange-light) !important; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-diagonal {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(249,115,22,0.06) 100%);
+      clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+    .hero-image-wrap {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 48%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .hero-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.2;
+      filter: saturate(0.6);
+    }
+    .hero-image-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--navy) 0%, transparent 50%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 130px 5% 80px;
+      max-width: 720px;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(249,115,22,0.12);
+      border: 1px solid rgba(249,115,22,0.3);
+      color: var(--orange-light);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.75rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      color: var(--white);
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.03em;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--orange);
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+    .btn-orange {
+      background: var(--orange);
+      color: var(--white);
+      padding: 0.9rem 2.2rem;
+      text-decoration: none;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-orange:hover { background: var(--orange-light); transform: translateY(-2px); }
+    .btn-ghost {
+      border: 1.5px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.85);
+      padding: 0.9rem 2.2rem;
+      text-decoration: none;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--orange-light); }
+    .hero-trust {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .trust-stat {
+      display: flex;
+      flex-direction: column;
+    }
+    .trust-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .trust-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 0.2rem;
+    }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 100px 5%; }
+
+    .section-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.75rem;
+    }
+
+    /* ===== INTRO ===== */
+    .intro { background: var(--bg-light); }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .intro-text h2 {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .intro-text p {
+      color: var(--slate);
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+    }
+    .intro-image img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+    }
+
+    /* ===== SERVICES ===== */
+    .services { background: var(--white); }
+    .services-inner { max-width: 1200px; margin: 0 auto; }
+    .services-header { text-align: center; margin-bottom: 3.5rem; }
+    .services-header h2 {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .services-header p { color: var(--slate); max-width: 540px; margin: 0 auto; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .svc-card {
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .svc-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--orange), var(--orange-light));
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+    .svc-card:hover {
+      border-color: var(--orange);
+      box-shadow: 0 10px 35px rgba(249,115,22,0.1);
+      transform: translateY(-4px);
+    }
+    .svc-card:hover::before { transform: scaleX(1); }
+    .svc-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--orange-pale);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .svc-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--orange);
+      fill: none;
+      stroke-width: 1.8;
+    }
+    .svc-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+    .svc-card p {
+      color: var(--slate);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* ===== INDUSTRIES ===== */
+    .industries { background: var(--bg-light); }
+    .industries-inner { max-width: 1100px; margin: 0 auto; }
+    .industries-header { text-align: center; margin-bottom: 3.5rem; }
+    .industries-header h2 {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .ind-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: box-shadow 0.3s;
+    }
+    .ind-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+    }
+    .ind-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--orange);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .ind-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .ind-card p {
+      font-size: 0.85rem;
+      color: var(--slate);
+    }
+
+    /* ===== WHY ===== */
+    .why { background: var(--navy); }
+    .why-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .why-text h2 {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .why-text p {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+    .why-pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .pillar {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+    .pillar-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: rgba(249,115,22,0.3);
+      line-height: 1;
+      min-width: 40px;
+    }
+    .pillar-content h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.35rem;
+    }
+    .pillar-content p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+    }
+    .why-image img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+      filter: saturate(0.7) brightness(0.8);
+    }
+
+    /* ===== PROCESS ===== */
+    .process { background: var(--white); }
+    .process-inner { max-width: 1100px; margin: 0 auto; }
+    .process-header { text-align: center; margin-bottom: 3.5rem; }
+    .process-header h2 {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .process-header p { color: var(--slate); max-width: 500px; margin: 0 auto; }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+    }
+    .p-step {
+      text-align: center;
+      position: relative;
+      padding: 0 0.5rem;
+    }
+    .p-step-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--orange-pale);
+      border: 2px solid var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--orange);
+    }
+    .p-step h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+    .p-step p {
+      font-size: 0.8rem;
+      color: var(--slate);
+    }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+      padding: 80px 5%;
+    }
+    .cta-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: center;
+    }
+    .cta-inner h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+    .cta-inner p { color: rgba(255,255,255,0.8); }
+    .btn-white {
+      background: var(--white);
+      color: var(--orange);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      border-radius: 10px;
+      white-space: nowrap;
+      display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-white:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials { background: var(--bg-light); }
+    .testimonials-inner { max-width: 1100px; margin: 0 auto; }
+    .testimonials-header { text-align: center; margin-bottom: 3.5rem; }
+    .testimonials-header h2 {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .t-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+    }
+    .t-quote {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3.5rem;
+      color: var(--orange);
+      line-height: 0.7;
+      opacity: 0.3;
+      margin-bottom: 0.75rem;
+    }
+    .t-card p {
+      font-size: 0.92rem;
+      color: var(--text);
+      font-style: italic;
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+    .t-author { font-weight: 700; font-size: 0.88rem; color: var(--text); }
+    .t-company { font-size: 0.8rem; color: var(--slate); margin-top: 0.2rem; }
+
+    /* ===== CONTACT ===== */
+    .contact { background: var(--white); }
+    .contact-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-info h2 {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .contact-info p {
+      color: var(--slate);
+      margin-bottom: 2.5rem;
+    }
+    .contact-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .c-item {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .c-dot-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--orange-pale);
+      border-radius: 10px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .c-dot-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--orange);
+      fill: none;
+      stroke-width: 2;
+    }
+    .c-text strong {
+      display: block;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .c-text span {
+      font-size: 0.88rem;
+      color: var(--slate);
+    }
+    .contact-form-box {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+    }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label {
+      display: block;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      color: var(--text);
+      padding: 0.75rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      border-radius: 8px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(249,115,22,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit {
+      width: 100%;
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      padding: 1rem;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .form-submit:hover { background: var(--orange-light); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--navy);
+      padding: 4rem 5% 2rem;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .f-logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    .f-logo span { color: var(--orange); }
+    .footer-brand p {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.88rem;
+      line-height: 1.8;
+    }
+    .footer-col h4 {
+      font-family: 'Outfit', sans-serif;
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .footer-col ul a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: var(--orange-light); }
+    .footer-bottom {
+      padding-top: 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom p { color: rgba(255,255,255,0.3); font-size: 0.8rem; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .intro-grid, .why-inner, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-image-wrap { display: none; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .industries-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .cta-inner { grid-template-columns: 1fr; text-align: center; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 70px 5%; }
+      .nav-links { display: none; }
+      .services-grid, .industries-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Optimum <span>Origens</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#contact" class="nav-cta">Free Assessment</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-diagonal"></div>
+    <div class="hero-image-wrap">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&auto=format&fit=crop&q=80" alt="Modern office technology environment" />
+    </div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">West Palm Beach, FL — Strategic IT Partner</div>
+      <h1>The Possibilities Are<br><em>Infinite</em> with<br>Optimum Origens</h1>
+      <p>West Palm Beach's trusted Managed IT partner for small and mid-sized businesses. Cybersecurity, cloud computing, network management, and proactive support — since 2013.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-orange">Get a Free IT Assessment</a>
+        <a href="#services" class="btn-ghost">Our Services</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-stat">
+          <div class="trust-num">2013</div>
+          <div class="trust-label">Founded</div>
+        </div>
+        <div class="trust-stat">
+          <div class="trust-num">36+</div>
+          <div class="trust-label">Yrs Combined Experience</div>
+        </div>
+        <div class="trust-stat">
+          <div class="trust-num">SMB</div>
+          <div class="trust-label">Specialists</div>
+        </div>
+        <div class="trust-stat">
+          <div class="trust-num">24/7</div>
+          <div class="trust-label">Monitoring</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro" id="about">
+    <div class="intro-grid">
+      <div class="intro-text reveal-left">
+        <div class="section-label">Who We Are</div>
+        <h2>Technology Should Work for You — Not the Other Way Around</h2>
+        <p>Bjorn Campbell founded Optimum Origens in 2013 with a frustration that every small business owner understands: technology was supposed to make things easier, but for most SMBs it created more problems than it solved. Unreliable networks, unclear security posture, no one answering when something breaks — Optimum Origens was built to fix that.</p>
+        <p>Based in West Palm Beach, Florida, we serve small and mid-sized businesses across healthcare, legal, finance, education, and government. Our team brings over 36 years of combined experience in large enterprise IT environments — which means our clients get enterprise-grade thinking at a size that actually makes sense for their business.</p>
+        <p>We do not just respond to problems. We prevent them. That proactive mindset is what separates a true strategic IT partner from just another vendor you call when things go wrong.</p>
+      </div>
+      <div class="intro-image reveal-right">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&auto=format&fit=crop&q=80" alt="IT professional working with client" />
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-inner">
+      <div class="services-header reveal">
+        <div class="section-label">What We Do</div>
+        <h2>Comprehensive IT Services for Growing Businesses</h2>
+        <p>From helpdesk support to full cybersecurity programs, we provide the technology services that keep West Palm Beach businesses running smoothly and safely.</p>
+      </div>
+      <div class="services-grid">
+        <div class="svc-card reveal">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Managed IT Services</h3>
+          <p>Fully managed IT support for your business — hardware, software, users, and infrastructure. Predictable monthly pricing, unlimited helpdesk support, and complete technology oversight from a team that knows your environment.</p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Network Monitoring &amp; Management</h3>
+          <p>24/7 monitoring of your network infrastructure to catch problems before they become outages. We manage switches, routers, firewalls, and Wi-Fi with proactive alerting and response protocols in place.</p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+          </div>
+          <h3>Cloud Computing Solutions</h3>
+          <p>Cloud migration strategy, deployment, and ongoing management. Whether you are moving to Microsoft 365, Azure, or a hybrid environment, we handle the complexity and ensure the transition does not disrupt your operations.</p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Cybersecurity &amp; Endpoint Security</h3>
+          <p>Comprehensive security protection for your business — endpoint detection, email security, multi-factor authentication, vulnerability scanning, and employee security awareness training. Threats are real; your defenses should be too.</p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <h3>Data Backup &amp; Recovery</h3>
+          <p>Automated, tested backups for your critical business data with clear recovery time objectives. When ransomware hits or hardware fails, you need to know your data is safe and that you can be back up and running quickly.</p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Proactive IT Support &amp; Helpdesk</h3>
+          <p>Fast, friendly helpdesk support for your team — via phone, email, or remote session. Our technicians know your environment and resolve issues with minimal disruption to your workday. Real people, real answers, real fast.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="industries" id="industries">
+    <div class="industries-inner">
+      <div class="industries-header reveal">
+        <div class="section-label">Industries We Serve</div>
+        <h2>We Understand Your Sector's IT Challenges</h2>
+        <p style="color:var(--slate);max-width:500px;margin:1rem auto 0;">Different industries have different compliance requirements, workflows, and risk profiles. Our team is experienced across the sectors most common in the West Palm Beach business community.</p>
+      </div>
+      <div class="industries-grid">
+        <div class="ind-card reveal">
+          <div class="ind-dot"></div>
+          <div>
+            <h3>Healthcare</h3>
+            <p>HIPAA compliance, electronic health records, and secure patient data management for clinics and healthcare providers.</p>
+          </div>
+        </div>
+        <div class="ind-card reveal">
+          <div class="ind-dot"></div>
+          <div>
+            <h3>Legal</h3>
+            <p>Secure document management, remote access, and data confidentiality solutions for law firms of all sizes.</p>
+          </div>
+        </div>
+        <div class="ind-card reveal">
+          <div class="ind-dot"></div>
+          <div>
+            <h3>Finance</h3>
+            <p>Regulatory compliance support, secure client data handling, and high-availability infrastructure for financial services firms.</p>
+          </div>
+        </div>
+        <div class="ind-card reveal">
+          <div class="ind-dot"></div>
+          <div>
+            <h3>Education</h3>
+            <p>Network infrastructure, device management, and FERPA-compliant data practices for schools and educational institutions.</p>
+          </div>
+        </div>
+        <div class="ind-card reveal">
+          <div class="ind-dot"></div>
+          <div>
+            <h3>Government</h3>
+            <p>Secure, compliant IT infrastructure for municipal offices and government agencies requiring high-reliability systems.</p>
+          </div>
+        </div>
+        <div class="ind-card reveal">
+          <div class="ind-dot"></div>
+          <div>
+            <h3>Real Estate</h3>
+            <p>Mobile workforce support, transaction management tools, and reliable communication systems for real estate businesses.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="why" id="why">
+    <div class="why-inner">
+      <div class="why-image reveal-left">
+        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&auto=format&fit=crop&q=80" alt="Technology professional in modern workspace" />
+      </div>
+      <div class="why-text reveal-right">
+        <div class="section-label" style="color:var(--orange-light);">Why Optimum Origens</div>
+        <h2>Four Pillars of the Optimum Origens Difference</h2>
+        <p>There is no shortage of IT providers in South Florida. What makes Optimum Origens worth choosing is how we approach the relationship — and the work.</p>
+        <div class="why-pillars">
+          <div class="pillar">
+            <div class="pillar-num">01</div>
+            <div class="pillar-content">
+              <h3>Proactive, Not Reactive</h3>
+              <p>We monitor your systems continuously and address issues before they affect your business. Most clients tell us their downtime dropped significantly in the first 90 days.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">02</div>
+            <div class="pillar-content">
+              <h3>Local and Accountable</h3>
+              <p>We are a West Palm Beach company serving West Palm Beach businesses. We show up in person, know our clients by name, and take personal accountability for the service we provide.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">03</div>
+            <div class="pillar-content">
+              <h3>Enterprise Experience, SMB Focus</h3>
+              <p>Our team's 36+ years of combined experience includes major enterprise environments. Our clients benefit from that deep expertise at pricing that makes sense for their size.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">04</div>
+            <div class="pillar-content">
+              <h3>Strategic Partner, Not Just a Vendor</h3>
+              <p>We participate in your technology planning, not just your support tickets. We help you make better decisions about technology so it actually supports your business goals.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="process-inner">
+      <div class="process-header reveal">
+        <div class="section-label">Our Approach</div>
+        <h2>From Assessment to Ongoing Partnership</h2>
+        <p>Every client relationship starts with understanding — not a sales pitch. Here is how we work with you from day one.</p>
+      </div>
+      <div class="process-steps">
+        <div class="p-step reveal">
+          <div class="p-step-circle">1</div>
+          <h4>Assessment</h4>
+          <p>Free review of your current IT environment — infrastructure, security posture, and gaps.</p>
+        </div>
+        <div class="p-step reveal">
+          <div class="p-step-circle">2</div>
+          <h4>Strategy</h4>
+          <p>A clear technology roadmap aligned to your business goals and budget realities.</p>
+        </div>
+        <div class="p-step reveal">
+          <div class="p-step-circle">3</div>
+          <h4>Implementation</h4>
+          <p>Smooth onboarding and deployment with minimal disruption to your operations.</p>
+        </div>
+        <div class="p-step reveal">
+          <div class="p-step-circle">4</div>
+          <h4>Monitoring</h4>
+          <p>Continuous 24/7 monitoring and proactive maintenance to keep you running clean.</p>
+        </div>
+        <div class="p-step reveal">
+          <div class="p-step-circle">5</div>
+          <h4>Support</h4>
+          <p>Responsive helpdesk, ongoing strategic reviews, and a team that knows your business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <div class="cta-inner reveal">
+      <div>
+        <h2>Is Your Business Truly Protected?</h2>
+        <p>Most small businesses don't know what they don't know when it comes to cybersecurity. Our free IT assessment gives you a clear, honest picture of where you stand — with no obligation to proceed.</p>
+      </div>
+      <a href="#contact" class="btn-white">Get My Free Assessment</a>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="testimonials-inner">
+      <div class="testimonials-header reveal">
+        <div class="section-label">What Clients Say</div>
+        <h2>Trusted by South Florida Businesses</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="t-card reveal">
+          <div class="t-quote">"</div>
+          <p>"Switching to Optimum Origens was one of the best decisions we made for our practice. Our IT problems basically stopped. The team is responsive, knowledgeable, and they actually explain what they're doing in plain English."</p>
+          <div class="t-author">Dr. Angela M.</div>
+          <div class="t-company">Owner, 8-Provider Medical Practice, West Palm Beach</div>
+        </div>
+        <div class="t-card reveal">
+          <div class="t-quote">"</div>
+          <p>"Bjorn's team helped us move to the cloud without losing a single hour of billable time. The planning was thorough, the execution was clean, and they were available every step of the way. That is exactly what you need from an IT partner."</p>
+          <div class="t-author">Robert K.</div>
+          <div class="t-company">Managing Partner, 12-Attorney Law Firm, Boca Raton</div>
+        </div>
+        <div class="t-card reveal">
+          <div class="t-quote">"</div>
+          <p>"We had a ransomware scare before we found Optimum Origens. Now we have proper backups, endpoint security, and a team that actively monitors for threats. The peace of mind alone has been worth every dollar."</p>
+          <div class="t-author">Sandra P.</div>
+          <div class="t-company">Owner, Independent Financial Advisory Firm, Palm Beach Gardens</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-info reveal-left">
+        <div class="section-label">Get in Touch</div>
+        <h2>Let's Start with a Free IT Assessment</h2>
+        <p>Fill out the form and we will reach out within one business day to schedule your free assessment. No pressure, no commitment — just an honest conversation about your technology needs.</p>
+        <div class="contact-items">
+          <div class="c-item">
+            <div class="c-dot-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 6.29 6.29l.87-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.92 16.92z"/></svg></div>
+            <div class="c-text">
+              <strong>Call Bjorn</strong>
+              <span><a href="tel:5617773970" style="color:inherit;">(561) 777-3970</a></span>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-dot-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div class="c-text">
+              <strong>Email</strong>
+              <span>bjorn@optimumorigens.com</span>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-dot-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div class="c-text">
+              <strong>Location</strong>
+              <span>2711 Vista Parkway, Ste B6<br>West Palm Beach, FL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-box reveal-right">
+        <form>
+          <div class="form-group">
+            <label>Business Name</label>
+            <input type="text" placeholder="Your company name" />
+          </div>
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="First and last name" />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@business.com" />
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="(xxx) xxx-xxxx" />
+          </div>
+          <div class="form-group">
+            <label>Current IT Situation</label>
+            <select>
+              <option value="">Tell us where you are...</option>
+              <option>We have no IT support</option>
+              <option>We have an internal IT person</option>
+              <option>We use another MSP but aren't happy</option>
+              <option>We're growing and need better IT</option>
+              <option>We had a security incident</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Additional Details</label>
+            <textarea placeholder="Number of employees, current challenges, anything else helpful..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Request Free Assessment</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="f-logo">Optimum <span>Origens</span></a>
+          <p>Technology Practitioners and Your Strategic IT Partner. Serving West Palm Beach and South Florida businesses since 2013. The possibilities are infinite with Optimum Origens.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Managed IT</a></li>
+            <li><a href="#services">Network Monitoring</a></li>
+            <li><a href="#services">Cloud Solutions</a></li>
+            <li><a href="#services">Cybersecurity</a></li>
+            <li><a href="#services">Data Backup</a></li>
+            <li><a href="#services">IT Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#industries">Industries</a></li>
+            <li><a href="#why">Why Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="tel:5617773970">(561) 777-3970</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Optimum Origens Inc. All rights reserved. West Palm Beach, FL.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

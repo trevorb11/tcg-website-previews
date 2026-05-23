@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Absolute Recomp | Pro-Style 24/7 Gyms | Dallas-Fort Worth</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark-mid: #1a1a1a;
+      --red: #dc2626;
+      --red-light: #ef4444;
+      --silver: #a0aec0;
+      --white: #ffffff;
+      --off-white: #f5f5f5;
+      --gray: #6b7280;
+      --gray-mid: #2a2a2a;
+      --gray-light: #333333;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: var(--white);
+      background: var(--black);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; }
+    h4 { font-family: 'Roboto', sans-serif; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.98);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      border-bottom: 1px solid rgba(220,38,38,0.3);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    .nav-logo span { color: var(--red); }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--red-light); }
+
+    .nav-cta {
+      background: var(--red);
+      color: var(--white) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 3px;
+      font-weight: 700 !important;
+      letter-spacing: 1px !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--red-light) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--dark);
+      display: flex;
+      align-items: center;
+      padding: 120px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.22;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(10,10,10,0.97) 50%, rgba(220,38,38,0.1) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      color: var(--white);
+      line-height: 0.95;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 .red { color: var(--red); }
+
+    .hero p {
+      font-size: 1.08rem;
+      color: rgba(255,255,255,0.68);
+      margin-bottom: 2.5rem;
+      max-width: 520px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      padding: 0.9rem 2.2rem;
+      border-radius: 3px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--red-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      padding: 0.9rem 2.2rem;
+      border-radius: 3px;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.3);
+      transition: border-color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--red-light); }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--red);
+      padding: 25px 5%;
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-item strong {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      color: var(--white);
+      letter-spacing: 1px;
+    }
+
+    .stat-item span {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* SECTIONS */
+    section { padding: 90px 5%; }
+
+    .section-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-heading {
+      font-size: clamp(2rem, 5vw, 4rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+      line-height: 1;
+    }
+
+    .section-intro {
+      font-size: 1rem;
+      color: var(--silver);
+      max-width: 580px;
+      margin-bottom: 3rem;
+    }
+
+    /* ABOUT */
+    .about { background: var(--dark-mid); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .about-text p { color: var(--silver); margin-bottom: 1.2rem; font-size: 0.97rem; }
+
+    /* LOCATIONS */
+    .locations { background: var(--dark); }
+
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .location-card {
+      background: var(--gray-mid);
+      border: 1px solid var(--gray-light);
+      border-radius: 6px;
+      padding: 1.8rem 1.5rem;
+      text-align: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .location-card:hover {
+      border-color: var(--red);
+      background: rgba(220,38,38,0.08);
+    }
+
+    .location-card.coming-soon { opacity: 0.55; }
+
+    .location-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      color: var(--white);
+      letter-spacing: 1px;
+      margin-bottom: 0.2rem;
+    }
+
+    .location-card span {
+      font-size: 0.75rem;
+      color: var(--silver);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .location-card .cs-tag {
+      display: inline-block;
+      margin-top: 0.5rem;
+      background: rgba(255,255,255,0.1);
+      color: var(--silver);
+      font-size: 0.65rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+    }
+
+    /* SERVICES */
+    .services { background: var(--dark-mid); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5px;
+      max-width: 1100px;
+      margin: 0 auto;
+      background: var(--gray-light);
+    }
+
+    .service-card {
+      background: var(--dark-mid);
+      padding: 2.5rem 2rem;
+      transition: background 0.2s;
+    }
+
+    .service-card:hover {
+      background: var(--gray-mid);
+    }
+
+    .service-card::before {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 3px;
+      background: var(--red);
+      margin-bottom: 1.2rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.3rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+      font-size: 0.87rem;
+      color: var(--silver);
+      line-height: 1.65;
+    }
+
+    /* AMENITIES */
+    .amenities { background: var(--dark); }
+
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .amenities-image img {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .amenities-text p { color: var(--silver); margin-bottom: 1.2rem; font-size: 0.97rem; }
+
+    .amenity-list {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .amenity-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--gray-mid);
+      color: rgba(255,255,255,0.75);
+      font-size: 0.92rem;
+    }
+
+    .amenity-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--red);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* PHOTO STRIP */
+    .photo-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      height: 280px;
+    }
+
+    .photo-strip img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: filter 0.3s;
+      filter: grayscale(30%);
+    }
+
+    .photo-strip img:hover { filter: grayscale(0%); }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--dark-mid); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--gray-mid);
+      border-radius: 6px;
+      padding: 2rem;
+      border-left: 3px solid var(--red);
+    }
+
+    .testimonial-card p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+
+    .testimonial-author img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .testimonial-author strong { display: block; font-size: 0.9rem; color: var(--red-light); }
+    .testimonial-author span { font-size: 0.8rem; color: var(--silver); }
+
+    /* CONTACT */
+    .contact { background: var(--dark); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p { color: var(--silver); margin-bottom: 2rem; font-size: 0.95rem; }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: var(--gray-mid);
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+      border-left: 3px solid var(--red);
+    }
+
+    .contact-detail strong {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      color: var(--red-light);
+      text-transform: uppercase;
+    }
+
+    .contact-detail span { font-size: 0.9rem; color: rgba(255,255,255,0.75); }
+
+    .contact-form {
+      background: var(--gray-mid);
+      padding: 2.5rem;
+      border-radius: 6px;
+      border-top: 4px solid var(--red);
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.2rem; }
+
+    .form-group label {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.92rem;
+      color: var(--white);
+      background: rgba(255,255,255,0.06);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--red-light); }
+
+    .form-group select option { background: var(--dark); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+
+    /* CTA */
+    .cta-section {
+      background: var(--red);
+      text-align: center;
+      padding: 80px 5%;
+    }
+
+    .cta-section h2 { font-size: clamp(2rem, 5vw, 4rem); color: var(--white); margin-bottom: 0.75rem; }
+    .cta-section p { color: rgba(255,255,255,0.82); font-size: 1.05rem; margin-bottom: 2rem; }
+
+    .btn-cta {
+      background: var(--white);
+      color: var(--red);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      padding: 0.9rem 2.5rem;
+      border-radius: 3px;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+
+    .btn-cta:hover { transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: rgba(255,255,255,0.45);
+      padding: 60px 5% 30px;
+      border-top: 1px solid var(--gray-mid);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+    }
+
+    .footer-brand p { font-size: 0.87rem; margin-top: 1rem; line-height: 1.7; }
+
+    .footer-col h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      color: var(--red-light);
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.6rem; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-size: 0.87rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--red-light); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid var(--gray-mid);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .about-grid,
+      .amenities-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .photo-strip { grid-template-columns: repeat(2, 1fr); height: auto; }
+      .photo-strip img { height: 180px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      section { padding: 65px 5%; }
+      .stats-bar { gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .photo-strip { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Absolute<span>Recomp</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#locations">Locations</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact" class="nav-cta">Join Now</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-tag">DFW's Pro-Style 24/7 Gym</div>
+      <h1>Train<br><span class="red">Harder.</span><br>Look<br>Absolute.</h1>
+      <p>Premium 24/7 gym access, expert personal training, and real nutrition support for people who take their fitness seriously. Multiple DFW locations — all open and staffed around the clock.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Start Your Free Trial</a>
+        <a href="#locations" class="btn-outline">Find a Location</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat-item">
+      <strong>5</strong>
+      <span>DFW Locations</span>
+    </div>
+    <div class="stat-item">
+      <strong>24/7</strong>
+      <span>Open and Staffed</span>
+    </div>
+    <div class="stat-item">
+      <strong>2015</strong>
+      <span>Founded</span>
+    </div>
+    <div class="stat-item">
+      <strong>100%</strong>
+      <span>Pro-Level Equipment</span>
+    </div>
+  </div>
+
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="about-image reveal">
+        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80" alt="Athlete training at Absolute Recomp" />
+      </div>
+      <div class="about-text reveal">
+        <p class="section-label">Who We Are</p>
+        <h2 class="section-heading">Built for the Serious. Open to Everyone.</h2>
+        <p>Absolute Recomp was founded in 2015 with a clear vision: build the gym that serious athletes actually want to train in, then open the doors to everyone who's ready to bring that same mindset to their fitness.</p>
+        <p>We're not a big-box warehouse with 400 treadmills. We're a pro-style facility with premium equipment, expert training staff, and an environment built to produce results. Whether you're a competitive bodybuilder, a weekend warrior, or someone who's finally decided to make a real change — you belong here.</p>
+        <p>With locations across the Dallas-Fort Worth area and more opening in Chicago, Arlington, and Phoenix, Absolute Recomp is building a national presence for a community that takes training as seriously as we do.</p>
+        <p>All of our clubs are open and staffed 24 hours a day, 7 days a week. Because real athletes don't train on the gym's schedule — they train on theirs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="locations" id="locations">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">Find Us</p>
+      <h2 class="section-heading reveal">DFW Locations &mdash; and Growing</h2>
+      <p class="section-intro reveal">All clubs are open and staffed 24/7. No keyfob-only access &mdash; real staff, real support, any time you walk through the door.</p>
+      <div class="locations-grid">
+        <div class="location-card reveal">
+          <h3>North Richland Hills</h3>
+          <span>Headquarters</span>
+        </div>
+        <div class="location-card reveal">
+          <h3>Las Colinas</h3>
+          <span>DFW Metroplex</span>
+        </div>
+        <div class="location-card reveal">
+          <h3>Fort Worth</h3>
+          <span>DFW Metroplex</span>
+        </div>
+        <div class="location-card reveal">
+          <h3>Lewisville</h3>
+          <span>DFW Metroplex</span>
+        </div>
+        <div class="location-card reveal">
+          <h3>Frisco</h3>
+          <span>DFW Metroplex</span>
+        </div>
+        <div class="location-card coming-soon reveal">
+          <h3>Arlington</h3>
+          <span class="cs-tag">Coming Soon</span>
+        </div>
+        <div class="location-card coming-soon reveal">
+          <h3>Chicago</h3>
+          <span class="cs-tag">Coming Soon</span>
+        </div>
+        <div class="location-card coming-soon reveal">
+          <h3>Phoenix</h3>
+          <span class="cs-tag">Coming Soon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">What We Offer</p>
+      <h2 class="section-heading reveal">Everything You Need to Transform</h2>
+      <p class="section-intro reveal">We built Absolute Recomp to cover every element of a serious training lifestyle &mdash; not just the gym floor.</p>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <h3>24/7 Gym Access</h3>
+          <p>Full access to premium equipment around the clock. Pro-level free weights, machines, cable systems, cardio, and specialty equipment.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Personal Training</h3>
+          <p>Individual and athlete-focused personal training from certified coaches who understand periodization, programming, and body composition goals.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Nutrition Coaching</h3>
+          <p>Customized nutrition plans for body recomposition, muscle building, cutting, and sports performance. Real food, real strategy.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Body Recomposition Programs</h3>
+          <p>Structured programs specifically designed to simultaneously reduce body fat and build lean muscle mass — the hardest goal, done right.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Sports Performance</h3>
+          <p>Athletic performance training for competitive athletes focused on strength, power, speed, and sport-specific conditioning.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Supplement and Apparel Retail</h3>
+          <p>In-club retail store stocked with high-quality supplements, Absolute Recomp apparel, and fitness accessories.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="photo-strip">
+    <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=600&q=80" alt="Athlete training" />
+    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80" alt="Gym interior" />
+    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80" alt="Weight training" />
+    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80" alt="Personal training" />
+  </div>
+
+  <section class="amenities" id="amenities">
+    <div class="amenities-grid">
+      <div class="amenities-image reveal">
+        <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=800&q=80" alt="Gym facilities" />
+      </div>
+      <div class="amenities-text reveal">
+        <p class="section-label">Facilities</p>
+        <h2 class="section-heading">Pro-Level Everything</h2>
+        <p>We built Absolute Recomp with no compromises. If serious athletes need it, we have it — because the equipment and environment you train in directly affects your results.</p>
+        <ul class="amenity-list">
+          <li>Premium free weight area with dumbbells up to 150lb</li>
+          <li>Full cable and machine systems</li>
+          <li>Competition-quality cardio equipment</li>
+          <li>Sauna and recovery amenities</li>
+          <li>Dedicated posing room for physique competitors</li>
+          <li>Supplement and apparel retail store</li>
+          <li>Locker rooms and showers</li>
+          <li>24/7 staffed facility</li>
+          <li>Secure 24-hour access</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">Community</p>
+      <h2 class="section-heading reveal">Real People, Real Results</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <p>I've trained at five different gyms in DFW over the years. Absolute Recomp is in a different category. The equipment is better, the coaches are better, and the culture pushes you in a way that doesn't happen at a commercial gym.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Member" />
+            <div>
+              <strong>Jason T.</strong>
+              <span>Member, Fort Worth Location &mdash; 2 Years</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>I dropped 32 pounds and built more muscle than I ever had in my life in eight months. The nutrition coaching combined with the training program made the difference. I stopped guessing and started getting results.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Member" />
+            <div>
+              <strong>Ashley R.</strong>
+              <span>Member, Las Colinas Location</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>Training at 4am before work with staff actually there, spotters available, everything stocked and clean — that's not common. Absolute Recomp figured out what serious people actually need and built it. I'm not going anywhere else.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=100&q=80" alt="Member" />
+            <div>
+              <strong>Marcus L.</strong>
+              <span>Member, North Richland Hills &mdash; 3 Years</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <h2>Your Best Shape Starts Now</h2>
+    <p>Come in for a free trial and see what training at Absolute Recomp actually feels like.</p>
+    <a href="#contact" class="btn-cta">Start Free Trial</a>
+  </div>
+
+  <section class="contact" id="contact">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p class="section-label">Get Started</p>
+        <h2>Find Your Location</h2>
+        <p>Fill out the form and we'll connect you with your nearest club for a free trial, tour, and membership options. No commitment required to start.</p>
+        <div class="contact-detail">
+          <div>
+            <strong>Locations</strong>
+            <span>North Richland Hills, Las Colinas, Fort Worth, Lewisville, Frisco</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div>
+            <strong>Email</strong>
+            <span>ar1@absoluterecomp.com</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div>
+            <strong>Hours</strong>
+            <span>24/7 &mdash; Staffed Around the Clock</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div>
+            <strong>App</strong>
+            <span>Download the Absolute Recomp App on Google Play and App Store</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--white);letter-spacing:2px;margin-bottom:1.5rem;">Start Your Free Trial</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="First" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Last" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com" />
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" placeholder="(469) 555-0100" />
+        </div>
+        <div class="form-group">
+          <label>Preferred Location</label>
+          <select>
+            <option value="">Select a location...</option>
+            <option>North Richland Hills</option>
+            <option>Las Colinas</option>
+            <option>Fort Worth</option>
+            <option>Lewisville</option>
+            <option>Frisco</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Your Primary Goal</label>
+          <select>
+            <option value="">What are you working toward?</option>
+            <option>Body Recomposition</option>
+            <option>Muscle Building / Bulking</option>
+            <option>Fat Loss / Cutting</option>
+            <option>Sports Performance</option>
+            <option>General Fitness</option>
+            <option>Competitive Bodybuilding</option>
+          </select>
+        </div>
+        <button class="btn-primary" style="width:100%;padding:1rem;font-size:1.1rem;">Claim Free Trial</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">Absolute<span>Recomp</span></a>
+        <p>Pro-style 24/7 gyms across Dallas-Fort Worth. Personal training, nutrition coaching, and body recomposition programs for people who take their fitness seriously.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Gym Membership</a></li>
+          <li><a href="#">Personal Training</a></li>
+          <li><a href="#">Nutrition Coaching</a></li>
+          <li><a href="#">Recomp Programs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Locations</h4>
+        <ul>
+          <li><a href="#">North Richland Hills</a></li>
+          <li><a href="#">Las Colinas</a></li>
+          <li><a href="#">Fort Worth</a></li>
+          <li><a href="#">Lewisville</a></li>
+          <li><a href="#">Frisco</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:ar1@absoluterecomp.com">ar1@absoluterecomp.com</a></li>
+          <li><a href="#">absoluterecomp.com</a></li>
+          <li><a href="#">Dallas-Fort Worth, TX</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Absolute Recomp. All rights reserved.</p>
+      <p>Dallas-Fort Worth, TX &bull; Founded 2015 &bull; Expanding Nationally</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

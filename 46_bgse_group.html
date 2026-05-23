@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B GSE Group LLC — Aviation Ground Support Equipment | Huntersville, NC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0c1b33;
+      --navy-mid: #112244;
+      --yellow: #f5a623;
+      --yellow-light: #f7b947;
+      --yellow-pale: #fff8ed;
+      --steel: #6b7280;
+      --steel-light: #9ca3af;
+      --white: #ffffff;
+      --gray-light: #f3f4f6;
+      --border: #e5e7eb;
+      --charcoal: #111827;
+      --text: #1f2937;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Barlow', sans-serif;
+      line-height: 1.1;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-36px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(36px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: none; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(12, 27, 51, 0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 3px solid var(--yellow);
+      padding: 0 5%;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Barlow', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-logo span { color: var(--yellow); }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--yellow); }
+    .nav-cta {
+      background: var(--yellow) !important;
+      color: var(--charcoal) !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 4px;
+    }
+    .nav-cta:hover { background: var(--yellow-light) !important; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1800&auto=format&fit=crop&q=80');
+      background-size: cover;
+      background-position: center 40%;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(12,27,51,0.98) 20%, rgba(12,27,51,0.5) 70%, rgba(12,27,51,0.2) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 0 5% 80px;
+      max-width: 900px;
+    }
+    .hero-eyebrow {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      color: var(--white);
+      font-weight: 900;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--yellow);
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 620px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .btn-yellow {
+      background: var(--yellow);
+      color: var(--charcoal);
+      padding: 0.9rem 2.5rem;
+      text-decoration: none;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-yellow:hover { background: var(--yellow-light); transform: translateY(-2px); }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.4);
+      color: var(--white);
+      padding: 0.9rem 2.5rem;
+      text-decoration: none;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--yellow); }
+    .hero-badges {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .hero-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--yellow);
+      border-radius: 50%;
+    }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 100px 5%; }
+    .section-label {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 0.75rem;
+    }
+
+    /* ===== INTRO STATS ===== */
+    .intro-stats {
+      background: var(--charcoal);
+      padding: 50px 5%;
+    }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .stat-block {
+      text-align: center;
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat-block-num {
+      font-family: 'Barlow', sans-serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .stat-block-label {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ===== ABOUT ===== */
+    .about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .about-text h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+    .about-text p {
+      color: var(--steel);
+      margin-bottom: 1.25rem;
+    }
+    .clients-row {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .clients-label {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--steel-light);
+      margin-bottom: 1rem;
+    }
+    .client-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .client-tag {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--steel);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.9rem;
+      border-radius: 4px;
+    }
+    .about-image img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.85);
+    }
+
+    /* ===== PRODUCTS ===== */
+    .products { background: var(--charcoal); color: var(--white); }
+    .products-inner { max-width: 1200px; margin: 0 auto; }
+    .products-header { text-align: center; margin-bottom: 4rem; }
+    .products-header h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 1rem;
+    }
+    .products-header p { color: rgba(255,255,255,0.5); max-width: 560px; margin: 0 auto; }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: rgba(255,255,255,0.06);
+    }
+    .product-card {
+      background: var(--charcoal);
+      padding: 2.5rem;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .product-card:hover { background: var(--navy-mid); }
+    .product-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--yellow);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+    .product-card:hover::after { transform: scaleX(1); }
+    .product-num {
+      font-family: 'Barlow', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: rgba(245,166,35,0.12);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .product-card h3 {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.75rem;
+    }
+    .product-tag {
+      font-size: 0.72rem;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 1rem;
+    }
+    .product-card p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+    .product-specs {
+      margin-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .product-spec {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.35);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 500;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .product-spec::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--yellow);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ===== MILITARY ===== */
+    .military {
+      background: var(--navy);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .military::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40%;
+      height: 100%;
+      background: rgba(245,166,35,0.04);
+      clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+    .military-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .military-text h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .military-text p {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 1.25rem;
+    }
+    .military-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    .mil-stat {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 1.5rem;
+      text-align: center;
+      border-top: 2px solid var(--yellow);
+    }
+    .mil-stat-num {
+      font-family: 'Barlow', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--yellow);
+      line-height: 1;
+    }
+    .mil-stat-label {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-top: 0.4rem;
+    }
+    .military-image img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.6) brightness(0.7);
+    }
+
+    /* ===== WHY ===== */
+    .why { background: var(--gray-light); }
+    .why-inner { max-width: 1100px; margin: 0 auto; }
+    .why-header { text-align: center; margin-bottom: 3.5rem; }
+    .why-header h2 {
+      font-size: clamp(2rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .why-card {
+      background: var(--white);
+      padding: 2rem;
+      border-top: 3px solid var(--yellow);
+      transition: box-shadow 0.3s;
+    }
+    .why-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+    .why-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--yellow-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .why-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--yellow);
+      fill: none;
+      stroke-width: 2;
+    }
+    .why-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.6rem;
+    }
+    .why-card p { font-size: 0.9rem; color: var(--steel); }
+
+    /* ===== CERTS ===== */
+    .certs {
+      background: var(--charcoal);
+      padding: 60px 5%;
+    }
+    .certs-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .certs-label {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      white-space: nowrap;
+    }
+    .cert-badges-row {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .cert-badge-item {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-left: 3px solid var(--yellow);
+      padding: 1rem 1.5rem;
+    }
+    .cert-badge-item h4 {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .cert-badge-item p {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+      margin-top: 0.2rem;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials { background: var(--white); }
+    .testimonials-inner { max-width: 1100px; margin: 0 auto; }
+    .testimonials-header { text-align: center; margin-bottom: 3.5rem; }
+    .testimonials-header h2 {
+      font-size: clamp(2rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .t-card {
+      background: var(--navy);
+      padding: 2.5rem;
+    }
+    .t-quote {
+      font-family: 'Barlow', sans-serif;
+      font-size: 4rem;
+      color: var(--yellow);
+      opacity: 0.3;
+      line-height: 0.7;
+      margin-bottom: 1rem;
+    }
+    .t-card p {
+      font-style: italic;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+    .t-author {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .t-company {
+      font-size: 0.8rem;
+      color: var(--yellow);
+      margin-top: 0.25rem;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact { background: var(--navy); color: var(--white); }
+    .contact-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-text h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      color: var(--white);
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .contact-text p {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 2.5rem;
+    }
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .cd {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .cd-icon-block {
+      width: 40px;
+      height: 40px;
+      background: var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .cd-icon-block svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--charcoal);
+      fill: none;
+      stroke-width: 2;
+    }
+    .cd-info strong {
+      display: block;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      margin-bottom: 0.15rem;
+    }
+    .cd-info span {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .contact-form {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 2.5rem;
+    }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label {
+      display: block;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--white);
+      padding: 0.75rem 1rem;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--yellow); }
+    .form-group select option { background: var(--navy); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit {
+      width: 100%;
+      background: var(--yellow);
+      color: var(--charcoal);
+      border: none;
+      padding: 1rem;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 900;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .form-submit:hover { background: var(--yellow-light); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #080e1a;
+      padding: 4rem 5% 2rem;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .f-logo {
+      font-family: 'Barlow', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+    .f-logo span { color: var(--yellow); }
+    .footer-brand p {
+      color: rgba(255,255,255,0.35);
+      font-size: 0.88rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .footer-cert-tags {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .f-cert {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      border: 1px solid rgba(245,166,35,0.3);
+      padding: 0.25rem 0.6rem;
+    }
+    .footer-col h4 {
+      font-family: 'Barlow', sans-serif;
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul a {
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: var(--yellow); }
+    .footer-bottom {
+      padding-top: 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom p { color: rgba(255,255,255,0.25); font-size: 0.8rem; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .about-grid, .military-inner, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .products-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 70px 5%; }
+      .nav-links { display: none; }
+      .products-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .military-stats { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">B<span>GSE</span> Group</a>
+    <ul class="nav-links">
+      <li><a href="#products">Products</a></li>
+      <li><a href="#military">Military</a></li>
+      <li><a href="#why">Why BGSE</a></li>
+      <li><a href="#contact" class="nav-cta">Request Equipment Specs</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Aviation Ground Support Equipment — Huntersville, NC</div>
+      <h1>Elevating Aviation<br>Standards Through<br><em>Innovation</em></h1>
+      <p>Turnkey GSE solutions for military and commercial aviation terminals, ramps, and hangars around the globe. Ground power, pre-conditioned air, advanced hose management, and service pits — engineered to perform.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-yellow">Request Equipment Specs</a>
+        <a href="#products" class="btn-outline">View Products</a>
+      </div>
+      <div class="hero-badges">
+        <div class="hero-badge">ISO 9001 Certified</div>
+        <div class="hero-badge">Buy America Compliant</div>
+        <div class="hero-badge">10+ Years Experience</div>
+        <div class="hero-badge">300+ Military Contracts</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO STATS -->
+  <div class="intro-stats">
+    <div class="stats-row">
+      <div class="stat-block reveal">
+        <div class="stat-block-num">10+</div>
+        <div class="stat-block-label">Years in Business</div>
+      </div>
+      <div class="stat-block reveal">
+        <div class="stat-block-num">160+</div>
+        <div class="stat-block-label">Years Team Experience</div>
+      </div>
+      <div class="stat-block reveal">
+        <div class="stat-block-num">300+</div>
+        <div class="stat-block-label">Military Contracts</div>
+      </div>
+      <div class="stat-block reveal">
+        <div class="stat-block-num">Global</div>
+        <div class="stat-block-label">Reach</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="about-text reveal-left">
+        <div class="section-label">Who We Are</div>
+        <h2>Engineering Excellence on the Ramp</h2>
+        <p>Marshell Dills founded B GSE Group LLC with a conviction born from years on the ramp: ground support equipment is not a commodity — it is a critical system that airports, military installations, and aviation operations depend on every single day. When ground power fails or a PCA unit goes down, aircraft cannot load, flights delay, and costs escalate rapidly. Marshell built BGSE Group to ensure that never happens.</p>
+        <p>Under Marshell's leadership, our team has grown into a group of airline pilots, retired military personnel, and aircraft utility experts who bring more than 160 years of combined experience to every project. Based in Huntersville, North Carolina, we design, manufacture, and install turnkey GSE systems for terminals, ramps, and hangars across the globe.</p>
+        <p>We have completed over 300 military contracts and work with the world's leading aerospace manufacturers and carriers — delivering systems that reduce fuel consumption, cut capital maintenance costs, and increase ramp efficiency from day one.</p>
+        <div class="clients-row">
+          <div class="clients-label">Trusted by Leading Organizations</div>
+          <div class="client-tags">
+            <span class="client-tag">Boeing</span>
+            <span class="client-tag">Airbus</span>
+            <span class="client-tag">Lockheed Martin</span>
+            <span class="client-tag">Northrop Grumman</span>
+            <span class="client-tag">Amazon Prime Air</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-image reveal-right">
+        <img src="https://images.unsplash.com/photo-1532587286074-5562e7b90a81?w=800&auto=format&fit=crop&q=80" alt="Aviation ramp operations and aircraft" />
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <div class="products-inner">
+      <div class="products-header reveal">
+        <div class="section-label" style="color:var(--yellow-light);">Our Product Lines</div>
+        <h2>Complete Ground Support Equipment Solutions</h2>
+        <p>From single-unit installations to full terminal buildouts, our product range covers every ground support need for commercial and military aviation.</p>
+      </div>
+      <div class="products-grid">
+        <div class="product-card reveal">
+          <div class="product-num">01</div>
+          <div class="product-tag">Power Solutions</div>
+          <h3>Ground Power Units (GPU)</h3>
+          <p>Point-of-use and central power systems providing reliable, clean ground power to parked aircraft. Our GPU systems cut fuel consumption and maintenance costs while improving ramp safety and efficiency.</p>
+          <div class="product-specs">
+            <div class="product-spec">Point of Use Systems</div>
+            <div class="product-spec">Central Power Systems</div>
+            <div class="product-spec">VDC Configuration Options</div>
+            <div class="product-spec">Power Accessories</div>
+          </div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-num">02</div>
+          <div class="product-tag">Climate Control</div>
+          <h3>Pre-Conditioned Air (PCA) Units</h3>
+          <p>Ground-based air conditioning for parked aircraft — eliminating the need for APU operation and significantly reducing fuel burn and carbon emissions while passengers and crew board or deplane.</p>
+          <div class="product-specs">
+            <div class="product-spec">Point of Use Units</div>
+            <div class="product-spec">Central Air Systems</div>
+            <div class="product-spec">Air Accessories</div>
+            <div class="product-spec">Custom Configurations</div>
+          </div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-num">03</div>
+          <div class="product-tag">Hose Management</div>
+          <h3>COOL Jet Hose Management</h3>
+          <p>The COOL Jet system is the most advanced hose management system in the industry. Engineered to protect cables and hoses, improve ramp safety, and extend the operational life of your GSE infrastructure.</p>
+          <div class="product-specs">
+            <div class="product-spec">Advanced Cable Protection</div>
+            <div class="product-spec">Improved Ramp Safety</div>
+            <div class="product-spec">Extended Equipment Life</div>
+            <div class="product-spec">Custom Configurations</div>
+          </div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-num">04</div>
+          <div class="product-tag">Infrastructure</div>
+          <h3>Service Pits</h3>
+          <p>Custom-designed service pits for aircraft ramp areas — pop-up configurations, hatch systems, and fueling pits. Our engineering team provides full design services from concept through installation.</p>
+          <div class="product-specs">
+            <div class="product-spec">Pop-Up Configurations</div>
+            <div class="product-spec">Hatch Systems</div>
+            <div class="product-spec">Fueling Pit Design</div>
+            <div class="product-spec">Design Engineering Services</div>
+          </div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-num">05</div>
+          <div class="product-tag">Military Solutions</div>
+          <h3>Military GSE</h3>
+          <p>American-made ground support equipment specifically designed for military legacy aircraft. Built to the specifications and standards required by the US armed forces, with Buy America compliance at every level.</p>
+          <div class="product-specs">
+            <div class="product-spec">American Manufactured</div>
+            <div class="product-spec">Legacy Aircraft Compatible</div>
+            <div class="product-spec">Buy America Compliant</div>
+            <div class="product-spec">Military Specification Ready</div>
+          </div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-num">06</div>
+          <div class="product-tag">Turnkey Systems</div>
+          <h3>Complete Terminal Buildouts</h3>
+          <p>Full turnkey system design and installation for airport terminals, ramps, and hangars. From initial needs assessment through commissioning, BGSE Group manages every aspect of your ground support infrastructure project.</p>
+          <div class="product-specs">
+            <div class="product-spec">Terminal System Design</div>
+            <div class="product-spec">Ramp Infrastructure</div>
+            <div class="product-spec">Hangar Solutions</div>
+            <div class="product-spec">Commissioning Support</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MILITARY -->
+  <section class="military" id="military">
+    <div class="military-inner">
+      <div class="military-text reveal-left">
+        <div class="section-label" style="color:var(--yellow);">Military Division</div>
+        <h2>Proven Performance for Military Aviation</h2>
+        <p>BGSE Group has built its military division around one principle: the men and women who fly and service military aircraft deserve equipment that performs without fail. With over 300 completed military contracts, our team understands the procurement process, the performance requirements, and the importance of Buy America compliance.</p>
+        <p>Every military GSE product we manufacture is made in America, built to military specification, and backed by a team that includes retired military personnel who know what the mission demands.</p>
+        <div class="military-stats">
+          <div class="mil-stat">
+            <div class="mil-stat-num">300+</div>
+            <div class="mil-stat-label">Completed Contracts</div>
+          </div>
+          <div class="mil-stat">
+            <div class="mil-stat-num">USA</div>
+            <div class="mil-stat-label">Made in America</div>
+          </div>
+          <div class="mil-stat">
+            <div class="mil-stat-num">BA</div>
+            <div class="mil-stat-label">Buy America Compliant</div>
+          </div>
+          <div class="mil-stat">
+            <div class="mil-stat-num">ISO</div>
+            <div class="mil-stat-label">9001 Certified</div>
+          </div>
+        </div>
+      </div>
+      <div class="military-image reveal-right">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop&q=80" alt="Military aviation and airfield operations" />
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="why" id="why">
+    <div class="why-inner">
+      <div class="why-header reveal">
+        <div class="section-label">Why BGSE Group</div>
+        <h2>What Sets Us Apart on the Ramp</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>ISO 9001 Certified</h3>
+          <p>Our quality management system is ISO 9001 certified, ensuring that every product and installation meets rigorous, internationally recognized standards.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <h3>Buy America Compliant</h3>
+          <p>All of our military GSE products are manufactured in the United States in full compliance with Buy America requirements — no exceptions.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+          <h3>Turnkey System Solutions</h3>
+          <p>We handle every phase — design, manufacturing, installation, and commissioning. You get a fully integrated system with a single accountable partner.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+          <h3>Reduce Fuel Consumption</h3>
+          <p>Our GPU and PCA systems eliminate the need for APU operation during ground time, generating significant fuel cost savings and emissions reductions for every operator.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h3>Cut Maintenance Costs</h3>
+          <p>Systems designed for reliability and ease of maintenance reduce total cost of ownership over the life of the equipment — a real financial advantage for operators at scale.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>Expert Team</h3>
+          <p>160+ years of combined experience from airline pilots, retired military, and aircraft utility professionals who have worked on both sides of the equipment equation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTS -->
+  <div class="certs">
+    <div class="certs-inner">
+      <div class="certs-label">Certifications &amp; Compliance</div>
+      <div class="cert-badges-row">
+        <div class="cert-badge-item">
+          <h4>ISO 9001</h4>
+          <p>Quality management system certified</p>
+        </div>
+        <div class="cert-badge-item">
+          <h4>Buy America Act</h4>
+          <p>Full compliance on all military products</p>
+        </div>
+        <div class="cert-badge-item">
+          <h4>Made in USA</h4>
+          <p>Military GSE manufactured domestically</p>
+        </div>
+        <div class="cert-badge-item">
+          <h4>MIL-SPEC Capable</h4>
+          <p>Products built to military specifications</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="testimonials-inner">
+      <div class="testimonials-header reveal">
+        <div class="section-label">Industry Feedback</div>
+        <h2>What Aviation Professionals Say</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="t-card reveal">
+          <div class="t-quote">"</div>
+          <p>"BGSE Group delivered our GPU installation on time and on budget, which in the aviation contracting world is genuinely remarkable. The equipment has performed without issue since day one, and their team was professional throughout every phase."</p>
+          <div class="t-author">Senior Project Engineer</div>
+          <div class="t-company">Major US Commercial Carrier</div>
+        </div>
+        <div class="t-card reveal">
+          <div class="t-quote">"</div>
+          <p>"We awarded BGSE Group a military GSE contract after a thorough evaluation of several vendors. Their Buy America compliance documentation was flawless, the equipment specification met every requirement, and the installation team clearly knew what they were doing."</p>
+          <div class="t-author">Contracting Officer</div>
+          <div class="t-company">US Military Installation</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-text reveal-left">
+        <div class="section-label" style="color:var(--yellow);">Request Equipment Specs</div>
+        <h2>Ready to Upgrade Your Ground Operations?</h2>
+        <p>Tell us about your application — military or commercial, single unit or full terminal. Our team will respond with a clear, detailed proposal for your specific requirements.</p>
+        <div class="contact-details">
+          <div class="cd">
+            <div class="cd-icon-block"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 6.29 6.29l.87-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.92 16.92z"/></svg></div>
+            <div class="cd-info"><strong>Call Marshell</strong><span><a href="tel:7044880084" style="color:inherit;">(704) 488-0084</a></span></div>
+          </div>
+          <div class="cd">
+            <div class="cd-icon-block"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div class="cd-info"><strong>Email</strong><span>bryan@bgsegroup.com</span></div>
+          </div>
+          <div class="cd">
+            <div class="cd-icon-block"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div class="cd-info"><strong>Headquarters</strong><span>14034 Clarendon Pointe Ct<br>Huntersville, NC 28078</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal-right">
+        <form>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" placeholder="Organization or company name" />
+          </div>
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="First and last name" />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@organization.com" />
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="(xxx) xxx-xxxx" />
+          </div>
+          <div class="form-group">
+            <label>Application Type</label>
+            <select>
+              <option value="">Military or Commercial?</option>
+              <option>Military</option>
+              <option>Commercial Aviation</option>
+              <option>Both / Mixed Use</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Equipment Interest</label>
+            <select>
+              <option value="">What are you looking for?</option>
+              <option>Ground Power Units (GPU)</option>
+              <option>Pre-Conditioned Air (PCA)</option>
+              <option>COOL Jet Hose Management</option>
+              <option>Service Pits</option>
+              <option>Military GSE</option>
+              <option>Turnkey Terminal Solution</option>
+              <option>Multiple / Not Sure</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Project Details</label>
+            <textarea placeholder="Location, scale, timeline, aircraft types, any relevant specifications..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Submit RFQ</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="f-logo">B<span>GSE</span> Group LLC</a>
+          <p>Elevating aviation standards through innovation. Turnkey ground support equipment solutions for military and commercial aviation worldwide. Huntersville, NC.</p>
+          <div class="footer-cert-tags">
+            <span class="f-cert">ISO 9001</span>
+            <span class="f-cert">Buy America</span>
+            <span class="f-cert">Made in USA</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="#products">Ground Power Units</a></li>
+            <li><a href="#products">Pre-Conditioned Air</a></li>
+            <li><a href="#products">COOL Jet System</a></li>
+            <li><a href="#products">Service Pits</a></li>
+            <li><a href="#products">Military GSE</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#military">Military Division</a></li>
+            <li><a href="#why">Why BGSE</a></li>
+            <li><a href="tel:7044880084">(704) 488-0084</a></li>
+            <li><a href="mailto:bryan@bgsegroup.com">bryan@bgsegroup.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 B GSE Group LLC. All rights reserved. Huntersville, NC.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

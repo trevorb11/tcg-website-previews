@@ -1,0 +1,2026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RNR 365 Solutions LLC | Non-Emergency Medical Transportation | Corpus Christi, TX</title>
+  <meta name="description" content="RNR 365 Solutions provides safe, reliable non-emergency medical transportation 24/7/365 in Corpus Christi and South Texas. Ambulatory, wheelchair, stretcher, VA, and Medicaid transport." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: #374151;
+      background: #ffffff;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.25;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-36px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(36px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ===== LAYOUT UTILITIES ===== */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 88px 0;
+    }
+
+    .section--alt {
+      background: #eff6ff;
+    }
+
+    .section--dark {
+      background: #1d4ed8;
+      color: #ffffff;
+    }
+
+    .section--teal {
+      background: #0d9488;
+      color: #ffffff;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #0d9488;
+      margin-bottom: 12px;
+    }
+
+    .section--dark .section-label,
+    .section--teal .section-label {
+      color: rgba(255,255,255,0.75);
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 16px;
+    }
+
+    .section--dark .section-title,
+    .section--teal .section-title {
+      color: #ffffff;
+    }
+
+    .section-subtitle {
+      font-size: 18px;
+      color: #6b7280;
+      max-width: 620px;
+      line-height: 1.7;
+    }
+
+    .section--dark .section-subtitle,
+    .section--teal .section-subtitle {
+      color: rgba(255,255,255,0.85);
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .text-center .section-subtitle {
+      margin: 0 auto;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 32px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      border: 2px solid transparent;
+      letter-spacing: 0.01em;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: #1d4ed8;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: #1e40af;
+      box-shadow: 0 8px 24px rgba(29,78,216,0.35);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #1d4ed8;
+      border-color: #1d4ed8;
+    }
+
+    .btn-secondary:hover {
+      background: #eff6ff;
+    }
+
+    .btn-white {
+      background: #ffffff;
+      color: #1d4ed8;
+    }
+
+    .btn-white:hover {
+      background: #eff6ff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    .btn-outline-white {
+      background: transparent;
+      color: #ffffff;
+      border-color: rgba(255,255,255,0.6);
+    }
+
+    .btn-outline-white:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: #ffffff;
+    }
+
+    /* ===== NAVIGATION ===== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      gap: 24px;
+    }
+
+    .nav__logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .nav__logo-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 20px;
+      color: #1d4ed8;
+    }
+
+    .nav__logo-tagline {
+      font-size: 11px;
+      font-weight: 600;
+      color: #0d9488;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav__links a {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: #374151;
+      transition: color 0.2s;
+    }
+
+    .nav__links a:hover {
+      color: #1d4ed8;
+    }
+
+    .nav__cta {
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .nav__links {
+        display: none;
+      }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero__bg img {
+      object-position: center 30%;
+    }
+
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(17, 24, 39, 0.82) 0%,
+        rgba(29, 78, 216, 0.55) 60%,
+        rgba(13, 148, 136, 0.25) 100%
+      );
+      z-index: 1;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      padding: 80px 0;
+      max-width: 680px;
+    }
+
+    .hero__badge {
+      display: inline-block;
+      background: rgba(13,148,136,0.2);
+      border: 1px solid rgba(13,148,136,0.5);
+      color: #5eead4;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+
+    .hero__title {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 20px;
+      line-height: 1.15;
+    }
+
+    .hero__title span {
+      color: #5eead4;
+    }
+
+    .hero__subtitle {
+      font-size: clamp(16px, 2vw, 19px);
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .hero__actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ===== TRUST BAR ===== */
+    .trust-bar {
+      background: #1d4ed8;
+      padding: 20px 0;
+    }
+
+    .trust-bar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.9);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+    }
+
+    .trust-item__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #5eead4;
+      flex-shrink: 0;
+    }
+
+    /* ===== ABOUT ===== */
+    .about__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .about__image {
+      border-radius: 16px;
+      overflow: hidden;
+      height: 480px;
+      box-shadow: 0 24px 64px rgba(29,78,216,0.15);
+    }
+
+    .about__text p {
+      margin-bottom: 20px;
+      font-size: 17px;
+      color: #4b5563;
+    }
+
+    .about__text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about__stat-row {
+      display: flex;
+      gap: 32px;
+      margin: 32px 0;
+      flex-wrap: wrap;
+    }
+
+    .about__stat {
+      text-align: center;
+    }
+
+    .about__stat-number {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      color: #1d4ed8;
+      display: block;
+    }
+
+    .about__stat-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 900px) {
+      .about__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about__image {
+        height: 320px;
+      }
+    }
+
+    /* ===== SERVICES ===== */
+    .services__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 28px;
+      margin-top: 56px;
+    }
+
+    .service-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 36px 32px;
+      transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 16px 48px rgba(29,78,216,0.12);
+      transform: translateY(-4px);
+      border-color: #bfdbfe;
+    }
+
+    .service-card__icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: #eff6ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .service-card__icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: #1d4ed8;
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .service-card__title {
+      font-size: 19px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+
+    .service-card__desc {
+      font-size: 15px;
+      color: #4b5563;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .service-card__who {
+      font-size: 13px;
+      font-weight: 600;
+      color: #0d9488;
+    }
+
+    /* ===== WHO WE SERVE ===== */
+    .serve__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .serve-item {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .serve-item__title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .serve-item__desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* ===== WHY RNR ===== */
+    .why__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .why__image {
+      border-radius: 16px;
+      overflow: hidden;
+      height: 460px;
+      box-shadow: 0 20px 56px rgba(0,0,0,0.12);
+    }
+
+    .why__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .why__item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .why__item-check {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      background: #eff6ff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .why__item-check svg {
+      width: 14px;
+      height: 14px;
+      stroke: #1d4ed8;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .why__item-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: #111827;
+      margin-bottom: 4px;
+    }
+
+    .why__item-desc {
+      font-size: 15px;
+      color: #4b5563;
+    }
+
+    @media (max-width: 900px) {
+      .why__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .why__image {
+        height: 300px;
+      }
+    }
+
+    /* ===== HOW TO BOOK ===== */
+    .book__steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 56px;
+      position: relative;
+    }
+
+    .book__steps::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: calc(16.66% + 16px);
+      right: calc(16.66% + 16px);
+      height: 2px;
+      background: #bfdbfe;
+      z-index: 0;
+    }
+
+    .step-card {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-card__number {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #1d4ed8;
+      color: #ffffff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .step-card__title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+
+    .step-card__desc {
+      font-size: 15px;
+      color: #4b5563;
+    }
+
+    .book__phone-banner {
+      margin-top: 56px;
+      background: #eff6ff;
+      border: 2px solid #bfdbfe;
+      border-radius: 16px;
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .book__phone-text strong {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: #111827;
+      display: block;
+    }
+
+    .book__phone-text span {
+      font-size: 15px;
+      color: #6b7280;
+    }
+
+    .book__phone-number {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: #1d4ed8;
+    }
+
+    .book__phone-number a {
+      color: inherit;
+    }
+
+    @media (max-width: 700px) {
+      .book__steps {
+        grid-template-columns: 1fr;
+      }
+
+      .book__steps::before {
+        display: none;
+      }
+
+      .book__phone-banner {
+        padding: 28px 24px;
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* ===== VETERANS ===== */
+    .veterans__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .veterans__image {
+      border-radius: 16px;
+      overflow: hidden;
+      height: 440px;
+      box-shadow: 0 20px 56px rgba(0,0,0,0.15);
+      order: 2;
+    }
+
+    .veterans__content {
+      order: 1;
+    }
+
+    .veterans__content p {
+      font-size: 17px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 20px;
+    }
+
+    .veterans__steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 28px 0;
+    }
+
+    .veterans__step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .veterans__step-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .veterans__step-text {
+      font-size: 15px;
+      color: rgba(255,255,255,0.88);
+      padding-top: 4px;
+    }
+
+    @media (max-width: 900px) {
+      .veterans__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .veterans__image {
+        height: 300px;
+        order: 1;
+      }
+
+      .veterans__content {
+        order: 2;
+      }
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+      margin-top: 52px;
+    }
+
+    .testimonial-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 36px 32px;
+    }
+
+    .testimonial-card__quote {
+      font-size: 32px;
+      color: #bfdbfe;
+      font-family: Georgia, serif;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .testimonial-card__text {
+      font-size: 16px;
+      color: #374151;
+      line-height: 1.75;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .testimonial-card__author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testimonial-card__avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #1d4ed8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .testimonial-card__name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: #111827;
+    }
+
+    .testimonial-card__role {
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    /* ===== COMMUNITY ===== */
+    .community__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .community__image {
+      border-radius: 16px;
+      overflow: hidden;
+      height: 440px;
+      box-shadow: 0 20px 56px rgba(29,78,216,0.12);
+    }
+
+    .community__content p {
+      font-size: 17px;
+      color: #4b5563;
+      margin-bottom: 20px;
+    }
+
+    .community__content p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 900px) {
+      .community__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .community__image {
+        height: 300px;
+      }
+    }
+
+    /* ===== CONTACT FORM ===== */
+    .contact {
+      background: #f9fafb;
+    }
+
+    .contact__grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 64px;
+      align-items: flex-start;
+    }
+
+    .contact__info h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 20px;
+    }
+
+    .contact__detail {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .contact__detail-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: #eff6ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact__detail-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: #1d4ed8;
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .contact__detail-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+    }
+
+    .contact__detail-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .contact__detail-value a {
+      color: #1d4ed8;
+    }
+
+    .contact__hours {
+      margin-top: 32px;
+      background: #1d4ed8;
+      border-radius: 12px;
+      padding: 24px;
+      color: #ffffff;
+    }
+
+    .contact__hours h4 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: rgba(255,255,255,0.75);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .contact__hours p {
+      font-size: 20px;
+      font-weight: 800;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .contact__form {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      padding: 44px 40px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    }
+
+    .contact__form h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 28px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #374151;
+      margin-bottom: 6px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 15px;
+      color: #374151;
+      background: #f9fafb;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #1d4ed8;
+      box-shadow: 0 0 0 3px rgba(29,78,216,0.1);
+      background: #ffffff;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 16px;
+      font-size: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .contact__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .contact__form {
+        padding: 32px 24px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: #111827;
+      color: rgba(255,255,255,0.75);
+      padding: 64px 0 32px;
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer__logo-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .footer__logo-tagline {
+      font-size: 12px;
+      font-weight: 600;
+      color: #0d9488;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+
+    .footer__about {
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .footer__certs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer__cert-badge {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .footer__heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+
+    .footer__links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer__links a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      transition: color 0.2s;
+    }
+
+    .footer__links a:hover {
+      color: #ffffff;
+    }
+
+    .footer__contact-item {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .footer__contact-item a {
+      color: rgba(255,255,255,0.65);
+      transition: color 0.2s;
+    }
+
+    .footer__contact-item a:hover {
+      color: #ffffff;
+    }
+
+    .footer__contact-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #0d9488;
+      margin-bottom: 2px;
+    }
+
+    .footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer__copy {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .footer__bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer__bottom-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      transition: color 0.2s;
+    }
+
+    .footer__bottom-links a:hover {
+      color: rgba(255,255,255,0.75);
+    }
+
+    @media (max-width: 768px) {
+      .footer__grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .footer__bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* ===== RESPONSIVE HELPERS ===== */
+    @media (max-width: 600px) {
+      .section {
+        padding: 64px 0;
+      }
+
+      .hero__actions {
+        flex-direction: column;
+      }
+
+      .hero__actions .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .book__phone-number {
+        font-size: 24px;
+      }
+
+      .serve__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="#" class="nav__logo" aria-label="RNR 365 Solutions LLC home">
+          <span class="nav__logo-name">RNR 365 Solutions</span>
+          <span class="nav__logo-tagline">Non-Emergency Medical Transport</span>
+        </a>
+        <ul class="nav__links" aria-label="Site sections">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#veterans">Veterans</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="tel:3615635415" class="btn btn-primary nav__cta">Call Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" aria-label="Hero">
+    <div class="hero__bg">
+      <img
+        src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1920&q=80"
+        alt="Medical transportation care"
+        loading="eager"
+      />
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="container">
+      <div class="hero__content reveal">
+        <div class="hero__badge">Serving Corpus Christi &amp; South Texas</div>
+        <h1 class="hero__title">
+          Your Ride to Care.<br />
+          <span>Always On Time.</span><br />
+          Always There.
+        </h1>
+        <p class="hero__subtitle">
+          RNR 365 Solutions provides safe, reliable non-emergency medical transportation
+          24 hours a day, 7 days a week throughout Corpus Christi and South Texas.
+          Because missing a medical appointment should never be an option.
+        </p>
+        <div class="hero__actions">
+          <a href="#contact" class="btn btn-white">Schedule a Ride</a>
+          <a href="#services" class="btn btn-outline-white">View Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TRUST BAR ===== -->
+  <div class="trust-bar" aria-label="Trust indicators">
+    <div class="container">
+      <div class="trust-bar__inner">
+        <div class="trust-item">
+          <span class="trust-item__dot"></span>
+          Woman-Owned Business
+        </div>
+        <div class="trust-item">
+          <span class="trust-item__dot"></span>
+          VA Certified Provider
+        </div>
+        <div class="trust-item">
+          <span class="trust-item__dot"></span>
+          Medicaid Transportation
+        </div>
+        <div class="trust-item">
+          <span class="trust-item__dot"></span>
+          24 / 7 / 365 Service
+        </div>
+        <div class="trust-item">
+          <span class="trust-item__dot"></span>
+          Founded 2021
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section" id="about" aria-labelledby="about-title">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__image reveal-left">
+          <img
+            src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80"
+            alt="Compassionate caregiver helping a patient"
+            loading="lazy"
+          />
+        </div>
+        <div class="about__text reveal-right">
+          <span class="section-label">Our Story</span>
+          <h2 class="section-title" id="about-title">A Mission Born from Seeing the Gap</h2>
+
+          <div class="about__stat-row">
+            <div class="about__stat">
+              <span class="about__stat-number">2021</span>
+              <span class="about__stat-label">Founded</span>
+            </div>
+            <div class="about__stat">
+              <span class="about__stat-number">10+</span>
+              <span class="about__stat-label">Years Experience</span>
+            </div>
+            <div class="about__stat">
+              <span class="about__stat-number">24/7</span>
+              <span class="about__stat-label">Always Available</span>
+            </div>
+          </div>
+
+          <p>
+            "I started RNR 365 because I saw too many people miss critical medical appointments. Dialysis patients. Veterans. Elderly neighbors. People who needed to be somewhere and had no safe way to get there. That's not a transportation problem — that's a care problem."
+          </p>
+          <p>
+            Rola Omar founded RNR 365 Solutions LLC in 2021, bringing over a decade of experience in non-emergency medical transportation to Corpus Christi and the surrounding South Texas region. As a woman-owned business and passionate veteran advocate, Rola built this company on a simple belief: everyone deserves access to the healthcare they need, and getting there should never be the obstacle.
+          </p>
+          <p>
+            Today, RNR 365 operates around the clock — every day of the year — providing ambulatory, wheelchair, stretcher, VA, and Medicaid transportation to patients who count on us to be there, on time, every time.
+          </p>
+          <a href="#contact" class="btn btn-primary" style="margin-top: 12px;">Schedule Your Ride</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="section section--alt" id="services" aria-labelledby="services-title">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">What We Offer</span>
+        <h2 class="section-title" id="services-title">Transportation Built Around Your Needs</h2>
+        <p class="section-subtitle">
+          Every patient is different. We offer the right vehicle, equipment, and level
+          of assistance to fit your situation — from a brief clinic visit to a complex
+          specialist appointment.
+        </p>
+      </div>
+
+      <div class="services__grid">
+
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11V7a4 4 0 0 0-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          </div>
+          <h3 class="service-card__title">Ambulatory Transport</h3>
+          <p class="service-card__desc">
+            For patients who are able to walk with assistance. Our trained drivers provide door-to-door
+            service, helping you in and out of the vehicle safely and with dignity.
+          </p>
+          <span class="service-card__who">For patients who walk independently or with a cane or walker</span>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="2"/><path d="M12 22V12m-4 2l4-4 4 4M8 22h8"/></svg>
+          </div>
+          <h3 class="service-card__title">Wheelchair Transport</h3>
+          <p class="service-card__desc">
+            Our wheelchair-accessible vehicles are equipped with hydraulic lifts and secure tie-down
+            systems, ensuring smooth, safe transport for passengers who use wheelchairs or scooters.
+          </p>
+          <span class="service-card__who">For patients using manual or power wheelchairs</span>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2M8 12h8"/></svg>
+          </div>
+          <h3 class="service-card__title">Stretcher Transport</h3>
+          <p class="service-card__desc">
+            Designed for patients who must remain in a lying-down position throughout the ride. Our
+            stretcher vehicles are staffed and equipped to handle this level of care with professionalism.
+          </p>
+          <span class="service-card__who">For patients unable to sit upright during transport</span>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/></svg>
+          </div>
+          <h3 class="service-card__title">VA Transportation</h3>
+          <p class="service-card__desc">
+            As a VA-certified transportation provider, we are proud to serve veterans who need rides
+            to VA medical centers, community clinics, and other approved healthcare appointments.
+          </p>
+          <span class="service-card__who">For veterans with VA benefits or VA-authorized transportation needs</span>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3 class="service-card__title">Medicaid Transportation</h3>
+          <p class="service-card__desc">
+            RNR 365 is an approved Medicaid transportation provider. Qualifying patients can access
+            our services through their Medicaid benefit at no out-of-pocket cost for covered trips.
+          </p>
+          <span class="service-card__who">For patients with active Texas Medicaid benefits</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHO WE SERVE ===== -->
+  <section class="section section--dark" aria-labelledby="serve-title">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Our Patients</span>
+        <h2 class="section-title" id="serve-title">We Serve Everyone Who Needs a Ride</h2>
+        <p class="section-subtitle">
+          If you or someone you love needs safe, dependable transportation to a medical appointment
+          in Corpus Christi or South Texas, RNR 365 is here for you.
+        </p>
+      </div>
+
+      <div class="serve__grid">
+        <div class="serve-item reveal">
+          <h3 class="serve-item__title">Elderly Patients</h3>
+          <p class="serve-item__desc">Seniors who need a trusted, careful driver for their appointments</p>
+        </div>
+        <div class="serve-item reveal">
+          <h3 class="serve-item__title">Veterans</h3>
+          <p class="serve-item__desc">VA-eligible veterans accessing medical care through the VA system</p>
+        </div>
+        <div class="serve-item reveal">
+          <h3 class="serve-item__title">Individuals with Disabilities</h3>
+          <p class="serve-item__desc">Patients requiring accessible vehicles and trained assistance</p>
+        </div>
+        <div class="serve-item reveal">
+          <h3 class="serve-item__title">Dialysis Patients</h3>
+          <p class="serve-item__desc">Reliable recurring transportation for life-sustaining treatments</p>
+        </div>
+        <div class="serve-item reveal">
+          <h3 class="serve-item__title">Medicaid Beneficiaries</h3>
+          <p class="serve-item__desc">Qualifying patients with Medicaid-covered transportation benefits</p>
+        </div>
+        <div class="serve-item reveal">
+          <h3 class="serve-item__title">Anyone Who Needs a Ride</h3>
+          <p class="serve-item__desc">Doctor visits, therapy, procedures — we cover it all</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY RNR ===== -->
+  <section class="section" aria-labelledby="why-title">
+    <div class="container">
+      <div class="why__grid">
+        <div class="reveal-left">
+          <span class="section-label">Why Choose Us</span>
+          <h2 class="section-title" id="why-title">Reliability, Compassion, and Community</h2>
+          <p class="section-subtitle" style="margin-bottom: 36px;">
+            We are not just a transportation service. We are a community partner. Every driver,
+            every vehicle, every ride is a reflection of our commitment to the people of South Texas.
+          </p>
+          <ul class="why__list">
+            <li class="why__item">
+              <div class="why__item-check">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="why__item-title">Available 24 Hours, 365 Days</div>
+                <p class="why__item-desc">Medical needs don't follow a 9-to-5 schedule and neither do we. We're always a phone call away.</p>
+              </div>
+            </li>
+            <li class="why__item">
+              <div class="why__item-check">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="why__item-title">VA and Medicaid Certified</div>
+                <p class="why__item-desc">Approved provider for both VA transportation and Texas Medicaid, giving you access to covered rides.</p>
+              </div>
+            </li>
+            <li class="why__item">
+              <div class="why__item-check">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="why__item-title">Woman-Owned, Community-Driven</div>
+                <p class="why__item-desc">Founded by Rola Omar, a passionate community advocate with over 10 years in NEMT.</p>
+              </div>
+            </li>
+            <li class="why__item">
+              <div class="why__item-check">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="why__item-title">Trained, Compassionate Drivers</div>
+                <p class="why__item-desc">Our team is professionally trained, background-checked, and selected for their care and reliability.</p>
+              </div>
+            </li>
+            <li class="why__item">
+              <div class="why__item-check">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="why__item-title">Safe, Clean, Well-Maintained Vehicles</div>
+                <p class="why__item-desc">Every vehicle is routinely inspected and sanitized to the highest standards of safety and hygiene.</p>
+              </div>
+            </li>
+            <li class="why__item">
+              <div class="why__item-check">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div class="why__item-title">Corpus Christi &amp; South Texas Coverage</div>
+                <p class="why__item-desc">Serving the Coastal Bend and surrounding communities with local knowledge and a local heart.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="why__image reveal-right">
+          <img
+            src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=800&q=80"
+            alt="Healthcare worker assisting elderly patient"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW TO BOOK ===== -->
+  <section class="section section--alt" aria-labelledby="book-title">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Getting Started</span>
+        <h2 class="section-title" id="book-title">Scheduling a Ride is Simple</h2>
+        <p class="section-subtitle">
+          Three easy steps stand between you and safe, reliable medical transportation.
+          No complicated forms. No long waits. Just call or submit your request.
+        </p>
+      </div>
+
+      <div class="book__steps">
+        <div class="step-card reveal">
+          <div class="step-card__number">1</div>
+          <h3 class="step-card__title">Call or Submit a Request</h3>
+          <p class="step-card__desc">
+            Reach us by phone at (361) 563-5415 or use the scheduling form below.
+            We're available 24 hours a day, every day of the year.
+          </p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-card__number">2</div>
+          <h3 class="step-card__title">Confirm Your Details</h3>
+          <p class="step-card__desc">
+            We'll confirm your pickup address, destination, date and time, and the
+            type of transport you need — ambulatory, wheelchair, or stretcher.
+          </p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-card__number">3</div>
+          <h3 class="step-card__title">We Pick You Up</h3>
+          <p class="step-card__desc">
+            A trained, friendly driver arrives at your door and gets you to your
+            appointment safely and on time. We can also arrange a return trip.
+          </p>
+        </div>
+      </div>
+
+      <div class="book__phone-banner reveal">
+        <div class="book__phone-text">
+          <strong>Ready to book? Call Rola's team anytime.</strong>
+          <span>We are standing by 24 hours a day, 7 days a week, 365 days a year — no exceptions, no voicemail loops.</span>
+        </div>
+        <div class="book__phone-number">
+          <a href="tel:3615635415">(361) 563-5415</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VETERANS ===== -->
+  <section class="section section--dark" id="veterans" aria-labelledby="veterans-title">
+    <div class="container">
+      <div class="veterans__grid">
+        <div class="veterans__content reveal-left">
+          <span class="section-label">Honoring Those Who Served</span>
+          <h2 class="section-title" id="veterans-title">Proud to Serve Those Who Served Us</h2>
+          <p>
+            At RNR 365, veterans hold a special place in everything we do. Owner Rola Omar
+            has long been a dedicated veteran advocate, and that commitment is woven into
+            how this company operates every single day.
+          </p>
+          <p>
+            As an approved VA transportation vendor, we help veterans in the Corpus Christi
+            area access the medical care they earned. From VA medical center appointments to
+            community care provider visits, we make sure no veteran has to miss care because
+            they couldn't find a ride.
+          </p>
+
+          <h3 style="font-size: 18px; font-weight: 700; color: #ffffff; margin: 24px 0 12px;">
+            How Veterans Access Our Services
+          </h3>
+          <ul class="veterans__steps">
+            <li class="veterans__step">
+              <span class="veterans__step-num">1</span>
+              <span class="veterans__step-text">Contact your VA healthcare team or Patient Advocate to request transportation benefits</span>
+            </li>
+            <li class="veterans__step">
+              <span class="veterans__step-num">2</span>
+              <span class="veterans__step-text">Request RNR 365 Solutions as your preferred NEMT provider</span>
+            </li>
+            <li class="veterans__step">
+              <span class="veterans__step-num">3</span>
+              <span class="veterans__step-text">Call us directly at (361) 563-5415 and we will coordinate the rest</span>
+            </li>
+          </ul>
+
+          <a href="tel:3615635415" class="btn btn-white">Call Us for Veterans Transport</a>
+        </div>
+
+        <div class="veterans__image reveal-right">
+          <img
+            src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80"
+            alt="Veteran receiving care and transport assistance"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COMMUNITY ===== -->
+  <section class="section" aria-labelledby="community-title">
+    <div class="container">
+      <div class="community__grid">
+        <div class="community__image reveal-left">
+          <img
+            src="https://images.unsplash.com/photo-1576765608622-067973a79f53?auto=format&fit=crop&w=800&q=80"
+            alt="Community healthcare workers and patients"
+            loading="lazy"
+          />
+        </div>
+        <div class="reveal-right">
+          <span class="section-label">Our Community</span>
+          <h2 class="section-title" id="community-title">Rooted in Corpus Christi. Connected to Our Neighbors.</h2>
+          <div class="community__content">
+            <p>
+              RNR 365 is not a national call center. We are your neighbors. Rola Omar built
+              this company from the ground up in Corpus Christi because she saw firsthand how
+              transportation barriers were preventing local people from getting the healthcare
+              they needed. That personal connection still drives every decision we make.
+            </p>
+            <p>
+              We partner with local healthcare providers, clinics, dialysis centers, and
+              hospitals throughout the Coastal Bend to ensure a seamless, coordinated
+              experience for patients. When your provider knows us and we know them, your
+              ride becomes part of your care — not just a way to get there.
+            </p>
+            <p>
+              Our drivers live in this community too. They understand the neighborhoods,
+              the families, and the importance of showing up — not just on time, but with
+              genuine care for the person in the vehicle with them.
+            </p>
+            <a href="#contact" class="btn btn-primary" style="margin-top: 8px;">Get Started Today</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="section section--alt" id="testimonials" aria-labelledby="testimonials-title">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Patient Stories</span>
+        <h2 class="section-title" id="testimonials-title">What Our Patients and Families Say</h2>
+        <p class="section-subtitle">
+          Reliability matters most when the appointment matters most. Here is what the
+          people who ride with us have to say.
+        </p>
+      </div>
+
+      <div class="testimonials__grid">
+
+        <div class="testimonial-card reveal">
+          <div class="testimonial-card__quote">"</div>
+          <p class="testimonial-card__text">
+            My mother has been on dialysis for three years. Before RNR 365, getting her to
+            her three-times-a-week appointments was a constant source of stress. They have
+            never been late, not once. The driver even walks her to the door every time.
+            That means the world to our family.
+          </p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">M</div>
+            <div>
+              <div class="testimonial-card__name">Maria G.</div>
+              <div class="testimonial-card__role">Daughter of a dialysis patient, Corpus Christi</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal">
+          <div class="testimonial-card__quote">"</div>
+          <p class="testimonial-card__text">
+            As a veteran, I struggled for years to get to my VA appointments on my own.
+            RNR 365 changed that completely. They coordinate everything, they know the system,
+            and they treat me with respect every single time. I finally feel like someone is
+            looking out for me.
+          </p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar" style="background: #0d9488;">R</div>
+            <div>
+              <div class="testimonial-card__name">Robert T.</div>
+              <div class="testimonial-card__role">U.S. Army Veteran, Corpus Christi</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal">
+          <div class="testimonial-card__quote">"</div>
+          <p class="testimonial-card__text">
+            I use a power wheelchair, and finding transportation that actually works for me
+            has always been a challenge. RNR 365 has the right equipment, and more importantly,
+            they have the right attitude. I feel safe and cared for every time I ride with them.
+          </p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar" style="background: #374151;">L</div>
+            <div>
+              <div class="testimonial-card__name">Linda H.</div>
+              <div class="testimonial-card__role">Wheelchair user and Medicaid patient, Corpus Christi</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <div class="text-center reveal" style="margin-bottom: 56px;">
+        <span class="section-label">Schedule a Ride</span>
+        <h2 class="section-title" id="contact-title">Ready to Book? We Are Ready for You.</h2>
+        <p class="section-subtitle">
+          Call us anytime or submit the form below and we will follow up to confirm your
+          transportation details. We serve Corpus Christi and South Texas, 24/7/365.
+        </p>
+      </div>
+
+      <div class="contact__grid">
+
+        <!-- Contact Info -->
+        <div class="reveal-left">
+          <h3>Contact Information</h3>
+
+          <div class="contact__detail">
+            <div class="contact__detail-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l1.14-1.14a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <span class="contact__detail-label">Phone</span>
+              <span class="contact__detail-value"><a href="tel:3615635415">(361) 563-5415</a></span>
+            </div>
+          </div>
+
+          <div class="contact__detail">
+            <div class="contact__detail-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <span class="contact__detail-label">Email</span>
+              <span class="contact__detail-value"><a href="mailto:rolao@rnr365solutionsllc.com">rolao@rnr365solutionsllc.com</a></span>
+            </div>
+          </div>
+
+          <div class="contact__detail">
+            <div class="contact__detail-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <span class="contact__detail-label">Address</span>
+              <span class="contact__detail-value">4220 S. Padre Island Dr., Ste 212<br />Corpus Christi, TX 78411</span>
+            </div>
+          </div>
+
+          <div class="contact__hours">
+            <h4>Hours of Operation</h4>
+            <p>24 Hours a Day, 7 Days a Week, 365 Days a Year</p>
+          </div>
+
+          <div style="margin-top: 24px; padding: 20px; background: #f0fdf4; border-radius: 12px; border: 1px solid #bbf7d0;">
+            <p style="font-size: 14px; font-weight: 600; color: #166534; margin-bottom: 4px;">VA and Medicaid Accepted</p>
+            <p style="font-size: 13px; color: #4b5563;">We are an approved VA vendor and Medicaid transportation provider. Coverage may apply — ask us when you call.</p>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="contact__form reveal-right">
+          <h3>Schedule Your Ride</h3>
+          <form action="#" method="post" novalidate aria-label="Ride scheduling form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="patient-name">Patient Name</label>
+                <input type="text" id="patient-name" name="patient_name" placeholder="Full name" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="(361) 000-0000" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" />
+            </div>
+
+            <div class="form-group">
+              <label for="pickup">Pickup Address</label>
+              <input type="text" id="pickup" name="pickup_address" placeholder="Street address, city, zip" required />
+            </div>
+
+            <div class="form-group">
+              <label for="destination">Destination / Medical Facility</label>
+              <input type="text" id="destination" name="destination" placeholder="Clinic, hospital, or address" required />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="date">Appointment Date</label>
+                <input type="date" id="date" name="appointment_date" required />
+              </div>
+              <div class="form-group">
+                <label for="time">Pickup Time</label>
+                <input type="time" id="time" name="pickup_time" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="transport-type">Type of Transport Needed</label>
+              <select id="transport-type" name="transport_type" required>
+                <option value="" disabled selected>Select transport type</option>
+                <option value="ambulatory">Ambulatory (walking with assistance)</option>
+                <option value="wheelchair">Wheelchair Transport</option>
+                <option value="stretcher">Stretcher Transport</option>
+                <option value="va">VA Transportation</option>
+                <option value="medicaid">Medicaid Transportation</option>
+                <option value="unsure">Not sure — please advise</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="notes">Additional Notes</label>
+              <textarea id="notes" name="notes" placeholder="Oxygen equipment, return trip needed, special instructions, insurance info..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary form-submit">Submit Scheduling Request</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+
+        <div>
+          <div class="footer__logo-name">RNR 365 Solutions LLC</div>
+          <div class="footer__logo-tagline">Non-Emergency Medical Transportation</div>
+          <p class="footer__about">
+            Safe, reliable, compassionate non-emergency medical transportation serving
+            Corpus Christi and South Texas. Available 24 hours a day, 7 days a week,
+            365 days a year. Woman-owned and community-driven since 2021.
+          </p>
+          <div class="footer__certs">
+            <span class="footer__cert-badge">VA Certified</span>
+            <span class="footer__cert-badge">Medicaid Provider</span>
+            <span class="footer__cert-badge">Woman-Owned</span>
+            <span class="footer__cert-badge">24/7/365</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer__heading">Our Services</div>
+          <ul class="footer__links">
+            <li><a href="#services">Ambulatory Transport</a></li>
+            <li><a href="#services">Wheelchair Transport</a></li>
+            <li><a href="#services">Stretcher Transport</a></li>
+            <li><a href="#veterans">VA Transportation</a></li>
+            <li><a href="#services">Medicaid Transportation</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__heading">Contact Us</div>
+
+          <div class="footer__contact-item">
+            <span class="footer__contact-label">Phone</span>
+            <a href="tel:3615635415">(361) 563-5415</a>
+          </div>
+
+          <div class="footer__contact-item">
+            <span class="footer__contact-label">Email</span>
+            <a href="mailto:rolao@rnr365solutionsllc.com">rolao@rnr365solutionsllc.com</a>
+          </div>
+
+          <div class="footer__contact-item">
+            <span class="footer__contact-label">Address</span>
+            4220 S. Padre Island Dr., Ste 212<br />
+            Corpus Christi, TX 78411
+          </div>
+
+          <div class="footer__contact-item">
+            <span class="footer__contact-label">Hours</span>
+            24 / 7 / 365
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copy">
+          &copy; 2025 RNR 365 Solutions LLC. All rights reserved. Corpus Christi, TX.
+        </p>
+        <div class="footer__bottom-links">
+          <a href="#services">Services</a>
+          <a href="#veterans">Veterans</a>
+          <a href="#contact">Schedule a Ride</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== SCROLL REVEAL SCRIPT ===== -->
+  <script>
+    (function () {
+      var selectors = '.reveal, .reveal-left, .reveal-right';
+      var elements = document.querySelectorAll(selectors);
+
+      if (!elements.length) return;
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      elements.forEach(function (el) {
+        observer.observe(el);
+      });
+
+      // Stagger children inside grids for a cascade effect
+      var grids = document.querySelectorAll(
+        '.services__grid, .serve__grid, .testimonials__grid, .book__steps'
+      );
+
+      grids.forEach(function (grid) {
+        var children = grid.querySelectorAll('.reveal');
+        children.forEach(function (child, i) {
+          child.style.transitionDelay = (i * 0.08) + 's';
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

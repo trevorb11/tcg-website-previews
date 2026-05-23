@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All-State Electrical | Electrical Contractor | Macon, GA</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0C0C0C;
+      --dark: #161616;
+      --dark-mid: #1F1F1F;
+      --steel: #2A2A2A;
+      --gray: #6B7280;
+      --silver: #9CA3AF;
+      --silver-light: #D1D5DB;
+      --yellow: #FCD34D;
+      --yellow-dark: #F59E0B;
+      --yellow-deep: #D97706;
+      --white: #FFFFFF;
+      --border: #2A2A2A;
+    }
+
+    body { font-family: 'Roboto', sans-serif; color: var(--silver-light); background: var(--black); }
+
+    /* NAV */
+    nav {
+      background: var(--dark);
+      padding: 18px 50px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 3px solid var(--yellow);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo { font-family: 'Bebas Neue', cursive; font-size: 1.8rem; color: var(--white); letter-spacing: 0.08em; line-height: 1; }
+    .nav-logo span { color: var(--yellow); }
+    .nav-sub { font-family: 'Roboto', sans-serif; font-size: 0.68rem; color: var(--silver); letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-top: 1px; }
+    .nav-phone { font-family: 'Bebas Neue', cursive; font-size: 1.2rem; color: var(--yellow); letter-spacing: 0.08em; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--silver); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.03em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--yellow); }
+    .nav-cta { background: var(--yellow); color: var(--black); padding: 11px 24px; font-family: 'Bebas Neue', cursive; font-size: 1rem; font-weight: 400; letter-spacing: 0.08em; text-decoration: none; border-radius: 2px; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--yellow-dark); }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 80px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1600&q=80') center/cover no-repeat;
+      filter: brightness(0.2);
+    }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(12,12,12,0.95) 30%, rgba(12,12,12,0.3) 100%); }
+    .hero-content { position: relative; max-width: 1100px; margin: 0 auto; padding: 0 50px; width: 100%; }
+    .hero-eyebrow { font-family: 'Bebas Neue', cursive; font-size: 1rem; letter-spacing: 0.25em; color: var(--yellow); margin-bottom: 16px; }
+    .hero h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(4rem, 9vw, 8rem);
+      color: var(--white);
+      letter-spacing: 0.03em;
+      line-height: 0.95;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--yellow); display: block; }
+    .hero-sub { font-size: 1.1rem; color: var(--silver); max-width: 520px; margin-bottom: 40px; line-height: 1.7; font-weight: 300; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 52px; }
+    .btn-yellow {
+      background: var(--yellow);
+      color: var(--black);
+      padding: 16px 34px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-yellow:hover { background: var(--yellow-dark); transform: translateY(-2px); }
+    .btn-outline-yellow {
+      border: 2px solid var(--yellow);
+      color: var(--yellow);
+      padding: 16px 34px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline-yellow:hover { background: var(--yellow); color: var(--black); }
+    .hero-stats { display: flex; gap: 48px; flex-wrap: wrap; }
+    .hs { border-left: 4px solid var(--yellow); padding-left: 18px; }
+    .hs-num { font-family: 'Bebas Neue', cursive; font-size: 2.2rem; color: var(--white); line-height: 1; letter-spacing: 0.04em; }
+    .hs-label { font-size: 0.8rem; color: var(--silver); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* SERVICES BAND -->
+    .services-band { background: var(--yellow); padding: 36px 50px; }
+    .sb-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 18px; }
+    .sb-item { text-align: center; color: var(--black); }
+    .sb-icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .sb-name { font-family: 'Bebas Neue', cursive; font-size: 1rem; letter-spacing: 0.08em; }
+
+    /* SHARED -->
+    section { padding: 90px 50px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .eyebrow { font-family: 'Bebas Neue', cursive; font-size: 1rem; letter-spacing: 0.2em; color: var(--yellow); margin-bottom: 8px; }
+    .section-title { font-family: 'Bebas Neue', cursive; font-size: clamp(2.5rem, 5vw, 4rem); color: var(--white); margin-bottom: 16px; letter-spacing: 0.04em; line-height: 1; }
+    .section-sub { font-size: 0.97rem; color: var(--silver); line-height: 1.7; max-width: 560px; margin-bottom: 52px; font-weight: 300; }
+
+    /* SERVICES -->
+    .services-section { background: var(--dark-mid); }
+    .svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: var(--border); }
+    .svc-card { background: var(--dark-mid); padding: 38px 30px; border-top: 4px solid transparent; transition: border-color 0.3s; }
+    .svc-card:hover { border-top-color: var(--yellow); }
+    .svc-icon { font-size: 2rem; margin-bottom: 14px; }
+    .svc-card h3 { font-family: 'Bebas Neue', cursive; font-size: 1.4rem; letter-spacing: 0.05em; color: var(--white); margin-bottom: 10px; }
+    .svc-card p { font-size: 0.9rem; color: var(--silver); line-height: 1.65; }
+
+    /* ABOUT -->
+    .about-section { background: var(--black); }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .about-img { border-radius: 4px; overflow: hidden; position: relative; border: 2px solid var(--border); }
+    .about-img img { width: 100%; height: 500px; object-fit: cover; display: block; }
+    .year-badge {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: var(--yellow);
+      padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .year-badge .yb-num { font-family: 'Bebas Neue', cursive; font-size: 2rem; color: var(--black); letter-spacing: 0.04em; }
+    .year-badge .yb-label { font-size: 0.85rem; color: rgba(0,0,0,0.7); }
+    .about-text .section-sub { margin-bottom: 28px; }
+    .check-list { list-style: none; margin-bottom: 36px; }
+    .check-list li { padding: 11px 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; color: var(--silver-light); display: flex; align-items: center; gap: 12px; }
+    .check-y { color: var(--yellow); font-weight: 700; font-size: 1.2rem; }
+    .btn-yellow-outline { display: inline-block; border: 2px solid var(--yellow); color: var(--yellow); padding: 13px 28px; font-family: 'Bebas Neue', cursive; font-size: 1.1rem; letter-spacing: 0.08em; text-decoration: none; border-radius: 2px; transition: background 0.2s, color 0.2s; }
+    .btn-yellow-outline:hover { background: var(--yellow); color: var(--black); }
+
+    /* PHOTO SPLIT -->
+    .photo-split { display: grid; grid-template-columns: 1fr 1fr; height: 400px; }
+    .photo-split-item { overflow: hidden; position: relative; }
+    .photo-split-item img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(20%); transition: transform 0.5s, filter 0.3s; }
+    .photo-split-item:hover img { transform: scale(1.05); filter: none; }
+    .photo-label { position: absolute; bottom: 20px; left: 20px; background: var(--yellow); color: var(--black); padding: 8px 14px; font-family: 'Bebas Neue', cursive; font-size: 0.95rem; letter-spacing: 0.08em; }
+
+    /* TESTIMONIALS -->
+    .testimonials-section { background: var(--dark-mid); }
+    .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+    .test-card { border: 1px solid var(--border); border-radius: 4px; padding: 28px; border-bottom: 4px solid var(--yellow); }
+    .test-card p { font-size: 0.93rem; color: var(--silver-light); line-height: 1.75; margin-bottom: 16px; font-style: italic; }
+    .test-author { font-family: 'Bebas Neue', cursive; font-size: 0.95rem; letter-spacing: 0.08em; color: var(--yellow); }
+
+    /* WHY ALL-STATE -->
+    .why-section { background: var(--black); }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+    .why-card { border: 1px solid var(--border); border-radius: 4px; padding: 30px 24px; text-align: center; transition: border-color 0.3s; }
+    .why-card:hover { border-color: var(--yellow); }
+    .why-icon { font-size: 2.5rem; margin-bottom: 14px; }
+    .why-card h3 { font-family: 'Bebas Neue', cursive; font-size: 1.3rem; letter-spacing: 0.05em; color: var(--white); margin-bottom: 8px; }
+    .why-card p { font-size: 0.88rem; color: var(--silver); line-height: 1.6; }
+
+    /* CTA -->
+    .cta-section { background: var(--yellow); padding: 80px 50px; }
+    .cta-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .cta-text h2 { font-family: 'Bebas Neue', cursive; font-size: clamp(2.5rem, 5vw, 4rem); color: var(--black); line-height: 1; letter-spacing: 0.03em; margin-bottom: 10px; }
+    .cta-text p { font-size: 1rem; color: rgba(0,0,0,0.7); max-width: 460px; line-height: 1.65; }
+    .btn-black { background: var(--black); color: var(--white); padding: 16px 36px; font-family: 'Bebas Neue', cursive; font-size: 1.2rem; letter-spacing: 0.08em; text-decoration: none; border-radius: 2px; transition: background 0.2s, transform 0.2s; white-space: nowrap; }
+    .btn-black:hover { background: var(--dark-mid); transform: translateY(-2px); }
+
+    /* FOOTER -->
+    footer { background: #060606; color: rgba(255,255,255,0.5); padding: 60px 50px 30px; border-top: 3px solid var(--yellow); }
+    .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-logo { font-family: 'Bebas Neue', cursive; font-size: 1.6rem; color: var(--white); letter-spacing: 0.08em; margin-bottom: 12px; }
+    .footer-logo span { color: var(--yellow); }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.7; }
+    footer h4 { font-family: 'Bebas Neue', cursive; color: var(--white); font-size: 1.1rem; letter-spacing: 0.1em; margin-bottom: 16px; }
+    footer ul { list-style: none; }
+    footer ul li { margin-bottom: 10px; }
+    footer ul li a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.87rem; transition: color 0.2s; }
+    footer ul li a:hover { color: var(--yellow); }
+    .footer-bottom { max-width: 1100px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; font-size: 0.82rem; text-align: center; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 960px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .nav-phone { display: none; }
+      section { padding: 70px 24px; }
+      .hero { padding-bottom: 50px; }
+      .hero-content { padding: 0 24px; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .photo-split { grid-template-columns: 1fr; height: auto; }
+      .photo-split-item img { height: 260px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .cta-inner { flex-direction: column; }
+    }
+    @media (max-width: 600px) {
+      .hero-stats { flex-direction: column; gap: 20px; }
+      .hero h1 { font-size: clamp(3.5rem, 15vw, 8rem); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div>
+      <div class="nav-logo">All-State <span>Electrical</span></div>
+      <div class="nav-sub">Macon, Georgia &mdash; Est. 1997</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Services</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Projects</a></li>
+      <li><a href="#">Why All-State</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="nav-phone">(478) 746-7700</div>
+    <a href="#" class="nav-cta">Request a Bid</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Commercial Electrical Contractor &mdash; Macon, Georgia &mdash; Est. 1997</p>
+      <h1>Powering<br><span>Middle Georgia</span><br>Since 1997</h1>
+      <p class="hero-sub">Jacob Patton and David Flynn founded All-State Electrical in 1997 with a straightforward belief: do the work right, build relationships that last, and the rest takes care of itself. Nearly 30 years later, most of our work still comes from clients who have been with us for years and contractors who call us first. Commercial, industrial, institutional &mdash; if it is in Middle Georgia and it needs power, we have probably done something similar before.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-yellow">Discuss your project</a>
+        <a href="tel:4787467700" class="btn-outline-yellow">(478) 746-7700</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hs"><div class="hs-num">1997</div><div class="hs-label">Founded in Macon</div></div>
+        <div class="hs"><div class="hs-num">25+</div><div class="hs-label">Years in Middle Georgia</div></div>
+        <div class="hs"><div class="hs-num">100s</div><div class="hs-label">Completed Projects</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES BAND -->
+  <div class="services-band">
+    <div class="sb-inner">
+      <div class="sb-item"><div class="sb-icon">&#127959;</div><div class="sb-name">New Construction</div></div>
+      <div class="sb-item"><div class="sb-icon">&#128295;</div><div class="sb-name">Renovation</div></div>
+      <div class="sb-item"><div class="sb-icon">&#127970;</div><div class="sb-name">Commercial</div></div>
+      <div class="sb-item"><div class="sb-icon">&#9881;</div><div class="sb-name">Industrial</div></div>
+      <div class="sb-item"><div class="sb-icon">&#128736;</div><div class="sb-name">Design-Build</div></div>
+      <div class="sb-item"><div class="sb-icon">&#128222;</div><div class="sb-name">Emergency Service</div></div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services-section">
+    <div class="container">
+      <p class="eyebrow reveal">What We Do</p>
+      <h2 class="section-title reveal">Full-Service Commercial Electrical</h2>
+      <p class="section-sub reveal">New construction, renovation, industrial fit-out, design-build &mdash; All-State does it all. Jacob Patton is a Georgia Tech graduate, and that engineering mindset shows in how his team approaches every project: methodically, safely, and without cutting corners. Same quality on a tenant build-out as on a full industrial build.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card reveal">
+        <div class="svc-icon">&#127959;</div>
+        <h3>New Construction Electrical</h3>
+        <p>Complete electrical systems for commercial and industrial new construction from rough-in through final connection. Coordinated with all other trades throughout the build.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon">&#128295;</div>
+        <h3>Commercial Renovation</h3>
+        <p>Tenant build-outs, office renovations, lighting upgrades, and panel replacements. We work in occupied facilities with minimum disruption to your operations.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon">&#9881;</div>
+        <h3>Industrial Electrical</h3>
+        <p>Motor controls, equipment power feeds, 3-phase distribution, and industrial automation wiring. We understand the demands of production environments.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon">&#128736;</div>
+        <h3>Design-Build</h3>
+        <p>Integrated electrical design and construction for clients who want a single point of accountability from concept through completion.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon">&#128268;</div>
+        <h3>Service Upgrades &amp; Repairs</h3>
+        <p>Panel upgrades, service entrance work, troubleshooting, and code compliance repairs for existing commercial and industrial facilities.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-icon">&#128222;</div>
+        <h3>Emergency Service</h3>
+        <p>When electrical problems threaten your operations, All-State responds quickly. Our experienced team diagnoses and resolves issues to minimize downtime.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-img reveal">
+          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80" alt="All-State Electrical team at work" />
+          <div class="year-badge">
+            <div><div class="yb-num">EST. 1997</div><div class="yb-label">Macon, Georgia</div></div>
+            <div style="font-family:'Bebas Neue',cursive; font-size:1rem; letter-spacing:0.06em; color:rgba(0,0,0,0.65);">25+ Years<br>of Service</div>
+          </div>
+        </div>
+        <div class="reveal">
+          <p class="eyebrow">Jacob Patton &amp; David Flynn</p>
+          <h2 class="section-title">Built on relationships. Backed by engineering.</h2>
+          <p class="section-sub">Jacob Patton graduated from Georgia Tech in 1995 and spent two years in the field before co-founding All-State with David Flynn in 1997. Their bet was simple: hire good people, do excellent work, and treat clients like long-term partners rather than one-off contracts. That approach earned All-State a feature in Middle Georgia CEO and &mdash; more importantly &mdash; a client list full of repeat customers who have been calling the same number for 20-plus years.</p>
+          <p style="font-size:0.97rem; color:var(--silver); line-height:1.7; margin-bottom:28px;">Jacob is still hands-on. He is involved in bidding, project planning, and client relationships. If you have a question about scope, schedule, or approach, you can talk to him directly. That is not something every contractor can offer.</p>
+          <ul class="check-list">
+            <li><span class="check-y">&#9632;</span> Licensed electrical contractor, State of Georgia</li>
+            <li><span class="check-y">&#9632;</span> Fully bonded and insured</li>
+            <li><span class="check-y">&#9632;</span> Led by Georgia Tech graduate Jacob Patton since 1997</li>
+            <li><span class="check-y">&#9632;</span> Commercial, industrial, and institutional experience</li>
+            <li><span class="check-y">&#9632;</span> Featured in Middle Georgia CEO magazine</li>
+          </ul>
+          <a href="#" class="btn-yellow-outline">Discuss your project with Jacob</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO SPLIT -->
+  <div class="photo-split">
+    <div class="photo-split-item">
+      <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80" alt="Electrician on the job" />
+      <div class="photo-label">Commercial Projects</div>
+    </div>
+    <div class="photo-split-item">
+      <img src="https://images.unsplash.com/photo-1590959651373-a3db0f38a961?w=800&q=80" alt="Industrial electrical work" />
+      <div class="photo-label">Industrial Electrical</div>
+    </div>
+  </div>
+
+  <!-- WHY ALL-STATE -->
+  <section class="why-section">
+    <div class="container">
+      <p class="eyebrow reveal" style="text-align:center;">The All-State Difference</p>
+      <h2 class="section-title reveal" style="text-align:center; max-width:700px; margin:0 auto 48px;">Why Middle Georgia Chooses All-State</h2>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-icon">&#129309;</div>
+          <h3>Clients Call Back</h3>
+          <p>The majority of All-State's work comes from contractors and building owners who have been calling the same number for years. That kind of loyalty is earned, not marketed.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">&#127942;</div>
+          <h3>Nearly 30 Years in Middle Georgia</h3>
+          <p>Jacob Patton has been wiring commercial facilities in and around Macon since 1997. When your project comes up, he will likely recognize the building type, the GC, or the site.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">&#128203;</div>
+          <h3>Design-Build Under One Roof</h3>
+          <p>Electrical design and construction from the same firm means no finger-pointing between designer and contractor. Jacob's Georgia Tech background makes this a genuine capability, not a marketing claim.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">&#9989;</div>
+          <h3>Licensed, Bonded &amp; Insured</h3>
+          <p>State of Georgia licensed electrical contractor. Fully bonded and insured. The paperwork is in order so you can focus on the project, not the risk management.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="container">
+      <p class="eyebrow reveal" style="text-align:center;">Client Testimonials</p>
+      <h2 class="section-title reveal" style="text-align:center; max-width:500px; margin:0 auto 48px;">What clients say</h2>
+      <div class="test-grid">
+        <div class="test-card reveal">
+          <p>"All-State has been our electrical sub for over 10 years. Jacob is responsive, his crews are professional, and the quality is consistent job after job. I have put his name on more bids than I can count. I would not consider anyone else in Middle Georgia."</p>
+          <div class="test-author">Steve W. &mdash; General Contractor, Macon, GA</div>
+        </div>
+        <div class="test-card reveal">
+          <p>"We ran three design-build projects with All-State over two years and they delivered on every one. The design and field teams actually talk to each other, which sounds basic but is surprisingly rare. No surprises, no excuses. Just good work."</p>
+          <div class="test-author">Brenda H. &mdash; Facility Manager, Commercial Developer, Warner Robins, GA</div>
+        </div>
+        <div class="test-card reveal">
+          <p>"A storm knocked out our main panel on a Thursday night. I called Jacob directly, he had a crew on site by Friday morning, and we were running again by mid-afternoon. That kind of response is why I keep his number in my phone."</p>
+          <div class="test-author">Randy T. &mdash; Plant Manager, Industrial Facility, Macon, GA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h2>Ready to discuss your project?</h2>
+        <p>Call Jacob directly or send us the project details and we will come back with a bid. We do not do high-pressure sales &mdash; just a straight conversation about what the work involves and what it will cost.</p>
+      </div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a href="#" class="btn-black">Request a bid</a>
+        <a href="tel:4787467700" class="btn-black" style="background:var(--dark);">(478) 746-7700</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">All-State <span>Electrical</span></div>
+        <p>Commercial and industrial electrical contractor serving Middle Georgia since 1997. Founded by Jacob Patton (Georgia Tech, 1995) and David Flynn. Licensed, bonded, and insured in Georgia. Most of our work comes from people who have worked with us before &mdash; that says everything.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">New Construction</a></li>
+          <li><a href="#">Commercial Renovation</a></li>
+          <li><a href="#">Industrial Electrical</a></li>
+          <li><a href="#">Design-Build</a></li>
+          <li><a href="#">Service Upgrades</a></li>
+          <li><a href="#">Emergency Service</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">4390 Interstate Dr, Macon, GA 31210</a></li>
+          <li><a href="tel:4787467700">(478) 746-7700</a></li>
+          <li><a href="mailto:jpatton@allstateelec.com">jpatton@allstateelec.com</a></li>
+          <li><a href="#">Request a Bid</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 All-State Electrical Contractors. All rights reserved. | Macon, Georgia | Licensed EC &mdash; State of Georgia | Est. 1997</p>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

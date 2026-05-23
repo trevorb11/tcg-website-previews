@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B Majed &amp; Associates | Integral Accountants &amp; Consultants | Dearborn, MI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --hunter: #1a4d2e;
+    --hunter-mid: #245c38;
+    --hunter-light: #3a7a52;
+    --gold: #b8952a;
+    --gold-light: #d4ad40;
+    --cream: #fdf9f2;
+    --warm-beige: #f5efe3;
+    --border: #e0d4c0;
+    --gray: #6b7280;
+    --dark: #1a2318;
+    --white: #ffffff;
+    --text: #1e2820;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Mulish', sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+    background: var(--white);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.2;
+  }
+
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  .container {
+    width: 90%;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left { opacity: 0; transform: translateX(-22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+  .reveal-right { opacity: 0; transform: translateX(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+  /* HEADER */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(26,77,46,0.97);
+    backdrop-filter: blur(6px);
+    border-bottom: 2px solid var(--gold);
+    padding: 16px 0;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-decoration: none;
+  }
+
+  .logo-main {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--white);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .logo-sub {
+    font-size: 0.6rem;
+    color: var(--gold-light);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  nav a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--gold-light); }
+
+  .btn-nav {
+    background: var(--gold);
+    color: var(--dark) !important;
+    padding: 9px 20px;
+    border-radius: 4px;
+    font-weight: 700 !important;
+    transition: background 0.2s !important;
+  }
+  .btn-nav:hover { background: var(--gold-light) !important; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--hunter) 0%, var(--hunter-mid) 50%, var(--dark) 100%);
+    padding: 130px 0 90px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: 0;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(184,149,42,0.14) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(184,149,42,0.2);
+    border: 1px solid rgba(184,149,42,0.4);
+    color: var(--gold-light);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 4vw, 3.3rem);
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero p {
+    font-size: 1.03rem;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 36px;
+    line-height: 1.78;
+    font-weight: 300;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--dark);
+    padding: 13px 28px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .btn-outline {
+    border: 1.5px solid rgba(255,255,255,0.4);
+    color: var(--white);
+    padding: 12px 26px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+
+  .hero-image {
+    border-radius: 8px;
+    overflow: hidden;
+    height: 460px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    border: 1px solid rgba(184,149,42,0.2);
+  }
+
+  /* SECTIONS */
+  section { padding: 88px 0; }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--hunter-light);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    color: var(--dark);
+    margin-bottom: 18px;
+  }
+
+  .section-lead {
+    font-size: 1rem;
+    color: var(--gray);
+    max-width: 620px;
+    line-height: 1.78;
+    margin-bottom: 48px;
+  }
+
+  /* SERVICES */
+  .services-section { background: var(--cream); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .service-card {
+    background: var(--white);
+    border-radius: 6px;
+    padding: 28px 22px;
+    border-left: 4px solid var(--hunter);
+    box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 24px rgba(26,77,46,0.1);
+  }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(26,77,46,0.08);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+
+  .service-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--hunter);
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .service-card h3 {
+    font-family: 'Mulish', sans-serif;
+    font-size: 1rem;
+    color: var(--dark);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .service-card p {
+    font-size: 0.87rem;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+
+  /* ABOUT SPLIT */
+  .about-section { background: var(--white); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .about-image {
+    height: 480px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+  }
+
+  .about-content p {
+    font-size: 0.94rem;
+    color: var(--gray);
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+
+  .credential-strip {
+    background: var(--hunter);
+    color: var(--white);
+    border-radius: 6px;
+    padding: 18px 20px;
+    margin-top: 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-left: 4px solid var(--gold);
+  }
+
+  .credential-strip strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    display: block;
+    margin-bottom: 2px;
+    color: var(--gold-light);
+  }
+
+  .credential-strip span {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* WHO WE SERVE */
+  .serve-section { background: var(--warm-beige); }
+
+  .serve-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .serve-card {
+    background: var(--white);
+    border-radius: 6px;
+    padding: 24px 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+  }
+
+  .serve-dot {
+    width: 10px;
+    height: 10px;
+    min-width: 10px;
+    background: var(--gold);
+    border-radius: 50%;
+    margin-top: 7px;
+  }
+
+  .serve-card h4 {
+    font-family: 'Mulish', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+
+  .serve-card p {
+    font-size: 0.86rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* TAX SEASON */
+  .tax-section { background: var(--hunter); }
+
+  .tax-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .tax-item {
+    text-align: center;
+    padding: 28px 20px;
+    border: 1px solid rgba(184,149,42,0.25);
+    border-radius: 6px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .tax-item:hover {
+    border-color: var(--gold);
+    background: rgba(184,149,42,0.05);
+  }
+
+  .tax-item h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    margin-bottom: 10px;
+  }
+
+  .tax-item p {
+    font-size: 0.84rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+  }
+
+  /* IMAGE ROW */
+  .image-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 260px;
+    gap: 0;
+  }
+
+  /* CONTACT */
+  .contact-section { background: var(--cream); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .contact-info p { font-size: 0.94rem; color: var(--gray); line-height: 1.78; margin-bottom: 26px; }
+  .contact-details { display: flex; flex-direction: column; gap: 12px; }
+  .c-row { font-size: 0.9rem; color: var(--gray); display: flex; gap: 10px; }
+  .c-row strong { color: var(--dark); min-width: 70px; }
+
+  .contact-form {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 38px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    border-top: 4px solid var(--gold);
+  }
+
+  .form-group { margin-bottom: 18px; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 5px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--hunter); }
+
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  .btn-submit {
+    width: 100%;
+    background: var(--hunter);
+    color: var(--white);
+    border: none;
+    padding: 13px;
+    border-radius: 5px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    letter-spacing: 0.04em;
+  }
+  .btn-submit:hover { background: var(--hunter-light); }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.6);
+    padding: 50px 0 26px;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    margin-bottom: 24px;
+  }
+
+  .footer-brand p { margin-top: 12px; font-size: 0.86rem; line-height: 1.7; }
+  .footer-brand .logo-main { color: var(--white); }
+  .footer-brand .logo-sub { color: var(--gold-light); }
+
+  .footer-col h4 {
+    font-family: 'Mulish', sans-serif;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .footer-col a {
+    display: block;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 0.86rem;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--gold-light); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.28);
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .tax-grid { grid-template-columns: 1fr; }
+    .serve-grid { grid-template-columns: 1fr; }
+    .hero-image, .about-image { height: 300px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+    .image-row { height: auto; grid-template-columns: 1fr 1fr; }
+    .image-row div { height: 200px; }
+    .image-row div:last-child { display: none; }
+  }
+
+  @media (max-width: 640px) {
+    nav { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    section { padding: 60px 0; }
+    .hero { padding: 110px 0 70px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container header-inner">
+    <a href="#" class="logo">
+      <span class="logo-main">B Majed &amp; Associates</span>
+      <span class="logo-sub">Integral Accountants &amp; Consultants | Dearborn, MI</span>
+    </a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#tax">Tax Center</a>
+      <a href="#contact" class="btn-nav">Schedule a Consultation</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="reveal-left">
+        <div class="hero-eyebrow">Dearborn, MI | IRS Registered Tax Professionals</div>
+        <h1>Financial Clarity<br>for Businesses<br>and <em>Families</em></h1>
+        <p>Expert accounting, tax preparation, and financial consulting services for individuals and businesses in Dearborn, Michigan and the surrounding communities — delivered with care, precision, and genuine personal service.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn-primary">Schedule a Consultation</a>
+          <a href="#services" class="btn-outline">See Our Services</a>
+        </div>
+      </div>
+      <div class="hero-image reveal-right">
+        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=900&q=80" alt="Accounting professional reviewing tax documents with a client in Dearborn MI">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="container">
+    <span class="section-label reveal">Our Services</span>
+    <h2 class="section-title reveal">Complete Accounting &amp; Tax Services</h2>
+    <p class="section-lead reveal">From individual tax returns to full-service business accounting, we handle every aspect of your financial life with the thoroughness and accuracy you deserve.</p>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <h3>Tax Preparation</h3>
+        <p>Accurate, complete federal and state tax returns for individuals, families, and businesses — filed on time and maximized for every deduction you are entitled to.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        </div>
+        <h3>Tax Planning</h3>
+        <p>Proactive year-round planning to minimize your tax burden — we look ahead so you are never surprised when April arrives.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+        </div>
+        <h3>Bookkeeping &amp; Payroll</h3>
+        <p>Accurate monthly bookkeeping and payroll processing — keeping your records clean, your employees paid on time, and your business compliant.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <h3>Business Consulting</h3>
+        <p>Financial strategy, business structure advice, and operational guidance to help business owners make better decisions and build stronger companies.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+        </div>
+        <h3>Auditing</h3>
+        <p>Professional audit services — whether for compliance purposes, lender requirements, or internal financial review — conducted with independence and thoroughness.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+        </div>
+        <h3>Estate &amp; Trust Taxes</h3>
+        <p>Sensitive, thorough preparation of estate and trust tax returns — handled with the discretion and expertise that these complex situations require.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image reveal-left">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=80" alt="Belal Majed, IRS registered tax preparer and founder of B Majed and Associates Dearborn MI">
+      </div>
+      <div class="reveal-right">
+        <span class="section-label">Our Firm</span>
+        <h2 class="section-title">Your Trusted Financial Partner in Dearborn</h2>
+        <p>B Majed &amp; Associates — operating through Integral Accountants and Consultants — is a Dearborn, Michigan accounting and tax firm built on a commitment to personalized service, deep expertise, and genuine care for each client we serve.</p>
+        <p>Founded by Belal A. Majed, an IRS registered tax preparer with years of experience in individual and business taxation, our firm serves individuals, families, and businesses throughout Dearborn and the surrounding communities. We take pride in being more than just a tax preparer — we are a year-round financial partner you can trust with your most important financial decisions.</p>
+        <p>Our approach is direct, thorough, and personal. When you work with us, you speak with the professionals who handle your account — not a front desk that routes you to whoever is available. That connection matters, and it is what sets us apart.</p>
+        <div class="credential-strip">
+          <div>
+            <strong>Belal A. Majed</strong>
+            <span>IRS Registered Tax Preparer | Founder | Dearborn, MI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section class="serve-section">
+  <div class="container">
+    <span class="section-label reveal">Who We Work With</span>
+    <h2 class="section-title reveal">Serving Dearborn and Beyond</h2>
+    <p class="section-lead reveal">We work with a wide range of clients throughout the greater Dearborn area — from individual filers to growing businesses and complex estates.</p>
+    <div class="serve-grid">
+      <div class="serve-card reveal">
+        <div class="serve-dot"></div>
+        <div>
+          <h4>Individuals &amp; Families</h4>
+          <p>From simple W-2 returns to complex situations involving investments, rental income, or major life changes — we handle individual taxes with care and accuracy.</p>
+        </div>
+      </div>
+      <div class="serve-card reveal">
+        <div class="serve-dot"></div>
+        <div>
+          <h4>Small Businesses</h4>
+          <p>LLCs, S-Corps, partnerships, and sole proprietors trusting us for bookkeeping, tax preparation, and the financial guidance to run a stronger operation.</p>
+        </div>
+      </div>
+      <div class="serve-card reveal">
+        <div class="serve-dot"></div>
+        <div>
+          <h4>Self-Employed Professionals</h4>
+          <p>Freelancers, contractors, and independent professionals navigating quarterly estimates, self-employment taxes, and business deductions.</p>
+        </div>
+      </div>
+      <div class="serve-card reveal">
+        <div class="serve-dot"></div>
+        <div>
+          <h4>Estates &amp; Trusts</h4>
+          <p>Families and executors navigating the sensitive financial and tax requirements of estate administration and trust management.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TAX SEASON -->
+<section class="tax-section" id="tax">
+  <div class="container">
+    <span class="section-label reveal" style="color: var(--gold-light); text-align: center; display: block;">Tax Season Ready</span>
+    <h2 class="section-title reveal" style="color: var(--white); text-align: center; margin-bottom: 48px;">We Make Tax Season Simple</h2>
+    <div class="tax-grid">
+      <div class="tax-item reveal">
+        <h4>Early Scheduling</h4>
+        <p>Book your tax appointment early and beat the rush — we accept appointments beginning in January for the full filing season.</p>
+      </div>
+      <div class="tax-item reveal">
+        <h4>Electronic Filing</h4>
+        <p>We file all returns electronically for faster processing and faster refunds — with complete digital records for your peace of mind.</p>
+      </div>
+      <div class="tax-item reveal">
+        <h4>Year-Round Availability</h4>
+        <p>Tax questions do not stop in April. We are available throughout the year for planning consultations, IRS correspondence, and amended returns.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE ROW -->
+<div class="image-row">
+  <div class="reveal"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&q=80" alt="Accountant reviewing financial statements with a small business client"></div>
+  <div class="reveal"><img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=700&q=80" alt="Tax professional at desk reviewing tax documents"></div>
+  <div class="reveal"><img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=700&q=80" alt="Business owner and accountant in consultation"></div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <span class="section-label">Schedule Your Consultation</span>
+        <h2 class="section-title">Let's Get Your Finances in Order</h2>
+        <p>Whether you are preparing for tax season, looking for ongoing accounting support, or navigating a complex financial situation — we are here and ready to help. Reach out to schedule your consultation.</p>
+        <div class="contact-details">
+          <div class="c-row"><strong>Phone:</strong><span>(602) 743-8030</span></div>
+          <div class="c-row"><strong>Email:</strong><span>bmajed@integralmi.com</span></div>
+          <div class="c-row"><strong>Address:</strong><span>835 Mason St, Suite A-330, Dearborn, MI 48124</span></div>
+          <div class="c-row"><strong>Services:</strong><span>Individuals, families, and businesses throughout Dearborn, MI</span></div>
+        </div>
+      </div>
+      <div class="contact-form reveal-right">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Your full name">
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" placeholder="(602) 000-0000">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>I Need Help With</label>
+          <select>
+            <option value="">Select a service</option>
+            <option>Individual Tax Preparation</option>
+            <option>Business Tax Preparation</option>
+            <option>Tax Planning</option>
+            <option>Bookkeeping / Payroll</option>
+            <option>Business Consulting</option>
+            <option>Auditing</option>
+            <option>Estate &amp; Trust Taxes</option>
+            <option>General Inquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Us More</label>
+          <textarea placeholder="Briefly describe your situation and what you are looking for help with..."></textarea>
+        </div>
+        <button class="btn-submit">Request My Consultation</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <span class="logo-main">B Majed &amp; Associates</span>
+          <span class="logo-sub">Integral Accountants &amp; Consultants | Dearborn, MI</span>
+        </a>
+        <p>Expert accounting, tax preparation, and financial consulting for individuals and businesses in Dearborn, Michigan — delivered with precision, care, and personal attention.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#">Tax Preparation</a>
+        <a href="#">Tax Planning</a>
+        <a href="#">Bookkeeping &amp; Payroll</a>
+        <a href="#">Business Consulting</a>
+        <a href="#">Estate &amp; Trust</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:6027438030">(602) 743-8030</a>
+        <a href="mailto:bmajed@integralmi.com">bmajed@integralmi.com</a>
+        <a href="#">835 Mason St, Suite A-330</a>
+        <a href="#">Dearborn, MI 48124</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 B Majed &amp; Associates / Integral Accountants and Consultants. All rights reserved.</span>
+      <span>Dearborn, MI | Your Trusted Financial Experts</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

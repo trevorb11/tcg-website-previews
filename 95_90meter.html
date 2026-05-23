@@ -1,0 +1,2569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>90Meter — Zero Trust Identity. Real-World Performance.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       RESET & ROOT
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --void:       #060a0f;
+      --dark:       #0b1017;
+      --dark-mid:   #111820;
+      --dark-panel: #151d2a;
+      --dark-border:#1c2b3f;
+      --blue:       #0077cc;
+      --blue-lt:    #29a0ff;
+      --cyan:       #00e5ff;
+      --cyan-dim:   #00b8db;
+      --accent:     #00e5ff;
+      --green:      #00e676;
+      --text-white: #eaf1fa;
+      --text-mid:   #8a9bb5;
+      --text-light: #5c6e85;
+      --glass:      rgba(15, 23, 36, 0.65);
+      --glass-border: rgba(0, 229, 255, 0.12);
+
+      --font-heading: 'Syne', sans-serif;
+      --font-body:    'Inter', sans-serif;
+      --font-mono:    'JetBrains Mono', monospace;
+
+      --section-pad: 120px 0;
+      --container:   1180px;
+      --radius:      12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-white);
+      background: var(--dark);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ============================================================
+       SCROLL REVEAL ANIMATIONS
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+    .d1 { transition-delay: 0.06s; }
+    .d2 { transition-delay: 0.12s; }
+    .d3 { transition-delay: 0.18s; }
+    .d4 { transition-delay: 0.24s; }
+    .d5 { transition-delay: 0.30s; }
+    .d6 { transition-delay: 0.36s; }
+
+    /* ============================================================
+       GEOMETRIC DECORATIONS
+    ============================================================ */
+    .geo-hex {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border: 1px solid rgba(0, 229, 255, 0.06);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      pointer-events: none;
+    }
+    .geo-diamond {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border: 1px solid rgba(0, 119, 204, 0.08);
+      transform: rotate(45deg);
+      pointer-events: none;
+    }
+    .geo-circle {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border: 1px solid rgba(0, 229, 255, 0.05);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    /* ============================================================
+       HEADER
+    ============================================================ */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 16px 0;
+      background: rgba(6, 10, 15, 0.85);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid rgba(0, 229, 255, 0.08);
+      transition: padding 0.3s, background 0.3s;
+    }
+    header.scrolled {
+      padding: 10px 0;
+      background: rgba(6, 10, 15, 0.95);
+    }
+
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      position: relative;
+    }
+    .logo-mark::after {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      background: var(--void);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+    .logo-mark span {
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--cyan);
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .logo-name {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.02em;
+    }
+    .logo-tag {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      color: var(--cyan);
+      letter-spacing: 0.14em;
+      margin-top: 2px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    nav a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      letter-spacing: 0.06em;
+      transition: color 0.3s;
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--cyan);
+      transition: width 0.3s;
+    }
+    nav a:hover { color: var(--cyan); }
+    nav a:hover::after { width: 100%; }
+
+    .btn-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan-dim));
+      color: #fff !important;
+      font-family: var(--font-mono);
+      font-size: 0.7rem !important;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .btn-nav::after { display: none !important; }
+    .btn-nav:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 119, 204, 0.35);
+      color: #fff !important;
+    }
+
+    /* Mobile menu toggle */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .menu-toggle span {
+      width: 24px;
+      height: 2px;
+      background: var(--text-mid);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--void);
+    }
+
+    /* Animated grid background */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,229,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridShift 20s linear infinite;
+    }
+    @keyframes gridShift {
+      0% { background-position: 0 0; }
+      100% { background-position: 60px 60px; }
+    }
+
+    /* Glow orbs */
+    .hero-glow-1 {
+      position: absolute;
+      top: 5%;
+      right: 5%;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,119,204,0.2) 0%, transparent 70%);
+      pointer-events: none;
+      animation: float1 8s ease-in-out infinite;
+    }
+    .hero-glow-2 {
+      position: absolute;
+      bottom: 0%;
+      left: 0%;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,229,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+      animation: float2 10s ease-in-out infinite;
+    }
+    .hero-glow-3 {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,119,204,0.1) 0%, transparent 70%);
+      pointer-events: none;
+      animation: float1 12s ease-in-out infinite reverse;
+    }
+    @keyframes float1 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-20px, 20px); }
+    }
+    @keyframes float2 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(20px, -15px); }
+    }
+
+    /* Shield graphic */
+    .hero-shield {
+      position: absolute;
+      right: 8%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 420px;
+      height: 420px;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+    .hero-shield svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      padding-top: 100px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 18px;
+      background: rgba(0,229,255,0.06);
+      border: 1px solid rgba(0,229,255,0.2);
+      border-radius: 100px;
+      margin-bottom: 36px;
+      animation: fadeInUp 0.8s 0.2s both;
+    }
+
+    .hero-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 10px var(--green);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 10px var(--green); }
+      50% { opacity: 0.4; box-shadow: 0 0 4px var(--green); }
+    }
+
+    .hero-badge span {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--cyan);
+      letter-spacing: 0.12em;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.8rem, 5.5vw, 4.4rem);
+      font-weight: 800;
+      line-height: 1.05;
+      color: #fff;
+      margin-bottom: 28px;
+      animation: fadeInUp 0.8s 0.35s both;
+    }
+
+    .hero h1 .accent {
+      background: linear-gradient(135deg, var(--cyan), var(--blue-lt));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.08rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      max-width: 560px;
+      margin-bottom: 44px;
+      line-height: 1.85;
+      animation: fadeInUp 0.8s 0.5s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s 0.65s both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 32px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan-dim));
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transition: left 0.5s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0, 119, 204, 0.4);
+    }
+    .btn-primary:hover::before { left: 100%; }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border: 1px solid var(--dark-border);
+      color: var(--text-mid);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: border-color 0.3s, color 0.3s, background 0.3s;
+    }
+    .btn-ghost:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: rgba(0, 229, 255, 0.04);
+    }
+
+    /* Compliance chips row */
+    .hero-compliance {
+      position: absolute;
+      bottom: 40px;
+      left: 0; right: 0;
+      z-index: 2;
+      animation: fadeInUp 0.8s 0.9s both;
+    }
+    .hero-compliance .container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .compliance-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--text-light);
+      letter-spacing: 0.12em;
+      margin-right: 6px;
+    }
+    .compliance-chip {
+      padding: 5px 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--dark-border);
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--cyan);
+      letter-spacing: 0.1em;
+      border-radius: 4px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .compliance-chip:hover {
+      border-color: rgba(0,229,255,0.3);
+      background: rgba(0,229,255,0.06);
+    }
+
+    /* ============================================================
+       METRICS BAND
+    ============================================================ */
+    .metrics-band {
+      background: var(--dark-panel);
+      border-top: 1px solid var(--dark-border);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 0;
+      position: relative;
+    }
+    .metrics-band::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+      opacity: 0.3;
+    }
+
+    .metrics-band .container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .metric-item {
+      padding: 40px 24px;
+      text-align: center;
+      border-right: 1px solid var(--dark-border);
+      position: relative;
+    }
+    .metric-item:last-child { border-right: none; }
+
+    .metric-number {
+      font-family: var(--font-heading);
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--cyan), var(--blue-lt));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      line-height: 1.1;
+    }
+    .metric-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--text-light);
+      letter-spacing: 0.14em;
+      margin-top: 8px;
+      display: block;
+    }
+
+    /* ============================================================
+       SOLUTIONS BAND
+    ============================================================ */
+    .solutions-band {
+      padding: var(--section-pad);
+      background: var(--dark);
+      position: relative;
+    }
+
+    .solutions-band .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .solutions-band h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .solution-pillar {
+      padding: 40px 32px;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
+    }
+    .solution-pillar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .solution-pillar:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0,229,255,0.25);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 229, 255, 0.05);
+    }
+    .solution-pillar:hover::before { transform: scaleX(1); }
+
+    .pillar-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(0,229,255,0.08);
+      border: 1px solid rgba(0,229,255,0.15);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pillar-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--cyan);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .pillar-mono {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--cyan);
+      letter-spacing: 0.2em;
+    }
+
+    .solution-pillar h3 {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .solution-pillar p {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+
+    /* ============================================================
+       SECTION LABEL
+    ============================================================ */
+    .section-label {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      color: var(--cyan);
+      margin-bottom: 14px;
+      position: relative;
+      padding-left: 20px;
+    }
+    .section-label::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 2px;
+      background: var(--cyan);
+    }
+
+    /* ============================================================
+       PRODUCTS
+    ============================================================ */
+    .products-section {
+      padding: var(--section-pad);
+      background: var(--dark-mid);
+      position: relative;
+      overflow: hidden;
+    }
+    .products-section .geo-hex { top: 80px; right: -40px; opacity: 0.5; }
+    .products-section .geo-diamond { bottom: 120px; left: -20px; opacity: 0.5; }
+
+    .products-section .section-header {
+      max-width: 640px;
+      margin-bottom: 64px;
+    }
+    .products-section h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+    }
+    .products-section .intro-text {
+      font-size: 1rem;
+      color: var(--text-mid);
+      margin-top: 18px;
+      line-height: 1.8;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .product-card {
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 40px 36px;
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
+    }
+    .product-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .product-card:hover::after { transform: scaleX(1); }
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0,229,255,0.2);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25), 0 0 30px rgba(0, 229, 255, 0.04);
+    }
+
+    .product-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(0,229,255,0.06);
+      border: 1px solid rgba(0,229,255,0.12);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .product-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--cyan);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .product-mono {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--cyan);
+      letter-spacing: 0.18em;
+      margin-bottom: 14px;
+    }
+
+    .product-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .product-card p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+
+    .product-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+    }
+    .product-tag {
+      padding: 4px 12px;
+      background: rgba(0,119,204,0.1);
+      border: 1px solid rgba(0,119,204,0.2);
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      color: var(--blue-lt);
+      letter-spacing: 0.1em;
+      border-radius: 4px;
+    }
+
+    /* ============================================================
+       RESULTS / IMPACT SECTION
+    ============================================================ */
+    .results-section {
+      padding: var(--section-pad);
+      background: var(--void);
+      position: relative;
+      overflow: hidden;
+    }
+    .results-section .results-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,229,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,0.025) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .results-section .container { position: relative; z-index: 1; }
+
+    .results-section .section-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+    .results-section h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: #fff;
+    }
+    .results-section .section-sub {
+      font-size: 1rem;
+      color: var(--text-mid);
+      max-width: 600px;
+      margin: 18px auto 0;
+      line-height: 1.8;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .result-card {
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+    .result-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(0,229,255,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .result-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .result-value {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--cyan), var(--blue-lt));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .result-label {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .result-desc {
+      font-size: 0.84rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       ABOUT / ROY NEWTON
+    ============================================================ */
+    .about-section {
+      padding: var(--section-pad);
+      background: var(--dark-mid);
+      position: relative;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-image-wrap {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .about-image-wrap img {
+      width: 100%;
+      height: 540px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      filter: brightness(0.85) saturate(0.9);
+    }
+    .about-image-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(6,10,15,0.6) 0%, transparent 40%);
+    }
+
+    .about-image-badge {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      z-index: 1;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      padding: 18px 22px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 8px;
+    }
+    .about-image-badge p {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--cyan);
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+    .about-image-badge strong {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .about-content h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+    .about-content h2 .accent {
+      background: linear-gradient(135deg, var(--cyan), var(--blue-lt));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .about-content p {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      margin-bottom: 18px;
+      line-height: 1.8;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .about-stat {
+      padding: 24px 20px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      text-align: center;
+      transition: border-color 0.3s;
+    }
+    .about-stat:hover { border-color: rgba(0,229,255,0.25); }
+
+    .about-stat-num {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--cyan), var(--blue-lt));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+    }
+    .about-stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      color: var(--text-light);
+      letter-spacing: 0.12em;
+      margin-top: 4px;
+    }
+
+    /* ============================================================
+       WHY 90METER
+    ============================================================ */
+    .why-section {
+      padding: var(--section-pad);
+      background: var(--dark);
+      position: relative;
+    }
+
+    .why-section .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .why-section h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .why-card {
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+    .why-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s;
+    }
+    .why-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0,229,255,0.2);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.25);
+    }
+    .why-card:hover::before { transform: scaleX(1); }
+
+    .why-card-num {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--cyan);
+      letter-spacing: 0.18em;
+      margin-bottom: 16px;
+    }
+
+    .why-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .why-card p {
+      font-size: 0.875rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+
+    /* ============================================================
+       TESTIMONIALS
+    ============================================================ */
+    .testimonials-section {
+      padding: var(--section-pad);
+      background: var(--dark-panel);
+      position: relative;
+      overflow: hidden;
+    }
+    .testimonials-section .geo-circle { top: -80px; right: -80px; }
+    .testimonials-section .geo-hex { bottom: 40px; left: -40px; width: 160px; height: 160px; }
+
+    .testimonials-section .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .testimonials-section h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      position: relative;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .testimonial-quote {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      color: var(--cyan);
+      opacity: 0.3;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .testimonial-card blockquote {
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+    .testimonial-stars svg {
+      width: 14px;
+      height: 14px;
+      fill: #ffb800;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .testimonial-author-info p:first-child {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .testimonial-author-info p:last-child {
+      font-size: 0.72rem;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
+
+    /* ============================================================
+       SECTORS
+    ============================================================ */
+    .sectors-section {
+      padding: var(--section-pad);
+      background: var(--dark);
+    }
+
+    .sectors-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .sectors-text h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .sectors-text p {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .sectors-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .sector-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--glass);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+    .sector-item:hover {
+      transform: translateX(6px);
+      border-color: rgba(0,229,255,0.3);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .sector-icon {
+      width: 42px;
+      height: 42px;
+      background: rgba(0,229,255,0.06);
+      border: 1px solid rgba(0,229,255,0.12);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .sector-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--cyan);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .sector-item-content h4 {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+    .sector-item-content p {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin: 0;
+    }
+
+    /* ============================================================
+       TECHNICAL FEATURES
+    ============================================================ */
+    .tech-section {
+      padding: var(--section-pad);
+      background: var(--void);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tech-bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,229,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,0.025) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .tech-section .container { position: relative; z-index: 1; }
+
+    .tech-section .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .tech-section h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .tech-card {
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 36px 24px;
+      text-align: center;
+      transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
+    }
+    .tech-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0,229,255,0.2);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 229, 255, 0.03);
+    }
+
+    .tech-card-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(0,229,255,0.06);
+      border: 1px solid rgba(0,229,255,0.12);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      transition: background 0.3s;
+    }
+    .tech-card:hover .tech-card-icon {
+      background: rgba(0,229,255,0.1);
+    }
+    .tech-card-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--cyan);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .tech-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .tech-card p {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       PARTNERSHIP / INTEGRATIONS
+    ============================================================ */
+    .partner-section {
+      padding: var(--section-pad);
+      background: var(--dark-mid);
+    }
+
+    .partner-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .partner-content h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    .partner-content p {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    .integration-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .integration-item {
+      padding: 16px 18px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .integration-item:hover {
+      border-color: rgba(0,229,255,0.25);
+      transform: translateX(4px);
+    }
+
+    .integration-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--cyan);
+      flex-shrink: 0;
+    }
+    .integration-item span {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+    }
+
+    .partner-visual {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .partner-visual img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      filter: brightness(0.75) saturate(0.85);
+      border-radius: var(--radius);
+    }
+    .partner-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      pointer-events: none;
+    }
+
+    /* ============================================================
+       CONTACT
+    ============================================================ */
+    .contact-section {
+      padding: var(--section-pad);
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-section .geo-diamond { top: 60px; right: 80px; width: 100px; height: 100px; }
+    .contact-section .geo-circle { bottom: -60px; left: -60px; width: 240px; height: 240px; }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-info h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    .contact-info h2 .accent {
+      background: linear-gradient(135deg, var(--cyan), var(--blue-lt));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .contact-info p {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .contact-detail-icon {
+      width: 42px;
+      height: 42px;
+      background: rgba(0,229,255,0.06);
+      border: 1px solid rgba(0,229,255,0.12);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-detail-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--cyan);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .contact-detail-text p {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--text-light);
+      letter-spacing: 0.1em;
+      margin-bottom: 3px;
+    }
+    .contact-detail-text a,
+    .contact-detail-text span {
+      font-size: 0.92rem;
+      color: var(--text-white);
+      transition: color 0.3s;
+    }
+    .contact-detail-text a:hover { color: var(--cyan); }
+
+    .contact-form {
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 44px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-form::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+    }
+
+    .contact-form h3 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 28px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+
+    .form-group label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: var(--text-light);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: rgba(6, 10, 15, 0.6);
+      border: 1px solid var(--dark-border);
+      color: var(--text-white);
+      padding: 12px 16px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      outline: none;
+      border-radius: 6px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.08);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-group select option { background: var(--dark); }
+
+    .btn-submit {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan-dim));
+      border: none;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-top: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-submit::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+      transition: left 0.5s;
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 119, 204, 0.4);
+    }
+    .btn-submit:hover::before { left: 100%; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--void);
+      padding: 48px 0 36px;
+      border-top: 1px solid var(--dark-border);
+      position: relative;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+      opacity: 0.2;
+    }
+
+    .footer-main {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand .footer-logo {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 12px;
+    }
+    .footer-brand .footer-logo span { color: var(--cyan); }
+    .footer-brand .footer-desc {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-white);
+      margin-bottom: 18px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      padding: 4px 0;
+      transition: color 0.3s, padding-left 0.3s;
+    }
+    .footer-col a:hover {
+      color: var(--cyan);
+      padding-left: 4px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 32px;
+      border-top: 1px solid var(--dark-border);
+    }
+
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--text-light);
+      letter-spacing: 0.06em;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-bottom-links a {
+      font-size: 0.72rem;
+      color: var(--text-light);
+      transition: color 0.3s;
+    }
+    .footer-bottom-links a:hover { color: var(--cyan); }
+
+    /* ============================================================
+       STICKY MOBILE CTA
+    ============================================================ */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      padding: 12px 20px;
+      background: rgba(6, 10, 15, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(0, 229, 255, 0.15);
+    }
+    .sticky-cta a {
+      display: block;
+      text-align: center;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan-dim));
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      border-radius: 8px;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1000px) {
+      .products-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .tech-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr; max-width: 600px; margin: 0 auto; }
+      .results-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-inner,
+      .sectors-inner,
+      .partner-inner,
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .solutions-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+      .metrics-band .container { grid-template-columns: repeat(2, 1fr); }
+      .footer-main { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      :root { --section-pad: 80px 0; }
+      .container { padding: 0 20px; }
+      .why-grid { grid-template-columns: 1fr; }
+      .tech-grid { grid-template-columns: 1fr; }
+      .results-grid { grid-template-columns: 1fr; }
+      .integration-list { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form { padding: 28px 20px; }
+      nav { display: none; }
+      .menu-toggle { display: flex; }
+      .hero-compliance { display: none; }
+      .about-stats { grid-template-columns: 1fr; }
+      .metrics-band .container { grid-template-columns: 1fr; }
+      .metric-item { border-right: none; border-bottom: 1px solid var(--dark-border); }
+      .metric-item:last-child { border-bottom: none; }
+      .footer-main { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .sticky-cta { display: block; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero-shield { display: none; }
+      body { padding-bottom: 70px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <a href="#" class="logo">
+        <div class="logo-mark"><span>90</span></div>
+        <div class="logo-text">
+          <span class="logo-name">90Meter</span>
+          <span class="logo-tag">ZERO TRUST IDENTITY</span>
+        </div>
+      </a>
+      <nav>
+        <a href="#solutions">Solutions</a>
+        <a href="#products">Products</a>
+        <a href="#results">Results</a>
+        <a href="#about">About</a>
+        <a href="#sectors">Sectors</a>
+        <a href="#contact" class="btn-nav">Request a Demo</a>
+      </nav>
+      <div class="menu-toggle" onclick="document.querySelector('nav').style.display = document.querySelector('nav').style.display === 'flex' ? 'none' : 'flex'">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+    <div class="hero-glow-3"></div>
+    <div class="hero-shield">
+      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 10L20 50V100C20 145 55 185 100 195C145 185 180 145 180 100V50L100 10Z" stroke="rgba(0,229,255,0.3)" stroke-width="0.5" fill="none"/>
+        <path d="M100 30L40 60V100C40 135 65 170 100 180C135 170 160 135 160 100V60L100 30Z" stroke="rgba(0,119,204,0.2)" stroke-width="0.5" fill="none"/>
+        <path d="M100 50L60 70V100C60 125 75 155 100 165C125 155 140 125 140 100V70L100 50Z" stroke="rgba(0,229,255,0.15)" stroke-width="0.5" fill="none"/>
+        <circle cx="100" cy="100" r="20" stroke="rgba(0,229,255,0.2)" stroke-width="0.5" fill="none"/>
+        <path d="M90 100L97 107L112 92" stroke="rgba(0,229,255,0.4)" stroke-width="1" fill="none"/>
+      </svg>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          <span>FIPS 201 CERTIFIED  |  PIV / CAC / ZERO TRUST</span>
+        </div>
+        <h1>Zero Trust Identity.<br /><span class="accent">Real-World Performance.</span></h1>
+        <p>90Meter delivers advanced Zero Trust authentication and Identity and Credential Access Management (ICAM) software and hardware for public and private sector organizations that demand the highest levels of security -- with a small footprint and minimal configuration.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">
+            Request a Demo
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="#products" class="btn-ghost">Explore Products</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-compliance">
+      <div class="container">
+        <span class="compliance-label">COMPLIANCE</span>
+        <span class="compliance-chip">FIPS 201</span>
+        <span class="compliance-chip">PIV I &amp; II</span>
+        <span class="compliance-chip">CAC</span>
+        <span class="compliance-chip">Zero Trust</span>
+        <span class="compliance-chip">PC/SC</span>
+        <span class="compliance-chip">ICAM</span>
+        <span class="compliance-chip">DoD Ready</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS BAND -->
+  <section class="metrics-band">
+    <div class="container">
+      <div class="metric-item reveal d1">
+        <span class="metric-number counter" data-target="500">0</span>
+        <span class="metric-label">ENDPOINTS SECURED</span>
+      </div>
+      <div class="metric-item reveal d2">
+        <span class="metric-number">FIPS</span>
+        <span class="metric-label">201 CERTIFIED</span>
+      </div>
+      <div class="metric-item reveal d3">
+        <span class="metric-number counter" data-target="99.9" data-suffix="%" data-decimal="1">0</span>
+        <span class="metric-label">UPTIME RELIABILITY</span>
+      </div>
+      <div class="metric-item reveal d4">
+        <span class="metric-number">Zero</span>
+        <span class="metric-label">CONFIG DEPLOYMENT</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS BAND -->
+  <section class="solutions-band" id="solutions">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">CORE SOLUTIONS</span>
+        <h2>Three Pillars of Identity Assurance</h2>
+      </div>
+      <div class="solutions-grid">
+        <div class="solution-pillar reveal d1">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <span class="pillar-mono">01 AUTHENTICATION</span>
+          <h3>Zero Trust Authentication</h3>
+          <p>Enforce trusted identity at every endpoint. 90Meter's solutions eliminate password reliance and align with Zero Trust mandates across federal and enterprise environments.</p>
+        </div>
+        <div class="solution-pillar reveal d2">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="6" y1="10" x2="6" y2="14"/><line x1="10" y1="10" x2="10" y2="14"/><circle cx="17" cy="12" r="2"/></svg>
+          </div>
+          <span class="pillar-mono">02 MIDDLEWARE</span>
+          <h3>PIV / CAC Smart Card Middleware</h3>
+          <p>Our FIPS 201-certified PIV Minidriver delivers high performance, plug-and-play compatibility and minimized configuration for seamless smart card access to secure networks.</p>
+        </div>
+        <div class="solution-pillar reveal d3">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.87"/></svg>
+          </div>
+          <span class="pillar-mono">03 IDENTITY</span>
+          <h3>Digital Identity Management</h3>
+          <p>Manage tokens, certificates, and credentials across your organization from a unified ICAM platform -- purpose-built for forward-deployed and remote workforce environments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products-section" id="products">
+    <div class="geo-hex"></div>
+    <div class="geo-diamond"></div>
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">PRODUCTS</span>
+        <h2>Built for High-Assurance Environments</h2>
+        <p class="intro-text">Every 90Meter product is engineered with security, compatibility, and ease of deployment in mind -- so IT teams spend less time on configuration and more time on mission-critical work.</p>
+      </div>
+      <div class="products-grid">
+        <div class="product-card reveal d1">
+          <div class="product-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M7 8h2v3H7z"/><path d="M11 7h2v4h-2z"/><path d="M15 9h2v2h-2z"/></svg>
+          </div>
+          <div class="product-mono">PRODUCT 01</div>
+          <h3>PIV Minidriver Middleware</h3>
+          <p>Our flagship middleware product is FIPS 201 certified and meets Personal Identity Verification (PIV) I and II standards. It integrates natively with Windows without requiring complex configuration, providing seamless smart card logon, email signing, and encryption for DoD and civilian agency users.</p>
+          <div class="product-tags">
+            <span class="product-tag">FIPS 201</span>
+            <span class="product-tag">PIV I &amp; II</span>
+            <span class="product-tag">Windows Native</span>
+            <span class="product-tag">.NET Based</span>
+            <span class="product-tag">Mobile Portable</span>
+          </div>
+        </div>
+        <div class="product-card reveal d2">
+          <div class="product-icon">
+            <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="2" y1="15" x2="4" y2="15"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="20" y1="15" x2="22" y2="15"/></svg>
+          </div>
+          <div class="product-mono">PRODUCT 02</div>
+          <h3>PC/SC USB Smart Card Readers</h3>
+          <p>A durable, high-performance family of USB smart card readers and writers built for CAC, PIV, and high-assurance smart cards. Cost-effective, compatible, and designed for field use -- from forward-deployed military environments to standard office workstations.</p>
+          <div class="product-tags">
+            <span class="product-tag">CAC</span>
+            <span class="product-tag">PIV</span>
+            <span class="product-tag">PC/SC</span>
+            <span class="product-tag">USB</span>
+            <span class="product-tag">High Assurance</span>
+          </div>
+        </div>
+        <div class="product-card reveal d3">
+          <div class="product-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </div>
+          <div class="product-mono">PRODUCT 03</div>
+          <h3>ICAM Platform Solutions</h3>
+          <p>Comprehensive Identity, Credential, and Access Management solutions for organizations aligning with federal ICAM mandates. Our platform supports multi-credential environments and integrates with existing enterprise identity infrastructure to reduce complexity.</p>
+          <div class="product-tags">
+            <span class="product-tag">ICAM</span>
+            <span class="product-tag">Zero Trust</span>
+            <span class="product-tag">Multi-Credential</span>
+            <span class="product-tag">Enterprise</span>
+          </div>
+        </div>
+        <div class="product-card reveal d4">
+          <div class="product-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+          </div>
+          <div class="product-mono">PRODUCT 04</div>
+          <h3>Token &amp; Certificate Management</h3>
+          <p>End-to-end management of hardware tokens, digital certificates, and smart card lifecycle. 90Meter's token management tools simplify credential issuance, renewal, and revocation while maintaining the chain of trust required in classified and sensitive environments.</p>
+          <div class="product-tags">
+            <span class="product-tag">PKI</span>
+            <span class="product-tag">Certificate Lifecycle</span>
+            <span class="product-tag">Hardware Tokens</span>
+            <span class="product-tag">Smart Card</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS / IMPACT -->
+  <section class="results-section" id="results">
+    <div class="results-grid-bg"></div>
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">MEASURABLE IMPACT</span>
+        <h2>Results That Speak for Themselves</h2>
+        <p class="section-sub">Across federal, defense, and enterprise deployments, 90Meter consistently delivers quantifiable security improvements and operational efficiency gains.</p>
+      </div>
+      <div class="results-grid">
+        <div class="result-card reveal d1">
+          <span class="result-value">90%</span>
+          <div class="result-label">Faster Deployment</div>
+          <p class="result-desc">Compared to traditional middleware solutions, 90Meter deploys in a fraction of the time with minimal IT overhead and near-zero configuration.</p>
+        </div>
+        <div class="result-card reveal d2">
+          <span class="result-value">100%</span>
+          <div class="result-label">Password Elimination</div>
+          <p class="result-desc">Organizations using 90Meter's PIV middleware achieve full password-free authentication, eliminating the #1 attack vector in federal networks.</p>
+        </div>
+        <div class="result-card reveal d3">
+          <span class="result-value">50%</span>
+          <div class="result-label">Lower TCO</div>
+          <p class="result-desc">Lightweight architecture and plug-and-play deployment cut total cost of ownership in half versus heavyweight middleware competitors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-image-wrap reveal-left">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=80" alt="Technology professional" />
+          <div class="about-image-badge">
+            <p>PRESIDENT &amp; FOUNDER</p>
+            <strong>Roy Newton</strong>
+          </div>
+        </div>
+        <div class="about-content reveal-right">
+          <span class="section-label">ABOUT 90METER</span>
+          <h2>Customer-Centric Security That <span class="accent">Actually Deploys</span></h2>
+          <p>90Meter Inc. was founded on a straightforward premise: high-assurance security solutions should be powerful and easy to deploy. Too often, security middleware is heavyweight, difficult to configure, and disruptive to end users. 90Meter changed that.</p>
+          <p>Based in Newport Beach, California, 90Meter delivers FIPS 201 certified middleware and high-assurance smart card reader hardware that is purpose-built for the demands of federal government, defense, and regulated enterprise environments -- without the implementation headaches.</p>
+          <p>Under President Roy Newton's leadership, 90Meter has built a reputation for technical precision, responsive support, and a genuine commitment to meeting customer requirements -- whether that is a single agency deployment or a large-scale enterprise rollout.</p>
+          <div class="about-stats">
+            <div class="about-stat">
+              <span class="about-stat-num">FIPS</span>
+              <span class="about-stat-label">201 CERTIFIED</span>
+            </div>
+            <div class="about-stat">
+              <span class="about-stat-num">DoD</span>
+              <span class="about-stat-label">READY</span>
+            </div>
+            <div class="about-stat">
+              <span class="about-stat-num">Zero</span>
+              <span class="about-stat-label">TRUST ALIGNED</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY 90METER -->
+  <section class="why-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">WHY 90METER</span>
+        <h2>The 90Meter Difference</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal d1">
+          <div class="why-card-num">01</div>
+          <h3>Small Footprint, Fast Performance</h3>
+          <p>90Meter solutions are lightweight by design. They deploy quickly, run efficiently, and don't burden endpoint resources -- critical for field-deployed and resource-constrained environments.</p>
+        </div>
+        <div class="why-card reveal d2">
+          <div class="why-card-num">02</div>
+          <h3>Plug-and-Play Compatibility</h3>
+          <p>Minimal configuration is a core design principle. Our middleware and readers work out of the box with standard operating environments, reducing IT burden and accelerating time-to-operational.</p>
+        </div>
+        <div class="why-card reveal d3">
+          <div class="why-card-num">03</div>
+          <h3>Customer-Centric Engineering</h3>
+          <p>Our tagline -- "Committed to Meeting Your Needs" -- is not marketing language. It reflects how we actually engage with customers: responsively, flexibly, and with genuine technical depth.</p>
+        </div>
+        <div class="why-card reveal d1">
+          <div class="why-card-num">04</div>
+          <h3>FIPS 201 Certified Compliance</h3>
+          <p>Every relevant product meets FIPS 201 certification requirements, ensuring compliance with federal PIV standards for agencies, contractors, and DoD programs operating under stringent credential requirements.</p>
+        </div>
+        <div class="why-card reveal d2">
+          <div class="why-card-num">05</div>
+          <h3>Remote &amp; Forward-Deployed Optimized</h3>
+          <p>Designed with mobile portability and remote workforce scenarios in mind, 90Meter solutions maintain security posture whether users are on-premises, at home, or forward-deployed in austere environments.</p>
+        </div>
+        <div class="why-card reveal d3">
+          <div class="why-card-num">06</div>
+          <h3>Decades of Digital Identity Expertise</h3>
+          <p>The 90Meter team brings deep experience across the PKI, smart card, and digital identity space -- giving customers a knowledgeable partner who understands the landscape and the mission.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="geo-circle"></div>
+    <div class="geo-hex"></div>
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">CLIENT FEEDBACK</span>
+        <h2>Trusted by Security Leaders</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal d1">
+          <div class="testimonial-quote">"</div>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <blockquote>"90Meter's PIV middleware deployed across our agency in a fraction of the time we expected. The small footprint and zero-config approach meant our IT team could focus on mission priorities instead of troubleshooting drivers."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">JM</div>
+            <div class="testimonial-author-info">
+              <p>James M.</p>
+              <p>IT Director, Federal Civilian Agency</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal d2">
+          <div class="testimonial-quote">"</div>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <blockquote>"We evaluated three middleware vendors. 90Meter was the only one that worked out-of-the-box with our thin client environment. Their team's responsiveness and technical knowledge sealed the deal."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SK</div>
+            <div class="testimonial-author-info">
+              <p>Sarah K.</p>
+              <p>CISO, Defense Contractor</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal d3">
+          <div class="testimonial-quote">"</div>
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <blockquote>"Moving to 90Meter's smart card readers across our forward-deployed locations reduced our hardware failure rate dramatically. Durable, reliable, and the support from Roy's team is exceptional."</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">DP</div>
+            <div class="testimonial-author-info">
+              <p>Daniel P.</p>
+              <p>Program Manager, DoD Operations</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTORS -->
+  <section class="sectors-section" id="sectors">
+    <div class="container">
+      <div class="sectors-inner">
+        <div class="sectors-text reveal-left">
+          <span class="section-label">SECTORS SERVED</span>
+          <h2>Built for Organizations That Cannot Afford to Compromise</h2>
+          <p>90Meter solutions are deployed across federal, defense, healthcare, financial services, and critical infrastructure environments where identity assurance is not optional -- it is mission-critical.</p>
+          <p>Our products are designed to meet the stringent requirements of these environments while remaining practical to deploy and manage at scale.</p>
+        </div>
+        <ul class="sectors-list reveal-right">
+          <li class="sector-item d1">
+            <div class="sector-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16"/></svg>
+            </div>
+            <div class="sector-item-content">
+              <h4>Federal Government</h4>
+              <p>DoD, civilian agencies, and government contractors requiring PIV/CAC compliance</p>
+            </div>
+          </li>
+          <li class="sector-item d2">
+            <div class="sector-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+            </div>
+            <div class="sector-item-content">
+              <h4>Defense &amp; Intelligence</h4>
+              <p>Forward-deployed military, classified environments, and defense industrial base</p>
+            </div>
+          </li>
+          <li class="sector-item d3">
+            <div class="sector-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <div class="sector-item-content">
+              <h4>Healthcare</h4>
+              <p>HIPAA-compliant strong authentication for healthcare organizations and EHR access</p>
+            </div>
+          </li>
+          <li class="sector-item d4">
+            <div class="sector-icon">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            </div>
+            <div class="sector-item-content">
+              <h4>Financial Services</h4>
+              <p>High-assurance identity for banking, brokerage, and regulated financial institutions</p>
+            </div>
+          </li>
+          <li class="sector-item d5">
+            <div class="sector-icon">
+              <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <div class="sector-item-content">
+              <h4>Critical Infrastructure</h4>
+              <p>Utilities, energy, and transportation operators requiring robust endpoint authentication</p>
+            </div>
+          </li>
+          <li class="sector-item d6">
+            <div class="sector-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+            </div>
+            <div class="sector-item-content">
+              <h4>Enterprise Organizations</h4>
+              <p>Large private sector organizations moving to Zero Trust security architectures</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNICAL FEATURES -->
+  <section class="tech-section">
+    <div class="tech-bg-grid"></div>
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">TECHNICAL ARCHITECTURE</span>
+        <h2>Designed for the Modern Security Stack</h2>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-card reveal d1">
+          <div class="tech-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h3>Zero Trust Architecture</h3>
+          <p>Native alignment with Zero Trust principles -- verify every user, every device, every time.</p>
+        </div>
+        <div class="tech-card reveal d2">
+          <div class="tech-card-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Windows Native Integration</h3>
+          <p>Deep integration with the Windows credential framework -- no third-party dependencies or complex middleware stacks.</p>
+        </div>
+        <div class="tech-card reveal d3">
+          <div class="tech-card-icon">
+            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+          <h3>.NET Based &amp; Mobile Portable</h3>
+          <p>Modern .NET architecture provides portability and performance across desktop, laptop, and mobile deployment scenarios.</p>
+        </div>
+        <div class="tech-card reveal d4">
+          <div class="tech-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Multi-Credential Support</h3>
+          <p>Smart cards, hardware tokens, and digital certificates -- 90Meter manages the full credential spectrum from one platform.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTEGRATIONS / PARTNERSHIPS -->
+  <section class="partner-section">
+    <div class="container">
+      <div class="partner-inner">
+        <div class="partner-content reveal-left">
+          <span class="section-label">ECOSYSTEM</span>
+          <h2>Integrated With the Tools Your Team Already Uses</h2>
+          <p>90Meter's middleware and readers are designed for compatibility. Our solutions integrate seamlessly with leading thin client, VDI, and endpoint platforms -- eliminating friction and accelerating secure access deployments across diverse IT environments.</p>
+          <p>We work alongside ecosystem partners to deliver full-stack high-assurance authentication that meets the needs of complex enterprise and government architectures.</p>
+          <div class="integration-list">
+            <div class="integration-item">
+              <div class="integration-dot"></div>
+              <span>10ZiG Thin Client Platforms</span>
+            </div>
+            <div class="integration-item">
+              <div class="integration-dot"></div>
+              <span>Stratodesk / IGEL OS</span>
+            </div>
+            <div class="integration-item">
+              <div class="integration-dot"></div>
+              <span>Windows Smart Card Framework</span>
+            </div>
+            <div class="integration-item">
+              <div class="integration-dot"></div>
+              <span>DoD PKI Infrastructure</span>
+            </div>
+            <div class="integration-item">
+              <div class="integration-dot"></div>
+              <span>Federal ICAM Frameworks</span>
+            </div>
+            <div class="integration-item">
+              <div class="integration-dot"></div>
+              <span>Enterprise VDI Environments</span>
+            </div>
+          </div>
+        </div>
+        <div class="partner-visual reveal-right">
+          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&q=80" alt="Technology team collaboration" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="geo-diamond"></div>
+    <div class="geo-circle"></div>
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-info reveal-left">
+          <span class="section-label">GET IN TOUCH</span>
+          <h2>Secure Your Identity <span class="accent">Infrastructure</span></h2>
+          <p>Whether you are deploying PIV middleware for a federal agency, evaluating smart card readers for an enterprise rollout, or building a Zero Trust identity framework from the ground up -- 90Meter is ready to help. Request a demo or reach out directly.</p>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <p>LOCATION</p>
+                <span>20321 Irvine Ave, Suite F1, Newport Beach, CA 92660</span>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <p>EMAIL</p>
+                <a href="mailto:rnewton@90meter.com">rnewton@90meter.com</a>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <p>WEBSITE</p>
+                <a href="https://www.90meter.com" target="_blank" rel="noopener">www.90meter.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form reveal-right">
+          <h3>Request a Demo</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>FIRST NAME</label>
+              <input type="text" placeholder="Jane" />
+            </div>
+            <div class="form-group">
+              <label>LAST NAME</label>
+              <input type="text" placeholder="Smith" />
+            </div>
+          </div>
+          <div class="form-group full">
+            <label>ORGANIZATION</label>
+            <input type="text" placeholder="Agency or company name" />
+          </div>
+          <div class="form-group full">
+            <label>WORK EMAIL</label>
+            <input type="email" placeholder="jane.smith@agency.gov" />
+          </div>
+          <div class="form-group full">
+            <label>AREA OF INTEREST</label>
+            <select>
+              <option value="" disabled selected>Select a product area</option>
+              <option>PIV Minidriver Middleware</option>
+              <option>PC/SC USB Smart Card Readers</option>
+              <option>ICAM Platform Solutions</option>
+              <option>Token &amp; Certificate Management</option>
+              <option>Zero Trust Architecture Consulting</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>MESSAGE</label>
+            <textarea placeholder="Describe your deployment environment, use case, or any specific requirements..."></textarea>
+          </div>
+          <button class="btn-submit">Submit Demo Request</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <div class="footer-logo">90<span>Meter</span></div>
+          <p class="footer-desc">Advanced Zero Trust authentication and ICAM solutions for organizations that demand the highest levels of security.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Solutions</h4>
+          <a href="#solutions">Authentication</a>
+          <a href="#solutions">Smart Card Middleware</a>
+          <a href="#solutions">Identity Management</a>
+          <a href="#products">All Products</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#about">About 90Meter</a>
+          <a href="#sectors">Sectors Served</a>
+          <a href="#results">Results</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="#contact">Request a Demo</a>
+          <a href="https://www.90meter.com" target="_blank" rel="noopener">Main Website</a>
+          <a href="mailto:rnewton@90meter.com">Email Us</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">&copy; 2025 90Meter Inc. Newport Beach, CA 92660. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="sticky-cta">
+    <a href="#contact">Request a Demo</a>
+  </div>
+
+  <script>
+    // Scroll reveal observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => observer.observe(el));
+
+    // Header scroll effect
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Animated counters
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseFloat(el.dataset.target);
+          const suffix = el.dataset.suffix || '+';
+          const decimal = parseInt(el.dataset.decimal) || 0;
+          const duration = 2000;
+          const start = performance.now();
+
+          function update(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = target * eased;
+
+            if (decimal > 0) {
+              el.textContent = current.toFixed(decimal) + suffix;
+            } else {
+              el.textContent = Math.floor(current).toLocaleString() + suffix;
+            }
+
+            if (progress < 1) requestAnimationFrame(update);
+          }
+          requestAnimationFrame(update);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

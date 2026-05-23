@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crescent Medical Services | Compassionate Care You Can Count On</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet" />
+  <style>
+    /* =========================================================
+       CSS CUSTOM PROPERTIES
+    ========================================================= */
+    :root {
+      --clr-primary:    #1a5f8a;   /* deep medical blue */
+      --clr-primary-dk: #0f3d5c;   /* darker navy */
+      --clr-teal:       #2a9d8f;   /* teal accent */
+      --clr-teal-lt:    #3fbfb0;   /* lighter teal */
+      --clr-warm:       #e9a84c;   /* warm amber CTA */
+      --clr-warm-dk:    #c98830;
+      --clr-white:      #ffffff;
+      --clr-off-white:  #f7f9fc;
+      --clr-gray-lt:    #eef1f6;
+      --clr-gray:       #8a97a8;
+      --clr-gray-dk:    #4a5568;
+      --clr-text:       #1e2a38;
+
+      --ff-body:    'Inter', sans-serif;
+      --ff-heading: 'Merriweather', serif;
+
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md: 0 6px 24px rgba(0,0,0,0.12);
+      --shadow-lg: 0 16px 48px rgba(0,0,0,0.16);
+
+      --radius:    10px;
+      --radius-lg: 18px;
+      --transition: 0.3s ease;
+      --nav-h: 72px;
+    }
+
+    /* =========================================================
+       RESET & BASE
+    ========================================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--ff-body);
+      color: var(--clr-text);
+      background: var(--clr-white);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    .container {
+      width: min(1160px, 92%);
+      margin-inline: auto;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-family: var(--ff-body);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--clr-teal);
+      margin-bottom: 0.6rem;
+    }
+    h2.section-title {
+      font-family: var(--ff-heading);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--clr-primary-dk);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--clr-gray-dk);
+      max-width: 56ch;
+    }
+    .section-header { margin-bottom: 3rem; }
+    .section-header.centered { text-align: center; }
+    .section-header.centered .section-subtitle { margin-inline: auto; }
+
+    /* =========================================================
+       BUTTONS
+    ========================================================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.75rem 1.7rem;
+      border-radius: 50px;
+      font-family: var(--ff-body);
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: background var(--transition), color var(--transition),
+                  border-color var(--transition), transform var(--transition),
+                  box-shadow var(--transition);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--clr-warm);
+      color: var(--clr-white);
+      border-color: var(--clr-warm);
+    }
+    .btn-primary:hover {
+      background: var(--clr-warm-dk);
+      border-color: var(--clr-warm-dk);
+      box-shadow: 0 8px 24px rgba(233,168,76,0.38);
+    }
+    .btn-outline-white {
+      background: transparent;
+      color: var(--clr-white);
+      border-color: rgba(255,255,255,0.7);
+    }
+    .btn-outline-white:hover {
+      background: var(--clr-white);
+      color: var(--clr-primary);
+      border-color: var(--clr-white);
+    }
+    .btn-outline-primary {
+      background: transparent;
+      color: var(--clr-primary);
+      border-color: var(--clr-primary);
+    }
+    .btn-outline-primary:hover {
+      background: var(--clr-primary);
+      color: var(--clr-white);
+    }
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      background: transparent;
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    #navbar.scrolled {
+      background: var(--clr-white);
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+    .nav-logo-icon {
+      width: 38px; height: 38px;
+      background: var(--clr-teal);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-logo-icon svg { width: 20px; height: 20px; fill: var(--clr-white); }
+    .nav-logo-text {
+      display: flex; flex-direction: column; line-height: 1.1;
+    }
+    .nav-logo-text span:first-child {
+      font-family: var(--ff-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--clr-white);
+      transition: color var(--transition);
+    }
+    .nav-logo-text span:last-child {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      transition: color var(--transition);
+    }
+    #navbar.scrolled .nav-logo-text span:first-child { color: var(--clr-primary-dk); }
+    #navbar.scrolled .nav-logo-text span:last-child  { color: var(--clr-gray); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.15rem;
+    }
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.9);
+      padding: 0.4rem 0.85rem;
+      border-radius: 6px;
+      transition: background var(--transition), color var(--transition);
+    }
+    .nav-links a:hover { background: rgba(255,255,255,0.12); color: var(--clr-white); }
+    #navbar.scrolled .nav-links a { color: var(--clr-gray-dk); }
+    #navbar.scrolled .nav-links a:hover { background: var(--clr-gray-lt); color: var(--clr-primary); }
+
+    .nav-cta { margin-left: 1rem; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      border: none;
+      background: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px; height: 2.5px;
+      background: var(--clr-white);
+      border-radius: 2px;
+      transition: background var(--transition), transform var(--transition), opacity var(--transition);
+    }
+    #navbar.scrolled .hamburger span { background: var(--clr-primary-dk); }
+    .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h); left: 0; right: 0;
+      background: var(--clr-white);
+      padding: 1.2rem 1.5rem 1.6rem;
+      box-shadow: var(--shadow-md);
+      z-index: 999;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--clr-gray-dk);
+      padding: 0.65rem 0.8rem;
+      border-radius: 8px;
+      transition: background var(--transition), color var(--transition);
+    }
+    .mobile-menu a:hover { background: var(--clr-gray-lt); color: var(--clr-primary); }
+    .mobile-menu .btn { margin-top: 0.6rem; width: 100%; justify-content: center; }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(135deg, rgba(15,61,92,0.82) 0%, rgba(26,95,138,0.70) 50%, rgba(42,157,143,0.55) 100%),
+        url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      padding-top: var(--nav-h);
+    }
+    .hero-content {
+      max-width: 680px;
+      color: var(--clr-white);
+      padding-block: 4rem;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(6px);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge::before {
+      content: '';
+      display: block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--clr-teal-lt);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(1.4); }
+    }
+    .hero-content h1 {
+      font-family: var(--ff-heading);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.18;
+      margin-bottom: 1.2rem;
+    }
+    .hero-content h1 em {
+      font-style: italic;
+      color: var(--clr-teal-lt);
+    }
+    .hero-content p {
+      font-size: 1.08rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 2rem;
+      max-width: 52ch;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 3.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+    .hero-stat span:first-child {
+      display: block;
+      font-family: var(--ff-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--clr-warm);
+    }
+    .hero-stat span:last-child {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.75);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    /* =========================================================
+       TRUST STRIP
+    ========================================================= */
+    #trust {
+      background: var(--clr-primary-dk);
+      padding: 1.2rem 0;
+    }
+    .trust-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.8rem 2rem;
+      color: var(--clr-white);
+      border-right: 1px solid rgba(255,255,255,0.12);
+      flex: 1 1 180px;
+      justify-content: center;
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-icon {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .trust-icon svg { width: 17px; height: 17px; fill: var(--clr-teal-lt); }
+    .trust-item-text strong {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .trust-item-text small {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* =========================================================
+       SERVICES
+    ========================================================= */
+    #services {
+      padding: 6rem 0;
+      background: var(--clr-off-white);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+    }
+    .service-card {
+      background: var(--clr-white);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem 1.8rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--clr-gray-lt);
+      transition: transform var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--clr-primary), var(--clr-teal));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, var(--clr-primary), var(--clr-teal));
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.3rem;
+    }
+    .service-icon svg { width: 26px; height: 26px; fill: var(--clr-white); }
+    .service-card h3 {
+      font-family: var(--ff-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--clr-primary-dk);
+      margin-bottom: 0.6rem;
+    }
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--clr-gray-dk);
+      line-height: 1.7;
+    }
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--clr-teal);
+      transition: gap var(--transition);
+    }
+    .service-link:hover { gap: 0.55rem; }
+
+    /* =========================================================
+       ABOUT
+    ========================================================= */
+    #about {
+      padding: 6rem 0;
+      background: var(--clr-white);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-image-wrap {
+      position: relative;
+    }
+    .about-image-wrap img {
+      border-radius: var(--radius-lg);
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      box-shadow: var(--shadow-md);
+    }
+    .about-badge {
+      position: absolute;
+      bottom: -1.4rem;
+      right: -1.4rem;
+      background: var(--clr-teal);
+      color: var(--clr-white);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      min-width: 130px;
+    }
+    .about-badge strong {
+      display: block;
+      font-family: var(--ff-heading);
+      font-size: 2.1rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .about-badge span {
+      font-size: 0.75rem;
+      opacity: 0.88;
+    }
+    .about-text .section-header { margin-bottom: 1.8rem; }
+    .about-features { margin-top: 1.8rem; display: flex; flex-direction: column; gap: 1rem; }
+    .about-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+    }
+    .about-feature-icon {
+      width: 40px; height: 40px;
+      background: var(--clr-gray-lt);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .about-feature-icon svg { width: 18px; height: 18px; fill: var(--clr-teal); }
+    .about-feature-body strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--clr-primary-dk);
+      margin-bottom: 0.2rem;
+    }
+    .about-feature-body p { font-size: 0.84rem; color: var(--clr-gray-dk); }
+    .about-text .btn { margin-top: 2rem; }
+
+    /* =========================================================
+       WHY CHOOSE US
+    ========================================================= */
+    #why {
+      padding: 6rem 0;
+      background: linear-gradient(135deg, var(--clr-primary-dk) 0%, var(--clr-primary) 60%, var(--clr-teal) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    #why::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 500px; height: 500px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+    }
+    #why .section-label { color: var(--clr-teal-lt); }
+    #why h2.section-title { color: var(--clr-white); }
+    #why .section-subtitle { color: rgba(255,255,255,0.75); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+      margin-top: 3rem;
+    }
+    .why-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.7rem;
+      backdrop-filter: blur(4px);
+      transition: background var(--transition), transform var(--transition);
+    }
+    .why-card:hover {
+      background: rgba(255,255,255,0.12);
+      transform: translateY(-4px);
+    }
+    .why-number {
+      font-family: var(--ff-heading);
+      font-size: 3rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.1);
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+    .why-card h3 {
+      font-family: var(--ff-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--clr-white);
+      margin-bottom: 0.6rem;
+    }
+    .why-card p { font-size: 0.87rem; color: rgba(255,255,255,0.72); line-height: 1.7; }
+
+    /* =========================================================
+       TESTIMONIALS
+    ========================================================= */
+    #testimonials {
+      padding: 6rem 0;
+      background: var(--clr-off-white);
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+    }
+    .testi-card {
+      background: var(--clr-white);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.8rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--clr-gray-lt);
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .testi-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .testi-stars { display: flex; gap: 3px; }
+    .testi-stars svg { width: 16px; height: 16px; fill: var(--clr-warm); }
+    .testi-quote {
+      font-family: var(--ff-heading);
+      font-size: 2.4rem;
+      color: var(--clr-teal);
+      line-height: 1;
+    }
+    .testi-text {
+      font-size: 0.9rem;
+      color: var(--clr-gray-dk);
+      line-height: 1.72;
+      flex: 1;
+    }
+    .testi-author { display: flex; align-items: center; gap: 0.9rem; }
+    .testi-avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--clr-primary), var(--clr-teal));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--ff-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--clr-white);
+      flex-shrink: 0;
+    }
+    .testi-author-info strong {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--clr-primary-dk);
+    }
+    .testi-author-info small { font-size: 0.76rem; color: var(--clr-gray); }
+
+    /* =========================================================
+       CONTACT
+    ========================================================= */
+    #contact {
+      padding: 6rem 0;
+      background: var(--clr-white);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-info { padding-top: 0.5rem; }
+    .contact-info .section-header { margin-bottom: 2rem; }
+    .contact-details { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 2rem; }
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+    }
+    .contact-detail-icon {
+      width: 42px; height: 42px;
+      background: var(--clr-gray-lt);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-detail-icon svg { width: 18px; height: 18px; fill: var(--clr-primary); }
+    .contact-detail-body strong {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--clr-gray);
+      margin-bottom: 0.2rem;
+    }
+    .contact-detail-body span { font-size: 0.95rem; color: var(--clr-text); }
+
+    .contact-form {
+      background: var(--clr-off-white);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2.2rem;
+      border: 1px solid var(--clr-gray-lt);
+    }
+    .contact-form h3 {
+      font-family: var(--ff-heading);
+      font-size: 1.2rem;
+      color: var(--clr-primary-dk);
+      margin-bottom: 1.6rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--clr-gray-dk);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.72rem 1rem;
+      border: 1.5px solid #dce3ed;
+      border-radius: var(--radius);
+      font-family: var(--ff-body);
+      font-size: 0.9rem;
+      color: var(--clr-text);
+      background: var(--clr-white);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--clr-teal);
+      box-shadow: 0 0 0 3px rgba(42,157,143,0.15);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .contact-form .btn { width: 100%; justify-content: center; margin-top: 0.4rem; }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    footer {
+      background: var(--clr-primary-dk);
+      color: rgba(255,255,255,0.75);
+      padding-top: 4rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-brand p {
+      font-size: 0.87rem;
+      line-height: 1.72;
+      margin-top: 1rem;
+      margin-bottom: 1.4rem;
+      max-width: 30ch;
+    }
+    .footer-social { display: flex; gap: 0.7rem; }
+    .social-btn {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition);
+    }
+    .social-btn:hover { background: var(--clr-teal); }
+    .social-btn svg { width: 16px; height: 16px; fill: var(--clr-white); }
+    .footer-col h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--clr-white);
+      margin-bottom: 1.1rem;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul li a {
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.65);
+      transition: color var(--transition);
+    }
+    .footer-col ul li a:hover { color: var(--clr-teal-lt); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.3rem 0;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .footer-bottom p { font-size: 0.8rem; }
+    .footer-bottom a { color: var(--clr-teal-lt); }
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.10s; }
+    .reveal-delay-2 { transition-delay: 0.20s; }
+    .reveal-delay-3 { transition-delay: 0.30s; }
+    .reveal-delay-4 { transition-delay: 0.40s; }
+    .reveal-delay-5 { transition-delay: 0.50s; }
+
+    /* =========================================================
+       RESPONSIVE — 960px
+    ========================================================= */
+    @media (max-width: 960px) {
+      .services-grid      { grid-template-columns: repeat(2, 1fr); }
+      .why-grid           { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid  { grid-template-columns: repeat(2, 1fr); }
+      .about-grid         { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-image-wrap img { height: 340px; }
+      .about-badge        { bottom: -1rem; right: 1rem; }
+      .contact-grid       { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-grid        { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger          { display: flex; }
+    }
+
+    /* =========================================================
+       RESPONSIVE — 640px
+    ========================================================= */
+    @media (max-width: 640px) {
+      .services-grid      { grid-template-columns: 1fr; }
+      .why-grid           { grid-template-columns: 1fr; }
+      .testimonials-grid  { grid-template-columns: 1fr; }
+      .form-row           { grid-template-columns: 1fr; }
+      .footer-grid        { grid-template-columns: 1fr; }
+      .trust-item         { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); flex: 1 1 100%; }
+      .trust-item:last-child { border-bottom: none; }
+      .hero-stats         { gap: 1.5rem; }
+      .hero-actions       { flex-direction: column; }
+      .hero-actions .btn  { width: 100%; justify-content: center; }
+      .footer-bottom      { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="#hero" class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14h-2v-4H7v-2h4V6h2v4h4v2h-4z"/>
+          </svg>
+        </div>
+        <div class="nav-logo-text">
+          <span>Crescent Medical</span>
+          <span>Services</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn btn-primary nav-cta">Request Care</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services"     onclick="closeMobile()">Services</a>
+    <a href="#about"        onclick="closeMobile()">About</a>
+    <a href="#why"          onclick="closeMobile()">Why Us</a>
+    <a href="#testimonials" onclick="closeMobile()">Testimonials</a>
+    <a href="#contact"      onclick="closeMobile()">Contact</a>
+    <a href="#contact" class="btn btn-primary" onclick="closeMobile()">Request Care</a>
+  </div>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">Trusted Medical Services Provider</div>
+        <h1>
+          Delivering <em>Compassionate</em><br />
+          Care to Every Patient
+        </h1>
+        <p>
+          Crescent Medical Services provides skilled nursing, home health, medical staffing,
+          and patient care solutions — bringing qualified, caring professionals directly
+          to where care is needed most.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Request a Consultation</a>
+          <a href="#services" class="btn btn-outline-white">Our Services</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span>15+</span>
+            <span>Years of Service</span>
+          </div>
+          <div class="hero-stat">
+            <span>2,500+</span>
+            <span>Patients Served</span>
+          </div>
+          <div class="hero-stat">
+            <span>98%</span>
+            <span>Satisfaction Rate</span>
+          </div>
+          <div class="hero-stat">
+            <span>24/7</span>
+            <span>Available Care</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TRUST STRIP ===================== -->
+  <div id="trust">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+          </div>
+          <div class="trust-item-text">
+            <strong>Fully Certified</strong>
+            <small>State-licensed &amp; accredited</small>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </div>
+          <div class="trust-item-text">
+            <strong>Experienced Staff</strong>
+            <small>Vetted &amp; highly trained</small>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </div>
+          <div class="trust-item-text">
+            <strong>Compassionate Care</strong>
+            <small>Patient-centered approach</small>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+          </div>
+          <div class="trust-item-text">
+            <strong>24/7 Availability</strong>
+            <small>Around-the-clock support</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header centered">
+        <span class="section-label">What We Offer</span>
+        <h2 class="section-title">Comprehensive Medical Services</h2>
+        <p class="section-subtitle">
+          From skilled home nursing to full-scale medical staffing, we deliver
+          professional healthcare solutions tailored to your unique needs.
+        </p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+          </div>
+          <h3>Medical Staffing</h3>
+          <p>We connect healthcare facilities with qualified, credentialed professionals — including RNs, LPNs, CNAs, and allied health staff — for temporary, contract, and permanent placements.</p>
+          <a href="#contact" class="service-link">Learn More &#8594;</a>
+        </div>
+
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          </div>
+          <h3>Home Health Care</h3>
+          <p>Our skilled home health aides and nurses provide personalized medical care in the comfort of your home, supporting recovery, managing chronic conditions, and improving quality of life.</p>
+          <a href="#contact" class="service-link">Learn More &#8594;</a>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.3C18 2.55 16.33 1 14.5 1c-1.74 0-3.41.81-4.5 2.09C8.91 1.81 7.24 1 5.5 1 3.67 1 2 2.55 2 4.7c0 .42.11.86.18 1.3H0v2h24V6h-4zM3.83 8l-.34 2h1.03l.34-2H5l-.34 2h1.03l.34-2h.97l-.34 2h1.03l.34-2H9l-.34 2h1.03l.34-2H11l-.34 2h1.03l.34-2H13l-.34 2h1.03l.34-2H15l-.34 2h1.03l.34-2H17l-.34 2h1.03l.34-2H20.17l-.34-2h1.01l.34 2h.82v12H2V10h.82l.33-2h.68z"/></svg>
+          </div>
+          <h3>Skilled Nursing</h3>
+          <p>Our registered and licensed practical nurses deliver expert clinical care, from wound management and IV therapy to post-surgical care and ongoing disease management at home or facility.</p>
+          <a href="#contact" class="service-link">Learn More &#8594;</a>
+        </div>
+
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+          </div>
+          <h3>Patient Care Management</h3>
+          <p>We coordinate comprehensive patient care plans, ensuring seamless transitions between hospital, rehabilitation, and home care — so patients and families always feel supported and informed.</p>
+          <a href="#contact" class="service-link">Learn More &#8594;</a>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/></svg>
+          </div>
+          <h3>Rehabilitation Therapy</h3>
+          <p>Physical, occupational, and speech therapy services delivered by licensed therapists — helping patients regain strength, mobility, and independence following illness, injury, or surgery.</p>
+          <a href="#contact" class="service-link">Learn More &#8594;</a>
+        </div>
+
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 8l-4 4h3c0 3.31-2.69 6-6 6-1.01 0-1.97-.25-2.8-.7l-1.46 1.46C8.97 19.54 10.43 20 12 20c4.42 0 8-3.58 8-8h3l-4-4zM6 12c0-3.31 2.69-6 6-6 1.01 0 1.97.25 2.8.7l1.46-1.46C15.03 4.46 13.57 4 12 4c-4.42 0-8 3.58-8 8H1l4 4 4-4H6z"/></svg>
+          </div>
+          <h3>Chronic Disease Support</h3>
+          <p>Specialized programs for cardiac care, diabetes management, wound care, and respiratory conditions — providing consistent monitoring, education, and hands-on clinical support.</p>
+          <a href="#contact" class="service-link">Learn More &#8594;</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-wrap reveal">
+          <img
+            src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=900&q=80"
+            alt="Medical professional providing compassionate care"
+          />
+          <div class="about-badge">
+            <strong>15+</strong>
+            <span>Years Serving<br/>Our Community</span>
+          </div>
+        </div>
+        <div class="about-text reveal reveal-delay-2">
+          <div class="section-header">
+            <span class="section-label">Who We Are</span>
+            <h2 class="section-title">A Legacy of Trusted Healthcare Delivery</h2>
+            <p class="section-subtitle">
+              Crescent Medical Services was founded on a simple but powerful belief: every patient
+              deserves skilled, compassionate care — wherever they are. For over 15 years we have
+              been connecting patients and facilities with the qualified medical professionals they need.
+            </p>
+          </div>
+          <div class="about-features">
+            <div class="about-feature">
+              <div class="about-feature-icon">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              </div>
+              <div class="about-feature-body">
+                <strong>Rigorous Credentialing Process</strong>
+                <p>All staff undergo comprehensive background checks, license verification, and skills assessments before joining our network.</p>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              </div>
+              <div class="about-feature-body">
+                <strong>Community-Centered Mission</strong>
+                <p>We are deeply invested in the communities we serve, partnering with local hospitals, clinics, and families to improve health outcomes.</p>
+              </div>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+              </div>
+              <div class="about-feature-body">
+                <strong>Continuous Quality Improvement</strong>
+                <p>We regularly evaluate patient outcomes and staff performance to ensure the highest possible standard of care is consistently delivered.</p>
+              </div>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-outline-primary">Get to Know Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY CHOOSE US ===================== -->
+  <section id="why">
+    <div class="container">
+      <div class="section-header centered reveal">
+        <span class="section-label">Why Crescent Medical</span>
+        <h2 class="section-title">The Right Care. The Right People. Every Time.</h2>
+        <p class="section-subtitle">
+          We go beyond filling a role or completing a shift — we build relationships
+          grounded in trust, expertise, and genuine compassion.
+        </p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-number">01</div>
+          <h3>Qualified, Vetted Professionals</h3>
+          <p>Every member of our team holds active licensure, meets rigorous competency standards, and participates in ongoing continuing education to stay current with best practices.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-1">
+          <div class="why-number">02</div>
+          <h3>Personalized Care Plans</h3>
+          <p>We never apply a one-size-fits-all approach. Our care coordinators work alongside patients, families, and referring physicians to craft individualized plans that address real needs.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-2">
+          <div class="why-number">03</div>
+          <h3>Comprehensive Service Range</h3>
+          <p>From acute skilled nursing to long-term home health and medical staffing, we offer an integrated suite of services so your care needs are covered under one trusted provider.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-1">
+          <div class="why-number">04</div>
+          <h3>Rapid Response &amp; Flexibility</h3>
+          <p>Healthcare needs don't follow a schedule. Our team responds swiftly to urgent staffing requests and care escalations, ensuring no gap goes unaddressed.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-2">
+          <div class="why-number">05</div>
+          <h3>Transparent Communication</h3>
+          <p>We keep patients, families, and facilities informed every step of the way — because clear, honest communication is the foundation of great care and great partnerships.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-3">
+          <div class="why-number">06</div>
+          <h3>Outcomes You Can Measure</h3>
+          <p>We track, report, and continuously improve patient outcomes and satisfaction scores — holding ourselves accountable to the results that matter most to the people we serve.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TESTIMONIALS ===================== -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-header centered">
+        <span class="section-label">Patient Stories</span>
+        <h2 class="section-title">Trusted by Patients &amp; Families</h2>
+        <p class="section-subtitle">
+          Hear from the people whose lives we have had the privilege of supporting.
+        </p>
+      </div>
+      <div class="testimonials-grid">
+
+        <div class="testi-card reveal">
+          <div class="testi-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <div class="testi-quote">&ldquo;</div>
+          <p class="testi-text">After my mother's hip replacement, Crescent Medical arranged a skilled nurse to visit daily. The care she received at home was exceptional — thorough, gentle, and professional. We couldn't have managed without this team. They truly treated her like family.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">DH</div>
+            <div class="testi-author-info">
+              <strong>Diane H.</strong>
+              <small>Family Caregiver, Home Health Client</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal reveal-delay-1">
+          <div class="testi-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <div class="testi-quote">&ldquo;</div>
+          <p class="testi-text">As a clinic administrator, finding reliable short-notice coverage used to be a nightmare. Crescent Medical changed that completely. Their response time is incredible, and every staff member they send is credentialed, professional, and ready to work from day one.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">MR</div>
+            <div class="testi-author-info">
+              <strong>Marcus R.</strong>
+              <small>Clinic Administrator, Staffing Partner</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal reveal-delay-2">
+          <div class="testi-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          </div>
+          <div class="testi-quote">&ldquo;</div>
+          <p class="testi-text">I was managing my diabetes and recovering from a foot ulcer at the same time. The wound care nurse from Crescent Medical visited three times a week and kept my physician updated at every step. I healed faster than expected. I am truly grateful for their dedication.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">TW</div>
+            <div class="testi-author-info">
+              <strong>Teresa W.</strong>
+              <small>Patient, Chronic Disease &amp; Wound Care</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="section-header">
+            <span class="section-label">Get In Touch</span>
+            <h2 class="section-title">We Are Ready to Help You</h2>
+            <p class="section-subtitle">
+              Whether you need home health care for a loved one, qualified staff for your facility,
+              or simply have questions — our team is here for you, day or night.
+            </p>
+          </div>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              </div>
+              <div class="contact-detail-body">
+                <strong>Phone</strong>
+                <span>(800) 555-0194</span>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              </div>
+              <div class="contact-detail-body">
+                <strong>Email</strong>
+                <span>info@crescentmedicalservices.com</span>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              </div>
+              <div class="contact-detail-body">
+                <strong>Office</strong>
+                <span>Available by appointment &mdash; serving patients region-wide</span>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+              </div>
+              <div class="contact-detail-body">
+                <strong>Hours</strong>
+                <span>24 hours a day, 7 days a week</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form reveal reveal-delay-2">
+          <h3>Request a Consultation</h3>
+          <form onsubmit="return false;">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" placeholder="Jane" />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" placeholder="Smith" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="jane@email.com" />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="(555) 000-0000" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="service">Service Needed</label>
+              <select id="service">
+                <option value="">Select a service...</option>
+                <option>Medical Staffing</option>
+                <option>Home Health Care</option>
+                <option>Skilled Nursing</option>
+                <option>Rehabilitation Therapy</option>
+                <option>Patient Care Management</option>
+                <option>Chronic Disease Support</option>
+                <option>Other / General Inquiry</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Tell Us About Your Needs</label>
+              <textarea id="message" placeholder="Please describe your care needs or inquiry..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send My Request &#8594;</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#hero" class="nav-logo" style="text-decoration:none;">
+            <div class="nav-logo-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14h-2v-4H7v-2h4V6h2v4h4v2h-4z"/>
+              </svg>
+            </div>
+            <div class="nav-logo-text">
+              <span style="color:#fff;">Crescent Medical</span>
+              <span style="color:rgba(255,255,255,0.6);">Services</span>
+            </div>
+          </a>
+          <p>Delivering compassionate, professional healthcare services to patients and facilities with dedication, integrity, and skill — every single day.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="Twitter/X">
+              <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Medical Staffing</a></li>
+            <li><a href="#services">Home Health Care</a></li>
+            <li><a href="#services">Skilled Nursing</a></li>
+            <li><a href="#services">Rehabilitation Therapy</a></li>
+            <li><a href="#services">Patient Care Management</a></li>
+            <li><a href="#services">Chronic Disease Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#why">Why Choose Us</a></li>
+            <li><a href="#testimonials">Patient Stories</a></li>
+            <li><a href="#contact">Careers</a></li>
+            <li><a href="#contact">Partnerships</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:8005550194">(800) 555-0194</a></li>
+            <li><a href="mailto:info@crescentmedicalservices.com">info@crescentmedical<br/>services.com</a></li>
+            <li><a href="#contact">Request Care</a></li>
+            <li><a href="#contact">Staff Request</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Crescent Medical Services. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> &nbsp;&bull;&nbsp; <a href="#">Terms of Service</a> &nbsp;&bull;&nbsp; <a href="#">HIPAA Notice</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== JAVASCRIPT ===================== -->
+  <script>
+    /* --- Navbar scroll behavior --- */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    /* --- Hamburger / mobile menu --- */
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    function closeMobile() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }
+
+    /* --- Scroll Reveal (IntersectionObserver) --- */
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+</html>

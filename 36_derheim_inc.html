@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Derheim Inc | Custom Pool &amp; Spa Design, Construction &amp; Service | Fargo-Moorhead</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --aqua: #00b4cc;
+      --aqua-dark: #0098ad;
+      --teal: #00737e;
+      --deep: #004a52;
+      --sand: #c8a96e;
+      --sand-light: #e8c98e;
+      --cream: #f7f5f0;
+      --white: #ffffff;
+      --text: #1a2e35;
+      --text-mid: #4a6570;
+      --border: #d8e8ec;
+      --light-bg: #eef7f9;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Open Sans', sans-serif; background: var(--cream); color: var(--text); line-height: 1.7; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      background: rgba(0, 74, 82, 0.97); padding: 0 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px; border-bottom: 3px solid var(--aqua);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo-wave { font-family: 'Nunito', sans-serif; font-size: 1.8rem; color: var(--aqua); font-weight: 800; line-height: 1; }
+    .nav-logo-text { display: flex; flex-direction: column; }
+    .nav-logo-name { font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); letter-spacing: 0.04em; line-height: 1; }
+    .nav-logo-tagline { font-size: 0.62rem; color: var(--aqua); letter-spacing: 0.14em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.88rem; font-family: 'Nunito', sans-serif; font-weight: 600; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--aqua); }
+    .nav-cta {
+      background: var(--aqua); color: var(--deep);
+      padding: 11px 26px; font-family: 'Nunito', sans-serif; font-weight: 800;
+      font-size: 0.88rem; text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--sand-light); color: var(--deep); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 120px 48px 80px; position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=1600&q=80') center/cover no-repeat;
+    }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,74,82,0.92) 35%, rgba(0,74,82,0.65) 100%); }
+    .hero-content { position: relative; z-index: 2; max-width: 680px; }
+    .hero-award {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--sand); color: var(--deep);
+      padding: 8px 18px; font-family: 'Nunito', sans-serif; font-weight: 800;
+      font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: 'Nunito', sans-serif; font-size: clamp(2.8rem, 5vw, 4.5rem);
+      color: var(--white); line-height: 1.15; margin-bottom: 24px; font-weight: 800;
+    }
+    .hero h1 span { color: var(--aqua); }
+    .hero-sub { font-size: 0.9rem; color: var(--sand-light); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; margin-bottom: 24px; }
+    .hero p { font-size: 1.05rem; color: rgba(255,255,255,0.82); max-width: 560px; margin-bottom: 44px; line-height: 1.8; }
+    .btn-aqua {
+      display: inline-block; background: var(--aqua); color: var(--deep);
+      padding: 15px 38px; font-family: 'Nunito', sans-serif; font-weight: 800;
+      font-size: 0.9rem; text-decoration: none; transition: background 0.2s;
+    }
+    .btn-aqua:hover { background: #33c7dd; }
+    .btn-outline {
+      display: inline-block; border: 2px solid rgba(255,255,255,0.4); color: var(--white);
+      padding: 15px 38px; font-family: 'Nunito', sans-serif; font-weight: 600;
+      font-size: 0.9rem; text-decoration: none; margin-left: 14px; transition: border-color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--aqua); color: var(--aqua); }
+
+    .hero-stats {
+      display: flex; gap: 0; margin-top: 64px;
+      border-top: 1px solid rgba(255,255,255,0.15); padding-top: 36px;
+    }
+    .h-stat { padding-right: 44px; margin-right: 44px; border-right: 1px solid rgba(255,255,255,0.15); }
+    .h-stat:last-child { border-right: none; }
+    .h-stat-num { font-family: 'Nunito', sans-serif; font-size: 2rem; color: var(--aqua); font-weight: 800; }
+    .h-stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* SECTION COMMONS */
+    section { padding: 96px 48px; }
+    .container { max-width: 1160px; margin: 0 auto; }
+    .section-label { font-family: 'Nunito', sans-serif; font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--aqua-dark); margin-bottom: 10px; font-weight: 700; }
+    .section-title { font-family: 'Nunito', sans-serif; font-size: clamp(2rem, 3.2vw, 2.8rem); color: var(--deep); margin-bottom: 20px; line-height: 1.2; font-weight: 800; }
+    .section-title.light { color: var(--white); }
+    .section-sub { font-size: 1rem; color: var(--text-mid); max-width: 580px; margin-bottom: 56px; line-height: 1.8; }
+
+    /* SERVICES */
+    .services { background: var(--white); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .service-card {
+      padding: 40px 32px; background: var(--light-bg);
+      border-radius: 2px; border-top: 4px solid var(--border);
+      transition: border-color 0.2s, transform 0.2s;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease, border-color 0.2s;
+    }
+    .service-card.visible { opacity: 1; transform: translateY(0); }
+    .service-card:hover { border-top-color: var(--aqua); }
+    .service-wave { font-family: 'Nunito', sans-serif; font-size: 2rem; color: var(--aqua); opacity: 0.4; margin-bottom: 14px; font-weight: 800; }
+    .service-card h3 { font-family: 'Nunito', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--deep); margin-bottom: 12px; }
+    .service-card p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.75; }
+
+    /* WHY DERHEIM */
+    .why { background: var(--deep); }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .why-img img { width: 100%; height: 480px; object-fit: cover; }
+    .awards-list { list-style: none; margin-top: 32px; }
+    .awards-list li {
+      display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+      align-items: flex-start;
+    }
+    .awards-list li:last-child { border-bottom: none; }
+    .award-icon { width: 42px; height: 42px; background: var(--sand); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .award-icon span { font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 0.75rem; color: var(--deep); text-align: center; line-height: 1.2; }
+    .award-text h4 { font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .award-text p { font-size: 0.86rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+    /* ABOUT */
+    .about { background: var(--cream); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-img-wrap { position: relative; }
+    .about-img-main { width: 100%; height: 480px; object-fit: cover; }
+    .about-callout-box {
+      position: absolute; bottom: -24px; right: -24px;
+      background: var(--aqua); padding: 24px 28px; max-width: 240px;
+    }
+    .about-callout-box p { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.95rem; color: var(--deep); line-height: 1.5; }
+    .about-text p { font-size: 0.98rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 20px; }
+    .about-highlight {
+      padding: 24px 28px; background: var(--light-bg);
+      border-left: 4px solid var(--sand); margin: 28px 0;
+    }
+    .about-highlight p { font-family: 'Nunito', sans-serif; font-style: italic; font-size: 1.05rem; color: var(--deep); line-height: 1.6; margin: 0; }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--white); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+    .testimonial-card {
+      padding: 36px 28px; background: var(--light-bg);
+      border-bottom: 4px solid var(--aqua);
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .testimonial-card.visible { opacity: 1; transform: translateY(0); }
+    .testimonial-card blockquote { font-size: 0.95rem; color: var(--text-mid); line-height: 1.8; font-style: italic; margin-bottom: 24px; }
+    .testimonial-author { font-family: 'Nunito', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--deep); }
+    .testimonial-role { font-size: 0.8rem; color: var(--text-mid); margin-top: 4px; }
+    .testimonial-stars { color: var(--sand); font-size: 0.9rem; margin-bottom: 16px; letter-spacing: 0.1em; }
+
+    /* CONTACT */
+    .contact-section { background: var(--deep); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .contact-info p { font-size: 0.98rem; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 32px; }
+    .contact-detail { margin-bottom: 22px; }
+    .contact-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--aqua); margin-bottom: 4px; font-weight: 700; font-family: 'Nunito', sans-serif; }
+    .contact-value { font-size: 1rem; color: var(--white); }
+    form { display: flex; flex-direction: column; gap: 16px; }
+    form input, form textarea, form select {
+      padding: 13px 16px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15);
+      font-family: 'Open Sans', sans-serif; font-size: 0.92rem; color: var(--white);
+      outline: none; transition: border-color 0.2s;
+    }
+    form input::placeholder, form textarea::placeholder { color: rgba(255,255,255,0.35); }
+    form select { color: rgba(255,255,255,0.6); }
+    form select option { background: var(--deep); }
+    form input:focus, form textarea:focus { border-color: var(--aqua); }
+    form textarea { height: 130px; resize: vertical; }
+    form button {
+      background: var(--aqua); color: var(--deep);
+      padding: 14px 36px; font-family: 'Nunito', sans-serif;
+      font-size: 0.9rem; font-weight: 800;
+      border: none; cursor: pointer; transition: background 0.2s; align-self: flex-start;
+    }
+    form button:hover { background: #33c7dd; }
+
+    /* FOOTER */
+    footer { background: #002428; padding: 56px 48px 28px; border-top: 3px solid var(--aqua); }
+    .footer-inner { max-width: 1160px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 56px; margin-bottom: 40px; }
+    .footer-brand p { margin-top: 14px; font-size: 0.88rem; color: rgba(255,255,255,0.42); line-height: 1.75; max-width: 280px; }
+    .footer-col h4 { font-family: 'Nunito', sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--aqua); margin-bottom: 16px; font-weight: 700; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 9px; }
+    .footer-col ul li a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--aqua); }
+    .footer-bottom { display: flex; justify-content: space-between; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.28); }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .services-grid, .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid, .about-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 64px 20px; }
+      .hero { padding: 100px 20px 56px; }
+      .hero-stats { flex-wrap: wrap; }
+      .h-stat { border-right: none; }
+      .about-callout-box { display: none; }
+    }
+    @media (max-width: 580px) {
+      .services-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-wave">~</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">Derheim Inc</span>
+        <span class="nav-logo-tagline">Pool &amp; Spa Specialists</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Derheim</a></li>
+      <li><a href="#about">About Troy</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Talk to Troy</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-award">Aqua Hall of Fame &mdash; Pool Dealer of the Year</div>
+      <h1>Your Backyard.<br><span>Your Oasis.</span></h1>
+      <p class="hero-sub">Custom Pools &amp; Spas &mdash; Fargo-Moorhead, ND/MN</p>
+      <p>Up here, summer is short and precious. Troy Derheim has spent 28 years making sure families in Fargo-Moorhead get every last minute out of it &mdash; with custom pools, spas, and aquatic spaces built to last and designed to be loved. Hall of Fame craftsmanship. Personal service. And someone who genuinely cares what your family thinks of the finished result.</p>
+      <a href="#contact" class="btn-aqua">Talk to Troy</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+      <div class="hero-stats">
+        <div class="h-stat">
+          <div class="h-stat-num">28+</div>
+          <div class="h-stat-label">Years in Business</div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-num">7x</div>
+          <div class="h-stat-label">APSP Region 5 Award of Excellence</div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-num">Hall<br><span style="font-size: 0.9rem;">of Fame</span></div>
+          <div class="h-stat-label">Aqua National Pool Dealers</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <p class="section-label reveal">What We Do</p>
+      <h2 class="section-title reveal">Everything Your Pool<br>Project Needs</h2>
+      <p class="section-sub reveal">From the first design conversation to the last service call of the season &mdash; backyard pools, indoor aquatic spaces, custom spas, and everything in between &mdash; Derheim Inc is your single source for aquatics in the Fargo-Moorhead area. We handle it all, and we do it with care.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-wave">~</div>
+          <h3>Custom Pool Design &amp; Construction</h3>
+          <p>We design and build custom in-ground pools tailored to your property, your lifestyle, and your vision. Every pool we build is a one-of-a-kind project — designed for the specific family who will use it.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-wave">~</div>
+          <h3>Spa &amp; Hot Tub Sales and Installation</h3>
+          <p>Premium hot tubs and spas sold, delivered, and installed by our team. We help you choose the right model for your needs and make sure it is set up perfectly from day one.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-wave">~</div>
+          <h3>Pool &amp; Spa Renovation</h3>
+          <p>Give an older pool new life. We handle resurfacing, coping and tile replacement, equipment upgrades, and full renovation projects that transform what you have into what you dreamed of.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-wave">~</div>
+          <h3>Weekly Service &amp; Maintenance</h3>
+          <p>Keep your pool perfect all season without the work. Our maintenance programs handle water chemistry, cleaning, equipment checks, and everything else it takes to keep your pool healthy and beautiful.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-wave">~</div>
+          <h3>Seasonal Opening &amp; Closing</h3>
+          <p>When you live in North Dakota or Minnesota, a proper pool closing is not optional &mdash; it is what protects your investment through six months of freeze. We open and close hundreds of pools every year. It shows.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-wave">~</div>
+          <h3>Retail Products &amp; Supplies</h3>
+          <p>Water care chemicals, accessories, replacement parts, and everything else your pool and spa needs — available through Derheim Inc so you are never hunting down supplies from multiple sources.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY DERHEIM -->
+  <section class="why" id="why">
+    <div class="container">
+      <div class="why-grid">
+        <div class="reveal">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80" alt="Award-winning custom pool design in residential backyard" loading="lazy" style="width:100%; height:480px; object-fit:cover;" />
+        </div>
+        <div>
+          <p class="section-label">Why Choose Derheim</p>
+          <h2 class="section-title light">Hall of Fame Quality.<br>Hometown Service.</h2>
+          <p style="color: rgba(255,255,255,0.72); font-size: 1rem; line-height: 1.8; margin-bottom: 28px;">Troy Derheim did not build his reputation by cutting corners. He built it by showing up &mdash; for 28 years &mdash; and delivering work that holds up through Fargo winters and stands up to the scrutiny of national industry judges. The awards are nice, but what really matters is that the families he has built pools for keep coming back. And their kids are now his customers too.</p>
+          <ul class="awards-list">
+            <li>
+              <div class="award-icon"><span>Hall of Fame</span></div>
+              <div class="award-text">
+                <h4>Aqua National Pool Dealers Hall of Fame</h4>
+                <p>Inducted 2009 after repeated recognition as one of America's top 100 pool stores. The Aqua 100 list has recognized Derheim Inc for excellence in quality, service, and customer satisfaction.</p>
+              </div>
+            </li>
+            <li>
+              <div class="award-icon"><span>7x Award</span></div>
+              <div class="award-text">
+                <h4>APSP Region 5 Award of Excellence</h4>
+                <p>Seven consecutive years of recognition from the Association of Pool & Spa Professionals — one of the most rigorous peer-judged quality awards in the aquatics industry.</p>
+              </div>
+            </li>
+            <li>
+              <div class="award-icon"><span>28+ Yrs</span></div>
+              <div class="award-text">
+                <h4>28+ Years Serving Fargo-Moorhead</h4>
+                <p>Troy has been building relationships in this community since 1991. Many of his customers have been with him for decades — and their children are now his customers too.</p>
+              </div>
+            </li>
+            <li>
+              <div class="award-icon"><span>Army Vet</span></div>
+              <div class="award-text">
+                <h4>Veteran-Owned Business</h4>
+                <p>Troy Derheim served honorably in the U.S. Army during Operation Desert Storm before coming to Fargo in 1991 and starting a business built on discipline, commitment, and follow-through.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap reveal">
+          <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80" alt="Troy Derheim pool construction team at work" loading="lazy" class="about-img-main" />
+          <div class="about-callout-box">
+            <p>Building pools and relationships in Fargo-Moorhead for over 28 years.</p>
+          </div>
+        </div>
+        <div class="about-text reveal">
+          <p class="section-label">About Troy</p>
+          <h2 class="section-title">From Army Veteran to<br>Award-Winning Pool Builder</h2>
+          <p>Troy Derheim came to Fargo in 1991 after an honorable discharge from the U.S. Army, having served in Operation Desert Storm. He enrolled in college and &mdash; true to the discipline he carried home from the service &mdash; did not sit still. He started a small part-time business called Tubs of Fun! out of a simple drive to build something of his own.</p>
+          <p>What started as a part-time venture became a full-time passion. Troy built Derheim Inc into the most recognized pool and spa company in the Fargo-Moorhead area &mdash; earning seven consecutive APSP Region 5 Awards of Excellence and induction into the Aqua National Pool Dealers Hall of Fame in 2009. He builds backyard pools, indoor aquatic facilities, and commercial spa installations. The scale changes. The standard does not.</p>
+          <div class="about-highlight">
+            <p>"I started with the idea that if you take care of people &mdash; really take care of them &mdash; the business takes care of itself. Twenty-eight years later, I still believe that."</p>
+          </div>
+          <p>Troy is personally involved in every project. He will walk your property, listen to what you want, and come back with ideas you probably have not thought of yet. That is not marketing language &mdash; it is just how he works.</p>
+          <a href="#contact" class="btn-aqua" style="margin-top: 20px; display: inline-block; color: var(--deep);">Talk to Troy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <p class="section-label reveal">What Our Customers Say</p>
+      <h2 class="section-title reveal">Families Who Love<br>Every Summer Day</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"Troy walked our backyard, asked the right questions, and came back with a design we never would have thought of ourselves. Three summers in, we are out there every single day from June through August. In Fargo, that says everything."</blockquote>
+          <div class="testimonial-author">David &amp; Kristin M.</div>
+          <div class="testimonial-role">Moorhead, MN &mdash; Custom Pool Build</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"We have been Troy's customers for going on fourteen years. He built our pool, renovated it when we wanted to update it, and his crew opens and closes it every season without us having to think about it. There is nobody else we would call."</blockquote>
+          <div class="testimonial-author">Mark &amp; Debra J.</div>
+          <div class="testimonial-role">Fargo, ND &mdash; Pool Build, Renovation &amp; Ongoing Service</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"Troy spent an hour with us before we ever signed anything &mdash; walked us through the hot tub options, explained what holds up in a North Dakota winter, and told us what we actually needed versus what we did not. That kind of honesty is rare."</blockquote>
+          <div class="testimonial-author">Sandra K.</div>
+          <div class="testimonial-role">West Fargo, ND &mdash; Spa Installation</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="reveal">
+          <p class="section-label">Get in Touch</p>
+          <h2 class="section-title light">Start Designing<br>Your Dream</h2>
+          <p>Whether you are dreaming of a backyard pool, an indoor aquatic space, or just want to get more life out of a spa you already own &mdash; give Troy a call. He is happy to meet, walk your property, and share ideas with no pressure and no obligation. Pool season is short up here. Let's make the most of it.</p>
+          <div class="contact-detail">
+            <div class="contact-label">Call Troy Directly</div>
+            <div class="contact-value"><a href="tel:7013679700" style="color: var(--aqua); text-decoration: none; font-size: 1.15rem; font-weight: 700;">(701) 367-9700</a></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">tderheim@derheiminc.com</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-label">Location</div>
+            <div class="contact-value">Moorhead, MN<br>Serving the Fargo-Moorhead Metro</div>
+          </div>
+        </div>
+        <div class="reveal">
+          <form>
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Email Address" required />
+            <input type="tel" placeholder="Phone Number" />
+            <select>
+              <option value="">I'm interested in...</option>
+              <option>New Pool Design &amp; Construction</option>
+              <option>Spa / Hot Tub Purchase</option>
+              <option>Pool Renovation</option>
+              <option>Weekly Service or Maintenance</option>
+              <option>Seasonal Opening or Closing</option>
+              <option>Something Else</option>
+            </select>
+            <textarea placeholder="Tell us a little about your project or what you are looking for..."></textarea>
+            <button type="submit">Send My Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo" style="text-decoration: none;">
+            <div class="nav-logo-wave">~</div>
+            <div class="nav-logo-text">
+              <span class="nav-logo-name">Derheim Inc</span>
+              <span class="nav-logo-tagline">Pool &amp; Spa Specialists</span>
+            </div>
+          </a>
+          <p>Award-winning pool and spa design, construction, and service in the Fargo-Moorhead area. Aqua Hall of Fame. Veteran-owned. Since 1991.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Custom Pool Design</a></li>
+            <li><a href="#">Spa &amp; Hot Tub Sales</a></li>
+            <li><a href="#">Pool Renovation</a></li>
+            <li><a href="#">Maintenance Programs</a></li>
+            <li><a href="#">Seasonal Opening &amp; Closing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:7013679700">(701) 367-9700</a></li>
+            <li><a href="mailto:tderheim@derheiminc.com">tderheim@derheiminc.com</a></li>
+            <li><a href="#">Moorhead, MN</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Derheim Inc. All rights reserved.</p>
+        <p>Custom Pools &amp; Spas &mdash; Fargo-Moorhead Area</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal, .service-card, .testimonial-card').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('.service-card').forEach((el, i) => { el.style.transitionDelay = `${i * 0.1}s`; });
+    document.querySelectorAll('.testimonial-card').forEach((el, i) => { el.style.transitionDelay = `${i * 0.15}s`; });
+  </script>
+</body>
+</html>

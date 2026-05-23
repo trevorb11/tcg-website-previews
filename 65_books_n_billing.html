@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Books N Billing Inc | Professional Bookkeeping & QuickBooks Services | Melbourne, FL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Merriweather+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #1a8c7c;
+      --teal-mid: #22a090;
+      --teal-light: #3ebcab;
+      --teal-pale: #e8f6f4;
+      --gold: #d4a843;
+      --gold-light: #f0c95a;
+      --white: #ffffff;
+      --cream: #fafaf7;
+      --off-white: #f4f2ee;
+      --gray-light: #e4e2dc;
+      --gray-text: #5c5c5c;
+      --text: #1f2937;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Merriweather Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      background: var(--white);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .nav-logo {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1.4rem;
+      color: var(--teal);
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+
+    .nav-links a {
+      color: var(--gray-text);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 700;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--teal); }
+
+    .nav-cta {
+      background: var(--teal) !important;
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 25px;
+      font-weight: 700 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--teal-light) !important; color: var(--white) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 5% 80px;
+      background: linear-gradient(160deg, var(--teal-pale) 0%, var(--cream) 60%, var(--white) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(26,140,124,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(26,140,124,0.1);
+      color: var(--teal);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 900;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span { color: var(--teal); }
+
+    .hero p {
+      color: var(--gray-text);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+    }
+
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-teal {
+      display: inline-block;
+      background: var(--teal);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 4px 16px rgba(26,140,124,0.25);
+    }
+
+    .btn-teal:hover { background: var(--teal-light); transform: translateY(-2px); }
+
+    .btn-outline-teal {
+      display: inline-block;
+      border: 2px solid var(--teal);
+      color: var(--teal);
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-outline-teal:hover { background: var(--teal-pale); }
+
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+      display: block;
+    }
+
+    .hero-badges {
+      position: absolute;
+      bottom: -1.5rem;
+      left: -1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .hero-badge {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 0.9rem 1.25rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 200px;
+    }
+
+    .badge-icon {
+      width: 38px;
+      height: 38px;
+      background: var(--teal-pale);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .badge-text strong {
+      display: block;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    .badge-text span { font-size: 0.75rem; color: var(--gray-text); }
+
+    /* TRUST BAR */
+    .trust-bar {
+      background: var(--teal);
+      padding: 2rem 5%;
+    }
+
+    .trust-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .trust-item .trust-num {
+      font-family: 'Nunito', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--white);
+    }
+
+    .trust-item .trust-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.78);
+      margin-top: 0.2rem;
+    }
+
+    /* SECTION COMMONS */
+    section { padding: 90px 5%; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 900;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--gray-text);
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    /* ABOUT */
+    .about { background: var(--cream); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about p { color: var(--gray-text); line-height: 1.85; margin-bottom: 1.25rem; }
+
+    .value-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 1.75rem;
+    }
+
+    .pill {
+      background: var(--teal-pale);
+      color: var(--teal);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+    }
+
+    /* SERVICES */
+    .services { background: var(--white); }
+
+    .services-header { text-align: center; margin-bottom: 3.5rem; }
+    .services-header .section-sub { margin: 0 auto; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 2.5rem;
+      border: 1.5px solid transparent;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: var(--teal-light);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(26,140,124,0.1);
+    }
+
+    .service-icon-wrap {
+      width: 56px;
+      height: 56px;
+      background: var(--teal);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.5rem;
+    }
+
+    .service-card h3 {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .service-card p { color: var(--gray-text); font-size: 0.9rem; line-height: 1.75; }
+
+    /* WHY US */
+    .why { background: var(--off-white); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .why-visual {
+      position: relative;
+    }
+
+    .why-visual img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+    }
+
+    .why-items {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .why-item {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .why-num {
+      width: 44px;
+      height: 44px;
+      background: var(--teal);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .why-content h4 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+
+    .why-content p { font-size: 0.9rem; color: var(--gray-text); line-height: 1.75; }
+
+    /* WHO WE SERVE */
+    .serve { background: var(--teal); }
+
+    .serve .section-title { color: var(--white); }
+    .serve .section-sub { color: rgba(255,255,255,0.8); }
+
+    .serve-header { text-align: center; margin-bottom: 3.5rem; }
+    .serve-header .section-sub { margin: 0 auto; }
+    .serve-header .section-label { color: rgba(255,255,255,0.7); }
+
+    .serve-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .serve-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: background 0.3s;
+    }
+
+    .serve-card:hover { background: rgba(255,255,255,0.18); }
+
+    .serve-icon { font-size: 2rem; margin-bottom: 1rem; }
+
+    .serve-card h4 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      color: var(--white);
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .serve-card p { font-size: 0.82rem; color: rgba(255,255,255,0.7); line-height: 1.65; }
+
+    /* KAREN / FOUNDER */
+    .founder { background: var(--cream); }
+
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .founder-image {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    }
+
+    .founder-image img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    .founder-name {
+      font-family: 'Nunito', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .founder-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1.5rem;
+    }
+
+    .founder-bio { color: var(--gray-text); line-height: 1.85; margin-bottom: 1.25rem; font-size: 0.98rem; }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--white); }
+
+    .testimonials-header { text-align: center; margin-bottom: 3rem; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 2.5rem;
+      position: relative;
+    }
+
+    .quote-mark {
+      font-family: 'Nunito', sans-serif;
+      font-size: 4rem;
+      color: var(--teal-light);
+      opacity: 0.3;
+      position: absolute;
+      top: 1rem;
+      left: 1.5rem;
+      line-height: 1;
+    }
+
+    .testimonial-text {
+      font-size: 0.92rem;
+      color: var(--gray-text);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+      padding-top: 1.5rem;
+    }
+
+    .testimonial-author { display: flex; align-items: center; gap: 1rem; }
+
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .author-name { font-family: 'Nunito', sans-serif; font-weight: 800; color: var(--text); font-size: 0.9rem; }
+    .author-role { font-size: 0.78rem; color: var(--teal); }
+
+    /* CONTACT */
+    .contact { background: var(--off-white); }
+
+    .contact-inner { max-width: 1000px; margin: 0 auto; }
+
+    .contact-top { text-align: center; margin-bottom: 3rem; }
+
+    .contact-form {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 3rem;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+    .form-group { margin-bottom: 1.25rem; }
+
+    .form-group.full { grid-column: 1 / -1; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1.5px solid var(--gray-light);
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--text);
+      background: var(--cream);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--teal); }
+
+    .form-group textarea { min-height: 100px; resize: vertical; }
+
+    .form-submit {
+      display: block;
+      width: 100%;
+      background: var(--teal);
+      color: var(--white);
+      border: none;
+      padding: 1rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Nunito', sans-serif;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      transition: background 0.2s;
+      box-shadow: 0 4px 16px rgba(26,140,124,0.25);
+    }
+
+    .form-submit:hover { background: var(--teal-light); }
+
+    .contact-info-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info-card {
+      text-align: center;
+      padding: 2rem;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    }
+
+    .contact-info-card .info-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+
+    .contact-info-card strong {
+      display: block;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-info-card span { font-size: 0.88rem; color: var(--gray-text); }
+
+    /* FOOTER */
+    footer {
+      background: var(--teal);
+      color: rgba(255,255,255,0.75);
+      padding: 50px 5% 30px;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .footer-logo {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: var(--white);
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo span { color: var(--gold-light); }
+
+    .footer-brand p { font-size: 0.9rem; line-height: 1.75; max-width: 300px; }
+
+    .footer-col h4 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      color: var(--white);
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .footer-col a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-image { display: none; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .serve-grid { grid-template-columns: repeat(2, 1fr); }
+      .founder-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .about-grid, .why-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .trust-inner { grid-template-columns: repeat(2, 1fr); }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-info-row { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">Books N <span>Billing</span></span>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Free Consultation</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="reveal">
+        <span class="hero-eyebrow">Professional Bookkeeping &amp; QuickBooks</span>
+        <h1>Your Books.<br /><span>Finally</span> Under Control.</h1>
+        <p>Karen Warr started Books N Billing in 2012 for one reason: small business owners deserve a bookkeeper who actually cares. Personalized, affordable, and virtually available across the country — stop worrying about your numbers and get back to running your business.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn-teal">Let Karen Handle Your Books</a>
+          <a href="#services" class="btn-outline-teal">Our Services</a>
+        </div>
+      </div>
+      <div class="hero-image reveal reveal-delay-2">
+        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80" alt="Professional woman reviewing financial documents at organized desk" loading="lazy" />
+        <div class="hero-badges">
+          <div class="hero-badge">
+            <div class="badge-icon">&#9733;</div>
+            <div class="badge-text">
+              <strong>Woman Veteran Owned</strong>
+              <span>Serving small business since 2012</span>
+            </div>
+          </div>
+          <div class="hero-badge">
+            <div class="badge-icon">&#128200;</div>
+            <div class="badge-text">
+              <strong>60+ Years Combined</strong>
+              <span>Bookkeeping experience</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-inner">
+      <div class="trust-item reveal">
+        <div class="trust-num">2012</div>
+        <div class="trust-label">Founded in Melbourne, FL</div>
+      </div>
+      <div class="trust-item reveal reveal-delay-1">
+        <div class="trust-num">60+</div>
+        <div class="trust-label">Years Combined Experience</div>
+      </div>
+      <div class="trust-item reveal reveal-delay-2">
+        <div class="trust-num">QB</div>
+        <div class="trust-label">QuickBooks Certified Experts</div>
+      </div>
+      <div class="trust-item reveal reveal-delay-3">
+        <div class="trust-num">Virtual</div>
+        <div class="trust-label">Nationwide Service Available</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about-section">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80" alt="Business owner reviewing financial reports with bookkeeper" loading="lazy" />
+        </div>
+        <div class="reveal reveal-delay-1">
+          <p class="section-label">Our Story</p>
+          <h2 class="section-title">The Bookkeeper You Always Wished You'd Found</h2>
+          <p>Karen Warr started Books N Billing because she saw too many great businesses struggling with their books. Too many small business owners spending Saturday nights hunched over receipts instead of actually living their lives. She decided to do something about it.</p>
+          <p>Since 2012, Books N Billing has been the financial partner small businesses in Central Florida and across the country rely on. We're not a big firm with rotating staff and generic packages. We're a dedicated team of degreed accountants who actually care about your business — because we've built one ourselves.</p>
+          <p>We specialize in QuickBooks and small business bookkeeping. We keep your records clean, your filings on time, and your financial picture clear — so you can focus on what you're actually good at.</p>
+          <div class="value-pills">
+            <span class="pill">Woman Veteran Owned</span>
+            <span class="pill">Degreed Accountants</span>
+            <span class="pill">QuickBooks Specialists</span>
+            <span class="pill">No Hidden Fees</span>
+            <span class="pill">Nationwide Virtual Service</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="services-header reveal">
+        <p class="section-label">What We Offer</p>
+        <h2 class="section-title">Everything Your Books Need</h2>
+        <p class="section-sub">From monthly reconciliation to payroll and everything in between — we handle the financial details so you don't have to.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">&#128200;</div>
+          <h3>Monthly Bookkeeping</h3>
+          <p>Regular account reconciliation, transaction categorization, and financial reporting so you always know exactly where your business stands — every single month.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon-wrap">&#128187;</div>
+          <h3>QuickBooks Setup &amp; Support</h3>
+          <p>QuickBooks Online and Desktop setup, cleanup, and ongoing management. If your books are a mess, we'll clean them up first and then keep them that way.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon-wrap">&#128176;</div>
+          <h3>Payroll Processing</h3>
+          <p>Accurate, on-time payroll with payroll tax filings included. We handle the complexity so your team gets paid correctly and you stay compliant.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon-wrap">&#128179;</div>
+          <h3>Accounts Payable &amp; Receivable</h3>
+          <p>We track what's coming in and what's going out — keeping your cash flow visible and helping you avoid the gaps that catch small businesses off guard.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon-wrap">&#128203;</div>
+          <h3>Sales Tax Filing</h3>
+          <p>Florida sales tax and multi-state sales tax compliance managed and filed on time. No more scrambling at the deadline or wondering if you got it right.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon-wrap">&#128196;</div>
+          <h3>Year-End Cleanup &amp; Virtual Services</h3>
+          <p>Get your books tax-ready before they hit your CPA's desk. Available virtually via secure RDS and QuickBooks Online — we serve clients across the country.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why" id="why">
+    <div class="section-inner">
+      <div class="why-grid">
+        <div class="why-visual reveal">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="Small business owner reviewing documents with advisor" loading="lazy" />
+        </div>
+        <div class="reveal reveal-delay-1">
+          <p class="section-label">Why Books N Billing</p>
+          <h2 class="section-title">Your Partner in Financial Clarity</h2>
+          <div class="why-items">
+            <div class="why-item">
+              <div class="why-num">1</div>
+              <div class="why-content">
+                <h4>Personalized Service, Always</h4>
+                <p>No one-size-fits-all packages. We listen to your business, your industry, and your needs — and build a bookkeeping approach that actually fits.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-num">2</div>
+              <div class="why-content">
+                <h4>Clear Pricing, No Surprises</h4>
+                <p>You'll know exactly what you're paying and exactly what you're getting. We believe honest service includes honest billing — always.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-num">3</div>
+              <div class="why-content">
+                <h4>QuickBooks Expertise</h4>
+                <p>We're not generalists who happen to use QuickBooks. We're QuickBooks specialists. It's what we do every single day, for every single client.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-num">4</div>
+              <div class="why-content">
+                <h4>We Work Where You Work</h4>
+                <p>Local Melbourne office and secure virtual service nationwide. You choose how you want to work with us — we'll make it seamless either way.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE SERVE -->
+  <section class="serve">
+    <div class="section-inner">
+      <div class="serve-header reveal">
+        <p class="section-label">Who We Serve</p>
+        <h2 class="section-title">Built for Small Business</h2>
+        <p class="section-sub">If you're running your own business and your books deserve better, you're who we built this for.</p>
+      </div>
+      <div class="serve-grid">
+        <div class="serve-card reveal">
+          <div class="serve-icon">&#129332;</div>
+          <h4>Entrepreneurs</h4>
+          <p>Solo founders and small team owners who need financial clarity to make smart decisions</p>
+        </div>
+        <div class="serve-card reveal reveal-delay-1">
+          <div class="serve-icon">&#128295;</div>
+          <h4>Trade &amp; Service Businesses</h4>
+          <p>Contractors, tradespeople, and service providers who need clean books and payroll done right</p>
+        </div>
+        <div class="serve-card reveal reveal-delay-2">
+          <div class="serve-icon">&#127973;</div>
+          <h4>Retail &amp; E-Commerce</h4>
+          <p>Product businesses with inventory, sales tax complexity, and multiple revenue channels</p>
+        </div>
+        <div class="serve-card reveal reveal-delay-3">
+          <div class="serve-icon">&#127966;</div>
+          <h4>Professionals &amp; Freelancers</h4>
+          <p>Commission-based earners, consultants, and independent professionals who outgrew DIY bookkeeping</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEET KAREN -->
+  <section class="founder" id="about">
+    <div class="section-inner">
+      <div class="founder-grid">
+        <div class="founder-image reveal">
+          <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600&q=80" alt="Karen Warr, President of Books N Billing" loading="lazy" />
+        </div>
+        <div class="reveal reveal-delay-1">
+          <p class="section-label">Meet the Team</p>
+          <h2 class="section-title">Meet Karen Warr</h2>
+          <p class="founder-title">President &amp; Founder | Books N Billing Inc</p>
+          <p class="founder-bio">Karen Warr has spent over a decade making sure small business owners in Central Florida — and across the country — never have to lose sleep over their books again. She started Books N Billing in 2012 with a simple premise: small businesses deserve professional bookkeeping, and professional bookkeeping doesn't have to cost a fortune or feel impersonal.</p>
+          <p class="founder-bio">A woman veteran and business owner herself, Karen understands the pressure of running a small business firsthand. She and her partner Dean Warr lead a team of degreed accountants with over 60 combined years of experience — people who genuinely enjoy helping businesses get financially organized and stay that way.</p>
+          <p class="founder-bio">Karen's specialties include QuickBooks consulting, payroll, and working with businesses that need bookkeeping cleanup before they're ready to face their CPA. She works with clients locally in Melbourne, Florida and virtually across the country.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="section-inner">
+      <div class="testimonials-header reveal">
+        <p class="section-label">What Our Clients Say</p>
+        <h2 class="section-title">Business Owners Who Finally Breathe Easy</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="quote-mark">"</div>
+          <p class="testimonial-text">Karen and her team took over our books and within two months I actually understood my financials for the first time. I was running blind before. Now I make decisions with real confidence.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80" alt="Client photo" class="author-avatar" />
+            <div>
+              <div class="author-name">Michael R.</div>
+              <div class="author-role">HVAC Contractor, Melbourne FL</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="quote-mark">"</div>
+          <p class="testimonial-text">I'd tried two other bookkeepers before Books N Billing. Karen is the first one who actually explains things in plain English, keeps my records clean, and never misses a deadline. I'm staying forever.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&q=80" alt="Client photo" class="author-avatar" />
+            <div>
+              <div class="author-name">Lisa M.</div>
+              <div class="author-role">Retail Shop Owner, Brevard County FL</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="quote-mark">"</div>
+          <p class="testimonial-text">My CPA told me my books were the cleanest he'd seen from a small business in years. That's 100% because of Books N Billing. The peace of mind alone is worth every penny.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Client photo" class="author-avatar" />
+            <div>
+              <div class="author-name">Tom D.</div>
+              <div class="author-role">Freelance Consultant, Virtual Client</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-top reveal">
+        <p class="section-label">Let's Get Started</p>
+        <h2 class="section-title">Ready to Get Your Books in Order?</h2>
+        <p class="section-sub" style="margin:0 auto;">Your first consultation is free. Tell us about your business and we'll tell you exactly how we can help — no pressure, no obligation.</p>
+      </div>
+      <div class="contact-form reveal">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="Full name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="you@yourbusiness.com" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="(321) 000-0000" />
+          </div>
+          <div class="form-group">
+            <label for="biz">Business Type</label>
+            <input type="text" id="biz" placeholder="e.g. contractor, retail, freelance..." />
+          </div>
+          <div class="form-group">
+            <label for="service">Service Needed</label>
+            <select id="service">
+              <option value="">What do you need most?</option>
+              <option>Monthly Bookkeeping</option>
+              <option>QuickBooks Setup or Cleanup</option>
+              <option>Payroll Processing</option>
+              <option>Sales Tax Help</option>
+              <option>Year-End Cleanup</option>
+              <option>Not sure — just need help</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="using">Are you currently using QuickBooks?</label>
+            <select id="using">
+              <option value="">Select one</option>
+              <option>Yes — QuickBooks Online</option>
+              <option>Yes — QuickBooks Desktop</option>
+              <option>No, but I want to</option>
+              <option>Not sure</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label for="message">What's Your Biggest Bookkeeping Challenge?</label>
+            <textarea id="message" placeholder="Tell us what's going wrong, what you need organized, or just what you're worried about..."></textarea>
+          </div>
+        </div>
+        <button class="form-submit">Request My Free Consultation</button>
+      </div>
+      <div class="contact-info-row">
+        <div class="contact-info-card reveal">
+          <div class="info-icon">&#128222;</div>
+          <strong><a href="tel:3215379198" style="color:inherit;text-decoration:none;">(321) 537-9198</a></strong>
+          <span>Call Karen directly</span>
+        </div>
+        <div class="contact-info-card reveal reveal-delay-1">
+          <div class="info-icon">&#128140;</div>
+          <strong>karen@booksnbilling.com</strong>
+          <span>Email us anytime</span>
+        </div>
+        <div class="contact-info-card reveal reveal-delay-2">
+          <div class="info-icon">&#128205;</div>
+          <strong>Melbourne, FL &amp; Nationwide</strong>
+          <span>1301 W. Eau Gallie Blvd, Suite 104</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">Books N <span>Billing</span></span>
+        <p>Professional bookkeeping and QuickBooks services for small businesses — personalized, affordable, and virtually available nationwide. Woman veteran owned since 2012.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Monthly Bookkeeping</a></li>
+          <li><a href="#">QuickBooks Support</a></li>
+          <li><a href="#">Payroll Processing</a></li>
+          <li><a href="#">Sales Tax Filing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Meet the Team</a></li>
+          <li><a href="#">Virtual Services</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>2025 Books N Billing Inc. All rights reserved.</span>
+      <span>Woman Veteran Owned | Melbourne, FL</span>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

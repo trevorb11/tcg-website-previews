@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rivers Edge Environmental Services | Remediation & Hazmat | Pacific Northwest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest: #1e4130;
+      --forest-mid: #2d5c45;
+      --forest-light: #3a7257;
+      --slate: #3d4f5e;
+      --slate-light: #5a6f7e;
+      --earth: #8b6a4a;
+      --cream: #f5f2ed;
+      --white: #ffffff;
+      --gray-light: #e8e4dc;
+      --gray-text: #5a5a5a;
+      --text: #1a2820;
+      --accent-green: #4caf77;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      background: rgba(30, 65, 48, 0.97);
+      backdrop-filter: blur(8px);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      border-bottom: 2px solid rgba(76,175,119,0.3);
+    }
+
+    .nav-logo {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--white);
+    }
+
+    .nav-logo span { color: var(--accent-green); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent-green); }
+
+    .nav-cta {
+      background: var(--accent-green) !important;
+      color: var(--forest) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 4px;
+      font-weight: 700 !important;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 120px 5% 80px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1400&q=80');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.35);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(30,65,48,0.85) 0%, rgba(30,65,48,0.4) 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .hero-text { color: var(--white); }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(76,175,119,0.2);
+      border: 1px solid rgba(76,175,119,0.5);
+      color: var(--accent-green);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 3px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Raleway', sans-serif;
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+      color: rgba(255,255,255,0.8);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 500px;
+    }
+
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-green {
+      display: inline-block;
+      background: var(--accent-green);
+      color: var(--forest);
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-green:hover { background: #5fcf8a; transform: translateY(-2px); }
+
+    .btn-outline-white {
+      display: inline-block;
+      border: 2px solid rgba(255,255,255,0.45);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .btn-outline-white:hover { border-color: var(--accent-green); color: var(--accent-green); }
+
+    .hero-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .hero-card-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(76,175,119,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.2rem;
+    }
+
+    .hero-card h4 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 800;
+      color: var(--white);
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-card p { color: rgba(255,255,255,0.7); font-size: 0.88rem; line-height: 1.6; }
+
+    /* STATS STRIP */
+    .stats-strip {
+      background: var(--forest);
+      padding: 2.5rem 5%;
+    }
+
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stat-item .num {
+      font-family: 'Raleway', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--accent-green);
+    }
+
+    .stat-item .label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.3rem;
+    }
+
+    /* SECTION COMMONS */
+    section { padding: 90px 5%; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-green);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 900;
+      color: var(--forest);
+      line-height: 1.25;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--gray-text);
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    /* ABOUT */
+    .about { background: var(--cream); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-cert {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      background: rgba(30,65,48,0.92);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      color: var(--white);
+      font-size: 0.85rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .cert-item strong { display: block; font-family: 'Raleway', sans-serif; font-weight: 800; color: var(--accent-green); }
+
+    .about p { color: var(--gray-text); line-height: 1.85; margin-bottom: 1.25rem; }
+
+    /* SERVICES */
+    .services { background: var(--white); }
+
+    .services-header { margin-bottom: 3.5rem; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .service-card {
+      border: 1px solid var(--gray-light);
+      border-radius: 8px;
+      padding: 2.5rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--forest-light);
+    }
+
+    .service-card:hover {
+      border-color: var(--accent-green);
+      box-shadow: 0 8px 32px rgba(76,175,119,0.15);
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--cream);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.4rem;
+    }
+
+    .service-card h3 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--forest);
+      margin-bottom: 0.85rem;
+    }
+
+    .service-card p { color: var(--gray-text); font-size: 0.92rem; line-height: 1.78; }
+
+    /* REGION */
+    .region { background: var(--forest); }
+
+    .region .section-title { color: var(--white); }
+    .region .section-sub { color: rgba(255,255,255,0.7); }
+
+    .region-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    .region-states { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .state-item {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 1.25rem;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(76,175,119,0.2);
+      border-radius: 6px;
+    }
+
+    .state-abbr {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--accent-green);
+      width: 55px;
+      flex-shrink: 0;
+    }
+
+    .state-info strong { display: block; color: var(--white); font-weight: 700; margin-bottom: 0.2rem; }
+    .state-info span { color: rgba(255,255,255,0.6); font-size: 0.88rem; }
+
+    .region-image {
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .region-image img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.8);
+    }
+
+    /* CREDENTIALS */
+    .credentials { background: var(--cream); }
+
+    .credentials-header { text-align: center; margin-bottom: 3.5rem; }
+    .credentials-header .section-sub { margin: 0 auto; }
+
+    .cred-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .cred-card {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .cred-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .cred-card h4 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 800;
+      color: var(--forest);
+      margin-bottom: 0.5rem;
+    }
+
+    .cred-card p { font-size: 0.87rem; color: var(--gray-text); }
+
+    /* CONTACT */
+    .contact { background: var(--white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-info .section-sub { margin-bottom: 2rem; }
+
+    .contact-detail {
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--gray-light);
+    }
+
+    .contact-detail:last-child { border-bottom: none; }
+
+    .contact-detail strong {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--forest);
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-detail span { color: var(--gray-text); }
+
+    .contact-form {
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 3rem;
+    }
+
+    .contact-form h3 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--forest);
+      margin-bottom: 2rem;
+    }
+
+    .form-group { margin-bottom: 1.25rem; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--forest);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1.5px solid var(--gray-light);
+      border-radius: 5px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--forest); }
+
+    .form-group textarea { min-height: 100px; resize: vertical; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--forest);
+      color: var(--white);
+      border: none;
+      padding: 1rem;
+      border-radius: 5px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-family: 'Raleway', sans-serif;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
+    }
+
+    .form-submit:hover { background: var(--forest-light); }
+
+    /* FOOTER */
+    footer {
+      background: var(--forest);
+      color: rgba(255,255,255,0.6);
+      padding: 50px 5% 30px;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-brand p { font-size: 0.9rem; line-height: 1.75; margin-top: 1rem; max-width: 300px; }
+
+    .footer-col h4 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 800;
+      color: var(--white);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .footer-col a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--accent-green); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-cards { display: none; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .cred-grid { grid-template-columns: repeat(2, 1fr); }
+      .region-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .cred-grid { grid-template-columns: 1fr 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">Rivers <span>Edge</span> Environmental</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#region">Service Area</a></li>
+      <li><a href="#contact" class="nav-cta">Request Assessment</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <div class="hero-text reveal">
+        <span class="hero-eyebrow">Environmental Remediation &amp; Hazmat | Maple Valley, WA | Serving WA, OR, ID &amp; MT</span>
+        <h1>Restoring Land.<br />Protecting Communities.</h1>
+        <p>Over 20 years of trusted environmental services across Washington, Oregon, Idaho, and Montana. Paul Kemp and the Rivers Edge team have been cleaning up contaminated sites and managing hazardous materials in the Puget Sound region since the early 2000s — doing the work that protects what matters.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn-green">Discuss Your Environmental Project</a>
+          <a href="#services" class="btn-outline-white">Our Services</a>
+        </div>
+      </div>
+      <div class="hero-cards reveal reveal-delay-2">
+        <div class="hero-card">
+          <div class="hero-card-icon">&#127807;</div>
+          <div>
+            <h4>Remediation Services</h4>
+            <p>Soil and groundwater cleanup, contamination removal, and site restoration across the Pacific Northwest</p>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon">&#9888;</div>
+          <div>
+            <h4>Hazardous Materials Management</h4>
+            <p>Safe identification, handling, transport, and disposal of hazardous substances by trained professionals</p>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon">&#128203;</div>
+          <div>
+            <h4>Federal Contractor</h4>
+            <p>Proven performance on government contracts with regulatory expertise across multiple state jurisdictions</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip">
+    <div class="stats-inner">
+      <div class="stat-item reveal">
+        <div class="num">20+</div>
+        <div class="label">Years Serving the Pacific Northwest</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="num">4</div>
+        <div class="label">States: WA, OR, ID, MT</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="num">Fed</div>
+        <div class="label">Government Contractor</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="num">NEBC</div>
+        <div class="label">Member &amp; Vetted</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80" alt="Environmental field crew at work site" loading="lazy" />
+          <div class="about-cert">
+            <div class="cert-item"><strong>Licensed</strong>State of WA</div>
+            <div class="cert-item"><strong>Federal</strong>Contractor</div>
+            <div class="cert-item"><strong>NEBC</strong>Member</div>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <p class="section-label">Our Story</p>
+          <h2 class="section-title">Built on Two Decades of Pacific Northwest Fieldwork</h2>
+          <p>Rivers Edge Environmental Services has been a fixture in the Puget Sound region for over 20 years. Founded by Paul Kemp — who brought a Midwesterner's work ethic and a deep respect for the Pacific Northwest landscape to Washington — the company built its reputation on doing difficult environmental work right.</p>
+          <p>We specialize in remediation and hazardous materials services, working with federal agencies, municipalities, developers, and industrial clients to clean up contaminated sites, manage hazardous materials safely, and bring properties back to productive use.</p>
+          <p>We operate across Washington, Oregon, Idaho, and Montana, with regulatory expertise in each state's environmental compliance requirements. As a member of the Northwest Environmental Business Council, we're a vetted, peer-recognized firm in the regional environmental services community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="services-header reveal">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-title">Full-Service Environmental Solutions</h2>
+        <p class="section-sub">From initial assessment through final cleanup, we manage the full lifecycle of environmental remediation projects. Every project gets the same attention to safety, regulatory compliance, and quality of work.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">&#127757;</div>
+          <h3>Site Remediation</h3>
+          <p>Soil and groundwater cleanup using proven, EPA-compliant methods. We assess contamination sources, design remediation approaches, and execute cleanup to meet regulatory standards — then document everything for closure.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">&#9888;</div>
+          <h3>Hazardous Materials Management</h3>
+          <p>Certified identification, handling, packaging, transport coordination, and disposal of hazardous materials including asbestos, lead paint, petroleum products, and industrial chemicals. Safe at every step.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">&#128203;</div>
+          <h3>Environmental Assessment</h3>
+          <p>Phase I and Phase II Environmental Site Assessments for due diligence, regulatory compliance, and pre-construction requirements. Clear, thorough reporting that meets lending, agency, and legal standards.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">&#127959;</div>
+          <h3>Construction-Related Remediation</h3>
+          <p>Environmental remediation integrated directly into construction and development projects. We coordinate with your project team to manage contamination discovery, regulatory reporting, and cleanup without stopping your schedule.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">&#128680;</div>
+          <h3>Emergency Response</h3>
+          <p>Rapid-deployment response for spills, releases, and environmental incidents. When time matters, our crews mobilize quickly to contain and remediate — minimizing environmental impact and regulatory exposure.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">&#128196;</div>
+          <h3>Regulatory Compliance Support</h3>
+          <p>Guidance on WA Department of Ecology, Oregon DEQ, Idaho DEQ, and EPA regulatory requirements. We help you understand your obligations and navigate the permitting and reporting process.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGION -->
+  <section class="region" id="region">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="section-label" style="color:var(--accent-green);">Service Area</p>
+        <h2 class="section-title">Across the Pacific Northwest &amp; Intermountain West</h2>
+        <p class="section-sub">We operate where others don't follow — from the Puget Sound to the Snake River Plain, across Oregon's valleys, and into Montana's big sky country.</p>
+      </div>
+      <div class="region-grid">
+        <div class="region-states reveal">
+          <div class="state-item">
+            <div class="state-abbr">WA</div>
+            <div class="state-info">
+              <strong>Washington</strong>
+              <span>Home base — Maple Valley, King County, Puget Sound region, and statewide</span>
+            </div>
+          </div>
+          <div class="state-item">
+            <div class="state-abbr">OR</div>
+            <div class="state-info">
+              <strong>Oregon</strong>
+              <span>Western Oregon, Portland metro, Willamette Valley, and beyond</span>
+            </div>
+          </div>
+          <div class="state-item">
+            <div class="state-abbr">ID</div>
+            <div class="state-info">
+              <strong>Idaho</strong>
+              <span>Northern and Southern Idaho, Treasure Valley, and industrial corridor</span>
+            </div>
+          </div>
+          <div class="state-item">
+            <div class="state-abbr">MT</div>
+            <div class="state-info">
+              <strong>Montana</strong>
+              <span>Western Montana, industrial sites, mining-adjacent remediation projects</span>
+            </div>
+          </div>
+        </div>
+        <div class="region-image reveal reveal-delay-1">
+          <img src="https://images.unsplash.com/photo-1476611338391-6f395a0ebc7b?w=800&q=80" alt="Pacific Northwest forested river landscape" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS -->
+  <section class="credentials">
+    <div class="section-inner">
+      <div class="credentials-header reveal">
+        <p class="section-label">Our Credentials</p>
+        <h2 class="section-title">Vetted, Licensed, and Proven</h2>
+        <p class="section-sub">Environmental work demands accountability. We hold the licenses, certifications, and credentials that matter — and the track record to back them up.</p>
+      </div>
+      <div class="cred-grid">
+        <div class="cred-card reveal">
+          <div class="cred-icon">&#127919;</div>
+          <h4>Federal Contractor</h4>
+          <p>Approved and experienced in federal procurement; serving government agencies across the region</p>
+        </div>
+        <div class="cred-card reveal reveal-delay-1">
+          <div class="cred-icon">&#127775;</div>
+          <h4>NEBC Member</h4>
+          <p>Northwest Environmental Business Council — peer-vetted, community-recognized</p>
+        </div>
+        <div class="cred-card reveal reveal-delay-2">
+          <div class="cred-icon">&#128203;</div>
+          <h4>Licensed &amp; Bonded</h4>
+          <p>Fully licensed and bonded for operations in Washington and all states we serve</p>
+        </div>
+        <div class="cred-card reveal reveal-delay-3">
+          <div class="cred-icon">&#128172;</div>
+          <h4>20+ Year Track Record</h4>
+          <p>Decades of completed projects, satisfied clients, and regulatory relationships built on performance</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p class="section-label">Start Your Project</p>
+          <h2 class="section-title">Discuss Your Environmental Project</h2>
+          <p class="section-sub">Whether you're facing a known contamination problem, planning a new development project, or need an assessment for due diligence — call Paul or send us a message and we'll respond quickly.</p>
+          <div class="contact-detail">
+            <strong>Call Paul Kemp</strong>
+            <span><a href="tel:2063960271" style="color:inherit;text-decoration:none;">(206) 396-0271</a></span>
+          </div>
+          <div class="contact-detail">
+            <strong>Email</strong>
+            <span>pkemp@rivers.city</span>
+          </div>
+          <div class="contact-detail">
+            <strong>Location</strong>
+            <span>Maple Valley, WA 98038</span>
+          </div>
+          <div class="contact-detail">
+            <strong>Service Region</strong>
+            <span>Washington, Oregon, Idaho, Montana</span>
+          </div>
+        </div>
+        <div class="contact-form reveal reveal-delay-1">
+          <h3>Request a Site Assessment</h3>
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="Full name" />
+          </div>
+          <div class="form-group">
+            <label for="company">Company / Organization</label>
+            <input type="text" id="company" placeholder="Company name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="you@company.com" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="(206) 000-0000" />
+          </div>
+          <div class="form-group">
+            <label for="service">Service Needed</label>
+            <select id="service">
+              <option value="">Select a service</option>
+              <option>Site Remediation</option>
+              <option>Hazardous Materials Management</option>
+              <option>Environmental Assessment</option>
+              <option>Construction-Related Remediation</option>
+              <option>Emergency Response</option>
+              <option>Not sure — need consultation</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Project Description</label>
+            <textarea id="message" placeholder="Location, nature of the issue, timeline, any known contaminants..."></textarea>
+          </div>
+          <button class="form-submit">Send My Request</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="nav-logo">Rivers <span>Edge</span> Environmental</span>
+        <p>Full-service environmental remediation and hazardous materials management for the Pacific Northwest and Intermountain West. 20+ years of trusted service.</p>
+        <p style="margin-top:1rem; font-size:0.85rem;">Maple Valley, WA | <a href="tel:2063960271" style="color:inherit;text-decoration:none;">(206) 396-0271</a> | pkemp@rivers.city</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Site Remediation</a></li>
+          <li><a href="#">Hazardous Materials</a></li>
+          <li><a href="#">Environmental Assessment</a></li>
+          <li><a href="#">Emergency Response</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Rivers Edge</a></li>
+          <li><a href="#">Service Area</a></li>
+          <li><a href="#">Credentials</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>2025 Rivers Edge Environmental Services, Inc. All rights reserved.</span>
+      <span>Federal Contractor | NEBC Member | Maple Valley, WA</span>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

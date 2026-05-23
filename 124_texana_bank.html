@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Texana Bank | Community Banking Since 1914 — Longview, Texas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --maroon:    #5c1a1a;
+      --maroon-dk: #3e1010;
+      --maroon-lt: #7a2828;
+      --gold:      #b8922e;
+      --gold-lt:   #d4ad50;
+      --cream:     #f8f4ed;
+      --warm:      #efe9dd;
+      --text:      #2a1f14;
+      --muted:     #6b5a47;
+      --white:     #ffffff;
+      --radius:    5px;
+      --shadow:    0 4px 24px rgba(0,0,0,0.10);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      background: var(--maroon-dk);
+      border-bottom: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 68px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.03em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--maroon-dk);
+      padding: 0.5rem 1.35rem;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold-lt); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 90vh;
+      background:
+        linear-gradient(to right, rgba(62,16,16,0.88) 50%, rgba(62,16,16,0.45) 100%),
+        url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=80') center/cover no-repeat;
+      display: flex; align-items: center;
+      padding: 110px 5% 70px;
+      margin-top: 68px;
+    }
+    .hero-inner { max-width: 640px; }
+    .hero-rule {
+      width: 60px; height: 2px;
+      background: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.18;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero p {
+      color: rgba(255,255,255,0.82);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 520px;
+      font-weight: 300;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--maroon-dk);
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-lt); transform: translateY(-2px); }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.6);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+    .hero-est {
+      margin-top: 2.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      font-weight: 700;
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--maroon);
+      border-bottom: 3px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      padding: 1.1rem 5%;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+    }
+    .trust-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 5%; }
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 700;
+      color: var(--maroon-dk);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-title em { font-style: italic; }
+    .section-sub {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 560px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .center { text-align: center; }
+    .center .section-sub { margin: 0 auto; }
+
+    /* ── ABOUT ── */
+    .about { background: var(--cream); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4.5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .about-img {
+      position: relative;
+      border-radius: 6px;
+      overflow: visible;
+    }
+    .about-img img {
+      width: 100%; height: 460px; object-fit: cover;
+      display: block; border-radius: 6px;
+      box-shadow: var(--shadow);
+    }
+    .about-badge {
+      position: absolute;
+      bottom: -22px; right: -22px;
+      background: var(--maroon-dk);
+      border: 3px solid var(--gold);
+      color: var(--white);
+      font-family: 'Playfair Display', serif;
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 1.2rem 1.5rem;
+      border-radius: 6px;
+      line-height: 1.4;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.3);
+    }
+    .about-badge strong { font-size: 2.2rem; display: block; color: var(--gold); line-height: 1; }
+    .about-content { padding-left: 0.5rem; }
+    .about-content p { color: var(--muted); margin-bottom: 1rem; font-weight: 300; font-size: 0.975rem; }
+    .about-quote {
+      border-left: 3px solid var(--gold);
+      padding-left: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .about-quote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--maroon-dk);
+      line-height: 1.6;
+    }
+    .fdic-note {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: var(--warm);
+      border: 1px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 0.6rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--maroon-dk);
+      margin-top: 0.5rem;
+    }
+
+    /* ── SERVICES ── */
+    .services { background: var(--white); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.75rem;
+      max-width: 1100px;
+      margin: 3rem auto 0;
+    }
+    .service-card {
+      background: var(--cream);
+      border-radius: 6px;
+      padding: 2rem 1.75rem;
+      border-top: 4px solid var(--gold);
+      box-shadow: var(--shadow);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 36px rgba(0,0,0,0.12); }
+    .service-icon {
+      width: 48px; height: 48px;
+      background: var(--maroon);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .service-icon svg { width: 22px; height: 22px; fill: none; stroke: var(--gold); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--maroon-dk);
+      margin-bottom: 0.6rem;
+    }
+    .service-card p { color: var(--muted); font-size: 0.9rem; font-weight: 300; }
+
+    /* ── PHOTO ROW ── */
+    .photo-strip {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      height: 340px;
+      overflow: hidden;
+    }
+    .photo-strip img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ── COMMUNITY ── */
+    .community { background: var(--maroon-dk); }
+    .community .section-title { color: var(--cream); }
+    .community .section-label { color: var(--gold); }
+    .community .section-sub { color: rgba(255,255,255,0.7); }
+    .community-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 3rem auto 0;
+    }
+    .community-img img {
+      width: 100%; height: 380px; object-fit: cover;
+      border-radius: 6px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .community-points { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 0.5rem; }
+    .comm-point {
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .comm-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 28px;
+    }
+    .comm-point h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+    .comm-point p { color: rgba(255,255,255,0.65); font-size: 0.875rem; font-weight: 300; }
+
+    /* ── RATES TEASER ── */
+    .rates { background: var(--warm); }
+    .rates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 3rem auto 0;
+    }
+    .rate-card {
+      background: var(--white);
+      border: 1.5px solid var(--gold);
+      border-radius: 6px;
+      padding: 1.75rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .rate-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .rate-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--maroon-dk);
+      margin-bottom: 0.5rem;
+    }
+    .rate-card p { color: var(--muted); font-size: 0.875rem; font-weight: 300; }
+    .rate-disclaimer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 1.5rem;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--cream); }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.75rem;
+      max-width: 1100px;
+      margin: 3rem auto 0;
+    }
+    .testi-card {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .testi-card::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: var(--gold);
+      opacity: 0.25;
+      position: absolute;
+      top: 0.5rem; left: 1.25rem;
+      line-height: 1;
+    }
+    .testi-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 1.25rem;
+      line-height: 1.7;
+      position: relative;
+    }
+    .testi-author { font-weight: 700; color: var(--maroon-dk); font-size: 0.9rem; }
+    .testi-loc { font-size: 0.8rem; color: var(--muted); }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--maroon);
+      padding: 80px 5%;
+      text-align: center;
+      position: relative;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 40px,
+        rgba(184,146,46,0.04) 40px,
+        rgba(184,146,46,0.04) 80px
+      );
+    }
+    .cta-inner { position: relative; z-index: 1; }
+    .cta-rule { width: 60px; height: 2px; background: var(--gold); margin: 0 auto 1.5rem; }
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .cta-section p { color: rgba(255,255,255,0.75); font-size: 1.05rem; max-width: 540px; margin: 0 auto 2rem; font-weight: 300; }
+    .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--maroon-dk);
+      padding: 0.9rem 2.25rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-gold:hover { background: var(--gold-lt); }
+    .btn-ghost {
+      border: 2px solid rgba(255,255,255,0.5);
+      color: var(--white);
+      padding: 0.9rem 2.25rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--white); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4.5rem;
+      max-width: 1100px;
+      margin: 3rem auto 0;
+      align-items: start;
+    }
+    .location-card {
+      background: var(--cream);
+      border-radius: 6px;
+      padding: 2rem;
+      border-left: 4px solid var(--gold);
+      margin-bottom: 1.25rem;
+    }
+    .location-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--maroon-dk);
+      margin-bottom: 0.6rem;
+    }
+    .location-card p { color: var(--muted); font-size: 0.875rem; font-weight: 300; line-height: 1.7; }
+    .location-card a { color: var(--maroon); font-weight: 700; text-decoration: none; }
+    .location-card a:hover { color: var(--gold); }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      background: var(--cream);
+      border: 1.5px solid #d4c9b8;
+      color: var(--text);
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+    }
+    .contact-form input::placeholder, .contact-form textarea::placeholder { color: #a89880; }
+    .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
+      outline: none; border-color: var(--gold);
+    }
+    .contact-form select option { background: var(--cream); }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+    .btn-submit {
+      background: var(--maroon);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover { background: var(--maroon-lt); }
+    .form-note { font-size: 0.75rem; color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--maroon-dk);
+      border-top: 3px solid var(--gold);
+      padding: 2.5rem 5%;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .footer-logo span { color: var(--gold); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { color: rgba(255,255,255,0.5); font-size: 0.8rem; text-decoration: none; }
+    .footer-links a:hover { color: var(--gold); }
+    footer .small { color: rgba(255,255,255,0.35); font-size: 0.75rem; }
+    .fdic-footer {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 0.3rem 0.75rem;
+      border-radius: 3px;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .community-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .nav-links { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .photo-strip { grid-template-columns: 1fr; height: auto; }
+      .photo-strip img { height: 220px; }
+      .trust-bar { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">Texana <span>Bank</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#community">Community</a></li>
+      <li><a href="#contact">Locations</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Open an Account</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div class="hero-rule"></div>
+      <h1>Banking Built on<br /><em>Over a Century</em><br />of Trust.</h1>
+      <p>Texana Bank has served East Texas families and businesses since 1914. We combine the financial strength and technology of a modern bank with the personal relationships and community commitment that only a true community bank can offer.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#services">Explore Services</a>
+        <a class="btn-outline" href="#contact">Find a Branch</a>
+      </div>
+      <p class="hero-est">Est. 1914 &bull; Longview, Texas &bull; FDIC Insured</p>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item"><div class="trust-dot"></div>Community Bank Since 1914</div>
+    <div class="trust-item"><div class="trust-dot"></div>FDIC Insured</div>
+    <div class="trust-item"><div class="trust-dot"></div>East Texas Focused</div>
+    <div class="trust-item"><div class="trust-dot"></div>Local Decision Making</div>
+    <div class="trust-item"><div class="trust-dot"></div>Personal Relationship Banking</div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="Texana Bank team member with customer" />
+        <div class="about-badge">
+          <strong>110+</strong>Years Serving<br />East Texas
+        </div>
+      </div>
+      <div class="about-content reveal">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-title">More Than a Bank.<br /><em>A Community Partner.</em></h2>
+        <p>Texana Bank has been a cornerstone of East Texas banking since 1914. Founded by local leaders who believed their community deserved a financial institution that understood local needs and kept local money working locally, we've held to that founding vision for over a century.</p>
+        <p>Today we serve families and businesses across the Longview area and East Texas with a full range of personal and commercial banking products, real estate lending, and investment services — all delivered with the attentiveness and accountability that distinguishes a community bank from a national chain.</p>
+        <div class="about-quote">
+          <p>"We believe that when a community's bank thrives, the whole community thrives. That's been our philosophy since day one, and it guides every decision we make."</p>
+        </div>
+        <p>When you call Texana Bank, you reach someone who lives and works in your community. When you apply for a loan, the decision is made locally by bankers who know East Texas. That's not just good service — it's what community banking is supposed to be.</p>
+        <div class="fdic-note">FDIC Insured &bull; Member FDIC &bull; Equal Housing Lender</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="center reveal">
+      <p class="section-label">What We Offer</p>
+      <h2 class="section-title">Banking for Every Stage of Life</h2>
+      <p class="section-sub">From your first checking account to your first business loan, Texana Bank provides the products and guidance to support your financial life.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h3>Personal Banking</h3>
+        <p>Checking and savings accounts designed around your life — with competitive rates, convenient access, and the personal touch you won't find at a big bank.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Mortgage & Real Estate Loans</h3>
+        <p>Local lending decisions on home purchase loans, construction loans, and refinancing. Our mortgage team knows East Texas real estate and will work to get you into the right loan.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Personal Loans</h3>
+        <p>Auto loans, consumer installment loans, and lines of credit for life's expected and unexpected expenses — with straightforward terms and local processing.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3>Business Banking</h3>
+        <p>Business checking, savings, and merchant services for East Texas businesses of all sizes. We understand local commerce and can structure accounts that actually fit your business.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <h3>Business Lending</h3>
+        <p>Commercial real estate loans, equipment financing, lines of credit, and SBA programs. Local underwriting means faster answers and more flexibility than you'll get from a national bank.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Digital Banking</h3>
+        <p>Online banking, mobile deposit, bill pay, and e-statements — the technology you need to manage your accounts from anywhere, backed by the personal service you trust.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO STRIP -->
+  <div class="photo-strip">
+    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80" alt="Banking team members" />
+    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&q=80" alt="Customer meeting with banker" />
+    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80" alt="East Texas community" />
+  </div>
+
+  <!-- COMMUNITY -->
+  <section class="community" id="community">
+    <div class="center reveal">
+      <p class="section-label">Community Commitment</p>
+      <h2 class="section-title" style="color:var(--cream)">Invested in East Texas</h2>
+      <p class="section-sub">We're not just a bank that operates in East Texas. We're East Texans — and we take that responsibility seriously.</p>
+    </div>
+    <div class="community-grid">
+      <div class="community-img reveal">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80" alt="Community involvement in East Texas" />
+      </div>
+      <div class="reveal">
+        <div class="community-points">
+          <div class="comm-point">
+            <div class="comm-num">01</div>
+            <div>
+              <h4>Local Decision Making</h4>
+              <p>Your loan application isn't sent to a processing center in another state. Our credit decisions are made by local bankers who know you, your business, and your community.</p>
+            </div>
+          </div>
+          <div class="comm-point">
+            <div class="comm-num">02</div>
+            <div>
+              <h4>Deposits Stay Local</h4>
+              <p>Money deposited at Texana Bank is lent to East Texas individuals, families, and businesses — not moved to Wall Street or invested in distant markets.</p>
+            </div>
+          </div>
+          <div class="comm-point">
+            <div class="comm-num">03</div>
+            <div>
+              <h4>Supporting Local Organizations</h4>
+              <p>We actively support local schools, nonprofits, civic organizations, and community events throughout East Texas because strong communities make for strong banks.</p>
+            </div>
+          </div>
+          <div class="comm-point">
+            <div class="comm-num">04</div>
+            <div>
+              <h4>Relationships That Last</h4>
+              <p>Many of our customers have banked with us for decades — and so have their parents. We earn loyalty through reliability, honesty, and genuine care for the people we serve.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RATES TEASER -->
+  <section class="rates" id="rates">
+    <div class="center reveal">
+      <p class="section-label">Competitive Products</p>
+      <h2 class="section-title">Built-for-You Banking Products</h2>
+      <p class="section-sub">We offer competitive rates and terms on all deposit and lending products. Contact us to discuss current rates and the options that best fit your needs.</p>
+    </div>
+    <div class="rates-grid">
+      <div class="rate-card reveal">
+        <p class="rate-label">Personal</p>
+        <h3>Checking Accounts</h3>
+        <p>Interest-bearing and basic checking with no gimmicks. Free debit cards, online access, and local customer support.</p>
+      </div>
+      <div class="rate-card reveal">
+        <p class="rate-label">Personal & Business</p>
+        <h3>Savings & CDs</h3>
+        <p>Competitive rates on savings accounts, money market accounts, and certificates of deposit. Flexible terms available.</p>
+      </div>
+      <div class="rate-card reveal">
+        <p class="rate-label">Real Estate</p>
+        <h3>Home Loans</h3>
+        <p>Purchase, refinance, and construction loans with local decisions. Fixed and adjustable rates available on primary, secondary, and investment properties.</p>
+      </div>
+      <div class="rate-card reveal">
+        <p class="rate-label">Commercial</p>
+        <h3>Business Lines & Loans</h3>
+        <p>Working capital lines, equipment loans, and commercial real estate financing structured around your business — not a template.</p>
+      </div>
+    </div>
+    <p class="rate-disclaimer">Contact us for current rates and terms. All loans subject to credit approval. Member FDIC. Equal Housing Lender.</p>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="center reveal">
+      <p class="section-label">Customer Voices</p>
+      <h2 class="section-title"><em>What Our Neighbors Say</em></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <p>"We've been banking at Texana for over thirty years. When we needed a loan to expand our business, they didn't treat us like a file number. They sat down with us, listened, and made it work. That's what community banking is supposed to feel like."</p>
+        <div class="testi-author">Michael &amp; Carolyn T.</div>
+        <div class="testi-loc">Longview, TX — Small Business Owners</div>
+      </div>
+      <div class="testi-card reveal">
+        <p>"When I bought my first house, the Texana team walked me through every step. They were patient, they explained everything, and they got me a great rate. I wouldn't trust that process to anyone else."</p>
+        <div class="testi-author">Sarah J.</div>
+        <div class="testi-loc">Longview, TX — First-Time Homebuyer</div>
+      </div>
+      <div class="testi-card reveal">
+        <p>"I've tried the big national banks. The service doesn't compare. At Texana, I know the people at my branch by name. They know my business. When I have a problem, I can actually pick up the phone and get it solved the same day."</p>
+        <div class="testi-author">David R.</div>
+        <div class="testi-loc">East Texas — Business Account Customer</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-rule"></div>
+      <h2 class="reveal">Ready to Bank Differently?</h2>
+      <p class="reveal">Experience the Texana Bank difference — real people, local decisions, and a genuine commitment to your financial well-being. We'd love to earn your trust.</p>
+      <div class="cta-actions">
+        <a class="btn-gold" href="#contact">Open an Account</a>
+        <a class="btn-ghost" href="tel:9033340900">Call (903) 334-0900</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / LOCATIONS -->
+  <section class="contact" id="contact">
+    <div class="center reveal">
+      <p class="section-label">Find Us</p>
+      <h2 class="section-title">Branch Locations &amp; Contact</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="location-card">
+          <h4>Main Branch — Longview, TX</h4>
+          <p>
+            <a href="tel:9033340900">(903) 334-0900</a><br />
+            <a href="mailto:adam.morris@texanabank.com">adam.morris@texanabank.com</a><br /><br />
+            Monday – Thursday: 9:00 AM – 4:00 PM<br />
+            Friday: 9:00 AM – 5:00 PM<br />
+            Drive-Through hours may vary
+          </p>
+        </div>
+        <div class="location-card">
+          <h4>About Our Team</h4>
+          <p>Our staff is made up of East Texas residents who are invested in the same communities you live and work in. We make it our business to know our customers personally and to be accessible whenever you need us.</p>
+        </div>
+        <div class="location-card">
+          <h4>Online Banking</h4>
+          <p>Access your accounts 24/7 through online banking and our mobile app. Remote deposit, bill pay, transfers, and e-statements are all available from your phone or computer.</p>
+        </div>
+      </div>
+      <form class="contact-form reveal" onsubmit="return false;">
+        <p style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--maroon-dk);margin-bottom:0.25rem;">Get in Touch</p>
+        <p class="form-note" style="margin-bottom:0.75rem;">Send us a message and a team member will follow up with you directly.</p>
+        <div class="form-row">
+          <input type="text" placeholder="First Name" />
+          <input type="text" placeholder="Last Name" />
+        </div>
+        <input type="tel" placeholder="Phone Number" />
+        <input type="email" placeholder="Email Address" />
+        <select>
+          <option value="" disabled selected>How can we help you?</option>
+          <option>Open a Checking Account</option>
+          <option>Open a Savings Account</option>
+          <option>Home Mortgage Inquiry</option>
+          <option>Business Banking</option>
+          <option>Business Loan Inquiry</option>
+          <option>Online Banking Support</option>
+          <option>General Question</option>
+        </select>
+        <textarea placeholder="Tell us a little about what you're looking for..."></textarea>
+        <button class="btn-submit" type="submit">Send Message</button>
+        <p class="form-note">Your information is secure and will never be shared. We typically respond within one business day.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Texana <span>Bank</span></div>
+        <p class="small" style="margin-top:0.4rem;">Est. 1914 &bull; Longview, Texas</p>
+      </div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#community">Community</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div style="text-align:right;">
+        <div class="fdic-footer">Member FDIC</div>
+        <p class="small" style="margin-top:0.5rem;">&copy; 2025 Texana Bank. Equal Housing Lender.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

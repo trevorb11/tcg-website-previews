@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CTI Construction Inc — General Contractor NYC, Long Island &amp; New Jersey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --steel: #2B2D42;
+      --steel-light: #3D3F5A;
+      --yellow: #EFC050;
+      --yellow-light: #F5CE6A;
+      --white: #FFFFFF;
+      --off-white: #F7F7F8;
+      --light-grey: #EEEFF2;
+      --text-dark: #1A1A1A;
+      --text-mid: #4A4A5A;
+      --text-light: #7A7A8A;
+      --border: #DDDDE5;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(43,45,66,0.98);
+      backdrop-filter: blur(8px);
+      padding: 0 2rem;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-logo span { color: var(--yellow); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.78); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--yellow); }
+
+    .nav-cta {
+      background: var(--yellow);
+      color: var(--steel) !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 4px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--yellow-light) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--steel);
+      position: relative;
+      overflow: hidden;
+      padding: 100px 2rem 60px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.15;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, rgba(43,45,66,0.96) 0%, rgba(43,45,66,0.78) 55%, rgba(61,63,90,0.5) 100%);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to top, var(--white), transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(239,192,80,0.15);
+      border: 1px solid rgba(239,192,80,0.35);
+      color: var(--yellow);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero h1 em { font-style: normal; color: var(--yellow); }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 2rem;
+      line-height: 1.78;
+      max-width: 540px;
+    }
+
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+
+    .btn-primary {
+      background: var(--yellow);
+      color: var(--steel);
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 700;
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 0.05em;
+      font-size: 1rem;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--yellow-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.35);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    .hero-credentials {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 1.5rem;
+    }
+
+    .cred-item {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .cred-item strong { color: var(--yellow); display: block; font-size: 1.3rem; }
+
+    /* SECTIONS */
+    section { padding: 90px 2rem; }
+    .container { max-width: 1120px; margin: 0 auto; }
+
+    .section-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--steel);
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .section-lead { font-size: 1.05rem; color: var(--text-mid); max-width: 580px; line-height: 1.78; }
+
+    /* SERVICES */
+    .services { background: var(--off-white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 2rem;
+      border-bottom: 4px solid var(--yellow);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+    .service-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: rgba(239,192,80,0.25);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .service-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--steel);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.03em;
+    }
+
+    .service-card p { color: var(--text-mid); font-size: 0.92rem; line-height: 1.72; }
+
+    /* TRACK RECORD */
+    .track { background: var(--steel); }
+    .track .section-title { color: var(--white); }
+    .track .section-label { color: var(--yellow); }
+
+    .track-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .track-stat {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .track-stat span {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .track-stat p { color: rgba(255,255,255,0.65); font-size: 0.88rem; }
+
+    /* SERVICE AREA */
+    .area { background: var(--white); }
+
+    .area-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .area-image { border-radius: 12px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.1); }
+    .area-image img { width: 100%; height: 400px; object-fit: cover; display: block; }
+
+    .borough-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .borough-tag {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.7rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--steel);
+    }
+
+    .borough-dot { width: 8px; height: 8px; background: var(--yellow); border-radius: 50%; flex-shrink: 0; }
+
+    /* PROCESS */
+    .process { background: var(--light-grey); }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .process-step {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 2rem;
+      border-top: 4px solid var(--steel);
+    }
+
+    .process-step-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 0.8rem;
+    }
+
+    .process-step h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--steel);
+      margin-bottom: 0.6rem;
+    }
+
+    .process-step p { color: var(--text-mid); font-size: 0.9rem; line-height: 1.7; }
+
+    /* ABOUT */
+    .about { background: var(--white); }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image { border-radius: 12px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.1); }
+    .about-image img { width: 100%; height: 420px; object-fit: cover; display: block; }
+
+    .about-text h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      color: var(--steel);
+      margin-bottom: 1.2rem;
+    }
+
+    .about-text p { color: var(--text-mid); font-size: 0.97rem; line-height: 1.85; margin-bottom: 1rem; }
+
+    .about-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--steel);
+      margin-top: 1.5rem !important;
+    }
+
+    .about-title { color: var(--yellow) !important; font-size: 0.88rem; }
+
+    /* CONTACT */
+    .contact { background: var(--steel); }
+    .contact .section-title { color: var(--white); }
+    .contact .section-label { color: var(--yellow); }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-detail { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1.2rem; }
+    .contact-detail-icon { width: 20px; height: 20px; fill: var(--yellow); flex-shrink: 0; margin-top: 2px; }
+    .contact-detail p { color: rgba(255,255,255,0.7); font-size: 0.93rem; line-height: 1.5; }
+    .contact-detail a { color: var(--yellow); text-decoration: none; }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      padding: 0.85rem 1rem;
+      color: var(--white);
+      font-size: 0.92rem;
+      font-family: 'Roboto', sans-serif;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,0.35); }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus { outline: none; border-color: var(--yellow); }
+    .contact-form select option { background: var(--steel); }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--yellow);
+      color: var(--steel);
+      border: none;
+      padding: 1rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-submit:hover { background: var(--yellow-light); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      background: #1A1B2E;
+      padding: 3rem 2rem 2rem;
+      color: rgba(255,255,255,0.45);
+      font-size: 0.87rem;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .footer-brand p { margin-top: 0.8rem; line-height: 1.7; max-width: 300px; }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.5rem; }
+    .footer-col ul a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .footer-col ul a:hover { color: var(--yellow); }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .area-inner { grid-template-columns: 1fr; }
+      .about-inner { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      section { padding: 60px 1.2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .borough-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo"><span style="color:#EFC050;">CTI</span> Construction</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#area">Service Area</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Request a Bid</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Licensed NYC Contractor &nbsp;|&nbsp; Top 1% BuildZoom Rating &nbsp;|&nbsp; Est. 2010</div>
+      <h1>Top 1% of NY Contractors.<br/><em>Jonathan Chang</em> Will Build<br/>Your Project Right.</h1>
+      <p>CTI Construction Inc is a full-service general contractor with 20+ years of experience delivering residential and commercial projects across all five boroughs, Long Island, and New Jersey. 138+ permits. $6.5M+ in completed work. Jonathan oversees every job personally.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Discuss Your Project</a>
+        <a href="#services" class="btn-outline">Our Services</a>
+      </div>
+      <div class="hero-credentials">
+        <div class="cred-item"><strong>138+</strong>Building Permits</div>
+        <div class="cred-item"><strong>$6.5M+</strong>Project Value</div>
+        <div class="cred-item"><strong>Top 1%</strong>NY Contractors</div>
+        <div class="cred-item"><strong>20+</strong>Years Experience</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">What We Build</div>
+        <h2 class="section-title">Full-Service General Contracting</h2>
+        <p class="section-lead">From ground-up new construction to complete interior renovations, CTI Construction brings quality workmanship and professional project management to every job — residential or commercial.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-num">01</div>
+          <h3>New Construction</h3>
+          <p>Ground-up residential and commercial builds. We manage every phase from foundation to finish — coordinating subcontractors, materials, inspections, and city permitting throughout.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-num">02</div>
+          <h3>Renovations &amp; Remodeling</h3>
+          <p>Comprehensive interior and exterior upgrades for residential homes and commercial spaces. Kitchen remodels, bathroom additions, facade work, and complete gut renovations.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-num">03</div>
+          <h3>Commercial Construction</h3>
+          <p>Office buildouts, retail spaces, restaurants, and mixed-use commercial projects. We understand the specific timeline and quality demands of commercial clients and deliver accordingly.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-4">
+          <div class="service-num">04</div>
+          <h3>Project Management</h3>
+          <p>Full oversight of your construction project from planning to punch list — managing budgets, schedules, contractors, and communications so you don't have to.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACK RECORD -->
+  <section class="track" id="track">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:0;">
+        <div class="section-label">Our Track Record</div>
+        <h2 class="section-title" style="color:var(--white);">Numbers That Tell the Story</h2>
+        <p class="section-lead" style="color:rgba(255,255,255,0.65); margin:0 auto;">Our credentials speak to the quality and consistency that clients have come to count on over the years.</p>
+      </div>
+      <div class="track-grid">
+        <div class="track-stat reveal reveal-delay-1"><span>138+</span><p>Building Permits Secured</p></div>
+        <div class="track-stat reveal reveal-delay-2"><span>$6.5M+</span><p>In Permitted Project Value</p></div>
+        <div class="track-stat reveal reveal-delay-3"><span>121</span><p>BuildZoom Score (Top 1% NY)</p></div>
+        <div class="track-stat reveal reveal-delay-4"><span>2010</span><p>Established in New York</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section class="area" id="area">
+    <div class="container">
+      <div class="area-inner">
+        <div class="area-image reveal">
+          <img src="https://images.unsplash.com/photo-1490644658840-3f2e3f8c5625?w=800&q=80" alt="New York City skyline construction" />
+        </div>
+        <div class="reveal">
+          <div class="section-label">Where We Work</div>
+          <h2 class="section-title">All Five Boroughs &amp; Beyond</h2>
+          <p class="section-lead">CTI Construction is licensed and experienced in navigating the unique permitting, inspection, and construction requirements of every New York City borough — plus Long Island and northern New Jersey.</p>
+          <div class="borough-grid">
+            <div class="borough-tag"><div class="borough-dot"></div>Manhattan</div>
+            <div class="borough-tag"><div class="borough-dot"></div>Brooklyn</div>
+            <div class="borough-tag"><div class="borough-dot"></div>Queens</div>
+            <div class="borough-tag"><div class="borough-dot"></div>The Bronx</div>
+            <div class="borough-tag"><div class="borough-dot"></div>Staten Island</div>
+            <div class="borough-tag"><div class="borough-dot"></div>Long Island</div>
+            <div class="borough-tag"><div class="borough-dot"></div>New Jersey</div>
+            <div class="borough-tag"><div class="borough-dot"></div>Greater Metro Area</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:0;">
+        <div class="section-label">How We Work</div>
+        <h2 class="section-title">Clear Process. No Surprises.</h2>
+        <p class="section-lead" style="margin:0 auto;">Construction should be straightforward. Our process keeps every project on track, on budget, and fully communicated from the first call to the final walkthrough.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal reveal-delay-1">
+          <div class="process-step-num">01</div>
+          <h3>Consultation</h3>
+          <p>We visit your site, listen to your goals, and assess the scope of work. No assumptions, no generic estimates — we want to understand your project first.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="process-step-num">02</div>
+          <h3>Proposal</h3>
+          <p>A detailed written proposal with scope of work, materials, timeline, and pricing. Everything is itemized and explained so there are no hidden costs or surprises.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="process-step-num">03</div>
+          <h3>Build</h3>
+          <p>Our expert crews get to work. Jonathan Chang maintains hands-on oversight throughout construction, and we keep you updated at every major milestone.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-4">
+          <div class="process-step-num">04</div>
+          <h3>Completion</h3>
+          <p>We conduct a full walkthrough with you before we consider the job done. Punch list items are resolved promptly, and we don't leave until you're satisfied.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-image reveal">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=700&q=80" alt="Jonathan Chang, President of CTI Construction" />
+        </div>
+        <div class="about-text reveal">
+          <div class="section-label">About CTI Construction</div>
+          <h2>Built on Experience. Driven by Quality.</h2>
+          <p>CTI Construction Inc has been delivering residential and commercial projects across the New York metro area since 2010. What started as a focused residential contracting operation has grown into a full-service general contractor trusted by homeowners, commercial property owners, and developers across five boroughs and beyond.</p>
+          <p>Jonathan Chang, President of CTI Construction, brings more than 20 years of hands-on industry experience to every project. His approach is personal — he is not a contractor who wins the bid and disappears. Jonathan is involved in project oversight from the first consultation through final inspection, ensuring that the quality and professionalism he promises at the start is what you see at the finish.</p>
+          <p>CTI holds a BuildZoom score of 121, placing the company in the top 1% of all contractors in New York — a rating built from a verified track record of successful projects, proper permitting, and satisfied clients.</p>
+          <p class="about-name">Jonathan Chang</p>
+          <p class="about-title">President, CTI Construction Inc</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Start Your Project</div>
+        <h2 class="section-title">Discuss Your Project</h2>
+        <p class="section-lead" style="color:rgba(255,255,255,0.65);">Tell us what you're building. Jonathan will schedule a site visit and put together a detailed, itemized proposal — no obligation, no runaround.</p>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-info reveal">
+          <h3>Call Jonathan: (646) 302-2910</h3>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.08 2.2 2 2 0 012.06.06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            <p><a href="tel:6463022910">(646) 302-2910</a></p>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <p><a href="mailto:jonathan@ctigcusa.com">jonathan@ctigcusa.com</a></p>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <p>30-50 Whitestone Expy, Suite 101B<br/>Flushing, NY 11354</p>
+          </div>
+        </div>
+        <div class="reveal">
+          <form class="contact-form">
+            <div class="form-row">
+              <input type="text" placeholder="Your Name" />
+              <input type="tel" placeholder="Phone Number" />
+            </div>
+            <input type="email" placeholder="Email Address" />
+            <input type="text" placeholder="Project Location / Address" />
+            <div class="form-row">
+              <select>
+                <option value="" disabled selected>Project Type</option>
+                <option>New Construction — Residential</option>
+                <option>New Construction — Commercial</option>
+                <option>Renovation / Remodel</option>
+                <option>Commercial Buildout</option>
+                <option>Project Management</option>
+                <option>Construction Consulting</option>
+              </select>
+              <select>
+                <option value="" disabled selected>Timeline</option>
+                <option>Starting immediately</option>
+                <option>Within 3 months</option>
+                <option>3 to 6 months</option>
+                <option>6+ months out</option>
+                <option>Planning phase only</option>
+              </select>
+            </div>
+            <textarea placeholder="Describe your project — what are you building or renovating, and what's most important to you?"></textarea>
+            <button type="submit" class="btn-submit">Request My Free Bid</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="font-size:1.2rem;"><span style="color:#EFC050;">CTI</span> Construction</a>
+        <p>CTI Construction Inc — full-service licensed general contractor serving New York City's five boroughs, Long Island, and New Jersey since 2010. Top 1% of NY contractors.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">New Construction</a></li>
+          <li><a href="#services">Renovations</a></li>
+          <li><a href="#services">Commercial Construction</a></li>
+          <li><a href="#services">Project Management</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Jonathan</a></li>
+          <li><a href="#area">Service Area</a></li>
+          <li><a href="#contact">Request a Bid</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>30-50 Whitestone Expy, Suite 101B, Flushing, NY 11354 &nbsp;|&nbsp; (646) 302-2910 &nbsp;|&nbsp; jonathan@ctigcusa.com</p>
+      <p>&copy; 2025 CTI Construction Inc. All rights reserved. Licensed NY Contractor.</p>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

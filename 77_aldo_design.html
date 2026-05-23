@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aldo Design Group — Flooring &amp; Interior Design, Carteret NJ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --walnut: #5C3D2E;
+      --walnut-dark: #3A2218;
+      --walnut-light: #7A5240;
+      --cream: #FAF7F2;
+      --warm-white: #FDFCFA;
+      --sage: #7D9E8A;
+      --sage-light: #9AB5A5;
+      --text-dark: #1A1108;
+      --text-mid: #4A3828;
+      --text-light: #8A7868;
+      --border: #E8E0D5;
+      --gold: #C8A46A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text-dark);
+      background: var(--warm-white);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(58,34,24,0.97);
+      backdrop-filter: blur(8px);
+      padding: 0 2rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      color: var(--cream);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.72); text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--walnut-dark) !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 4px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: #D4B57A !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 2rem 60px;
+      background: var(--walnut-dark);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1615873968403-89e068629265?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.2;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, rgba(58,34,24,0.95) 0%, rgba(58,34,24,0.75) 55%, rgba(92,61,46,0.45) 100%);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to top, var(--warm-white), transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 660px;
+    }
+
+    .hero-lineage {
+      display: inline-block;
+      background: rgba(200,164,106,0.12);
+      border: 1px solid rgba(200,164,106,0.35);
+      color: var(--gold);
+      font-size: 0.77rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 em { font-style: italic; color: var(--gold); }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+      max-width: 520px;
+    }
+
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--walnut-dark);
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: #D4B57A; transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.35);
+      color: var(--cream);
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-heritage {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.5rem;
+    }
+
+    .heritage-item span {
+      display: block;
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: var(--gold);
+    }
+
+    .heritage-item p { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+
+    /* SECTIONS */
+    section { padding: 90px 2rem; }
+    .container { max-width: 1120px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.77rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      color: var(--walnut-dark);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-lead { font-size: 1.05rem; color: var(--text-mid); max-width: 580px; line-height: 1.82; }
+
+    /* PRODUCTS */
+    .products { background: var(--cream); }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .product-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .product-card:hover { transform: translateY(-5px); box-shadow: 0 12px 36px rgba(0,0,0,0.12); }
+
+    .product-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-body {
+      padding: 1.5rem;
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 12px 12px;
+    }
+
+    .product-body h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--walnut-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .product-body p { color: var(--text-mid); font-size: 0.9rem; line-height: 1.68; }
+
+    /* SERVICES */
+    .services { background: var(--warm-white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .service-item {
+      padding: 1.8rem;
+      background: var(--cream);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+
+    .service-item:hover { border-color: var(--walnut); }
+
+    .service-icon-circle {
+      width: 46px;
+      height: 46px;
+      background: var(--walnut);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .service-icon-circle svg { width: 22px; height: 22px; fill: var(--cream); }
+
+    .service-item h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--walnut-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-item p { color: var(--text-mid); font-size: 0.9rem; line-height: 1.68; }
+
+    /* WHO WE SERVE */
+    .who { background: var(--walnut); }
+    .who .section-title { color: var(--cream); }
+    .who .section-label { color: var(--gold); }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .who-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .who-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.8rem;
+      color: rgba(200,164,106,0.3);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .who-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin-bottom: 0.6rem;
+    }
+
+    .who-card p { color: rgba(255,255,255,0.65); font-size: 0.88rem; line-height: 1.65; }
+
+    /* WHY US */
+    .why { background: var(--cream); }
+
+    .why-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .why-image { border-radius: 14px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.1); }
+    .why-image img { width: 100%; height: 440px; object-fit: cover; display: block; }
+
+    .why-list { margin-top: 1.5rem; }
+
+    .why-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .why-item:last-child { border-bottom: none; }
+
+    .why-check {
+      width: 30px;
+      height: 30px;
+      background: var(--sage);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .why-check svg { width: 14px; height: 14px; fill: var(--warm-white); }
+
+    .why-item-text h4 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: var(--walnut-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .why-item-text p { color: var(--text-mid); font-size: 0.88rem; line-height: 1.65; }
+
+    /* STORY */
+    .story { background: var(--warm-white); }
+
+    .story-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .story-text p { color: var(--text-mid); font-size: 0.97rem; line-height: 1.88; margin-bottom: 1rem; }
+
+    .story-image { border-radius: 14px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.1); }
+    .story-image img { width: 100%; height: 440px; object-fit: cover; display: block; }
+
+    .family-names {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .family-name-tag {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.88rem;
+      color: var(--walnut);
+      font-weight: 500;
+    }
+
+    /* CONTACT */
+    .contact { background: var(--walnut-dark); }
+    .contact .section-title { color: var(--cream); }
+    .contact .section-label { color: var(--gold); }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p { color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.5rem; }
+
+    .contact-detail { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; }
+    .contact-detail-icon { width: 20px; height: 20px; fill: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .contact-detail p { color: rgba(255,255,255,0.65) !important; font-size: 0.93rem !important; margin-bottom: 0 !important; }
+    .contact-detail a { color: var(--gold); text-decoration: none; }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      padding: 0.85rem 1rem;
+      color: var(--cream);
+      font-size: 0.92rem;
+      font-family: 'DM Sans', sans-serif;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,0.35); }
+    .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { outline: none; border-color: var(--gold); }
+    .contact-form select option { background: var(--walnut-dark); }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--walnut-dark);
+      border: none;
+      padding: 1rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-submit:hover { background: #D4B57A; transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      background: #1F0E08;
+      padding: 3rem 2rem 2rem;
+      color: rgba(255,255,255,0.42);
+      font-size: 0.87rem;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .footer-brand p { margin-top: 0.8rem; line-height: 1.7; max-width: 300px; }
+
+    .footer-col h4 {
+      color: var(--cream);
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.5rem; }
+    .footer-col ul a { color: rgba(255,255,255,0.42); text-decoration: none; transition: color 0.2s; }
+    .footer-col ul a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .why-inner { grid-template-columns: 1fr; }
+      .story-inner { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      section { padding: 60px 1.2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Aldo <span>Design Group</span></a>
+    <ul class="nav-links">
+      <li><a href="#products">Products</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#contact" class="nav-cta">Get Estimate</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-lineage">Family-Owned Since 1972 &nbsp;|&nbsp; Carteret, NJ &nbsp;|&nbsp; Top 100 US Retailer</div>
+      <h1>50 Years of Getting<br/><em>Northeast Floors</em><br/>Exactly Right.</h1>
+      <p>Aldo Benavides Sr. started this company in 1972 with a belief that's never changed: deliver quality service and never compromise your integrity. Today, from a 30,000 sq ft showroom in Carteret, NJ, three generations of Benavides family expertise serve homeowners, designers, and builders across the Northeast.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Visit Our Showroom</a>
+        <a href="#products" class="btn-outline">Our Products</a>
+      </div>
+      <div class="hero-heritage">
+        <div class="heritage-item"><span>50+</span><p>Years in Business</p></div>
+        <div class="heritage-item"><span>30K</span><p>Sq Ft Showroom</p></div>
+        <div class="heritage-item"><span>Top 100</span><p>US Flooring Retailers</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Our Products</div>
+        <h2 class="section-title">Every Surface, Every Style</h2>
+        <p class="section-lead">We carry the full spectrum of flooring and interior products — premium brands, vast selection, and expert guidance to help you find exactly the right fit for your space and your life.</p>
+      </div>
+      <div class="products-grid">
+        <div class="product-card reveal reveal-delay-1">
+          <img class="product-img" src="https://images.unsplash.com/photo-1584622781867-1c5fe059a576?w=600&q=80" alt="Hardwood flooring" />
+          <div class="product-body">
+            <h3>Hardwood Flooring</h3>
+            <p>Solid and engineered hardwood in hundreds of species, stains, and finishes. The timeless choice that adds value to any home.</p>
+          </div>
+        </div>
+        <div class="product-card reveal reveal-delay-2">
+          <img class="product-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Luxury carpet" />
+          <div class="product-body">
+            <h3>Carpet</h3>
+            <p>From plush residential comfort to commercial-grade durability — we carry brands and textures for every room and every budget.</p>
+          </div>
+        </div>
+        <div class="product-card reveal reveal-delay-3">
+          <img class="product-img" src="https://images.unsplash.com/photo-1567538096621-38d2284b23ff?w=600&q=80" alt="Luxury vinyl tile flooring" />
+          <div class="product-body">
+            <h3>Luxury Vinyl &amp; Laminate</h3>
+            <p>Beautiful, waterproof, and practical. LVT and laminate floors that look stunning and stand up to the demands of real life.</p>
+          </div>
+        </div>
+        <div class="product-card reveal reveal-delay-1">
+          <img class="product-img" src="https://images.unsplash.com/photo-1600607686527-6fb886090705?w=600&q=80" alt="Tile flooring" />
+          <div class="product-body">
+            <h3>Tile</h3>
+            <p>Ceramic, porcelain, and natural stone tile for floors, walls, and showers. The classic choice for kitchens and bathrooms done right.</p>
+          </div>
+        </div>
+        <div class="product-card reveal reveal-delay-2">
+          <img class="product-img" src="https://images.unsplash.com/photo-1616486886892-ff366aa67ba4?w=600&q=80" alt="Window treatments" />
+          <div class="product-body">
+            <h3>Window Treatments</h3>
+            <p>Blinds, shades, shutters, and drapery to complement your floors and finish every room with the light control and privacy you want.</p>
+          </div>
+        </div>
+        <div class="product-card reveal reveal-delay-3">
+          <img class="product-img" src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="Kitchen design and cabinetry" />
+          <div class="product-body">
+            <h3>Custom Cabinets</h3>
+            <p>From kitchen renovations to bathroom vanities — custom cabinet design and installation that brings your space together beautifully.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Our Services</div>
+        <h2 class="section-title">From Selection to Installation</h2>
+        <p class="section-lead">We don't just sell floors — we help you design, select, and install everything in your space with a team of in-house experts who genuinely love what they do.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-item reveal reveal-delay-1">
+          <div class="service-icon-circle">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Flooring Installation</h3>
+          <p>Professional installation for all our product lines — hardwood, LVT, carpet, tile, and laminate. Done right the first time by our experienced installation crews.</p>
+        </div>
+        <div class="service-item reveal reveal-delay-2">
+          <div class="service-icon-circle">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <h3>Free In-Home Estimates</h3>
+          <p>We come to you. Our team visits your space to take measurements, review your vision, and give you an accurate, no-obligation estimate for your project.</p>
+        </div>
+        <div class="service-item reveal reveal-delay-3">
+          <div class="service-icon-circle">
+            <svg viewBox="0 0 24 24"><path d="M2 20h.01M7 20v-4a5 5 0 0110 0v4M22 20h.01M17 20h.01M12 20h.01"/><path d="M12 3a3 3 0 100 6 3 3 0 000-6z"/></svg>
+          </div>
+          <h3>In-House Design Consultants</h3>
+          <p>Our design consultants guide you through color, texture, finish, and layout choices — making sure your selections work together beautifully before anything is ordered.</p>
+        </div>
+        <div class="service-item reveal reveal-delay-1">
+          <div class="service-icon-circle">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </div>
+          <h3>Kitchen Design &amp; Remodeling</h3>
+          <p>Complete kitchen renovations from floor to cabinet — we coordinate flooring, tile backsplash, and cabinetry to create kitchens that are both beautiful and functional.</p>
+        </div>
+        <div class="service-item reveal reveal-delay-2">
+          <div class="service-icon-circle">
+            <svg viewBox="0 0 24 24"><path d="M4 22V12a2 2 0 012-2h12a2 2 0 012 2v10M4 22h16M2 12h20M12 2v10M8 7l4-5 4 5"/></svg>
+          </div>
+          <h3>Bathroom Design &amp; Remodeling</h3>
+          <p>Tile, flooring, and vanity coordination for bathroom renovations of all sizes — from a simple refresh to a full primary bathroom transformation.</p>
+        </div>
+        <div class="service-item reveal reveal-delay-3">
+          <div class="service-icon-circle">
+            <svg viewBox="0 0 24 24"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg>
+          </div>
+          <h3>Wood Floor Refinishing</h3>
+          <p>Restore the beauty of existing hardwood floors without replacement — sanding, staining, and finishing to bring worn floors back to life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE SERVE -->
+  <section class="who" id="who">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:0;">
+        <div class="section-label">Who We Work With</div>
+        <h2 class="section-title" style="color:var(--cream);">From Homeowners to Homebuilders</h2>
+        <p class="section-lead" style="color:rgba(255,255,255,0.65); margin:0 auto 3rem;">Aldo Design Group serves clients at every scale — from a homeowner choosing one room's flooring to a production builder outfitting an entire development.</p>
+      </div>
+      <div class="who-grid">
+        <div class="who-card reveal reveal-delay-1">
+          <div class="who-num">01</div>
+          <h3>Homeowners</h3>
+          <p>Individual families working on their own homes — one room or the whole house. We make the process personal, enjoyable, and stress-free.</p>
+        </div>
+        <div class="who-card reveal reveal-delay-2">
+          <div class="who-num">02</div>
+          <h3>Commercial Clients</h3>
+          <p>Offices, retail stores, restaurants, and other commercial spaces needing durable, beautiful flooring solutions installed on a business timeline.</p>
+        </div>
+        <div class="who-card reveal reveal-delay-3">
+          <div class="who-num">03</div>
+          <h3>Homebuilders</h3>
+          <p>Production and custom builders of all sizes across the Northeast. We understand construction schedules and deliver consistent quality across multiple units.</p>
+        </div>
+        <div class="who-card reveal">
+          <div class="who-num">04</div>
+          <h3>Interior Designers</h3>
+          <p>Design professionals who need a flooring and interior product partner with exceptional product selection, reliable delivery, and trade support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why" id="why">
+    <div class="container">
+      <div class="why-inner">
+        <div class="why-image reveal">
+          <img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8499?w=700&q=80" alt="Aldo Design Group showroom and team" />
+        </div>
+        <div class="reveal">
+          <div class="section-label">Why Aldo Design Group</div>
+          <h2 class="section-title">50 Years of Getting This Right</h2>
+          <p class="section-lead" style="margin-bottom:0.5rem;">In this business, reputation is everything. Aldo Design Group has been building theirs since 1972 — and here is what that looks like in practice.</p>
+          <div class="why-list">
+            <div class="why-item">
+              <div class="why-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="why-item-text">
+                <h4>30,000 Sq Ft Showroom</h4>
+                <p>Our Carteret, NJ design center and warehouse lets you see and feel every product before you buy — not just look at samples online.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="why-item-text">
+                <h4>Top 100 US Flooring Retailer</h4>
+                <p>Recognized by Floor Covering Weekly as one of the top 100 flooring retailers in the country — a distinction earned through consistent quality and client service.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="why-item-text">
+                <h4>Floor Expo Member</h4>
+                <p>As a member of Floor Expo — the largest floor contractor organization in America — we have access to buying power and supplier relationships that benefit our clients directly.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+              <div class="why-item-text">
+                <h4>Three Generations of Family Expertise</h4>
+                <p>Aldo Benavides Sr. started this company in 1972. His sons joined in 1992. That family commitment to quality hasn't changed in 50+ years.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story" id="story">
+    <div class="container">
+      <div class="story-inner">
+        <div class="story-text reveal">
+          <div class="section-label">Our Story</div>
+          <h2 class="section-title">From Bayonne to the Northeast</h2>
+          <p>In 1972, Aldo Benavides Sr. started a carpet installation business in Bayonne, New Jersey with a straightforward belief: deliver quality service at fair prices without ever compromising your integrity. He called it Aldo Carpets.</p>
+          <p>The business grew steadily, built on customer trust and a reputation for getting the job done right. In 1992, his three sons — Aldo Jr., Albert, and Alex — joined the operation and brought new energy, expanded product lines, and a broader geographic reach to what had become a well-respected regional business.</p>
+          <p>By 2006, the company's offerings had expanded so far beyond carpet that a name change made sense. Aldo Carpets became Aldo Design Group — a name that better reflected the full-service flooring and interior design resource the business had become.</p>
+          <p>Today, operating from a 30,000 square foot design center and warehouse in Carteret, NJ, Aldo Design Group serves homeowners, commercial clients, and builders across the entire Northeast — with the same family values that started it all over 50 years ago.</p>
+          <div class="family-names">
+            <div class="family-name-tag">Aldo Benavides Sr. — Founder</div>
+            <div class="family-name-tag">Aldo Benavides Jr.</div>
+            <div class="family-name-tag">Albert Benavides</div>
+            <div class="family-name-tag">Alex Benavides</div>
+          </div>
+        </div>
+        <div class="story-image reveal">
+          <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=700&q=80" alt="Three generations of family business" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Visit Us or Get a Free Estimate</div>
+        <h2 class="section-title">Come See It for Yourself</h2>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-info reveal">
+          <h3>Call Us: (888) 265-2536</h3>
+          <p>Stop by our 30,000 sq ft showroom in Carteret, NJ — bring your measurements, your inspiration photos, or just your questions. Our design consultants have seen it all and will help you find exactly what works. Or call us and we'll come to you with a free in-home estimate.</p>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.08 2.2 2 2 0 012.06.06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            <p><a href="tel:8882652536">(888) 265-2536</a></p>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <p><a href="mailto:aldo.benavides@aldodesigngroup.com">aldo.benavides@aldodesigngroup.com</a></p>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <p>35 Hayward Ave, Carteret, NJ 07008</p>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <p>Monday – Friday: 9:00am – 5:00pm</p>
+          </div>
+        </div>
+        <div class="reveal">
+          <form class="contact-form">
+            <div class="form-row">
+              <input type="text" placeholder="Your Name" />
+              <input type="tel" placeholder="Phone Number" />
+            </div>
+            <input type="email" placeholder="Email Address" />
+            <input type="text" placeholder="Project Address / Location" />
+            <select>
+              <option value="" disabled selected>Type of Project</option>
+              <option>Residential — Flooring</option>
+              <option>Residential — Kitchen Remodel</option>
+              <option>Residential — Bathroom Remodel</option>
+              <option>Commercial — Flooring</option>
+              <option>Homebuilder / Developer</option>
+              <option>Multiple Rooms / Whole Home</option>
+              <option>Other</option>
+            </select>
+            <select>
+              <option value="" disabled selected>Product Interest</option>
+              <option>Hardwood Flooring</option>
+              <option>Carpet</option>
+              <option>Luxury Vinyl / LVT</option>
+              <option>Laminate</option>
+              <option>Tile</option>
+              <option>Window Treatments</option>
+              <option>Custom Cabinets</option>
+              <option>Not Sure Yet</option>
+            </select>
+            <textarea placeholder="Tell us a little about your project — space size, vision, timeline, or questions..."></textarea>
+            <button type="submit" class="btn-submit">Request My Free Estimate</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="font-size:1.2rem;">Aldo <span style="color:#C8A46A;">Design Group</span></a>
+        <p>Aldo Design Group — premier flooring and interior design resource for homeowners, commercial clients, and builders across the Northeast. Family-owned since 1972. Carteret, NJ.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#products">Hardwood Flooring</a></li>
+          <li><a href="#products">Carpet</a></li>
+          <li><a href="#products">Luxury Vinyl</a></li>
+          <li><a href="#products">Tile</a></li>
+          <li><a href="#products">Window Treatments</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why">Why Aldo</a></li>
+          <li><a href="#contact">Contact &amp; Visit</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>35 Hayward Ave, Carteret, NJ 07008 &nbsp;|&nbsp; (888) 265-2536 &nbsp;|&nbsp; Mon–Fri 9am–5pm</p>
+      <p>&copy; 2025 Aldo Design Group. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

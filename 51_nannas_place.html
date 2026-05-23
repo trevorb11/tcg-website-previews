@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nanna's Place | Home-Cooked Comfort Food in Gresham, Oregon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #fdf6ec;
+      --amber: #c8813a;
+      --amber-light: #e9a85e;
+      --sage: #5a7a5e;
+      --sage-light: #7fa384;
+      --russet: #7a3b2e;
+      --brown-dark: #3b2314;
+      --text: #2d1f14;
+      --text-light: #6b5040;
+      --white: #ffffff;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Lora', serif;
+      background-color: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(253, 246, 236, 0.95);
+      backdrop-filter: blur(6px);
+      border-bottom: 2px solid var(--amber-light);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--russet);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--amber); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Lora', serif;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--amber); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 68px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(59,35,20,0.82) 0%, rgba(122,59,46,0.55) 60%, rgba(200,129,58,0.35) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: 'Lora', serif;
+      font-size: 0.85rem;
+      font-style: italic;
+      letter-spacing: 0.15em;
+      color: var(--amber-light);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1.4rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--amber-light);
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 2.5rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--amber);
+      color: var(--white);
+      font-family: 'Lora', serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.85rem 2.2rem;
+      border-radius: 3px;
+      text-decoration: none;
+      border: 2px solid var(--amber);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--amber-light); transform: translateY(-2px); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      font-family: 'Lora', serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.85rem 2.2rem;
+      border-radius: 3px;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.7);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+    .hero-badge {
+      margin-top: 3rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .hero-badge span {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-style: italic;
+    }
+
+    /* SECTIONS BASE */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      font-style: italic;
+      margin-bottom: 0.6rem;
+    }
+    h2.section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--brown-dark);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+    .section-divider {
+      width: 56px;
+      height: 3px;
+      background: var(--amber);
+      margin-bottom: 2rem;
+    }
+
+    /* REVEAL ANIMATION */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ABOUT SECTION */
+    .about-section { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-img {
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(59,35,20,0.18);
+      aspect-ratio: 4/3;
+    }
+    .about-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-text p { color: var(--text-light); margin-bottom: 1.2rem; font-size: 1.05rem; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .signature {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--russet);
+      margin-top: 1.5rem;
+    }
+
+    /* MENU SECTION */
+    .menu-section { background: var(--cream); }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .menu-card {
+      background: var(--white);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(59,35,20,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .menu-card:hover { transform: translateY(-5px); box-shadow: 0 10px 35px rgba(59,35,20,0.16); }
+    .menu-card-header {
+      background: var(--russet);
+      padding: 1.2rem 1.5rem;
+    }
+    .menu-card-header h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--white);
+      font-weight: 600;
+    }
+    .menu-card-header p {
+      color: var(--amber-light);
+      font-size: 0.82rem;
+      font-style: italic;
+      margin-top: 0.2rem;
+    }
+    .menu-card-body { padding: 1.5rem; }
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.5rem 0;
+      border-bottom: 1px dotted rgba(59,35,20,0.12);
+    }
+    .menu-item:last-child { border-bottom: none; }
+    .menu-item-name { font-size: 0.95rem; color: var(--text); }
+    .menu-item-note { font-size: 0.8rem; font-style: italic; color: var(--text-light); }
+    .menu-note {
+      margin-top: 2rem;
+      text-align: center;
+      font-style: italic;
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    /* HOURS SECTION */
+    .hours-section { background: var(--brown-dark); color: var(--white); }
+    .hours-section .section-label { color: var(--amber-light); }
+    .hours-section h2.section-title { color: var(--white); }
+    .hours-section .section-divider { background: var(--amber); }
+    .hours-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .hours-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    .hours-table tr { border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .hours-table td { padding: 0.75rem 0; font-size: 1rem; }
+    .hours-table td:first-child { color: rgba(255,255,255,0.65); }
+    .hours-table td:last-child { color: var(--amber-light); font-weight: 500; text-align: right; }
+    .hours-table .closed td:last-child { color: rgba(255,255,255,0.3); font-style: italic; }
+    .location-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--amber-light);
+    }
+    .location-block p { color: rgba(255,255,255,0.8); margin-bottom: 0.5rem; font-size: 1rem; }
+    .location-block a { color: var(--amber-light); text-decoration: none; }
+    .patio-note {
+      margin-top: 2rem;
+      padding: 1.2rem 1.5rem;
+      background: rgba(255,255,255,0.06);
+      border-left: 3px solid var(--amber);
+      border-radius: 2px;
+    }
+    .patio-note p { color: rgba(255,255,255,0.75); font-size: 0.95rem; font-style: italic; }
+
+    /* ATMOSPHERE SECTION */
+    .atmo-section { background: var(--sage); }
+    .atmo-section .section-label { color: var(--amber-light); }
+    .atmo-section h2.section-title { color: var(--white); }
+    .atmo-section .section-divider { background: var(--amber-light); }
+    .atmo-section p { color: rgba(255,255,255,0.88); max-width: 640px; margin-bottom: 1rem; font-size: 1.05rem; }
+    .atmo-img-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    .atmo-img-grid .img-wrap { border-radius: 4px; overflow: hidden; aspect-ratio: 4/3; }
+    .atmo-img-grid .img-wrap.tall { aspect-ratio: 3/4; }
+    .atmo-img-grid img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .perks-row {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .perk {
+      background: rgba(255,255,255,0.12);
+      border-radius: 3px;
+      padding: 0.6rem 1.2rem;
+      color: var(--white);
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+    }
+
+    /* COMMUNITY SECTION */
+    .community-section { background: var(--cream); }
+    .community-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .community-img { border-radius: 4px; overflow: hidden; box-shadow: 0 10px 35px rgba(59,35,20,0.14); aspect-ratio: 5/4; }
+    .community-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .community-text p { color: var(--text-light); margin-bottom: 1.2rem; font-size: 1.05rem; }
+    .chamber-badge {
+      display: inline-block;
+      margin-top: 1rem;
+      background: var(--sage);
+      color: var(--white);
+      padding: 0.5rem 1.2rem;
+      border-radius: 3px;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* REVIEWS SECTION */
+    .reviews-section { background: var(--white); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .review-card {
+      background: var(--cream);
+      border-radius: 4px;
+      padding: 2rem;
+      position: relative;
+      border-top: 3px solid var(--amber);
+    }
+    .review-quote {
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--amber-light);
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 0.5rem;
+    }
+    .review-text { font-style: italic; color: var(--text-light); margin-bottom: 1.2rem; font-size: 1rem; }
+    .review-author { font-weight: 500; color: var(--russet); font-size: 0.9rem; }
+    .review-location { font-size: 0.82rem; color: var(--text-light); }
+
+    /* CONTACT SECTION */
+    .contact-section { background: var(--amber); }
+    .contact-section .section-label { color: rgba(255,255,255,0.8); }
+    .contact-section h2.section-title { color: var(--white); }
+    .contact-section .section-divider { background: rgba(255,255,255,0.5); }
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-info p { color: rgba(255,255,255,0.9); margin-bottom: 0.6rem; font-size: 1rem; }
+    .contact-info a { color: var(--white); text-decoration: underline; }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-form input, .contact-form textarea, .contact-form select {
+      padding: 0.85rem 1rem;
+      border: none;
+      border-radius: 3px;
+      font-family: 'Lora', serif;
+      font-size: 0.95rem;
+      background: rgba(255,255,255,0.92);
+      color: var(--text);
+      outline: none;
+    }
+    .contact-form textarea { min-height: 110px; resize: vertical; }
+    .btn-form {
+      background: var(--russet);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: 3px;
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-form:hover { background: var(--brown-dark); }
+
+    /* FOOTER */
+    footer {
+      background: var(--brown-dark);
+      color: rgba(255,255,255,0.65);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .footer-logo span { color: var(--amber-light); }
+    .footer-info { font-size: 0.9rem; line-height: 2; margin-bottom: 1.5rem; }
+    .footer-hours { font-size: 0.85rem; font-style: italic; margin-bottom: 1.5rem; }
+    .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.35); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.2rem; margin-top: 1.5rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .about-grid, .hours-layout, .community-grid, .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .menu-grid, .reviews-grid { grid-template-columns: 1fr 1fr; }
+      .atmo-img-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .menu-grid, .reviews-grid { grid-template-columns: 1fr; }
+      .atmo-img-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .perks-row { gap: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Nanna's <span>Place</span></a>
+    <ul class="nav-links">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#hours">Hours</a></li>
+      <li><a href="#atmosphere">Our Space</a></li>
+      <li><a href="#contact">Find Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">1000 N Main Ave, Gresham, Oregon</span>
+      <h1>Come Hungry.<br><em>Leave Happy.</em></h1>
+      <p>Real scratch cooking, big portions, and a welcome that makes you feel like you've been coming here for years. Because that's exactly the point.</p>
+      <div class="btn-row">
+        <a href="#menu" class="btn-primary">See What's Cooking</a>
+        <a href="#hours" class="btn-secondary">Find Us</a>
+      </div>
+      <div class="hero-badge">
+        <span>Breakfast &amp; Lunch Daily</span>
+        <span>Dinner Thu-Sat</span>
+        <span>Pet-Friendly Patio</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal-left">
+          <div class="about-img">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Warm dining experience at Nanna's Place" />
+          </div>
+        </div>
+        <div class="reveal-right">
+          <p class="section-label">Our Story</p>
+          <h2 class="section-title">A Table Set for Everyone</h2>
+          <div class="section-divider"></div>
+          <p>Nanna's Place started with a simple idea: food made the way it used to be, from scratch, with care, and served by people who are genuinely glad to see you. Linda Roth opened these doors because she believed Gresham needed a spot where strangers become regulars and regulars become family.</p>
+          <p>Everything we serve is made in-house. Our biscuits come out of a real oven. Our eggs are cracked fresh every morning. Our soups are made from scratch. We don't cut corners because Nanna never did, and we're not about to start now.</p>
+          <p>Whether you're grabbing breakfast before work, catching up with a friend over the Reuben, or settling in for a Thursday night Chicken Fried Steak, there's always a seat here with your name on it. Come as you are.</p>
+          <div class="signature">&mdash; Linda Roth, Owner</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <div class="reveal" style="text-align:center; max-width:600px; margin:0 auto 3rem;">
+        <p class="section-label">What We're Serving</p>
+        <h2 class="section-title">Made From Scratch, Every Single Day</h2>
+        <div class="section-divider" style="margin:0 auto 1.5rem;"></div>
+        <p style="color:var(--text-light);">Our menu changes with the seasons, but some things never will. Comfort food made right, generous portions, and prices that won't make you wince. Call us at <a href="tel:5037089130" style="color:var(--amber);">(503) 708-9130</a> to ask about today's specials.</p>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-card-header">
+            <h3>Breakfast</h3>
+            <p>Tuesday - Sunday starting at 8am</p>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-item"><span class="menu-item-name">Farmhouse Omelette</span><span class="menu-item-note">three eggs, peppers, onion, cheddar</span></div>
+            <div class="menu-item"><span class="menu-item-name">Eggs Benedict</span><span class="menu-item-note">house hollandaise, Canadian bacon</span></div>
+            <div class="menu-item"><span class="menu-item-name">Country Benedict</span><span class="menu-item-note">biscuit, sausage gravy</span></div>
+            <div class="menu-item"><span class="menu-item-name">Stuffed French Toast</span><span class="menu-item-note">cream cheese, berry compote</span></div>
+            <div class="menu-item"><span class="menu-item-name">Biscuits and Gravy</span><span class="menu-item-note">house-made from scratch</span></div>
+            <div class="menu-item"><span class="menu-item-name">Classic Pancakes</span><span class="menu-item-note">short stack or full</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal" style="transition-delay:0.15s">
+          <div class="menu-card-header">
+            <h3>Lunch</h3>
+            <p>Tuesday - Sunday until 3pm</p>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-item"><span class="menu-item-name">The Reuben</span><span class="menu-item-note">house-brined corned beef, Swiss, kraut</span></div>
+            <div class="menu-item"><span class="menu-item-name">Club Sandwich</span><span class="menu-item-note">triple-decker, your choice of bread</span></div>
+            <div class="menu-item"><span class="menu-item-name">Soup of the Day</span><span class="menu-item-note">ask your server for today's pot</span></div>
+            <div class="menu-item"><span class="menu-item-name">Grilled Cheese</span><span class="menu-item-note">sourdough, three-cheese blend</span></div>
+            <div class="menu-item"><span class="menu-item-name">Garden Salad</span><span class="menu-item-note">house dressing, seasonal vegetables</span></div>
+            <div class="menu-item"><span class="menu-item-name">Kids' Plate</span><span class="menu-item-note">smaller portions, big smiles</span></div>
+          </div>
+        </div>
+        <div class="menu-card reveal" style="transition-delay:0.3s">
+          <div class="menu-card-header">
+            <h3>Dinner</h3>
+            <p>Thursday, Friday &amp; Saturday 3-8pm</p>
+          </div>
+          <div class="menu-card-body">
+            <div class="menu-item"><span class="menu-item-name">Chicken Fried Steak</span><span class="menu-item-note">white pepper gravy, mashed potatoes</span></div>
+            <div class="menu-item"><span class="menu-item-name">Pot Roast</span><span class="menu-item-note">slow-braised, seasonal vegetables</span></div>
+            <div class="menu-item"><span class="menu-item-name">Meatloaf</span><span class="menu-item-note">tomato glaze, green beans</span></div>
+            <div class="menu-item"><span class="menu-item-name">Pasta of the Week</span><span class="menu-item-note">ask your server</span></div>
+            <div class="menu-item"><span class="menu-item-name">Homemade Pie Slice</span><span class="menu-item-note">rotating seasonal flavors</span></div>
+            <div class="menu-item"><span class="menu-item-name">Mocktails</span><span class="menu-item-note">house-crafted, ask for the list</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="menu-note reveal">All baked goods made fresh daily. Ask about gluten-friendly options. Menu items subject to seasonal availability.</p>
+    </div>
+  </section>
+
+  <!-- HOURS & LOCATION -->
+  <section class="hours-section" id="hours">
+    <div class="container">
+      <div class="hours-layout">
+        <div class="reveal-left">
+          <p class="section-label">When to Come By</p>
+          <h2 class="section-title">Hours of Operation</h2>
+          <div class="section-divider"></div>
+          <table class="hours-table">
+            <tbody>
+              <tr class="closed"><td>Monday</td><td>Closed</td></tr>
+              <tr><td>Tuesday</td><td>8:00 am - 3:00 pm</td></tr>
+              <tr><td>Wednesday</td><td>8:00 am - 3:00 pm</td></tr>
+              <tr><td>Thursday</td><td>8:00 am - 8:00 pm</td></tr>
+              <tr><td>Friday</td><td>8:00 am - 8:00 pm</td></tr>
+              <tr><td>Saturday</td><td>8:00 am - 8:00 pm</td></tr>
+              <tr><td>Sunday</td><td>8:00 am - 3:00 pm</td></tr>
+            </tbody>
+          </table>
+          <div class="patio-note" style="margin-top:2rem;">
+            <p>Dinner service (3-8pm) is available Thursday, Friday, and Saturday only. We recommend arriving early on weekend mornings as we do fill up.</p>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <div class="location-block">
+            <h3>Come Find Us &mdash; Coffee's On</h3>
+            <p>1000 N Main Ave<br>Gresham, OR 97030</p>
+            <p>Phone: <a href="tel:5037089130">(503) 708-9130</a></p>
+            <p>Email: <a href="mailto:lroth@maginnis-carey.com">lroth@maginnis-carey.com</a></p>
+          </div>
+          <div class="patio-note">
+            <p>Our covered, heated patio means year-round fresh air without the Oregon drizzle getting in the way. Dogs are welcome out here. So are kids, especially if they want to play yard games while you have a second cup.</p>
+          </div>
+          <div style="margin-top:2rem;">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Cozy restaurant interior" style="width:100%; border-radius:4px; display:block;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ATMOSPHERE -->
+  <section class="atmo-section" id="atmosphere">
+    <div class="container">
+      <div class="reveal" style="max-width:580px; margin-bottom:2rem;">
+        <p class="section-label">More Than a Meal</p>
+        <h2 class="section-title">A Place to Slow Down</h2>
+        <div class="section-divider"></div>
+        <p>Nanna's Place was never just about the food. It's about having a real reason to sit down, look up from your phone, and enjoy the people across the table. We have room for big families, tables for two, and plenty of patio space for the kids to run while the grown-ups have a second cup of coffee.</p>
+        <p>The outdoor patio is covered and heated year-round, which means even on a gray Gresham morning you can sit outside with your dog and not regret it. The yard games are out there too, because why shouldn't lunch come with a little friendly competition?</p>
+      </div>
+      <div class="perks-row reveal">
+        <div class="perk">Covered Heated Patio</div>
+        <div class="perk">Pet Friendly</div>
+        <div class="perk">Family Friendly</div>
+        <div class="perk">Outdoor Games</div>
+        <div class="perk">Large Portions</div>
+        <div class="perk">Affordable Prices</div>
+      </div>
+      <div class="atmo-img-grid reveal" style="margin-top:2.5rem;">
+        <div class="img-wrap">
+          <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80" alt="Friends sharing a meal" />
+        </div>
+        <div class="img-wrap">
+          <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=600&q=80" alt="Delicious comfort food" />
+        </div>
+        <div class="img-wrap">
+          <img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=600&q=80" alt="Family dining together" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY -->
+  <section class="community-section" id="community">
+    <div class="container">
+      <div class="community-grid">
+        <div class="reveal-left">
+          <div class="community-img">
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80" alt="Community gathering" />
+          </div>
+        </div>
+        <div class="reveal-right">
+          <p class="section-label">Rooted in Gresham</p>
+          <h2 class="section-title">Part of the Neighborhood</h2>
+          <div class="section-divider"></div>
+          <p>Nanna's Place is a Gresham restaurant through and through. We're not a chain, we're not a formula, and we're not run from a spreadsheet somewhere else. We're your neighbors, and we take that seriously.</p>
+          <p>We're a proud member of the Gresham Area Chamber of Commerce because we believe in this city. When Gresham does well, we do well. That's exactly how it should work.</p>
+          <p>Every time you choose to eat here instead of somewhere else, you're keeping this corner of Main Ave exactly what it should be: local, real, and worth coming back to. Thank you for that.</p>
+          <div class="chamber-badge">Gresham Area Chamber Member</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews-section" id="reviews">
+    <div class="container">
+      <div class="reveal" style="text-align:center; max-width:500px; margin: 0 auto 3rem;">
+        <p class="section-label">What People Are Saying</p>
+        <h2 class="section-title">Regulars Speak Up</h2>
+        <div class="section-divider" style="margin:0 auto;"></div>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <div class="review-quote">"</div>
+          <p class="review-text">I got the Chicken Fried Steak on a Thursday night and genuinely could not finish it. That says everything. The white pepper gravy was spot-on, the potatoes were clearly real mashed, and the whole plate looked like something out of your grandmother's kitchen. Already planning my return.</p>
+          <div class="review-author">Michael R.</div>
+          <div class="review-location">Gresham, OR &mdash; Thursday night regular</div>
+        </div>
+        <div class="review-card reveal" style="transition-delay:0.15s">
+          <div class="review-quote">"</div>
+          <p class="review-text">Six of us came in for Sunday breakfast and every single person at the table was happy, which almost never happens with a big group. My daughter had the Stuffed French Toast with berry compote and declared it the best she has ever eaten. The staff remembered her order when we came back two weeks later. That is a good sign.</p>
+          <div class="review-author">Sandra T.</div>
+          <div class="review-location">Troutdale, OR</div>
+        </div>
+        <div class="review-card reveal" style="transition-delay:0.3s">
+          <div class="review-quote">"</div>
+          <p class="review-text">The Eggs Benedict has ruined every other brunch spot for me. I have taken three different people here since my first visit six weeks ago. The heated patio on a gray Oregon morning, a good cup of coffee, and that hollandaise. I do not know what else to tell you. Just go.</p>
+          <div class="review-author">Jenny M.</div>
+          <div class="review-location">Portland, OR</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="reveal" style="text-align:center; max-width:500px; margin:0 auto 3rem;">
+        <p class="section-label">Get in Touch</p>
+        <h2 class="section-title">Call Linda or Stop In</h2>
+        <div class="section-divider" style="margin:0 auto;"></div>
+      </div>
+      <div class="contact-inner">
+        <div class="reveal-left contact-info">
+          <p><strong style="color:#fff;">Address</strong><br>1000 N Main Ave<br>Gresham, OR 97030</p>
+          <p style="margin-top:1rem;"><strong style="color:#fff;">Phone</strong><br><a href="tel:5037089130">(503) 708-9130</a></p>
+          <p style="margin-top:1rem;"><strong style="color:#fff;">Email</strong><br><a href="mailto:lroth@maginnis-carey.com">lroth@maginnis-carey.com</a></p>
+          <p style="margin-top:1rem;"><strong style="color:#fff;">Hours</strong><br>Tue-Wed: 8am-3pm<br>Thu-Sat: 8am-8pm<br>Sun: 8am-3pm<br><em style="color:rgba(255,255,255,0.65);">Closed Monday</em></p>
+        </div>
+        <div class="reveal-right">
+          <form class="contact-form" onsubmit="return false;">
+            <input type="text" placeholder="Your Name" />
+            <input type="email" placeholder="Email Address" />
+            <input type="tel" placeholder="Phone Number" />
+            <textarea placeholder="Your message or inquiry..."></textarea>
+            <button class="btn-form" type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Nanna's <span>Place</span></div>
+    <div class="footer-info">
+      1000 N Main Ave, Gresham, OR 97030<br>
+      (503) 708-9130 &nbsp;|&nbsp; lroth@maginnis-carey.com
+    </div>
+    <div class="footer-hours">
+      Tue-Wed 8am-3pm &nbsp;|&nbsp; Thu-Sat 8am-8pm &nbsp;|&nbsp; Sun 8am-3pm &nbsp;|&nbsp; Mon Closed
+    </div>
+    <div class="footer-copy">
+      &copy; 2024 Nanna's Place | Maginnis-Carey. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

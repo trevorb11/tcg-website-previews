@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project ReEntry | Dr. Richard Pollock PhD | Neuropsychology Houston, TX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sage: #4a7c59;
+    --sage-light: #6b9e7b;
+    --sage-pale: #e8f0eb;
+    --warm-beige: #f7f3ee;
+    --warm-brown: #7a5c44;
+    --amber: #c8874a;
+    --dark: #2c3e34;
+    --text: #3a4a40;
+    --gray: #6b7b70;
+    --white: #ffffff;
+    --off-white: #fafaf8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+    background: var(--white);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Lora', serif;
+    line-height: 1.25;
+  }
+
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  .container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-26px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(26px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+  /* HEADER */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(74,124,89,0.15);
+    padding: 16px 0;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-decoration: none;
+  }
+
+  .logo-name {
+    font-family: 'Lora', serif;
+    font-size: 1.15rem;
+    color: var(--dark);
+    font-weight: 600;
+  }
+
+  .logo-tagline {
+    font-size: 0.65rem;
+    color: var(--sage);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  nav a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--sage); }
+
+  .btn-nav {
+    background: var(--sage);
+    color: var(--white) !important;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-size: 0.85rem !important;
+    transition: background 0.2s !important;
+  }
+  .btn-nav:hover { background: var(--sage-light) !important; }
+
+  /* HERO */
+  .hero {
+    padding-top: 72px;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    background: var(--warm-beige);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 0;
+    padding-left: calc((100vw - 1100px) / 2 * 0.9);
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--sage);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--sage);
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: var(--dark);
+    margin-bottom: 20px;
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    color: var(--gray);
+    line-height: 1.8;
+    margin-bottom: 36px;
+    max-width: 480px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--sage);
+    color: var(--white);
+    padding: 13px 28px;
+    border-radius: 30px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--sage-light); transform: translateY(-2px); }
+
+  .btn-outline {
+    border: 2px solid var(--sage);
+    color: var(--sage);
+    padding: 11px 26px;
+    border-radius: 30px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: var(--sage-pale); }
+
+  .hero-right {
+    position: relative;
+    min-height: 600px;
+  }
+
+  .hero-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-badge {
+    position: absolute;
+    bottom: 40px;
+    left: -30px;
+    background: var(--white);
+    border-radius: 10px;
+    padding: 20px 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+    max-width: 220px;
+  }
+
+  .hero-badge strong {
+    display: block;
+    font-family: 'Lora', serif;
+    font-size: 1.4rem;
+    color: var(--sage);
+    margin-bottom: 4px;
+  }
+
+  .hero-badge span {
+    font-size: 0.78rem;
+    color: var(--gray);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* SECTION COMMON */
+  section { padding: 88px 0; }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .section-title {
+    font-size: clamp(1.7rem, 2.8vw, 2.3rem);
+    color: var(--dark);
+    margin-bottom: 16px;
+  }
+
+  .section-lead {
+    font-size: 1.02rem;
+    color: var(--gray);
+    max-width: 620px;
+    line-height: 1.78;
+    margin-bottom: 46px;
+  }
+
+  /* MISSION BAND */
+  .mission-band {
+    background: var(--sage);
+    padding: 64px 0;
+    text-align: center;
+  }
+
+  .mission-band blockquote {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+    color: var(--white);
+    font-style: italic;
+    max-width: 800px;
+    margin: 0 auto 14px;
+    line-height: 1.6;
+  }
+
+  .mission-band cite {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.75);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  /* SERVICES */
+  .services-section { background: var(--off-white); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+
+  .service-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 30px 24px;
+    border-bottom: 4px solid var(--sage);
+    box-shadow: 0 2px 14px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+  }
+
+  .service-card:hover { transform: translateY(-5px); }
+
+  .service-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--sage-pale);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .service-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--sage);
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .service-card h3 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    color: var(--dark);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .service-card p {
+    font-size: 0.87rem;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+
+  /* WHO WE SERVE */
+  .serve-section { background: var(--warm-beige); }
+
+  .serve-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .serve-item {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 28px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .serve-dot {
+    width: 12px;
+    height: 12px;
+    min-width: 12px;
+    background: var(--amber);
+    border-radius: 50%;
+    margin-top: 6px;
+  }
+
+  .serve-item h4 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+
+  .serve-item p {
+    font-size: 0.86rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* ABOUT SPLIT */
+  .about-section { background: var(--white); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .about-image {
+    border-radius: 16px;
+    overflow: hidden;
+    height: 500px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+  }
+
+  .about-content p {
+    font-size: 0.94rem;
+    color: var(--gray);
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+
+  .about-credential {
+    background: var(--sage-pale);
+    border-left: 4px solid var(--sage);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin-top: 24px;
+  }
+
+  .about-credential strong {
+    display: block;
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+
+  .about-credential span {
+    font-size: 0.82rem;
+    color: var(--sage);
+    font-weight: 600;
+  }
+
+  /* PROCESS */
+  .process-section { background: var(--sage-pale); }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 12.5%;
+    right: 12.5%;
+    height: 2px;
+    background: var(--sage-light);
+    opacity: 0.4;
+    z-index: 0;
+  }
+
+  .step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-num {
+    width: 56px;
+    height: 56px;
+    background: var(--sage);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-family: 'Lora', serif;
+    font-size: 1.3rem;
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .step h4 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+
+  .step p {
+    font-size: 0.84rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* IMAGE TRIO */
+  .image-trio {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    height: 280px;
+    margin-top: 60px;
+  }
+
+  .image-trio div {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  /* CONTACT */
+  .contact-section { background: var(--warm-beige); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .contact-info p {
+    font-size: 0.94rem;
+    color: var(--gray);
+    line-height: 1.78;
+    margin-bottom: 28px;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .c-item {
+    font-size: 0.9rem;
+    color: var(--gray);
+    display: flex;
+    gap: 10px;
+  }
+
+  .c-item strong { color: var(--dark); min-width: 75px; }
+
+  .accepting-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--sage);
+    color: var(--white);
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 30px;
+    margin-top: 4px;
+  }
+
+  .accepting-badge::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--white);
+    border-radius: 50%;
+  }
+
+  .contact-form {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 38px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  }
+
+  .form-group { margin-bottom: 18px; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid #d8e8db;
+    border-radius: 8px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--sage); }
+
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  .btn-submit {
+    width: 100%;
+    background: var(--sage);
+    color: var(--white);
+    border: none;
+    padding: 13px;
+    border-radius: 30px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    letter-spacing: 0.04em;
+  }
+  .btn-submit:hover { background: var(--sage-light); }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.65);
+    padding: 50px 0 26px;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 24px;
+  }
+
+  .footer-brand p { margin-top: 12px; font-size: 0.86rem; line-height: 1.7; }
+
+  .footer-brand .logo-name { color: var(--white); }
+  .footer-brand .logo-tagline { color: var(--sage-light); }
+
+  .footer-col h4 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .footer-col a {
+    display: block;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    font-size: 0.86rem;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--sage-light); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.35);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 60px 5%; }
+    .hero-right { min-height: 360px; }
+    .hero-badge { display: none; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .about-image { height: 300px; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .process-steps::before { display: none; }
+    .serve-grid { grid-template-columns: 1fr; }
+    .image-trio { grid-template-columns: 1fr 1fr; height: auto; }
+    .image-trio div { height: 180px; }
+    .image-trio div:last-child { display: none; }
+    .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  }
+
+  @media (max-width: 640px) {
+    nav { display: none; }
+    .process-steps { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    section { padding: 60px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container header-inner">
+    <a href="#" class="logo-wrap">
+      <span class="logo-name">Project ReEntry</span>
+      <span class="logo-tagline">Dr. Richard Pollock, PhD | Houston, TX</span>
+    </a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#about">About Dr. Pollock</a>
+      <a href="#process">Process</a>
+      <a href="#contact" class="btn-nav">Schedule a Consultation</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Clinical Neuropsychology | Houston, TX</div>
+    <h1>A New Chapter<br><em>Begins Here</em></h1>
+    <p>Compassionate neuropsychological care, comprehensive evaluations, and rehabilitation support — helping individuals and families move forward with clarity, confidence, and a concrete plan.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Schedule a Consultation</a>
+      <a href="#services" class="btn-outline">Learn How We Help</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=80" alt="Compassionate professional consulting with a patient in a warm office setting">
+    <div class="hero-badge">
+      <strong>Now Accepting</strong>
+      <span>New Patients</span>
+    </div>
+  </div>
+</div>
+
+<!-- MISSION BAND -->
+<div class="mission-band">
+  <div class="container">
+    <blockquote class="reveal">"We believe every person deserves the opportunity to move forward — and with the right evaluation, the right support, and the right plan, they can."</blockquote>
+    <cite class="reveal">Project ReEntry | Opening Doors to a Brighter Future</cite>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="container">
+    <span class="section-label reveal">How We Help</span>
+    <h2 class="section-title reveal">Neuropsychological Services</h2>
+    <p class="section-lead reveal">We offer a full range of evaluation and rehabilitation services, delivered with the care, thoroughness, and transparency that meaningful progress requires.</p>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <h3>Neuropsychological Evaluation</h3>
+        <p>Comprehensive assessment of cognitive functioning, memory, attention, and executive skills to clarify diagnosis and guide treatment.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h3>Clinical Consultation</h3>
+        <p>Individualized consultation and treatment planning for individuals, families, and referring providers navigating neurological and psychological challenges.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </div>
+        <h3>Cognitive Rehabilitation</h3>
+        <p>Evidence-based rehabilitation programs designed to rebuild cognitive skills and help individuals regain independence following injury or illness.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        </div>
+        <h3>Reintegration Support</h3>
+        <p>Practical support for individuals transitioning back into the community following incarceration, hospitalization, or extended treatment — because the path forward matters.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
+        </div>
+        <h3>Forensic Neuropsychology</h3>
+        <p>Expert evaluation and testimony services for legal matters involving neuropsychological issues, including criminal cases, civil litigation, and disability assessments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section class="serve-section">
+  <div class="container">
+    <span class="section-label reveal">Who We Serve</span>
+    <h2 class="section-title reveal">Everyone Deserves the Right Support</h2>
+    <p class="section-lead reveal">Project ReEntry was built to serve individuals and families at pivotal moments — when the path forward requires expertise, empathy, and a clear plan.</p>
+    <div class="serve-grid">
+      <div class="serve-item reveal">
+        <div class="serve-dot"></div>
+        <div>
+          <h4>Brain Injury Recovery</h4>
+          <p>Individuals recovering from traumatic brain injury, stroke, or other neurological events seeking evaluation and a structured rehabilitation path.</p>
+        </div>
+      </div>
+      <div class="serve-item reveal">
+        <div class="serve-dot"></div>
+        <div>
+          <h4>Community Reintegration</h4>
+          <p>Those transitioning from incarceration who need psychological support, evaluation, and a concrete plan to re-enter and thrive in the community.</p>
+        </div>
+      </div>
+      <div class="serve-item reveal">
+        <div class="serve-dot"></div>
+        <div>
+          <h4>Neurocognitive Concerns</h4>
+          <p>Adults and older individuals experiencing memory changes, attention difficulties, or early signs of neurodegenerative conditions who want answers.</p>
+        </div>
+      </div>
+      <div class="serve-item reveal">
+        <div class="serve-dot"></div>
+        <div>
+          <h4>Families Seeking Guidance</h4>
+          <p>Family members navigating a loved one's diagnosis or rehabilitation journey who need clear information, support, and next steps.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image reveal-left">
+        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=900&q=80" alt="Dr. Richard Pollock PhD, Clinical Neuropsychologist in Houston TX">
+      </div>
+      <div class="reveal-right">
+        <span class="section-label">About Our Practice</span>
+        <h2 class="section-title">Dr. Richard Pollock, PhD</h2>
+        <p>Dr. Richard Pollock is a licensed Clinical Neuropsychologist practicing in Houston, Texas, with extensive experience in neuropsychological assessment, cognitive rehabilitation, and forensic neuropsychology. He founded Project ReEntry with a simple conviction: that every person, regardless of their history or circumstances, deserves access to expert psychological care and the opportunity to build a better future.</p>
+        <p>His work spans a broad range of clinical and applied settings — from evaluating individuals with traumatic brain injuries to supporting those making the difficult transition back into community life following incarceration. Dr. Pollock brings both the scientific rigor of a trained neuropsychologist and the warmth of a clinician who genuinely cares about outcomes.</p>
+        <p>Currently accepting new patients at his Houston location.</p>
+        <div class="about-credential">
+          <strong>Richard Pollock, PhD</strong>
+          <span>Clinical Neuropsychologist | Houston, TX | 7707 Fannin St Ste 200 and 1800 Saint James Pl Ste 100</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section" id="process">
+  <div class="container">
+    <span class="section-label reveal" style="text-align:center;display:block;">How It Works</span>
+    <h2 class="section-title reveal" style="text-align:center;margin-bottom:50px;">Your Path Forward, Step by Step</h2>
+    <div class="process-steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h4>Initial Consultation</h4>
+        <p>A focused conversation about your situation, needs, and goals — so we can determine the best path forward together.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h4>Comprehensive Evaluation</h4>
+        <p>A thorough neuropsychological assessment tailored to your specific concerns, conducted with care and professional precision.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h4>Clear Recommendations</h4>
+        <p>A detailed report and personal feedback session that explains findings in plain language and outlines concrete next steps.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <h4>Ongoing Support</h4>
+        <p>Continued care, rehabilitation, and consultation — we walk with you through the whole journey, not just the evaluation.</p>
+      </div>
+    </div>
+    <div class="image-trio">
+      <div class="reveal">
+        <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=700&q=80" alt="Therapy session in a warm comfortable office">
+      </div>
+      <div class="reveal">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=80" alt="Clinician reviewing patient records carefully">
+      </div>
+      <div class="reveal">
+        <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=700&q=80" alt="Medical professional consulting with a patient family">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <span class="section-label">Take the First Step</span>
+        <h2 class="section-title">Ready to Begin?</h2>
+        <p>Whether you are seeking an evaluation for yourself, a family member, or a referral from another provider — we are here to help. Reach out and we will respond promptly to schedule your initial consultation.</p>
+        <div class="contact-details">
+          <div class="c-item"><strong>Phone:</strong><span>(713) 298-8124</span></div>
+          <div class="c-item"><strong>Email:</strong><span>larry@projectreentry.com</span></div>
+          <div class="c-item"><strong>Address:</strong><span>1800 Saint James Pl Ste 100, Houston, TX 77056</span></div>
+        </div>
+        <div class="accepting-badge">Now Accepting New Patients</div>
+      </div>
+      <div class="contact-form reveal-right">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Your full name">
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" placeholder="(713) 000-0000">
+        </div>
+        <div class="form-group">
+          <label>How can we help?</label>
+          <select>
+            <option value="">Select a service</option>
+            <option>Neuropsychological Evaluation</option>
+            <option>Cognitive Rehabilitation</option>
+            <option>Reintegration Support</option>
+            <option>Forensic Neuropsychology</option>
+            <option>Clinical Consultation</option>
+            <option>General Inquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Us More</label>
+          <textarea placeholder="Briefly describe what you are looking for and the best way to reach you..."></textarea>
+        </div>
+        <button class="btn-submit">Schedule My Consultation</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo-wrap">
+          <span class="logo-name">Project ReEntry</span>
+          <span class="logo-tagline">Opening Doors to a Brighter Future</span>
+        </a>
+        <p>Clinical neuropsychology, rehabilitation support, and reintegration services in Houston, TX — delivered with expertise and genuine compassion.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#">Neuropsychological Evaluation</a>
+        <a href="#">Clinical Consultation</a>
+        <a href="#">Cognitive Rehabilitation</a>
+        <a href="#">Reintegration Support</a>
+        <a href="#">Forensic Neuropsychology</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:7132988124">(713) 298-8124</a>
+        <a href="mailto:larry@projectreentry.com">larry@projectreentry.com</a>
+        <a href="#">Houston, TX</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 Richard Pollock PhD PC / Project ReEntry. All rights reserved.</span>
+      <span>Houston, TX | Opening Doors to a Brighter Future</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

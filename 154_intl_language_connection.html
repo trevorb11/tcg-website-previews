@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>International Language Connection | Indianapolis, IN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== CSS CUSTOM PROPERTIES ===== */
+    :root {
+      --indigo:       #3b2f6b;
+      --indigo-dark:  #271f4a;
+      --indigo-light: #5b4a9e;
+      --gold:         #c9973a;
+      --gold-light:   #e8b96a;
+      --cream:        #faf7f2;
+      --warm-white:   #ffffff;
+      --text-dark:    #1e1b2e;
+      --text-mid:     #4a4560;
+      --text-light:   #7a748f;
+      --border:       #e2ddf0;
+      --shadow-sm:    0 2px 8px rgba(59,47,107,0.08);
+      --shadow-md:    0 6px 24px rgba(59,47,107,0.13);
+      --shadow-lg:    0 16px 48px rgba(59,47,107,0.18);
+      --radius:       10px;
+      --radius-lg:    18px;
+      --transition:   0.3s ease;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      background: var(--warm-white);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(27, 20, 60, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201,151,58,0.2);
+      padding: 0 2rem;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .nav-logo-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .nav-logo-text {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--warm-white);
+      line-height: 1.2;
+    }
+    .nav-logo-text span {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 400;
+      color: var(--gold-light);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.82);
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--warm-white) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: background var(--transition) !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--indigo-dark) !important; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--warm-white);
+      border-radius: 2px;
+      transition: all var(--transition);
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: var(--indigo-dark);
+      z-index: 999;
+      padding: 1.5rem 2rem 2rem;
+      flex-direction: column;
+      gap: 1rem;
+      border-bottom: 2px solid var(--gold);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: rgba(255,255,255,0.85);
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      transition: color var(--transition);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--gold-light); }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      padding: 100px 1.5rem 60px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600&q=80&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center 30%;
+      z-index: 0;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(27,20,60,0.88) 0%, rgba(59,47,107,0.80) 50%, rgba(27,20,60,0.90) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 820px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(201,151,58,0.2);
+      border: 1px solid rgba(201,151,58,0.5);
+      color: var(--gold-light);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 700;
+      color: var(--warm-white);
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,0.82);
+      max-width: 600px;
+      margin: 0 auto 2.25rem;
+      font-weight: 300;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--warm-white);
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all var(--transition);
+      box-shadow: 0 4px 16px rgba(201,151,58,0.35);
+    }
+    .btn-primary:hover {
+      background: var(--gold-light);
+      color: var(--indigo-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201,151,58,0.45);
+    }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.55);
+      color: var(--warm-white);
+      padding: 0.82rem 2rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all var(--transition);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold-light);
+      color: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    /* ===== TRUST STRIP ===== */
+    .trust-strip {
+      background: var(--indigo-dark);
+      padding: 1.25rem 2rem;
+    }
+    .trust-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: rgba(255,255,255,0.78);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .trust-item .icon {
+      font-size: 1.2rem;
+      color: var(--gold);
+    }
+
+    /* ===== SECTION SHELL ===== */
+    .section {
+      padding: 90px 2rem;
+    }
+    .section-alt { background: var(--cream); }
+    .section-dark {
+      background: var(--indigo-dark);
+      color: var(--warm-white);
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      color: var(--indigo-dark);
+    }
+    .section-dark .section-title { color: var(--warm-white); }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      max-width: 580px;
+      margin-bottom: 3rem;
+    }
+    .section-dark .section-sub { color: rgba(255,255,255,0.72); }
+    .text-center { text-align: center; }
+    .text-center .section-sub { margin-left: auto; margin-right: auto; }
+
+    /* ===== SERVICES ===== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--indigo), var(--gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .service-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, var(--indigo), var(--indigo-light));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.1rem;
+    }
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--indigo-dark);
+      margin-bottom: 0.5rem;
+    }
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    /* ===== LANGUAGES ===== */
+    .languages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+    .lang-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1rem;
+      text-align: center;
+      transition: all var(--transition);
+    }
+    .lang-card:hover {
+      border-color: var(--indigo-light);
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-3px);
+    }
+    .lang-flag {
+      font-size: 2.2rem;
+      margin-bottom: 0.4rem;
+    }
+    .lang-card p {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--indigo-dark);
+    }
+
+    /* ===== ABOUT ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .about-img-wrap img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+    }
+    .about-img-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      background: var(--gold);
+      color: var(--warm-white);
+      padding: 0.8rem 1.25rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: var(--shadow-md);
+    }
+    .about-img-badge span {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .about-text .section-title { margin-bottom: 1rem; }
+    .about-text p {
+      font-size: 0.97rem;
+      color: var(--text-mid);
+      margin-bottom: 1rem;
+      line-height: 1.75;
+    }
+    .about-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .stat strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--indigo);
+    }
+    .stat span {
+      font-size: 0.83rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .testi-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem;
+      transition: all var(--transition);
+    }
+    .testi-card:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-4px);
+    }
+    .stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+    .testi-text {
+      font-size: 0.94rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.72;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .testi-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--indigo-light), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--warm-white);
+      flex-shrink: 0;
+    }
+    .testi-author-info strong {
+      display: block;
+      color: var(--warm-white);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .testi-author-info span {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ===== WHY CHOOSE US ===== */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .why-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem;
+      text-align: center;
+      transition: all var(--transition);
+    }
+    .why-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+    .why-icon {
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+    }
+    .why-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--indigo-dark);
+      margin-bottom: 0.6rem;
+    }
+    .why-card p {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+    .contact-info h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--indigo-dark);
+      margin-bottom: 0.75rem;
+    }
+    .contact-info p {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      margin-bottom: 1.25rem;
+    }
+    .contact-detail-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--indigo), var(--indigo-light));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contact-detail-text strong {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--indigo);
+      margin-bottom: 0.15rem;
+    }
+    .contact-detail-text p {
+      font-size: 0.93rem;
+      color: var(--text-mid);
+      margin: 0;
+    }
+    .contact-form {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.03em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      color: var(--text-dark);
+      background: var(--cream);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--indigo-light);
+      box-shadow: 0 0 0 3px rgba(91,74,158,0.12);
+      background: var(--warm-white);
+    }
+    .form-group textarea { min-height: 110px; resize: vertical; }
+    .form-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--indigo), var(--indigo-light));
+      color: var(--warm-white);
+      border: none;
+      padding: 0.9rem;
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: 0.97rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      letter-spacing: 0.02em;
+    }
+    .form-submit:hover {
+      background: linear-gradient(135deg, var(--indigo-light), var(--indigo));
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(59,47,107,0.3);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: #100d1f;
+      color: rgba(255,255,255,0.65);
+      padding: 3.5rem 2rem 1.5rem;
+    }
+    .footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      margin-top: 0.9rem;
+    }
+    .footer-brand .nav-logo { margin-bottom: 0; }
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--warm-white);
+      margin-bottom: 1rem;
+    }
+    .footer-col ul li {
+      margin-bottom: 0.55rem;
+    }
+    .footer-col ul li a {
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.58);
+      transition: color var(--transition);
+    }
+    .footer-col ul li a:hover { color: var(--gold-light); }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .footer-bottom a { color: var(--gold-light); }
+    .social-links {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.1rem;
+    }
+    .social-link {
+      width: 34px;
+      height: 34px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      transition: all var(--transition);
+    }
+    .social-link:hover {
+      background: var(--gold);
+      color: var(--warm-white);
+    }
+
+    /* ===== RESPONSIVE 960px ===== */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-img-wrap img { height: 340px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+
+    /* ===== RESPONSIVE 640px ===== */
+    @media (max-width: 640px) {
+      .section { padding: 64px 1.25rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .languages-grid { grid-template-columns: repeat(3, 1fr); }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .trust-inner { gap: 1.5rem; }
+      .about-stats { gap: 1.25rem; flex-wrap: wrap; }
+      .hero-btns { flex-direction: column; align-items: center; }
+      .contact-form { padding: 1.75rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">&#127760;</div>
+      <div class="nav-logo-text">
+        International Language Connection
+        <span>Indianapolis, IN</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#languages">Languages</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="toggleMenu()">Services</a>
+    <a href="#languages" onclick="toggleMenu()">Languages</a>
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#testimonials" onclick="toggleMenu()">Reviews</a>
+    <a href="#contact" onclick="toggleMenu()">Contact Us</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Indianapolis&rsquo; Premier Language School</div>
+      <h1>Where Every Language Becomes a <em>Connection</em></h1>
+      <p>Professional language instruction, translation, and interpretation services — bridging cultures, opening doors, and empowering individuals and organizations worldwide.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Explore Our Programs</a>
+        <a href="#contact" class="btn-outline">Request a Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="trust-inner">
+      <div class="trust-item"><span class="icon">&#127891;</span> Expert-Certified Instructors</div>
+      <div class="trust-item"><span class="icon">&#128101;</span> Small Class Sizes</div>
+      <div class="trust-item"><span class="icon">&#127760;</span> 20+ Languages Offered</div>
+      <div class="trust-item"><span class="icon">&#128197;</span> Flexible Scheduling</div>
+      <div class="trust-item"><span class="icon">&#127970;</span> Corporate &amp; Private Programs</div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-label">What We Offer</div>
+        <h2 class="section-title">Comprehensive Language Services</h2>
+        <p class="section-sub">From beginner conversation classes to certified document translation, we offer a full suite of language solutions tailored to your goals.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">&#128218;</div>
+          <h3>Language Classes</h3>
+          <p>Structured courses for all proficiency levels — beginner through advanced. Individual, group, and immersive formats available on flexible schedules.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">&#128196;</div>
+          <h3>Translation Services</h3>
+          <p>Accurate, certified translation of legal, medical, business, and personal documents. Native-fluent translators for precision you can rely on.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">&#127908;</div>
+          <h3>Interpretation</h3>
+          <p>In-person and remote interpreting for medical appointments, legal proceedings, business meetings, and community events.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">&#127970;</div>
+          <h3>Corporate Training</h3>
+          <p>Custom language and cross-cultural training programs for businesses expanding into global markets or serving diverse communities.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">&#127942;</div>
+          <h3>Exam Preparation</h3>
+          <p>Focused preparation for TOEFL, IELTS, DELE, DELF, HSK, and other internationally recognized language proficiency exams.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">&#127895;</div>
+          <h3>Cultural Programs</h3>
+          <p>Multi-cultural workshops, intercultural competency training, and immersive cultural experiences that enrich language learning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section class="section section-alt" id="languages">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-label">Languages We Teach &amp; Translate</div>
+        <h2 class="section-title">Over 20 World Languages</h2>
+        <p class="section-sub">Our experienced instructors and translators cover a broad range of languages spoken across the globe.</p>
+      </div>
+      <div class="languages-grid">
+        <div class="lang-card reveal reveal-delay-1"><div class="lang-flag">&#127482;&#127480;</div><p>Spanish</p></div>
+        <div class="lang-card reveal reveal-delay-2"><div class="lang-flag">&#127467;&#127479;</div><p>French</p></div>
+        <div class="lang-card reveal reveal-delay-3"><div class="lang-flag">&#127465;&#127466;</div><p>German</p></div>
+        <div class="lang-card reveal reveal-delay-1"><div class="lang-flag">&#127470;&#127481;</div><p>Italian</p></div>
+        <div class="lang-card reveal reveal-delay-2"><div class="lang-flag">&#127463;&#127479;</div><p>Portuguese</p></div>
+        <div class="lang-card reveal reveal-delay-3"><div class="lang-flag">&#127471;&#127477;</div><p>Japanese</p></div>
+        <div class="lang-card reveal reveal-delay-1"><div class="lang-flag">&#127464;&#127475;</div><p>Mandarin</p></div>
+        <div class="lang-card reveal reveal-delay-2"><div class="lang-flag">&#127472;&#127479;</div><p>Korean</p></div>
+        <div class="lang-card reveal reveal-delay-3"><div class="lang-flag">&#127462;&#127479;</div><p>Arabic</p></div>
+        <div class="lang-card reveal reveal-delay-1"><div class="lang-flag">&#127479;&#127482;</div><p>Russian</p></div>
+        <div class="lang-card reveal reveal-delay-2"><div class="lang-flag">&#127477;&#127473;</div><p>Polish</p></div>
+        <div class="lang-card reveal reveal-delay-3"><div class="lang-flag">&#127470;&#127475;</div><p>Hindi</p></div>
+        <div class="lang-card reveal reveal-delay-1"><div class="lang-flag">&#127475;&#127473;</div><p>Dutch</p></div>
+        <div class="lang-card reveal reveal-delay-2"><div class="lang-flag">&#127468;&#127479;</div><p>Greek</p></div>
+        <div class="lang-card reveal reveal-delay-3"><div class="lang-flag">&#127480;&#127466;</div><p>Swedish</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap reveal">
+          <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80&auto=format&fit=crop" alt="Language classroom instruction" loading="lazy" />
+          <div class="about-img-badge"><span>11+</span> Years of Service</div>
+        </div>
+        <div class="about-text reveal reveal-delay-2">
+          <div class="section-label">Our Story</div>
+          <h2 class="section-title">Connecting People &amp; Organizations Through Language</h2>
+          <p>International Language Connection (ILC) is a team of dedicated language professionals based in Indianapolis, IN, committed to bridging communication gaps and building cultural understanding. Founded by John Cannaday, ILC was built on the belief that language is the most powerful tool for human connection.</p>
+          <p>Located at 719 Virginia Ave #101, we serve students, families, healthcare providers, legal professionals, and businesses throughout the Indianapolis metro area. Our instructors are native or near-native speakers with formal training in language education and translation.</p>
+          <p>Whether you need to learn a new language for personal growth, require certified translation for official documents, or want to prepare your team for international business, ILC delivers results with warmth, professionalism, and cultural sensitivity.</p>
+          <div class="about-stats">
+            <div class="stat"><strong>20+</strong><span>Languages Offered</span></div>
+            <div class="stat"><strong>11+</strong><span>Years in Business</span></div>
+            <div class="stat"><strong>1,000+</strong><span>Students Served</span></div>
+            <div class="stat"><strong>500+</strong><span>Translations Completed</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section section-dark" id="testimonials">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-label" style="color:var(--gold);">Student &amp; Client Reviews</div>
+        <h2 class="section-title">What Our Community Says</h2>
+        <p class="section-sub">Real words from the students, families, and organizations we&rsquo;ve had the privilege of serving.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testi-card reveal reveal-delay-1">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testi-text">"ILC transformed my Spanish from basic phrases to genuine confidence. Within six months of their evening classes, I was able to hold full conversations with my colleagues. The instructors are patient, encouraging, and truly invested in your success."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">MR</div>
+            <div class="testi-author-info">
+              <strong>Maria R.</strong>
+              <span>Healthcare Professional, Spanish Program</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal reveal-delay-2">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testi-text">"We hired ILC to provide Mandarin training for our sales team ahead of an international expansion. John and his team delivered a customized curriculum that was practical, engaging, and perfectly aligned with our business context. Highly recommend."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">DK</div>
+            <div class="testi-author-info">
+              <strong>David K.</strong>
+              <span>Operations Director, Corporate Client</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal reveal-delay-3">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testi-text">"The document translation service was fast, accurate, and certified. I needed legal paperwork translated for an immigration case and ILC delivered everything on time with complete professionalism. They made a stressful process so much easier."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">AA</div>
+            <div class="testi-author-info">
+              <strong>Amira A.</strong>
+              <span>Translation Client, Legal Documents</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="section section-alt" id="why">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-label">Why ILC</div>
+        <h2 class="section-title">The ILC Difference</h2>
+        <p class="section-sub">We combine linguistic expertise with genuine care for every learner and client — that&rsquo;s what sets us apart.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal reveal-delay-1">
+          <div class="why-icon">&#127891;</div>
+          <h3>Expert Instructors</h3>
+          <p>All instructors are native or near-native speakers with formal credentials in language education, translation, or interpretation.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-2">
+          <div class="why-icon">&#128101;</div>
+          <h3>Small Class Sizes</h3>
+          <p>We keep classes intentionally small so every student receives individualized attention, real practice time, and faster progress.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-3">
+          <div class="why-icon">&#128197;</div>
+          <h3>Flexible Scheduling</h3>
+          <p>Morning, evening, and weekend sessions — plus online options — so learning fits into your life, not the other way around.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-1">
+          <div class="why-icon">&#127760;</div>
+          <h3>Cultural Immersion</h3>
+          <p>Language is culture. Our programs go beyond grammar to help you understand the people, history, and context behind every word.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-2">
+          <div class="why-icon">&#9989;</div>
+          <h3>Certified &amp; Trusted</h3>
+          <p>Our translation and interpretation services meet professional standards required by legal, medical, and government institutions.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-3">
+          <div class="why-icon">&#128200;</div>
+          <h3>Proven Results</h3>
+          <p>From exam pass rates to career advancements, our students and clients consistently achieve the real-world outcomes they came for.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="section-label">Get In Touch</div>
+          <h2>Ready to Start Your Language Journey?</h2>
+          <p>Whether you&rsquo;re enrolling in a class, requesting a translation, or exploring corporate training, our team is here to help. Reach out today and let&rsquo;s find the right program for you.</p>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">&#128205;</div>
+            <div class="contact-detail-text">
+              <strong>Address</strong>
+              <p>719 Virginia Ave, Suite 101<br>Indianapolis, IN</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">&#128100;</div>
+            <div class="contact-detail-text">
+              <strong>Director</strong>
+              <p>John Cannaday</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">&#128279;</div>
+            <div class="contact-detail-text">
+              <strong>Find Us Online</strong>
+              <p><a href="https://www.facebook.com/ilconnection/" target="_blank" style="color:var(--indigo-light);">facebook.com/ilconnection</a></p>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="https://www.facebook.com/ilconnection/" class="social-link" target="_blank" title="Facebook">f</a>
+          </div>
+        </div>
+        <div class="contact-form reveal reveal-delay-2">
+          <form onsubmit="return false;">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" placeholder="Jane" />
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" placeholder="Smith" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="jane@example.com" />
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" placeholder="(317) 555-0100" />
+            </div>
+            <div class="form-group">
+              <label>I&rsquo;m Interested In</label>
+              <select>
+                <option value="">Select a service...</option>
+                <option>Language Classes</option>
+                <option>Translation Services</option>
+                <option>Interpretation Services</option>
+                <option>Corporate Training</option>
+                <option>Exam Preparation</option>
+                <option>Cultural Programs</option>
+                <option>Other / Not Sure</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea placeholder="Tell us about your language goals or how we can help..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">Send My Inquiry &rarr;</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <div class="nav-logo-icon">&#127760;</div>
+          <div class="nav-logo-text" style="color:#fff;">
+            International Language Connection
+            <span>Indianapolis, IN</span>
+          </div>
+        </div>
+        <p>Connecting people and organizations across the world through language services, multi-cultural training, and a genuine passion for communication.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/ilconnection/" class="social-link" target="_blank" title="Facebook">f</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Language Classes</a></li>
+          <li><a href="#services">Translation</a></li>
+          <li><a href="#services">Interpretation</a></li>
+          <li><a href="#services">Corporate Training</a></li>
+          <li><a href="#services">Exam Preparation</a></li>
+          <li><a href="#services">Cultural Programs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Languages</h4>
+        <ul>
+          <li><a href="#languages">Spanish</a></li>
+          <li><a href="#languages">French</a></li>
+          <li><a href="#languages">Mandarin</a></li>
+          <li><a href="#languages">Arabic</a></li>
+          <li><a href="#languages">German</a></li>
+          <li><a href="#languages">+ 15 More</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#contact">719 Virginia Ave #101</a></li>
+          <li><a href="#contact">Indianapolis, IN</a></li>
+          <li><a href="#about">About ILC</a></li>
+          <li><a href="https://www.facebook.com/ilconnection/" target="_blank">Facebook Page</a></li>
+          <li><a href="#contact">Get a Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 International Language Connection. All rights reserved.</p>
+      <p>Website draft prepared by <a href="#">Chirp</a> &mdash; for review purposes only.</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Hamburger menu
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('open');
+    }
+
+    // Close mobile menu on outside click
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('mobileMenu');
+      const hamburger = document.querySelector('.hamburger');
+      if (menu.classList.contains('open') && !menu.contains(e.target) && !hamburger.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+
+    // Scroll reveal via IntersectionObserver
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function(el) { observer.observe(el); });
+
+    // Nav shadow on scroll
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 40) {
+        nav.style.boxShadow = '0 4px 24px rgba(0,0,0,0.3)';
+      } else {
+        nav.style.boxShadow = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>

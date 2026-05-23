@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Night Trucking LLC | Malad, Idaho | USDOT 904559</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Custom Properties ── */
+    :root {
+      --navy:    #0d1b2a;
+      --navy-mid:#152437;
+      --navy-lt: #1e3450;
+      --amber:   #f5a623;
+      --amber-lt:#ffc04d;
+      --charcoal:#2e3a4a;
+      --smoke:   #8a9ab0;
+      --white:   #ffffff;
+      --off-white:#f0f4f8;
+      --radius:  6px;
+      --transition: 0.3s ease;
+      --font-head: 'Barlow Condensed', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--white);
+      color: var(--charcoal);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ── Utility ── */
+    .container { width: 92%; max-width: 1140px; margin: 0 auto; }
+    .section-label {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--navy);
+      text-transform: uppercase;
+    }
+    .section-title.light { color: var(--white); }
+    .section-body {
+      max-width: 620px;
+      color: var(--smoke);
+      margin-top: 0.75rem;
+      font-size: 1rem;
+    }
+    .section-body.light { color: #b0bfce; }
+    .btn {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.75rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+    .btn-amber {
+      background: var(--amber);
+      color: var(--navy);
+    }
+    .btn-amber:hover { background: var(--amber-lt); }
+    .btn-outline {
+      background: transparent;
+      border-color: var(--white);
+      color: var(--white);
+    }
+    .btn-outline:hover { background: var(--white); color: var(--navy); }
+
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── NAV ── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: transparent;
+      transition: background 0.35s ease, box-shadow 0.35s ease;
+    }
+    #nav.scrolled {
+      background: var(--navy);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+    .nav-logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--amber);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-logo-icon svg { width: 22px; height: 22px; }
+    .nav-logo-text {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1;
+    }
+    .nav-logo-text span { color: var(--amber); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+    .nav-links a {
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.82);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--amber); }
+    .nav-cta { margin-left: 0.5rem; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile nav drawer */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 70px; left: 0; right: 0;
+      background: var(--navy);
+      padding: 1.5rem 5%;
+      z-index: 999;
+      flex-direction: column;
+      gap: 1.2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.85);
+    }
+    .mobile-nav a:hover { color: var(--amber); }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(to bottom, rgba(13,27,42,0.78) 0%, rgba(13,27,42,0.55) 50%, rgba(13,27,42,0.85) 100%),
+        url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+      overflow: hidden;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 120px 0 80px;
+      max-width: 740px;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1.2rem;
+    }
+    .hero-eyebrow-line {
+      width: 40px;
+      height: 2px;
+      background: var(--amber);
+    }
+    .hero-eyebrow span {
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+    .hero-title .accent { color: var(--amber); }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.78);
+      max-width: 520px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: var(--font-head);
+    }
+    .hero-scroll-arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 2px solid var(--amber);
+      border-bottom: 2px solid var(--amber);
+      transform: rotate(45deg);
+      animation: bounce 1.6s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50% { transform: rotate(45deg) translateY(5px); }
+    }
+
+    /* ── TRUST STRIP ── */
+    #trust {
+      background: var(--amber);
+      padding: 0;
+    }
+    .trust-inner {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1rem 1.8rem;
+      border-right: 1px solid rgba(0,0,0,0.12);
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-item svg { width: 22px; height: 22px; flex-shrink: 0; color: var(--navy); }
+    .trust-item span {
+      font-family: var(--font-head);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--off-white);
+      padding: 90px 0;
+    }
+    .services-header { margin-bottom: 3rem; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 2rem 1.75rem;
+      border-bottom: 3px solid transparent;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .service-card:hover {
+      border-bottom-color: var(--amber);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.10);
+    }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--navy);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.1rem;
+    }
+    .service-icon svg { width: 24px; height: 24px; color: var(--amber); }
+    .service-card h3 {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .service-card p { font-size: 0.9rem; color: var(--smoke); line-height: 1.6; }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--navy);
+      padding: 90px 0;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .about-img-wrap img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .about-img-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      background: var(--amber);
+      color: var(--navy);
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.55rem 1rem;
+      border-radius: var(--radius);
+    }
+    .about-text .section-body { margin-bottom: 1.5rem; }
+    .about-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+    .about-stat-num {
+      font-family: var(--font-head);
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--amber);
+      line-height: 1;
+    }
+    .about-stat-label {
+      font-size: 0.8rem;
+      color: var(--smoke);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.25rem;
+    }
+
+    /* ── WHY CHOOSE US ── */
+    #why {
+      background: var(--white);
+      padding: 90px 0;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .why-card {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      padding: 1.75rem;
+      background: var(--off-white);
+      border-radius: 8px;
+      border-left: 4px solid var(--amber);
+    }
+    .why-num {
+      font-family: var(--font-head);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--amber);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 44px;
+    }
+    .why-card h4 {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+    .why-card p { font-size: 0.88rem; color: var(--smoke); line-height: 1.6; }
+
+    /* ── COVERAGE ── */
+    #coverage {
+      background: var(--charcoal);
+      padding: 90px 0;
+    }
+    .coverage-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .coverage-map {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--navy-mid);
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .coverage-map svg { width: 90%; opacity: 0.25; }
+    .coverage-pulse {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: var(--amber);
+      border-radius: 50%;
+      top: 30%;
+      left: 22%;
+    }
+    .coverage-pulse::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px solid var(--amber);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(2.5); opacity: 0; }
+    }
+    .coverage-states {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin: 1.5rem 0;
+    }
+    .state-tag {
+      font-family: var(--font-head);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 0.35rem 0.75rem;
+      border: 1px solid rgba(245,166,35,0.35);
+      border-radius: 4px;
+      color: var(--amber);
+    }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials {
+      background: var(--off-white);
+      padding: 90px 0;
+    }
+    .testimonials-header { margin-bottom: 3rem; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .testi-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .testi-stars {
+      display: flex;
+      gap: 3px;
+    }
+    .testi-stars span {
+      color: var(--amber);
+      font-size: 1rem;
+    }
+    .testi-text {
+      font-size: 0.92rem;
+      color: var(--charcoal);
+      line-height: 1.7;
+      font-style: italic;
+      flex: 1;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--off-white);
+    }
+    .testi-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--amber);
+    }
+    .testi-name {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+    .testi-co {
+      font-size: 0.78rem;
+      color: var(--smoke);
+    }
+
+    /* ── CONTACT / QUOTE ── */
+    #contact {
+      background: var(--navy);
+      padding: 90px 0;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-info .section-body { margin-bottom: 2rem; }
+    .contact-detail {
+      display: flex;
+      gap: 0.9rem;
+      align-items: flex-start;
+      margin-bottom: 1.2rem;
+    }
+    .contact-detail-icon {
+      width: 38px;
+      height: 38px;
+      background: rgba(245,166,35,0.12);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-detail-icon svg { width: 18px; height: 18px; color: var(--amber); }
+    .contact-detail-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--smoke);
+      margin-bottom: 0.15rem;
+    }
+    .contact-detail-value {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .contact-form {
+      background: var(--navy-mid);
+      border-radius: 10px;
+      padding: 2.25rem;
+    }
+    .contact-form h3 {
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .form-group label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--smoke);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      padding: 0.7rem 0.9rem;
+      outline: none;
+      transition: border-color var(--transition);
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--amber);
+    }
+    .form-group select option { background: var(--navy); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-submit { width: 100%; padding: 0.85rem; font-size: 1.05rem; }
+
+    /* ── FOOTER ── */
+    #footer {
+      background: #080f18;
+      padding: 2.5rem 0;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo-text {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .footer-logo-text span { color: var(--amber); }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+      text-align: center;
+    }
+    .footer-dot {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── RESPONSIVE 960px ── */
+    @media (max-width: 960px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-img-wrap img { height: 300px; }
+      .coverage-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .why-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── RESPONSIVE 640px ── */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .trust-item { padding: 0.8rem 1rem; }
+      .trust-item span { font-size: 0.78rem; }
+      .about-stats { flex-direction: column; gap: 1.2rem; }
+      .hero-btns { flex-direction: column; align-items: flex-start; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ───────────────── NAV ───────────────── -->
+  <nav id="nav">
+    <div class="container nav-inner">
+      <a href="#hero" class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:#0d1b2a">
+            <rect x="1" y="13" width="15" height="8" rx="1"/><polygon points="16 7 20 7 23 11 23 21 16 21 16 7"/><circle cx="5.5" cy="21.5" r="1.5"/><circle cx="19.5" cy="21.5" r="1.5"/>
+          </svg>
+        </div>
+        <div class="nav-logo-text"><span>Night</span> Trucking</div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#coverage">Coverage</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact" class="btn btn-amber nav-cta">Get a Quote</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#why" class="mobile-link">Why Us</a>
+    <a href="#coverage" class="mobile-link">Coverage</a>
+    <a href="#testimonials" class="mobile-link">Reviews</a>
+    <a href="#contact" class="btn btn-amber" style="text-align:center">Get a Quote</a>
+  </div>
+
+  <!-- ───────────────── HERO ───────────────── -->
+  <section id="hero">
+    <div class="container hero-content">
+      <div class="hero-eyebrow reveal">
+        <div class="hero-eyebrow-line"></div>
+        <span>USDOT 904559 &bull; MC-394124 &bull; Malad, Idaho</span>
+      </div>
+      <h1 class="hero-title reveal reveal-delay-1">
+        When the World<br>Sleeps, <span class="accent">We Deliver.</span>
+      </h1>
+      <p class="hero-sub reveal reveal-delay-2">
+        Night Trucking LLC has been hauling freight across the American West since 2000. Honest, dependable, and authorized — we keep your supply chain moving around the clock.
+      </p>
+      <div class="hero-btns reveal reveal-delay-3">
+        <a href="#contact" class="btn btn-amber">Request a Quote</a>
+        <a href="#services" class="btn btn-outline">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-arrow"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ───────────────── TRUST STRIP ───────────────── -->
+  <div id="trust">
+    <div class="container">
+      <div class="trust-inner">
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>DOT Authorized Carrier</span>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Fully Insured &amp; Bonded</span>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span>Interstate Operations</span>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>25+ Years on the Road</span>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Owner-Operated Reliability</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───────────────── SERVICES ───────────────── -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header reveal">
+        <span class="section-label">What We Haul</span>
+        <h2 class="section-title">Freight Services</h2>
+        <p class="section-body">From full truckloads to specialized cargo, Night Trucking delivers with the care and precision your freight demands — every run, every mile.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="13" width="15" height="8" rx="1"/><polygon points="16 7 20 7 23 11 23 21 16 21 16 7"/><circle cx="5.5" cy="21.5" r="1.5"/><circle cx="19.5" cy="21.5" r="1.5"/></svg>
+          </div>
+          <h3>Full Truckload (FTL)</h3>
+          <p>Dedicated trailer capacity for your full shipment. Faster transit, fewer touches, and maximum freight security from origin to destination.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </div>
+          <h3>Less Than Truckload (LTL)</h3>
+          <p>Cost-effective shipping for smaller loads. We consolidate your freight with other shipments to save you money without sacrificing reliability.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <h3>Dry Van</h3>
+          <p>Enclosed trailers protecting your general freight from the elements. Perfect for palletized goods, packaged products, and non-perishable cargo.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Flatbed</h3>
+          <p>Open trailer hauling for oversized, heavy, or unusually shaped freight — machinery, building materials, steel, and equipment that won't fit enclosed.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+          </div>
+          <h3>Refrigerated</h3>
+          <p>Temperature-controlled transport for perishables, pharmaceuticals, and food-grade products. Maintaining cold chain integrity from pickup to delivery.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3>Expedited Freight</h3>
+          <p>When time is critical, we move. Dedicated runs and priority scheduling ensure your urgent shipments arrive on-time, every time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── ABOUT ───────────────── -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap reveal">
+          <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=900&q=80" alt="Semi truck on open highway at dusk" loading="lazy" />
+          <div class="about-img-badge">Est. 2000 &mdash; Malad, Idaho</div>
+        </div>
+        <div class="about-text reveal reveal-delay-2">
+          <span class="section-label">Our Story</span>
+          <h2 class="section-title light">Idaho Roots.<br>American Work Ethic.</h2>
+          <p class="section-body light">Night Trucking LLC was founded in 2000 in the quiet ranching community of Malad City, Idaho. What started as a single operator's commitment to dependable freight has grown into a trusted carrier serving shippers across the Western United States.</p>
+          <p class="section-body light" style="margin-top:0.75rem;">We operate under USDOT Number 904559 and MC-394124, fully authorized for interstate property transport. As an owner-operated business, every shipment carries our personal reputation. When you work with Night Trucking, you deal directly with the people who haul your freight.</p>
+          <div class="about-stats">
+            <div>
+              <div class="about-stat-num">25+</div>
+              <div class="about-stat-label">Years in Business</div>
+            </div>
+            <div>
+              <div class="about-stat-num">100%</div>
+              <div class="about-stat-label">Owner Operated</div>
+            </div>
+            <div>
+              <div class="about-stat-num">DOT</div>
+              <div class="about-stat-label">Authorized &amp; Insured</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── WHY CHOOSE US ───────────────── -->
+  <section id="why">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">The Night Trucking Difference</span>
+        <h2 class="section-title">Why Choose Us</h2>
+        <p class="section-body">We don't just move freight — we build relationships. Here's what sets Night Trucking apart from the rest of the field.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal reveal-delay-1">
+          <div class="why-num">01</div>
+          <div>
+            <h4>Direct Owner Contact</h4>
+            <p>You work with the owner, not a call center. Get straight answers, real-time updates, and decisions made on the spot — no runaround.</p>
+          </div>
+        </div>
+        <div class="why-card reveal reveal-delay-2">
+          <div class="why-num">02</div>
+          <div>
+            <h4>25 Years of Proven Performance</h4>
+            <p>Since 2000, we've built a track record of on-time deliveries and careful cargo handling. Experience you can trust when the load matters most.</p>
+          </div>
+        </div>
+        <div class="why-card reveal reveal-delay-3">
+          <div class="why-num">03</div>
+          <div>
+            <h4>Fully Compliant &amp; Insured</h4>
+            <p>Operating under FMCSA authority with full insurance coverage. We meet every regulatory requirement so your freight is protected end-to-end.</p>
+          </div>
+        </div>
+        <div class="why-card reveal reveal-delay-4">
+          <div class="why-num">04</div>
+          <div>
+            <h4>Day or Night, We Run</h4>
+            <p>Our name says it all. While others clock out, we're on the highway. Flexible scheduling, early-morning pickups, and overnight runs are our specialty.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── COVERAGE ───────────────── -->
+  <section id="coverage">
+    <div class="container">
+      <div class="coverage-inner">
+        <div class="coverage-map reveal">
+          <!-- Simplified US map silhouette SVG placeholder -->
+          <svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg">
+            <path fill="white" d="M150,100 L200,80 L280,90 L350,70 L450,75 L530,65 L620,72 L700,90 L760,100 L800,130 L820,170 L810,220 L790,270 L770,310 L740,360 L700,400 L650,430 L580,450 L500,455 L420,448 L340,440 L260,420 L190,390 L140,350 L120,300 L110,250 L115,200 L130,150 Z"/>
+          </svg>
+          <div class="coverage-pulse"></div>
+        </div>
+        <div class="coverage-text reveal reveal-delay-2">
+          <span class="section-label">Where We Run</span>
+          <h2 class="section-title light">Western US Hub,<br>Nationwide Reach</h2>
+          <p class="section-body light">Based in Malad City, Idaho — sitting at the crossroads of I-15 — Night Trucking is perfectly positioned to serve the Intermountain West and beyond. Our primary lanes cover the western states, with capacity to run nationally.</p>
+          <div class="coverage-states">
+            <span class="state-tag">Idaho</span>
+            <span class="state-tag">Utah</span>
+            <span class="state-tag">Nevada</span>
+            <span class="state-tag">Montana</span>
+            <span class="state-tag">Wyoming</span>
+            <span class="state-tag">Oregon</span>
+            <span class="state-tag">Washington</span>
+            <span class="state-tag">California</span>
+            <span class="state-tag">Colorado</span>
+            <span class="state-tag">+ Nationwide</span>
+          </div>
+          <a href="#contact" class="btn btn-amber">Get Coverage Details</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── TESTIMONIALS ───────────────── -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="testimonials-header reveal">
+        <span class="section-label">Client Reviews</span>
+        <h2 class="section-title">What Shippers Say</h2>
+        <p class="section-body">Real feedback from businesses who trust Night Trucking to move their freight on time, every time.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testi-card reveal reveal-delay-1">
+          <div class="testi-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+          <p class="testi-text">"Night Trucking picked up our full load of building materials out of Salt Lake and had it to our Boise job site before the crew showed up Monday morning. No drama, no delays. Exactly what we needed."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">DM</div>
+            <div>
+              <div class="testi-name">Dave M.</div>
+              <div class="testi-co">Construction Supply Co., Salt Lake City, UT</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal reveal-delay-2">
+          <div class="testi-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+          <p class="testi-text">"We've used brokers and big carriers, and nothing beats dealing directly with the owner. He answers his phone, he's honest about timelines, and our freight shows up in perfect condition. Night Trucking has our repeat business."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">SR</div>
+            <div>
+              <div class="testi-name">Sandra R.</div>
+              <div class="testi-co">Pacific Northwest Distributors, Portland, OR</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal reveal-delay-3">
+          <div class="testi-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+          <p class="testi-text">"Needed an expedited run from Idaho to Nevada on short notice — Night Trucking came through when two other carriers backed out. Professional, fast, and fairly priced. This is now our go-to carrier for the I-15 corridor."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">TK</div>
+            <div>
+              <div class="testi-name">Tyler K.</div>
+              <div class="testi-co">Mountain West Ag, Twin Falls, ID</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── CONTACT ───────────────── -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <span class="section-label">Get in Touch</span>
+          <h2 class="section-title light">Request a Quote</h2>
+          <p class="section-body light">Ready to move your freight? Contact Night Trucking today for a fast, no-obligation rate quote. We respond quickly and deliver reliably.</p>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Location</div>
+              <div class="contact-detail-value">9436 S 1225 W, Malad City, ID 83252</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.13 1.08.37 2.14.71 3.17a2 2 0 0 1-.45 2.11L7.91 9.27a16 16 0 0 0 6.29 6.29l.97-.97a2 2 0 0 1 2.11-.45c1.03.34 2.09.58 3.17.71A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Phone</div>
+              <div class="contact-detail-value">801-309-1970</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.13 1.08.37 2.14.71 3.17a2 2 0 0 1-.45 2.11L7.91 9.27a16 16 0 0 0 6.29 6.29l.97-.97a2 2 0 0 1 2.11-.45c1.03.34 2.09.58 3.17.71A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Toll Free</div>
+              <div class="contact-detail-value">866-225-2448</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Authority</div>
+              <div class="contact-detail-value">USDOT 904559 &nbsp;|&nbsp; MC-394124</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form reveal reveal-delay-2">
+          <h3>Quick Quote Request</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" placeholder="John" />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" placeholder="Smith" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="john@company.com" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" placeholder="(555) 000-0000" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="origin">Origin City / State</label>
+              <input type="text" id="origin" placeholder="e.g. Salt Lake City, UT" />
+            </div>
+            <div class="form-group">
+              <label for="dest">Destination City / State</label>
+              <input type="text" id="dest" placeholder="e.g. Boise, ID" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="service">Service Type</label>
+            <select id="service">
+              <option value="">Select a service...</option>
+              <option>Full Truckload (FTL)</option>
+              <option>Less Than Truckload (LTL)</option>
+              <option>Dry Van</option>
+              <option>Flatbed</option>
+              <option>Refrigerated</option>
+              <option>Expedited Freight</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="notes">Freight Details / Notes</label>
+            <textarea id="notes" placeholder="Describe your freight, weight, dimensions, or any special requirements..."></textarea>
+          </div>
+          <button class="btn btn-amber form-submit">Submit Quote Request</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────── FOOTER ───────────────── -->
+  <footer id="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo-text"><span>Night</span> Trucking LLC</div>
+      <div class="footer-copy">
+        &copy; 2025 Night Trucking LLC &bull; Malad City, Idaho &bull; USDOT 904559 &bull; MC-394124<br>
+        All rights reserved. Authorized interstate carrier.
+      </div>
+      <div class="footer-dot">
+        <a href="tel:8013091970" style="color:rgba(255,255,255,0.45); transition:color 0.3s;" onmouseover="this.style.color='#f5a623'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">801-309-1970</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ───────────────── JAVASCRIPT ───────────────── -->
+  <script>
+    // ── Scroll reveal via IntersectionObserver ──
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // ── Nav background on scroll ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ── Hamburger / mobile nav ──
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+    });
+    document.querySelectorAll('.mobile-link, .mobile-nav .btn').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('open');
+      });
+    });
+
+    // ── Close mobile nav on outside click ──
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && !mobileNav.contains(e.target)) {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>

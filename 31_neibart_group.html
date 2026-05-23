@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Neibart Group | Strategic Communications for Financial Services</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0e1a2e;
+      --navy-mid: #162540;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #f7f4ee;
+      --cream-dark: #ede8df;
+      --text: #1a1a2e;
+      --text-light: #4a4a6a;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      background: rgba(14, 26, 46, 0.97);
+      padding: 0 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--white); font-weight: 300; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold); color: var(--navy); padding: 10px 24px;
+      font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold-light); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex; align-items: center;
+      padding: 120px 40px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: 0; right: 0; width: 55%; height: 100%;
+      background: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1400&q=80') center/cover no-repeat;
+      opacity: 0.18;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .hero-content { max-width: 680px; position: relative; z-index: 2; }
+    .hero-eyebrow {
+      font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 20px; font-weight: 600;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+      color: var(--white); line-height: 1.15; margin-bottom: 28px;
+      font-weight: 700;
+    }
+    .hero h1 em { color: var(--gold); font-style: italic; }
+    .hero p {
+      font-size: 1.15rem; color: rgba(255,255,255,0.78); margin-bottom: 44px;
+      max-width: 540px; font-weight: 300; line-height: 1.8;
+    }
+    .btn-gold {
+      display: inline-block; background: var(--gold); color: var(--navy);
+      padding: 16px 40px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; text-decoration: none; font-size: 0.9rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-block; border: 1px solid rgba(201,168,76,0.5); color: var(--gold);
+      padding: 16px 40px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; text-decoration: none; font-size: 0.9rem;
+      margin-left: 16px; transition: all 0.2s;
+    }
+    .btn-outline:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
+
+    /* SECTION COMMONS */
+    section { padding: 100px 40px; }
+    .container { max-width: 1160px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); font-weight: 600; margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      color: var(--navy); margin-bottom: 24px; line-height: 1.25;
+    }
+    .section-title.light { color: var(--white); }
+    .section-sub { font-size: 1.05rem; color: var(--text-light); max-width: 580px; margin-bottom: 60px; line-height: 1.8; }
+    .section-sub.light { color: rgba(255,255,255,0.72); }
+
+    /* SERVICES */
+    .services { background: var(--white); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    }
+    .service-card {
+      padding: 44px 36px; background: var(--cream);
+      border-left: 3px solid transparent;
+      transition: border-color 0.25s, background 0.25s;
+      opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.25s;
+    }
+    .service-card.visible { opacity: 1; transform: translateY(0); }
+    .service-card:hover { border-left-color: var(--gold); background: var(--cream-dark); }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; color: var(--navy); margin-bottom: 14px;
+    }
+    .service-card p { font-size: 0.95rem; color: var(--text-light); line-height: 1.7; }
+    .service-icon {
+      width: 40px; height: 3px; background: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    /* WHO WE SERVE */
+    .who-serve { background: var(--navy); }
+    .serve-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .serve-image img {
+      width: 100%; height: 420px; object-fit: cover;
+      opacity: 0.85;
+    }
+    .serve-list { list-style: none; margin-top: 32px; }
+    .serve-list li {
+      padding: 16px 0; border-bottom: 1px solid rgba(201,168,76,0.2);
+      color: rgba(255,255,255,0.85); font-size: 1rem;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .serve-list li::before {
+      content: ''; display: block; width: 28px; height: 2px; background: var(--gold); flex-shrink: 0;
+    }
+    .serve-quote {
+      margin-top: 40px; padding: 28px; border-left: 3px solid var(--gold);
+      background: rgba(201,168,76,0.07);
+    }
+    .serve-quote p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.05rem; color: var(--gold-light); line-height: 1.75; }
+
+    /* PILLARS */
+    .pillars { background: var(--cream-dark); }
+    .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 60px; }
+    .pillar {
+      text-align: center; padding: 52px 32px;
+      background: var(--white);
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .pillar.visible { opacity: 1; transform: translateY(0); }
+    .pillar-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; color: var(--gold); opacity: 0.35;
+      line-height: 1; margin-bottom: 12px;
+    }
+    .pillar h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; color: var(--navy); margin-bottom: 16px;
+    }
+    .pillar p { font-size: 0.95rem; color: var(--text-light); line-height: 1.75; }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--navy); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 60px; }
+    .testimonial-card {
+      background: rgba(255,255,255,0.05); padding: 40px 32px;
+      border-top: 2px solid var(--gold);
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .testimonial-card.visible { opacity: 1; transform: translateY(0); }
+    .testimonial-card blockquote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic; font-size: 1.05rem;
+      color: rgba(255,255,255,0.88); line-height: 1.8; margin-bottom: 28px;
+    }
+    .testimonial-author { font-size: 0.85rem; color: var(--gold); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+    .testimonial-role { font-size: 0.82rem; color: rgba(255,255,255,0.45); margin-top: 4px; }
+
+    /* METRICS */
+    .metrics { background: var(--gold); padding: 64px 40px; }
+    .metrics-grid { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+    .metric { text-align: center; padding: 24px; border-right: 1px solid rgba(14,26,46,0.2); }
+    .metric:last-child { border-right: none; }
+    .metric-num { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--navy); font-weight: 700; }
+    .metric-label { font-size: 0.85rem; color: var(--navy); opacity: 0.75; margin-top: 6px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* ABOUT */
+    .about { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-img-stack { position: relative; height: 520px; }
+    .about-img-main { width: 78%; height: 420px; object-fit: cover; position: absolute; top: 0; left: 0; }
+    .about-img-accent { width: 55%; height: 260px; object-fit: cover; position: absolute; bottom: 0; right: 0; border: 6px solid var(--white); }
+    .about-text .section-label { margin-bottom: 16px; }
+    .about-text p { font-size: 1rem; color: var(--text-light); line-height: 1.85; margin-bottom: 20px; }
+    .about-highlight {
+      padding: 24px 28px; border-left: 3px solid var(--gold);
+      background: var(--cream); margin: 32px 0;
+    }
+    .about-highlight p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.05rem; color: var(--navy); margin: 0; }
+
+    /* CONTACT */
+    .contact-section { background: var(--cream-dark); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .contact-info h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--navy); margin-bottom: 20px; }
+    .contact-info p { font-size: 1rem; color: var(--text-light); line-height: 1.8; margin-bottom: 32px; }
+    .contact-detail { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+    .contact-detail-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+    .contact-detail-value { font-size: 1rem; color: var(--navy); }
+    form { display: flex; flex-direction: column; gap: 20px; }
+    form input, form textarea, form select {
+      padding: 14px 18px; border: 1px solid #d5cfc5; background: var(--white);
+      font-family: 'Source Sans Pro', sans-serif; font-size: 0.95rem; color: var(--text);
+      outline: none; transition: border-color 0.2s;
+    }
+    form input:focus, form textarea:focus { border-color: var(--gold); }
+    form textarea { height: 140px; resize: vertical; }
+    form button {
+      background: var(--navy); color: var(--white);
+      padding: 16px 36px; font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.9rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; border: none; cursor: pointer;
+      transition: background 0.2s; align-self: flex-start;
+    }
+    form button:hover { background: var(--navy-mid); }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy); padding: 60px 40px 32px;
+      border-top: 3px solid var(--gold);
+    }
+    .footer-inner { max-width: 1160px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
+    .footer-brand .nav-logo { font-size: 1.5rem; }
+    .footer-brand p { margin-top: 16px; font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.75; max-width: 280px; }
+    .footer-col h4 { color: var(--gold); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 20px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--gold); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.35); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .services-grid, .pillars-grid, .testimonials-grid, .metrics-grid { grid-template-columns: 1fr; }
+      .serve-grid, .about-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+      .nav-links { display: none; }
+      section { padding: 72px 24px; }
+      nav { padding: 0 24px; }
+      .hero { padding: 100px 24px 64px; }
+      .about-img-stack { height: 300px; }
+      .about-img-accent { display: none; }
+      .metrics { padding: 48px 24px; }
+      .metric { border-right: none; border-bottom: 1px solid rgba(14,26,46,0.2); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">The Neibart <span>Group</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Let's Talk Strategy</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Boutique PR &amp; Communications &mdash; Financial &amp; Professional Services</p>
+      <h1>Your Firm Has<br>a Story Worth<br><em>Telling Well</em></h1>
+      <p>The Neibart Group is a Brooklyn-based communications firm that works exclusively with financial services and professional services companies. Senior people on every account. Real media relationships. Results you can point to.</p>
+      <a href="#contact" class="btn-gold">Let's Discuss Your Strategy</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <p class="section-label reveal">What We Do</p>
+      <h2 class="section-title reveal">Communications Built for<br>Financial Services Firms</h2>
+      <p class="section-sub reveal">Most financial firms are doing interesting work that the world doesn't know about. We change that — building the PR infrastructure that gets your perspectives into the outlets your prospects and clients actually read, from Bloomberg to your regional business journal.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"></div>
+          <h3>Public Relations &amp; Media Relations</h3>
+          <p>We place your firm's perspectives in the outlets your clients and prospects read — The Wall Street Journal, Bloomberg, financial trade publications, and the regional business press that matters in your market.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"></div>
+          <h3>Digital Communications</h3>
+          <p>Your social media, email communications, and digital content should work as hard as your advisors. We create digital strategies that build audience, reinforce credibility, and convert attention into relationships.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"></div>
+          <h3>Content Marketing &amp; Thought Leadership</h3>
+          <p>White papers, market commentary, bylined articles, and speaking platform development — we help your senior professionals become the voices of authority your industry looks to first.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"></div>
+          <h3>Crisis Communications</h3>
+          <p>When something goes wrong, speed and clarity matter. We help financial services firms prepare crisis communication plans and navigate difficult moments with transparency and confidence.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"></div>
+          <h3>Integrated Campaign Strategy</h3>
+          <p>We build coordinated campaigns that align earned media, owned content, and digital channels into a single, coherent narrative — so your messaging is consistent whether someone reads it in Forbes or finds it on LinkedIn.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"></div>
+          <h3>Brand Positioning &amp; Messaging</h3>
+          <p>Before you can tell your story, you need to know what it is. We facilitate positioning work that clarifies your firm's identity, differentiators, and audience — then we help you communicate it with discipline.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE SERVE -->
+  <section class="who-serve" id="clients">
+    <div class="container">
+      <div class="serve-grid">
+        <div class="serve-image reveal">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80" alt="Professional financial services team in meeting" loading="lazy" />
+        </div>
+        <div>
+          <p class="section-label">Who We Serve</p>
+          <h2 class="section-title light">We Speak Fluent Finance</h2>
+          <p class="section-sub light" style="margin-bottom: 0;">We don't need a glossary. Our team has worked with and inside financial services organizations for years — we understand the compliance environment, the terminology, and what institutional audiences actually care about. On day one, we already speak your language.</p>
+          <ul class="serve-list">
+            <li>Wealth management &amp; registered investment advisors</li>
+            <li>Private equity &amp; alternative investment firms</li>
+            <li>Regional and community banking institutions</li>
+            <li>Insurance carriers and agencies</li>
+            <li>Fintech and emerging financial technology companies</li>
+            <li>Law firms and accounting practices</li>
+            <li>Management consulting and advisory firms</li>
+          </ul>
+          <div class="serve-quote">
+            <p>"We know financial services from the inside — and we know exactly how to tell your story to the people on the outside who need to hear it."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="pillars">
+    <div class="container">
+      <p class="section-label reveal">The TNG Difference</p>
+      <h2 class="section-title reveal">Why Firms Choose TNG</h2>
+      <p class="section-sub reveal">We are a boutique firm by design, not by accident. There is no junior team working your account while the senior people focus on a bigger client. At TNG, the people who pitch your business are the same people executing it every day.</p>
+      <div class="pillars-grid">
+        <div class="pillar">
+          <div class="pillar-num">01</div>
+          <h3>Senior-Level Insight</h3>
+          <p>Every TNG account is led by experienced communicators with deep financial services backgrounds. Your firm's reputation is never handed to someone building their portfolio at your expense.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">02</div>
+          <h3>Disciplined Execution</h3>
+          <p>A strategy that never gets executed is just a document. TNG delivers — on timelines, with results you can point to, and with ongoing refinement based on what's actually moving the needle for your firm.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">03</div>
+          <h3>Deep Relationships</h3>
+          <p>Our media relationships span the financial press, regional business journals, and digital outlets that your clients actually read. We pick up the phone and get callbacks because we have earned them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS -->
+  <div class="metrics reveal">
+    <div class="metrics-grid">
+      <div class="metric">
+        <div class="metric-num">19+</div>
+        <div class="metric-label">Team Members</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">40+</div>
+        <div class="metric-label">Media Placements Per Client, Per Year</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">15+</div>
+        <div class="metric-label">Years in Financial Services PR</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">100%</div>
+        <div class="metric-label">Senior-Led Accounts</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <p class="section-label reveal">Client Perspective</p>
+      <h2 class="section-title light reveal">What Our Clients Say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <blockquote>"TNG doesn't just pitch stories — they build the strategic frame that makes our firm genuinely interesting to journalists. In 18 months we received more meaningful placements than we'd seen in the previous five years. Bloomberg, Barron's, and three regional business journals we hadn't touched before."</blockquote>
+          <div class="testimonial-author">Chief Marketing Officer</div>
+          <div class="testimonial-role">Regional Wealth Management Firm, Mid-Atlantic</div>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>"I've worked with agencies where the senior person closes the deal and you never see them again. TNG is completely different. Emily and her team know our business, they know our compliance constraints, and they return calls the same day. That accountability is rare."</blockquote>
+          <div class="testimonial-author">Managing Partner</div>
+          <div class="testimonial-role">Boutique Investment Advisory, New York</div>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>"We were a fintech company trying to break through in a crowded space. TNG helped us clarify exactly who we were and why it mattered — then got that message in front of the right trade press. Six months in, inbound interest from institutional prospects had more than doubled."</blockquote>
+          <div class="testimonial-author">Head of Communications</div>
+          <div class="testimonial-role">Emerging Fintech Platform, Northeast</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-stack reveal">
+          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80" alt="Communications professionals collaborating in modern office" loading="lazy" class="about-img-main" />
+          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80" alt="Strategy session with team" loading="lazy" class="about-img-accent" />
+        </div>
+        <div class="about-text">
+          <p class="section-label">Our Story</p>
+          <h2 class="section-title">Built for the Firms Others Miss</h2>
+          <p>TNG was built around a problem Emily Serafin kept seeing: financial services firms doing genuinely interesting work that nobody outside their firm knew about. Large agencies weren't the answer — they'd assign junior staff and move on. So TNG was built differently, from the ground up.</p>
+          <p>Every account at TNG is run by someone with real financial services experience. People who have spent careers around asset managers, fintechs, and professional services firms — who understand what you can say, what you can't, and how to frame your story so the right journalists actually call back.</p>
+          <div class="about-highlight">
+            <p>"We pick up the phone and journalists answer. We pitch stories and editors run them. That's because we've spent years building those relationships — and we never waste them on a story that isn't ready."</p>
+          </div>
+          <p>Emily Serafin, EVP, is involved in every client relationship at TNG. Not just at the start — throughout. That's not a promise most agencies can make, and it's the one we take most seriously.</p>
+          <a href="#contact" class="btn-gold" style="margin-top: 16px;">Let's Discuss Your Strategy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE BREAK -->
+  <div style="height: 400px; overflow: hidden;">
+    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&q=80" alt="Team of professionals reviewing communications strategy" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position: center 40%;" />
+  </div>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p class="section-label">Let's Talk</p>
+          <h2 class="section-title">Let's Discuss Your<br>Communications Strategy</h2>
+          <p>Whether you're repositioning your firm, entering a new market, or ready to finally invest in the story you deserve to tell — reach out. We'll have an honest conversation about where you stand, what's possible, and whether TNG is the right fit. No obligation.</p>
+          <div class="contact-detail">
+            <div>
+              <div class="contact-detail-label">Direct Line &mdash; Emily Serafin, EVP</div>
+              <div class="contact-detail-value" style="font-size:1.15rem; font-weight:600;">(203) 809-1932</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div>
+              <div class="contact-detail-label">Email</div>
+              <div class="contact-detail-value">eserafin@neibartgroup.com</div>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div>
+              <div class="contact-detail-label">Office</div>
+              <div class="contact-detail-value">20 Jay Street, Suite 820<br>Brooklyn, NY 11201</div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal">
+          <form>
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Your Email Address" required />
+            <input type="text" placeholder="Your Firm / Organization" />
+            <input type="text" placeholder="Phone Number" />
+            <textarea placeholder="Tell us about your communications goals and how we can help."></textarea>
+            <button type="submit">Send Your Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">The Neibart <span>Group</span></a>
+          <p>A boutique communications firm dedicated to financial and professional services companies. Senior talent. Boutique responsiveness. Enterprise results.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Public Relations</a></li>
+            <li><a href="#">Digital Communications</a></li>
+            <li><a href="#">Content Marketing</a></li>
+            <li><a href="#">Crisis Communications</a></li>
+            <li><a href="#">Brand Strategy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:eserafin@neibartgroup.com">eserafin@neibartgroup.com</a></li>
+            <li><a href="tel:2038091932">(203) 809-1932</a></li>
+            <li><a href="#">Brooklyn, NY 11201</a></li>
+            <li><a href="#">neibartgroup.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 The Neibart Group. All rights reserved.</p>
+        <p>Strategic Communications for Financial &amp; Professional Services</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // IntersectionObserver for scroll reveals
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal, .service-card, .pillar, .testimonial-card').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Stagger service cards
+    document.querySelectorAll('.service-card').forEach((card, i) => {
+      card.style.transitionDelay = `${i * 0.1}s`;
+    });
+    document.querySelectorAll('.pillar').forEach((p, i) => {
+      p.style.transitionDelay = `${i * 0.15}s`;
+    });
+    document.querySelectorAll('.testimonial-card').forEach((t, i) => {
+      t.style.transitionDelay = `${i * 0.15}s`;
+    });
+  </script>
+</body>
+</html>

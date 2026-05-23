@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infinite Group USA | State-of-the-Art Architectural Manufacturing | Kearny, NJ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --near-black: #141414;
+    --charcoal: #1e1e1e;
+    --dark-gray: #2a2a2a;
+    --steel: #3a3a3a;
+    --silver: #c0c0c0;
+    --silver-light: #e0e0e0;
+    --gold: #c8a44a;
+    --gold-light: #e0c070;
+    --white: #ffffff;
+    --off-white: #f8f7f4;
+    --gray: #888;
+    --text: #1a1a1a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Raleway', sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+    background: var(--white);
+  }
+
+  h1, h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.06em;
+    line-height: 1;
+  }
+
+  h3, h4 { font-family: 'Raleway', sans-serif; font-weight: 700; }
+
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  .container {
+    width: 90%;
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left { opacity: 0; transform: translateX(-24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+  .reveal-right { opacity: 0; transform: translateX(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+  /* HEADER */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(10,10,10,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(200,164,74,0.25);
+    padding: 16px 0;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-decoration: none;
+  }
+
+  .logo-main {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    color: var(--white);
+    letter-spacing: 0.1em;
+  }
+
+  .logo-main span { color: var(--gold); }
+
+  .logo-sub {
+    font-size: 0.58rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  nav a {
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--gold); }
+
+  .btn-nav {
+    background: var(--gold);
+    color: var(--black) !important;
+    padding: 9px 20px;
+    border-radius: 2px;
+    font-weight: 700 !important;
+    transition: background 0.2s !important;
+  }
+  .btn-nav:hover { background: var(--gold-light) !important; }
+
+  /* HERO */
+  .hero {
+    height: 100vh;
+    min-height: 700px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.45);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, rgba(10,10,10,0.85) 45%, rgba(30,30,30,0.4) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--gold);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    color: var(--white);
+    margin-bottom: 12px;
+    line-height: 0.9;
+  }
+
+  .hero h1 span { color: var(--gold); }
+
+  .hero-sub {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.4rem, 3vw, 2.5rem);
+    color: var(--silver);
+    letter-spacing: 0.12em;
+    margin-bottom: 24px;
+  }
+
+  .hero p {
+    font-size: 1.02rem;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 36px;
+    line-height: 1.75;
+    font-weight: 300;
+    max-width: 560px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--black);
+    padding: 13px 28px;
+    border-radius: 2px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.35);
+    color: var(--white);
+    padding: 12px 26px;
+    border-radius: 2px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* SECTIONS */
+  section { padding: 90px 0; }
+
+  .section-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .section-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .section-lead {
+    font-size: 1rem;
+    color: var(--gray);
+    max-width: 620px;
+    line-height: 1.8;
+    margin-bottom: 48px;
+    font-weight: 400;
+  }
+
+  /* PRODUCTS */
+  .products-section { background: var(--off-white); }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .product-card {
+    background: var(--white);
+    overflow: hidden;
+    border-radius: 2px;
+    transition: transform 0.35s, box-shadow 0.35s;
+  }
+
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  }
+
+  .product-image {
+    height: 220px;
+    overflow: hidden;
+  }
+
+  .product-image img {
+    transition: transform 0.5s ease;
+  }
+
+  .product-card:hover .product-image img { transform: scale(1.06); }
+
+  .product-info {
+    padding: 20px;
+    border-top: 3px solid var(--gold);
+  }
+
+  .product-info h3 {
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .product-info p {
+    font-size: 0.85rem;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+
+  /* ABOUT / DARK SPLIT */
+  .about-section { background: var(--near-black); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+  }
+
+  .about-section .section-label { color: var(--gold); }
+  .about-section .section-title { color: var(--white); }
+
+  .about-content p {
+    font-size: 0.94rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+
+  .about-image {
+    height: 500px;
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid rgba(200,164,74,0.2);
+  }
+
+  .founder-card {
+    border: 1px solid rgba(200,164,74,0.3);
+    border-radius: 2px;
+    padding: 18px 20px;
+    margin-top: 24px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .founder-dot {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    color: var(--black);
+  }
+
+  .founder-info strong {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.95rem;
+    color: var(--gold-light);
+    display: block;
+    margin-bottom: 3px;
+    font-weight: 700;
+  }
+
+  .founder-info span {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* PROCESS */
+  .process-section { background: var(--white); }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    position: relative;
+  }
+
+  .process-grid::before {
+    content: '';
+    position: absolute;
+    top: 22px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.3;
+  }
+
+  .process-step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .process-dot {
+    width: 44px;
+    height: 44px;
+    background: var(--black);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+  }
+
+  .process-step h4 {
+    font-size: 0.85rem;
+    color: var(--text);
+    font-weight: 700;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .process-step p {
+    font-size: 0.78rem;
+    color: var(--gray);
+    line-height: 1.55;
+  }
+
+  /* GALLERY */
+  .gallery-section { background: var(--black); padding: 0; }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 280px 280px;
+    gap: 3px;
+  }
+
+  .gallery-item { overflow: hidden; }
+
+  .gallery-item:first-child { grid-row: 1 / 3; }
+
+  .gallery-item img {
+    transition: transform 0.5s ease;
+  }
+
+  .gallery-item:hover img { transform: scale(1.04); }
+
+  /* INDUSTRIES */
+  .industries-section { background: var(--charcoal); }
+
+  .industries-section .section-title { color: var(--white); }
+  .industries-section .section-label { color: var(--gold); }
+  .industries-section .section-lead { color: rgba(255,255,255,0.6); }
+
+  .industries-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .industry-pill {
+    border: 1px solid rgba(200,164,74,0.35);
+    color: rgba(255,255,255,0.8);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 2px;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    cursor: default;
+  }
+
+  .industry-pill:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--black);
+  }
+
+  /* CONTACT */
+  .contact-section { background: var(--off-white); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .contact-info p { font-size: 0.94rem; color: var(--gray); line-height: 1.78; margin-bottom: 24px; }
+  .contact-details { display: flex; flex-direction: column; gap: 12px; }
+  .c-row { font-size: 0.9rem; color: var(--gray); display: flex; gap: 10px; }
+  .c-row strong { color: var(--text); min-width: 70px; }
+
+  .contact-form {
+    background: var(--white);
+    border-radius: 2px;
+    padding: 38px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    border-top: 3px solid var(--gold);
+  }
+
+  .form-group { margin-bottom: 18px; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid #d8d4cc;
+    border-radius: 2px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  .btn-submit {
+    width: 100%;
+    background: var(--black);
+    color: var(--gold);
+    border: none;
+    padding: 13px;
+    border-radius: 2px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-submit:hover { background: var(--charcoal); }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    color: rgba(255,255,255,0.5);
+    padding: 50px 0 26px;
+    border-top: 1px solid rgba(200,164,74,0.15);
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 24px;
+  }
+
+  .footer-brand p { margin-top: 12px; font-size: 0.86rem; line-height: 1.7; }
+
+  .footer-col h4 {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .footer-col a {
+    display: block;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    font-size: 0.86rem;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.25);
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-item:first-child { grid-row: auto; }
+    .gallery-item { height: 220px; }
+    .about-image { height: 300px; }
+    .process-grid { grid-template-columns: 1fr 1fr; }
+    .process-grid::before { display: none; }
+    .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  }
+
+  @media (max-width: 640px) {
+    nav { display: none; }
+    .products-grid { grid-template-columns: 1fr; }
+    .process-grid { grid-template-columns: 1fr; }
+    section { padding: 60px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container header-inner">
+    <a href="#" class="logo">
+      <span class="logo-main">Infinite <span>Group</span> USA</span>
+      <span class="logo-sub">State-of-the-Art Architectural Manufacturing | Kearny, NJ</span>
+    </a>
+    <nav>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#contact" class="btn-nav">Request a Quote</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80" alt="Luxury retail environment with custom architectural signage and fixtures">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <div class="hero-eyebrow">Est. 2002 | Kearny, NJ</div>
+    <h1>YOUR <span>VISION.</span></h1>
+    <div class="hero-sub">Manufactured to Perfection.</div>
+    <p>Infinite Group USA crafts custom signage, architectural installations, retail fixtures, and luxury furniture for brands that demand the extraordinary — because ordinary manufacturing was never what we set out to do.</p>
+    <div class="hero-ctas">
+      <a href="#products" class="btn-primary">View Our Work</a>
+      <a href="#contact" class="btn-outline">Request a Custom Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products-section" id="products">
+  <div class="container">
+    <span class="section-label reveal">What We Make</span>
+    <h2 class="section-title reveal">Crafted for the Discerning Brand</h2>
+    <p class="section-lead reveal">Every product we manufacture is custom-built to your exact specifications — from concept through completion, with premium materials and premium results.</p>
+    <div class="products-grid">
+      <div class="product-card reveal">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=700&q=80" alt="Custom illuminated retail signage by Infinite Group USA">
+        </div>
+        <div class="product-info">
+          <h3>Custom Signage</h3>
+          <p>Illuminated, metal, tabletop, and retail storefront signage custom-fabricated to your brand standards and architectural specifications.</p>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&q=80" alt="Luxury custom furniture manufactured by Infinite Group">
+        </div>
+        <div class="product-info">
+          <h3>Luxury Furniture &amp; Lighting</h3>
+          <p>Bespoke furniture and lighting designed and fabricated for retail, hospitality, and corporate environments where standard pieces simply will not do.</p>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?w=700&q=80" alt="Retail fixtures and floor displays for luxury brands">
+        </div>
+        <div class="product-info">
+          <h3>Retail Fixtures &amp; Displays</h3>
+          <p>Custom floor displays, point-of-purchase installations, and retail fixtures that enhance product presentation and reinforce your brand experience.</p>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1604014237800-1c9102c219da?w=700&q=80" alt="Architectural interior design installation for commercial space">
+        </div>
+        <div class="product-info">
+          <h3>Architectural Environments</h3>
+          <p>Complete custom environments for retail, corporate, and hospitality spaces — from branded wall systems to full experiential buildouts.</p>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?w=700&q=80" alt="Metal fabrication and industrial manufacturing at Infinite Group Kearny NJ">
+        </div>
+        <div class="product-info">
+          <h3>Metal Fabrication</h3>
+          <p>Precision metal fabrication for signage elements, structural fixtures, and custom architectural components — built to exacting tolerances.</p>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1525328437458-0be9e44c9b16?w=700&q=80" alt="Visual merchandising displays for luxury retail brand">
+        </div>
+        <div class="product-info">
+          <h3>Visual Merchandising</h3>
+          <p>Merchandise displays and visual storytelling tools that capture attention, elevate products, and drive engagement at the point of purchase.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal-left">
+        <span class="section-label">Our Story</span>
+        <h2 class="section-title">Design Meets Manufacturing</h2>
+        <p>Infinite Group USA was founded in 2002 by Bernard Alloysius to address a gap in the market that the design industry knew well: there were design firms, and there were manufacturers — but few who truly excelled at both.</p>
+        <p>We built Infinite Group to be different. Based in Kearny, NJ, our facility brings together a dedicated team of designers and fabricators who work under one roof, speaking the same language, pursuing the same standard. The result is a manufacturing company that understands design intent — and a design capability grounded in what is actually achievable in production.</p>
+        <p>Over more than two decades, we have served retailers, luxury brands, architects, interior designers, and corporate clients who share a common expectation: that the finished product will be exactly what they imagined — or better.</p>
+        <div class="founder-card">
+          <div class="founder-dot">BA</div>
+          <div class="founder-info">
+            <strong>Bernard Alloysius</strong>
+            <span>Founder &amp; CEO | Infinite Group USA | Est. 2002</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-image reveal-right">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80" alt="Manufacturing team at Infinite Group USA Kearny NJ facility">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div class="gallery-section">
+  <div class="gallery-grid">
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=900&q=80" alt="Luxury retail environment with custom Infinite Group fixtures">
+    </div>
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=700&q=80" alt="Custom hotel lobby architectural installation">
+    </div>
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1493957988430-a5f2e15f39a3?w=700&q=80" alt="High-end retail display wall fabricated by Infinite Group USA">
+    </div>
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80" alt="Precision metal fabrication work at Infinite Group NJ facility">
+    </div>
+    <div class="gallery-item reveal">
+      <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&q=80" alt="Corporate reception area with custom branded signage elements">
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<section class="process-section" id="process">
+  <div class="container">
+    <span class="section-label reveal" style="text-align:center;display:block;">How We Work</span>
+    <h2 class="section-title reveal" style="text-align:center;margin-bottom:50px;">From Concept to Completion</h2>
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <div class="process-dot">01</div>
+        <h4>Design Consultation</h4>
+        <p>We discuss your vision, brand standards, and site requirements — understanding the design intent from the start.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-dot">02</div>
+        <h4>Engineering</h4>
+        <p>Our team translates design concepts into precise technical specifications, ensuring what is designed can be built — beautifully.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-dot">03</div>
+        <h4>Fabrication</h4>
+        <p>Premium materials, state-of-the-art machinery, and skilled craftspeople produce your product to exact spec in our NJ facility.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-dot">04</div>
+        <h4>Installation</h4>
+        <p>Professional installation wherever your project is located — executed on schedule and to the precision the work demands.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-dot">05</div>
+        <h4>Quality Review</h4>
+        <p>A thorough quality review at every stage — because leaving anything to chance is not how we work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="industries-section">
+  <div class="container">
+    <span class="section-label reveal">Who We Serve</span>
+    <h2 class="section-title reveal">Industries We Serve</h2>
+    <p class="section-lead reveal">Wherever exceptional visual environments and custom manufacturing matter, Infinite Group USA delivers.</p>
+    <div class="industries-row reveal">
+      <span class="industry-pill">Retail</span>
+      <span class="industry-pill">Luxury Brands</span>
+      <span class="industry-pill">Architecture &amp; Design</span>
+      <span class="industry-pill">Hospitality</span>
+      <span class="industry-pill">Corporate Environments</span>
+      <span class="industry-pill">Museums &amp; Galleries</span>
+      <span class="industry-pill">Healthcare</span>
+      <span class="industry-pill">Education</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <span class="section-label">Start Your Project</span>
+        <h2 class="section-title">Ready to Build Something Extraordinary?</h2>
+        <p>Tell us about your project and we will put together a custom quote. Our team is ready to take your vision from sketch to reality — at any scale, for any brand.</p>
+        <div class="contact-details">
+          <div class="c-row"><strong>Phone:</strong><span>(973) 649-9950</span></div>
+          <div class="c-row"><strong>Email:</strong><span>b.alloysius@infinitegroupusa.com</span></div>
+          <div class="c-row"><strong>Address:</strong><span>35 Obrien St, Kearny, NJ 07032</span></div>
+          <div class="c-row"><strong>Founded:</strong><span>2002 | 20+ years of manufacturing excellence</span></div>
+        </div>
+      </div>
+      <div class="contact-form reveal-right">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Your full name">
+        </div>
+        <div class="form-group">
+          <label>Company</label>
+          <input type="text" placeholder="Your brand or company">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Product Category</label>
+          <select>
+            <option value="">Select a product type</option>
+            <option>Custom Signage</option>
+            <option>Luxury Furniture &amp; Lighting</option>
+            <option>Retail Fixtures &amp; Displays</option>
+            <option>Architectural Environments</option>
+            <option>Metal Fabrication</option>
+            <option>Visual Merchandising</option>
+            <option>Multiple Categories</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Project Description</label>
+          <textarea placeholder="Describe your project — scope, quantity, timeline, and any specific requirements..."></textarea>
+        </div>
+        <button class="btn-submit">Submit My Project Inquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <span class="logo-main">Infinite <span style="color:var(--gold)">Group</span> USA</span>
+          <span class="logo-sub">Architectural Manufacturing | Kearny, NJ</span>
+        </a>
+        <p>Custom signage, luxury furniture, retail fixtures, and architectural installations — manufactured with precision and care since 2002.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <a href="#">Custom Signage</a>
+        <a href="#">Luxury Furniture</a>
+        <a href="#">Retail Fixtures</a>
+        <a href="#">Architectural Environments</a>
+        <a href="#">Metal Fabrication</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:9736499950">(973) 649-9950</a>
+        <a href="mailto:b.alloysius@infinitegroupusa.com">b.alloysius@infinitegroupusa.com</a>
+        <a href="#">35 Obrien St, Kearny, NJ 07032</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 Infinite Group USA. All rights reserved.</span>
+      <span>State-of-the-Art Architectural Manufacturing Since 2002</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

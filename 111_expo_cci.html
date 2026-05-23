@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expo Convention Contractors | Tradeshow Exhibit Design Company</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a2744;
+      --navy-light: #253461;
+      --gold: #c8973a;
+      --gold-light: #e5b560;
+      --white: #ffffff;
+      --off-white: #f8f6f1;
+      --gray: #6b7280;
+      --gray-light: #e8e4dd;
+      --text: #1f2937;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(26, 39, 68, 0.97);
+      backdrop-filter: blur(8px);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-logo span {
+      color: var(--white);
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold-light); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 4px;
+      font-weight: 700 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, #2d4a8a 100%);
+      display: flex;
+      align-items: center;
+      padding: 120px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.18;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold-light);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 2.5rem;
+      max-width: 540px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold-light);
+      background: rgba(200,151,58,0.1);
+    }
+
+    /* SECTIONS */
+    section { padding: 90px 5%; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-heading {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      color: var(--navy);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .section-intro {
+      font-size: 1.05rem;
+      color: var(--gray);
+      max-width: 600px;
+      margin-bottom: 3rem;
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--gold);
+      padding: 30px 5%;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-item strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--navy);
+    }
+
+    .stat-item span {
+      font-size: 0.85rem;
+      color: var(--navy);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    /* ABOUT */
+    .about {
+      background: var(--off-white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .about-image::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 60%;
+      height: 60%;
+      border: 4px solid var(--gold);
+      border-radius: 8px;
+      z-index: -1;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: 30px;
+      left: -20px;
+      background: var(--navy);
+      color: var(--white);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .about-badge strong {
+      display: block;
+      font-size: 2rem;
+      color: var(--gold);
+    }
+
+    .about-badge span {
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+
+    .about-text p {
+      color: var(--gray);
+      margin-bottom: 1.2rem;
+      font-size: 1.02rem;
+    }
+
+    .about-list {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+
+    .about-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: var(--text);
+      margin-bottom: 0.85rem;
+      font-size: 0.98rem;
+    }
+
+    .about-list li::before {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      border-radius: 10px;
+      padding: 2rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-top: 4px solid var(--gold);
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(26,39,68,0.12);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--navy);
+      border-radius: 8px;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .service-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--gold);
+    }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+
+    .service-card p {
+      font-size: 0.92rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* PHOTO ROW */
+    .photo-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      height: 380px;
+    }
+
+    .photo-row img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* PROCESS */
+    .process {
+      background: var(--navy);
+    }
+
+    .process .section-heading { color: var(--white); }
+    .process .section-intro { color: rgba(255,255,255,0.7); }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      counter-reset: steps;
+    }
+
+    .process-step {
+      counter-increment: steps;
+      position: relative;
+      padding: 2rem;
+      background: rgba(255,255,255,0.06);
+      border-radius: 10px;
+      border-left: 3px solid var(--gold);
+    }
+
+    .process-step::before {
+      content: counter(steps, decimal-leading-zero);
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: rgba(200,151,58,0.3);
+      display: block;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .process-step h3 {
+      font-size: 1.05rem;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .process-step p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      background: var(--off-white);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: var(--gold);
+      line-height: 1;
+      position: absolute;
+      top: 1rem;
+      left: 1.5rem;
+      opacity: 0.3;
+    }
+
+    .testimonial-card p {
+      font-size: 0.97rem;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      padding-top: 1rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .testimonial-author img {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .testimonial-author strong {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--navy);
+    }
+
+    .testimonial-author span {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    /* LOCATIONS */
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .location-card {
+      text-align: center;
+      padding: 2.5rem 2rem;
+      border: 2px solid var(--gray-light);
+      border-radius: 10px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .location-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+
+    .location-card h3 {
+      font-size: 1.3rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .location-card p {
+      color: var(--gray);
+      font-size: 0.92rem;
+    }
+
+    .location-pin {
+      width: 48px;
+      height: 48px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+    }
+
+    .location-pin svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--navy);
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      text-align: center;
+      padding: 100px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=1400&q=80') center/cover no-repeat;
+      opacity: 0.08;
+    }
+
+    .cta-section > * { position: relative; z-index: 2; }
+
+    .cta-section h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      color: rgba(255,255,255,0.75);
+      font-size: 1.1rem;
+      margin-bottom: 2.5rem;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* CONTACT */
+    .contact {
+      background: var(--off-white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      font-size: 2rem;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p {
+      color: var(--gray);
+      margin-bottom: 2rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-detail-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--navy);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-detail-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--gold);
+    }
+
+    .contact-detail strong {
+      display: block;
+      color: var(--navy);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-detail span {
+      color: var(--text);
+    }
+
+    .contact-form {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--gray-light);
+      border-radius: 6px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.7);
+      padding: 60px 5% 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-top: 1rem;
+    }
+
+    .footer-col h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover { color: var(--gold-light); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.82rem;
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .about-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-image::after { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .photo-row { grid-template-columns: 1fr; height: auto; }
+      .photo-row img { height: 220px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 4%; }
+      .nav-links { display: none; }
+      section { padding: 70px 5%; }
+      .hero { padding-top: 100px; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Expo<span> Convention Contractors</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#locations">Locations</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <span class="hero-eyebrow">Florida's Premier Exhibit Design Company</span>
+      <h1>Your Exhibit.<br><em>Your Story.</em><br>Built to Stand Out.</h1>
+      <p>Full-service tradeshow exhibit design and general contracting — small enough to be personable, large enough to be exceptional.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Start Your Project</a>
+        <a href="#services" class="btn-outline">Explore Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <strong>30+</strong>
+      <span>Years in Business</span>
+    </div>
+    <div class="stat-item">
+      <strong>3</strong>
+      <span>Office Locations</span>
+    </div>
+    <div class="stat-item">
+      <strong>1,000+</strong>
+      <span>Shows Served</span>
+    </div>
+    <div class="stat-item">
+      <strong>500+</strong>
+      <span>Clients Nationwide</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-grid reveal">
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1560439514-4e9645039924?w=800&q=80" alt="Expo CCI team at work" />
+        <div class="about-badge">
+          <strong>1990</strong>
+          <span>Founded in Miami, FL</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="section-label">Who We Are</p>
+        <h2 class="section-heading">A Family Business Built on Trust and Craftsmanship</h2>
+        <p>Since 1990, Expo Convention Contractors has been the name exhibitors across the country turn to when the stakes are high and the details matter. We started as a family operation in Miami, and that personal touch is still at the heart of everything we do — every exhibit, every event, every client relationship.</p>
+        <p>We've grown into one of Florida's most respected full-service general contractors for tradeshows, conventions, conferences, and special events, with offices in Miami, Los Angeles, and Medellin, Colombia. But no matter the scale of your project, you still deal with people who care.</p>
+        <p>From concept through installation and beyond, we handle every detail in-house — floor plans, fabrication, graphics, material handling, and logistics — so nothing falls through the cracks on your show day.</p>
+        <ul class="about-list">
+          <li>Family-owned and operated for over three decades</li>
+          <li>Full in-house capabilities from design through delivery</li>
+          <li>Trusted by Fortune 500 companies, associations, and first-time exhibitors</li>
+          <li>Licensed general contractor with a proven track record</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">What We Do</p>
+      <h2 class="section-heading reveal">Everything Your Exhibit Needs, Under One Roof</h2>
+      <p class="section-intro reveal">From a 10x10 booth for a regional show to a custom 10,000 square-foot installation at a national convention, our in-house team handles it all.</p>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Custom Exhibit Design</h3>
+          <p>Bespoke exhibit structures designed from scratch to reflect your brand identity — crafted by our in-house design and fabrication team.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h3>Trade Shows and Conventions</h3>
+          <p>Complete general contracting services for exhibitors at regional and national trade shows, from registration through move-out.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Conferences and Meetings</h3>
+          <p>Full-service conference buildouts and branded environments that make every attendee touchpoint count.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <h3>Graphic Design and Print</h3>
+          <p>In-house large-format printing and graphic design — from booth graphics to signage, banners, and branded materials.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3M9 21H21a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2z"/></svg>
+          </div>
+          <h3>Material Handling and Logistics</h3>
+          <p>Seamless freight coordination, drayage, and on-site material handling so your booth arrives ready to impress.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+          </div>
+          <h3>Permanent Solutions</h3>
+          <p>Commercial renovation and branded environments for offices, lobbies, showrooms, and retail spaces.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <h3>Special Events</h3>
+          <p>Custom fabrication and event design for product launches, galas, experiential marketing, and corporate events.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+          </div>
+          <h3>Exhibitor Services Platform</h3>
+          <p>A personalized online ordering system that makes it easy for exhibitors to manage their needs before, during, and after each show.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO ROW -->
+  <div class="photo-row">
+    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80" alt="Trade show hall" />
+    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=700&q=80" alt="Team collaboration" />
+    <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=700&q=80" alt="Convention event" />
+  </div>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal" style="color:var(--gold)">How We Work</p>
+      <h2 class="section-heading reveal">From First Conversation to Final Installation</h2>
+      <p class="section-intro reveal" style="color:rgba(255,255,255,0.65)">We've refined our process over 30 years to make your experience as smooth as the exhibits we build.</p>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <h3>Consultation and Discovery</h3>
+          <p>We learn your goals, timeline, budget, and brand story. There's no cookie-cutter approach here — every engagement starts with genuine listening.</p>
+        </div>
+        <div class="process-step reveal">
+          <h3>Design and Concept</h3>
+          <p>Our in-house designers develop concepts tailored to your space, objectives, and aesthetic — with revisions until it's exactly right.</p>
+        </div>
+        <div class="process-step reveal">
+          <h3>Fabrication and Print</h3>
+          <p>Everything is built and printed in our own facilities — no outsourcing, no surprises. Quality is controlled at every step.</p>
+        </div>
+        <div class="process-step reveal">
+          <h3>Installation and Show Support</h3>
+          <p>Our crews handle installation on-site. We're there with you through show day so you can focus on your clients, not the logistics.</p>
+        </div>
+        <div class="process-step reveal">
+          <h3>Post-Show Logistics</h3>
+          <p>We manage dismantle, storage, and freight return so the end of the show is as effortless as the opening day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">Client Stories</p>
+      <h2 class="section-heading reveal">What Our Clients Say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <p>Working with Expo CCI is like having a secret weapon at every trade show. They handle every detail, every time, and the quality of our booth has genuinely changed how prospects see our company on the floor.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Client" />
+            <div>
+              <strong>Rachel T.</strong>
+              <span>VP Marketing, Healthcare Technology Company</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>I've worked with a lot of exhibit companies over 20 years. Expo CCI stands apart because they actually care. The crew knows your project, your brand, and your deadlines — and they deliver without excuses.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Client" />
+            <div>
+              <strong>David M.</strong>
+              <span>Director of Events, National Trade Association</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>As a first-time exhibitor, I was nervous about getting everything right. The Expo CCI team walked me through every step, came in under budget, and our booth looked better than companies that had been doing this for years.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&q=80" alt="Client" />
+            <div>
+              <strong>Maria S.</strong>
+              <span>Founder, Consumer Products Company</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section id="locations">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">Where We Are</p>
+      <h2 class="section-heading reveal">Serving Events Coast to Coast</h2>
+      <p class="section-intro reveal">With three office locations and a network that spans the Americas, we're positioned to support your shows wherever they take place.</p>
+      <div class="locations-grid">
+        <div class="location-card reveal">
+          <div class="location-pin">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>Miami, FL</h3>
+          <p>Headquarters &mdash; Our founding home and primary operations hub. Serving the Southeast, national, and international trade shows.</p>
+          <br />
+          <p><strong style="color:var(--navy)">(305) 751-1234</strong></p>
+        </div>
+        <div class="location-card reveal">
+          <div class="location-pin">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>Los Angeles, CA</h3>
+          <p>West Coast operations supporting California convention centers and trade shows throughout the Pacific region.</p>
+        </div>
+        <div class="location-card reveal">
+          <div class="location-pin">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>Medellin, Colombia</h3>
+          <p>International capabilities supporting Latin American exhibitions and cross-border exhibitors entering U.S. markets.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Ready to Make Your Next Show Your Best?</h2>
+    <p>Tell us about your project and we'll show you what three decades of expertise looks like in action.</p>
+    <a href="#contact" class="btn-primary">Start the Conversation</a>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p class="section-label">Get in Touch</p>
+        <h2>Let's Build Something Great Together</h2>
+        <p>Whether you're planning your flagship exhibit or just exploring your options, we'd love to hear about your upcoming show. Our team responds within one business day.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.72 12a19.79 19.79 0 01-3.07-8.67A2 2 0 013.62 1.27h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-.8a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <strong>Phone</strong>
+            <span>(305) 751-1234</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <strong>Email</strong>
+            <span>yfriedman@expocci.com</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <strong>Headquarters</strong>
+            <span>Miami, FL &mdash; serving the nation</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--navy);margin-bottom:1.5rem;">Tell Us About Your Project</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Jane" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="jane@company.com" />
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="(305) 555-0100" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Show or Event Type</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>Trade Show / Convention</option>
+            <option>Conference</option>
+            <option>Special Event</option>
+            <option>Permanent / Commercial Space</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Us About Your Project</label>
+          <textarea placeholder="Describe your upcoming show, timeline, booth size, and any specific requirements..."></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;font-size:1rem;padding:1rem;">Send Message</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">Expo<span> Convention Contractors</span></a>
+        <p>Florida's full-service tradeshow exhibit design company. Family-owned since 1990. Small enough to be personable, large enough to be exceptional.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Custom Exhibits</a></li>
+          <li><a href="#">Trade Shows</a></li>
+          <li><a href="#">Conferences</a></li>
+          <li><a href="#">Special Events</a></li>
+          <li><a href="#">Permanent Solutions</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Process</a></li>
+          <li><a href="#">Locations</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:3057511234">(305) 751-1234</a></li>
+          <li><a href="mailto:yfriedman@expocci.com">yfriedman@expocci.com</a></li>
+          <li><a href="#">Miami, FL HQ</a></li>
+          <li><a href="#">Los Angeles, CA</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Expo Convention Contractors, Inc. All rights reserved.</p>
+      <p>Licensed General Contractor &mdash; Florida &bull; California</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

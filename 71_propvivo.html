@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PropVivo — HOA Management for Seattle & Bellevue Communities | Call Nitin: (425) 246-1191
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1B2A4A;
+      --teal: #2A9D8F;
+      --teal-light: #3DB5A5;
+      --white: #FFFFFF;
+      --off-white: #F8FAFB;
+      --light-grey: #EEF2F7;
+      --text-dark: #1A1A2E;
+      --text-mid: #4A5568;
+      --text-light: #718096;
+      --border: #DDE3ED;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAVIGATION */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(27, 42, 74, 0.97);
+      backdrop-filter: blur(8px);
+      padding: 0 2rem;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--teal); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--teal); }
+
+    .nav-cta {
+      background: var(--teal);
+      color: var(--white) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--teal-light) !important; color: var(--white) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, #243B6E 60%, #1B4D6A 100%);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 2rem 60px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 55%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80') center/cover no-repeat;
+      opacity: 0.18;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(to top, var(--white), transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(42, 157, 143, 0.2);
+      border: 1px solid rgba(42, 157, 143, 0.5);
+      color: var(--teal);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--teal);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 2.2rem;
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: var(--teal-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.5);
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .hero-stats {
+      margin-top: 3.5rem;
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat span {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--teal);
+    }
+
+    .hero-stat p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 0;
+    }
+
+    /* SECTION BASES */
+    section { padding: 90px 2rem; }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-lead {
+      font-size: 1.1rem;
+      color: var(--text-mid);
+      max-width: 600px;
+      line-height: 1.75;
+    }
+
+    /* PROBLEM SECTION */
+    .problems {
+      background: var(--off-white);
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .problem-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 2rem;
+      border-left: 4px solid var(--teal);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .problem-card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+
+    .problem-card p {
+      color: var(--text-mid);
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    .problem-bridge {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 1.15rem;
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    .problem-bridge strong { color: var(--teal); }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.12);
+    }
+
+    .service-card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .service-card-body {
+      padding: 1.8rem;
+      background: var(--white);
+    }
+
+    .service-card-body h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.7rem;
+    }
+
+    .service-card-body p {
+      color: var(--text-mid);
+      font-size: 0.93rem;
+      line-height: 1.7;
+    }
+
+    /* HOW IT WORKS */
+    .how-it-works {
+      background: var(--navy);
+    }
+
+    .how-it-works .section-title { color: var(--white); }
+    .how-it-works .section-label { color: var(--teal); }
+    .how-it-works .section-lead { color: rgba(255,255,255,0.7); }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    .step-card {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      background: rgba(255,255,255,0.06);
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .step-number {
+      width: 54px;
+      height: 54px;
+      background: var(--teal);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--white);
+      margin: 0 auto 1.2rem;
+    }
+
+    .step-card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .step-card p {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    /* PILLARS */
+    .pillars { background: var(--light-grey); }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .pillar-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+
+    .pillar-icon {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, var(--teal), var(--navy));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+    }
+
+    .pillar-icon svg {
+      width: 30px;
+      height: 30px;
+      fill: var(--white);
+    }
+
+    .pillar-card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+
+    .pillar-card p {
+      color: var(--text-mid);
+      font-size: 0.93rem;
+      line-height: 1.65;
+    }
+
+    /* NUMBERS */
+    .numbers { background: var(--teal); }
+    .numbers .section-title { color: var(--white); }
+    .numbers .section-label { color: rgba(255,255,255,0.7); }
+
+    .numbers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .number-item span {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .number-item p {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.95rem;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--white); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .testimonial-card {
+      background: var(--off-white);
+      border-radius: 14px;
+      padding: 2rem;
+      border-top: 3px solid var(--teal);
+    }
+
+    .testimonial-card p {
+      color: var(--text-mid);
+      font-size: 0.97rem;
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 1.2rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .testimonial-author img {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .testimonial-author div strong {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--navy);
+    }
+
+    .testimonial-author div span {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+
+    /* ABOUT */
+    .about { background: var(--off-white); }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-text h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1.2rem;
+    }
+
+    .about-text p {
+      color: var(--text-mid);
+      font-size: 0.97rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .about-text .about-name {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-top: 1.5rem;
+    }
+
+    .about-text .about-title {
+      color: var(--teal);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* CONTACT */
+    .contact { background: var(--navy); }
+    .contact .section-title { color: var(--white); }
+    .contact .section-label { color: var(--teal); }
+    .contact .section-lead { color: rgba(255,255,255,0.7); }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-detail-icon {
+      width: 20px;
+      height: 20px;
+      fill: var(--teal);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .contact-detail p {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .contact-detail a {
+      color: var(--teal);
+      text-decoration: none;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      color: var(--white);
+      font-size: 0.93rem;
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,0.45); }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus {
+      outline: none;
+      border-color: var(--teal);
+    }
+
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+
+    .contact-form select option { background: var(--navy); }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--teal);
+      color: var(--white);
+      border: none;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-submit:hover {
+      background: var(--teal-light);
+      transform: translateY(-2px);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0F1926;
+      padding: 3rem 2rem 2rem;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.88rem;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-brand p {
+      margin-top: 0.8rem;
+      line-height: 1.7;
+      max-width: 300px;
+    }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.92rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-col ul a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul a:hover { color: var(--teal); }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .about-inner { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 1.2rem; }
+      .nav-links { display: none; }
+      section { padding: 60px 1.2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="#" class="nav-logo">Prop<span>Vivo</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-badge">Serving Bellevue, Seattle & the Eastside Since 2013</div>
+      <h1>HOA Management That<br/>Actually <em>Works</em></h1>
+      <p>Nitin Dixit built PropVivo because HOA boards deserved better — real-time financials, responsive service, and a management company that treats your community like it matters. Over 388 units across the Eastside agree.</p>
+      <div class="hero-buttons">
+        <a href="tel:4252461191" class="btn-primary">Call Nitin: (425) 246-1191</a>
+        <a href="#services" class="btn-outline">See How It Works</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span>388+</span>
+          <p>Units Managed</p>
+        </div>
+        <div class="hero-stat">
+          <span>10+</span>
+          <p>Years in Business</p>
+        </div>
+        <div class="hero-stat">
+          <span>99.9%</span>
+          <p>Platform Uptime</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM SECTION -->
+  <section class="problems" id="problems">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Sound Familiar?</div>
+        <h2 class="section-title">HOA Management Shouldn't Feel Like a Second Job</h2>
+        <p class="section-lead">Most board members are volunteers trying to do right by their neighbors — not professional property managers. The company you hire should make that easier, not harder.</p>
+      </div>
+      <div class="problem-grid">
+        <div class="problem-card reveal reveal-delay-1">
+          <h3>Nobody Picks Up the Phone</h3>
+          <p>You submit a maintenance request and wait. You call and get voicemail. You email and get a form response three days later. Residents lose trust, and board members lose sleep.</p>
+        </div>
+        <div class="problem-card reveal reveal-delay-2">
+          <h3>Financials You Can't Read</h3>
+          <p>Statements that arrive late, budgets that don't add up, and reports that require an accounting degree to interpret. Your community's money deserves clear, honest reporting.</p>
+        </div>
+        <div class="problem-card reveal reveal-delay-3">
+          <h3>A Company That Treats You Like a Number</h3>
+          <p>Too many management companies grow by stacking clients, then underdeliver on all of them. Board members end up doing the work themselves just to get things done.</p>
+        </div>
+      </div>
+      <p class="problem-bridge reveal">Nitin built PropVivo in 2013 because he'd seen these problems firsthand. <strong>Innovation, transparency, and reliability</strong> aren't marketing words at PropVivo — they're what your board will actually experience.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">What We Offer</div>
+        <h2 class="section-title">Management Solutions for Every Community</h2>
+        <p class="section-lead">Whether your community needs full-service support or just expert financial oversight, we have a solution that fits.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Full service HOA management" />
+          <div class="service-card-body">
+            <h3>Full-Service HOA Management</h3>
+            <p>End-to-end community management covering administration, finances, vendor coordination, meeting support, and resident communication. Your board can focus on the community — we handle the rest.</p>
+          </div>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=80" alt="Financial only HOA management" />
+          <div class="service-card-body">
+            <h3>Financial-Only Management</h3>
+            <p>For communities that manage themselves but need expert accounting. We handle budgeting, collections, accounts payable, financial reporting, and audit support with accuracy you can count on.</p>
+          </div>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <img class="service-card-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="Self-managed HOA software" />
+          <div class="service-card-body">
+            <h3>Self-Managed HOA Software</h3>
+            <p>Powerful, intuitive tools purpose-built for self-managed communities. Manage records, communicate with residents, track finances, and run meetings — all in one place with 99.9% uptime.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Getting Started</div>
+        <h2 class="section-title">Simple from Day One</h2>
+        <p class="section-lead">Switching management companies feels daunting. We've done this enough times to make it feel easy — for your board and for your residents.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-number">1</div>
+          <h3>Talk to Nitin Directly</h3>
+          <p>Call (425) 246-1191 and you'll reach Nitin — not a call center. He'll listen to your community's situation, ask the right questions, and give you an honest picture of what PropVivo can do.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-2">
+          <div class="step-number">2</div>
+          <h3>A Plan Built for Your Community</h3>
+          <p>We put together a proposal specific to your community's size, structure, and budget. Not a template — a real plan. You'll know exactly what you're getting before you sign anything.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-3">
+          <div class="step-number">3</div>
+          <h3>We Handle the Transition</h3>
+          <p>Records transferred. Residents notified. Vendors onboarded. We manage every piece of the handoff so your board members can get back to being neighbors instead of administrators.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="pillars" id="pillars">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom: 0;">
+        <div class="section-label">Our Commitments</div>
+        <h2 class="section-title">Three Pillars, One Promise</h2>
+        <p class="section-lead" style="margin: 0 auto;">Every decision we make at PropVivo is guided by the same three principles we've held since founding in 2013.</p>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar-card reveal reveal-delay-1">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Innovation</h3>
+          <p>We invest continuously in technology that makes community management smarter. Our platform offers 99.9% uptime so your community's data is always accessible and accurate.</p>
+        </div>
+        <div class="pillar-card reveal reveal-delay-2">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>Transparency</h3>
+          <p>Real-time financial reporting, open communication channels, and no hidden fees. Your board will always know exactly what is happening and why.</p>
+        </div>
+        <div class="pillar-card reveal reveal-delay-3">
+          <div class="pillar-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Reliability</h3>
+          <p>Consistent service delivery, dedicated support, and a team that shows up — every meeting, every deadline, every request. Communities count on us and we never take that lightly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUMBERS -->
+  <section class="numbers">
+    <div class="container">
+      <div class="reveal" style="text-align:center;">
+        <div class="section-label">By the Numbers</div>
+        <h2 class="section-title">Trusted by Communities Across the Eastside</h2>
+      </div>
+      <div class="numbers-grid">
+        <div class="number-item reveal reveal-delay-1">
+          <span>388+</span>
+          <p>Units Under Management</p>
+        </div>
+        <div class="number-item reveal reveal-delay-2">
+          <span>2013</span>
+          <p>Year Founded</p>
+        </div>
+        <div class="number-item reveal reveal-delay-3">
+          <span>99.9%</span>
+          <p>Platform Uptime</p>
+        </div>
+        <div class="number-item reveal">
+          <span>3</span>
+          <p>Core Services Offered</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">What People Say</div>
+        <h2 class="section-title">Heard from the Communities We Serve</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal reveal-delay-1">
+          <p>"We had the same management company for eight years and just assumed this was how HOA management worked — slow responses, confusing financials, vendors who never showed up. Switching to PropVivo was genuinely shocking. Nitin responded to my first email within two hours. That had literally never happened before."</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&q=80" alt="HOA board member" />
+            <div>
+              <strong>Karen M.</strong>
+              <span>Board President, 42-unit HOA, Bellevue</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <p>"We self-manage our community and brought PropVivo in for financial oversight only. Best decision we've made in years. The monthly reports are clear, the numbers are always right, and when our annual meeting came around we actually felt prepared instead of panicked."</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="HOA volunteer" />
+            <div>
+              <strong>David T.</strong>
+              <span>HOA Treasurer, Kirkland</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-3">
+          <p>"Nitin runs his company the way a good HOA should run — with transparency, follow-through, and genuine care. We've been with PropVivo for four years. Every renewal is an easy decision."</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Condo owner" />
+            <div>
+              <strong>Sandra L.</strong>
+              <span>COA Board Member, Redmond</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-image reveal">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Nitin Dixit, Founder and CEO of PropVivo" />
+        </div>
+        <div class="about-text reveal">
+          <div class="section-label">Our Story</div>
+          <h2>Nitin Built PropVivo Because He'd Seen What "Bad" Looked Like</h2>
+          <p>Nitin Dixit founded PropVivo in Bellevue in 2013 after watching HOA boards across the Eastside struggle with management companies that were unresponsive, financially opaque, and frankly not very good at their jobs. He'd seen the board member who spent her weekends chasing down vendors. The treasurer who couldn't get a straight answer on where reserve funds went. The community that voted to raise dues because no one could find the actual budget.</p>
+          <p>He built PropVivo to be the thing those communities needed: a management partner that picks up the phone, sends reports that actually make sense, and shows up at meetings prepared. Not revolutionary ideas — just executed consistently, every time.</p>
+          <p>PropVivo now manages 388+ units across Bellevue, Seattle, and the Eastside, and that original commitment to doing things right hasn't changed. Nitin still answers his own email.</p>
+          <p class="about-name">Nitin Dixit</p>
+          <p class="about-title">Founder & CEO, PropVivo Inc</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">See How PropVivo Works for Your Community</h2>
+        <p class="section-lead">Call Nitin directly at (425) 246-1191, or fill out the form below. Either way, you'll talk to a real person who knows what good HOA management looks like.</p>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-info reveal">
+          <h3>Call Nitin: (425) 246-1191</h3>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.08 2.2 2 2 0 012.06.06h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+            <p><a href="tel:4252461191">(425) 246-1191</a></p>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <p><a href="mailto:nitin@propvivo.com">nitin@propvivo.com</a></p>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <p>2018 156th Ave NE<br/>Bellevue, WA 98007</p>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <p>Monday – Friday: 9:00am – 5:00pm<br/>Pacific Time</p>
+          </div>
+        </div>
+        <div class="reveal">
+          <form class="contact-form">
+            <div class="form-row">
+              <input type="text" placeholder="Your Name" />
+              <input type="email" placeholder="Email Address" />
+            </div>
+            <input type="text" placeholder="Community / HOA Name" />
+            <div class="form-row">
+              <input type="tel" placeholder="Phone Number" />
+              <input type="text" placeholder="Number of Units" />
+            </div>
+            <select>
+              <option value="" disabled selected>Service Interested In</option>
+              <option>Full-Service HOA Management</option>
+              <option>Financial-Only Management</option>
+              <option>Self-Managed HOA Software</option>
+              <option>Not Sure — I Need Guidance</option>
+            </select>
+            <textarea placeholder="Tell us a little about your community and what you're looking for..."></textarea>
+            <button type="submit" class="btn-submit">Send My Request</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="font-size:1.2rem;">Prop<span style="color: #2A9D8F;">Vivo</span></a>
+        <p>PropVivo Inc is a next-generation community association management company serving HOAs and COAs across Seattle, Bellevue, and the greater Eastside since 2013.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Full-Service HOA Management</a></li>
+          <li><a href="#services">Financial-Only Management</a></li>
+          <li><a href="#services">Self-Managed HOA Software</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>2018 156th Ave NE, Bellevue, WA 98007 &nbsp;|&nbsp; (425) 246-1191 &nbsp;|&nbsp; nitin@propvivo.com</p>
+      <p>&copy; 2025 PropVivo Inc. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

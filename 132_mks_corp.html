@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MKS Corp | Architecture and Engineering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gray-dark: #3D3D3D;
+      --slate: #1C1C2E;
+      --amber: #C8873A;
+      --amber-light: #E09A4A;
+      --concrete: #EBEBEB;
+      --white: #FFFFFF;
+      --text: #2A2A2A;
+      --text-light: #6B6B6B;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Josefin Sans', sans-serif; letter-spacing: 0.04em; line-height: 1.2; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(28,28,46,0.97);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 68px;
+    }
+
+    .nav-logo {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+    }
+
+    .nav-logo span { color: var(--amber); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--amber); }
+
+    .nav-cta {
+      background: var(--amber) !important;
+      color: var(--white) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 2px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(28,28,46,0.92) 0%, rgba(28,28,46,0.4) 60%, rgba(28,28,46,0.1) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 5% 6rem;
+      max-width: 800px;
+    }
+
+    .hero-line {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-line-bar {
+      width: 60px;
+      height: 3px;
+      background: var(--amber);
+    }
+
+    .hero-label {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 span { color: var(--amber); }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-amber {
+      background: var(--amber);
+      color: var(--white);
+      padding: 0.9rem 2.2rem;
+      border: none;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-amber:hover { background: var(--amber-light); transform: translateY(-2px); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      padding: 0.9rem 2.2rem;
+      border: 1px solid rgba(255,255,255,0.3);
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
+
+    /* SECTIONS */
+    section { padding: 6rem 5%; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .overline {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      margin-bottom: 1.2rem;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--text-light);
+      max-width: 580px;
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    /* ABOUT */
+    .about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3.5rem;
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+    }
+
+    .about-text p {
+      font-size: 0.98rem;
+      color: var(--text-light);
+      margin-bottom: 1.2rem;
+      line-height: 1.85;
+    }
+
+    .values-row {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .value {
+      text-align: center;
+      flex: 1;
+    }
+
+    .value strong {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    /* SERVICES */
+    .services { background: var(--concrete); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 2.5rem;
+      border-bottom: 4px solid transparent;
+      transition: border-color 0.2s, transform 0.25s, box-shadow 0.25s;
+    }
+
+    .service-card:hover {
+      border-color: var(--amber);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+
+    .service-num {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--amber);
+      opacity: 0.2;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      color: var(--slate);
+    }
+
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.75;
+    }
+
+    /* SECTORS */
+    .sectors { background: var(--slate); }
+    .sectors .section-title { color: var(--white); }
+    .sectors .section-desc { color: rgba(255,255,255,0.55); }
+
+    .sectors-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .sector-card {
+      position: relative;
+      overflow: hidden;
+      height: 260px;
+    }
+
+    .sector-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .sector-card:hover img { transform: scale(1.06); }
+
+    .sector-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(28,28,46,0.85) 0%, transparent 60%);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem;
+    }
+
+    .sector-card h3 {
+      font-size: 1.2rem;
+      color: var(--white);
+    }
+
+    /* PROCESS */
+    .process { background: var(--white); }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .process-step {
+      border-top: 3px solid var(--concrete);
+      padding-top: 2rem;
+      transition: border-color 0.2s;
+    }
+
+    .process-step:hover { border-color: var(--amber); }
+
+    .step-num {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--amber);
+      opacity: 0.5;
+      margin-bottom: 1rem;
+    }
+
+    .process-step h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--slate); }
+    .process-step p { font-size: 0.85rem; color: var(--text-light); line-height: 1.65; }
+
+    /* PROJECTS */
+    .projects { background: var(--concrete); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .project-card {
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.35s;
+    }
+
+    .project-card:hover img { transform: scale(1.04); }
+
+    .project-body { padding: 1.5rem; }
+
+    .project-type {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-body h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--slate); }
+    .project-body p { font-size: 0.85rem; color: var(--text-light); line-height: 1.65; }
+
+    /* WHY MKS */
+    .why { background: var(--amber); }
+    .why .section-title { color: var(--white); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .why-item { text-align: center; }
+
+    .why-item svg { width: 40px; height: 40px; fill: none; stroke: rgba(255,255,255,0.7); stroke-width: 1.5; margin-bottom: 1rem; }
+
+    .why-item h3 { font-size: 1rem; color: var(--white); margin-bottom: 0.5rem; }
+    .why-item p { font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.65; }
+
+    /* TEAM */
+    .team { background: var(--white); }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .team-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      object-position: top;
+      margin-bottom: 1.2rem;
+    }
+
+    .team-card h3 { font-size: 1.15rem; color: var(--slate); margin-bottom: 0.3rem; }
+    .team-card .role { font-family: 'Josefin Sans', sans-serif; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--amber); margin-bottom: 0.75rem; }
+    .team-card p { font-size: 0.85rem; color: var(--text-light); line-height: 1.65; }
+
+    /* CONTACT */
+    .contact { background: var(--slate); }
+    .contact .section-title { color: var(--white); }
+    .contact .section-desc { color: rgba(255,255,255,0.55); }
+    .contact .overline { color: var(--amber); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 5rem;
+      margin-top: 3.5rem;
+    }
+
+    .contact-info h3 {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 1rem;
+      color: var(--amber);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.88rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-detail svg { width: 16px; height: 16px; min-width: 16px; fill: none; stroke: var(--amber); stroke-width: 2; margin-top: 3px; }
+
+    .contact-form { display: grid; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+
+    .form-group label {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.8rem 1rem;
+      color: var(--white);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--amber); }
+    .form-group select option { background: var(--slate); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    /* FOOTER */
+    footer {
+      background: #0F0F1A;
+      color: rgba(255,255,255,0.3);
+      padding: 2.5rem 5%;
+      text-align: center;
+    }
+
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+    .footer-logo {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo span { color: var(--amber); }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--amber); }
+    .footer-copy { font-size: 0.72rem; }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .sectors-grid { grid-template-columns: 1fr 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 580px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .sectors-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">MKS<span> Corp</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#sectors">Sectors</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact" class="nav-cta">Start a Project</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1800&q=80" alt="Modern architecture" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-line">
+        <div class="hero-line-bar"></div>
+        <span class="hero-label">Architecture and Engineering</span>
+      </div>
+      <h1>Where <span>Vision</span> Meets Structure.</h1>
+      <p>MKS Corp brings integrated architecture and engineering expertise to commercial, institutional, and mixed-use projects — delivering design that is as functional as it is considered.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-amber">Start a Project</a>
+        <a href="#services" class="btn-ghost">Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-img reveal">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=900&q=80" alt="Architects reviewing plans" />
+        </div>
+        <div class="about-text reveal reveal-delay-2">
+          <div class="overline">Who We Are</div>
+          <h2 class="section-title">Built Around Listening. Delivered Through Design.</h2>
+          <p>MKS Corp is a full-service architecture and engineering firm that approaches every project the same way: by listening first. We believe great design begins with a deep understanding of what a client actually needs — not what looks impressive in a portfolio.</p>
+          <p>Our team brings architectural design and structural engineering expertise under one roof, allowing us to develop solutions that are both visually compelling and technically sound. We work across commercial, institutional, and mixed-use sectors, with projects ranging from ground-up construction to adaptive reuse and renovation.</p>
+          <p>What sets us apart is our collaborative process. We involve clients at every stage — from programming and concept development through construction administration — so the finished project reflects their vision, not just ours.</p>
+          <div class="values-row">
+            <div class="value">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <strong>Vision</strong>
+            </div>
+            <div class="value">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <strong>Structure</strong>
+            </div>
+            <div class="value">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              <strong>Collaboration</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">What We Offer</div>
+        <h2 class="section-title">Integrated Architecture and Engineering Services</h2>
+        <p class="section-desc">From initial concept to construction administration, MKS Corp provides the full range of design and engineering services needed to bring a project from idea to reality.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-num">01</div>
+          <h3>Architectural Design</h3>
+          <p>Concept development, schematic design, and design development for commercial, institutional, and mixed-use buildings — informed by function, context, and the specific needs of each client and end user.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-num">02</div>
+          <h3>Structural Engineering</h3>
+          <p>Structural analysis, system selection, and detailed engineering for new construction and renovation projects — ensuring every building stands the way it should for as long as it needs to.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-num">03</div>
+          <h3>Interior Design and Space Planning</h3>
+          <p>Interior programming and design that creates environments people actually want to inhabit — functional, efficient, and aligned with the organizational culture and brand of each client.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-num">04</div>
+          <h3>Construction Documents</h3>
+          <p>Comprehensive construction documentation — drawings, specifications, and details — that give contractors the clarity they need to build exactly what was designed.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-num">05</div>
+          <h3>Project Management</h3>
+          <p>End-to-end project coordination, schedule management, and stakeholder communication — keeping complex projects on track from kickoff through occupancy.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-num">06</div>
+          <h3>Permitting and Compliance</h3>
+          <p>Regulatory navigation, permit application preparation, and code compliance review — handling the approvals process so our clients can focus on the project, not the paperwork.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTORS -->
+  <section class="sectors" id="sectors">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline" style="color:var(--amber);">Sectors We Serve</div>
+        <h2 class="section-title">Experience Across Every Building Type</h2>
+        <p class="section-desc">MKS Corp has delivered design and engineering solutions across a broad range of building types and client organizations.</p>
+      </div>
+      <div class="sectors-grid">
+        <div class="sector-card reveal reveal-delay-1">
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" alt="Commercial office" />
+          <div class="sector-card-overlay"><h3>Commercial Office</h3></div>
+        </div>
+        <div class="sector-card reveal reveal-delay-2">
+          <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80" alt="Education" />
+          <div class="sector-card-overlay"><h3>Education and Institutional</h3></div>
+        </div>
+        <div class="sector-card reveal reveal-delay-3">
+          <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80" alt="Healthcare" />
+          <div class="sector-card-overlay"><h3>Healthcare</h3></div>
+        </div>
+        <div class="sector-card reveal reveal-delay-1">
+          <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80" alt="Retail" />
+          <div class="sector-card-overlay"><h3>Retail and Mixed-Use</h3></div>
+        </div>
+        <div class="sector-card reveal reveal-delay-2">
+          <img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?w=800&q=80" alt="Multifamily" />
+          <div class="sector-card-overlay"><h3>Multifamily Residential</h3></div>
+        </div>
+        <div class="sector-card reveal reveal-delay-3">
+          <img src="https://images.unsplash.com/photo-1568992688065-536aad8a12f6?w=800&q=80" alt="Municipal" />
+          <div class="sector-card-overlay"><h3>Municipal and Civic</h3></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Our Approach</div>
+        <h2 class="section-title">A Process That Puts Clients First</h2>
+        <p class="section-desc">We don't design in a vacuum. Our four-phase process is built around ongoing client engagement — from first conversation to the moment you open the doors.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal reveal-delay-1">
+          <div class="step-num">01</div>
+          <h3>Discovery and Programming</h3>
+          <p>We listen deeply before we draw a line. This phase defines project goals, functional requirements, site constraints, and the vision that will guide the design.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="step-num">02</div>
+          <h3>Schematic Design</h3>
+          <p>Concepts take form. We explore multiple design directions and engage clients in selecting the approach that best serves their needs and aspirations.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="step-num">03</div>
+          <h3>Design Development</h3>
+          <p>The selected concept is refined. Structural systems, materials, and building systems are integrated. The design begins to look exactly like what you'll actually build.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-4">
+          <div class="step-num">04</div>
+          <h3>Documents and Administration</h3>
+          <p>Complete construction documents are issued. During construction, we provide administration support — answering questions, reviewing submittals, and ensuring the project is built as designed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Selected Work</div>
+        <h2 class="section-title">Projects That Tell the Story</h2>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card reveal reveal-delay-1">
+          <img src="https://images.unsplash.com/photo-1604600271594-63f3f9b3a2ae?w=700&q=80" alt="Office building project" />
+          <div class="project-body">
+            <div class="project-type">Commercial Office</div>
+            <h3>Westside Professional Center</h3>
+            <p>A 42,000-square-foot multi-tenant office building designed around natural light and flexible floor plates, delivering a workspace tenants genuinely prefer to work in.</p>
+          </div>
+        </div>
+        <div class="project-card reveal reveal-delay-2">
+          <img src="https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?w=700&q=80" alt="Education building" />
+          <div class="project-body">
+            <div class="project-type">Education</div>
+            <h3>Riverside Community Learning Center</h3>
+            <p>A community college continuing education facility designed to support diverse classroom formats, technology-rich instruction, and an welcoming environment for adult learners.</p>
+          </div>
+        </div>
+        <div class="project-card reveal reveal-delay-3">
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=700&q=80" alt="Mixed-use building" />
+          <div class="project-body">
+            <div class="project-type">Mixed-Use Residential</div>
+            <h3>Harbor Place</h3>
+            <p>An 86-unit mixed-income residential development with ground-floor retail, integrating new housing into an established neighborhood context with care and contextual sensitivity.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY MKS -->
+  <section class="why">
+    <div class="section-inner">
+      <div class="reveal">
+        <h2 class="section-title">Why Clients Choose MKS</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-item reveal reveal-delay-1">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <h3>Integrated A/E</h3>
+          <p>Architecture and engineering under one roof reduces coordination gaps and keeps your project moving.</p>
+        </div>
+        <div class="why-item reveal reveal-delay-2">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          <h3>Client-Centered</h3>
+          <p>We listen more than we talk, especially in early phases. The best designs start with understanding.</p>
+        </div>
+        <div class="why-item reveal reveal-delay-3">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <h3>On Budget</h3>
+          <p>Design decisions are made with cost in mind from day one. We don't design projects that can't be built.</p>
+        </div>
+        <div class="why-item reveal reveal-delay-4">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <h3>On Schedule</h3>
+          <p>Disciplined project management keeps every phase moving forward so your project opens when it should.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Our Team</div>
+        <h2 class="section-title">Experienced Designers. Practical Engineers.</h2>
+        <p class="section-desc">Every MKS project is led by senior professionals who bring both creative vision and technical discipline to the work.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card reveal reveal-delay-1">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80" alt="Principal Architect" />
+          <h3>Robert K. Faia</h3>
+          <div class="role">Principal Architect, AIA</div>
+          <p>With over 25 years of experience in commercial and institutional design, Bob leads the firm's design direction and maintains active involvement in every major project from concept through completion.</p>
+        </div>
+        <div class="team-card reveal reveal-delay-2">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80" alt="Director of Engineering" />
+          <h3>Sarah M. Torres, PE</h3>
+          <div class="role">Director of Structural Engineering</div>
+          <p>Sarah brings rigorous structural expertise to every project and leads our engineering team with a focus on practical, cost-effective solutions that support rather than constrain the design.</p>
+        </div>
+        <div class="team-card reveal reveal-delay-3">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=80" alt="Project Manager" />
+          <h3>Marcus D. Allen</h3>
+          <div class="role">Director of Project Management</div>
+          <p>Marcus oversees project delivery across the firm's portfolio, maintaining the schedules, client relationships, and internal coordination that keep complex projects on track.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Let's Talk</div>
+        <h2 class="section-title">Tell Us About Your Project</h2>
+        <p class="section-desc">Every project starts with a conversation. Share a little about what you're building and we'll be in touch to set up time to learn more.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal reveal-delay-1">
+          <h3>MKS Corp</h3>
+          <div class="contact-detail">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            bobfaia@mks-corp.com
+          </div>
+        </div>
+        <form class="contact-form reveal reveal-delay-2">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" placeholder="Your full name" />
+            </div>
+            <div class="form-group">
+              <label>Organization</label>
+              <input type="text" placeholder="Company or organization" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="your@email.com" />
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" placeholder="(555) 000-0000" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Project Type</label>
+            <select>
+              <option value="">Select a sector</option>
+              <option>Commercial Office</option>
+              <option>Education / Institutional</option>
+              <option>Healthcare</option>
+              <option>Retail / Mixed-Use</option>
+              <option>Multifamily Residential</option>
+              <option>Municipal / Civic</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Project Description</label>
+            <textarea placeholder="Tell us about your project — size, location, program, timeline, and what challenges we might help you solve..."></textarea>
+          </div>
+          <button type="submit" class="btn-amber" style="width:100%;text-align:center;border:none;cursor:pointer;">Send Project Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">MKS<span> Corp</span></div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#sectors">Sectors</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 MKS Corp. Architecture and Engineering. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

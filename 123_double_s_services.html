@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Double S Services | Portable Buildings, Carports & Cabins — Marquez, TX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:    #8b2020;
+      --red-lt: #a83232;
+      --earth:  #7a5c3a;
+      --tan:    #c4a46b;
+      --cream:  #f5f0e8;
+      --warm:   #ede8dc;
+      --bark:   #3d2b1f;
+      --text:   #2a1f14;
+      --muted:  #6b5a47;
+      --white:  #ffffff;
+      --radius: 6px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.10);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.65;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      background: var(--bark);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Arvo', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--tan);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--white); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--tan); }
+    .nav-cta {
+      background: var(--red);
+      color: var(--white);
+      padding: 0.5rem 1.25rem;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--red-lt); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 92vh;
+      background:
+        linear-gradient(to right, rgba(30,15,8,0.78) 45%, rgba(30,15,8,0.35) 100%),
+        url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80') center/cover no-repeat;
+      display: flex; align-items: center;
+      padding: 100px 5% 60px;
+      margin-top: 64px;
+    }
+    .hero-inner { max-width: 620px; }
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 3px;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-family: 'Arvo', serif;
+      font-size: clamp(2.1rem, 4.5vw, 3.4rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.18;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--tan);
+    }
+    .hero p {
+      color: rgba(255,255,255,0.84);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 540px;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--red-lt); transform: translateY(-2px); }
+    .btn-outline {
+      border: 2px solid var(--tan);
+      color: var(--tan);
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { background: var(--tan); color: var(--bark); }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--red);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      text-align: center;
+      padding: 0;
+    }
+    .stat-item {
+      padding: 1.5rem 1rem;
+      border-right: 1px solid rgba(255,255,255,0.18);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Arvo', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .stat-lbl {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* ── SECTION BASICS ── */
+    section { padding: 80px 5%; }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'Arvo', serif;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--bark);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 560px;
+      line-height: 1.7;
+    }
+    .center { text-align: center; }
+    .center .section-sub { margin: 0 auto; }
+
+    /* ── ABOUT ── */
+    .about { background: var(--cream); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .about-img {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .about-img img {
+      width: 100%; height: 420px; object-fit: cover; display: block;
+    }
+    .about-badge {
+      position: absolute; bottom: -18px; right: -18px;
+      background: var(--bark);
+      color: var(--tan);
+      font-family: 'Arvo', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 1.1rem 1.4rem;
+      text-align: center;
+      border-radius: 6px;
+      line-height: 1.3;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+    .about-badge span { display: block; font-size: 2rem; line-height: 1; }
+    .about-content { padding-left: 1rem; }
+    .about-content p { color: var(--muted); margin-bottom: 1rem; }
+    .about-list { list-style: none; margin-top: 1.25rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .about-list li {
+      display: flex; align-items: flex-start; gap: 0.7rem;
+      color: var(--text); font-size: 0.95rem;
+    }
+    .about-list li::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--red);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 0.55rem;
+    }
+
+    /* ── PRODUCTS ── */
+    .products { background: var(--white); }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.75rem;
+      max-width: 1100px;
+      margin: 3rem auto 0;
+    }
+    .product-card {
+      background: var(--cream);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 10px 36px rgba(0,0,0,0.14); }
+    .product-img { width: 100%; height: 200px; object-fit: cover; display: block; }
+    .product-body { padding: 1.5rem; }
+    .product-body h3 {
+      font-family: 'Arvo', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--bark);
+      margin-bottom: 0.6rem;
+    }
+    .product-body p { color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem; }
+    .product-tag {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.7rem;
+      border-radius: 3px;
+    }
+
+    /* ── PHOTO ROW ── */
+    .photo-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      height: 320px;
+      overflow: hidden;
+    }
+    .photo-strip img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ── WHY DOUBLE S ── */
+    .why { background: var(--bark); }
+    .why .section-title { color: var(--tan); }
+    .why .section-sub { color: rgba(255,255,255,0.72); }
+    .why .section-label { color: var(--tan); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 3rem auto 0;
+    }
+    .why-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(196,164,107,0.25);
+      border-radius: 8px;
+      padding: 1.75rem;
+      transition: background 0.2s;
+    }
+    .why-card:hover { background: rgba(255,255,255,0.12); }
+    .why-icon {
+      width: 48px; height: 48px;
+      background: var(--red);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .why-icon svg { width: 24px; height: 24px; fill: none; stroke: var(--white); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .why-card h3 {
+      font-family: 'Arvo', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .why-card p { color: rgba(255,255,255,0.68); font-size: 0.9rem; }
+
+    /* ── CUSTOMIZATION ── */
+    .custom { background: var(--warm); }
+    .custom-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .custom-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .option-chip {
+      background: var(--white);
+      border: 1.5px solid var(--tan);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--bark);
+      text-align: center;
+    }
+    .custom img {
+      width: 100%; height: 360px; object-fit: cover;
+      border-radius: 8px; box-shadow: var(--shadow);
+    }
+
+    /* ── DELIVERY ── */
+    .delivery { background: var(--white); }
+    .delivery-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 3rem auto 0;
+      counter-reset: step;
+    }
+    .d-step {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: var(--cream);
+      border-radius: 8px;
+      position: relative;
+    }
+    .d-num {
+      font-family: 'Arvo', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+    .d-step h3 {
+      font-family: 'Arvo', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--bark);
+      margin-bottom: 0.5rem;
+    }
+    .d-step p { color: var(--muted); font-size: 0.875rem; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--cream); }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.75rem;
+      max-width: 1100px;
+      margin: 3rem auto 0;
+    }
+    .testi-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      border-top: 4px solid var(--red);
+    }
+    .testi-stars { color: var(--tan); font-size: 1.1rem; letter-spacing: 0.05em; margin-bottom: 1rem; }
+    .testi-card p { color: var(--muted); font-size: 0.95rem; font-style: italic; margin-bottom: 1.25rem; line-height: 1.7; }
+    .testi-author { font-weight: 700; color: var(--bark); font-size: 0.9rem; }
+    .testi-loc { font-size: 0.8rem; color: var(--muted); }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background:
+        linear-gradient(rgba(30,15,8,0.82), rgba(30,15,8,0.82)),
+        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=80') center/cover no-repeat;
+      padding: 80px 5%;
+      text-align: center;
+    }
+    .cta-banner h2 {
+      font-family: 'Arvo', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .cta-banner p { color: rgba(255,255,255,0.78); font-size: 1.05rem; margin-bottom: 2rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--bark); }
+    .contact .section-title { color: var(--tan); }
+    .contact .section-label { color: var(--tan); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      max-width: 1100px;
+      margin: 3rem auto 0;
+    }
+    .contact-info h3 {
+      font-family: 'Arvo', serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .contact-detail {
+      display: flex; gap: 0.75rem;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+    }
+    .c-icon {
+      width: 36px; height: 36px;
+      background: var(--red);
+      border-radius: 6px;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .c-icon svg { width: 16px; height: 16px; fill: none; stroke: var(--white); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .contact-detail p { color: rgba(255,255,255,0.78); font-size: 0.9rem; }
+    .contact-detail strong { color: var(--white); display: block; margin-bottom: 0.2rem; }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      background: rgba(255,255,255,0.08);
+      border: 1.5px solid rgba(196,164,107,0.3);
+      color: var(--white);
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius);
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--tan);
+    }
+    .contact-form select option { background: var(--bark); color: var(--white); }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+    .btn-submit {
+      background: var(--red);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover { background: var(--red-lt); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1a0f08;
+      padding: 2.5rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo {
+      font-family: 'Arvo', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--tan);
+    }
+    .footer-logo span { color: rgba(255,255,255,0.7); }
+    footer p { color: rgba(255,255,255,0.45); font-size: 0.8rem; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-img { max-height: 340px; }
+      .custom-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .form-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      .photo-strip { grid-template-columns: 1fr; height: auto; }
+      .photo-strip img { height: 200px; }
+      .stats-bar { grid-template-columns: 1fr 1fr; }
+      .hero { min-height: 85vh; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#"><span>Double</span> S Services</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#customize">Customize</a></li>
+      <li><a href="#delivery">Delivery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Get a Quote</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <span class="hero-eyebrow">Marquez, Texas — Serving Central Texas Since 2005</span>
+      <h1>Strong Buildings.<br /><em>Simple Process.</em><br />Built for Texas.</h1>
+      <p>From storage sheds and metal carports to finished cabins and building relocation — Double S Services delivers quality portable structures at honest prices, with delivery and setup included across Central Texas.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#products">See Our Buildings</a>
+        <a class="btn-outline" href="#contact">Request a Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num">18+</span>
+      <span class="stat-lbl">Years in Business</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">100s</span>
+      <span class="stat-lbl">Structures Delivered</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">100%</span>
+      <span class="stat-lbl">Local Texas Team</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">Free</span>
+      <span class="stat-lbl">Delivery & Setup</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80" alt="Double S Services team at work" />
+        <div class="about-badge"><span>18+</span>Years<br />Serving Texas</div>
+      </div>
+      <div class="about-content reveal">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-title">Texas-Built, Texas-Proud</h2>
+        <p>Double S Services has been a trusted name in portable buildings and structures across Central Texas for over 18 years. Located at the crossroads of Highway 7 and Highway 79 near Lake Limestone in Marquez, TX, we serve farmers, ranchers, homeowners, and businesses throughout the region.</p>
+        <p>Owner Sheri Schmal built this business on a straightforward promise: give customers a quality product at a fair price, stand behind the work, and make the whole process easy. No runaround, no hidden fees — just solid structures and honest service.</p>
+        <p>Whether you need a simple storage shed for tools, a metal carport to protect your vehicles, a finished cabin for a weekend retreat, or you need an existing building relocated, we have the experience and the equipment to get it done right.</p>
+        <ul class="about-list">
+          <li>Proudly based in Marquez, TX — Hwy 7 &amp; Hwy 79</li>
+          <li>Serving Leon County and surrounding Central Texas counties</li>
+          <li>Full delivery and professional setup on every order</li>
+          <li>Custom sizing and finishing options available on most structures</li>
+          <li>Rent-to-own financing available — no credit check required</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <div class="center reveal">
+      <p class="section-label">What We Offer</p>
+      <h2 class="section-title">Quality Structures for Every Need</h2>
+      <p class="section-sub">From simple storage to fully finished living spaces, we carry a range of portable structures built to handle Texas weather and last for decades.</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card reveal">
+        <img class="product-img" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80" alt="Portable storage buildings" />
+        <div class="product-body">
+          <h3>Portable Storage Buildings</h3>
+          <p>Durable wood-framed or metal storage sheds in a range of sizes. Perfect for tools, lawn equipment, feed storage, and more. Available in multiple siding styles and colors.</p>
+          <span class="product-tag">Most Popular</span>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img class="product-img" src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80" alt="Metal carports and covers" />
+        <div class="product-body">
+          <h3>Metal Carports & Covers</h3>
+          <p>Galvanized steel carports built to protect cars, trucks, RVs, boats, and equipment. Single, double, and triple-wide options with vertical or A-frame rooflines available.</p>
+          <span class="product-tag">Texas Strong</span>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img class="product-img" src="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=800&q=80" alt="Finished cabin structures" />
+        <div class="product-body">
+          <h3>Finished Cabins</h3>
+          <p>Fully finished portable cabins with interior paneling, lofts, windows, and doors. Great for hunting camps, lake properties, guest quarters, or a backyard retreat.</p>
+          <span class="product-tag">Weekend Ready</span>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <img class="product-img" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80" alt="Building moving and relocation" />
+        <div class="product-body">
+          <h3>Building Moving & Relocation</h3>
+          <p>Have a portable building that needs to move to a new property or different spot on your land? Our experienced crew handles safe, damage-free structure relocation throughout Central Texas.</p>
+          <span class="product-tag">Specialty Service</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO STRIP -->
+  <div class="photo-strip">
+    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Satisfied customer" />
+    <img src="https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=800&q=80" alt="Storage building exterior" />
+    <img src="https://images.unsplash.com/photo-1622312702524-32e5e40c3da8?w=800&q=80" alt="Texas countryside property" />
+  </div>
+
+  <!-- WHY DOUBLE S -->
+  <section class="why" id="why">
+    <div class="center reveal">
+      <p class="section-label">Why Choose Us</p>
+      <h2 class="section-title">The Double S Difference</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.68)">Plenty of places sell buildings. Not many back them the way we do.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Built to Last</h3>
+        <p>We use quality materials — pressure-treated lumber, galvanized hardware, and weatherproof finishes — so your building holds up through Texas heat, rain, and wind for years to come.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h3>Delivery & Setup Included</h3>
+        <p>We handle the heavy lifting — literally. Every building comes with delivery and professional setup included in the price. You just point us to the spot.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Rent-to-Own Available</h3>
+        <p>No credit check required. Our rent-to-own program lets you get your building now with manageable monthly payments. Affordable ownership on your terms.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3>Local, Honest Service</h3>
+        <p>We live and work in Central Texas. When you call us, you reach a real person who knows your area. We treat every customer the way we'd want to be treated ourselves.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Quick Turnaround</h3>
+        <p>Many structures are available from inventory for fast delivery. Custom orders are typically ready within a few weeks. We respect your time and keep you informed throughout the process.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <h3>Custom Options</h3>
+        <p>Choose your size, siding style, color, roof pitch, windows, doors, and interior finish. We work with you to build a structure that fits your space and your budget.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOMIZATION -->
+  <section class="custom" id="customize">
+    <div class="custom-inner">
+      <div class="reveal">
+        <p class="section-label">Built Your Way</p>
+        <h2 class="section-title">Customize Your Building</h2>
+        <p class="section-sub">Every property is different. That's why we offer a wide range of customization options so your structure looks right, functions right, and fits your land.</p>
+        <div class="custom-options">
+          <div class="option-chip">Custom Sizing</div>
+          <div class="option-chip">Siding Styles</div>
+          <div class="option-chip">Color Selection</div>
+          <div class="option-chip">Roof Pitch</div>
+          <div class="option-chip">Windows & Vents</div>
+          <div class="option-chip">Door Placement</div>
+          <div class="option-chip">Loft Addition</div>
+          <div class="option-chip">Interior Finish</div>
+          <div class="option-chip">Workbench / Shelving</div>
+          <div class="option-chip">Ramps & Steps</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80" alt="Custom building options" />
+      </div>
+    </div>
+  </section>
+
+  <!-- DELIVERY PROCESS -->
+  <section class="delivery" id="delivery">
+    <div class="center reveal">
+      <p class="section-label">How It Works</p>
+      <h2 class="section-title">From Quote to Move-In Ready</h2>
+      <p class="section-sub">Getting your new building is simple. Here's what to expect from start to finish.</p>
+    </div>
+    <div class="delivery-steps">
+      <div class="d-step reveal">
+        <div class="d-num">01</div>
+        <h3>Choose Your Building</h3>
+        <p>Browse our selection in person at our Marquez lot or call us to discuss your needs. We'll help you find the right size and style for your property and budget.</p>
+      </div>
+      <div class="d-step reveal">
+        <div class="d-num">02</div>
+        <h3>Get Your Quote</h3>
+        <p>We provide clear, upfront pricing with no hidden fees. If you want customizations, we'll spec it out and give you an exact number before anything moves forward.</p>
+      </div>
+      <div class="d-step reveal">
+        <div class="d-num">03</div>
+        <h3>Prepare Your Site</h3>
+        <p>We'll walk you through simple site prep requirements — typically just a level, accessible area. We'll let you know exactly what to have ready before delivery day.</p>
+      </div>
+      <div class="d-step reveal">
+        <div class="d-num">04</div>
+        <h3>Delivery & Setup</h3>
+        <p>Our crew delivers and professionally sets up your building at the agreed location. We make sure everything is level, secure, and looking great before we leave.</p>
+      </div>
+      <div class="d-step reveal">
+        <div class="d-num">05</div>
+        <h3>Enjoy It</h3>
+        <p>Your new building is ready to use from day one. If you ever have questions or need anything adjusted, we're just a phone call away.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="center reveal">
+      <p class="section-label">What Customers Say</p>
+      <h2 class="section-title">Neighbors Helping Neighbors</h2>
+      <p class="section-sub">Our customers are farmers, ranchers, families, and small business owners across Central Texas. Here's what a few of them have to say.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"We needed a storage building for our farm equipment fast. Sheri walked us through everything over the phone, and the crew had it set up within a week. Solid construction, great price, and no headaches."</p>
+        <div class="testi-author">Robert &amp; Linda M.</div>
+        <div class="testi-loc">Centerville, TX</div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"We bought a cabin from Double S for our deer lease near Lake Limestone. They customized it exactly how we asked — extra windows, a loft, and a certain door placement — and it looks great out there. Will be back for a carport next year."</p>
+        <div class="testi-author">Kyle &amp; Dana F.</div>
+        <div class="testi-loc">Buffalo, TX</div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"I had them move an old portable building to my new place across the county. Honestly thought it would get damaged in the move, but they delivered it without a scratch. Professional crew, fair price. I recommend Double S to everyone I know."</p>
+        <div class="testi-author">Greg T.</div>
+        <div class="testi-loc">Normangee, TX</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <h2 class="reveal">Ready to Get Started?</h2>
+    <p class="reveal">Stop by our lot in Marquez at Hwy 7 &amp; Hwy 79, give us a call, or send us a message. We'll help you find the right building at the right price — no pressure, no runaround.</p>
+    <div class="cta-actions">
+      <a class="btn-primary" href="tel:9035291791">Call (903) 529-1791</a>
+      <a class="btn-outline" href="#contact">Send a Message</a>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="center reveal">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Contact Double S Services</h2>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <h3>Visit Us or Call Anytime</h3>
+        <div class="contact-detail">
+          <div class="c-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <p><strong>Our Location</strong>Hwy 7 &amp; Hwy 79<br />Marquez, TX 77865<br />(Near Lake Limestone)</p>
+        </div>
+        <div class="contact-detail">
+          <div class="c-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 15.92z"/></svg>
+          </div>
+          <p><strong>Phone</strong>(903) 529-1791</p>
+        </div>
+        <div class="contact-detail">
+          <div class="c-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <p><strong>Email</strong>sheri@double-s-services.com</p>
+        </div>
+        <div class="contact-detail">
+          <div class="c-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <p><strong>Hours</strong>Monday – Friday: 8:00 AM – 5:00 PM<br />Saturday: 9:00 AM – 2:00 PM<br />Sunday: By Appointment</p>
+        </div>
+      </div>
+      <form class="contact-form reveal" onsubmit="return false;">
+        <div class="form-row">
+          <input type="text" placeholder="Your Name" />
+          <input type="tel" placeholder="Phone Number" />
+        </div>
+        <input type="email" placeholder="Email Address" />
+        <select>
+          <option value="" disabled selected>What can we help you with?</option>
+          <option>Storage Building Quote</option>
+          <option>Metal Carport Quote</option>
+          <option>Cabin Quote</option>
+          <option>Building Relocation</option>
+          <option>Rent-to-Own Information</option>
+          <option>Custom Order</option>
+          <option>General Question</option>
+        </select>
+        <textarea placeholder="Tell us a little about what you need — size, intended use, property location, timeline, etc."></textarea>
+        <button class="btn-submit" type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Double S <span>Services</span></div>
+    <p>Hwy 7 &amp; Hwy 79 &bull; Marquez, TX 77865 &bull; (903) 529-1791</p>
+    <p>&copy; 2025 Double S Services. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

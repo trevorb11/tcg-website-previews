@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Structured Settlement Capital — Get Your Lump Sum Today</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #1B4332;
+      --green-mid: #2D6A4F;
+      --green-light: #40916C;
+      --gold: #C9A84C;
+      --gold-light: #D4B96A;
+      --white: #FFFFFF;
+      --cream: #FAF8F4;
+      --warm-grey: #F2EDE8;
+      --text-dark: #1A1A1A;
+      --text-mid: #4A4540;
+      --text-light: #7A736A;
+      --border: #E2DDD8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(27,67,50,0.98);
+      backdrop-filter: blur(8px);
+      padding: 0 2rem;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--green) !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 4px;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--green);
+      position: relative;
+      overflow: hidden;
+      padding: 100px 2rem 60px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 50%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1000&q=80') center/cover no-repeat;
+      opacity: 0.12;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to top, var(--white), transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 650px;
+    }
+
+    .hero-trust-bar {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .trust-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.35);
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 4px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+      max-width: 520px;
+    }
+
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--green);
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.4);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-disclaimer {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+      max-width: 480px;
+    }
+
+    /* SECTIONS */
+    section { padding: 90px 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green-light);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1.25;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      max-width: 580px;
+      line-height: 1.8;
+    }
+
+    /* WHAT WE DO */
+    .what { background: var(--cream); }
+
+    .what-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .what-image {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+    }
+
+    .what-image img { width: 100%; height: 420px; object-fit: cover; display: block; }
+
+    .what-text p {
+      color: var(--text-mid);
+      font-size: 0.97rem;
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+
+    .what-uses {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+
+    .use-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-mid);
+    }
+
+    .use-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* PROCESS */
+    .process { background: var(--white); }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 2.5rem 1.8rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--cream);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .process-step:hover { border-color: var(--gold); transform: translateY(-4px); }
+
+    .step-num {
+      width: 58px;
+      height: 58px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .process-step h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 0.7rem;
+    }
+
+    .process-step p { color: var(--text-mid); font-size: 0.91rem; line-height: 1.7; }
+
+    /* WHY US */
+    .why { background: var(--warm-grey); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .why-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 2rem;
+      border-left: 4px solid var(--gold);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .why-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 0.6rem;
+    }
+
+    .why-card p { color: var(--text-mid); font-size: 0.92rem; line-height: 1.7; }
+
+    /* IS THIS RIGHT */
+    .right-for-you { background: var(--green); }
+    .right-for-you .section-title { color: var(--white); }
+    .right-for-you .section-label { color: var(--gold); }
+
+    .right-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    .right-image {
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .right-image img { width: 100%; height: 380px; object-fit: cover; display: block; }
+
+    .right-reasons { list-style: none; }
+
+    .right-reason {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .right-reason:last-child { border-bottom: none; }
+
+    .reason-check {
+      width: 28px;
+      height: 28px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .reason-check svg { width: 14px; height: 14px; fill: var(--green); }
+
+    .right-reason p { color: rgba(255,255,255,0.8); font-size: 0.97rem; line-height: 1.65; }
+
+    /* ABOUT ANDREW */
+    .about { background: var(--cream); }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image { border-radius: 12px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.1); }
+    .about-image img { width: 100%; height: 420px; object-fit: cover; display: block; }
+
+    .about-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 1.2rem;
+    }
+
+    .about-text p { color: var(--text-mid); font-size: 0.97rem; line-height: 1.85; margin-bottom: 1rem; }
+
+    .credentials {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .credential {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.9rem;
+      color: var(--text-mid);
+    }
+
+    .credential-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+
+    /* FAQ */
+    .faq { background: var(--white); }
+
+    .faq-list { margin-top: 3rem; }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 0;
+    }
+
+    .faq-question {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 0.7rem;
+    }
+
+    .faq-answer { color: var(--text-mid); font-size: 0.95rem; line-height: 1.8; }
+
+    /* CONTACT */
+    .contact { background: var(--green); }
+    .contact .section-title { color: var(--white); }
+    .contact .section-label { color: var(--gold); }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-detail { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; }
+    .contact-detail-icon { width: 20px; height: 20px; fill: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .contact-detail p { color: rgba(255,255,255,0.7) !important; font-size: 0.93rem !important; margin-bottom: 0 !important; }
+    .contact-detail a { color: var(--gold); text-decoration: none; }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 6px;
+      padding: 0.85rem 1rem;
+      color: var(--white);
+      font-size: 0.92rem;
+      font-family: 'Lato', sans-serif;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,0.38); }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus { outline: none; border-color: var(--gold); }
+    .contact-form select option { background: var(--green); }
+    .contact-form textarea { min-height: 110px; resize: vertical; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--green);
+      border: none;
+      padding: 1rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Lato', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    .form-disclaimer {
+      margin-top: 0.8rem;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0D2218;
+      padding: 3rem 2rem 2rem;
+      color: rgba(255,255,255,0.45);
+      font-size: 0.87rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .footer-brand p { margin-top: 0.8rem; line-height: 1.7; max-width: 300px; }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.5rem; }
+    .footer-col ul a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .footer-col ul a:hover { color: var(--gold); }
+
+    .footer-legal {
+      max-width: 1100px;
+      margin: 1.5rem auto 0;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.6;
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .what-inner { grid-template-columns: 1fr; }
+      .about-inner { grid-template-columns: 1fr; }
+      .right-inner { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      section { padding: 60px 1.2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .what-uses { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Structured Settlement <span>Capital</span></a>
+    <ul class="nav-links">
+      <li><a href="#process">How It Works</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Free Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-trust-bar">
+        <div class="trust-pill">Licensed</div>
+        <div class="trust-pill">NASP Member</div>
+        <div class="trust-pill">Attorney-Led</div>
+      </div>
+      <h1>You Settled Your Case.<br/>Now You Need <em>Your Money</em><br/>— Not in 20 Years. Now.</h1>
+      <p>Structured Settlement Capital purchases your future payment rights and gives you a lump sum today. Attorney-led, court-approved, and completely transparent — Andrew Savysky walks you through every step personally.</p>
+      <div class="hero-buttons">
+        <a href="tel:7035851621" class="btn-primary">Call Andrew: (703) 585-1621</a>
+        <a href="#process" class="btn-outline">Learn How It Works</a>
+      </div>
+      <p class="hero-disclaimer">Court approval is required for all structured settlement transfers. We guide you through every step of the legal process at no cost to you until your transaction closes.</p>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="what" id="what">
+    <div class="container">
+      <div class="what-inner">
+        <div class="what-image reveal">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=700&q=80" alt="Structured settlement consultation" />
+        </div>
+        <div class="reveal">
+          <div class="section-label">What We Do</div>
+          <h2 class="section-title">Plain and Simple — We Buy Your Future Payments</h2>
+          <p>If you received a legal settlement that pays you in installments over time, you own a structured settlement. Those payments have real value today — and you have the legal right to sell some or all of them in exchange for a lump sum of cash.</p>
+          <p>Structured Settlement Capital purchases those future payment rights from you. We give you cash now. A court reviews and approves the transaction to protect your interests. Then you move forward with the money in your hands.</p>
+          <p>It's your settlement. It's your money. You should have the option to use it when you need it most — not decades from now.</p>
+          <p style="font-weight:700; color: var(--green); margin-top:0.5rem;">People commonly use their lump sum for:</p>
+          <div class="what-uses">
+            <div class="use-item"><div class="use-dot"></div>Medical expenses</div>
+            <div class="use-item"><div class="use-dot"></div>Home purchase</div>
+            <div class="use-item"><div class="use-dot"></div>Debt payoff</div>
+            <div class="use-item"><div class="use-dot"></div>Education costs</div>
+            <div class="use-item"><div class="use-dot"></div>Starting a business</div>
+            <div class="use-item"><div class="use-dot"></div>Family needs</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:0;">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">Four Steps to Your Lump Sum</h2>
+        <p class="section-lead" style="margin:0 auto;">We handle the complexity. You focus on what you want to do with your money.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal reveal-delay-1">
+          <div class="step-num">1</div>
+          <h3>Free Consultation</h3>
+          <p>Tell us about your settlement — the amount, frequency, and duration of your payments. We listen. No obligation, no pressure, no commitment.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="step-num">2</div>
+          <h3>Receive Your Offer</h3>
+          <p>We present a fair, transparent lump-sum offer. We explain exactly how we calculated it, what you would receive, and answer every question you have.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="step-num">3</div>
+          <h3>Court Approval</h3>
+          <p>All structured settlement transfers require a court hearing under state law. We prepare the filings, guide you through the process, and attend the hearing with you.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-4">
+          <div class="step-num">4</div>
+          <h3>Get Your Cash</h3>
+          <p>Once the court approves your transaction, funds are delivered to you promptly. You're free to use your money for whatever you need it for — no restrictions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why" id="why">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Why Choose Us</div>
+        <h2 class="section-title">An Attorney-Led Firm That Puts You First</h2>
+        <p class="section-lead">This industry has its share of bad actors. Structured Settlement Capital was built differently — led by an attorney who believes clients deserve transparency, fairness, and respect.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal reveal-delay-1">
+          <h3>Attorney-Led Practice</h3>
+          <p>Andrew Savysky is both the President of our firm and a licensed Florida Bar attorney. Your transaction is handled with the legal precision and ethical accountability that professional licensing demands.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-2">
+          <h3>NASP Board Member</h3>
+          <p>Andrew serves on the board of the National Association of Settlement Purchasers — the industry's own standards body. We don't just follow industry ethics; we help set them.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-3">
+          <h3>Transparent Process</h3>
+          <p>No hidden fees. No bait-and-switch offers. We show you exactly what you'll receive, what we're paying, and why. You deserve to understand the transaction completely before you sign anything.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-4">
+          <h3>Nationwide Service</h3>
+          <p>Based in South Florida, we work with clients across the United States. Wherever your settlement was issued, we have the experience and reach to help you convert it to cash.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IS THIS RIGHT FOR YOU -->
+  <section class="right-for-you" id="right-for-you">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Is This Right for You?</div>
+        <h2 class="section-title">You May Be a Good Candidate If...</h2>
+      </div>
+      <div class="right-inner">
+        <div class="right-image reveal">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=700&q=80" alt="Person considering structured settlement sale" />
+        </div>
+        <ul class="right-reasons reveal">
+          <li class="right-reason">
+            <div class="reason-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <p>You have immediate medical expenses that cannot wait for future settlement payments to arrive.</p>
+          </li>
+          <li class="right-reason">
+            <div class="reason-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <p>You want to purchase a home, make a down payment, or refinance debt to put yourself in a stronger financial position now.</p>
+          </li>
+          <li class="right-reason">
+            <div class="reason-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <p>You are funding education — for yourself or your children — and waiting for installments isn't a workable option.</p>
+          </li>
+          <li class="right-reason">
+            <div class="reason-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <p>You have an entrepreneurial opportunity you can't afford to miss, and your settlement could fund the start you need.</p>
+          </li>
+          <li class="right-reason">
+            <div class="reason-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <p>You simply want control of your own money now, rather than waiting years or decades for future payments.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT ANDREW -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-image reveal">
+          <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=700&q=80" alt="Andrew Savysky, attorney and founder" />
+        </div>
+        <div class="about-text reveal">
+          <div class="section-label">About Andrew Savysky</div>
+          <h2>An Attorney Who Actually Works for You</h2>
+          <p>Andrew Savysky is the Co-Founder, President, and General Counsel of Structured Settlement Capital. What makes him different from most players in this industry is straightforward: he is a licensed attorney first.</p>
+          <p>Andrew earned his admission to the Florida Bar and has spent his career combining legal expertise with financial services — specifically in the structured settlement purchase space. He believes that when someone is considering selling future payments, they deserve someone who understands both the legal implications and the financial realities — not just a salesperson chasing a commission.</p>
+          <p>Andrew's service on the board of the National Association of Settlement Purchasers reflects his commitment to industry standards and ethical practice. When you work with Structured Settlement Capital, you work with someone who has helped write the rules — not someone who is trying to get around them.</p>
+          <div class="credentials">
+            <div class="credential"><div class="credential-dot"></div>Co-Founder, President & General Counsel</div>
+            <div class="credential"><div class="credential-dot"></div>Licensed Florida Bar Attorney</div>
+            <div class="credential"><div class="credential-dot"></div>Board Member, National Association of Settlement Purchasers (NASP)</div>
+            <div class="credential"><div class="credential-dot"></div>South Florida based, serving clients nationwide</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:0;">
+        <div class="section-label">Frequently Asked Questions</div>
+        <h2 class="section-title">Questions We Hear Most Often</h2>
+      </div>
+      <div class="faq-list" style="max-width:780px; margin:3rem auto 0;">
+        <div class="faq-item reveal">
+          <div class="faq-question">What exactly is a structured settlement?</div>
+          <div class="faq-answer">A structured settlement is a financial arrangement where someone who won a legal claim — typically personal injury, workers' compensation, or wrongful death — receives their compensation in periodic payments over time rather than as a single lump sum. The payments are typically funded by an annuity purchased from an insurance company.</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question">Is selling my settlement payments legal?</div>
+          <div class="faq-answer">Yes. Every state has Structured Settlement Protection Act legislation that governs the sale of structured settlement payments. The process requires court approval, which is designed to protect you. Selling your future payments is a legal right you have as the settlement recipient.</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question">How long does the process take?</div>
+          <div class="faq-answer">The process typically takes 45 to 90 days from initial consultation to receipt of funds. The timeline is largely determined by court scheduling in your jurisdiction. We work to move as efficiently as the legal process allows.</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question">Will I receive the full face value of my payments?</div>
+          <div class="faq-answer">No — and any company that tells you otherwise is not being honest. We purchase your future payments at a discount to their face value (this is how all factoring companies work). We are completely transparent about the discount rate and what you will receive. The question to ask yourself is whether having the money now is worth the discount — for many people in specific circumstances, it clearly is.</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-question">Do I need my own attorney?</div>
+          <div class="faq-answer">You are not required to have separate legal representation, though you are always welcome to consult your own attorney. Because our firm is led by a licensed attorney, the legal aspects of your transaction are handled professionally and with your interests in mind throughout the process.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Get Your Free Quote</div>
+        <h2 class="section-title">Get a Free Quote — No Obligation</h2>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-info reveal">
+          <h3>Call Andrew: (703) 585-1621</h3>
+          <p>No pressure, no commitment. Andrew will personally review your settlement and tell you exactly what it's worth today — then let you decide. Most people are surprised by how straightforward the process is.</p>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.08 2.2 2 2 0 012.06.06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            <p><a href="tel:7035851621">(703) 585-1621</a></p>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <p><a href="mailto:asavysky@sasushq.com">asavysky@sasushq.com</a></p>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <p>Lauderhill, FL &nbsp;|&nbsp; Serving clients nationwide</p>
+          </div>
+        </div>
+        <div class="reveal">
+          <form class="contact-form">
+            <div class="form-row">
+              <input type="text" placeholder="Your Name" />
+              <input type="tel" placeholder="Phone Number" />
+            </div>
+            <input type="email" placeholder="Email Address" />
+            <div class="form-row">
+              <input type="text" placeholder="Approx. Monthly Payment Amount" />
+              <input type="text" placeholder="Remaining Years of Payments" />
+            </div>
+            <select>
+              <option value="" disabled selected>Primary Reason for Selling</option>
+              <option>Medical Expenses</option>
+              <option>Home Purchase / Down Payment</option>
+              <option>Debt Payoff</option>
+              <option>Education</option>
+              <option>Starting a Business</option>
+              <option>Other Financial Need</option>
+            </select>
+            <textarea placeholder="Tell us anything else you'd like us to know before we call..."></textarea>
+            <button type="submit" class="btn-submit">Get My Free Quote</button>
+            <p class="form-disclaimer">By submitting this form, you agree to be contacted by Structured Settlement Capital. Court approval is required for all structured settlement transfers. This is not legal advice.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="font-size:1rem;">Structured Settlement <span style="color:#C9A84C;">Capital</span></a>
+        <p>Structured Settlement Capital / SASU HQ — attorney-led structured settlement purchasing, serving clients across the United States from our South Florida office.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#what">What We Do</a></li>
+          <li><a href="#process">How It Works</a></li>
+          <li><a href="#about">About Andrew</a></li>
+          <li><a href="#faq">FAQs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:7035851621">(703) 585-1621</a></li>
+          <li><a href="mailto:asavysky@sasushq.com">asavysky@sasushq.com</a></li>
+          <li><a href="#contact">Get a Free Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p>Lauderhill, FL &nbsp;|&nbsp; (703) 585-1621 &nbsp;|&nbsp; asavysky@sasushq.com &nbsp;|&nbsp; &copy; 2025 Structured Settlement Capital LLC / SASU HQ. All rights reserved.</p>
+      <p style="margin-top:0.5rem;">Structured settlement purchasing is regulated by state law and requires court approval. The information on this page is for informational purposes only and does not constitute legal or financial advice. Andrew Savysky is licensed by the Florida Bar.</p>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

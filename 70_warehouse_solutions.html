@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Warehouse Solutions Inc | Equipment, Design &amp; Installation | Lakeside, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #e85d04;
+      --orange-mid: #f07820;
+      --orange-light: #ff9a3c;
+      --orange-pale: #fff3e8;
+      --charcoal: #1a1a1a;
+      --dark: #111111;
+      --dark-2: #1e1e1e;
+      --gray-dark: #2e2e2e;
+      --gray-mid: #5a5a5a;
+      --gray-light: #e0dcd6;
+      --white: #ffffff;
+      --cream: #faf8f5;
+      --off-white: #f5f2ee;
+      --text: #1a1a1a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      background: var(--dark);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .nav-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--white);
+    }
+
+    .nav-logo span { color: var(--orange); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--orange-light); }
+
+    .nav-phone {
+      color: var(--orange-light) !important;
+      font-weight: 700 !important;
+    }
+
+    .nav-cta {
+      background: var(--orange) !important;
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 5px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--orange-mid) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 120px 5% 80px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1400&q=80');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.25);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26,26,26,0.85) 0%, rgba(26,26,26,0.3) 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .hero-text { color: var(--white); }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(232,93,4,0.15);
+      border: 1px solid rgba(232,93,4,0.4);
+      color: var(--orange-light);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 3px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--orange);
+    }
+
+    .hero p {
+      color: rgba(255,255,255,0.75);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+    }
+
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-orange {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 5px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 4px 20px rgba(232,93,4,0.35);
+    }
+
+    .btn-orange:hover { background: var(--orange-mid); transform: translateY(-2px); }
+
+    .btn-white-outline {
+      display: inline-block;
+      border: 2px solid rgba(255,255,255,0.35);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .btn-white-outline:hover { border-color: var(--orange-light); color: var(--orange-light); }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .hero-stat-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-top: 3px solid var(--orange);
+      border-radius: 6px;
+      padding: 1.75rem;
+    }
+
+    .hero-stat-num {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--orange-light);
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.4rem;
+      line-height: 1.4;
+    }
+
+    /* TRUST BAR */
+    .trust-bar {
+      background: var(--orange);
+      padding: 1.75rem 5%;
+    }
+
+    .trust-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--white);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .trust-icon { font-size: 1.3rem; }
+
+    /* SECTION COMMONS */
+    section { padding: 90px 5%; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 800;
+      color: var(--charcoal);
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-sub {
+      font-size: 1.02rem;
+      color: var(--gray-mid);
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    /* ABOUT */
+    .about { background: var(--cream); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-badge {
+      position: absolute;
+      top: 1.5rem;
+      right: -1rem;
+      background: var(--orange);
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.5rem;
+      border-radius: 3px;
+      box-shadow: 0 4px 12px rgba(232,93,4,0.3);
+    }
+
+    .about p { color: var(--gray-mid); line-height: 1.85; margin-bottom: 1.25rem; }
+
+    .about-creds {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.75rem;
+    }
+
+    .cred-pill {
+      background: var(--orange-pale);
+      color: var(--orange);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      border: 1px solid rgba(232,93,4,0.2);
+    }
+
+    /* SERVICES */
+    .services { background: var(--white); }
+
+    .services-header { margin-bottom: 3.5rem; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: var(--off-white);
+      border-radius: 8px;
+      padding: 2.5rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--orange);
+      border-radius: 8px 8px 0 0;
+    }
+
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--orange-pale);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.75rem;
+    }
+
+    .service-card p { color: var(--gray-mid); font-size: 0.9rem; line-height: 1.78; }
+
+    .free-badge {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      letter-spacing: 0.05em;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    /* EQUIPMENT */
+    .equipment { background: var(--charcoal); }
+
+    .equipment .section-title { color: var(--white); }
+    .equipment .section-sub { color: rgba(255,255,255,0.65); }
+
+    .equipment-header { margin-bottom: 3.5rem; }
+
+    .equipment-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .equip-card {
+      background: var(--dark-2);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 6px;
+      padding: 2rem;
+      transition: border-color 0.3s;
+    }
+
+    .equip-card:hover { border-color: rgba(232,93,4,0.4); }
+
+    .equip-card h4 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .equip-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange-light);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .equip-card p { font-size: 0.87rem; color: rgba(255,255,255,0.55); line-height: 1.75; }
+
+    /* MARK WALLACE */
+    .leadership { background: var(--off-white); }
+
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .leader-photo {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    }
+
+    .leader-photo img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    .leader-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--charcoal);
+      margin-bottom: 0.3rem;
+    }
+
+    .leader-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1.5rem;
+    }
+
+    .leader-bio { color: var(--gray-mid); line-height: 1.85; margin-bottom: 1.25rem; }
+
+    .cert-block {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--charcoal);
+      color: var(--white);
+      padding: 0.75rem 1.25rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+
+    .cert-block span { color: var(--orange-light); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* SERVICE AREA */
+    .service-area { background: var(--cream); }
+
+    .service-area-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .area-section { margin-bottom: 2.5rem; }
+
+    .area-section h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 1.25rem;
+      font-size: 1.1rem;
+    }
+
+    .area-section h3 span {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 0.72rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 3px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    .area-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+    .area-tag {
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      color: var(--charcoal);
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+    }
+
+    .service-area-image {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+    }
+
+    .service-area-image img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--white); }
+
+    .testimonials-header { text-align: center; margin-bottom: 3rem; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      background: var(--off-white);
+      border-radius: 8px;
+      padding: 2.5rem;
+      border-left: 4px solid var(--orange);
+    }
+
+    .testimonial-text {
+      font-size: 0.92rem;
+      color: var(--gray-mid);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author { display: flex; align-items: center; gap: 1rem; }
+
+    .author-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .author-name { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--charcoal); font-size: 0.9rem; }
+    .author-role { font-size: 0.78rem; color: var(--orange); }
+
+    /* CONTACT */
+    .contact { background: var(--charcoal); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-info .section-title { color: var(--white); }
+    .contact-info .section-sub { color: rgba(255,255,255,0.65); margin-bottom: 2rem; }
+
+    .contact-detail {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .contact-detail:last-child { border-bottom: none; }
+
+    .contact-detail strong {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--orange-light);
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-detail span { color: rgba(255,255,255,0.75); font-size: 0.95rem; }
+
+    .free-assessment-note {
+      background: rgba(232,93,4,0.12);
+      border: 1px solid rgba(232,93,4,0.25);
+      border-radius: 6px;
+      padding: 1.25rem;
+      color: var(--orange-light);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+    }
+
+    .contact-form {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 3rem;
+    }
+
+    .contact-form h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 2rem;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+
+    .form-group { margin-bottom: 1.25rem; }
+
+    .form-group.full { grid-column: 1 / -1; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1.5px solid var(--gray-light);
+      border-radius: 5px;
+      font-size: 0.92rem;
+      font-family: inherit;
+      color: var(--text);
+      background: var(--cream);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--orange); }
+
+    .form-group textarea { min-height: 100px; resize: vertical; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      padding: 1rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: background 0.2s;
+      box-shadow: 0 4px 16px rgba(232,93,4,0.25);
+    }
+
+    .form-submit:hover { background: var(--orange-mid); }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.55);
+      padding: 50px 5% 30px;
+      border-top: 4px solid var(--orange);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--white);
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo span { color: var(--orange); }
+
+    .footer-brand p { font-size: 0.88rem; line-height: 1.75; max-width: 320px; }
+
+    .footer-col h4 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: var(--white);
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .footer-col a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--orange-light); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-stats { max-width: 500px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .equipment-grid { grid-template-columns: repeat(2, 1fr); }
+      .leadership-grid { grid-template-columns: 1fr; }
+      .service-area-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .equipment-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .trust-inner { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">Warehouse <span>Solutions</span></span>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#equipment">Equipment</a></li>
+      <li><a href="#leadership">Meet Mark</a></li>
+      <li><a href="tel:8007781715" class="nav-phone">800-278-1715</a></li>
+      <li><a href="#contact" class="nav-cta">Free Assessment</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <div class="hero-text reveal">
+        <span class="hero-eyebrow">Warehouse Equipment, Design &amp; Consulting | Lakeside, CA</span>
+        <h1>Your Warehouse<br />Works <em>Better</em><br />With Us.</h1>
+        <p>Equipment, design, installation, and consulting — a single-source solution for warehouses across Southern California and the Midwest. Over 50 years of combined experience, led by a Six Sigma Black Belt.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn-orange">Discuss Your Warehouse Needs</a>
+          <a href="#services" class="btn-white-outline">Our Services</a>
+        </div>
+      </div>
+      <div class="hero-stats reveal reveal-delay-2">
+        <div class="hero-stat-card">
+          <div class="hero-stat-num">50+</div>
+          <div class="hero-stat-label">Years combined team experience in material handling</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-num">#5</div>
+          <div class="hero-stat-label">Fastest growing company in San Diego County (Inc. Magazine)</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-num">#152</div>
+          <div class="hero-stat-label">Nationally — Inc. Magazine fastest growing</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-num">Free</div>
+          <div class="hero-stat-label">No-obligation warehouse assessments &amp; inspections</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-inner">
+      <div class="trust-item"><span class="trust-icon">&#127775;</span>Southern California's Largest Warehousing Equipment Company</div>
+      <div class="trust-item"><span class="trust-icon">&#128203;</span>Free Assessments — No Obligation</div>
+      <div class="trust-item"><span class="trust-icon">&#9881;</span>Six Sigma Certified Leadership</div>
+      <div class="trust-item"><span class="trust-icon">&#128205;</span>CA + Midwest Service Coverage</div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80" alt="Warehouse Solutions team reviewing layout plans" loading="lazy" />
+          <span class="about-badge">Founded 2008 | Lakeside, CA</span>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <p class="section-label">About Us</p>
+          <h2 class="section-title">Southern California's Go-To Warehouse Partner</h2>
+          <p>Warehouse Solutions Inc was founded in 2008 in Lakeside, California — the heart of San Diego County. From the start, we built the company around a simple idea: warehouses work better when the people designing and equipping them actually understand operations, not just sales.</p>
+          <p>Mark Wallace, our president and a Certified Lean, Six Sigma Black Belt Systems Engineer, leads a team with over 50 years of combined experience in material handling system design and installation. We don't just sell racks — we assess your space, design a custom solution, handle permits and engineering, install everything, and make sure it works the way your operation needs it to.</p>
+          <p>Recognized by Inc. Magazine as the 5th fastest growing company in San Diego County and 152nd nationally, we've built that growth by becoming the partner warehouse managers call when they need it done right — and when they need it done without disrupting operations.</p>
+          <div class="about-creds">
+            <span class="cred-pill">Inc. 5000 Fastest Growing</span>
+            <span class="cred-pill">Six Sigma Black Belt</span>
+            <span class="cred-pill">SoCal's Largest Warehouse Equipment Provider</span>
+            <span class="cred-pill">50+ Years Combined Experience</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="services-header reveal">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-title">A Complete Warehouse Solution Under One Roof</h2>
+        <p class="section-sub">From the first assessment to the final installation — and everything in between — we handle it. One partner for your entire project.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">&#128293;</div>
+          <h3>Equipment Sales</h3>
+          <p>New and quality used pallet racking, uprights, beams, wire decks, and specialty storage systems. We carry a wide inventory so you can move quickly when you find the right solution.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">&#128249;</div>
+          <h3>Space Planning &amp; AutoCAD Design</h3>
+          <p>Custom warehouse layout design with full AutoCAD drafting. We optimize your square footage for maximum storage capacity while maintaining safe traffic flow and pick-path efficiency.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">&#128295;</div>
+          <h3>Engineering &amp; Installation</h3>
+          <p>Professional installation with building permits obtained and managed by our team. We handle the regulatory side so you don't have to — and so the installation is code-compliant on day one.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">&#128202;</div>
+          <h3>Free Assessments &amp; Inspections<span class="free-badge">Free</span></h3>
+          <p>No-obligation warehouse assessments, seismic safety inspections, fire assessments, and safety reviews. If your rack system is aging or you're planning a change, start here.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">&#128736;</div>
+          <h3>Rack Repair &amp; Asset Recovery</h3>
+          <p>Damaged racks don't have to be replaced entirely. We repair what we can — safely — and help you recover value from end-of-life equipment through our fixed asset recovery services.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">&#9889;</div>
+          <h3>Lean &amp; Six Sigma Consulting</h3>
+          <p>Mark Wallace, Certified Lean Six Sigma Black Belt, can help you redesign your warehouse for maximum throughput, reduced waste, and improved quality — not just better storage, but better operations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPMENT -->
+  <section class="equipment" id="equipment">
+    <div class="section-inner">
+      <div class="equipment-header reveal">
+        <p class="section-label" style="color:var(--orange-light);">Equipment</p>
+        <h2 class="section-title">Every System,<br />New or Used</h2>
+        <p class="section-sub">We carry the full range of industrial storage solutions — from basic selective racking to high-density drive-in systems — in new and quality used condition.</p>
+      </div>
+      <div class="equipment-grid">
+        <div class="equip-card reveal">
+          <span class="equip-tag">Most Popular</span>
+          <h4>Selective Pallet Racking</h4>
+          <p>The workhorse of most warehouses. Direct access to every pallet position. Available in teardrop and structural configurations for any load requirement.</p>
+        </div>
+        <div class="equip-card reveal reveal-delay-1">
+          <span class="equip-tag">Long &amp; Wide Items</span>
+          <h4>Cantilever Racking</h4>
+          <p>Ideal for lumber, pipe, furniture, and other long or oversized items that don't fit on standard shelving. Available in light and heavy duty configurations.</p>
+        </div>
+        <div class="equip-card reveal reveal-delay-2">
+          <span class="equip-tag">High Density</span>
+          <h4>Drive-In Racking</h4>
+          <p>Maximize storage density for homogeneous SKUs. Forklifts drive into the rack lanes, supporting LIFO inventory management at high cube efficiency.</p>
+        </div>
+        <div class="equip-card reveal">
+          <span class="equip-tag">Space Efficient</span>
+          <h4>Push-Back Racking</h4>
+          <p>LIFO storage with multiple pallet positions deep per lane. Gravity-fed carts make loading and retrieval efficient without requiring forklifts to enter the rack.</p>
+        </div>
+        <div class="equip-card reveal reveal-delay-1">
+          <span class="equip-tag">FIFO / Flow</span>
+          <h4>Pallet Flow Systems</h4>
+          <p>First-in, first-out storage using gravity-fed rollers. Ideal for food, beverage, and date-sensitive inventory where rotation discipline is critical.</p>
+        </div>
+        <div class="equip-card reveal reveal-delay-2">
+          <span class="equip-tag">Vertical Storage</span>
+          <h4>Mezzanines &amp; Platforms</h4>
+          <p>Use the vertical space you're paying for. Structural mezzanine systems create a second level of storage or workspace within your existing building footprint.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARK WALLACE -->
+  <section class="leadership" id="leadership">
+    <div class="section-inner">
+      <div class="leadership-grid">
+        <div class="leader-photo reveal">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80" alt="Mark Wallace, President of Warehouse Solutions Inc" loading="lazy" />
+        </div>
+        <div class="reveal reveal-delay-1">
+          <p class="section-label">Meet Our President</p>
+          <h2 class="section-title">Mark Wallace</h2>
+          <p class="leader-title">President | Warehouse Solutions Inc</p>
+          <p class="leader-bio">Mark Wallace founded Warehouse Solutions Inc in 2008 with a commitment to doing things differently. Where most equipment distributors focus on moving product, Mark focused on understanding operations — on walking into a warehouse, seeing how it actually worked, and designing something better.</p>
+          <p class="leader-bio">His background in Lean and Six Sigma methodology gives Mark and his team a competitive advantage that goes beyond sales. When you bring Warehouse Solutions into your project, you're not just getting someone who knows pallet rack — you're getting a systems thinker who understands productivity, waste, safety, and the full operational context of how your warehouse needs to perform.</p>
+          <p class="leader-bio">Under his leadership, Warehouse Solutions grew to become the largest warehousing services company in Southern California and earned recognition from Inc. Magazine as one of the fastest-growing companies in the country. Mark's approach remains the same as it was in 2008: understand the problem first, then solve it with the right system — not the easiest sale.</p>
+          <div class="cert-block">
+            <span>Certified Lean, Six Sigma Black Belt Systems Engineer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="section-inner">
+      <div class="testimonials-header reveal">
+        <p class="section-label">What Our Clients Say</p>
+        <h2 class="section-title">Warehouse Managers Who Found Their Partner</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <p class="testimonial-text">"Mark walked our warehouse and within an hour had identified three things we were doing wrong and one we were doing right. The new rack design increased our storage capacity by 35%. The free assessment alone was worth more than most consultants charge for a day."</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Client photo" class="author-avatar" />
+            <div>
+              <div class="author-name">Operations Director</div>
+              <div class="author-role">Distribution Center, San Diego, CA</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-1">
+          <p class="testimonial-text">"We needed to expand from one warehouse to two with the same budget. Warehouse Solutions found us quality used racking, designed both facilities, handled permits for both, and had us operational ahead of schedule. One call to them solved a six-month problem."</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&q=80" alt="Client photo" class="author-avatar" />
+            <div>
+              <div class="author-name">VP of Logistics</div>
+              <div class="author-role">E-Commerce Fulfillment Company, LA County</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <p class="testimonial-text">"After our seismic inspection revealed compliance issues with our old rack system, Warehouse Solutions came in, assessed everything, and had us back to compliant within two weeks. They know what they're doing, they work fast, and they don't try to oversell."</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Client photo" class="author-avatar" />
+            <div>
+              <div class="author-name">Warehouse Manager</div>
+              <div class="author-role">Manufacturing Facility, Chula Vista, CA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section class="service-area">
+    <div class="section-inner">
+      <div class="service-area-grid">
+        <div class="reveal">
+          <p class="section-label">Service Area</p>
+          <h2 class="section-title">Where We Work</h2>
+          <p class="section-sub" style="margin-bottom:2.5rem;">Headquartered in Lakeside, CA — with reach across the full Southern California region and established service presence across the Midwest.</p>
+          <div class="area-section">
+            <h3>Primary Service Area <span>SoCal</span></h3>
+            <div class="area-tags">
+              <span class="area-tag">San Diego County</span>
+              <span class="area-tag">Los Angeles County</span>
+              <span class="area-tag">Orange County</span>
+              <span class="area-tag">Riverside County</span>
+              <span class="area-tag">San Bernardino County</span>
+              <span class="area-tag">Ventura County</span>
+            </div>
+          </div>
+          <div class="area-section">
+            <h3>Midwest Service Area <span>Regional</span></h3>
+            <div class="area-tags">
+              <span class="area-tag">Chicago, IL</span>
+              <span class="area-tag">St. Louis, MO</span>
+              <span class="area-tag">Kansas City, MO</span>
+              <span class="area-tag">Nashville, TN</span>
+              <span class="area-tag">Memphis, TN</span>
+              <span class="area-tag">Indianapolis, IN</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-area-image reveal reveal-delay-1">
+          <img src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=800&q=80" alt="Organized warehouse with professional racking systems" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p class="section-label" style="color:var(--orange-light);">Get Started</p>
+          <h2 class="section-title">Discuss Your Warehouse Needs</h2>
+          <p class="section-sub">Start with a free assessment. Call Mark directly or fill out the form — no obligation, no pressure, just an expert set of eyes on your facility and honest recommendations for what would actually help.</p>
+          <div class="contact-detail">
+            <strong>Toll-Free</strong>
+            <span><a href="tel:8002781715" style="color:inherit;text-decoration:none;">800-278-1715</a></span>
+          </div>
+          <div class="contact-detail">
+            <strong>Call Mark Wallace directly</strong>
+            <span><a href="tel:6197237930" style="color:inherit;text-decoration:none;">(619) 723-7930</a></span>
+          </div>
+          <div class="contact-detail">
+            <strong>Email</strong>
+            <span>markwallace@warehousesolutions.com</span>
+          </div>
+          <div class="contact-detail">
+            <strong>Location</strong>
+            <span>Lakeside, CA (San Diego County)</span>
+          </div>
+          <div class="free-assessment-note">
+            Our warehouse assessments, safety inspections, and site surveys are always free. No strings attached.
+          </div>
+        </div>
+        <div class="contact-form reveal reveal-delay-1">
+          <h3>Request a Free Assessment</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" placeholder="Full name" />
+            </div>
+            <div class="form-group">
+              <label for="company">Company</label>
+              <input type="text" id="company" placeholder="Company name" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="you@company.com" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" placeholder="(619) 000-0000" />
+            </div>
+            <div class="form-group">
+              <label for="city">City / Location</label>
+              <input type="text" id="city" placeholder="City, State" />
+            </div>
+            <div class="form-group">
+              <label for="sqft">Warehouse Size (sq ft)</label>
+              <input type="text" id="sqft" placeholder="e.g. 25,000 sq ft" />
+            </div>
+            <div class="form-group full">
+              <label for="need">What Do You Need?</label>
+              <select id="need">
+                <option value="">Select your primary need</option>
+                <option>New pallet racking installation</option>
+                <option>Used pallet racking (budget-friendly)</option>
+                <option>Warehouse layout redesign</option>
+                <option>Safety / seismic inspection</option>
+                <option>Rack repair or upgrade</option>
+                <option>Lean / process optimization</option>
+                <option>Full project — not sure where to start</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label for="message">Tell Us More</label>
+              <textarea id="message" placeholder="Describe your current warehouse setup, what's not working, and what you're hoping to improve..."></textarea>
+            </div>
+          </div>
+          <button class="form-submit" type="submit">Request My Free Assessment</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">Warehouse <span>Solutions</span></span>
+        <p>Southern California's largest warehousing services company. Equipment, design, installation, and Lean consulting for warehouses across SoCal and the Midwest. Founded 2008, Lakeside, CA.</p>
+        <p style="margin-top:1rem; font-size:0.85rem;">Lakeside, CA | <a href="tel:8002781715" style="color:inherit;text-decoration:none;">800-278-1715</a> | markwallace@warehousesolutions.com</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Equipment Sales</a></li>
+          <li><a href="#">Warehouse Design</a></li>
+          <li><a href="#">Installation</a></li>
+          <li><a href="#">Lean Consulting</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Meet Mark Wallace</a></li>
+          <li><a href="#">Service Area</a></li>
+          <li><a href="#">Free Assessment</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>2025 Warehouse Solutions Inc. All rights reserved.</span>
+      <span>Lakeside, CA | Inc. Magazine Fastest Growing | Six Sigma Certified</span>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

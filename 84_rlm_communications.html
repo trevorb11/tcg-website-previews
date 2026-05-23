@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RLM Communications | Mission-Critical Defense IT &amp; C5ISR Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --army-dark: #1a2310;
+    --army-green: #2d3d1e;
+    --army-mid: #4a6630;
+    --army-light: #7a9e50;
+    --tan: #c5b07a;
+    --tan-light: #e8d8a8;
+    --steel: #3d4e5a;
+    --steel-light: #6a7f8e;
+    --red: #8b1a1a;
+    --off-white: #f8f6f0;
+    --white: #ffffff;
+    --text: #1e2820;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+    background: var(--white);
+  }
+
+  h1, h2, h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  .container {
+    width: 90%;
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left { opacity: 0; transform: translateX(-26px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+  .reveal-right { opacity: 0; transform: translateX(26px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+  /* HEADER */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(26,35,16,0.97);
+    backdrop-filter: blur(6px);
+    border-bottom: 2px solid var(--tan);
+    padding: 14px 0;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-decoration: none;
+  }
+
+  .logo-main {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .logo-sub {
+    font-size: 0.6rem;
+    color: var(--tan);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  nav a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--tan); }
+
+  .btn-nav {
+    background: var(--tan);
+    color: var(--army-dark) !important;
+    padding: 9px 22px;
+    border-radius: 2px;
+    font-weight: 700 !important;
+  }
+  .btn-nav:hover { background: var(--tan-light) !important; }
+
+  /* HERO */
+  .hero {
+    height: 100vh;
+    min-height: 700px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: saturate(0.7) brightness(0.6);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, rgba(26,35,16,0.92) 55%, rgba(45,61,30,0.5) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--tan);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    border-left: 3px solid var(--tan);
+    padding-left: 12px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--white);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--tan);
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 36px;
+    line-height: 1.72;
+    max-width: 580px;
+    font-weight: 300;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--tan);
+    color: var(--army-dark);
+    padding: 13px 28px;
+    border-radius: 2px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--tan-light); transform: translateY(-2px); }
+
+  .btn-outline {
+    border: 2px solid rgba(255,255,255,0.5);
+    color: var(--white);
+    padding: 11px 26px;
+    border-radius: 2px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: border-color 0.2s, background 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--tan); color: var(--tan); }
+
+  /* SDVOSB BAND */
+  .sdvosb-band {
+    background: var(--tan);
+    padding: 22px 0;
+  }
+
+  .sdvosb-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .sdvosb-item {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--army-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sdvosb-item::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--army-dark);
+    border-radius: 50%;
+  }
+
+  /* SECTIONS */
+  section { padding: 90px 0; }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--army-light);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: var(--army-dark);
+    margin-bottom: 18px;
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+
+  .section-lead {
+    font-size: 1.02rem;
+    color: var(--steel);
+    max-width: 640px;
+    line-height: 1.75;
+    margin-bottom: 50px;
+    font-weight: 400;
+  }
+
+  /* CAPABILITIES */
+  .capabilities-section { background: var(--off-white); }
+
+  .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .cap-card {
+    background: var(--white);
+    border-top: 4px solid var(--army-green);
+    border-radius: 2px;
+    padding: 28px 22px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .cap-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+  }
+
+  .cap-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--army-green);
+    opacity: 0.2;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .cap-card h3 {
+    font-size: 1.15rem;
+    color: var(--army-dark);
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .cap-card p {
+    font-size: 0.88rem;
+    color: var(--steel);
+    line-height: 1.65;
+  }
+
+  /* ABOUT SPLIT */
+  .about-section { background: var(--white); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .about-image {
+    height: 480px;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 8px 8px 0 var(--tan);
+  }
+
+  .about-content p {
+    font-size: 0.94rem;
+    color: var(--steel);
+    line-height: 1.78;
+    margin-bottom: 18px;
+  }
+
+  .ceo-card {
+    background: var(--army-dark);
+    color: var(--white);
+    padding: 20px 22px;
+    border-radius: 2px;
+    margin-top: 24px;
+    border-left: 4px solid var(--tan);
+  }
+
+  .ceo-card strong {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+    color: var(--tan);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .ceo-card span {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* CERTS */
+  .certs-section { background: var(--army-dark); }
+
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .cert-item {
+    border: 1px solid rgba(197,176,122,0.3);
+    border-radius: 2px;
+    padding: 24px 16px;
+    text-align: center;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .cert-item:hover {
+    border-color: var(--tan);
+    background: rgba(197,176,122,0.05);
+  }
+
+  .cert-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--tan);
+    margin-bottom: 8px;
+    letter-spacing: 0.06em;
+  }
+
+  .cert-desc {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+  }
+
+  /* WHY SECTION */
+  .why-section { background: var(--off-white); }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .why-image {
+    height: 400px;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .why-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .why-list li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    font-size: 0.94rem;
+    color: var(--steel);
+    line-height: 1.6;
+  }
+
+  .why-list li .check {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    background: var(--army-green);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+    color: var(--tan);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+  }
+
+  /* CONTACT */
+  .contact-section { background: var(--army-green); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .contact-info .section-label { color: var(--tan); }
+  .contact-info .section-title { color: var(--white); font-size: 2.4rem; }
+  .contact-info p { font-size: 0.94rem; color: rgba(255,255,255,0.75); line-height: 1.75; margin-bottom: 28px; }
+
+  .contact-details { display: flex; flex-direction: column; gap: 12px; }
+  .c-row { font-size: 0.9rem; color: rgba(255,255,255,0.75); display: flex; gap: 10px; }
+  .c-row strong { color: var(--tan); min-width: 65px; }
+
+  .contact-form {
+    background: var(--white);
+    border-radius: 2px;
+    padding: 36px;
+  }
+
+  .form-group { margin-bottom: 18px; }
+
+  .form-group label {
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--army-dark);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid #d0d8cc;
+    border-radius: 2px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--army-green); }
+
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  .btn-submit {
+    width: 100%;
+    background: var(--army-dark);
+    color: var(--tan);
+    border: none;
+    padding: 13px;
+    border-radius: 2px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-submit:hover { background: var(--army-green); }
+
+  /* FOOTER */
+  footer {
+    background: var(--army-dark);
+    color: rgba(255,255,255,0.6);
+    padding: 50px 0 26px;
+    border-top: 2px solid var(--tan);
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 24px;
+  }
+
+  .footer-brand p { margin-top: 12px; font-size: 0.86rem; line-height: 1.7; }
+
+  .footer-col h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--tan);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .footer-col a {
+    display: block;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    font-size: 0.86rem;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--tan); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .cap-grid { grid-template-columns: 1fr 1fr; }
+    .about-grid, .why-grid, .contact-grid { grid-template-columns: 1fr; }
+    .certs-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-image, .why-image { height: 280px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  }
+
+  @media (max-width: 640px) {
+    nav { display: none; }
+    .cap-grid { grid-template-columns: 1fr; }
+    .certs-grid { grid-template-columns: 1fr 1fr; }
+    section { padding: 60px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container header-inner">
+    <a href="#" class="logo">
+      <span class="logo-main">RLM Communications</span>
+      <span class="logo-sub">Service-Disabled Veteran Owned | Fort Liberty, NC</span>
+    </a>
+    <nav>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#about">About</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact" class="btn-nav">Request a Brief</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80" alt="Mission-critical communications and technology infrastructure">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <div class="hero-eyebrow">Service-Disabled Veteran Owned Small Business (SDVOSB)</div>
+    <h1>Mission-Critical<br><em>Communications</em><br>for Those Who Serve</h1>
+    <p>RLM Communications delivers integrated C5ISR solutions, managed IT, and mission-critical technology to the U.S. Government and Department of Defense — led by a military veteran who has served and understands the mission firsthand.</p>
+    <div class="hero-ctas">
+      <a href="#capabilities" class="btn-primary">View Our Capabilities</a>
+      <a href="#contact" class="btn-outline">Request a Capabilities Brief</a>
+    </div>
+  </div>
+</section>
+
+<!-- SDVOSB BAND -->
+<div class="sdvosb-band">
+  <div class="container sdvosb-inner">
+    <span class="sdvosb-item">SDVOSB Certified</span>
+    <span class="sdvosb-item">DoD Mission Support</span>
+    <span class="sdvosb-item">Adjacent to Fort Liberty, NC</span>
+    <span class="sdvosb-item">Security-Cleared Personnel</span>
+    <span class="sdvosb-item">Federal Procurement Ready</span>
+  </div>
+</div>
+
+<!-- CAPABILITIES -->
+<section class="capabilities-section" id="capabilities">
+  <div class="container">
+    <span class="section-label reveal">Core Capabilities</span>
+    <h2 class="section-title reveal">Delivering the Mission</h2>
+    <p class="section-lead reveal">Our team of seasoned IT, information assurance, and communications professionals brings the qualifications and operational experience to design, integrate, and deploy solutions that work when it matters most.</p>
+    <div class="cap-grid">
+      <div class="cap-card reveal">
+        <div class="cap-num">01</div>
+        <h3>C5ISR Integration</h3>
+        <p>Command, Control, Communications, Computers, Combat Systems, Intelligence, Surveillance, and Reconnaissance — fully integrated solutions for the modern battlefield and operations center.</p>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-num">02</div>
+        <h3>Managed IT Solutions</h3>
+        <p>Comprehensive IT management and support services for federal agencies and defense organizations — designed for operational resilience and security compliance.</p>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-num">03</div>
+        <h3>Machine Learning Applications</h3>
+        <p>Applied machine learning solutions that enhance operational efficiency, automate analysis, and support data-driven decision-making for government clients.</p>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-num">04</div>
+        <h3>AV / VTC Systems</h3>
+        <p>Professional audiovisual and video teleconferencing systems designed and deployed for secure government and military command environments.</p>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-num">05</div>
+        <h3>Information Assurance (RMF)</h3>
+        <p>Risk Management Framework compliance, STIG implementation, and A&amp;A support to ensure your systems meet the highest federal security standards.</p>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-num">06</div>
+        <h3>Network Communications</h3>
+        <p>Design, installation, and management of secure, high-availability network infrastructure for tactical and garrison environments across the DoD enterprise.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image reveal-left">
+        <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=900&q=80" alt="Professional technology and communications team in a government environment">
+      </div>
+      <div class="reveal-right">
+        <span class="section-label">Our Story</span>
+        <h2 class="section-title">Led by Those Who Know the Mission</h2>
+        <p>RLM Communications was founded by Randy L. Moore, a military retiree who brings decades of hands-on experience in special operations communications and conventional IT systems to every engagement. He built RLM Communications with a clear purpose: to provide the U.S. Government and Department of Defense with the kind of mission-focused, technically rigorous support that only someone who has lived the mission can deliver.</p>
+        <p>Headquartered adjacent to Fort Liberty, NC, our team consists of seasoned professionals holding Security+, Network+, and CISSP certifications — many with operational and cleared backgrounds that inform every solution we design and deploy.</p>
+        <p>As a certified Service-Disabled Veteran Owned Small Business, we are eligible for SDVOSB set-aside contracts and bring the agility of a focused team with the depth of enterprise-level expertise.</p>
+        <div class="ceo-card">
+          <strong>Randy L. Moore</strong>
+          <span>Owner, President &amp; CEO | Military Retiree | Special Operations Communications Veteran</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certs-section" id="certifications">
+  <div class="container">
+    <span class="section-label reveal" style="color: var(--tan); text-align: center; display: block;">Credentials</span>
+    <h2 class="section-title reveal" style="color: var(--white); text-align: center; margin-bottom: 48px;">Qualified. Cleared. Certified.</h2>
+    <div class="certs-grid">
+      <div class="cert-item reveal">
+        <div class="cert-name">Security+</div>
+        <div class="cert-desc">CompTIA Security+ certified professionals ensuring information assurance at every level</div>
+      </div>
+      <div class="cert-item reveal">
+        <div class="cert-name">Network+</div>
+        <div class="cert-desc">Network+ certified engineers designing and maintaining mission-critical network infrastructure</div>
+      </div>
+      <div class="cert-item reveal">
+        <div class="cert-name">CISSP</div>
+        <div class="cert-desc">Certified Information Systems Security Professionals with enterprise-level cybersecurity expertise</div>
+      </div>
+      <div class="cert-item reveal">
+        <div class="cert-name">SDVOSB</div>
+        <div class="cert-desc">Certified Service-Disabled Veteran Owned Small Business — eligible for federal set-aside contracts</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY RLM -->
+<section class="why-section">
+  <div class="container">
+    <div class="why-grid">
+      <div class="reveal-left">
+        <span class="section-label">Why RLM Communications</span>
+        <h2 class="section-title">Partners Who Understand the Stakes</h2>
+        <p class="section-lead">When you work with RLM Communications, you are working with a team that has operated in the environments your systems will support. That experience is not a credential — it is a foundation.</p>
+        <ul class="why-list">
+          <li><span class="check">+</span>Deep operational experience in special operations and conventional military communications</li>
+          <li><span class="check">+</span>Combat-proven professionals who understand mission requirements beyond the tech spec</li>
+          <li><span class="check">+</span>Proximity to Fort Liberty — rapid response and on-site availability</li>
+          <li><span class="check">+</span>Security-cleared personnel who can work in restricted environments</li>
+          <li><span class="check">+</span>Agility of a small business with the expertise of a seasoned enterprise team</li>
+          <li><span class="check">+</span>SDVOSB certification supporting your small business contracting goals</li>
+        </ul>
+      </div>
+      <div class="why-image reveal-right">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=80" alt="Professional government communications and IT specialist at work">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <span class="section-label">Get in Touch</span>
+        <h2 class="section-title">Connect With Our Team</h2>
+        <p>Whether you are looking for a capabilities brief, exploring contract opportunities, or need mission-critical communications support — reach out and we will respond directly and quickly.</p>
+        <div class="contact-details">
+          <div class="c-row"><strong>Email:</strong><span>RandyMoore@RLM-Communications.com</span></div>
+          <div class="c-row"><strong>Location:</strong><span>Adjacent to Fort Liberty, NC</span></div>
+          <div class="c-row"><strong>Status:</strong><span>SDVOSB Certified | Active Federal Contracting</span></div>
+        </div>
+      </div>
+      <div class="contact-form reveal-right">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label>Organization / Agency</label>
+          <input type="text" placeholder="Agency or company name">
+        </div>
+        <div class="form-group">
+          <label>Area of Interest</label>
+          <select>
+            <option value="">Select capability area</option>
+            <option>C5ISR Integration</option>
+            <option>Managed IT Solutions</option>
+            <option>Machine Learning Applications</option>
+            <option>AV / VTC Systems</option>
+            <option>Information Assurance / RMF</option>
+            <option>Network Communications</option>
+            <option>Contracting / SDVOSB Opportunities</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Describe your requirement or inquiry..."></textarea>
+        </div>
+        <button class="btn-submit">Send Inquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <span class="logo-main">RLM Communications</span>
+          <span class="logo-sub">Service-Disabled Veteran Owned Small Business</span>
+        </a>
+        <p>Mission-critical C5ISR, IT, and communications solutions for the U.S. Government and Department of Defense — led by those who have served the mission firsthand.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Capabilities</h4>
+        <a href="#">C5ISR Integration</a>
+        <a href="#">Managed IT</a>
+        <a href="#">Machine Learning</a>
+        <a href="#">AV / VTC Systems</a>
+        <a href="#">Information Assurance</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:RandyMoore@RLM-Communications.com">RandyMoore@RLM-Communications.com</a>
+        <a href="#">Fort Liberty, NC Area</a>
+        <a href="#">SDVOSB Certified</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 RLM Communications, Inc. All rights reserved.</span>
+      <span>SDVOSB | Fort Liberty, NC | Mission-Critical Communications</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

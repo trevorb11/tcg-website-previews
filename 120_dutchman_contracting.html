@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dutchman Contracting Corp | General Contractor | New York</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #1a4a2e;
+      --green-mid: #2d6a45;
+      --green-light: #4a9a6a;
+      --tan: #c4a46b;
+      --tan-light: #d4b78a;
+      --cream: #f7f3ec;
+      --charcoal: #2c2f34;
+      --white: #ffffff;
+      --gray: #6b7280;
+      --gray-light: #e5e7e0;
+      --text: #1f2937;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Cabin', sans-serif; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(26, 74, 46, 0.98);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .nav-logo {
+      font-family: 'Cabin', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--tan-light); }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      font-size: 0.87rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--tan-light); }
+
+    .nav-cta {
+      background: var(--tan);
+      color: var(--charcoal) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 4px;
+      font-weight: 700 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--tan-light) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--charcoal);
+      display: flex;
+      align-items: center;
+      padding: 120px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.22;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(44,47,52,0.97) 50%, transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--tan-light);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--tan);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      color: var(--white);
+      line-height: 1.15;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span { color: var(--tan-light); }
+
+    .hero p {
+      font-size: 1.08rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 2.5rem;
+      max-width: 520px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--tan);
+      color: var(--charcoal);
+      font-family: 'Cabin', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--tan-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      font-family: 'Cabin', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.4);
+      transition: border-color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--tan-light); }
+
+    /* TRUST BAR */
+    .trust-bar {
+      background: var(--green);
+      padding: 22px 5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .trust-dot { width: 6px; height: 6px; background: var(--tan-light); border-radius: 50%; }
+
+    /* SECTIONS */
+    section { padding: 90px 5%; }
+
+    .section-label {
+      font-family: 'Cabin', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green-light);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-heading {
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      color: var(--green);
+      margin-bottom: 1rem;
+    }
+
+    .section-intro {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 580px;
+      margin-bottom: 3rem;
+    }
+
+    /* ABOUT */
+    .about { background: var(--cream); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-image { position: relative; }
+
+    .about-image img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .about-years {
+      position: absolute;
+      bottom: 24px;
+      left: -16px;
+      background: var(--green);
+      color: var(--white);
+      padding: 1.2rem 1.6rem;
+      border-radius: 6px;
+      border-left: 4px solid var(--tan);
+    }
+
+    .about-years strong {
+      display: block;
+      font-family: 'Cabin', sans-serif;
+      font-size: 2rem;
+      color: var(--tan-light);
+    }
+
+    .about-years span { font-size: 0.82rem; opacity: 0.8; }
+
+    .about-text p { color: var(--gray); margin-bottom: 1.2rem; }
+
+    .values-list {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+
+    .values-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      padding: 0.85rem 1rem;
+      background: var(--white);
+      border-radius: 6px;
+      border-left: 3px solid var(--green-light);
+    }
+
+    .values-list li strong {
+      display: block;
+      color: var(--green);
+      font-family: 'Cabin', sans-serif;
+      font-size: 0.9rem;
+    }
+
+    .values-list li span { font-size: 0.85rem; color: var(--gray); }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--cream);
+      border-radius: 6px;
+      padding: 2rem;
+      border-top: 4px solid var(--tan);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 35px rgba(26,74,46,0.12);
+    }
+
+    .service-card h3 {
+      font-size: 1.05rem;
+      color: var(--green);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    /* GALLERY */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 240px 240px;
+      gap: 4px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery img:first-child {
+      grid-row: span 2;
+    }
+
+    /* WHY US */
+    .why-us { background: var(--green); }
+
+    .why-us .section-heading { color: var(--white); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .why-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 1.8rem;
+      transition: background 0.2s;
+    }
+
+    .why-card:hover { background: rgba(255,255,255,0.13); }
+
+    .why-card h4 {
+      font-family: 'Cabin', sans-serif;
+      font-size: 0.95rem;
+      color: var(--tan-light);
+      margin-bottom: 0.4rem;
+    }
+
+    .why-card p {
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.65;
+    }
+
+    /* PROCESS */
+    .process { background: var(--cream); }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      counter-reset: proc;
+    }
+
+    .process-step {
+      counter-increment: proc;
+      background: var(--white);
+      border-radius: 6px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .process-step::before {
+      content: counter(proc);
+      display: block;
+      width: 50px;
+      height: 50px;
+      background: var(--green);
+      color: var(--white);
+      border-radius: 50%;
+      font-family: 'Cabin', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      line-height: 50px;
+      margin: 0 auto 1.2rem;
+    }
+
+    .process-step h4 {
+      font-size: 0.9rem;
+      color: var(--green);
+      margin-bottom: 0.4rem;
+    }
+
+    .process-step p {
+      font-size: 0.83rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--white); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--cream);
+      border-radius: 6px;
+      padding: 2rem;
+      border-bottom: 4px solid var(--green-light);
+    }
+
+    .testimonial-card p {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+
+    .testimonial-author img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .testimonial-author strong { display: block; font-size: 0.9rem; color: var(--green); }
+    .testimonial-author span { font-size: 0.8rem; color: var(--gray); }
+
+    /* CONTACT */
+    .contact { background: var(--cream); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .contact-info h2 { font-size: 1.8rem; color: var(--green); margin-bottom: 1rem; }
+    .contact-info p { color: var(--gray); margin-bottom: 2rem; }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: var(--white);
+      border-radius: 6px;
+      margin-bottom: 0.75rem;
+      border-left: 3px solid var(--tan);
+    }
+
+    .contact-detail strong {
+      display: block;
+      font-family: 'Cabin', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-detail span { font-size: 0.92rem; color: var(--text); }
+
+    .contact-form {
+      background: var(--green);
+      padding: 2.5rem;
+      border-radius: 8px;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.2rem; }
+
+    .form-group label {
+      display: block;
+      font-family: 'Cabin', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.92rem;
+      color: var(--white);
+      background: rgba(255,255,255,0.09);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--tan-light); }
+
+    .form-group select option { background: var(--green); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+
+    /* CTA */
+    .cta-section {
+      background: var(--charcoal);
+      text-align: center;
+      padding: 90px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1400&q=80') center/cover no-repeat;
+      opacity: 0.1;
+    }
+
+    .cta-section > * { position: relative; z-index: 2; }
+
+    .cta-section h2 { font-size: clamp(1.7rem, 3.5vw, 2.6rem); color: var(--white); margin-bottom: 1rem; }
+    .cta-section p { color: rgba(255,255,255,0.72); font-size: 1.05rem; margin-bottom: 2.5rem; }
+
+    /* FOOTER */
+    footer {
+      background: var(--green);
+      color: rgba(255,255,255,0.55);
+      padding: 60px 5% 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+    }
+
+    .footer-brand p { font-size: 0.87rem; margin-top: 1rem; line-height: 1.7; }
+
+    .footer-col h4 {
+      font-family: 'Cabin', sans-serif;
+      color: var(--tan-light);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.6rem; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.87rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--tan-light); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .about-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-years { display: none; }
+      .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 220px; }
+      .gallery img:first-child { grid-row: auto; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      section { padding: 65px 5%; }
+      .form-row { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Dutchman <span>Contracting</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact" class="nav-cta">Free Estimate</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-eyebrow">General Contractor &mdash; New York Area</div>
+      <h1>Built on Craftsmanship.<br>Delivered <span>On Time.</span></h1>
+      <p>Three decades of quality general contracting and carpentry in the New York area. We show up, we build it right, and we don't leave until it's done.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Request a Free Estimate</a>
+        <a href="#services" class="btn-outline">Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust-bar">
+    <div class="trust-item"><div class="trust-dot"></div>30+ Years in Business</div>
+    <div class="trust-item"><div class="trust-dot"></div>New York Area</div>
+    <div class="trust-item"><div class="trust-dot"></div>On Time, Under Budget</div>
+    <div class="trust-item"><div class="trust-dot"></div>Licensed and Insured</div>
+    <div class="trust-item"><div class="trust-dot"></div>Carpentry Specialists</div>
+  </div>
+
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="about-image reveal">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80" alt="Construction crew at work" />
+        <div class="about-years">
+          <strong>30+</strong>
+          <span>Years Building in New York</span>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <p class="section-label">Who We Are</p>
+        <h2 class="section-heading">A Contracting Company Built on Reputation</h2>
+        <p>Dutchman Contracting Corp has been a trusted name in New York area construction for over three decades. Under the leadership of Tom, our president who has driven the company's growth since its early days, Dutchman has built its reputation job by job — doing what we said we'd do, when we said we'd do it, at the price we agreed on.</p>
+        <p>That sounds simple, but in the construction industry it's rarer than it should be. We've built long-term relationships with commercial clients, property managers, and developers who come back to us again and again because they know what they're going to get: quality craftsmanship, transparent communication, and a finished project that stands the test of time.</p>
+        <p>Our team includes experienced construction professionals who have run their own companies and brought that entrepreneurial accountability to every project they work on. When you hire Dutchman, you're getting people who take personal ownership of the work.</p>
+        <ul class="values-list">
+          <li>
+            <div>
+              <strong>On Time, Under Budget</strong>
+              <span>We set realistic timelines and hold ourselves to them.</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Craftsman Quality</strong>
+              <span>We don't cut corners. Every detail reflects our 30-year reputation.</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Clear Communication</strong>
+              <span>We return calls, give updates, and flag issues before they become problems.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">What We Build</p>
+      <h2 class="section-heading reveal">General Contracting and Carpentry Services</h2>
+      <p class="section-intro reveal">From ground-up new construction to precision finish carpentry, our team handles the full scope of commercial and residential contracting work.</p>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <h3>General Contracting</h3>
+          <p>Full-scope general contracting for commercial and residential projects. We manage every trade, every timeline, and every detail so you don't have to.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Carpentry and Millwork</h3>
+          <p>From structural framing to high-end finish carpentry and custom millwork — we take craftsmanship seriously at every level of the build.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Commercial Renovations</h3>
+          <p>Office, retail, and commercial space renovations with minimum disruption to your tenants and business operations.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>New Construction</h3>
+          <p>Ground-up construction for commercial and residential clients, managed from permit through final inspection.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Tenant Improvements and Build-Outs</h3>
+          <p>Custom tenant improvement and interior build-out services tailored to each tenant's specific space requirements and brand standards.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Project Management</h3>
+          <p>Owner-representative and project management services for clients who need professional oversight without a full construction team in-house.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&q=80" alt="Construction project" />
+    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=700&q=80" alt="Wood interior" />
+    <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=700&q=80" alt="Building exterior" />
+  </div>
+
+  <section class="why-us" id="why">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal" style="color:var(--tan-light);">Why Dutchman</p>
+      <h2 class="section-heading reveal">Why Clients Keep Coming Back</h2>
+      <p class="section-intro reveal" style="color:rgba(255,255,255,0.65);">Thirty years of repeat business don't happen by accident. Here's what defines how we work.</p>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <h4>30+ Years of Experience</h4>
+          <p>Three decades of New York-area construction experience means we've seen — and solved — every challenge a project can throw at us.</p>
+        </div>
+        <div class="why-card reveal">
+          <h4>No Shortcuts on Quality</h4>
+          <p>Our reputation is built on every project we've ever completed. We can't afford to let a single job define us negatively.</p>
+        </div>
+        <div class="why-card reveal">
+          <h4>Experienced Leadership</h4>
+          <p>Our team includes professionals who have led their own companies. They bring the ownership mentality to every project.</p>
+        </div>
+        <div class="why-card reveal">
+          <h4>Relationship-Based</h4>
+          <p>Most of our work comes from repeat clients and referrals. That trust is our most valuable asset.</p>
+        </div>
+        <div class="why-card reveal">
+          <h4>Licensed and Insured</h4>
+          <p>Fully licensed, bonded, and insured for the peace of mind of every client and property manager we work with.</p>
+        </div>
+        <div class="why-card reveal">
+          <h4>Clear Communication</h4>
+          <p>We pick up the phone. We return messages. We give you honest updates — good news and bad — before you have to ask.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="process">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">How We Work</p>
+      <h2 class="section-heading reveal">From Estimate to Final Walkthrough</h2>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <h4>Site Visit and Assessment</h4>
+          <p>We walk the site with you, understand your goals, and identify any conditions that might affect scope or timeline.</p>
+        </div>
+        <div class="process-step reveal">
+          <h4>Detailed Estimate</h4>
+          <p>A clear, itemized estimate with no hidden line items. We explain every number before you sign anything.</p>
+        </div>
+        <div class="process-step reveal">
+          <h4>Contract and Scheduling</h4>
+          <p>Straightforward contract with a realistic schedule that accounts for your needs and our crew's availability.</p>
+        </div>
+        <div class="process-step reveal">
+          <h4>Execution and Updates</h4>
+          <p>Regular progress updates throughout the project so you always know where things stand.</p>
+        </div>
+        <div class="process-step reveal">
+          <h4>Final Walkthrough</h4>
+          <p>We walk the completed work with you, address the punch list, and don't consider the job done until you're satisfied.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">Client Stories</p>
+      <h2 class="section-heading reveal">What Our Clients Say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <p>Dutchman built out three of our commercial spaces in the past four years. Every time — on time, on budget, excellent quality. When you find a contractor who delivers consistently like that, you stop looking for anyone else.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80" alt="Client" />
+            <div>
+              <strong>Michael B.</strong>
+              <span>Commercial Property Developer, New York</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>The millwork Tom's crew did in our office renovation is genuinely stunning. They're craftsmen in the truest sense. People still comment on it years later. We'll never use anyone else for our properties.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80" alt="Client" />
+            <div>
+              <strong>Sarah W.</strong>
+              <span>Managing Partner, Law Firm</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>I've hired three contractors in my years managing this building. Dutchman is the only one who called me back on the same day, showed up when they said they would, and finished within the week they quoted. That's all I ask for — and they delivered.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Client" />
+            <div>
+              <strong>Greg F.</strong>
+              <span>Building Manager, Westchester County</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <h2>Let's Build Something Together.</h2>
+    <p>Give us a call or fill out the form and we'll schedule a site visit and free estimate at your convenience.</p>
+    <a href="#contact" class="btn-primary">Request a Free Estimate</a>
+  </div>
+
+  <section class="contact" id="contact">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p class="section-label">Get in Touch</p>
+        <h2>Ready to Start a Conversation?</h2>
+        <p>Whether you have a detailed scope or just a rough idea, we'd love to hear about your project. We respond to all inquiries within one business day.</p>
+        <div class="contact-detail">
+          <div>
+            <strong>Email</strong>
+            <span>rich@dutchmancont.com</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div>
+            <strong>Website</strong>
+            <span>dutchmancont.com</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div>
+            <strong>Service Area</strong>
+            <span>New York Metro Area</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <h3 style="font-family:'Cabin',sans-serif;font-size:1.3rem;color:var(--white);margin-bottom:1.5rem;">Request a Free Estimate</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="First" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Last" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="you@email.com" />
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" placeholder="(914) 555-0100" />
+        </div>
+        <div class="form-group">
+          <label>Project Type</label>
+          <select>
+            <option value="">What are you building?</option>
+            <option>General Contracting</option>
+            <option>Carpentry / Millwork</option>
+            <option>Commercial Renovation</option>
+            <option>New Construction</option>
+            <option>Tenant Improvement</option>
+            <option>Project Management</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Project Description</label>
+          <textarea placeholder="Tell us about your project — location, scope, timeline, and anything else that will help us give you an accurate estimate..."></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;padding:1rem;font-size:1rem;">Request Estimate</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">Dutchman <span>Contracting</span></a>
+        <p>Dutchman Contracting Corp &mdash; quality general contracting and carpentry in the New York area for over three decades. On time, under budget, no exceptions.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">General Contracting</a></li>
+          <li><a href="#">Carpentry</a></li>
+          <li><a href="#">Commercial Renovation</a></li>
+          <li><a href="#">New Construction</a></li>
+          <li><a href="#">Tenant Improvements</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:rich@dutchmancont.com">rich@dutchmancont.com</a></li>
+          <li><a href="#">New York Metro Area</a></li>
+          <li><a href="#">dutchmancont.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Dutchman Contracting Corp. All rights reserved.</p>
+      <p>New York &bull; Licensed and Insured &bull; 30+ Years</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

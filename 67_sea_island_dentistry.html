@@ -1,0 +1,2164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sea Island Dentistry | Dr. Kyle Farnsworth, DMD | Ladys Island, SC</title>
+  <meta name="description" content="Sea Island Dentistry offers comprehensive, modern, judgment-free dental care in Ladys Island and Beaufort, SC. Dr. Kyle Farnsworth, DMD. Book your appointment today." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Hind:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #2a9d8f;
+      --teal-light: #3dbdad;
+      --teal-dark: #1a7a6f;
+      --teal-deep: #155f57;
+      --teal-pale: #e6f5f3;
+      --teal-glow: rgba(42,157,143,0.15);
+      --coral: #e76f51;
+      --coral-light: #f09c85;
+      --coral-dark: #c85a3e;
+      --sand: #e9c46a;
+      --sand-light: #f4d98c;
+      --sand-pale: #fdf8ed;
+      --cream: #fdfaf5;
+      --white: #ffffff;
+      --off-white: #f8f9fa;
+      --gray-100: #f1f0ee;
+      --gray-200: #e4e2de;
+      --gray-400: #a8a49c;
+      --gray-600: #6b6660;
+      --gray-800: #3a3530;
+      --text: #2a2520;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+      --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+      --shadow-xl: 0 30px 80px rgba(0,0,0,0.15);
+      --glass: rgba(255,255,255,0.7);
+      --glass-border: rgba(255,255,255,0.3);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Hind', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ========== NAVIGATION ========== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+      transition: box-shadow 0.3s, background 0.3s;
+    }
+
+    nav.scrolled {
+      background: rgba(255,255,255,0.97);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+    }
+
+    .nav-brand { display: flex; align-items: center; gap: 0.75rem; }
+
+    .nav-tooth {
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-light));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .nav-tooth svg { width: 22px; height: 22px; fill: white; }
+
+    .nav-brand-text { display: flex; flex-direction: column; }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--teal-deep);
+      line-height: 1.1;
+    }
+
+    .nav-tagline {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-top: 0.1rem;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+
+    .nav-links a {
+      color: var(--gray-600);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.25s;
+      position: relative;
+    }
+
+    .nav-links a:not(.nav-cta):not(.nav-phone)::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--teal);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:not(.nav-cta):not(.nav-phone):hover::after { width: 100%; }
+    .nav-links a:hover { color: var(--teal); }
+
+    .nav-phone {
+      font-weight: 600 !important;
+      color: var(--teal-dark) !important;
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--teal), var(--teal-light)) !important;
+      color: var(--white) !important;
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600 !important;
+      transition: transform 0.25s, box-shadow 0.25s !important;
+      box-shadow: 0 4px 15px var(--teal-glow);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 6px 25px rgba(42,157,143,0.3) !important;
+    }
+
+    .nav-cta::after { display: none !important; }
+
+    /* Mobile menu */
+    .mobile-menu-btn {
+      display: none;
+      background: none; border: none;
+      cursor: pointer; padding: 0.5rem;
+    }
+
+    .mobile-menu-btn span {
+      display: block; width: 24px; height: 2px;
+      background: var(--gray-800);
+      margin: 6px 0;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 5% 80px;
+      background: linear-gradient(160deg, var(--teal-pale) 0%, var(--sand-pale) 35%, var(--cream) 65%, var(--white) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(42,157,143,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(231,111,81,0.04) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    /* Subtle floating tooth shapes */
+    .hero-deco {
+      position: absolute;
+      opacity: 0.04;
+      pointer-events: none;
+    }
+    .hero-deco-1 { top: 15%; right: 8%; width: 120px; height: 120px; animation: float 8s ease-in-out infinite; }
+    .hero-deco-2 { bottom: 20%; left: 5%; width: 80px; height: 80px; animation: float 10s ease-in-out infinite reverse; }
+    .hero-deco-3 { top: 60%; right: 25%; width: 60px; height: 60px; animation: float 12s ease-in-out infinite 2s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    .hero-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 50px;
+      padding: 0.4rem 1rem 0.4rem 0.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--teal-dark);
+    }
+
+    .hero-badge-dot {
+      width: 8px; height: 8px;
+      background: var(--coral);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.3); }
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.12;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 .highlight {
+      color: var(--teal);
+      position: relative;
+    }
+
+    .hero h1 .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 2px; left: 0;
+      width: 100%; height: 8px;
+      background: rgba(42,157,143,0.12);
+      border-radius: 4px;
+      z-index: -1;
+    }
+
+    .hero-text {
+      color: var(--gray-600);
+      font-size: 1.1rem;
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+      max-width: 520px;
+    }
+
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--teal), var(--teal-light));
+      color: var(--white);
+      padding: 1rem 2.2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 6px 25px var(--teal-glow);
+      border: none; cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 40px rgba(42,157,143,0.3);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border: 2px solid var(--gray-200);
+      color: var(--text);
+      padding: 1rem 2.2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .btn-secondary:hover { border-color: var(--teal); background: var(--teal-pale); }
+
+    /* Hero stats strip */
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--gray-400);
+      margin-top: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Hero visual */
+    .hero-visual { position: relative; }
+
+    .hero-image-main {
+      width: 100%;
+      height: 540px;
+      object-fit: cover;
+      border-radius: var(--radius-xl);
+      display: block;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .hero-float {
+      position: absolute;
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.4rem;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-float-1 {
+      bottom: 2rem; left: -1.5rem;
+      animation-delay: 0s;
+    }
+
+    .hero-float-2 {
+      top: 2rem; right: -1.5rem;
+      animation-delay: 3s;
+    }
+
+    .hero-float-3 {
+      bottom: 8rem; right: -2rem;
+      animation-delay: 1.5s;
+    }
+
+    .float-icon-circle {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .float-icon-circle.teal { background: var(--teal-pale); }
+    .float-icon-circle.coral { background: rgba(231,111,81,0.1); }
+    .float-icon-circle.sand { background: rgba(233,196,106,0.15); }
+
+    .float-icon-circle svg { width: 22px; height: 22px; }
+
+    .float-info strong {
+      display: block;
+      font-weight: 600;
+      color: var(--text);
+      font-size: 0.88rem;
+      line-height: 1.2;
+    }
+    .float-info span { font-size: 0.72rem; color: var(--gray-400); }
+
+    /* ========== WAVE DIVIDER ========== */
+    .wave-divider {
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      position: relative;
+      margin-top: -1px;
+    }
+
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+      height: 80px;
+    }
+
+    .wave-divider.flip { transform: scaleY(-1); margin-top: 0; margin-bottom: -1px; }
+
+    /* ========== TRUST STRIP ========== */
+    .trust-strip {
+      background: linear-gradient(135deg, var(--teal-dark), var(--teal));
+      padding: 3.5rem 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .trust-strip::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .trust-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .trust-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .trust-label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ========== SECTIONS COMMON ========== */
+    section { padding: 100px 5%; }
+    .section-inner { max-width: 1140px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 30px; height: 2px;
+      background: var(--teal);
+      border-radius: 2px;
+    }
+
+    .section-label-center {
+      justify-content: center;
+    }
+
+    .section-label-center::before { display: none; }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--gray-600);
+      line-height: 1.85;
+      max-width: 620px;
+    }
+
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    /* ========== ABOUT / PHILOSOPHY ========== */
+    .about { background: var(--cream); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-image-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .about-image-wrap img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s;
+    }
+
+    .about-image-wrap:hover img { transform: scale(1.03); }
+
+    .about-image-badge {
+      position: absolute;
+      bottom: 1.5rem; left: 1.5rem;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      padding: 0.8rem 1.2rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+
+    .about-image-badge svg { width: 20px; height: 20px; fill: var(--teal); }
+    .about-image-badge span { font-size: 0.82rem; font-weight: 600; color: var(--text); }
+
+    .about p { color: var(--gray-600); line-height: 1.9; margin-bottom: 1.25rem; }
+
+    .philosophy-quote {
+      background: linear-gradient(135deg, var(--teal-pale), rgba(42,157,143,0.08));
+      border-left: 4px solid var(--teal);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 1.75rem 2rem;
+      margin-top: 2rem;
+      position: relative;
+    }
+
+    .philosophy-quote::before {
+      content: '\201C';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      color: var(--teal);
+      opacity: 0.2;
+      position: absolute;
+      top: 0; left: 1rem;
+      line-height: 1;
+    }
+
+    .philosophy-quote p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--teal-deep);
+      font-style: italic;
+      margin: 0;
+      padding-left: 1rem;
+    }
+
+    /* ========== SERVICES ========== */
+    .services { background: var(--white); }
+
+    .services-header { text-align: center; margin-bottom: 4rem; }
+    .services-header .section-sub { margin: 0 auto; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-light));
+      transform: scaleX(0);
+      transition: transform 0.35s;
+      transform-origin: left;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 50px rgba(42,157,143,0.12);
+      border-color: transparent;
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 60px; height: 60px;
+      background: var(--teal-pale);
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.5rem;
+      transition: background 0.35s;
+    }
+
+    .service-card:hover .service-icon {
+      background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    }
+
+    .service-icon svg {
+      width: 28px; height: 28px;
+      fill: var(--teal);
+      transition: fill 0.35s;
+    }
+
+    .service-card:hover .service-icon svg { fill: var(--white); }
+
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .service-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .service-list li {
+      font-size: 0.88rem;
+      color: var(--gray-600);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .service-list li::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--teal);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ========== TECHNOLOGY ========== */
+    .technology {
+      background: linear-gradient(160deg, #0f3d38 0%, var(--teal-deep) 50%, var(--teal-dark) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .technology::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.02' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .tech-header { text-align: center; margin-bottom: 4rem; }
+    .tech-header .section-label { color: rgba(255,255,255,0.5); }
+    .tech-header .section-label::before { background: rgba(255,255,255,0.3); }
+    .tech-header .section-title { color: var(--white); }
+    .tech-header .section-sub { color: rgba(255,255,255,0.65); margin: 0 auto; }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .tech-card {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 1.75rem;
+      text-align: center;
+      transition: transform 0.35s, background 0.35s, border-color 0.35s;
+    }
+
+    .tech-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .tech-icon-wrap {
+      width: 64px; height: 64px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.25rem;
+      transition: background 0.35s;
+    }
+
+    .tech-card:hover .tech-icon-wrap { background: rgba(255,255,255,0.15); }
+    .tech-icon-wrap svg { width: 28px; height: 28px; fill: var(--teal-light); }
+
+    .tech-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .tech-card p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    /* ========== DOCTOR ========== */
+    .doctor { background: var(--cream); }
+
+    .doctor-grid {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .doctor-photo-wrap {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .doctor-photo-wrap img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    .doctor-photo-exp {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      padding: 2rem 1.5rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .doctor-photo-exp .exp-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--sand-light);
+      line-height: 1;
+    }
+
+    .doctor-photo-exp .exp-text {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.4;
+    }
+
+    .doctor-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.15;
+      margin-bottom: 0.4rem;
+    }
+
+    .doctor-credential {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .doctor-credential::before {
+      content: '';
+      width: 24px; height: 2px;
+      background: var(--teal);
+    }
+
+    .doctor-bio { color: var(--gray-600); line-height: 1.9; margin-bottom: 1.25rem; font-size: 0.95rem; }
+
+    .edu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .edu-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.1rem 1.25rem;
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--gray-200);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .edu-item:hover {
+      border-color: var(--teal);
+      box-shadow: 0 4px 15px var(--teal-glow);
+    }
+
+    .edu-year {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      color: var(--teal);
+      font-size: 1.1rem;
+      white-space: nowrap;
+      min-width: 3rem;
+    }
+
+    .edu-detail strong { display: block; color: var(--text); font-size: 0.9rem; margin-bottom: 0.15rem; }
+    .edu-detail span { font-size: 0.8rem; color: var(--gray-400); }
+
+    /* ========== MEET THE TEAM ========== */
+    .team { background: var(--white); }
+
+    .team-header { text-align: center; margin-bottom: 4rem; }
+    .team-header .section-sub { margin: 0 auto; }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.75rem;
+    }
+
+    .team-card {
+      text-align: center;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--off-white);
+      border: 1px solid var(--gray-200);
+      transition: transform 0.35s, box-shadow 0.35s;
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .team-photo {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+      background: linear-gradient(135deg, var(--teal-pale), var(--sand-pale));
+    }
+
+    .team-info { padding: 1.5rem; }
+
+    .team-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .team-role {
+      font-size: 0.78rem;
+      color: var(--teal);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.6rem;
+    }
+
+    .team-bio {
+      font-size: 0.82rem;
+      color: var(--gray-600);
+      line-height: 1.65;
+    }
+
+    /* ========== TESTIMONIALS ========== */
+    .testimonials { background: var(--off-white); }
+
+    .testimonials-header { text-align: center; margin-bottom: 4rem; }
+    .testimonials-header .section-sub { margin: 0 auto; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      border: 1px solid var(--gray-200);
+      transition: transform 0.35s, box-shadow 0.35s;
+      position: relative;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .testimonial-card::before {
+      content: '\201C';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      color: var(--teal);
+      opacity: 0.1;
+      position: absolute;
+      top: 0.5rem; left: 1.5rem;
+      line-height: 1;
+    }
+
+    .stars {
+      display: flex;
+      gap: 0.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .star {
+      width: 18px; height: 18px;
+      fill: var(--coral);
+    }
+
+    .testimonial-text {
+      font-size: 0.92rem;
+      color: var(--gray-600);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+      position: relative;
+    }
+
+    .testimonial-service {
+      display: inline-block;
+      background: var(--teal-pale);
+      color: var(--teal-dark);
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .testimonial-author { display: flex; align-items: center; gap: 1rem; }
+
+    .author-avatar {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--teal-pale);
+    }
+
+    .author-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      color: var(--text);
+      font-size: 1.05rem;
+    }
+
+    .author-location { font-size: 0.78rem; color: var(--gray-400); }
+
+    /* ========== NEW PATIENTS / APPOINTMENT ========== */
+    .new-patients { background: var(--cream); }
+
+    .np-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .np-content p { color: var(--gray-600); line-height: 1.9; margin-bottom: 1.25rem; }
+
+    .np-checklist {
+      list-style: none;
+      margin: 1.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .np-checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      color: var(--gray-600);
+    }
+
+    .np-check {
+      width: 22px; height: 22px;
+      background: var(--teal-pale);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .np-check svg { width: 12px; height: 12px; fill: var(--teal); }
+
+    .insurance-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .insurance-badge {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--gray-600);
+      transition: border-color 0.3s;
+    }
+
+    .insurance-badge:hover { border-color: var(--teal); }
+
+    .insurance-badge svg { width: 16px; height: 16px; fill: var(--teal); flex-shrink: 0; }
+
+    /* Appointment Form */
+    .appointment-form {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 3rem;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--gray-200);
+    }
+
+    .form-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-subtitle {
+      font-size: 0.88rem;
+      color: var(--gray-400);
+      margin-bottom: 2rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group { margin-bottom: 1rem; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gray-800);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-family: 'Hind', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      background: var(--off-white);
+      transition: border-color 0.3s, box-shadow 0.3s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px var(--teal-glow);
+      background: var(--white);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 90px; }
+
+    .form-group select { cursor: pointer; }
+
+    .form-submit {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--teal), var(--teal-light));
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: 'Hind', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 15px var(--teal-glow);
+      margin-top: 0.5rem;
+    }
+
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(42,157,143,0.3);
+    }
+
+    .form-note {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--gray-400);
+      margin-top: 1rem;
+    }
+
+    /* ========== CONTACT BAR ========== */
+    .contact-bar {
+      background: linear-gradient(135deg, var(--teal-dark), var(--teal));
+      padding: 4rem 5%;
+    }
+
+    .contact-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .contact-block h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-block p,
+    .contact-block a {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      line-height: 1.8;
+      text-decoration: none;
+    }
+
+    .contact-block a:hover { color: var(--sand-light); }
+
+    .contact-block .contact-phone {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--sand-light);
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: #0f2e2a;
+      color: rgba(255,255,255,0.5);
+      padding: 50px 5% 30px;
+    }
+
+    .footer-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo-icon {
+      width: 32px; height: 32px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .footer-logo-icon svg { width: 18px; height: 18px; fill: var(--teal-light); }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .footer-brand p { font-size: 0.85rem; line-height: 1.75; max-width: 300px; margin-bottom: 1rem; }
+
+    .footer-col h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      color: var(--white);
+      font-size: 1.05rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .footer-col a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.25s;
+    }
+
+    .footer-col a:hover { color: var(--teal-light); }
+
+    .footer-bottom {
+      max-width: 1140px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ========== STICKY MOBILE CTA ========== */
+    .mobile-cta {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 999;
+      background: linear-gradient(135deg, var(--teal), var(--teal-light));
+      padding: 1rem 5%;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+    }
+
+    .mobile-cta a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .mobile-cta svg { width: 20px; height: 20px; fill: white; }
+
+    /* ========== REVEAL ANIMATIONS ========== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-visual { max-width: 600px; margin: 0 auto; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .tech-grid { grid-template-columns: repeat(2, 1fr); }
+      .doctor-grid { grid-template-columns: 1fr; max-width: 600px; }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .trust-inner { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+      .contact-inner { grid-template-columns: 1fr; text-align: center; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+      .mobile-cta { display: block; }
+
+      section { padding: 70px 5% 70px; }
+      body { padding-bottom: 60px; }
+
+      .hero { min-height: auto; padding: 110px 5% 60px; }
+      .hero-visual { display: none; }
+      .hero-stats { gap: 1.5rem; }
+      .hero-stat-number { font-size: 1.8rem; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .tech-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .np-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .trust-inner { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .form-row { grid-template-columns: 1fr; }
+      .insurance-grid { grid-template-columns: 1fr; }
+      .doctor-photo-wrap img { height: 380px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2rem; }
+      .hero-buttons { flex-direction: column; }
+      .hero-stats { flex-wrap: wrap; gap: 1rem; }
+      .trust-number { font-size: 2.2rem; }
+      .team-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav id="navbar">
+    <div class="nav-brand">
+      <div class="nav-tooth">
+        <svg viewBox="0 0 24 24"><path d="M12 2C9.5 2 7.5 3 6.5 5C5.5 7 5 9 5 11C5 13 5.5 15 6 17C6.5 19 7 21 8 22C8.5 22 9 21 9.5 19C10 17 10.5 15 11 14C11.5 13 12 13 12 13C12 13 12.5 13 13 14C13.5 15 14 17 14.5 19C15 21 15.5 22 16 22C17 21 17.5 19 18 17C18.5 15 19 13 19 11C19 9 18.5 7 17.5 5C16.5 3 14.5 2 12 2Z"/></svg>
+      </div>
+      <div class="nav-brand-text">
+        <span class="nav-logo">Sea Island Dentistry</span>
+        <span class="nav-tagline">Dr. Kyle J. Farnsworth, DMD</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#doctor">Dr. Farnsworth</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="tel:8439860157" class="nav-phone">(843) 986-0157</a></li>
+      <li><a href="#appointment" class="nav-cta">Book Appointment</a></li>
+    </ul>
+    <button class="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'})">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="hero-deco hero-deco-1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C9.5 2 7.5 3 6.5 5C5.5 7 5 9 5 11C5 13 5.5 15 6 17C6.5 19 7 21 8 22C8.5 22 9 21 9.5 19C10 17 10.5 15 11 14C11.5 13 12 13 12 13C12 13 12.5 13 13 14C13.5 15 14 17 14.5 19C15 21 15.5 22 16 22C17 21 17.5 19 18 17C18.5 15 19 13 19 11C19 9 18.5 7 17.5 5C16.5 3 14.5 2 12 2Z"/></svg>
+    <svg class="hero-deco hero-deco-2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C9.5 2 7.5 3 6.5 5C5.5 7 5 9 5 11C5 13 5.5 15 6 17C6.5 19 7 21 8 22C8.5 22 9 21 9.5 19C10 17 10.5 15 11 14C11.5 13 12 13 12 13C12 13 12.5 13 13 14C13.5 15 14 17 14.5 19C15 21 15.5 22 16 22C17 21 17.5 19 18 17C18.5 15 19 13 19 11C19 9 18.5 7 17.5 5C16.5 3 14.5 2 12 2Z"/></svg>
+    <svg class="hero-deco hero-deco-3" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C9.5 2 7.5 3 6.5 5C5.5 7 5 9 5 11C5 13 5.5 15 6 17C6.5 19 7 21 8 22C8.5 22 9 21 9.5 19C10 17 10.5 15 11 14C11.5 13 12 13 12 13C12 13 12.5 13 13 14C13.5 15 14 17 14.5 19C15 21 15.5 22 16 22C17 21 17.5 19 18 17C18.5 15 19 13 19 11C19 9 18.5 7 17.5 5C16.5 3 14.5 2 12 2Z"/></svg>
+
+    <div class="hero-inner">
+      <div class="reveal">
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          Accepting New Patients in Lady's Island &amp; Beaufort, SC
+        </div>
+        <h1>A Smile You'll Be <span class="highlight">Proud Of</span> &mdash; Right Here on the Island.</h1>
+        <p class="hero-text">Comprehensive, modern dentistry in a warm and welcoming environment. Dr. Kyle Farnsworth and our team have been transforming smiles across the Lowcountry since 2010. No judgment. No fear. Just great care.</p>
+        <div class="hero-buttons">
+          <a href="#appointment" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Book an Appointment
+          </a>
+          <a href="#doctor" class="btn-secondary">Meet Dr. Farnsworth</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-number" data-target="15">0</span>
+            <span class="hero-stat-label">Years of Care</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number" data-target="10000">0</span>
+            <span class="hero-stat-label">Smiles Created</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number">5.0</span>
+            <span class="hero-stat-label">Star Rating</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal reveal-delay-2">
+        <img src="https://images.unsplash.com/photo-1581595219315-a187dd40c322?w=800&q=80" alt="Happy patient with a confident smile at Sea Island Dentistry" class="hero-image-main" loading="eager" />
+        <div class="hero-float hero-float-1">
+          <div class="float-icon-circle teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <div class="float-info">
+            <strong>Judgment-Free Care</strong>
+            <span>Every patient welcomed warmly</span>
+          </div>
+        </div>
+        <div class="hero-float hero-float-2">
+          <div class="float-icon-circle coral">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e76f51" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+          </div>
+          <div class="float-info">
+            <strong>Same-Day Crowns</strong>
+            <span>One visit with CEREC</span>
+          </div>
+        </div>
+        <div class="hero-float hero-float-3">
+          <div class="float-icon-circle sand">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#c89030" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="float-info">
+            <strong>Family Friendly</strong>
+            <span>Kids to grandparents</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP with animated counters -->
+  <div class="trust-strip">
+    <div class="trust-inner">
+      <div class="trust-item reveal">
+        <div class="trust-number"><span class="counter" data-target="15">0</span>+</div>
+        <div class="trust-label">Years Practicing</div>
+      </div>
+      <div class="trust-item reveal reveal-delay-1">
+        <div class="trust-number"><span class="counter" data-target="10000">0</span>+</div>
+        <div class="trust-label">Smiles Created</div>
+      </div>
+      <div class="trust-item reveal reveal-delay-2">
+        <div class="trust-number">5.0</div>
+        <div class="trust-label">Google Rating</div>
+      </div>
+      <div class="trust-item reveal reveal-delay-3">
+        <div class="trust-number">4</div>
+        <div class="trust-label">Advanced Technologies</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT / PHILOSOPHY -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="reveal-left">
+          <div class="about-image-wrap">
+            <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80" alt="Bright, modern interior of Sea Island Dentistry" loading="lazy" />
+            <div class="about-image-badge">
+              <svg viewBox="0 0 24 24"><path d="M12 2C9.5 2 7.5 3 6.5 5C5.5 7 5 9 5 11C5 13 5.5 15 6 17C6.5 19 7 21 8 22C8.5 22 9 21 9.5 19C10 17 10.5 15 11 14C11.5 13 12 13 12 13C12 13 12.5 13 13 14C13.5 15 14 17 14.5 19C15 21 15.5 22 16 22C17 21 17.5 19 18 17C18.5 15 19 13 19 11C19 9 18.5 7 17.5 5C16.5 3 14.5 2 12 2Z"/></svg>
+              <span>Est. 2010 &mdash; Lady's Island, SC</span>
+            </div>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <p class="section-label">Our Philosophy</p>
+          <h2 class="section-title">Dentistry That Feels Different</h2>
+          <p>Established in 2010, Sea Island Dentistry has been the trusted dental home for families across Lady's Island, Beaufort, and the surrounding Lowcountry for over a decade. Dr. Kyle Farnsworth and our team believe that dentistry should be comfortable, modern, and completely judgment-free.</p>
+          <p>We know that many patients come to us with anxiety &mdash; maybe about past experiences, or things that weren't explained clearly, or just the general unease of sitting in a dental chair. We take that seriously. Our team is trained to put you at ease, explain every step before we take it, and move at a pace that's comfortable for you.</p>
+          <p>Your oral health is deeply connected to your overall wellbeing &mdash; heart disease, diabetes, and other systemic conditions all have links to oral health. We look at the full picture and communicate with your other healthcare providers when it's helpful to do so.</p>
+          <div class="philosophy-quote">
+            <p>"We set out to put an end to every fear and unpleasant stereotype you've ever known about dentistry."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave-divider" style="background:var(--cream);">
+    <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+      <path d="M0,60 C200,20 400,80 600,40 C800,0 1000,60 1200,30 L1200,80 L0,80 Z" fill="var(--white)"/>
+    </svg>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="services-header reveal">
+        <p class="section-label section-label-center">What We Offer</p>
+        <h2 class="section-title">Comprehensive Care for Your Whole Family</h2>
+        <p class="section-sub mx-auto">From your child's first cleaning to a complete smile transformation, Sea Island Dentistry offers everything your family needs under one roof.</p>
+      </div>
+      <div class="services-grid">
+        <!-- General -->
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C9.5 2 7.5 3 6.5 5C5.5 7 5 9 5 11C5 13 5.5 15 6 17C6.5 19 7 21 8 22C8.5 22 9 21 9.5 19C10 17 10.5 15 11 14C11.5 13 12 13 12 13C12 13 12.5 13 13 14C13.5 15 14 17 14.5 19C15 21 15.5 22 16 22C17 21 17.5 19 18 17C18.5 15 19 13 19 11C19 9 18.5 7 17.5 5C16.5 3 14.5 2 12 2Z"/></svg>
+          </div>
+          <h3>General Dentistry</h3>
+          <ul class="service-list">
+            <li>Routine cleanings &amp; exams</li>
+            <li>Digital X-rays</li>
+            <li>Custom mouthguards</li>
+            <li>Scaling &amp; root planing</li>
+            <li>Root canal therapy</li>
+            <li>Pediatric-friendly care</li>
+          </ul>
+        </div>
+        <!-- Restorative -->
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.49.49 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1112 8.4a3.6 3.6 0 010 7.2z"/></svg>
+          </div>
+          <h3>Restorative Dentistry</h3>
+          <ul class="service-list">
+            <li>Tooth-colored fillings</li>
+            <li>Same-day crowns (CEREC)</li>
+            <li>Dental bridges</li>
+            <li>Dental implants</li>
+            <li>Dentures &amp; partials</li>
+            <li>Inlays &amp; onlays</li>
+          </ul>
+        </div>
+        <!-- Cosmetic -->
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3>Cosmetic &amp; Specialty</h3>
+          <ul class="service-list">
+            <li>Professional teeth whitening</li>
+            <li>Porcelain veneers</li>
+            <li>Cosmetic bonding</li>
+            <li>Sleep apnea therapy</li>
+            <li>TMJ / jaw pain treatment</li>
+            <li>Sedation dentistry</li>
+          </ul>
+        </div>
+        <!-- Implants -->
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5 2 7L12 16l-6.5 4.5 2-7L2 9h7z"/></svg>
+          </div>
+          <h3>Dental Implants</h3>
+          <ul class="service-list">
+            <li>Single tooth implants</li>
+            <li>Implant-supported bridges</li>
+            <li>Full-arch restoration</li>
+            <li>Bone grafting</li>
+            <li>Implant maintenance</li>
+            <li>CT-guided placement</li>
+          </ul>
+        </div>
+        <!-- Emergency -->
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+          </div>
+          <h3>Emergency Dental Care</h3>
+          <ul class="service-list">
+            <li>Same-day appointments</li>
+            <li>Severe toothache relief</li>
+            <li>Broken or chipped teeth</li>
+            <li>Lost filling or crown</li>
+            <li>Dental trauma</li>
+            <li>After-hours guidance</li>
+          </ul>
+        </div>
+        <!-- Facial Aesthetics -->
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 14s1.5 2 4 2 4-2 4-2" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="9" y1="9" x2="9.01" y2="9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="15" y1="9" x2="15.01" y2="9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Facial Aesthetics</h3>
+          <ul class="service-list">
+            <li>Botox treatments</li>
+            <li>Juvederm dermal fillers</li>
+            <li>Facial rejuvenation</li>
+            <li>Non-surgical options</li>
+            <li>Natural-looking results</li>
+            <li>Expert medical guidance</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave-divider flip" style="background:var(--white);">
+    <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+      <path d="M0,20 C300,70 600,0 900,50 C1050,75 1150,30 1200,40 L1200,80 L0,80 Z" fill="#0f3d38"/>
+    </svg>
+  </div>
+
+  <!-- TECHNOLOGY -->
+  <section class="technology" id="technology">
+    <div class="section-inner">
+      <div class="tech-header reveal">
+        <p class="section-label section-label-center">Advanced Technology</p>
+        <h2 class="section-title" style="color:#fff;">Modern Care from Day One</h2>
+        <p class="section-sub mx-auto" style="color:rgba(255,255,255,0.65);">We invest in technology that makes your experience more comfortable, more accurate, and more efficient. Less guessing, less discomfort, better results.</p>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-card reveal">
+          <div class="tech-icon-wrap">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <h4>Digital X-Rays</h4>
+          <p>Sharper images with significantly less radiation. Instant results allow us to explain findings to you in real time.</p>
+        </div>
+        <div class="tech-card reveal reveal-delay-1">
+          <div class="tech-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <h4>3D Digital Impressions</h4>
+          <p>No messy molds. Digital impressions are more accurate, more comfortable, and speed up your restorations.</p>
+        </div>
+        <div class="tech-card reveal reveal-delay-2">
+          <div class="tech-icon-wrap">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 6v6l4 2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h4>Same-Day CEREC Crowns</h4>
+          <p>Your crown is designed and milled in-office while you wait. One appointment, one visit, done.</p>
+        </div>
+        <div class="tech-card reveal reveal-delay-3">
+          <div class="tech-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h4>Dental Lasers</h4>
+          <p>Less invasive soft tissue treatment. Less discomfort, faster healing, and better precision than traditional methods.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave-divider" style="background:linear-gradient(160deg, #0f3d38 0%, var(--teal-deep) 50%, var(--teal-dark) 100%);">
+    <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+      <path d="M0,30 C150,70 350,10 600,50 C850,90 1050,20 1200,40 L1200,80 L0,80 Z" fill="var(--cream)"/>
+    </svg>
+  </div>
+
+  <!-- DOCTOR -->
+  <section class="doctor" id="doctor">
+    <div class="section-inner">
+      <div class="doctor-grid">
+        <div class="reveal-left">
+          <div class="doctor-photo-wrap">
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80" alt="Dr. Kyle J. Farnsworth, DMD" loading="lazy" />
+            <div class="doctor-photo-exp">
+              <div class="exp-number">20+</div>
+              <div class="exp-text">Years of<br/>Dedicated Practice</div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <p class="section-label">Meet Your Dentist</p>
+          <h2 class="doctor-name">Dr. Kyle J. Farnsworth</h2>
+          <p class="doctor-credential">Doctor of Dental Medicine &mdash; Lady's Island, SC</p>
+          <p class="doctor-bio">Dr. Kyle Farnsworth has been dedicated to dentistry for over 20 years. He founded Sea Island Dentistry in 2010 with a clear vision: to build a practice where patients feel genuinely cared for, where the technology is state-of-the-art, and where the quality of every restoration is something patients can be proud of &mdash; for years to come.</p>
+          <p class="doctor-bio">Trained at the Medical University of South Carolina and with additional graduate post-residency training at the University of Utah, Dr. Farnsworth brings an exceptional depth of clinical education to his practice in the Beaufort area. He stays current with continuing education in implants, cosmetic dentistry, sleep apnea therapy, and advanced restorative techniques.</p>
+          <p class="doctor-bio">Patients describe him as warm, thorough, and patient &mdash; someone who takes the time to explain what he's doing and why, and who treats every patient with the same care he'd give a family member.</p>
+          <div class="edu-list">
+            <div class="edu-item">
+              <span class="edu-year">1995</span>
+              <div class="edu-detail">
+                <strong>Clemson University</strong>
+                <span>Bachelor of Science</span>
+              </div>
+            </div>
+            <div class="edu-item">
+              <span class="edu-year">2000</span>
+              <div class="edu-detail">
+                <strong>Medical University of South Carolina</strong>
+                <span>Doctor of Dental Medicine (DMD)</span>
+              </div>
+            </div>
+            <div class="edu-item">
+              <span class="edu-year">2001</span>
+              <div class="edu-detail">
+                <strong>University of Utah</strong>
+                <span>Graduate Post-Doctoral Residency</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEET THE TEAM -->
+  <section class="team" id="team">
+    <div class="section-inner">
+      <div class="team-header reveal">
+        <p class="section-label section-label-center">Our Team</p>
+        <h2 class="section-title text-center">The People Behind Your Smile</h2>
+        <p class="section-sub mx-auto text-center">We hire people who genuinely love what they do &mdash; and it shows. Every member of our team is committed to making your visit comfortable, efficient, and even enjoyable.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card reveal">
+          <div class="team-photo" style="background:linear-gradient(135deg, #e6f5f3 0%, #d4ede8 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="1" opacity="0.4"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="team-info">
+            <div class="team-name">Front Office Team</div>
+            <div class="team-role">Patient Coordinators</div>
+            <p class="team-bio">Your first point of contact. Friendly, organized, and ready to help with scheduling, insurance, and any questions.</p>
+          </div>
+        </div>
+        <div class="team-card reveal reveal-delay-1">
+          <div class="team-photo" style="background:linear-gradient(135deg, #fdf8ed 0%, #f4e8c8 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#c89030" stroke-width="1" opacity="0.4"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="team-info">
+            <div class="team-name">Dental Hygienists</div>
+            <div class="team-role">Preventive Care Specialists</div>
+            <p class="team-bio">Thorough, gentle, and dedicated to keeping your teeth and gums healthy with expert cleanings and education.</p>
+          </div>
+        </div>
+        <div class="team-card reveal reveal-delay-2">
+          <div class="team-photo" style="background:linear-gradient(135deg, #fce8e4 0%, #f5d0c8 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#e76f51" stroke-width="1" opacity="0.4"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="team-info">
+            <div class="team-name">Dental Assistants</div>
+            <div class="team-role">Chairside Support</div>
+            <p class="team-bio">Skilled, compassionate, and always by Dr. Farnsworth's side to ensure your treatment goes smoothly and comfortably.</p>
+          </div>
+        </div>
+        <div class="team-card reveal reveal-delay-3">
+          <div class="team-photo" style="background:linear-gradient(135deg, #e6f5f3 0%, #d0f0e8 100%); display:flex; align-items:center; justify-content:center;">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="1" opacity="0.4"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="team-info">
+            <div class="team-name">Our Whole Team</div>
+            <div class="team-role">Your Dental Family</div>
+            <p class="team-bio">Together, we create a warm, welcoming environment where every patient feels like family from the first visit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="section-inner">
+      <div class="testimonials-header reveal">
+        <p class="section-label section-label-center">Patient Stories</p>
+        <h2 class="section-title text-center">Smile Transformations &amp; Happy Patients</h2>
+        <p class="section-sub mx-auto text-center">Don't just take our word for it. Hear from real patients about their experiences at Sea Island Dentistry.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="stars">
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="testimonial-service">Anxiety-Free Visit</div>
+          <p class="testimonial-text">"I hadn't been to the dentist in seven years because of anxiety. Dr. Farnsworth and his team made me feel completely at ease from the moment I walked in. They're patient, kind, and genuinely excellent at what they do. I'll never go anywhere else."</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Sarah L." class="author-avatar" loading="lazy" />
+            <div>
+              <div class="author-name">Sarah L.</div>
+              <div class="author-location">Beaufort, SC</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="stars">
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="testimonial-service">Family Dentistry</div>
+          <p class="testimonial-text">"We bring our whole family &mdash; from our 6-year-old to my 70-year-old mother. Sea Island Dentistry treats everyone with the same warmth and professionalism. It's truly a place where you feel like family."</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="James & Rachel T." class="author-avatar" loading="lazy" />
+            <div>
+              <div class="author-name">James &amp; Rachel T.</div>
+              <div class="author-location">Ladys Island, SC</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="stars">
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="testimonial-service">Smile Transformation</div>
+          <p class="testimonial-text">"Dr. Farnsworth did my veneers and they are the most beautiful restorations I've ever seen. My own family couldn't tell they weren't my natural teeth. His attention to detail is remarkable. Totally worth it."</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&q=80" alt="Michelle K." class="author-avatar" loading="lazy" />
+            <div>
+              <div class="author-name">Michelle K.</div>
+              <div class="author-location">Port Royal, SC</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW PATIENTS & APPOINTMENT FORM -->
+  <section class="new-patients" id="appointment">
+    <div class="section-inner">
+      <div class="np-grid">
+        <div class="np-content reveal-left">
+          <p class="section-label">New Patients Welcome</p>
+          <h2 class="section-title">Your First Visit to Sea Island Dentistry</h2>
+          <p>We make new patient visits easy and stress-free. Arrive knowing you'll be greeted warmly, listened to carefully, and examined thoroughly &mdash; with no judgment about where your dental health currently stands.</p>
+
+          <ul class="np-checklist">
+            <li>
+              <div class="np-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Complete oral exam with Dr. Farnsworth
+            </li>
+            <li>
+              <div class="np-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Full-mouth digital X-rays (low radiation)
+            </li>
+            <li>
+              <div class="np-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Oral cancer screening
+            </li>
+            <li>
+              <div class="np-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Professional cleaning (if recommended)
+            </li>
+            <li>
+              <div class="np-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              Personalized treatment plan discussion
+            </li>
+          </ul>
+
+          <p style="font-weight:600; color:var(--text); margin-top:2rem; margin-bottom:0.75rem;">Insurance &amp; Payment</p>
+          <div class="insurance-grid">
+            <div class="insurance-badge">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Most PPO Plans
+            </div>
+            <div class="insurance-badge">
+              <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              Credit Cards
+            </div>
+            <div class="insurance-badge">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              Flexible Financing
+            </div>
+            <div class="insurance-badge">
+              <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              CareCredit Accepted
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal-right">
+          <div class="appointment-form">
+            <h3 class="form-title">Schedule Your Visit</h3>
+            <p class="form-subtitle">Fill out the form below and our team will reach out to confirm your appointment.</p>
+            <form onsubmit="event.preventDefault(); this.querySelector('.form-submit').textContent='Thank You! We\'ll Call You Shortly.'; this.querySelector('.form-submit').style.background='var(--coral)';">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fname">First Name</label>
+                  <input type="text" id="fname" placeholder="Jane" required />
+                </div>
+                <div class="form-group">
+                  <label for="lname">Last Name</label>
+                  <input type="text" id="lname" placeholder="Smith" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" placeholder="(843) 555-0100" required />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" placeholder="jane@email.com" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="patient-type">Patient Type</label>
+                  <select id="patient-type">
+                    <option value="">Select one...</option>
+                    <option value="new">New Patient</option>
+                    <option value="returning">Returning Patient</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="service">Service Needed</label>
+                  <select id="service">
+                    <option value="">Select a service...</option>
+                    <option value="cleaning">Cleaning &amp; Exam</option>
+                    <option value="cosmetic">Cosmetic Dentistry</option>
+                    <option value="implants">Dental Implants</option>
+                    <option value="crowns">Crowns / Bridges</option>
+                    <option value="emergency">Emergency Care</option>
+                    <option value="whitening">Teeth Whitening</option>
+                    <option value="other">Other / Not Sure</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="preferred-day">Preferred Day</label>
+                  <select id="preferred-day">
+                    <option value="">Any day...</option>
+                    <option value="mon">Monday</option>
+                    <option value="tue">Tuesday</option>
+                    <option value="wed">Wednesday</option>
+                    <option value="thu">Thursday</option>
+                    <option value="fri">Friday</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="preferred-time">Preferred Time</label>
+                  <select id="preferred-time">
+                    <option value="">Any time...</option>
+                    <option value="morning">Morning (8-11 AM)</option>
+                    <option value="midday">Midday (11 AM-1 PM)</option>
+                    <option value="afternoon">Afternoon (1-5 PM)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="insurance">Insurance Provider</label>
+                <input type="text" id="insurance" placeholder="e.g. Delta Dental, Cigna, Aetna..." />
+              </div>
+              <div class="form-group">
+                <label for="message">Additional Notes</label>
+                <textarea id="message" placeholder="Any concerns, questions, or special requests..."></textarea>
+              </div>
+              <button type="submit" class="form-submit">Request Appointment</button>
+              <p class="form-note">Or call us directly at <a href="tel:8439860157" style="color:var(--teal); font-weight:600; text-decoration:none;">(843) 986-0157</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT BAR -->
+  <div class="contact-bar">
+    <div class="contact-inner">
+      <div class="contact-block">
+        <h4>Visit Our Office</h4>
+        <p>102 Sea Island Pkwy, Suite J<br/>Ladys Island, SC 29907</p>
+      </div>
+      <div class="contact-block">
+        <h4>Office Hours</h4>
+        <p>Monday &ndash; Thursday: 8:00 AM &ndash; 5:00 PM<br/>Friday: 8:00 AM &ndash; 2:00 PM<br/>Saturday &ndash; Sunday: Closed</p>
+      </div>
+      <div class="contact-block">
+        <h4>Get in Touch</h4>
+        <p><a href="tel:8439860157">Phone: (843) 986-0157</a></p>
+        <p><a href="mailto:drkylef@seaislanddentistry.com">drkylef@seaislanddentistry.com</a></p>
+        <a href="tel:8439860157" class="contact-phone">(843) 986-0157</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo-wrap">
+          <div class="footer-logo-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C9.5 2 7.5 3 6.5 5C5.5 7 5 9 5 11C5 13 5.5 15 6 17C6.5 19 7 21 8 22C8.5 22 9 21 9.5 19C10 17 10.5 15 11 14C11.5 13 12 13 12 13C12 13 12.5 13 13 14C13.5 15 14 17 14.5 19C15 21 15.5 22 16 22C17 21 17.5 19 18 17C18.5 15 19 13 19 11C19 9 18.5 7 17.5 5C16.5 3 14.5 2 12 2Z"/></svg>
+          </div>
+          <span class="footer-logo">Sea Island Dentistry</span>
+        </div>
+        <p>Comprehensive, modern, judgment-free dental care for families across Beaufort, Lady's Island, and the surrounding Lowcountry.</p>
+        <p style="font-size:0.82rem;">102 Sea Island Pkwy, Suite J | Ladys Island, SC 29907</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">General Dentistry</a></li>
+          <li><a href="#services">Cosmetic Dentistry</a></li>
+          <li><a href="#services">Dental Implants</a></li>
+          <li><a href="#services">Same-Day Crowns</a></li>
+          <li><a href="#services">Emergency Care</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Practice</h4>
+        <ul>
+          <li><a href="#about">Our Philosophy</a></li>
+          <li><a href="#doctor">Dr. Farnsworth</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <li><a href="#technology">Technology</a></li>
+          <li><a href="#testimonials">Patient Reviews</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Patients</h4>
+        <ul>
+          <li><a href="#appointment">New Patients</a></li>
+          <li><a href="#appointment">Book Appointment</a></li>
+          <li><a href="tel:8439860157">(843) 986-0157</a></li>
+          <li><a href="mailto:drkylef@seaislanddentistry.com">Email Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>2025 Sea Island Dentistry, PC. All rights reserved.</span>
+      <span>Ladys Island (Beaufort), SC | Dr. Kyle J. Farnsworth, DMD</span>
+    </div>
+  </footer>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="mobile-cta">
+    <a href="tel:8439860157">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      Book Appointment &mdash; (843) 986-0157
+    </a>
+  </div>
+
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Intersection Observer for reveals
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // Animated counters
+    function animateCounter(el, target, suffix = '') {
+      const duration = 2000;
+      const startTime = performance.now();
+      const startVal = 0;
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(startVal + (target - startVal) * eased);
+
+        if (target >= 1000) {
+          el.textContent = current.toLocaleString() + suffix;
+        } else {
+          el.textContent = current + suffix;
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      }
+      requestAnimationFrame(update);
+    }
+
+    const counterEls = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.dataset.animated) {
+          entry.target.dataset.animated = 'true';
+          const target = parseInt(entry.target.dataset.target);
+          animateCounter(entry.target, target, '+');
+        }
+      });
+    }, { threshold: 0.5 });
+    counterEls.forEach(el => counterObserver.observe(el));
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

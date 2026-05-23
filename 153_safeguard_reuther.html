@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safeguard by Jeff Reuther & Associates | Santa Clara, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── CSS Custom Properties ─────────────────────────────── */
+    :root {
+      --blue:        #1a4b8c;
+      --blue-dark:   #103366;
+      --blue-light:  #2a65b8;
+      --red:         #c0392b;
+      --red-light:   #e04535;
+      --white:       #ffffff;
+      --off-white:   #f4f6fa;
+      --charcoal:    #2c2c2c;
+      --gray:        #6b7280;
+      --gray-light:  #e8ecf2;
+      --font-head:   'Montserrat', sans-serif;
+      --font-body:   'Source Serif 4', serif;
+      --shadow-sm:   0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md:   0 6px 24px rgba(0,0,0,0.12);
+      --shadow-lg:   0 16px 48px rgba(0,0,0,0.16);
+      --radius:      8px;
+      --transition:  0.3s ease;
+    }
+
+    /* ─── Reset & Base ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--charcoal);
+      background: var(--white);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: 92%;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* ─── Scroll Reveal ──────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+    .reveal-delay-6 { transition-delay: 0.6s; }
+
+    /* ─── Navigation ─────────────────────────────────────────── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: transparent;
+      transition: background var(--transition), box-shadow var(--transition);
+      padding: 0;
+    }
+    #nav.scrolled {
+      background: var(--blue-dark);
+      box-shadow: var(--shadow-md);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      padding: 0 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .nav-logo .logo-main {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+    .nav-logo .logo-sub {
+      font-family: var(--font-head);
+      font-weight: 400;
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.72);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-head);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.88);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--red);
+      color: var(--white) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: var(--radius);
+      transition: background var(--transition) !important;
+    }
+    .nav-cta:hover { background: var(--red-light) !important; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 70px; left: 0; right: 0;
+      background: var(--blue-dark);
+      padding: 1.5rem 5%;
+      z-index: 999;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .mobile-menu a {
+      font-family: var(--font-head);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.88);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .mobile-cta {
+      display: inline-block;
+      margin-top: 1rem;
+      background: var(--red);
+      color: var(--white) !important;
+      padding: 0.6rem 1.4rem;
+      border-radius: var(--radius);
+    }
+
+    /* ─── Hero ───────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: url('https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?w=1600&auto=format&fit=crop&q=80') center center / cover no-repeat;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        120deg,
+        rgba(16, 51, 102, 0.90) 0%,
+        rgba(26, 75, 140, 0.78) 55%,
+        rgba(192, 57, 43, 0.45) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      padding: 6rem 5% 4rem;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 0.35rem 0.9rem;
+      border-radius: 20px;
+      margin-bottom: 1.4rem;
+    }
+    .hero-content h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.01em;
+    }
+    .hero-content h1 span { color: #f4b942; }
+    .hero-content p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 2rem;
+      line-height: 1.75;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      padding: 0.85rem 2rem;
+      background: var(--red);
+      color: var(--white);
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      text-transform: uppercase;
+    }
+    .btn-primary:hover {
+      background: var(--red-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(192,57,43,0.4);
+    }
+    .btn-outline {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      padding: 0.85rem 2rem;
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.55);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+      text-transform: uppercase;
+    }
+    .btn-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+    .hero-scroll-cue {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      z-index: 2;
+      color: rgba(255,255,255,0.5);
+      font-family: var(--font-head);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .scroll-arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 2px solid rgba(255,255,255,0.4);
+      border-bottom: 2px solid rgba(255,255,255,0.4);
+      transform: rotate(45deg);
+      animation: bounce 1.8s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50% { transform: rotate(45deg) translateY(5px); }
+    }
+
+    /* ─── Trust Strip ────────────────────────────────────────── */
+    #trust {
+      background: var(--blue-dark);
+      padding: 1.4rem 0;
+      border-bottom: 3px solid var(--red);
+    }
+    .trust-grid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.6rem 2rem;
+      border-right: 1px solid rgba(255,255,255,0.15);
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .trust-icon svg { width: 18px; height: 18px; fill: #f4b942; }
+    .trust-item p {
+      font-family: var(--font-head);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.3;
+      letter-spacing: 0.02em;
+    }
+    .trust-item p span { display: block; color: rgba(255,255,255,0.5); font-weight: 400; font-size: 0.68rem; }
+
+    /* ─── Section Shared ─────────────────────────────────────── */
+    section { padding: 5.5rem 0; }
+    .section-label {
+      font-family: var(--font-head);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      color: var(--blue-dark);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--gray);
+      max-width: 560px;
+      line-height: 1.75;
+    }
+    .section-header { margin-bottom: 3rem; }
+    .section-header.center { text-align: center; }
+    .section-header.center .section-sub { margin: 0 auto; }
+
+    /* ─── Services ───────────────────────────────────────────── */
+    #services { background: var(--off-white); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 2rem 1.75rem;
+      box-shadow: var(--shadow-sm);
+      border-top: 4px solid transparent;
+      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+    .service-card:hover {
+      border-top-color: var(--blue);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--blue);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .service-icon svg { width: 26px; height: 26px; fill: var(--white); }
+    .service-card h3 {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--blue-dark);
+      margin-bottom: 0.6rem;
+    }
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    /* ─── About ──────────────────────────────────────────────── */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
+    }
+    .about-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--blue-dark);
+      color: var(--white);
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      box-shadow: var(--shadow-md);
+      text-align: center;
+    }
+    .about-badge .badge-num {
+      font-family: var(--font-head);
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #f4b942;
+      line-height: 1;
+    }
+    .about-badge .badge-label {
+      font-family: var(--font-head);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-top: 0.25rem;
+    }
+    .about-text .section-sub { max-width: 100%; }
+    .about-text blockquote {
+      border-left: 4px solid var(--red);
+      padding-left: 1.2rem;
+      margin: 1.8rem 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--blue-dark);
+      line-height: 1.7;
+    }
+    .about-text blockquote cite {
+      display: block;
+      font-style: normal;
+      font-family: var(--font-head);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--gray);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+    }
+    .about-points { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin-top: 1.5rem; }
+    .about-points li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.92rem;
+      color: var(--charcoal);
+    }
+    .about-points li::before {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      background: var(--red);
+      border-radius: 50%;
+      margin-top: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    /* ─── Why Choose Us ──────────────────────────────────────── */
+    #why { background: var(--blue-dark); }
+    #why .section-label { color: #f4b942; }
+    #why .section-title { color: var(--white); }
+    #why .section-sub { color: rgba(255,255,255,0.65); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .why-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 2rem 1.75rem;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .why-card:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-3px);
+    }
+    .why-card h3 {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .why-card h3 span.tag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(244,185,66,0.18);
+      color: #f4b942;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+    }
+    .why-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+    }
+
+    /* ─── Testimonials ───────────────────────────────────────── */
+    #testimonials { background: var(--off-white); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 2rem 1.75rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .testimonial-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+    .stars {
+      display: flex;
+      gap: 3px;
+    }
+    .stars span {
+      color: #f4b942;
+      font-size: 1rem;
+    }
+    .testimonial-card blockquote {
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      font-style: italic;
+      line-height: 1.75;
+      flex: 1;
+    }
+    .testimonial-author {
+      border-top: 1px solid var(--gray-light);
+      padding-top: 1rem;
+    }
+    .testimonial-author strong {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--blue-dark);
+    }
+    .testimonial-author span {
+      font-size: 0.78rem;
+      color: var(--gray);
+    }
+
+    /* ─── Contact ────────────────────────────────────────────── */
+    #contact { background: var(--white); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-info .section-sub { margin-bottom: 2rem; }
+    .contact-details { display: flex; flex-direction: column; gap: 1.2rem; }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .contact-ico {
+      width: 42px;
+      height: 42px;
+      background: var(--blue);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-ico svg { width: 20px; height: 20px; fill: var(--white); }
+    .contact-item p {
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      line-height: 1.55;
+    }
+    .contact-item p strong {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 0.15rem;
+    }
+    .contact-item a { color: var(--blue); }
+    .contact-item a:hover { text-decoration: underline; }
+
+    /* Contact Form */
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.3rem; }
+    .form-group label {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      color: var(--charcoal);
+      background: var(--off-white);
+      border: 1.5px solid var(--gray-light);
+      border-radius: var(--radius);
+      padding: 0.7rem 1rem;
+      width: 100%;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(26,75,140,0.12);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit {
+      align-self: flex-start;
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────── */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.6);
+      padding: 3rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 2rem;
+    }
+    .footer-brand .logo-main {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--white);
+    }
+    .footer-brand .logo-sub {
+      font-family: var(--font-head);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 1rem;
+    }
+    .footer-brand p { font-size: 0.85rem; line-height: 1.7; }
+    .footer-col h4 {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .footer-col ul li a {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      transition: color var(--transition);
+    }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .footer-bottom p { font-size: 0.78rem; }
+    .footer-bottom a { color: rgba(255,255,255,0.5); transition: color var(--transition); }
+    .footer-bottom a:hover { color: var(--white); }
+    .safeguard-network-badge {
+      font-family: var(--font-head);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #f4b942;
+      border: 1px solid rgba(244,185,66,0.3);
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+    }
+
+    /* ─── Responsive: 960px ──────────────────────────────────── */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-badge { bottom: -16px; right: 10px; }
+      .why-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: span 2; }
+      .trust-item { padding: 0.5rem 1.2rem; }
+    }
+
+    /* ─── Responsive: 640px ──────────────────────────────────── */
+    @media (max-width: 640px) {
+      section { padding: 4rem 0; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-brand { grid-column: span 1; }
+      .trust-grid { flex-direction: column; }
+      .trust-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 0.75rem 1rem; width: 100%; justify-content: center; }
+      .trust-item:last-child { border-bottom: none; }
+      .hero-btns { flex-direction: column; }
+      .btn-primary, .btn-outline { text-align: center; }
+      .about-img { height: 300px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ──────────────────────────────────────────── -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-main">Safeguard</span>
+        <span class="logo-sub">Jeff Reuther &amp; Associates</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#services" class="mobile-link">Services</a></li>
+      <li><a href="#about" class="mobile-link">About</a></li>
+      <li><a href="#why" class="mobile-link">Why Us</a></li>
+      <li><a href="#testimonials" class="mobile-link">Reviews</a></li>
+    </ul>
+    <a href="#contact" class="mobile-cta mobile-link">Get a Quote</a>
+  </div>
+
+  <!-- ── Hero ────────────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">Safeguard Business Systems &mdash; Silicon Valley</span>
+      <h1>Build a Brand That <span>Gets Noticed</span> &amp; Remembered</h1>
+      <p>From professionally printed business materials to custom branded merchandise and embroidered apparel, Jeff Reuther &amp; Associates delivers the full power of the Safeguard network with personalized Silicon Valley service.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Request a Free Quote</a>
+        <a href="#services" class="btn-outline">Explore Services</a>
+      </div>
+    </div>
+    <div class="hero-scroll-cue">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- ── Trust Strip ──────────────────────────────────────────── -->
+  <div id="trust">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4z"/></svg>
+          </div>
+          <p>Safeguard National Network<span>600+ advisors across N. America</span></p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/></svg>
+          </div>
+          <p>Locally Rooted in Santa Clara<span>Serving the entire Bay Area</span></p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14l4-4h12c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+          </div>
+          <p>Custom Solutions, Every Time<span>Print, promo, apparel &amp; more</span></p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 11c1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3 1.3 3 3 3zm-8 0c1.7 0 3-1.3 3-3S9.7 5 8 5 5 6.3 5 8s1.3 3 3 3zm0 2c-2.3 0-7 1.2-7 3.5V19h14v-2.5c0-2.3-4.7-3.5-7-3.5zm8 0c-.3 0-.6 0-.9.1 1.1.8 1.9 1.9 1.9 3.4V19h6v-2.5c0-2.3-4.7-3.5-7-3.5z"/></svg>
+          </div>
+          <p>Personal Advisor Service<span>Direct access to Jeff Reuther</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Services ─────────────────────────────────────────────── -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header center reveal">
+        <p class="section-label">What We Offer</p>
+        <h2 class="section-title">Everything Your Business Needs to Look Its Best</h2>
+        <p class="section-sub">We bring together printing, branded merchandise, and apparel under one roof—making it simple to maintain a consistent, professional brand image.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 8H5c-1.7 0-3 1.3-3 3v6h4v4h12v-4h4v-6c0-1.7-1.3-3-3-3zm-3 11H8v-5h8v5zm3-7c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zm-1-9H6v4h12V3z"/></svg>
+          </div>
+          <h3>Business Printing</h3>
+          <p>Business cards, letterhead, envelopes, brochures, and presentation folders that project credibility at every touchpoint.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M11.5 2C6.2 2 2 6.2 2 11.5S6.2 21 11.5 21c1.4 0 2.8-.3 4-.8l4.3 2.8-1-4.8C20.2 16.8 21 14.2 21 11.5 21 6.2 16.8 2 11.5 2zm0 17c-4.1 0-7.5-3.4-7.5-7.5S7.4 4 11.5 4 19 7.4 19 11.5 15.6 19 11.5 19z"/></svg>
+          </div>
+          <h3>Promotional Products</h3>
+          <p>Pens, drinkware, bags, tech accessories, and thousands of other items—all imprinted with your logo for lasting brand impressions.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M11.9 4.5C10.7 3.3 9 2.5 7 2.5c-2 0-3.7.8-5 2l7 7 3-3-.1-4zm2.2 1l-3 3 2 2 3-3c-.5-.9-1.2-1.6-2-2zm-2 4.5L5 17l2 2 7.1-7.1-2-1.9zM20.5 7.5c-.7-.7-1.6-1-2.5-1-.9 0-1.8.3-2.5 1l-1.5 1.5 5 5 1.5-1.5c1.4-1.4 1.4-3.6 0-5z"/></svg>
+          </div>
+          <h3>Embroidered Apparel</h3>
+          <p>Custom embroidery on polos, jackets, caps, and uniforms. Professional-grade thread work that elevates your team's appearance.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-4">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 6.5l-4-4-9.5 9.5-1 4.5 4.5-1L21 6.5zM3 17.25V21h3.75l9.5-9.5-3.75-3.75-9.5 9.5z"/></svg>
+          </div>
+          <h3>Silk-Screened Apparel</h3>
+          <p>Vibrant, durable screen printing for T-shirts, hoodies, and event wear. Perfect for tradeshows, company outings, and retail.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-5">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </div>
+          <h3>Marketing Materials</h3>
+          <p>Direct mail pieces, postcards, banners, signage, and trade show displays that communicate your message with impact.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-6">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zm-7 4h12v2H6v-2zm0 4h8v2H6v-2z"/></svg>
+          </div>
+          <h3>Checks, Forms &amp; Compliance</h3>
+          <p>Business checks, invoices, purchase orders, and multi-part forms—secure, professional, and compliant with your accounting systems.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── About ─────────────────────────────────────────────────── -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap reveal">
+          <img
+            src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&auto=format&fit=crop&q=80"
+            alt="Professional business consultation"
+            class="about-img"
+          />
+          <div class="about-badge">
+            <div class="badge-num">25+</div>
+            <div class="badge-label">Years Serving<br>Bay Area Businesses</div>
+          </div>
+        </div>
+        <div class="about-text reveal reveal-delay-2">
+          <p class="section-label">About Jeff Reuther</p>
+          <h2 class="section-title">Your Local Safeguard Advisor in Silicon Valley</h2>
+          <p class="section-sub">Jeff Reuther founded Jeff Reuther &amp; Associates to bring the deep product catalog and national purchasing power of Safeguard Business Systems directly to Santa Clara Valley businesses—with the hands-on attention that only a dedicated local advisor can provide.</p>
+          <blockquote>
+            "My goal is simple: make it easy for businesses to look great, stay consistent, and never have to chase down vendors for what they need."
+            <cite>&mdash; Jeff Reuther, Owner &amp; Advisor</cite>
+          </blockquote>
+          <ul class="about-points">
+            <li>Headquartered at 3964 Rivermark Plaza, Santa Clara, CA 95054</li>
+            <li>Part of the Safeguard network serving 600+ advisors across North America</li>
+            <li>Specializes in graphic design, embroidery, promotional products &amp; corporate gifts</li>
+            <li>Single point of contact for all your print and branded merchandise needs</li>
+            <li>Trusted by startups, established corporations, and nonprofits across the Bay Area</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Why Choose Us ─────────────────────────────────────────── -->
+  <section id="why">
+    <div class="container">
+      <div class="section-header center reveal">
+        <p class="section-label">Why Jeff Reuther &amp; Associates</p>
+        <h2 class="section-title">National Reach. Local Care.</h2>
+        <p class="section-sub">We combine the sourcing muscle of a nationwide network with the responsive, personalized service of a trusted local partner.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal reveal-delay-1">
+          <h3>Safeguard Network Backing <span class="tag">National</span></h3>
+          <p>Access to thousands of products, vetted suppliers, and volume pricing that independent local shops simply cannot match—passed directly to you.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-2">
+          <h3>One Advisor, All Solutions <span class="tag">Convenient</span></h3>
+          <p>Stop juggling multiple vendors. Jeff handles printing, apparel, and promos in a single conversation, saving you time and ensuring brand consistency.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-3">
+          <h3>Silicon Valley Expertise <span class="tag">Local</span></h3>
+          <p>Deep familiarity with Bay Area industries—from tech startups to real estate firms—means you get recommendations tuned to your market and culture.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-4">
+          <h3>Responsive &amp; Reliable <span class="tag">Service</span></h3>
+          <p>Direct access to Jeff means no call centers, no hold queues. Fast turnaround quotes, clear timelines, and accountability on every order.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-5">
+          <h3>Brand Consistency Guaranteed <span class="tag">Quality</span></h3>
+          <p>From color matching to approved logo usage, every product is produced to your brand standards—whether it's 25 pens or 5,000 branded shirts.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-6">
+          <h3>Competitive Pricing <span class="tag">Value</span></h3>
+          <p>National buying power translates to real savings. We work to get you the best possible price without cutting corners on quality or service.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Testimonials ──────────────────────────────────────────── -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-header center reveal">
+        <p class="section-label">Client Reviews</p>
+        <h2 class="section-title">Trusted by Bay Area Businesses</h2>
+        <p class="section-sub">Here's what local companies have to say about working with Jeff Reuther &amp; Associates.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="stars">
+            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+          </div>
+          <blockquote>
+            "Jeff redesigned all of our client-facing materials when we rebranded last year. Business cards, brochures, company shirts—everything matched perfectly and arrived ahead of schedule. He's become our go-to for anything branded."
+          </blockquote>
+          <div class="testimonial-author">
+            <strong>Michelle T.</strong>
+            <span>VP of Marketing &mdash; SaaS Company, San Jose, CA</span>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="stars">
+            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+          </div>
+          <blockquote>
+            "We needed 300 embroidered polos for our technicians on a tight deadline. Jeff made it happen, the quality was excellent, and the pricing was better than three other quotes we received. We won't go anywhere else."
+          </blockquote>
+          <div class="testimonial-author">
+            <strong>David L.</strong>
+            <span>Operations Director &mdash; Facilities Services Firm, Santa Clara, CA</span>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-3">
+          <div class="stars">
+            <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+          </div>
+          <blockquote>
+            "As a small business, I appreciate that Jeff treats my 50-piece orders with the same care as a Fortune 500 client. Our tradeshow booth looks incredibly professional. The promotional items he recommended were a huge hit."
+          </blockquote>
+          <div class="testimonial-author">
+            <strong>Sandra K.</strong>
+            <span>Founder &mdash; Boutique Consulting Agency, Sunnyvale, CA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact ───────────────────────────────────────────────── -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p class="section-label">Get in Touch</p>
+          <h2 class="section-title">Ready to Elevate Your Brand?</h2>
+          <p class="section-sub">Reach out to Jeff directly for a free consultation and quote. No obligation, no call centers—just straightforward help from a local expert who knows your market.</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-ico">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/></svg>
+              </div>
+              <p><strong>Address</strong>3964 Rivermark Plaza<br>Santa Clara, CA 95054</p>
+            </div>
+            <div class="contact-item">
+              <div class="contact-ico">
+                <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+              </div>
+              <p><strong>Phone</strong><a href="tel:4082675530">(408) 267-5530</a></p>
+            </div>
+            <div class="contact-item">
+              <div class="contact-ico">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              </div>
+              <p><strong>Email</strong><a href="mailto:jeff@go-safeguard.com">jeff@go-safeguard.com</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-2">
+          <form class="contact-form" onsubmit="return false;">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" placeholder="Jane" />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" placeholder="Smith" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Business Email</label>
+              <input type="email" id="email" placeholder="jane@yourcompany.com" />
+            </div>
+            <div class="form-group">
+              <label for="company">Company Name</label>
+              <input type="text" id="company" placeholder="Acme Corp" />
+            </div>
+            <div class="form-group">
+              <label for="service">Service of Interest</label>
+              <select id="service">
+                <option value="" disabled selected>Select a service...</option>
+                <option>Business Printing</option>
+                <option>Promotional Products</option>
+                <option>Embroidered Apparel</option>
+                <option>Silk-Screened Apparel</option>
+                <option>Marketing Materials</option>
+                <option>Checks &amp; Business Forms</option>
+                <option>Multiple / Not Sure Yet</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Tell Us About Your Project</label>
+              <textarea id="message" placeholder="Quantities, timeline, logo availability, any other details..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary form-submit">Send My Request</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ────────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-main">Safeguard</div>
+          <div class="logo-sub">Jeff Reuther &amp; Associates</div>
+          <p>Serving Santa Clara and the greater Bay Area with premium printing, promotional products, and custom apparel backed by the Safeguard national network.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Business Printing</a></li>
+            <li><a href="#services">Promotional Products</a></li>
+            <li><a href="#services">Embroidered Apparel</a></li>
+            <li><a href="#services">Silk-Screened Apparel</a></li>
+            <li><a href="#services">Marketing Materials</a></li>
+            <li><a href="#services">Checks &amp; Forms</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Jeff</a></li>
+            <li><a href="#why">Why Choose Us</a></li>
+            <li><a href="#testimonials">Client Reviews</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="https://www.gosafeguard.com" target="_blank" rel="noopener">Safeguard National Site</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Safeguard by Jeff Reuther &amp; Associates &mdash; Santa Clara, CA &mdash; <a href="mailto:jeff@go-safeguard.com">jeff@go-safeguard.com</a></p>
+        <span class="safeguard-network-badge">Safeguard Network Member</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Scripts ────────────────────────────────────────────────── -->
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geoneering — Geotechnical &amp; Forensic Engineering Consultants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --earth: #5c3d1e;
+      --earth-dark: #3e2810;
+      --earth-light: #7a5230;
+      --slate: #2c4a6e;
+      --slate-light: #3d6191;
+      --forest: #2e4a35;
+      --sand: #c4a46b;
+      --sand-light: #d4bb8a;
+      --white: #ffffff;
+      --off-white: #f6f3ef;
+      --warm-gray: #e8e2d9;
+      --text: #1e1a15;
+      --text-light: #4a3f33;
+      --text-mid: #6b5d50;
+      --dark: #161210;
+      --section-pad: clamp(64px, 8vw, 100px);
+      --radius: 10px;
+      --shadow: 0 4px 20px rgba(92, 61, 30, 0.10);
+      --shadow-lg: 0 12px 40px rgba(92, 61, 30, 0.15);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Merriweather', serif;
+      line-height: 1.25;
+    }
+
+    h4 {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-weight: 700;
+    }
+
+    img { display: block; width: 100%; object-fit: cover; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(20px, 5vw, 60px);
+      height: 72px;
+      background: rgba(22, 18, 16, 0.93);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(196, 164, 107, 0.15);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .nav-mark {
+      width: 36px;
+      height: 36px;
+      background: var(--earth);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-mark svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--sand);
+    }
+
+    .nav-wordmark {
+      font-family: 'Merriweather', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+
+    .nav-wordmark span { color: var(--sand); }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--sand); }
+
+    .nav-cta {
+      background: var(--earth);
+      color: var(--sand-light);
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.83rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 9px 22px;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--earth-light); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding-top: 72px;
+      background: var(--dark);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center 40%;
+      opacity: 0.25;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        120deg,
+        rgba(22, 18, 16, 0.96) 40%,
+        rgba(44, 74, 110, 0.55) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      padding: clamp(60px, 8vw, 100px) clamp(20px, 5vw, 60px);
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sand);
+      margin-bottom: 24px;
+    }
+
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 1px;
+      background: var(--sand);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      font-weight: 700;
+      color: var(--white);
+      max-width: 700px;
+      letter-spacing: -0.02em;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--sand-light);
+    }
+
+    .hero-lead {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      color: rgba(255,255,255,0.65);
+      max-width: 560px;
+      line-height: 1.85;
+      margin-bottom: 38px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-earth {
+      background: var(--earth);
+      color: var(--sand-light);
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      padding: 14px 32px;
+      border-radius: 6px;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .btn-earth:hover {
+      background: var(--earth-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: rgba(255,255,255,0.78);
+      border: 1.5px solid rgba(255,255,255,0.22);
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 13px 30px;
+      border-radius: 6px;
+      transition: background 0.2s, border-color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(196, 164, 107, 0.5);
+    }
+
+    .hero-rule {
+      width: 60px;
+      height: 3px;
+      background: var(--sand);
+      margin: 48px 0 32px;
+    }
+
+    .hero-credentials {
+      display: flex;
+      gap: 52px;
+      flex-wrap: wrap;
+    }
+
+    .hero-cred-val {
+      font-family: 'Merriweather', serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--sand);
+      line-height: 1;
+    }
+
+    .hero-cred-label {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 5px;
+    }
+
+    /* ── SHARED ── */
+    section { padding: var(--section-pad) clamp(20px, 5vw, 60px); }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    .section-tag {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--earth);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      max-width: 640px;
+      line-height: 1.85;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      background: var(--off-white);
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-image-col { position: relative; }
+
+    .about-img {
+      border-radius: 10px;
+      height: 500px;
+      object-fit: cover;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .about-overlay-card {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--slate);
+      color: var(--white);
+      border-radius: 10px;
+      padding: 20px 26px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .aoc-val {
+      font-family: 'Merriweather', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--sand);
+      line-height: 1;
+    }
+
+    .aoc-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 4px;
+    }
+
+    .about-text { }
+
+    .about-text .section-title { margin-top: 12px; }
+
+    .about-body {
+      color: var(--text-light);
+      margin: 18px 0;
+      line-height: 1.85;
+    }
+
+    .about-quote {
+      border-left: 4px solid var(--sand);
+      padding: 16px 20px;
+      margin: 24px 0;
+      background: var(--warm-gray);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .about-quote p {
+      font-family: 'Merriweather', serif;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    .about-quote cite {
+      display: block;
+      margin-top: 10px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--earth);
+      font-style: normal;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .about-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .about-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: var(--text-light);
+    }
+
+    .about-bullets li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 7px;
+      height: 7px;
+      background: var(--earth);
+      border-radius: 50%;
+      margin-top: 9px;
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      background: var(--white);
+    }
+
+    .services-header {
+      margin-bottom: 52px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .service-card {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--warm-gray);
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+
+    .service-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .service-card-img {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .service-card-img img { height: 100%; transition: transform 0.4s; }
+
+    .service-card:hover .service-card-img img { transform: scale(1.04); }
+
+    .service-card-body {
+      padding: 28px 26px;
+      background: var(--white);
+    }
+
+    .service-num {
+      font-family: 'Merriweather', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: rgba(92, 61, 30, 0.12);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .service-card-body h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .service-card-body p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 16px;
+    }
+
+    .service-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--earth);
+      background: rgba(92, 61, 30, 0.08);
+      border-radius: 4px;
+      padding: 3px 10px;
+    }
+
+    /* ── EXPERTISE STRIP (DARK) ── */
+    .expertise-strip {
+      background: var(--earth-dark);
+      padding: 60px clamp(20px, 5vw, 60px);
+    }
+
+    .expertise-strip-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .expertise-strip .section-tag { color: var(--sand); }
+
+    .expertise-strip .section-title { color: var(--white); margin-bottom: 40px; }
+
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .expertise-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(196, 164, 107, 0.15);
+      border-radius: 10px;
+      padding: 26px 22px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .expertise-card:hover {
+      background: rgba(196, 164, 107, 0.08);
+      border-color: rgba(196, 164, 107, 0.4);
+    }
+
+    .expertise-card h4 {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--sand-light);
+      margin-bottom: 10px;
+    }
+
+    .expertise-card p {
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    /* ── FORENSIC ── */
+    .forensic {
+      background: var(--off-white);
+    }
+
+    .forensic-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .forensic-text { }
+
+    .forensic-text .section-title { margin-top: 12px; }
+
+    .forensic-body {
+      color: var(--text-light);
+      margin: 18px 0 24px;
+      line-height: 1.85;
+    }
+
+    .forensic-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .forensic-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .fl-icon {
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      background: var(--slate);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fl-icon svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--sand-light);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .fl-text h5 {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .fl-text p {
+      font-size: 0.83rem;
+      color: var(--text-light);
+      line-height: 1.65;
+    }
+
+    .forensic-image-col {
+      position: relative;
+    }
+
+    .forensic-img {
+      border-radius: 10px;
+      height: 460px;
+      object-fit: cover;
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* ── INDUSTRIES ── */
+    .industries {
+      background: var(--white);
+    }
+
+    .industries-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    .industries-header .section-lead { margin: 0 auto; }
+
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .industry-card {
+      background: var(--off-white);
+      border-radius: 10px;
+      padding: 30px 24px;
+      border: 1px solid var(--warm-gray);
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .industry-card:hover {
+      border-color: var(--earth);
+      box-shadow: var(--shadow);
+      background: var(--white);
+    }
+
+    .industry-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--earth);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .industry-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--sand-light);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .industry-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .industry-card p {
+      font-size: 0.83rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* ── TOOLS SECTION ── */
+    .tools {
+      background: var(--slate);
+      padding: var(--section-pad) clamp(20px, 5vw, 60px);
+    }
+
+    .tools-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .tools .section-tag { color: var(--sand); }
+
+    .tools .section-title { color: var(--white); margin-bottom: 14px; }
+
+    .tools .section-lead { color: rgba(255,255,255,0.65); margin-bottom: 48px; }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .tool-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 26px 24px;
+      transition: background 0.2s;
+    }
+
+    .tool-card:hover { background: rgba(255,255,255,0.11); }
+
+    .tool-badge {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sand);
+      background: rgba(196, 164, 107, 0.15);
+      border: 1px solid rgba(196, 164, 107, 0.25);
+      border-radius: 4px;
+      padding: 3px 8px;
+      display: inline-block;
+      margin-bottom: 14px;
+    }
+
+    .tool-card h4 {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .tool-card p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    /* ── TEAM / FOUNDER ── */
+    .founder {
+      background: var(--off-white);
+    }
+
+    .founder-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .founder-image-col { position: relative; }
+
+    .founder-img {
+      border-radius: 10px;
+      height: 460px;
+      object-fit: cover;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .founder-badge {
+      position: absolute;
+      top: 22px;
+      left: -20px;
+      background: var(--earth);
+      color: var(--white);
+      border-radius: 10px;
+      padding: 14px 18px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .fb-line1 {
+      font-family: 'Merriweather', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--sand-light);
+    }
+
+    .fb-line2 {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.65);
+      margin-top: 3px;
+    }
+
+    .founder-text { }
+
+    .founder-text .section-title { margin-top: 12px; }
+
+    .founder-body {
+      color: var(--text-light);
+      margin: 18px 0;
+      line-height: 1.85;
+    }
+
+    .founder-credentials {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .founder-cred {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .founder-cred::before {
+      content: '';
+      flex-shrink: 0;
+      width: 24px;
+      height: 2px;
+      background: var(--sand);
+    }
+
+    .aperture-note {
+      margin-top: 28px;
+      padding: 16px 20px;
+      background: var(--warm-gray);
+      border-left: 4px solid var(--slate);
+      border-radius: 0 8px 8px 0;
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.75;
+    }
+
+    /* ── CONTACT ── */
+    .contact {
+      background: var(--white);
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info .section-title { margin-top: 12px; }
+
+    .contact-info p {
+      color: var(--text-light);
+      margin-top: 16px;
+      line-height: 1.85;
+    }
+
+    .contact-offices {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 32px;
+    }
+
+    .contact-office {
+      display: flex;
+      gap: 16px;
+      padding: 18px 20px;
+      background: var(--off-white);
+      border-radius: 8px;
+      border: 1px solid var(--warm-gray);
+    }
+
+    .co-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--earth);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    .co-label {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--earth);
+      margin-bottom: 3px;
+    }
+
+    .co-address {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.55;
+    }
+
+    .contact-details {
+      list-style: none;
+      margin-top: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .contact-detail svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--earth);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    .contact-detail a {
+      color: var(--slate);
+      transition: color 0.2s;
+    }
+
+    .contact-detail a:hover { color: var(--earth); }
+
+    .contact-form {
+      background: var(--off-white);
+      border-radius: 14px;
+      padding: 40px;
+      border: 1px solid var(--warm-gray);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-form h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .form-subtitle {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      margin-bottom: 28px;
+      line-height: 1.65;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 11px 14px;
+      border: 1.5px solid var(--warm-gray);
+      border-radius: 6px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--earth);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--earth);
+      color: var(--sand-light);
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .form-submit:hover { background: var(--earth-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      padding: 52px clamp(20px, 5vw, 60px) 28px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.75;
+      margin-top: 12px;
+      max-width: 260px;
+    }
+
+    .footer-col h5 {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sand);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .footer-col ul a {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+      transition: color 0.2s;
+    }
+
+    .footer-col ul a:hover { color: var(--sand); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+
+      .about-inner,
+      .forensic-inner,
+      .founder-inner,
+      .contact-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .about-overlay-card { right: 10px; }
+
+      .founder-badge { left: 10px; }
+
+      .services-grid { grid-template-columns: 1fr 1fr; }
+
+      .expertise-grid { grid-template-columns: 1fr 1fr; }
+
+      .industries-grid { grid-template-columns: 1fr 1fr; }
+
+      .tools-grid { grid-template-columns: 1fr 1fr; }
+
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .services-grid,
+      .expertise-grid,
+      .industries-grid,
+      .tools-grid,
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-top { grid-template-columns: 1fr; }
+
+      .hero-credentials { gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      <div class="nav-mark">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="nav-wordmark">Geo<span>neering</span></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#forensic">Forensic</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Contact Us</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Geotechnical &amp; Forensic Engineering</div>
+      <h1>Engineering Solutions for the <em>Built World</em></h1>
+      <p class="hero-lead">Geoneering brings deep technical expertise to the most challenging geotechnical, building envelope, and forensic engineering problems — from ground investigations to expert testimony.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-earth">Discuss Your Project</a>
+        <a href="#services" class="btn-ghost">Our Services</a>
+      </div>
+      <div class="hero-rule"></div>
+      <div class="hero-credentials">
+        <div>
+          <div class="hero-cred-val">1996</div>
+          <div class="hero-cred-label">Founded by Dr. John Bryant</div>
+        </div>
+        <div>
+          <div class="hero-cred-val">TX &amp; CO</div>
+          <div class="hero-cred-label">Carrollton &amp; Denver Offices</div>
+        </div>
+        <div>
+          <div class="hero-cred-val">Aperture</div>
+          <div class="hero-cred-label">Member of Aperture LLC</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-image-col reveal">
+          <img class="about-img" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop" alt="Geoneering field investigation team at work" />
+          <div class="about-overlay-card">
+            <div class="aoc-val">28+</div>
+            <div class="aoc-label">Years of Practice</div>
+          </div>
+        </div>
+        <div class="about-text">
+          <div class="section-tag">About Geoneering</div>
+          <h2 class="section-title reveal">Founded on Expertise. Built on Integrity.</h2>
+          <p class="about-body reveal">Geoneering was established in 1996 by Dr. John Bryant, a geotechnical engineer whose career bridged academic rigor and real-world practice. From its roots in Carrollton, Texas, the firm has grown to serve clients across the country from offices in the Dallas-Fort Worth metroplex and Denver, Colorado.</p>
+          <p class="about-body reveal">Our work spans the full depth of the built environment — from subsurface investigations that inform foundation design to forensic analyses that untangle the root causes of structural failures. We bring the same methodical, evidence-based approach to every project, whether it is a routine geotechnical report or a high-stakes expert witness engagement.</p>
+          <div class="about-quote reveal">
+            <p>"Sound engineering is fundamentally about understanding the ground beneath you before you build on it — and knowing how to interpret what went wrong when things don't go as planned."</p>
+            <cite>Dr. John Bryant, P.E. — Founder</cite>
+          </div>
+          <ul class="about-bullets reveal">
+            <li>Licensed Professional Engineers in multiple states</li>
+            <li>Accredited geotechnical laboratory for soil and materials testing</li>
+            <li>LiDAR, GIS, and advanced field instrumentation capabilities</li>
+            <li>Extensive expert witness and litigation support experience</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services-header">
+        <div class="section-tag">Core Services</div>
+        <h2 class="section-title reveal">What We Do Best</h2>
+        <p class="section-lead reveal">From site characterization to failure analysis, Geoneering provides the full range of geotechnical and building science services your project demands.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-card-img">
+            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&auto=format&fit=crop" alt="Geotechnical investigation site" />
+          </div>
+          <div class="service-card-body">
+            <div class="service-num">01</div>
+            <h3>Geotechnical Engineering</h3>
+            <p>Subsurface investigation, soil and rock classification, bearing capacity analysis, settlement prediction, slope stability, and foundation design recommendations for structures of all scales.</p>
+            <div class="service-tags">
+              <span class="service-tag">Site Investigation</span>
+              <span class="service-tag">Foundation Design</span>
+              <span class="service-tag">Slope Stability</span>
+              <span class="service-tag">Soil Testing</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-img">
+            <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&auto=format&fit=crop" alt="Building envelope inspection" />
+          </div>
+          <div class="service-card-body">
+            <div class="service-num">02</div>
+            <h3>Building Envelope Consulting</h3>
+            <p>Assessment, design review, and failure investigation for roofing systems, facades, windows, and waterproofing. We identify the source of moisture intrusion and performance failures with precision.</p>
+            <div class="service-tags">
+              <span class="service-tag">Roofing Systems</span>
+              <span class="service-tag">Moisture Investigation</span>
+              <span class="service-tag">Facade Assessment</span>
+              <span class="service-tag">Waterproofing</span>
+            </div>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-card-img">
+            <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&auto=format&fit=crop" alt="Forensic engineering investigation" />
+          </div>
+          <div class="service-card-body">
+            <div class="service-num">03</div>
+            <h3>Forensic Engineering</h3>
+            <p>Independent investigation and expert analysis of structural failures, construction defects, property damage, and infrastructure distress. We support litigation with defensible, documented conclusions.</p>
+            <div class="service-tags">
+              <span class="service-tag">Expert Witness</span>
+              <span class="service-tag">Failure Analysis</span>
+              <span class="service-tag">Construction Defects</span>
+              <span class="service-tag">Litigation Support</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERTISE STRIP -->
+  <div class="expertise-strip">
+    <div class="expertise-strip-inner">
+      <div class="section-tag">Technical Capabilities</div>
+      <h2 class="section-title reveal">Depth of Technical Knowledge</h2>
+      <div class="expertise-grid">
+        <div class="expertise-card reveal">
+          <h4>Subsurface Investigation</h4>
+          <p>Geotechnical borings, SPT, cone penetration testing, Shelby tube sampling, and rock coring across a wide range of soil and site conditions.</p>
+        </div>
+        <div class="expertise-card reveal">
+          <h4>Laboratory Testing</h4>
+          <p>In-house soil classification, consolidation, shear strength, compaction, permeability, and concrete/masonry materials testing.</p>
+        </div>
+        <div class="expertise-card reveal">
+          <h4>LiDAR &amp; GIS Analysis</h4>
+          <p>High-resolution aerial and terrestrial LiDAR data acquisition and GIS mapping for site characterization, topographic analysis, and damage documentation.</p>
+        </div>
+        <div class="expertise-card reveal">
+          <h4>Foundation Systems</h4>
+          <p>Shallow, deep, and specialty foundation analysis for residential, commercial, and infrastructure applications in expansive clay and other challenging soil environments.</p>
+        </div>
+        <div class="expertise-card reveal">
+          <h4>Retaining Structures</h4>
+          <p>Design and failure investigation of retaining walls, MSE walls, sheet pile systems, and earth retention for cuts and fills on constrained urban sites.</p>
+        </div>
+        <div class="expertise-card reveal">
+          <h4>Drainage &amp; Hydrology</h4>
+          <p>Surface drainage assessment, stormwater analysis, infiltration testing, and flood plain evaluation in support of site design and dispute resolution.</p>
+        </div>
+        <div class="expertise-card reveal">
+          <h4>Structural Distress Assessment</h4>
+          <p>Evaluation of cracking, settlement, heave, and differential movement in existing structures — with root cause identification and remediation guidance.</p>
+        </div>
+        <div class="expertise-card reveal">
+          <h4>Pavement Engineering</h4>
+          <p>Subgrade evaluation, pavement design, distress investigation, and rehabilitation recommendations for roadways, parking structures, and airfields.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORENSIC -->
+  <section class="forensic" id="forensic">
+    <div class="container">
+      <div class="forensic-inner">
+        <div class="forensic-text">
+          <div class="section-tag">Forensic &amp; Expert Services</div>
+          <h2 class="section-title reveal">When the Cause Matters as Much as the Fix</h2>
+          <p class="forensic-body reveal">Geoneering has extensive experience providing forensic investigation services to insurance carriers, law firms, property owners, and contractors. Our expert witnesses are licensed Professional Engineers with courtroom and deposition experience, and our findings are always grounded in sound methodology and documented evidence.</p>
+          <p class="forensic-body reveal">We handle cases ranging from single-family foundation disputes to large-scale commercial construction defect litigation, always with the goal of delivering clear, technically defensible conclusions.</p>
+          <ul class="forensic-list">
+            <li class="reveal">
+              <div class="fl-icon">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </div>
+              <div class="fl-text">
+                <h5>Root Cause Investigation</h5>
+                <p>Systematic analysis to determine the origin and contributing factors of structural distress, failures, or property damage.</p>
+              </div>
+            </li>
+            <li class="reveal">
+              <div class="fl-icon">
+                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <div class="fl-text">
+                <h5>Expert Reports &amp; Testimony</h5>
+                <p>Peer-reviewed, well-documented reports prepared to withstand scrutiny — and expert witnesses who communicate technical findings clearly to judges and juries.</p>
+              </div>
+            </li>
+            <li class="reveal">
+              <div class="fl-icon">
+                <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              </div>
+              <div class="fl-text">
+                <h5>Mediation &amp; Dispute Support</h5>
+                <p>Independent technical guidance for mediation proceedings, helping parties understand complex engineering issues before costly litigation.</p>
+              </div>
+            </li>
+            <li class="reveal">
+              <div class="fl-icon">
+                <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <div class="fl-text">
+                <h5>Damage Assessment &amp; Repair Scoping</h5>
+                <p>Detailed field assessment of damaged structures with repair cost estimates and remediation recommendations backed by engineering analysis.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="forensic-image-col reveal">
+          <img class="forensic-img" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&auto=format&fit=crop" alt="Engineering professional reviewing forensic investigation" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="industries" id="industries">
+    <div class="container">
+      <div class="industries-header">
+        <div class="section-tag">Who We Serve</div>
+        <h2 class="section-title reveal">Industries &amp; Clients</h2>
+        <p class="section-lead reveal">Geoneering works with a broad range of clients wherever sound geotechnical or forensic engineering judgment is needed.</p>
+      </div>
+      <div class="industries-grid">
+        <div class="industry-card reveal">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h4>Residential</h4>
+          <p>Foundation investigation, moisture damage assessment, and repair evaluation for homeowners, buyers, and sellers navigating foundation disputes.</p>
+        </div>
+        <div class="industry-card reveal">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h4>Commercial &amp; Industrial</h4>
+          <p>Site characterization, foundation design, and building envelope consulting for office, retail, warehouse, and industrial development projects.</p>
+        </div>
+        <div class="industry-card reveal">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h4>Insurance &amp; Legal</h4>
+          <p>Independent forensic investigations and expert witness services for insurance carriers, defense and plaintiff counsel, and public adjusters.</p>
+        </div>
+        <div class="industry-card reveal">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
+          </div>
+          <h4>Municipal &amp; Government</h4>
+          <p>Geotechnical investigations, pavement evaluation, and infrastructure assessments for city, county, and state agency projects.</p>
+        </div>
+        <div class="industry-card reveal">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/></svg>
+          </div>
+          <h4>Developers &amp; Contractors</h4>
+          <p>Pre-construction subsurface investigations, grading and earthwork oversight, and quality control testing to keep projects on track and on budget.</p>
+        </div>
+        <div class="industry-card reveal">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+          </div>
+          <h4>Environmental</h4>
+          <p>Coordination with environmental consultants on contaminated sites, landfill engineering, and closure assessment projects requiring geotechnical input.</p>
+        </div>
+        <div class="industry-card reveal">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h4>Healthcare &amp; Education</h4>
+          <p>Rigorous site investigation and building performance consulting for hospitals, universities, and critical facility owners with high tolerance requirements.</p>
+        </div>
+        <div class="industry-card reveal">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4>HOAs &amp; Property Managers</h4>
+          <p>Structural and geotechnical assessments for common areas, retaining walls, drainage systems, and shared infrastructure in managed communities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS / TECHNOLOGY -->
+  <section class="tools">
+    <div class="tools-inner">
+      <div class="section-tag">Tools &amp; Technology</div>
+      <h2 class="section-title reveal">Modern Methods for Complex Problems</h2>
+      <p class="section-lead reveal">Geoneering combines time-tested engineering principles with modern field and data analysis technology to deliver more accurate, more defensible results.</p>
+      <div class="tools-grid">
+        <div class="tool-card reveal">
+          <div class="tool-badge">Surveying</div>
+          <h4>Terrestrial LiDAR</h4>
+          <p>High-definition 3D scanning for as-built documentation, damage extent mapping, and precise dimensional analysis of structures and sites.</p>
+        </div>
+        <div class="tool-card reveal">
+          <div class="tool-badge">Mapping</div>
+          <h4>GIS &amp; Spatial Analysis</h4>
+          <p>Geographic information systems for subsurface data visualization, regional geology review, and site characterization mapping across large project areas.</p>
+        </div>
+        <div class="tool-card reveal">
+          <div class="tool-badge">Laboratory</div>
+          <h4>Soil &amp; Materials Testing</h4>
+          <p>In-house laboratory capable of Atterberg limits, grain size analysis, consolidation, triaxial shear, and concrete core and masonry sample testing.</p>
+        </div>
+        <div class="tool-card reveal">
+          <div class="tool-badge">Field</div>
+          <h4>Instrumentation &amp; Monitoring</h4>
+          <p>Inclinometers, settlement plates, piezometers, and crack gauges for long-term performance monitoring of retaining structures, slopes, and foundations.</p>
+        </div>
+        <div class="tool-card reveal">
+          <div class="tool-badge">Analysis</div>
+          <h4>Geotechnical Modeling</h4>
+          <p>PLAXIS, SLOPE/W, SETTLE3D, and other industry-standard software for finite element analysis, slope stability, and settlement calculations.</p>
+        </div>
+        <div class="tool-card reveal">
+          <div class="tool-badge">Documentation</div>
+          <h4>Field Photography &amp; Video</h4>
+          <p>Systematic photographic and video documentation protocols for forensic investigations, ensuring a complete, defensible evidentiary record for every site visit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section class="founder">
+    <div class="container">
+      <div class="founder-inner">
+        <div class="founder-image-col reveal">
+          <img class="founder-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop" alt="Dr. John Bryant, P.E. — Founder of Geoneering" />
+          <div class="founder-badge">
+            <div class="fb-line1">Dr. John Bryant</div>
+            <div class="fb-line2">Founder &amp; Principal Engineer</div>
+          </div>
+        </div>
+        <div class="founder-text">
+          <div class="section-tag">Leadership</div>
+          <h2 class="section-title reveal">Engineering That Holds Up Under Scrutiny</h2>
+          <p class="founder-body reveal">Dr. John Bryant founded Geoneering in 1996 with a clear mission: to bring the same rigorous, evidence-based approach to applied geotechnical practice that defines the best academic and research engineering. With a doctoral background in geotechnical engineering and decades of project and litigation experience, Dr. Bryant has built a firm that is known for technically sound work and credible expert opinions.</p>
+          <p class="founder-body reveal">His expert witness experience spans hundreds of cases in Texas and across the country, including foundation failures, construction defect disputes, slope and retaining wall collapses, and building envelope claims. Attorneys and insurance carriers retain Geoneering specifically because their reports and testimony stand up to cross-examination.</p>
+          <div class="founder-credentials reveal">
+            <div class="founder-cred">Doctorate in Geotechnical Engineering</div>
+            <div class="founder-cred">Licensed P.E. in Texas, Colorado, and additional states</div>
+            <div class="founder-cred">Hundreds of expert witness and forensic engagements</div>
+            <div class="founder-cred">Carrollton, TX headquarters with Denver, CO regional office</div>
+          </div>
+          <div class="aperture-note reveal">
+            Geoneering is a member of <strong>Aperture LLC</strong>, a multi-disciplinary consulting alliance that expands our capacity and geographic reach while maintaining the focused expertise and client attention you expect from a specialized firm.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-info">
+          <div class="section-tag">Contact</div>
+          <h2 class="section-title reveal">Let's Talk About Your Project</h2>
+          <p class="reveal">Whether you need a geotechnical investigation for a development project, a building envelope assessment, or a forensic expert for an ongoing dispute, Geoneering is ready to help. Reach out to start the conversation.</p>
+          <div class="contact-offices reveal">
+            <div class="contact-office">
+              <div class="co-dot"></div>
+              <div>
+                <div class="co-label">Texas Office</div>
+                <div class="co-address">Carrollton, Texas (Dallas-Fort Worth Metroplex)</div>
+              </div>
+            </div>
+            <div class="contact-office">
+              <div class="co-dot"></div>
+              <div>
+                <div class="co-label">Colorado Office</div>
+                <div class="co-address">Denver, Colorado</div>
+              </div>
+            </div>
+          </div>
+          <ul class="contact-details">
+            <li class="contact-detail reveal">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:jbryant@geoneering.com">jbryant@geoneering.com</a>
+            </li>
+            <li class="contact-detail reveal">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+              <a href="http://www.geoneering.com">www.geoneering.com</a>
+            </li>
+            <li class="contact-detail reveal">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Serving clients nationally from TX and CO offices</span>
+            </li>
+          </ul>
+        </div>
+        <div class="contact-form reveal">
+          <h3>Send a Project Inquiry</h3>
+          <p class="form-subtitle">Describe your project or investigation need and we will follow up within one business day.</p>
+          <form onsubmit="return false;">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" placeholder="Jane" />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" placeholder="Smith" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="jane@company.com" />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" placeholder="(214) 555-0100" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="org">Organization</label>
+              <input type="text" id="org" placeholder="Your firm or company" />
+            </div>
+            <div class="form-group">
+              <label for="service">Service Needed</label>
+              <select id="service">
+                <option value="">— Select a Service —</option>
+                <option>Geotechnical Investigation</option>
+                <option>Building Envelope Consulting</option>
+                <option>Forensic Investigation</option>
+                <option>Expert Witness / Litigation Support</option>
+                <option>Foundation Assessment</option>
+                <option>LiDAR / GIS Survey</option>
+                <option>Laboratory Testing</option>
+                <option>Other / Not Sure</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="location">Project Location</label>
+              <input type="text" id="location" placeholder="City, State" />
+            </div>
+            <div class="form-group">
+              <label for="message">Project Description</label>
+              <textarea id="message" placeholder="Briefly describe the project, property, or issue you'd like us to investigate..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">Submit Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div style="font-family:'Merriweather',serif; font-size:1.05rem; font-weight:700; color:white;">Geo<span style="color:var(--sand);">neering</span></div>
+          <p>Geotechnical and forensic engineering consulting. Founded 1996 by Dr. John Bryant. Offices in Carrollton, TX and Denver, CO.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="#services">Geotechnical Engineering</a></li>
+            <li><a href="#services">Building Envelope</a></li>
+            <li><a href="#forensic">Forensic Investigation</a></li>
+            <li><a href="#forensic">Expert Witness</a></li>
+            <li><a href="#industries">Pavement Engineering</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="#about">About Geoneering</a></li>
+            <li><a href="#industries">Industries We Serve</a></li>
+            <li><a href="#tools">Technology</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="mailto:jbryant@geoneering.com">jbryant@geoneering.com</a></li>
+            <li><a href="http://www.geoneering.com">www.geoneering.com</a></li>
+            <li><a href="#contact">Carrollton, TX (HQ)</a></li>
+            <li><a href="#contact">Denver, CO</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2024 Geoneering. All rights reserved.</span>
+        <span>A member of Aperture LLC — Carrollton, TX &amp; Denver, CO</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

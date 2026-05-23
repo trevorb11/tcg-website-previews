@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Palmetto PC Solutions | IT Services & Computer Repair | Cayce, SC</title>
+  <meta name="description" content="Palmetto PC Solutions provides fast, friendly IT services, computer repair, networking, and managed IT support for homes and businesses in Cayce, West Columbia, and the Midlands of South Carolina. Since 2009." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0f1729;
+      --navy-mid: #162038;
+      --navy-light: #1e2d4f;
+      --slate: #2a3a5c;
+      --slate-light: #3d507a;
+      --green: #2ecc71;
+      --green-dark: #27ae60;
+      --green-glow: rgba(46,204,113,0.15);
+      --green-soft: #d5f5e3;
+      --cyan: #00d4aa;
+      --cyan-glow: rgba(0,212,170,0.12);
+      --white: #ffffff;
+      --off-white: #f4f6fa;
+      --gray-50: #f8f9fc;
+      --gray-100: #eef1f6;
+      --gray-200: #dce1eb;
+      --gray-300: #bcc5d3;
+      --gray-400: #8e99ae;
+      --gray-500: #64748b;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --text: #1a2332;
+      --text-mid: #4a5a72;
+      --glass: rgba(255,255,255,0.06);
+      --glass-border: rgba(255,255,255,0.1);
+      --glass-white: rgba(255,255,255,0.85);
+      --shadow-sm: 0 1px 3px rgba(15,23,41,0.06);
+      --shadow-md: 0 4px 20px rgba(15,23,41,0.08);
+      --shadow-lg: 0 12px 40px rgba(15,23,41,0.12);
+      --shadow-glow: 0 0 40px rgba(46,204,113,0.15);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --radius-xs: 6px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--off-white);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ============================================
+       ANIMATED GRID BACKGROUND
+    ============================================ */
+    .grid-bg {
+      position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+    }
+    .grid-bg::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(46,204,113,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(46,204,113,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .grid-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(46,204,113,0.06) 0%, transparent 70%);
+    }
+
+    /* Circuit decorative lines */
+    .circuit-line {
+      position: absolute;
+      background: linear-gradient(90deg, transparent, var(--green), transparent);
+      opacity: 0.08;
+      height: 1px;
+    }
+    .circuit-line-v {
+      position: absolute;
+      background: linear-gradient(180deg, transparent, var(--green), transparent);
+      opacity: 0.08;
+      width: 1px;
+    }
+    .circuit-dot {
+      position: absolute;
+      width: 6px; height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      opacity: 0.15;
+    }
+
+    /* ============================================
+       NAVIGATION
+    ============================================ */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      background: rgba(15,23,41,0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(46,204,113,0.1);
+      padding: 0 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+      transition: all 0.35s ease;
+    }
+    nav.scrolled {
+      background: rgba(15,23,41,0.95);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .nav-logo-icon {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--green), var(--cyan));
+      border-radius: var(--radius-xs);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      box-shadow: 0 0 20px rgba(46,204,113,0.25);
+    }
+    .nav-logo-icon svg { width: 22px; height: 22px; stroke: var(--navy); fill: none; stroke-width: 2.2; }
+    .nav-logo-text { display: flex; flex-direction: column; }
+    .nav-logo-name {
+      font-size: 1.05rem; font-weight: 700; color: var(--white);
+      letter-spacing: -0.01em; line-height: 1.1;
+    }
+    .nav-logo-sub { font-size: 0.65rem; color: var(--gray-400); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      color: var(--gray-400); text-decoration: none; font-size: 0.88rem;
+      font-weight: 500; transition: color 0.25s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 0;
+      height: 2px; background: var(--green); transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      color: var(--navy); padding: 11px 28px;
+      font-weight: 700; font-size: 0.85rem;
+      text-decoration: none; border-radius: var(--radius-xs);
+      transition: all 0.3s ease; letter-spacing: 0.01em;
+      box-shadow: 0 0 20px rgba(46,204,113,0.2);
+    }
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 25px rgba(46,204,113,0.35);
+    }
+
+    /* Mobile hamburger */
+    .nav-hamburger {
+      display: none; cursor: pointer; flex-direction: column;
+      gap: 5px; padding: 8px;
+    }
+    .nav-hamburger span {
+      width: 24px; height: 2px; background: var(--gray-300);
+      border-radius: 2px; transition: all 0.3s;
+    }
+
+    /* ============================================
+       HERO SECTION
+    ============================================ */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      background: linear-gradient(165deg, var(--navy) 0%, var(--navy-mid) 50%, var(--navy-light) 100%);
+      position: relative; overflow: hidden;
+      padding: 120px 48px 80px;
+    }
+    .hero .grid-bg::before { opacity: 0.5; }
+
+    /* Floating orbs */
+    .orb {
+      position: absolute; border-radius: 50%; filter: blur(80px);
+      animation: orbFloat 8s ease-in-out infinite;
+    }
+    .orb-1 {
+      width: 500px; height: 500px; top: -100px; right: -100px;
+      background: radial-gradient(circle, rgba(46,204,113,0.12), transparent 70%);
+      animation-delay: 0s;
+    }
+    .orb-2 {
+      width: 400px; height: 400px; bottom: -100px; left: -100px;
+      background: radial-gradient(circle, rgba(0,212,170,0.08), transparent 70%);
+      animation-delay: 3s;
+    }
+    .orb-3 {
+      width: 300px; height: 300px; top: 30%; left: 40%;
+      background: radial-gradient(circle, rgba(46,204,113,0.06), transparent 70%);
+      animation-delay: 5s;
+    }
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(20px, -30px) scale(1.05); }
+      66% { transform: translate(-15px, 15px) scale(0.95); }
+    }
+
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px;
+      align-items: center; position: relative; z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+      padding: 8px 20px; border-radius: 100px;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--green);
+      margin-bottom: 28px;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    .hero-badge .pulse {
+      width: 8px; height: 8px; background: var(--green); border-radius: 50%;
+      position: relative;
+    }
+    .hero-badge .pulse::after {
+      content: ''; position: absolute; inset: -3px;
+      border: 2px solid var(--green); border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 0; transform: scale(1.8); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 4.5vw, 3.8rem);
+      line-height: 1.1; font-weight: 800; color: var(--white);
+      letter-spacing: -0.03em; margin-bottom: 24px;
+      animation: fadeInUp 0.8s 0.15s ease both;
+    }
+    .hero h1 .accent {
+      background: linear-gradient(135deg, var(--green), var(--cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem; color: var(--gray-400); max-width: 540px;
+      margin-bottom: 40px; line-height: 1.85;
+      animation: fadeInUp 0.8s 0.3s ease both;
+    }
+
+    .hero-btns {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      animation: fadeInUp 0.8s 0.45s ease both;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      color: var(--navy); padding: 16px 36px;
+      font-weight: 700; font-size: 0.95rem; text-decoration: none;
+      border-radius: var(--radius-sm); transition: all 0.3s ease;
+      box-shadow: 0 4px 25px rgba(46,204,113,0.25);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 35px rgba(46,204,113,0.4);
+    }
+    .btn-primary svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+      color: var(--white); padding: 16px 36px;
+      font-weight: 600; font-size: 0.95rem; text-decoration: none;
+      border-radius: var(--radius-sm); transition: all 0.3s ease;
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    .hero-trust {
+      display: flex; gap: 32px; margin-top: 48px; flex-wrap: wrap;
+      animation: fadeInUp 0.8s 0.6s ease both;
+    }
+    .trust-chip {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .trust-chip svg { width: 18px; height: 18px; stroke: var(--green); fill: none; stroke-width: 2.5; flex-shrink: 0; }
+    .trust-chip span { font-size: 0.85rem; color: var(--gray-400); font-weight: 500; }
+
+    /* Hero Right - Stats Card */
+    .hero-stats-card {
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      padding: 40px;
+      position: relative;
+      animation: fadeInUp 0.8s 0.4s ease both;
+    }
+    .hero-stats-card::before {
+      content: '';
+      position: absolute; top: -1px; left: 40px; right: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--green), transparent);
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+    }
+    .stat-item {
+      text-align: center; padding: 24px 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-sm);
+      transition: all 0.3s ease;
+    }
+    .stat-item:hover {
+      background: rgba(46,204,113,0.06);
+      border-color: rgba(46,204,113,0.15);
+      transform: translateY(-4px);
+    }
+    .stat-number {
+      font-size: 2.4rem; font-weight: 800; line-height: 1;
+      background: linear-gradient(135deg, var(--green), var(--cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 6px;
+    }
+    .stat-label { font-size: 0.78rem; color: var(--gray-400); font-weight: 500; letter-spacing: 0.02em; }
+    .stat-badge {
+      grid-column: 1 / -1;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      padding: 18px;
+      background: rgba(46,204,113,0.06);
+      border: 1px solid rgba(46,204,113,0.12);
+      border-radius: var(--radius-sm);
+    }
+    .stat-badge svg { width: 20px; height: 20px; stroke: var(--green); fill: none; stroke-width: 2; }
+    .stat-badge span { color: var(--green); font-weight: 600; font-size: 0.9rem; }
+
+    /* ============================================
+       SECTION COMMONS
+    ============================================ */
+    section { padding: 110px 48px; position: relative; }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    .section-label {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--green-dark); margin-bottom: 14px; font-weight: 700;
+    }
+    .section-label::before {
+      content: ''; width: 24px; height: 2px;
+      background: linear-gradient(90deg, var(--green), var(--cyan));
+      border-radius: 2px;
+    }
+    .section-label.light { color: var(--green); }
+    .section-label.light::before { background: linear-gradient(90deg, var(--green), var(--cyan)); }
+
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800; color: var(--text);
+      letter-spacing: -0.03em; line-height: 1.15;
+      margin-bottom: 18px;
+    }
+    .section-title.light { color: var(--white); }
+
+    .section-sub {
+      font-size: 1.05rem; color: var(--text-mid); max-width: 600px;
+      margin-bottom: 60px; line-height: 1.85;
+    }
+    .section-sub.light { color: var(--gray-400); }
+
+    /* ============================================
+       TRUST BAR (scrolling logos / badges)
+    ============================================ */
+    .trust-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-100);
+      padding: 32px 48px;
+      position: relative; z-index: 2;
+    }
+    .trust-bar-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 48px; flex-wrap: wrap;
+    }
+    .trust-badge {
+      display: flex; align-items: center; gap: 12px;
+      opacity: 0.5; transition: opacity 0.3s;
+    }
+    .trust-badge:hover { opacity: 1; }
+    .trust-badge-icon {
+      width: 44px; height: 44px;
+      background: var(--gray-50); border: 1px solid var(--gray-200);
+      border-radius: var(--radius-xs);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .trust-badge-icon svg { width: 22px; height: 22px; stroke: var(--slate); fill: none; stroke-width: 1.5; }
+    .trust-badge-text { font-size: 0.82rem; color: var(--gray-600); font-weight: 600; line-height: 1.3; }
+    .trust-badge-sub { font-size: 0.72rem; color: var(--gray-400); font-weight: 400; }
+
+    /* ============================================
+       SERVICES SECTION
+    ============================================ */
+    .services { background: var(--off-white); }
+
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 36px 30px;
+      position: relative; overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      cursor: default;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--green), var(--cyan));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg), var(--shadow-glow);
+      border-color: rgba(46,204,113,0.2);
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--green-glow), var(--cyan-glow));
+      border: 1px solid rgba(46,204,113,0.15);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+    .service-card:hover .service-icon {
+      background: linear-gradient(135deg, var(--green), var(--cyan));
+      box-shadow: 0 4px 20px rgba(46,204,113,0.3);
+    }
+    .service-icon svg {
+      width: 24px; height: 24px; stroke: var(--green-dark);
+      fill: none; stroke-width: 1.8;
+      transition: stroke 0.3s;
+    }
+    .service-card:hover .service-icon svg { stroke: var(--navy); }
+
+    .service-card h3 {
+      font-size: 1.05rem; font-weight: 700; color: var(--text);
+      margin-bottom: 10px; letter-spacing: -0.01em;
+    }
+    .service-card p {
+      font-size: 0.9rem; color: var(--text-mid); line-height: 1.75;
+    }
+
+    /* ============================================
+       HOME VS BUSINESS SPLIT
+    ============================================ */
+    .split-section {
+      background: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .split-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .split-card {
+      padding: 60px 50px;
+      position: relative;
+    }
+    .split-card.business {
+      background: linear-gradient(165deg, var(--navy) 0%, var(--navy-mid) 100%);
+      color: var(--white);
+    }
+    .split-card.home {
+      background: linear-gradient(165deg, #f8fdf9 0%, var(--white) 100%);
+      border: 1px solid var(--gray-200);
+    }
+
+    .split-icon {
+      width: 56px; height: 56px;
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px;
+    }
+    .split-card.business .split-icon {
+      background: rgba(46,204,113,0.12);
+      border: 1px solid rgba(46,204,113,0.2);
+    }
+    .split-card.home .split-icon {
+      background: var(--green-glow);
+      border: 1px solid rgba(46,204,113,0.15);
+    }
+    .split-icon svg { width: 28px; height: 28px; fill: none; stroke-width: 1.8; }
+    .split-card.business .split-icon svg { stroke: var(--green); }
+    .split-card.home .split-icon svg { stroke: var(--green-dark); }
+
+    .split-tag {
+      display: inline-block;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 6px 14px;
+      border-radius: 100px; margin-bottom: 20px;
+    }
+    .split-card.business .split-tag {
+      background: rgba(46,204,113,0.12); color: var(--green);
+    }
+    .split-card.home .split-tag {
+      background: var(--green-soft); color: var(--green-dark);
+    }
+
+    .split-card h3 {
+      font-size: 1.5rem; font-weight: 800; margin-bottom: 14px;
+      letter-spacing: -0.02em;
+    }
+    .split-card.home h3 { color: var(--text); }
+
+    .split-card .split-desc {
+      font-size: 0.95rem; line-height: 1.8; margin-bottom: 28px;
+    }
+    .split-card.business .split-desc { color: var(--gray-400); }
+    .split-card.home .split-desc { color: var(--text-mid); }
+
+    .split-list { list-style: none; }
+    .split-list li {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 0; font-size: 0.92rem; font-weight: 500;
+    }
+    .split-card.business .split-list li { color: rgba(255,255,255,0.8); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .split-card.home .split-list li { color: var(--text-mid); border-bottom: 1px solid var(--gray-100); }
+    .split-list li:last-child { border-bottom: none; }
+    .split-list li svg { width: 18px; height: 18px; stroke: var(--green); fill: none; stroke-width: 2.5; flex-shrink: 0; }
+
+    /* ============================================
+       WHY PALMETTO / ABOUT
+    ============================================ */
+    .about-section { background: var(--off-white); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px;
+      align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .about-img-wrap img {
+      width: 100%; height: 520px; object-fit: cover;
+      border-radius: var(--radius);
+    }
+    .about-img-overlay {
+      position: absolute; bottom: 24px; left: 24px; right: 24px;
+      background: rgba(15,23,41,0.85);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-sm);
+      padding: 22px 28px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .about-img-overlay .overlay-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--green), var(--cyan));
+      border-radius: var(--radius-xs);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-img-overlay .overlay-icon svg { width: 24px; height: 24px; stroke: var(--navy); fill: none; stroke-width: 2; }
+    .about-img-overlay .overlay-text { font-size: 0.95rem; font-weight: 600; color: var(--white); }
+    .about-img-overlay .overlay-sub { font-size: 0.8rem; color: var(--gray-400); margin-top: 2px; }
+
+    .about-text h2 { margin-bottom: 20px; }
+    .about-text p { font-size: 0.98rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 18px; }
+
+    .about-quote {
+      padding: 24px 28px;
+      background: linear-gradient(135deg, var(--green-glow), var(--cyan-glow));
+      border-left: 4px solid var(--green);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 28px 0;
+    }
+    .about-quote p {
+      font-style: italic; font-size: 1.05rem;
+      color: var(--text); font-weight: 500; line-height: 1.75; margin: 0;
+    }
+
+    .about-facts {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px;
+    }
+    .fact-card {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm); padding: 20px;
+      text-align: center; transition: all 0.3s ease;
+    }
+    .fact-card:hover {
+      border-color: rgba(46,204,113,0.3);
+      box-shadow: var(--shadow-md);
+    }
+    .fact-num {
+      font-size: 1.8rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--green-dark), var(--cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .fact-label { font-size: 0.78rem; color: var(--gray-500); font-weight: 500; margin-top: 4px; }
+
+    /* ============================================
+       DIFFERENTIATORS
+    ============================================ */
+    .diff-section {
+      background: linear-gradient(165deg, var(--navy) 0%, var(--navy-mid) 50%, #0d1420 100%);
+      position: relative; overflow: hidden;
+    }
+    .diff-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .diff-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative; overflow: hidden;
+    }
+    .diff-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--green), var(--cyan));
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+    .diff-card:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(46,204,113,0.15);
+      transform: translateY(-4px);
+    }
+    .diff-card:hover::after { transform: scaleX(1); }
+
+    .diff-icon {
+      width: 52px; height: 52px;
+      background: rgba(46,204,113,0.08);
+      border: 1px solid rgba(46,204,113,0.15);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 22px;
+    }
+    .diff-icon svg { width: 24px; height: 24px; stroke: var(--green); fill: none; stroke-width: 1.8; }
+
+    .diff-card h3 {
+      font-size: 1.05rem; font-weight: 700; color: var(--white);
+      margin-bottom: 12px; letter-spacing: -0.01em;
+    }
+    .diff-card p { font-size: 0.88rem; color: var(--gray-400); line-height: 1.8; }
+
+    /* ============================================
+       TESTIMONIALS
+    ============================================ */
+    .testimonials { background: var(--off-white); }
+
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 36px 30px;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '\201C';
+      position: absolute; top: 20px; right: 28px;
+      font-size: 4rem; line-height: 1; font-weight: 800;
+      background: linear-gradient(135deg, var(--green-glow), transparent);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.6;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(46,204,113,0.2);
+    }
+    .testimonial-stars { display: flex; gap: 3px; margin-bottom: 18px; }
+    .testimonial-stars svg { width: 16px; height: 16px; fill: #f59e0b; stroke: none; }
+
+    .testimonial-card blockquote {
+      font-size: 0.95rem; color: var(--text-mid); line-height: 1.85;
+      margin-bottom: 24px; font-style: normal; position: relative;
+    }
+    .testimonial-author {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .author-avatar {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--green-glow), var(--cyan-glow));
+      border: 2px solid rgba(46,204,113,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1rem;
+      color: var(--green-dark);
+    }
+    .author-info .author-name { font-size: 0.95rem; font-weight: 700; color: var(--text); }
+    .author-info .author-role { font-size: 0.8rem; color: var(--gray-500); margin-top: 2px; }
+
+    /* Response time badge */
+    .response-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green-soft); padding: 8px 16px;
+      border-radius: 100px; margin-top: 18px;
+      font-size: 0.78rem; font-weight: 600; color: var(--green-dark);
+    }
+    .response-badge svg { width: 14px; height: 14px; stroke: var(--green-dark); fill: none; stroke-width: 2.5; }
+
+    /* ============================================
+       CONTACT / SUPPORT FORM
+    ============================================ */
+    .contact-section { background: var(--white); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.15fr; gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info p { font-size: 0.98rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 36px; }
+
+    .contact-detail {
+      display: flex; align-items: flex-start; gap: 16px;
+      margin-bottom: 24px; padding: 16px;
+      background: var(--gray-50); border: 1px solid var(--gray-100);
+      border-radius: var(--radius-sm);
+      transition: all 0.3s ease;
+    }
+    .contact-detail:hover {
+      border-color: rgba(46,204,113,0.2);
+      background: rgba(46,204,113,0.03);
+    }
+    .contact-detail-icon {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--green-glow), var(--cyan-glow));
+      border: 1px solid rgba(46,204,113,0.15);
+      border-radius: var(--radius-xs);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .contact-detail-icon svg { width: 20px; height: 20px; stroke: var(--green-dark); fill: none; stroke-width: 2; }
+    .contact-detail-text .cd-label {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--gray-500); margin-bottom: 4px; font-weight: 600;
+    }
+    .contact-detail-text .cd-value { font-size: 1rem; color: var(--text); font-weight: 600; }
+    .contact-detail-text .cd-value a {
+      color: var(--text); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-detail-text .cd-value a:hover { color: var(--green-dark); }
+
+    .walkin-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, var(--green-glow), var(--cyan-glow));
+      border: 1px solid rgba(46,204,113,0.15);
+      border-radius: var(--radius-sm);
+      padding: 16px 22px; margin-top: 12px;
+    }
+    .walkin-badge svg { width: 20px; height: 20px; stroke: var(--green-dark); fill: none; stroke-width: 2.5; }
+    .walkin-badge span { font-size: 0.9rem; font-weight: 600; color: var(--green-dark); }
+
+    /* Form styling */
+    .form-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+      position: relative; overflow: hidden;
+    }
+    .form-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--green), var(--cyan));
+    }
+    .form-header {
+      margin-bottom: 28px;
+    }
+    .form-header h3 {
+      font-size: 1.2rem; font-weight: 700; color: var(--text);
+      margin-bottom: 6px;
+    }
+    .form-header p { font-size: 0.88rem; color: var(--gray-500); }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: 0.8rem; font-weight: 600; color: var(--gray-600);
+      letter-spacing: 0.02em;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 14px 16px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-xs);
+      background: var(--gray-50);
+      font-family: 'Inter', sans-serif; font-size: 0.92rem;
+      color: var(--text); outline: none;
+      transition: all 0.25s ease;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--green);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(46,204,113,0.1);
+    }
+    .form-group select { color: var(--gray-500); cursor: pointer; }
+    .form-group textarea { height: 120px; resize: vertical; }
+
+    /* Urgency selector */
+    .urgency-group {
+      grid-column: 1 / -1;
+    }
+    .urgency-options {
+      display: flex; gap: 12px; flex-wrap: wrap;
+    }
+    .urgency-option {
+      flex: 1; min-width: 120px;
+      padding: 12px 16px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-xs);
+      background: var(--gray-50);
+      cursor: pointer; text-align: center;
+      transition: all 0.25s ease;
+      font-size: 0.85rem; font-weight: 600;
+      color: var(--gray-600);
+    }
+    .urgency-option:hover { border-color: var(--green); background: rgba(46,204,113,0.03); }
+    .urgency-option.selected {
+      border-color: var(--green);
+      background: var(--green-glow);
+      color: var(--green-dark);
+    }
+    .urgency-option input { display: none; }
+    .urgency-dot {
+      display: inline-block; width: 8px; height: 8px;
+      border-radius: 50%; margin-right: 6px;
+    }
+
+    .form-submit {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      color: var(--navy); border: none; padding: 16px 40px;
+      font-family: 'Inter', sans-serif; font-weight: 700;
+      font-size: 0.95rem; border-radius: var(--radius-xs);
+      cursor: pointer; transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(46,204,113,0.25);
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(46,204,113,0.4);
+    }
+    .form-submit svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2.5; }
+
+    /* ============================================
+       FOOTER
+    ============================================ */
+    footer {
+      background: var(--navy);
+      padding: 64px 48px 28px;
+      position: relative; overflow: hidden;
+    }
+    footer::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent 10%, var(--green), transparent 90%);
+      opacity: 0.3;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+      margin-bottom: 40px;
+    }
+    .footer-brand p {
+      margin-top: 16px; font-size: 0.88rem; color: var(--gray-500);
+      line-height: 1.75; max-width: 300px;
+    }
+    .footer-col h4 {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--green); margin-bottom: 18px; font-weight: 700;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a {
+      color: var(--gray-500); text-decoration: none; font-size: 0.88rem;
+      transition: color 0.25s; font-weight: 400;
+    }
+    .footer-col ul li a:hover { color: var(--green); }
+
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06);
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-bottom p { font-size: 0.78rem; color: var(--gray-500); }
+
+    /* ============================================
+       STICKY MOBILE CTA
+    ============================================ */
+    .mobile-cta {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+      padding: 12px 20px;
+      background: rgba(15,23,41,0.95);
+      backdrop-filter: blur(15px);
+      border-top: 1px solid rgba(46,204,113,0.15);
+    }
+    .mobile-cta a {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      color: var(--navy); padding: 16px;
+      font-weight: 700; font-size: 0.95rem;
+      text-decoration: none; border-radius: var(--radius-xs);
+      box-shadow: 0 0 30px rgba(46,204,113,0.3);
+    }
+    .mobile-cta a svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2.5; }
+
+    /* ============================================
+       ANIMATIONS
+    ============================================ */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1), transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .reveal-stagger { transition-delay: var(--delay, 0s); }
+
+    /* Counter animation */
+    .counter { display: inline-block; }
+
+    /* ============================================
+       RESPONSIVE
+    ============================================ */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-stats-card { max-width: 480px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-img-wrap img { height: 360px; }
+    }
+
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      section { padding: 80px 20px; }
+      .hero { padding: 100px 20px 60px; }
+
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .diff-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .split-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .trust-bar-inner { justify-content: center; }
+
+      .mobile-cta { display: block; }
+      footer { padding-bottom: 80px; }
+      .contact-section { padding-bottom: 100px; }
+    }
+
+    @media (max-width: 580px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .about-facts { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero-trust { gap: 16px; }
+      .trust-bar { padding: 24px 20px; }
+      .trust-bar-inner { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav id="mainNav">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">Palmetto PC Solutions</span>
+        <span class="nav-logo-sub">Cayce, SC &bull; Since 2009</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-hamburger" onclick="this.classList.toggle('active')">
+      <span></span><span></span><span></span>
+    </div>
+    <a href="#contact" class="nav-cta">Get Help Now</a>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="grid-bg"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Circuit decorations -->
+    <div class="circuit-line" style="top:20%;left:0;width:35%;"></div>
+    <div class="circuit-line" style="top:75%;right:0;width:25%;"></div>
+    <div class="circuit-line-v" style="left:15%;top:10%;height:30%;"></div>
+    <div class="circuit-line-v" style="right:20%;top:55%;height:25%;"></div>
+    <div class="circuit-dot" style="top:20%;left:35%;"></div>
+    <div class="circuit-dot" style="top:75%;right:25%;"></div>
+    <div class="circuit-dot" style="left:15%;top:40%;"></div>
+
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">
+          <span class="pulse"></span>
+          Trusted IT Partner Since 2009
+        </div>
+        <h1>Your IT Problems.<br><span class="accent">Solved Fast.</span></h1>
+        <p class="hero-desc">Computer acting up? Network down? Business needs reliable IT support? Palmetto PC Solutions has been fixing technology and keeping businesses running across the Midlands of South Carolina since 2009. Call Jennifer &mdash; she picks up.</p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-primary">
+            Get Help Now
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#services" class="btn-secondary">View Services</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-chip">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Same-Day Response</span>
+          </div>
+          <div class="trust-chip">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Honest Pricing</span>
+          </div>
+          <div class="trust-chip">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Walk-Ins Welcome</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-stats-card">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number"><span class="counter" data-target="5000">0</span>+</div>
+            <div class="stat-label">Devices Repaired</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number"><span class="counter" data-target="15">0</span>+</div>
+            <div class="stat-label">Years in Business</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number"><span class="counter" data-target="500">0</span>+</div>
+            <div class="stat-label">Business Clients</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number"><span class="counter" data-target="24">0</span>hr</div>
+            <div class="stat-label">Avg. Turnaround</div>
+          </div>
+          <div class="stat-badge">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>CompTIA &amp; Microsoft Certified Team</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TRUST BAR ========== -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-badge">
+        <div class="trust-badge-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <div class="trust-badge-text">CompTIA Certified</div>
+          <div class="trust-badge-sub">A+ &amp; Network+</div>
+        </div>
+      </div>
+      <div class="trust-badge">
+        <div class="trust-badge-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div>
+          <div class="trust-badge-text">Microsoft Partner</div>
+          <div class="trust-badge-sub">365 &amp; Azure Solutions</div>
+        </div>
+      </div>
+      <div class="trust-badge">
+        <div class="trust-badge-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <div class="trust-badge-text">Fast Turnaround</div>
+          <div class="trust-badge-sub">Most Repairs in 24-48 hrs</div>
+        </div>
+      </div>
+      <div class="trust-badge">
+        <div class="trust-badge-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div>
+          <div class="trust-badge-text">5-Star Rated</div>
+          <div class="trust-badge-sub">Google &amp; Facebook Reviews</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SERVICES GRID ========== -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-label reveal">Our Services</div>
+      <h2 class="section-title reveal">Technology Solutions That<br>Actually Work</h2>
+      <p class="section-sub reveal">From a crashed laptop to a full business network deployment, Palmetto PC handles it all. We explain everything in plain language &mdash; no jargon, no surprise charges, no runaround.</p>
+
+      <div class="services-grid">
+        <div class="service-card reveal" style="--delay:0s">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>PC Repair &amp; Tune-Up</h3>
+          <p>Slow computer, cracked screen, hardware failure, or just acting strange. We diagnose the problem fast, fix it right, and charge a fair price. Desktops and laptops.</p>
+        </div>
+
+        <div class="service-card reveal" style="--delay:0.08s">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg>
+          </div>
+          <h3>Networking &amp; Wi-Fi</h3>
+          <p>Wired and wireless network setup, VPN configuration, and multi-location networking for businesses. Home Wi-Fi optimization and troubleshooting, too.</p>
+        </div>
+
+        <div class="service-card reveal" style="--delay:0.16s">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+          </div>
+          <h3>Managed IT Support</h3>
+          <p>Ongoing IT support for businesses that need reliable help without a full-time IT staff. We monitor, maintain, and respond fast so you can focus on your work.</p>
+        </div>
+
+        <div class="service-card reveal" style="--delay:0.24s">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Data Recovery</h3>
+          <p>Lost files, crashed hard drive, or failed storage device? We recover what we can and set up backup solutions so this never happens to you again.</p>
+        </div>
+
+        <div class="service-card reveal" style="--delay:0.32s">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h3>Cybersecurity</h3>
+          <p>Endpoint protection, email security, firewall management, and employee security training. We keep your business protected from threats that grow every year.</p>
+        </div>
+
+        <div class="service-card reveal" style="--delay:0.4s">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+          </div>
+          <h3>Cloud Services</h3>
+          <p>Microsoft 365, Google Workspace, and cloud storage solutions. Deployed and managed to keep your team productive in office or working remotely.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== HOME VS BUSINESS SPLIT ========== -->
+  <section class="split-section" id="solutions">
+    <div class="container">
+      <div style="text-align:center; margin-bottom: 56px;">
+        <div class="section-label reveal" style="justify-content:center;">Solutions For Everyone</div>
+        <h2 class="section-title reveal">Whether It's Your Office<br>or Your Living Room</h2>
+        <p class="section-sub reveal" style="margin-left:auto; margin-right:auto; text-align:center;">We serve businesses that depend on reliable technology and home users who just want things to work. Here's how we help each.</p>
+      </div>
+      <div class="split-grid reveal">
+        <div class="split-card business">
+          <div class="split-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="split-tag">Business &amp; Commercial</div>
+          <h3>Enterprise-Grade IT for<br>Growing Businesses</h3>
+          <p class="split-desc">Reliable managed IT, security, and infrastructure support that lets you run your business without worrying about technology.</p>
+          <ul class="split-list">
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Managed IT &amp; Help Desk</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Network Infrastructure</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Cybersecurity &amp; Compliance</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Cloud &amp; Microsoft 365</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> IT Consulting &amp; Strategy</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Hardware Procurement</li>
+          </ul>
+        </div>
+        <div class="split-card home">
+          <div class="split-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div class="split-tag">Home &amp; Residential</div>
+          <h3>Tech Help That<br>Speaks Your Language</h3>
+          <p class="split-desc">Computer problems fixed fast, with clear explanations and honest pricing. No condescension, no tech jargon, no attitude.</p>
+          <ul class="split-list">
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Computer Repair &amp; Tune-Up</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Virus &amp; Malware Removal</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Data Recovery &amp; Backup</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> New Computer Setup</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Home Wi-Fi Optimization</li>
+            <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Hardware Upgrades</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT JENNIFER ========== -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap reveal">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80" alt="Jennifer Altman, owner of Palmetto PC Solutions in Cayce, SC" loading="lazy" />
+          <div class="about-img-overlay">
+            <div class="overlay-icon">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div class="overlay-text">Owner-Operated Since 2009</div>
+              <div class="overlay-sub">Jennifer Altman, Founder</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-text reveal">
+          <div class="section-label">About Jennifer</div>
+          <h2 class="section-title">When You Call,<br>A Real Person Answers</h2>
+          <p>Jennifer Altman founded Palmetto PC Solutions in Cayce, South Carolina in 2009. Her approach has always been the same: treat every customer the way she would want to be treated when she is the one who is frustrated and confused. With respect, plain language, and never any pressure to spend more than they need to.</p>
+          <p>She built Palmetto PC around a simple observation: most people call a computer repair shop because they are already stressed. The last thing they need is jargon and attitude. They need someone who listens, explains what is wrong, fixes it, and charges a fair price.</p>
+          <div class="about-quote">
+            <p>"Technology should make your life easier. When it stops doing that, just tell us what's going on &mdash; we'll take it from there."</p>
+          </div>
+          <p>Walk-ins are always welcome at our Cayce storefront on Memorial Drive. If you would rather call first, Jennifer or a member of her team picks up. It really is that simple.</p>
+          <div class="about-facts">
+            <div class="fact-card">
+              <div class="fact-num">2009</div>
+              <div class="fact-label">Founded</div>
+            </div>
+            <div class="fact-card">
+              <div class="fact-num">15+</div>
+              <div class="fact-label">Years Serving SC</div>
+            </div>
+            <div class="fact-card">
+              <div class="fact-num">100%</div>
+              <div class="fact-label">Honest Pricing</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHY PALMETTO (DIFFERENTIATORS) ========== -->
+  <section class="diff-section">
+    <div class="container">
+      <div class="grid-bg"></div>
+      <div class="section-label light reveal">Why Palmetto PC</div>
+      <h2 class="section-title light reveal">Real People. Real Help.<br>No Jargon. No Runaround.</h2>
+      <p class="section-sub light reveal">We built our reputation on picking up the phone, telling the truth, and getting the job done right the first time.</p>
+
+      <div class="diff-grid">
+        <div class="diff-card reveal" style="--delay:0s">
+          <div class="diff-icon">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Honest Pricing &mdash; No Surprises</h3>
+          <p>We quote before we work. You know exactly what the repair or service costs before we start. No hidden fees, no surprise charges on the invoice.</p>
+        </div>
+
+        <div class="diff-card reveal" style="--delay:0.1s">
+          <div class="diff-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>24-48 Hour Turnaround</h3>
+          <p>We know you need your device back quickly. Most standard repairs are completed in 24-48 hours. We do not sit on jobs or drag out timelines.</p>
+        </div>
+
+        <div class="diff-card reveal" style="--delay:0.2s">
+          <div class="diff-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 3.38 2 2 0 0 1 3.05 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+          </div>
+          <h3>We Pick Up the Phone</h3>
+          <p>Call us and a real person answers. Email us and you get a real response. We are a small, local business &mdash; and you actually get through to us when you need help.</p>
+        </div>
+
+        <div class="diff-card reveal" style="--delay:0.3s">
+          <div class="diff-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
+          </div>
+          <h3>Plain Language, Always</h3>
+          <p>We explain what is wrong and what we did in language that makes sense. No acronyms and buzzwords designed to keep you confused and dependent.</p>
+        </div>
+
+        <div class="diff-card reveal" style="--delay:0.4s">
+          <div class="diff-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Local &amp; Accessible</h3>
+          <p>We are in Cayce on Memorial Drive. Walk-ins are always welcome. You do not need an appointment to bring us your device &mdash; though calling ahead never hurts.</p>
+        </div>
+
+        <div class="diff-card reveal" style="--delay:0.5s">
+          <div class="diff-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Your Data, Your Privacy</h3>
+          <p>We treat your device and its data with complete respect. Your files and personal information are never accessed beyond what is needed for the repair.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div style="text-align:center; margin-bottom:60px;">
+        <div class="section-label reveal" style="justify-content:center;">Client Testimonials</div>
+        <h2 class="section-title reveal">Trusted by Businesses &amp;<br>Families Across the Midlands</h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal" style="--delay:0s">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote>"I brought in my laptop thinking it was a total loss. Palmetto PC had it diagnosed by the next morning and back in my hands within two days. The price was exactly what they told me upfront. I honestly cannot recommend them enough."</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">S</div>
+            <div class="author-info">
+              <div class="author-name">Sarah M.</div>
+              <div class="author-role">Cayce, SC &mdash; Laptop Repair</div>
+            </div>
+          </div>
+          <div class="response-badge">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Diagnosed next morning, returned in 2 days
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal" style="--delay:0.12s">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote>"Jennifer set up our entire office network when we relocated. Done in one day. Everything worked. She explained every decision she made so I actually understood what was set up and why. I finally feel in control of our technology."</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">P</div>
+            <div class="author-info">
+              <div class="author-name">Dr. Patricia K.</div>
+              <div class="author-role">Medical Office, West Columbia, SC</div>
+            </div>
+          </div>
+          <div class="response-badge">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Full network deployed in 1 day
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal" style="--delay:0.24s">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <blockquote>"We had a ransomware hit that put us in full panic mode. Jennifer's team responded within hours, contained the damage, recovered what they could, and built us a backup system so we are never in that position again. They were calm when we were not."</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">J</div>
+            <div class="author-info">
+              <div class="author-name">James W., Owner</div>
+              <div class="author-role">Small Business, Lexington County, SC</div>
+            </div>
+          </div>
+          <div class="response-badge">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Emergency response within hours
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT / SERVICE REQUEST FORM ========== -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="section-label">Get In Touch</div>
+          <h2 class="section-title">Tell Us What's<br>Going On</h2>
+          <p class="contact-info">Describe what is happening and we will take it from there. Business clients receive a free initial consultation. Walk-ins are always welcome at our Cayce storefront. Or just give Jennifer a call &mdash; she picks up.</p>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 3.38 2 2 0 0 1 3.05 1h3a2 2 0 0 1 2 1.72 19.79 19.79 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 19.79 19.79 0 0 0 2.81.7A2 2 0 0 1 21 16z"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <div class="cd-label">Call Jennifer Directly</div>
+              <div class="cd-value"><a href="tel:8034293885">(803) 429-3885</a></div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <div class="cd-label">Email</div>
+              <div class="cd-value"><a href="mailto:jenny@palmettopcsolutions.com">jenny@palmettopcsolutions.com</a></div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <div class="cd-label">Visit Us</div>
+              <div class="cd-value">2208 Memorial Drive, Cayce, SC</div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <div class="cd-label">Website</div>
+              <div class="cd-value"><a href="https://palmettopcsolutions.com" target="_blank">palmettopcsolutions.com</a></div>
+            </div>
+          </div>
+
+          <div class="walkin-badge">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Walk-ins welcome &mdash; no appointment needed</span>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="form-card">
+            <div class="form-header">
+              <h3>Submit a Service Request</h3>
+              <p>Tell us what's happening and we'll get back to you fast.</p>
+            </div>
+            <form>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label>Your Name</label>
+                  <input type="text" placeholder="Full name" required />
+                </div>
+                <div class="form-group">
+                  <label>Phone Number</label>
+                  <input type="tel" placeholder="(803) 555-0123" />
+                </div>
+                <div class="form-group full">
+                  <label>Email Address</label>
+                  <input type="email" placeholder="you@email.com" required />
+                </div>
+                <div class="form-group">
+                  <label>Issue Type</label>
+                  <select required>
+                    <option value="">Select an issue...</option>
+                    <option>Computer Repair / Tune-Up</option>
+                    <option>Virus or Malware Removal</option>
+                    <option>Business IT Support</option>
+                    <option>Network Setup / Wi-Fi</option>
+                    <option>Cybersecurity</option>
+                    <option>Data Recovery</option>
+                    <option>Cloud Services / Microsoft 365</option>
+                    <option>New Computer Setup</option>
+                    <option>Other / Not Sure</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Device (if applicable)</label>
+                  <input type="text" placeholder="e.g. Dell Laptop, HP Desktop" />
+                </div>
+                <div class="form-group urgency-group">
+                  <label>How Urgent Is This?</label>
+                  <div class="urgency-options">
+                    <label class="urgency-option" onclick="selectUrgency(this)">
+                      <input type="radio" name="urgency" value="low" />
+                      <span class="urgency-dot" style="background:#22c55e;"></span>No Rush
+                    </label>
+                    <label class="urgency-option" onclick="selectUrgency(this)">
+                      <input type="radio" name="urgency" value="normal" />
+                      <span class="urgency-dot" style="background:#f59e0b;"></span>Normal
+                    </label>
+                    <label class="urgency-option" onclick="selectUrgency(this)">
+                      <input type="radio" name="urgency" value="urgent" />
+                      <span class="urgency-dot" style="background:#ef4444;"></span>Urgent
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group full">
+                  <label>Describe What's Happening</label>
+                  <textarea placeholder="Tell us about the problem you're experiencing..."></textarea>
+                </div>
+                <button type="submit" class="form-submit">
+                  Submit Service Request
+                  <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo" style="text-decoration:none; display:inline-flex;">
+            <div class="nav-logo-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div class="nav-logo-text">
+              <span class="nav-logo-name">Palmetto PC Solutions</span>
+              <span class="nav-logo-sub">Cayce, SC &bull; Since 2009</span>
+            </div>
+          </a>
+          <p>Fast, friendly, and reliable IT services and computer repair for businesses and homes across the Midlands of South Carolina.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Computer Repair</a></li>
+            <li><a href="#services">Managed IT</a></li>
+            <li><a href="#services">Networking</a></li>
+            <li><a href="#services">Cybersecurity</a></li>
+            <li><a href="#services">Cloud Services</a></li>
+            <li><a href="#services">Data Recovery</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Solutions</h4>
+          <ul>
+            <li><a href="#solutions">Business IT</a></li>
+            <li><a href="#solutions">Home &amp; Residential</a></li>
+            <li><a href="#solutions">Medical Offices</a></li>
+            <li><a href="#solutions">Small Business</a></li>
+            <li><a href="#about">Our Story</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:8034293885">(803) 429-3885</a></li>
+            <li><a href="mailto:jenny@palmettopcsolutions.com">jenny@palmettopcsolutions.com</a></li>
+            <li><a href="#">2208 Memorial Drive</a></li>
+            <li><a href="#">Cayce, SC</a></li>
+            <li><a href="https://palmettopcsolutions.com">palmettopcsolutions.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Palmetto PC Solutions LLC. All rights reserved.</p>
+        <p>IT Services &amp; Computer Repair &mdash; Cayce &amp; the Midlands, SC</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== STICKY MOBILE CTA ========== -->
+  <div class="mobile-cta">
+    <a href="#contact">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 3.38 2 2 0 0 1 3.05 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+      Get Help Now
+    </a>
+  </div>
+
+  <script>
+    // ===== SCROLL-TRIGGERED REVEAL ANIMATIONS =====
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      // Apply stagger delays from CSS custom property
+      const delay = el.style.getPropertyValue('--delay');
+      if (delay) el.style.transitionDelay = delay;
+      revealObserver.observe(el);
+    });
+
+    // ===== ANIMATED COUNTERS =====
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counter = entry.target;
+          const target = parseInt(counter.getAttribute('data-target'));
+          const duration = 2000;
+          const startTime = performance.now();
+
+          function updateCounter(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease-out cubic
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.round(eased * target);
+            counter.textContent = current.toLocaleString();
+
+            if (progress < 1) {
+              requestAnimationFrame(updateCounter);
+            }
+          }
+
+          requestAnimationFrame(updateCounter);
+          counterObserver.unobserve(counter);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+    // ===== NAV SCROLL EFFECT =====
+    const nav = document.getElementById('mainNav');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY > 60) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+      lastScroll = scrollY;
+    }, { passive: true });
+
+    // ===== URGENCY SELECTOR =====
+    function selectUrgency(el) {
+      document.querySelectorAll('.urgency-option').forEach(opt => opt.classList.remove('selected'));
+      el.classList.add('selected');
+    }
+
+    // ===== SMOOTH SCROLL FOR NAV LINKS =====
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

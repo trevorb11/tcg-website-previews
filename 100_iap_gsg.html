@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IAP Government Services Group | Owner's Representative | Columbus, OH</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #1a3a5c;
+      --blue-mid: #214d7a;
+      --blue-accent: #2e6da4;
+      --blue-light: #e8f0f9;
+      --white: #ffffff;
+      --off-white: #f5f7fa;
+      --gray: #68778f;
+      --gray-light: #dde4ef;
+      --text: #1c2840;
+      --gold: #c4923a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.2;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 5%;
+      background: rgba(26,58,92,0.97);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--white) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 4px;
+    }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s, transform 0.65s; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--blue);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1600&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.14;
+    }
+
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(26,58,92,0.97) 55%, rgba(26,58,92,0.5));
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 5%; padding-top: 8rem;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 32px; height: 2px;
+      background: var(--gold);
+    }
+
+    .hero-eyebrow span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      font-weight: 800;
+      color: var(--white);
+      max-width: 680px;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--white);
+      padding: 0.88rem 2rem;
+      border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.88; }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 0.88rem 2rem;
+      border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.35);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    section { padding: 5.5rem 5%; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-tag {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue-accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 0.9rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-lead {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 560px;
+      line-height: 1.85;
+      margin-bottom: 3rem;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-img { position: relative; }
+
+    .about-img img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 6px;
+      display: block;
+    }
+
+    .about-img .year-badge {
+      position: absolute;
+      bottom: -18px;
+      right: -18px;
+      width: 100px; height: 100px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .about-img .year-badge .yr { font-size: 1.5rem; font-weight: 800; line-height: 1; }
+    .about-img .year-badge .est { font-size: 0.58rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; }
+
+    .about-text p {
+      font-size: 0.97rem;
+      color: var(--gray);
+      line-height: 1.9;
+      margin-bottom: 1.1rem;
+    }
+
+    /* SERVICES */
+    .services { background: var(--off-white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 2.2rem;
+      border: 1px solid var(--gray-light);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 36px rgba(26,58,92,0.1);
+    }
+
+    .service-icon {
+      width: 50px; height: 50px;
+      background: var(--blue-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .service-icon svg {
+      width: 26px; height: 26px;
+      stroke: var(--blue-accent); fill: none; stroke-width: 1.8;
+    }
+
+    .service-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 0.6rem;
+    }
+
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--gray);
+      line-height: 1.75;
+    }
+
+    /* PROCESS */
+    .process { background: var(--blue); }
+
+    .process .section-title { color: var(--white); }
+    .process .section-lead { color: rgba(255,255,255,0.55); }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 0 0.5rem;
+    }
+
+    .process-num {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--gold);
+    }
+
+    .process-step h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .process-step p {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+
+    /* PROJECT TYPES */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+
+    .project-card:hover img { transform: scale(1.04); }
+
+    .project-card .project-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(26,58,92,0.92), transparent);
+      padding: 1.5rem 1rem 0.8rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    /* WHY IAP */
+    .why { background: var(--off-white); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .why-card {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 2.2rem;
+      border: 1px solid var(--gray-light);
+      text-align: center;
+    }
+
+    .why-card svg {
+      width: 36px; height: 36px;
+      stroke: var(--gold); fill: none; stroke-width: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .why-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 0.6rem;
+    }
+
+    .why-card p { font-size: 0.87rem; color: var(--gray); line-height: 1.7; }
+
+    /* TEAM PHOTOS */
+    .team-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .team-photos img {
+      width: 100%; height: 260px; object-fit: cover; border-radius: 6px; display: block;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p { font-size: 0.95rem; color: var(--gray); line-height: 1.85; margin-bottom: 1.5rem; }
+
+    .cdetail { display: flex; gap: 0.8rem; align-items: flex-start; margin-bottom: 0.7rem; }
+
+    .cdetail svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 2; flex-shrink: 0; margin-top: 3px; }
+
+    .cdetail span { font-size: 0.9rem; color: var(--text); }
+
+    .form-group { margin-bottom: 1.1rem; }
+
+    .form-group label {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.35rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.78rem 1rem;
+      border: 1.5px solid var(--gray-light);
+      border-radius: 4px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--blue-accent); }
+
+    .form-group textarea { height: 120px; resize: vertical; }
+
+    .form-submit {
+      background: var(--blue);
+      color: var(--white);
+      padding: 0.88rem 2.2rem;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .form-submit:hover { background: var(--gold); }
+
+    footer {
+      background: var(--blue);
+      color: rgba(255,255,255,0.5);
+      padding: 3rem 5%;
+    }
+
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+
+    .footer-logo span { color: var(--gold); }
+
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy {
+      width: 100%; text-align: center;
+      font-size: 0.78rem; color: rgba(255,255,255,0.28);
+      margin-top: 1.5rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .services-grid, .why-grid { grid-template-columns: 1fr; }
+      .process-grid, .project-grid { grid-template-columns: 1fr 1fr; }
+      .team-photos { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .process-grid, .project-grid { grid-template-columns: 1fr; }
+      .team-photos { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">IAP <span>GSG</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact" class="nav-cta">Start a Project</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow"><span>Owner's Representative | Columbus, Ohio</span></div>
+      <h1>Your Turn-Key Partner for Every Capital Improvement</h1>
+      <p class="hero-sub">IAP Government Services Group serves as owner's representative and project manager for government and institutional clients. We take projects from concept to completion — on schedule, on budget, and on your terms.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Our Services</a>
+        <a href="#contact" class="btn-outline">Start a Project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-img reveal">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop" alt="Government facility construction project underway" />
+          <div class="year-badge">
+            <span class="yr">2004</span>
+            <span class="est">Est.</span>
+          </div>
+        </div>
+        <div class="reveal">
+          <span class="section-tag">About IAP GSG</span>
+          <h2 class="section-title">Protecting Your Investment. Managing Your Project.</h2>
+          <p style="font-size:0.97rem; color:var(--gray); line-height:1.9; margin-bottom:1.1rem;">Founded in 2004, IAP Government Services Group was built around a simple idea: government and institutional owners deserve the same project management sophistication that large private developers get as a matter of course. Public entities should not have to navigate complex construction projects alone.</p>
+          <p style="font-size:0.97rem; color:var(--gray); line-height:1.9; margin-bottom:1.1rem;">IAP serves as your Owner's Representative — a professional advocate who manages the entire project on your behalf. We handle pre-construction planning, competitive bidding, contractor oversight, and final closeout so you can stay focused on your mission while we protect your budget and timeline.</p>
+          <p style="font-size:0.97rem; color:var(--gray); line-height:1.9;">Based in Columbus, Ohio, we have managed capital improvement projects for government bodies, school districts, municipal agencies, and institutional clients across the region and beyond. Every project benefits from our full attention and a management process built around your priorities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">What We Do</span>
+        <h2 class="section-title">Full-Service Project Management</h2>
+        <p class="section-lead">IAP offers four core service lines covering every phase of a capital improvement project — from the first planning meeting to final punch list.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          </div>
+          <h3>Pre-Construction &amp; GC Services</h3>
+          <p>We manage the pre-construction phase end to end — scoping, estimating, scheduling, and contractor selection. Our competitive bidding process ensures you receive the best value while meeting all applicable procurement requirements.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Capital Improvements Program</h3>
+          <p>Multi-year capital planning and execution management for agencies with ongoing facility needs. We help prioritize projects, develop realistic budgets, and coordinate execution across multiple simultaneous improvements.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Owner's Project Representation</h3>
+          <p>IAP stands in as your representative in all contractor and designer communications. We keep your interests first, enforce contract terms, and make sure every decision serves your project goals — not the contractor's.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Turn-Key Construction Management</h3>
+          <p>For clients who want complete hands-off delivery, IAP manages the full construction process — daily oversight, RFI management, change order review, payment application review, and project closeout documentation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag" style="color: rgba(255,255,255,0.5);">Our Method</span>
+        <h2 class="section-title">Our Project Process</h2>
+        <p class="section-lead">Every IAP project follows a disciplined four-phase process designed to deliver on time and within budget.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step reveal">
+          <div class="process-num">01</div>
+          <h4>Assessment &amp; Planning</h4>
+          <p>We assess your facility needs, establish scope, develop a realistic budget, and build a project schedule that works for your organization</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-num">02</div>
+          <h4>Public Bidding &amp; Procurement</h4>
+          <p>We publicly advertise using your preferred method plus IAP platforms to ensure competitive bids and full procurement compliance</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-num">03</div>
+          <h4>Construction Management</h4>
+          <p>We manage the contractor, track progress against the schedule, handle RFIs and change orders, and keep you informed at every step</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="process-num">04</div>
+          <h4>Completion &amp; Closeout</h4>
+          <p>We conduct final inspections, assemble closeout documentation, and ensure all punch list items are resolved before final payment is released</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT TYPES -->
+  <section id="projects">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">Project Experience</span>
+        <h2 class="section-title">Types of Projects We Manage</h2>
+        <p class="section-lead">From roofing replacements to multi-phase facility renovations, IAP has the experience to manage a wide range of government and institutional improvements.</p>
+      </div>
+      <div class="project-grid">
+        <div class="project-card reveal">
+          <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&auto=format&fit=crop" alt="Roofing installation on government building" />
+          <div class="project-label">Roofing</div>
+        </div>
+        <div class="project-card reveal">
+          <img src="https://images.unsplash.com/photo-1485083269755-a7b559a4fe5e?w=600&auto=format&fit=crop" alt="Concrete paving and site work" />
+          <div class="project-label">Concrete &amp; Paving</div>
+        </div>
+        <div class="project-card reveal">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&auto=format&fit=crop" alt="Security system installation" />
+          <div class="project-label">Security Enhancements</div>
+        </div>
+        <div class="project-card reveal">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&auto=format&fit=crop" alt="Facility interior renovation" />
+          <div class="project-label">Facility Upgrades</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY IAP -->
+  <section class="why" id="why">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">Why IAP GSG</span>
+        <h2 class="section-title">The Advantage of Having Someone in Your Corner</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <h3>We Represent You</h3>
+          <p>When you hire a general contractor, they represent themselves. When you hire IAP, we represent your budget, your timeline, and your interests — every decision, every day.</p>
+        </div>
+        <div class="why-card reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <h3>Two Decades of Experience</h3>
+          <p>Founded in 2004, IAP brings over twenty years of completed government and institutional capital projects to every new engagement. We have seen the surprises and we know how to handle them.</p>
+        </div>
+        <div class="why-card reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          <h3>Competitive Bidding = Best Value</h3>
+          <p>Our public bidding process, combined with broad advertising and IAP's contractor network, consistently delivers competitive bids that protect public money and maximize project value.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM PHOTOS -->
+  <section style="padding: 0 5% 5.5rem;">
+    <div class="section-inner">
+      <div class="team-photos">
+        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&auto=format&fit=crop" alt="Project manager reviewing construction documents on site" class="reveal" />
+        <img src="https://images.unsplash.com/photo-1570126618953-d437176e8c79?w=800&auto=format&fit=crop" alt="Team meeting about capital improvement project" class="reveal" />
+        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&auto=format&fit=crop" alt="Professional team in project discussion" class="reveal" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="background: var(--off-white);">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="reveal">
+          <span class="section-tag">Get in Touch</span>
+          <h2 class="section-title">Let's Talk About Your Project</h2>
+          <div class="contact-info">
+            <p>Whether you have a defined project ready to bid or are early in the planning process, IAP can help. We welcome the conversation — tell us what you are working on and we will be back in touch promptly.</p>
+            <div class="cdetail">
+              <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Columbus, Ohio</span>
+            </div>
+            <div class="cdetail">
+              <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>jschneider@iap-gsg.com</span>
+            </div>
+          </div>
+        </div>
+        <form class="reveal" onsubmit="return false;">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Name" />
+          </div>
+          <div class="form-group">
+            <label>Organization / Agency</label>
+            <input type="text" placeholder="Agency, municipality, or institution" />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label>Project Type</label>
+            <select>
+              <option>Roofing</option>
+              <option>Concrete &amp; Paving</option>
+              <option>Security Enhancement</option>
+              <option>Facility Renovation</option>
+              <option>Capital Improvements Program</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tell Us About Your Project</label>
+            <textarea placeholder="Scope, timeline, budget range, and any other details..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Submit Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">IAP <span>Government Services Group</span></div>
+      <ul class="footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <p class="footer-copy">&copy; 2025 IAP Government Services Group. Columbus, Ohio | Founded 2004 | Owner's Representative and Capital Project Management</p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => obs.observe(r));
+  </script>
+</body>
+</html>

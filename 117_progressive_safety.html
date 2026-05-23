@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Progressive Safety Management | Safety Consulting and OSHA Compliance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal: #1c2026;
+      --dark: #111418;
+      --amber: #d97706;
+      --amber-light: #f59e0b;
+      --amber-pale: #fffbeb;
+      --red: #dc2626;
+      --white: #ffffff;
+      --off-white: #f8f8f6;
+      --gray: #6b7280;
+      --gray-light: #e5e7eb;
+      --text: #1f2937;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Fjalla One', sans-serif; letter-spacing: 0.5px; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(28, 32, 38, 0.98);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .nav-logo {
+      font-family: 'Fjalla One', sans-serif;
+      font-size: 1.3rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    .nav-logo span { color: var(--amber-light); }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--amber-light); }
+
+    .nav-cta {
+      background: var(--amber);
+      color: var(--white) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 4px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--amber-light) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--charcoal);
+      display: flex;
+      align-items: center;
+      padding: 120px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.18;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(28,32,38,0.97) 55%, transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(217,119,6,0.2);
+      border: 1px solid var(--amber);
+      color: var(--amber-light);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 3px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 .accent { color: var(--amber-light); }
+
+    .hero p {
+      font-size: 1.08rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 2.5rem;
+      max-width: 520px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--amber);
+      color: var(--white);
+      font-family: 'Fjalla One', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--amber-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      font-family: 'Fjalla One', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.35);
+      transition: border-color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--amber-light); }
+
+    /* CREDENTIALS BAR */
+    .credentials-bar {
+      background: var(--amber);
+      padding: 20px 5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .credential-item {
+      text-align: center;
+    }
+
+    .credential-item strong {
+      display: block;
+      font-family: 'Fjalla One', sans-serif;
+      font-size: 1.5rem;
+      color: var(--charcoal);
+    }
+
+    .credential-item span {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      letter-spacing: 0.5px;
+    }
+
+    /* SECTIONS */
+    section { padding: 90px 5%; }
+
+    .section-label {
+      font-family: 'Fjalla One', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-heading {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+
+    .section-intro {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 580px;
+      margin-bottom: 3rem;
+    }
+
+    /* ABOUT */
+    .about { background: var(--off-white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-image { position: relative; }
+
+    .about-image img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .credential-badge {
+      position: absolute;
+      bottom: 24px;
+      left: -20px;
+      background: var(--charcoal);
+      color: var(--white);
+      padding: 1.2rem 1.5rem;
+      border-radius: 6px;
+      border-left: 4px solid var(--amber);
+    }
+
+    .credential-badge strong {
+      display: block;
+      font-family: 'Fjalla One', sans-serif;
+      font-size: 1.2rem;
+      color: var(--amber-light);
+    }
+
+    .credential-badge span {
+      font-size: 0.78rem;
+      opacity: 0.75;
+    }
+
+    .about-text p {
+      color: var(--gray);
+      margin-bottom: 1.2rem;
+    }
+
+    .certs-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .cert-tag {
+      background: var(--amber-pale);
+      border: 1px solid var(--amber);
+      color: var(--charcoal);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.3rem 0.9rem;
+      border-radius: 3px;
+      letter-spacing: 0.5px;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      border-radius: 8px;
+      padding: 2rem;
+      border-top: 4px solid var(--amber);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.1);
+    }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      color: var(--charcoal);
+      margin-bottom: 0.6rem;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    /* INDUSTRIES */
+    .industries { background: var(--charcoal); }
+
+    .industries .section-heading { color: var(--white); }
+    .industries .section-intro { color: rgba(255,255,255,0.65); }
+
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .industry-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 1.8rem 1.5rem;
+      text-align: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .industry-card:hover {
+      border-color: var(--amber);
+      background: rgba(217,119,6,0.1);
+    }
+
+    .industry-card h3 {
+      font-size: 1rem;
+      color: var(--white);
+    }
+
+    .industry-card p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.4rem;
+    }
+
+    /* PROCESS */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: var(--off-white);
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .step-num {
+      width: 54px;
+      height: 54px;
+      background: var(--amber);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fjalla One', sans-serif;
+      font-size: 1.2rem;
+      margin: 0 auto 1.2rem;
+    }
+
+    .process-step h4 {
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      margin-bottom: 0.4rem;
+    }
+
+    .process-step p {
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--off-white); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .testimonial-card p {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+
+    .testimonial-author img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .testimonial-author strong { display: block; font-size: 0.9rem; color: var(--charcoal); }
+    .testimonial-author span { font-size: 0.8rem; color: var(--gray); }
+
+    /* WARNING BANNER */
+    .warning-banner {
+      background: var(--red);
+      padding: 30px 5%;
+      text-align: center;
+    }
+
+    .warning-banner h2 {
+      color: var(--white);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      margin-bottom: 0.5rem;
+    }
+
+    .warning-banner p {
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 1.5rem;
+    }
+
+    /* CONTACT */
+    .contact { background: var(--white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .contact-info h2 { font-size: 1.8rem; color: var(--charcoal); margin-bottom: 1rem; }
+    .contact-info p { color: var(--gray); margin-bottom: 2rem; }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: var(--off-white);
+      border-radius: 6px;
+      margin-bottom: 0.75rem;
+      border-left: 3px solid var(--amber);
+    }
+
+    .contact-detail strong {
+      display: block;
+      font-family: 'Fjalla One', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .contact-detail span { font-size: 0.92rem; color: var(--text); }
+
+    .contact-form {
+      background: var(--charcoal);
+      padding: 2.5rem;
+      border-radius: 8px;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.2rem; }
+
+    .form-group label {
+      display: block;
+      font-family: 'Fjalla One', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.92rem;
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--amber-light); }
+
+    .form-group select option { background: var(--charcoal); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.5);
+      padding: 60px 5% 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+    }
+
+    .footer-brand p { font-size: 0.87rem; margin-top: 1rem; line-height: 1.7; }
+
+    .footer-col h4 {
+      font-family: 'Fjalla One', sans-serif;
+      color: var(--amber-light);
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.55rem; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 0.87rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--amber-light); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .about-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-image .credential-badge { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      section { padding: 65px 5%; }
+      .credentials-bar { gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Progressive <span>Safety</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#contact" class="nav-cta">Request an Audit</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-badge">Safety and Risk Management Consulting</div>
+      <h1>Protecting <span class="accent">Your People.</span><br>Protecting Your Business.</h1>
+      <p>Professional safety consulting and risk management for construction and general industry. From safety audits to OSHA compliance — we help your organization build a culture where everyone goes home safe.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Request a Safety Audit</a>
+        <a href="#services" class="btn-outline">Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="credentials-bar">
+    <div class="credential-item">
+      <strong>23+</strong>
+      <span>Years Experience</span>
+    </div>
+    <div class="credential-item">
+      <strong>CSP</strong>
+      <span>Certified Safety Professional</span>
+    </div>
+    <div class="credential-item">
+      <strong>CHST</strong>
+      <span>Construction Safety Technician</span>
+    </div>
+    <div class="credential-item">
+      <strong>MBA</strong>
+      <span>Business Expertise</span>
+    </div>
+    <div class="credential-item">
+      <strong>3</strong>
+      <span>Regions Served</span>
+    </div>
+  </div>
+
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="about-image reveal">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80" alt="Safety professional on job site" />
+        <div class="credential-badge">
+          <strong>Daniel Deller, MBA, CSP, CHST</strong>
+          <span>Principal Safety Consultant</span>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <p class="section-label">Who We Are</p>
+        <h2 class="section-heading">Expert Safety Consulting That Goes Beyond Compliance</h2>
+        <p>Progressive Safety Management was built on a conviction that workplace safety is not a checkbox — it is a fundamental commitment to the people who show up and do the work every day. Led by Daniel Deller, a safety professional with over 23 years of experience and credentials that set the standard in the industry, we provide safety and risk management services that actually change cultures.</p>
+        <p>Our team serves construction, general industry, manufacturing, and staffing clients across the Mid-Atlantic, Southeast, and Midwest. We don't believe in one-size-fits-all safety programs. We understand your risks, your operations, and your workforce — and we build solutions that fit your reality.</p>
+        <p>We benchmark lessons learned across the industries we serve, bringing best practices to every client regardless of their size — from 11 employees to 10,000.</p>
+        <div class="certs-list">
+          <span class="cert-tag">MBA</span>
+          <span class="cert-tag">CSP</span>
+          <span class="cert-tag">CHST</span>
+          <span class="cert-tag">23+ Years</span>
+          <span class="cert-tag">OSHA Authorized</span>
+          <span class="cert-tag">Mid-Atlantic / SE / Midwest</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">What We Offer</p>
+      <h2 class="section-heading reveal">Comprehensive Safety and Risk Management Services</h2>
+      <p class="section-intro reveal">Every service we offer is grounded in real-world field experience, regulatory expertise, and the understanding that effective safety programs protect people first — and business results follow.</p>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <h3>Dedicated Safety Manager Services</h3>
+          <p>An experienced safety professional embedded in your operations — on-site or part-time — providing continuous oversight, training, and compliance management without the cost of a full-time hire.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Safety Audits and Inspections</h3>
+          <p>Comprehensive jobsite and facility audits that identify hazards, assess program effectiveness, and provide prioritized corrective action recommendations.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>OSHA Compliance Training</h3>
+          <p>Regulatory-compliant safety training programs tailored to your workforce, including OSHA 10 and 30-hour construction and general industry courses.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Written Safety Programs</h3>
+          <p>Custom-developed safety and health programs that meet OSHA requirements and reflect the real conditions of your workplace — not generic templates.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>OSHA Consultation Services</h3>
+          <p>Pre-inspection preparation, response to citations, and ongoing regulatory compliance guidance so you're always ready for OSHA scrutiny.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Incident Investigation</h3>
+          <p>Thorough root cause analysis following workplace incidents, with actionable corrective actions designed to prevent recurrence and protect your organization.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Safety Culture Development</h3>
+          <p>Leadership training, behavioral safety programs, and employee engagement initiatives that build a genuine safety-first culture from the ground up.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Return-to-Work Programs</h3>
+          <p>Modified duty and return-to-work program development that reduces lost time costs while supporting injured employees through recovery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="industries" id="industries">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal" style="color:var(--amber-light);">Who We Serve</p>
+      <h2 class="section-heading reveal">Industries and Organizations We Protect</h2>
+      <p class="section-intro reveal">We serve organizations from 11 to 10,000 employees across the industries where workplace safety has the highest stakes.</p>
+      <div class="industries-grid">
+        <div class="industry-card reveal">
+          <h3>General Construction</h3>
+          <p>OSHA 29 CFR 1926 compliance, fall protection, and site-specific safety plans.</p>
+        </div>
+        <div class="industry-card reveal">
+          <h3>Industrial Manufacturing</h3>
+          <p>OSHA 29 CFR 1910 general industry, machine guarding, lockout/tagout programs.</p>
+        </div>
+        <div class="industry-card reveal">
+          <h3>Staffing Agencies</h3>
+          <p>Multi-employer worksite compliance and staffed worker safety orientation programs.</p>
+        </div>
+        <div class="industry-card reveal">
+          <h3>Commercial Building</h3>
+          <p>Tenant improvement and renovation safety management across occupied buildings.</p>
+        </div>
+        <div class="industry-card reveal">
+          <h3>Utilities and Energy</h3>
+          <p>Electrical safety, confined space entry, and utility-specific risk management programs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">How We Work</p>
+      <h2 class="section-heading reveal">Our Approach to Safety Consulting</h2>
+      <p class="section-intro reveal">We don't parachute in with generic recommendations and disappear. We build relationships with your team and develop solutions that stick.</p>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="step-num">1</div>
+          <h4>Safety Assessment</h4>
+          <p>On-site evaluation of your current safety program, culture, and hazard exposure to establish a clear baseline.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">2</div>
+          <h4>Gap Analysis</h4>
+          <p>Systematic comparison against OSHA standards, industry best practices, and your own stated goals.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">3</div>
+          <h4>Program Development</h4>
+          <p>Custom safety programs, written policies, and training curricula built for your specific operations and workforce.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">4</div>
+          <h4>Training and Implementation</h4>
+          <p>Hands-on training delivery, leadership coaching, and systematic rollout of new safety programs across your organization.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-num">5</div>
+          <h4>Ongoing Support</h4>
+          <p>Regular audits, incident response support, and continuous improvement to keep your safety program effective as your business evolves.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonials" style="background:var(--off-white);">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">Client Feedback</p>
+      <h2 class="section-heading reveal">What Our Clients Say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <p>Daniel understands both the business side and the field side of safety, which is rare. He came in, identified risks we'd been blind to for years, and helped us build a program that genuinely changed how our crews think about safety.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80" alt="Client" />
+            <div>
+              <strong>Robert B.</strong>
+              <span>VP Operations, Commercial Construction Firm</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>Our EMR dropped significantly in the two years after bringing Progressive Safety on board. Lower insurance costs, fewer incidents, and a workforce that actually talks about safety voluntarily. The ROI is real and measurable.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&q=80" alt="Client" />
+            <div>
+              <strong>Michelle A.</strong>
+              <span>HR Director, Industrial Manufacturer</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>When OSHA showed up at one of our sites, we were ready. The written programs, the training records, the site-specific plans — Progressive Safety had helped us build all of it. Not a single citation. That speaks for itself.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Client" />
+            <div>
+              <strong>Greg L.</strong>
+              <span>President, Mid-Atlantic Contractor</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="warning-banner">
+    <h2>Don't Wait for an Incident to Make Safety a Priority.</h2>
+    <p>Proactive safety management costs a fraction of what a serious workplace incident will cost your business — financially, legally, and humanly.</p>
+    <a href="#contact" class="btn-primary" style="display:inline-block;">Request a Free Safety Assessment</a>
+  </div>
+
+  <section class="contact" id="contact">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p class="section-label">Get in Touch</p>
+        <h2>Talk to a Safety Expert</h2>
+        <p>Whether you need a full safety program overhaul or a single audit before an OSHA inspection, we're here to help. Serving Mid-Atlantic, Southeast, and Midwest regions.</p>
+        <div class="contact-detail">
+          <div>
+            <strong>Email</strong>
+            <span>ddeller@progressivesafety.com</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div>
+            <strong>Website</strong>
+            <span>progressivesafety.com</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div>
+            <strong>Regions</strong>
+            <span>Mid-Atlantic &bull; Southeast &bull; Midwest</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div>
+            <strong>Company Size</strong>
+            <span>Serving organizations from 11 to 10,000 employees</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <h3 style="font-family:'Fjalla One',sans-serif;font-size:1.4rem;color:var(--white);margin-bottom:1.5rem;">Request a Safety Assessment</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="First" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Last" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Company</label>
+          <input type="text" placeholder="Your company name" />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="you@company.com" />
+        </div>
+        <div class="form-group">
+          <label>Industry</label>
+          <select>
+            <option value="">Select your industry...</option>
+            <option>General Construction</option>
+            <option>Industrial / Manufacturing</option>
+            <option>Staffing Agency</option>
+            <option>Utilities / Energy</option>
+            <option>Commercial Building</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Describe Your Safety Needs</label>
+          <textarea placeholder="Tell us about your organization, current safety challenges, and what you're looking for..."></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;padding:1rem;font-size:1rem;">Send Request</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">Progressive <span>Safety</span></a>
+        <p>Professional safety and risk management consulting for construction and general industry. Led by Daniel Deller, MBA, CSP, CHST &mdash; 23+ years of experience.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Safety Manager Services</a></li>
+          <li><a href="#">Safety Audits</a></li>
+          <li><a href="#">OSHA Training</a></li>
+          <li><a href="#">Written Programs</a></li>
+          <li><a href="#">Incident Investigation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="#">Construction</a></li>
+          <li><a href="#">Manufacturing</a></li>
+          <li><a href="#">Staffing</a></li>
+          <li><a href="#">Utilities</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:ddeller@progressivesafety.com">ddeller@progressivesafety.com</a></li>
+          <li><a href="#">progressivesafety.com</a></li>
+          <li><a href="#">Mid-Atlantic</a></li>
+          <li><a href="#">Southeast</a></li>
+          <li><a href="#">Midwest</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Progressive Safety Management. All rights reserved.</p>
+      <p>Daniel Deller, MBA, CSP, CHST &bull; 23+ Years of Safety Leadership</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

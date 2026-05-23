@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>United Bank of Union | Community Banking Since 1934 | Union, Missouri</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --burgundy: #7a1e2e;
+      --burgundy-dark: #521420;
+      --burgundy-light: #a0324a;
+      --gold: #c8922a;
+      --gold-light: #e0aa46;
+      --bg: #f7f4f0;
+      --white: #ffffff;
+      --text: #1f1510;
+      --text-light: #5a4a3a;
+      --border: #d4c8bc;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'PT Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 16px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 3px solid var(--burgundy);
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      box-shadow: 0 2px 12px rgba(31,21,16,0.08);
+    }
+    .nav-brand a {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .nav-brand .name {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--burgundy);
+      line-height: 1.2;
+    }
+    .nav-brand .tagline { font-size: 0.68rem; color: var(--text-light); letter-spacing: 0.1em; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.87rem;
+      font-weight: 700;
+      color: var(--text-light);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--burgundy); }
+    .nav-cta {
+      background: var(--burgundy);
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.55rem 1.5rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--burgundy-light); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-top: 72px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(108deg, rgba(82,20,32,0.92) 0%, rgba(122,30,46,0.80) 50%, rgba(122,30,46,0.35) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2.5rem;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+    .hero-eyebrow::after { content: ''; display: block; width: 40px; height: 1px; background: var(--gold-light); }
+    .hero h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      max-width: 620px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold-light); }
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+    .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--white);
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.9rem 2.2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.9rem 2.2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.5);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--white); transform: translateY(-2px); }
+
+    /* STATS BAR */
+    .stats-bar { background: var(--burgundy-dark); padding: 2.5rem 2rem; }
+    .stats-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; }
+    .stat-block {
+      flex: 1;
+      text-align: center;
+      padding: 1rem 1.5rem;
+      border-right: 1px solid rgba(255,255,255,0.12);
+    }
+    .stat-block:last-child { border-right: none; }
+    .stat-block .num {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      display: block;
+    }
+    .stat-block .label { font-size: 0.78rem; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    h2.section-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--burgundy-dark);
+      line-height: 1.25;
+      margin-bottom: 1.2rem;
+    }
+    h2.section-title.light { color: var(--white); }
+    .divider { width: 52px; height: 3px; background: var(--gold); margin-bottom: 2rem; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s, transform 0.65s; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-left { opacity: 0; transform: translateX(-28px); transition: opacity 0.65s, transform 0.65s; }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right { opacity: 0; transform: translateX(28px); transition: opacity 0.65s, transform 0.65s; }
+    .reveal-right.visible { opacity: 1; transform: none; }
+
+    /* ABOUT */
+    .about-section { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-img { border-radius: 3px; overflow: hidden; aspect-ratio: 5/4; box-shadow: 0 16px 50px rgba(31,21,16,0.18); }
+    .about-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-text p { color: var(--text-light); margin-bottom: 1.1rem; font-size: 1rem; }
+    .legacy-box {
+      background: var(--bg);
+      border-left: 4px solid var(--gold);
+      padding: 1.2rem 1.5rem;
+      margin-top: 1.5rem;
+      border-radius: 0 3px 3px 0;
+    }
+    .legacy-box p { font-family: 'Libre Baskerville', serif; font-style: italic; color: var(--burgundy-dark); font-size: 1rem; margin: 0; line-height: 1.7; }
+
+    /* SERVICES SPLIT */
+    .services-section { background: var(--bg); }
+    .services-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+    .service-panel {
+      background: var(--white);
+      border-radius: 3px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(31,21,16,0.08);
+    }
+    .service-panel-header {
+      background: var(--burgundy);
+      padding: 1.5rem 2rem;
+    }
+    .service-panel-header h3 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.2rem;
+      color: var(--white);
+    }
+    .service-panel-header p { color: rgba(255,255,255,0.7); font-size: 0.85rem; font-style: italic; margin-top: 0.2rem; }
+    .service-panel-body { padding: 1.8rem 2rem; }
+    .service-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+      color: var(--text-light);
+    }
+    .service-item:last-child { border-bottom: none; }
+    .service-item::before {
+      content: '&#9656;';
+      color: var(--gold);
+      font-size: 0.7rem;
+      margin-top: 0.4rem;
+      flex-shrink: 0;
+    }
+
+    /* LOANS */
+    .loans-section { background: var(--white); }
+    .loans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .loan-card {
+      background: var(--bg);
+      border-radius: 3px;
+      padding: 2rem;
+      border-top: 4px solid var(--burgundy);
+      box-shadow: 0 2px 12px rgba(31,21,16,0.07);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .loan-card:hover { transform: translateY(-4px); box-shadow: 0 10px 35px rgba(31,21,16,0.12); }
+    .loan-card:nth-child(2) { border-top-color: var(--gold); }
+    .loan-card:nth-child(3) { border-top-color: var(--burgundy-light); }
+    .loan-card h3 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.05rem;
+      color: var(--burgundy-dark);
+      margin-bottom: 0.7rem;
+    }
+    .loan-card p { font-size: 0.92rem; color: var(--text-light); line-height: 1.65; }
+
+    /* USDA HIGHLIGHT */
+    .usda-bar {
+      background: var(--gold);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .usda-inner { max-width: 800px; margin: 0 auto; }
+    .usda-inner h3 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--burgundy-dark);
+      margin-bottom: 0.8rem;
+    }
+    .usda-inner p { color: rgba(82,20,32,0.85); font-size: 1rem; }
+
+    /* COMMUNITY */
+    .community-section { background: var(--bg); }
+    .community-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .community-img { border-radius: 3px; overflow: hidden; aspect-ratio: 4/3; box-shadow: 0 12px 40px rgba(31,21,16,0.14); }
+    .community-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .community-text p { color: var(--text-light); margin-bottom: 1rem; font-size: 1rem; }
+
+    /* TESTIMONIALS */
+    .testi-section { background: var(--burgundy-dark); }
+    .testi-section .section-label { color: var(--gold-light); }
+    .testi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2.5rem; }
+    .testi-card {
+      background: rgba(255,255,255,0.07);
+      border-radius: 3px;
+      padding: 2rem;
+      border-left: 4px solid var(--gold);
+    }
+    .testi-quote {
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      color: rgba(255,255,255,0.85);
+      font-size: 1rem;
+      line-height: 1.75;
+      margin-bottom: 1.2rem;
+    }
+    .testi-name { font-weight: 700; color: var(--gold-light); font-size: 0.9rem; }
+    .testi-role { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+
+    /* FIND US */
+    .findus-section { background: var(--white); }
+    .findus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .findus-info h3 { font-family: 'Libre Baskerville', serif; font-size: 1.2rem; color: var(--burgundy); margin-bottom: 0.8rem; }
+    .findus-info p { color: var(--text-light); margin-bottom: 0.5rem; font-size: 0.97rem; }
+    .findus-info a { color: var(--burgundy); text-decoration: none; }
+    .hours-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    .hours-table tr { border-bottom: 1px solid var(--border); }
+    .hours-table td { padding: 0.6rem 0; font-size: 0.93rem; }
+    .hours-table td:first-child { color: var(--text-light); }
+    .hours-table td:last-child { font-weight: 700; color: var(--burgundy); text-align: right; }
+    .contact-form { display: flex; flex-direction: column; gap: 0.9rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+    .contact-form input, .contact-form select, .contact-form textarea {
+      padding: 0.85rem 1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-family: 'PT Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--burgundy); }
+    .contact-form textarea { min-height: 100px; resize: vertical; }
+    .btn-submit {
+      background: var(--burgundy);
+      color: var(--white);
+      padding: 0.95rem 2rem;
+      border: none;
+      border-radius: 2px;
+      font-family: 'PT Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover { background: var(--burgundy-light); }
+
+    /* FOOTER */
+    footer { background: var(--text); color: rgba(255,255,255,0.5); padding: 3rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 4rem; justify-content: space-between; flex-wrap: wrap; }
+    .footer-logo { font-family: 'Libre Baskerville', serif; font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 0.8rem; }
+    .footer-brand p { font-size: 0.87rem; line-height: 1.8; max-width: 260px; }
+    .footer-col h4 { color: var(--white); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+    .footer-col p, .footer-col a { font-size: 0.87rem; color: rgba(255,255,255,0.45); text-decoration: none; display: block; line-height: 2.1; }
+    .footer-col a:hover { color: var(--gold-light); }
+    .footer-fdic {
+      display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;
+    }
+    .fdic-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.4);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .footer-bottom { max-width: 1100px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.77rem; color: rgba(255,255,255,0.3); }
+
+    @media (max-width: 900px) {
+      .about-grid, .community-grid, .findus-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .services-tabs, .testi-grid { grid-template-columns: 1fr; }
+      .loans-grid { grid-template-columns: 1fr 1fr; }
+      .stats-inner { flex-wrap: wrap; }
+      .stat-block { min-width: 50%; border-right: none; }
+    }
+    @media (max-width: 600px) {
+      .loans-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .nav-links, .nav-cta { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-brand">
+      <a href="#">
+        <span class="name">United Bank of Union</span>
+        <span class="tagline">Serving Franklin County Since 1934</span>
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#personal">Personal</a></li>
+      <li><a href="#business">Business</a></li>
+      <li><a href="#loans">Loans</a></li>
+      <li><a href="#community">Community</a></li>
+    </ul>
+    <a href="#findus" class="nav-cta">Find a Branch</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Union, Missouri</div>
+      <h1>Your Neighbor's Bank<br><em>Since 1934</em></h1>
+      <p>United Bank of Union has served families, farms, and businesses in Franklin County for over 90 years. Locally owned, locally invested, and right here on East Main Street whenever you need us.</p>
+      <div class="btn-row">
+        <a href="#findus" class="btn-gold">Stop by the Branch</a>
+        <a href="#personal" class="btn-outline">Open an Account</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-block reveal"><span class="num">1934</span><span class="label">Founded</span></div>
+      <div class="stat-block reveal" style="transition-delay:.08s"><span class="num">$240M+</span><span class="label">In Assets</span></div>
+      <div class="stat-block reveal" style="transition-delay:.16s"><span class="num">3</span><span class="label">Branch Locations</span></div>
+      <div class="stat-block reveal" style="transition-delay:.24s"><span class="num">8</span><span class="label">ATM Locations</span></div>
+      <div class="stat-block reveal" style="transition-delay:.32s"><span class="num">Top 10%</span><span class="label">Missouri Banks</span></div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal-left">
+          <div class="about-img">
+            <img src="https://images.unsplash.com/photo-1541971875076-8f970d573be6?w=800&q=80" alt="Community bank serving local families" />
+          </div>
+        </div>
+        <div class="reveal-right">
+          <div class="section-label">Our Story</div>
+          <h2 class="section-title">Ninety Years of Keeping Our Word</h2>
+          <div class="divider"></div>
+          <p>In 1934, a small group of Franklin County residents decided their community needed a bank they could trust. They built United Bank of Union on the belief that neighbors should take care of neighbors, and that a bank should know your name, not just your account number.</p>
+          <p>Nine decades later, that belief hasn't wavered. We're still here, still locally owned, still making decisions in Union rather than some distant corporate office. When you walk in, you'll likely be greeted by someone who knows your family.</p>
+          <p>Today, with $240 million in assets and three branch locations, we hold the distinction of being among the top 10% of performing banks in the State of Missouri. We're proud of that ranking, but we're prouder of the relationships that got us there.</p>
+          <div class="legacy-box">
+            <p>"A bank is only as good as its word, and we intend to keep ours to every family and business we serve."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONAL BANKING -->
+  <section class="services-section" id="personal">
+    <div class="container">
+      <div class="reveal" style="max-width:560px; margin-bottom:1rem;">
+        <div class="section-label">Banking Services</div>
+        <h2 class="section-title">What We Offer</h2>
+        <div class="divider"></div>
+        <p style="color:var(--text-light);">Whether you're managing household finances or running a growing business, United Bank of Union has the accounts, services, and people to help you do it well.</p>
+      </div>
+      <div class="services-tabs">
+        <div class="service-panel reveal">
+          <div class="service-panel-header">
+            <h3>Personal Banking</h3>
+            <p>For individuals and families in Franklin County</p>
+          </div>
+          <div class="service-panel-body">
+            <div class="service-item">Checking accounts &mdash; personal and interest-bearing</div>
+            <div class="service-item">Savings accounts and money market accounts</div>
+            <div class="service-item">Certificates of Deposit (CDs)</div>
+            <div class="service-item">Personal loans and auto loans</div>
+            <div class="service-item">Mortgage and home equity loans</div>
+            <div class="service-item">Online and mobile banking access</div>
+            <div class="service-item">Access to 8 ATMs throughout the area</div>
+          </div>
+        </div>
+        <div class="service-panel reveal" style="transition-delay:.1s" id="business">
+          <div class="service-panel-header" style="background:var(--burgundy-dark);">
+            <h3>Business Banking</h3>
+            <p>For local businesses and entrepreneurs</p>
+          </div>
+          <div class="service-panel-body">
+            <div class="service-item">Business checking and savings accounts</div>
+            <div class="service-item">Commercial loans and lines of credit</div>
+            <div class="service-item">Agricultural loans for farm operations</div>
+            <div class="service-item">USDA Business &amp; Industrial Loan Program</div>
+            <div class="service-item">Real estate and equipment financing</div>
+            <div class="service-item">Treasury management services</div>
+            <div class="service-item">Online banking with business features</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOANS -->
+  <section class="loans-section" id="loans">
+    <div class="container">
+      <div class="reveal" style="max-width:560px; margin-bottom:1rem;">
+        <div class="section-label">Lending</div>
+        <h2 class="section-title">Loans That Make Sense for Real Life</h2>
+        <div class="divider"></div>
+        <p style="color:var(--text-light);">We make lending decisions locally, which means faster answers and solutions designed around your situation, not a distant underwriting formula.</p>
+      </div>
+      <div class="loans-grid">
+        <div class="loan-card reveal">
+          <h3>Real Estate Loans</h3>
+          <p>Home purchase, refinance, and construction loans for residential and commercial properties throughout Franklin County. We keep it local, which means we close faster.</p>
+        </div>
+        <div class="loan-card reveal" style="transition-delay:.1s">
+          <h3>Commercial Loans</h3>
+          <p>Business term loans, lines of credit, and equipment financing for small businesses and entrepreneurs. Talk to a local lender who understands the Franklin County economy.</p>
+        </div>
+        <div class="loan-card reveal" style="transition-delay:.2s">
+          <h3>Agricultural &amp; USDA Loans</h3>
+          <p>As the first USDA Business &amp; Industrial Loan Program certified lender in the State of Missouri, we bring deep expertise to farming and agribusiness financing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USDA DISTINCTION -->
+  <div class="usda-bar">
+    <div class="usda-inner reveal">
+      <h3>Missouri's First USDA B&amp;I Certified Lender</h3>
+      <p>United Bank of Union was the first bank in the State of Missouri to earn USDA Business &amp; Industrial Loan Program certification. In plain terms: that means rural businesses and farms in Franklin County can access government-backed financing that many banks simply can't offer. It took years of work to earn that certification, and we've used it to help keep businesses and farms operating right here at home.</p>
+    </div>
+  </div>
+
+  <!-- COMMUNITY -->
+  <section class="community-section" id="community">
+    <div class="container">
+      <div class="community-grid">
+        <div class="reveal-left">
+          <div class="community-img">
+            <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&q=80" alt="Community involvement" />
+          </div>
+        </div>
+        <div class="reveal-right">
+          <div class="section-label">Our Community</div>
+          <h2 class="section-title">More Than a Bank</h2>
+          <div class="divider"></div>
+          <p>United Bank of Union and its employees are valued partners with local schools, civic organizations, and volunteer groups throughout Franklin County. Our people don't just work here; they live here. They coach youth sports teams, serve on nonprofit boards, and show up when the community needs them.</p>
+          <p>That's not marketing talk. That's what happens when a bank is genuinely part of the place it serves. When you bank with us, your money stays in the community and helps the people around you.</p>
+          <p>We believe that's exactly how it should work, and we're not about to change it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testi-section" id="testimonials">
+    <div class="container">
+      <div class="reveal" style="text-align:center; max-width:500px; margin:0 auto 2.5rem;">
+        <div class="section-label" style="justify-content:center; color:var(--gold-light);">Customer Stories</div>
+        <h2 class="section-title light">What Our Customers Say</h2>
+        <div class="divider" style="margin:0 auto;"></div>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <p class="testi-quote">"We've been banking here since before our kids were born. When we needed a construction loan to expand our shop, I called Geri and had an answer by end of week. No jumping through hoops with someone in a call center who'd never heard of Union, Missouri. People here know us. That matters more than I can say."</p>
+          <div class="testi-name">Robert &amp; Karen H.</div>
+          <div class="testi-role">Business Owners, Union, MO</div>
+        </div>
+        <div class="testi-card reveal" style="transition-delay:.12s">
+          <p class="testi-quote">"I opened my first account here at 17. When I was ready to buy my house, they sat with me for over an hour and walked through everything. I didn't feel like a number or a file. My loan officer knew my name when I walked in the door. That's exactly what I needed for the biggest purchase of my life."</p>
+          <div class="testi-name">Michelle T.</div>
+          <div class="testi-role">First-Time Homeowner, Washington, MO</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIND US -->
+  <section class="findus-section" id="findus">
+    <div class="container">
+      <div class="reveal" style="max-width:500px; margin-bottom:3rem;">
+        <div class="section-label">Find Us</div>
+        <h2 class="section-title">Stop by the Branch</h2>
+        <div class="divider"></div>
+        <p style="color:var(--text-light);">We're on East Main Street, just like we've always been. Come in, ask questions, and talk to a real person. Call Geri at <a href="tel:6365832555" style="color:var(--burgundy);">(636) 583-2555</a> if you'd like to set something up in advance.</p>
+      </div>
+      <div class="findus-grid">
+        <div class="reveal-left">
+          <div class="findus-info">
+            <h3>Main Branch</h3>
+            <p>15 East Main Street<br>Union, MO 63084</p>
+            <p style="margin-top:0.8rem;"><strong>Phone:</strong> <a href="tel:6365832555">(636) 583-2555</a></p>
+            <p><strong>Email:</strong> <a href="mailto:gsmith@unitedbankofunion.com">gsmith@unitedbankofunion.com</a></p>
+          </div>
+          <table class="hours-table" style="margin-top:2rem;">
+            <tbody>
+              <tr><td>Monday - Thursday</td><td>8:30am - 4:30pm</td></tr>
+              <tr><td>Friday</td><td>8:30am - 5:00pm</td></tr>
+              <tr><td>Saturday</td><td>8:30am - 12:00pm</td></tr>
+              <tr><td>Sunday</td><td>Closed</td></tr>
+            </tbody>
+          </table>
+          <p style="color:var(--text-light); font-size:0.85rem; margin-top:1rem; font-style:italic;">Hours may vary by branch. Please call to confirm.</p>
+        </div>
+        <div class="reveal-right">
+          <form class="contact-form" onsubmit="return false;">
+            <div class="form-row">
+              <input type="text" placeholder="First Name" />
+              <input type="text" placeholder="Last Name" />
+            </div>
+            <input type="email" placeholder="Email Address" />
+            <input type="tel" placeholder="Phone Number" />
+            <select>
+              <option value="" disabled selected>I'm interested in...</option>
+              <option>Personal Checking / Savings</option>
+              <option>Mortgage / Home Loan</option>
+              <option>Business Banking</option>
+              <option>Commercial Loan</option>
+              <option>Agricultural / USDA Loan</option>
+              <option>General Information</option>
+            </select>
+            <textarea placeholder="Your message..."></textarea>
+            <button class="btn-submit" type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">United Bank of Union</div>
+        <p>Community banking for Franklin County, Missouri since 1934. Locally owned, locally invested.</p>
+        <div class="footer-fdic">
+          <span class="fdic-badge">FDIC Insured</span>
+          <span class="fdic-badge">Equal Housing Lender</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>15 E Main St<br>Union, MO 63084</p>
+        <a href="tel:6365832555">(636) 583-2555</a>
+        <a href="mailto:gsmith@unitedbankofunion.com">gsmith@unitedbankofunion.com</a>
+        <a href="https://www.ubu.bank">ubu.bank</a>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#personal">Personal Banking</a>
+        <a href="#business">Business Banking</a>
+        <a href="#loans">Loans &amp; Mortgages</a>
+        <a href="#community">Community</a>
+        <a href="#findus">Branches &amp; ATMs</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2024 United Bank of Union. All rights reserved. Member FDIC. Equal Housing Lender. Loans subject to approval.
+    </div>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Energy Tech HVAC | Draper, UT | American Standard Authorized Dealer</title>
+  <meta name="description" content="Energy Tech HVAC - Terry DiPoma, American Standard Authorized Dealer serving Draper, Salt Lake City, and Utah County. AC repair, heating, installation, and maintenance. Call (801) 580-1230." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-950: #061525;
+      --blue-900: #0a1f3a;
+      --blue-800: #0d2d4e;
+      --blue-700: #123d6b;
+      --blue-600: #1a5c9e;
+      --blue-500: #2678c4;
+      --blue-400: #3a8dde;
+      --blue-300: #6aade8;
+      --blue-200: #a3cdf2;
+      --orange-600: #d46510;
+      --orange-500: #f47b20;
+      --orange-400: #ff9a42;
+      --orange-300: #ffb76e;
+      --red-600: #c0392b;
+      --red-500: #e74c3c;
+      --white: #ffffff;
+      --gray-50: #f8fafd;
+      --gray-100: #f1f5fb;
+      --gray-200: #e2e9f3;
+      --gray-300: #c9d4e5;
+      --gray-400: #8a9bbf;
+      --gray-600: #3c4d6e;
+      --gray-700: #2a3a57;
+      --text: #1a2640;
+      --radius: 14px;
+      --radius-lg: 20px;
+      --shadow: 0 8px 32px rgba(13,45,78,0.10);
+      --shadow-lg: 0 24px 64px rgba(13,45,78,0.16);
+      --shadow-glow-orange: 0 8px 32px rgba(244,123,32,0.35);
+      --shadow-glow-blue: 0 8px 32px rgba(38,120,196,0.25);
+      --glass-bg: rgba(255,255,255,0.06);
+      --glass-border: rgba(255,255,255,0.10);
+      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter Tight', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+    /* ============ ANIMATIONS ============ */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-50px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(50px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+    @keyframes spin-slow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    @keyframes counter-spin { from{transform:rotate(0deg)} to{transform:rotate(-360deg)} }
+    @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+    @keyframes glow-pulse { 0%,100%{box-shadow:0 0 20px rgba(244,123,32,0.3)} 50%{box-shadow:0 0 40px rgba(244,123,32,0.6)} }
+    @keyframes temp-fill { from{height:10%} to{height:var(--fill)} }
+    @keyframes snowfall {
+      0% { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+    @keyframes flame-flicker {
+      0%,100% { transform: scaleY(1) scaleX(1); opacity: 0.8; }
+      25% { transform: scaleY(1.1) scaleX(0.95); opacity: 1; }
+      50% { transform: scaleY(0.95) scaleX(1.05); opacity: 0.9; }
+      75% { transform: scaleY(1.05) scaleX(0.98); opacity: 1; }
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 100px 0; position: relative; }
+    .section-label { font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange-500); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+    .section-label::before { content: ''; width: 28px; height: 2px; background: var(--orange-500); }
+    .section-title { font-family: 'Outfit', sans-serif; font-size: clamp(30px, 4.5vw, 48px); font-weight: 900; color: var(--blue-800); line-height: 1.1; margin-bottom: 18px; }
+    .section-sub { font-size: 17px; color: var(--gray-600); line-height: 1.75; max-width: 600px; }
+
+    /* ============ DIAGONAL DIVIDER ============ */
+    .diagonal-top { position: relative; }
+    .diagonal-top::before {
+      content: ''; position: absolute; top: -60px; left: 0; right: 0; height: 60px;
+      background: inherit; clip-path: polygon(0 100%, 100% 0, 100% 100%);
+      z-index: 2;
+    }
+    .diagonal-bottom::after {
+      content: ''; position: absolute; bottom: -60px; left: 0; right: 0; height: 60px;
+      background: inherit; clip-path: polygon(0 0, 100% 0, 0 100%);
+      z-index: 2;
+    }
+
+    /* ============ NAV ============ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(6,21,37,0.92); backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled { background: rgba(6,21,37,0.98); box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; padding: 0 24px; max-width: 1200px; margin: 0 auto; }
+    .nav-logo { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 900; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    .nav-logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--orange-500), var(--orange-600)); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+    .nav-logo span { color: var(--orange-500); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; font-weight: 500; transition: color var(--transition); position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--orange-500); transition: width var(--transition); }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta { background: var(--orange-500); color: var(--white); padding: 10px 24px; border-radius: 10px; font-weight: 700; font-size: 14px; text-decoration: none; transition: all var(--transition); display: flex; align-items: center; gap: 8px; }
+    .nav-cta:hover { background: var(--orange-400); transform: translateY(-1px); box-shadow: var(--shadow-glow-orange); }
+    .nav-cta svg { width: 16px; height: 16px; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { width: 24px; height: 2px; background: white; border-radius: 2px; transition: 0.3s; }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
+      background: rgba(6,21,37,0.98); backdrop-filter: blur(20px);
+      z-index: 999; padding: 40px 24px; flex-direction: column; gap: 0;
+    }
+    .mobile-menu.active { display: flex; }
+    .mobile-menu a {
+      color: var(--white); text-decoration: none; font-family: 'Outfit', sans-serif;
+      font-size: 22px; font-weight: 600; padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08); transition: color var(--transition);
+    }
+    .mobile-menu a:hover { color: var(--orange-500); }
+    .mobile-menu .mobile-cta {
+      margin-top: 24px; background: var(--orange-500); color: white;
+      text-align: center; border-radius: 12px; padding: 16px; font-weight: 800;
+      border-bottom: none;
+    }
+
+    /* ============ EMERGENCY TOPBAR ============ */
+    .emergency-topbar {
+      background: linear-gradient(90deg, var(--red-600), var(--red-500), var(--red-600));
+      padding: 10px 0; text-align: center; position: relative; overflow: hidden;
+    }
+    .emergency-topbar::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
+      background-size: 200% 100%; animation: shimmer 3s infinite linear;
+    }
+    .emergency-topbar-inner {
+      display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;
+      position: relative; z-index: 1;
+    }
+    .emergency-topbar-icon { animation: glow-pulse 2s infinite; background: rgba(255,255,255,0.2); border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; }
+    .emergency-topbar-text { color: white; font-weight: 700; font-size: 14px; letter-spacing: 0.02em; }
+    .emergency-topbar-phone { color: white; font-weight: 900; font-size: 15px; text-decoration: none; background: rgba(255,255,255,0.18); padding: 4px 14px; border-radius: 6px; transition: background var(--transition); }
+    .emergency-topbar-phone:hover { background: rgba(255,255,255,0.3); }
+
+    /* ============ HERO ============ */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      background: linear-gradient(145deg, var(--blue-950) 0%, var(--blue-800) 40%, var(--blue-700) 70%, var(--blue-800) 100%);
+      position: relative; overflow: hidden; padding-top: 72px;
+    }
+    .hero-bg-photo {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1600&q=80');
+      background-size: cover; background-position: center;
+      opacity: 0.12; filter: saturate(0.7);
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 900px 600px at 80% 40%, rgba(244,123,32,0.08) 0%, transparent 70%),
+                  radial-gradient(ellipse 600px 400px at 20% 80%, rgba(38,120,196,0.1) 0%, transparent 70%);
+    }
+
+    /* Floating HVAC motifs */
+    .hero-motif { position: absolute; opacity: 0.04; pointer-events: none; }
+    .hero-motif.snowflake { top: 15%; right: 12%; font-size: 120px; color: var(--blue-300); animation: float 6s ease-in-out infinite; }
+    .hero-motif.flame { bottom: 20%; left: 8%; font-size: 100px; color: var(--orange-500); animation: float 5s ease-in-out infinite 1s; }
+    .hero-motif.gear { top: 60%; right: 6%; width: 160px; height: 160px; border: 3px solid rgba(255,255,255,0.06); border-radius: 50%; animation: spin-slow 30s linear infinite; }
+    .hero-motif.gear::before { content: ''; position: absolute; inset: 20px; border: 2px solid rgba(255,255,255,0.04); border-radius: 50%; animation: counter-spin 20s linear infinite; }
+
+    .hero-content { position: relative; z-index: 2; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 72px; align-items: center; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(244,123,32,0.12); border: 1px solid rgba(244,123,32,0.3);
+      border-radius: 40px; padding: 8px 20px 8px 12px; margin-bottom: 28px;
+      backdrop-filter: blur(10px);
+    }
+    .hero-badge-dot { width: 10px; height: 10px; background: #4ade80; border-radius: 50%; animation: pulse 2s infinite; box-shadow: 0 0 8px rgba(74,222,128,0.5); }
+    .hero-badge-text { font-size: 13px; color: var(--orange-300); font-weight: 600; }
+    .hero h1 { font-family: 'Outfit', sans-serif; font-size: clamp(38px, 5.8vw, 72px); font-weight: 900; color: var(--white); line-height: 1.05; margin-bottom: 24px; letter-spacing: -0.02em; }
+    .hero h1 .highlight { color: var(--orange-500); position: relative; }
+    .hero h1 .highlight::after {
+      content: ''; position: absolute; bottom: 2px; left: 0; right: 0; height: 6px;
+      background: rgba(244,123,32,0.3); border-radius: 3px;
+    }
+    .hero-desc { font-size: 18px; color: rgba(255,255,255,0.7); line-height: 1.75; margin-bottom: 40px; max-width: 500px; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--orange-500), var(--orange-600));
+      color: var(--white); padding: 16px 36px; border-radius: 12px;
+      font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 16px;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: all var(--transition);
+      box-shadow: var(--shadow-glow-orange);
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(244,123,32,0.5); }
+    .btn-outline {
+      background: rgba(255,255,255,0.05); color: var(--white); padding: 16px 36px;
+      border-radius: 12px; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 16px;
+      text-decoration: none; border: 2px solid rgba(255,255,255,0.2); cursor: pointer;
+      transition: all var(--transition); backdrop-filter: blur(10px);
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); transform: translateY(-3px); }
+
+    /* Hero stats row */
+    .hero-stats { display: flex; gap: 0; }
+    .hero-stat {
+      padding: 0 28px; text-align: center; position: relative;
+    }
+    .hero-stat:first-child { padding-left: 0; }
+    .hero-stat:not(:last-child)::after {
+      content: ''; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+      width: 1px; height: 40px; background: rgba(255,255,255,0.12);
+    }
+    .hero-stat-num { font-family: 'Outfit', sans-serif; font-size: 32px; font-weight: 900; color: var(--white); line-height: 1; }
+    .hero-stat-num .counter-suffix { font-size: 20px; color: var(--orange-400); }
+    .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+
+    /* Hero right: glass cards */
+    .hero-visual { display: flex; flex-direction: column; gap: 16px; }
+    .hero-card {
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      border-radius: 16px; padding: 24px; display: flex; align-items: center; gap: 18px;
+      backdrop-filter: blur(16px) saturate(1.2);
+      transition: all var(--transition); cursor: default;
+    }
+    .hero-card:hover { background: rgba(255,255,255,0.1); transform: translateX(6px); border-color: rgba(255,255,255,0.2); }
+    .hero-card-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .hero-card-icon svg { width: 26px; height: 26px; }
+    .icon-cool { background: linear-gradient(135deg, rgba(58,141,222,0.3), rgba(106,173,232,0.15)); }
+    .icon-heat { background: linear-gradient(135deg, rgba(244,123,32,0.3), rgba(255,154,66,0.15)); }
+    .icon-shield { background: linear-gradient(135deg, rgba(74,222,128,0.25), rgba(74,222,128,0.1)); }
+    .icon-clock { background: linear-gradient(135deg, rgba(163,205,242,0.3), rgba(163,205,242,0.1)); }
+    .hero-card-title { font-family: 'Outfit', sans-serif; font-weight: 700; color: var(--white); font-size: 16px; }
+    .hero-card-sub { color: rgba(255,255,255,0.5); font-size: 13px; margin-top: 3px; }
+
+    /* Temperature gauge decoration */
+    .temp-gauge {
+      position: absolute; right: 40px; bottom: 60px; width: 24px; height: 200px;
+      background: rgba(255,255,255,0.04); border-radius: 12px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06); z-index: 1; display: none;
+    }
+    @media (min-width: 1200px) { .temp-gauge { display: block; } }
+    .temp-gauge-fill {
+      position: absolute; bottom: 0; left: 0; right: 0; --fill: 72%;
+      background: linear-gradient(to top, var(--orange-500), var(--blue-400));
+      border-radius: 0 0 11px 11px; animation: temp-fill 2s ease-out forwards;
+    }
+    .temp-gauge-marks { position: absolute; inset: 4px; display: flex; flex-direction: column; justify-content: space-between; }
+    .temp-gauge-mark { width: 8px; height: 1px; background: rgba(255,255,255,0.15); }
+
+    /* ============ TRUST BAR ============ */
+    .trust-bar {
+      background: var(--white); border-bottom: 1px solid var(--gray-200);
+      padding: 0; position: relative; z-index: 3;
+    }
+    .trust-inner { display: flex; align-items: stretch; justify-content: center; flex-wrap: wrap; }
+    .trust-item {
+      display: flex; align-items: center; gap: 12px; color: var(--gray-600);
+      font-size: 14px; font-weight: 600; padding: 22px 32px;
+      border-right: 1px solid var(--gray-200); transition: all var(--transition);
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-item:hover { background: var(--gray-50); color: var(--blue-600); }
+    .trust-item svg { color: var(--blue-500); flex-shrink: 0; }
+    .trust-item .trust-icon-wrap {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--blue-200), rgba(163,205,242,0.3));
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .trust-item .trust-icon-wrap svg { color: var(--blue-700); }
+
+    /* ============ SERVICES ============ */
+    .services-section { background: var(--gray-50); }
+    .services-header { text-align: center; margin-bottom: 60px; }
+    .services-header .section-label { justify-content: center; }
+    .services-header .section-title { text-align: center; }
+    .services-header .section-sub { margin: 0 auto; text-align: center; }
+
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .service-card {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg); padding: 36px 28px;
+      transition: all var(--transition); cursor: default; position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--blue-500), var(--blue-400));
+      transform: scaleX(0); transform-origin: left; transition: transform var(--transition);
+    }
+    .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: transparent; }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon {
+      width: 60px; height: 60px; border-radius: 16px;
+      background: linear-gradient(135deg, var(--blue-800), var(--blue-700));
+      display: flex; align-items: center; justify-content: center; margin-bottom: 22px;
+      transition: all var(--transition); position: relative;
+    }
+    .service-card:hover .service-icon { background: linear-gradient(135deg, var(--orange-500), var(--orange-600)); transform: scale(1.05); }
+    .service-icon svg { width: 28px; height: 28px; fill: none; stroke: white; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .service-title { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: var(--blue-800); margin-bottom: 10px; }
+    .service-desc { font-size: 14px; color: var(--gray-600); line-height: 1.7; margin-bottom: 18px; }
+    .service-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .service-list li { font-size: 13px; color: var(--gray-600); display: flex; align-items: center; gap: 10px; }
+    .service-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--orange-500); flex-shrink: 0; }
+
+    /* ============ EMERGENCY BANNER ============ */
+    .emergency-banner {
+      background: linear-gradient(135deg, var(--red-600) 0%, var(--red-500) 50%, #d63031 100%);
+      padding: 48px 0; position: relative; overflow: hidden; z-index: 3;
+    }
+    .emergency-banner::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .emergency-inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+      flex-wrap: wrap; position: relative; z-index: 1;
+    }
+    .emergency-left { display: flex; align-items: center; gap: 20px; }
+    .emergency-icon-wrap {
+      width: 64px; height: 64px; border-radius: 16px; background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      animation: glow-pulse 2s infinite;
+    }
+    .emergency-icon-wrap svg { width: 32px; height: 32px; }
+    .emergency-title { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 900; color: white; }
+    .emergency-subtitle { color: rgba(255,255,255,0.85); font-size: 15px; margin-top: 4px; }
+    .emergency-btn {
+      background: white; color: var(--red-600); padding: 16px 36px; border-radius: 12px;
+      font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 18px;
+      text-decoration: none; transition: all var(--transition);
+      display: flex; align-items: center; gap: 10px; white-space: nowrap;
+    }
+    .emergency-btn:hover { transform: scale(1.03); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+    .emergency-btn svg { width: 22px; height: 22px; }
+
+    /* ============ PLANS ============ */
+    .plans-section { background: var(--white); }
+    .plans-header { text-align: center; margin-bottom: 60px; }
+    .plans-header .section-label { justify-content: center; }
+    .plans-header .section-sub { margin: 0 auto; text-align: center; }
+    .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .plan-card {
+      background: var(--white); border: 2px solid var(--gray-200);
+      border-radius: var(--radius-lg); padding: 40px 32px; position: relative;
+      transition: all var(--transition);
+    }
+    .plan-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+    .plan-card.featured {
+      border-color: var(--blue-500); background: linear-gradient(160deg, var(--blue-900), var(--blue-800));
+      box-shadow: var(--shadow-glow-blue);
+    }
+    .plan-card.featured:hover { box-shadow: 0 24px 64px rgba(38,120,196,0.35); }
+    .plan-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--orange-500), var(--orange-600));
+      color: white; font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 800;
+      letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 18px;
+      border-radius: 20px; white-space: nowrap; box-shadow: var(--shadow-glow-orange);
+    }
+    .plan-name { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: var(--blue-800); margin-bottom: 8px; }
+    .plan-card.featured .plan-name { color: white; }
+    .plan-price { font-family: 'Outfit', sans-serif; font-size: 46px; font-weight: 900; color: var(--blue-600); line-height: 1; }
+    .plan-card.featured .plan-price { color: var(--orange-500); }
+    .plan-period { font-size: 14px; color: var(--gray-400); font-weight: 400; }
+    .plan-desc { font-size: 14px; color: var(--gray-600); margin: 14px 0 24px; line-height: 1.65; }
+    .plan-card.featured .plan-desc { color: rgba(255,255,255,0.6); }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+    .plan-features li { font-size: 14px; color: var(--gray-600); display: flex; align-items: flex-start; gap: 10px; }
+    .plan-card.featured .plan-features li { color: rgba(255,255,255,0.8); }
+    .check { width: 20px; height: 20px; border-radius: 50%; background: var(--blue-400); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .plan-card.featured .check { background: var(--orange-500); }
+    .check svg { width: 12px; height: 12px; stroke: white; stroke-width: 3; fill: none; }
+    .plan-btn {
+      display: block; text-align: center; padding: 14px; border-radius: 12px;
+      font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 15px;
+      text-decoration: none; transition: all var(--transition);
+    }
+    .plan-btn-outline { border: 2px solid var(--blue-500); color: var(--blue-500); }
+    .plan-btn-outline:hover { background: var(--blue-500); color: white; }
+    .plan-btn-solid { background: linear-gradient(135deg, var(--orange-500), var(--orange-600)); color: white; box-shadow: var(--shadow-glow-orange); border: none; }
+    .plan-btn-solid:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(244,123,32,0.5); }
+
+    /* ============ ABOUT / WHY TERRY ============ */
+    .about-section {
+      background: linear-gradient(160deg, var(--blue-800) 0%, var(--blue-900) 100%);
+      position: relative; overflow: hidden;
+    }
+    .about-section::before {
+      content: ''; position: absolute; top: -30%; right: -10%; width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(244,123,32,0.08) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-image-wrap { position: relative; }
+    .about-image {
+      width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: var(--radius-lg);
+      border: 4px solid rgba(255,255,255,0.1);
+    }
+    .about-badge-card {
+      position: absolute; bottom: -20px; right: -20px;
+      background: var(--white); border-radius: 16px; padding: 20px 24px;
+      box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 14px;
+    }
+    .about-badge-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--orange-500), var(--orange-600));
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-badge-icon svg { width: 24px; height: 24px; stroke: white; fill: none; stroke-width: 2; }
+    .about-badge-title { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 16px; color: var(--blue-800); }
+    .about-badge-sub { font-size: 12px; color: var(--gray-400); }
+    .about-text .section-label { color: var(--orange-400); }
+    .about-text .section-label::before { background: var(--orange-400); }
+    .about-text .section-title { color: var(--white); }
+    .about-text p { color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.75; margin-bottom: 20px; }
+    .about-values { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+    .about-value {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; gap: 14px;
+      transition: all var(--transition);
+    }
+    .about-value:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); }
+    .about-value-icon {
+      width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0; font-size: 20px;
+    }
+    .about-value-text { font-size: 14px; color: rgba(255,255,255,0.8); font-weight: 600; }
+
+    /* ============ COUNTERS STRIP ============ */
+    .counters-strip {
+      background: var(--white); padding: 60px 0; border-bottom: 1px solid var(--gray-200);
+    }
+    .counters-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+    .counter-card { text-align: center; padding: 24px 16px; }
+    .counter-icon {
+      width: 56px; height: 56px; border-radius: 16px; margin: 0 auto 16px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .counter-icon svg { width: 28px; height: 28px; }
+    .counter-number { font-family: 'Outfit', sans-serif; font-size: 44px; font-weight: 900; color: var(--blue-800); line-height: 1; }
+    .counter-number .suffix { font-size: 24px; color: var(--orange-500); }
+    .counter-label { font-size: 14px; color: var(--gray-600); margin-top: 6px; font-weight: 500; }
+
+    /* ============ REVIEWS ============ */
+    .reviews-section { background: var(--gray-50); }
+    .reviews-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 48px; }
+    .rating-summary { display: flex; align-items: center; gap: 16px; }
+    .rating-big { font-family: 'Outfit', sans-serif; font-size: 60px; font-weight: 900; color: var(--blue-800); line-height: 1; }
+    .stars-row { display: flex; gap: 3px; margin-bottom: 4px; }
+    .star { color: #f5a623; font-size: 22px; }
+    .rating-count { font-size: 14px; color: var(--gray-400); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .review-card {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg); padding: 32px; transition: all var(--transition);
+      position: relative;
+    }
+    .review-card::before {
+      content: '\201C'; position: absolute; top: 16px; right: 24px;
+      font-family: Georgia, serif; font-size: 72px; color: var(--gray-200);
+      line-height: 1; pointer-events: none;
+    }
+    .review-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: transparent; }
+    .review-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+    .review-stars span { color: #f5a623; font-size: 16px; }
+    .review-service-tag {
+      display: inline-block; background: var(--blue-800); color: var(--white);
+      font-size: 11px; padding: 4px 12px; border-radius: 20px; font-weight: 700;
+      margin-bottom: 14px; letter-spacing: 0.03em;
+    }
+    .review-text { font-size: 15px; color: var(--text); line-height: 1.75; margin-bottom: 22px; font-style: italic; }
+    .review-author-row { display: flex; align-items: center; gap: 12px; }
+    .review-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-400), var(--blue-600));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Outfit', sans-serif; font-weight: 800; color: white; font-size: 16px;
+    }
+    .review-author { font-weight: 700; color: var(--blue-800); font-size: 15px; }
+    .review-location { font-size: 12px; color: var(--gray-400); margin-top: 2px; }
+
+    /* ============ SERVICE AREA ============ */
+    .area-section { background: var(--white); }
+    .area-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .area-map-wrap { position: relative; }
+    .area-map {
+      background: linear-gradient(135deg, var(--blue-800), var(--blue-900));
+      border-radius: var(--radius-lg); aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; border: 2px solid var(--gray-200);
+    }
+    .area-map img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.35; }
+    .area-map::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(38,120,196,0.25) 0%, transparent 70%);
+    }
+    .area-map-label {
+      font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800;
+      color: rgba(255,255,255,0.5); text-align: center; z-index: 2; position: relative;
+    }
+    .area-map-pin {
+      position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%);
+      z-index: 3;
+    }
+    .area-map-pin-dot {
+      width: 16px; height: 16px; background: var(--orange-500); border-radius: 50%;
+      border: 3px solid white; box-shadow: 0 0 0 6px rgba(244,123,32,0.3);
+      animation: pulse 2s infinite;
+    }
+    .area-cities { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 32px; }
+    .area-city {
+      display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--gray-600);
+      padding: 6px 0; transition: color var(--transition);
+    }
+    .area-city:hover { color: var(--blue-600); }
+    .area-city::before {
+      content: ''; width: 8px; height: 8px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-400), var(--blue-500));
+      flex-shrink: 0;
+    }
+
+    /* ============ SCHEDULE FORM ============ */
+    .form-section {
+      background: linear-gradient(160deg, var(--blue-900) 0%, var(--blue-950) 100%);
+      padding: 100px 0; position: relative; overflow: hidden;
+    }
+    .form-section::before {
+      content: ''; position: absolute; top: -50%; left: -20%;
+      width: 800px; height: 800px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(244,123,32,0.06) 0%, transparent 60%);
+    }
+    .form-section::after {
+      content: ''; position: absolute; bottom: -30%; right: -15%;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(38,120,196,0.08) 0%, transparent 60%);
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: start; position: relative; z-index: 1; }
+    .form-info-title { font-family: 'Outfit', sans-serif; font-size: clamp(28px, 3.5vw, 42px); font-weight: 900; color: var(--white); margin-bottom: 16px; line-height: 1.15; }
+    .form-info-sub { color: rgba(255,255,255,0.6); font-size: 16px; line-height: 1.75; margin-bottom: 36px; }
+    .contact-item { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .contact-icon {
+      width: 46px; height: 46px; border-radius: 12px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .contact-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.35); font-weight: 700; }
+    .contact-value { font-weight: 600; color: white; font-size: 15px; }
+
+    .form-card {
+      background: var(--white); border-radius: var(--radius-lg); padding: 44px 40px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.3);
+    }
+    .form-title { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 900; color: var(--blue-800); margin-bottom: 8px; }
+    .form-subtitle { font-size: 14px; color: var(--gray-400); margin-bottom: 28px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .form-group label { font-size: 13px; font-weight: 700; color: var(--gray-700); }
+    .form-group input, .form-group select, .form-group textarea {
+      border: 2px solid var(--gray-200); border-radius: 10px; padding: 12px 16px;
+      font-family: 'Inter Tight', sans-serif; font-size: 14px; color: var(--text);
+      transition: all var(--transition); background: var(--gray-50);
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none; border-color: var(--blue-400); box-shadow: 0 0 0 4px rgba(58,141,222,0.12); background: white;
+    }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+
+    /* AC/Heating toggle */
+    .system-toggle {
+      display: flex; background: var(--gray-100); border-radius: 10px; padding: 4px; margin-bottom: 16px;
+      border: 1px solid var(--gray-200);
+    }
+    .system-toggle label {
+      flex: 1; text-align: center; padding: 10px 16px; border-radius: 8px;
+      font-size: 14px; font-weight: 700; color: var(--gray-400); cursor: pointer;
+      transition: all var(--transition); display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .system-toggle input { display: none; }
+    .system-toggle input:checked + label {
+      background: var(--white); color: var(--blue-800); box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .system-toggle svg { width: 18px; height: 18px; }
+
+    .urgency-select { display: flex; gap: 10px; margin-bottom: 16px; }
+    .urgency-option {
+      flex: 1; text-align: center; padding: 10px; border-radius: 10px;
+      border: 2px solid var(--gray-200); cursor: pointer;
+      font-size: 13px; font-weight: 700; color: var(--gray-600);
+      transition: all var(--transition); background: var(--gray-50);
+    }
+    .urgency-option:hover { border-color: var(--blue-400); }
+    .urgency-option.selected { border-color: var(--orange-500); background: rgba(244,123,32,0.06); color: var(--orange-600); }
+    .urgency-option input { display: none; }
+    .urgency-label { display: block; font-size: 10px; color: var(--gray-400); margin-top: 2px; font-weight: 500; }
+
+    .form-submit {
+      width: 100%; background: linear-gradient(135deg, var(--orange-500), var(--orange-600));
+      color: white; border: none; padding: 16px; border-radius: 12px;
+      font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 16px;
+      cursor: pointer; transition: all var(--transition); margin-top: 8px;
+      box-shadow: var(--shadow-glow-orange);
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(244,123,32,0.5); }
+
+    /* ============ SEASONAL CTA ============ */
+    .cta-seasonal {
+      background: linear-gradient(135deg, var(--blue-800) 0%, var(--blue-700) 100%);
+      padding: 80px 0; position: relative; overflow: hidden;
+    }
+    .cta-seasonal::before {
+      content: ''; position: absolute; right: -100px; top: 50%; transform: translateY(-50%);
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(244,123,32,0.12) 0%, transparent 70%);
+    }
+    .cta-grid { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 56px; }
+    .cta-title { font-family: 'Outfit', sans-serif; font-size: clamp(26px, 3.5vw, 40px); font-weight: 900; color: white; margin-bottom: 14px; }
+    .cta-sub { color: rgba(255,255,255,0.65); font-size: 16px; line-height: 1.7; max-width: 560px; }
+    .cta-checklist { list-style: none; margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px 36px; }
+    .cta-checklist li { color: rgba(255,255,255,0.8); font-size: 14px; display: flex; align-items: center; gap: 8px; font-weight: 500; }
+    .cta-checklist li::before {
+      content: ''; width: 18px; height: 18px; border-radius: 50%; background: var(--orange-500);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 13l4 4L19 7' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+      background-size: 10px; background-repeat: no-repeat; background-position: center; flex-shrink: 0;
+    }
+    .cta-actions { display: flex; flex-direction: column; gap: 16px; align-items: center; flex-shrink: 0; }
+    .cta-phone { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 900; color: var(--orange-500); text-decoration: none; white-space: nowrap; transition: color var(--transition); }
+    .cta-phone:hover { color: var(--orange-400); }
+
+    /* ============ FOOTER ============ */
+    footer { background: var(--blue-950); padding: 72px 0 36px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; }
+    .footer-brand { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 900; color: white; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .footer-brand span { color: var(--orange-500); }
+    .footer-desc { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.75; }
+    .footer-col-title { font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 14px; transition: all var(--transition); }
+    .footer-links a:hover { color: var(--orange-500); transform: translateX(3px); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06); padding-top: 32px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,0.3); }
+    .footer-badges { display: flex; gap: 12px; align-items: center; }
+    .footer-badge {
+      background: rgba(244,123,32,0.12); border: 1px solid rgba(244,123,32,0.25);
+      border-radius: 8px; padding: 6px 14px; font-size: 12px; color: var(--orange-400);
+      font-weight: 700; white-space: nowrap;
+    }
+
+    /* ============ STICKY MOBILE CTA ============ */
+    .sticky-cta {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(135deg, var(--orange-500), var(--orange-600));
+      padding: 14px 24px; z-index: 999;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+    }
+    .sticky-cta a {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      color: white; text-decoration: none; font-family: 'Outfit', sans-serif;
+      font-size: 18px; font-weight: 900;
+    }
+    .sticky-cta svg { width: 22px; height: 22px; animation: glow-pulse 2s infinite; }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .hero-visual { display: none; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .plans-grid { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-image-wrap { max-width: 480px; }
+      .area-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; gap: 48px; }
+      .cta-grid { grid-template-columns: 1fr; }
+      .reviews-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .counters-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .sticky-cta { display: block; }
+      body { padding-bottom: 60px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-stats { flex-wrap: wrap; gap: 16px; }
+      .hero-stat:not(:last-child)::after { display: none; }
+      .hero-stat { padding: 0 16px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .trust-inner { flex-direction: column; }
+      .trust-item { border-right: none; border-bottom: 1px solid var(--gray-200); justify-content: center; }
+      .trust-item:last-child { border-bottom: none; }
+      .section { padding: 72px 0; }
+      .about-values { grid-template-columns: 1fr; }
+      .counters-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .emergency-inner { flex-direction: column; text-align: center; }
+      .emergency-left { flex-direction: column; }
+      .urgency-select { flex-direction: column; }
+      .footer-badges { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- EMERGENCY TOP BAR -->
+<div class="emergency-topbar">
+  <div class="emergency-topbar-inner">
+    <div class="emergency-topbar-icon">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72c.13.84.36 1.67.7 2.44a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.92-.92a2 2 0 0 1 2.11-.45c.77.34 1.6.57 2.44.7A2 2 0 0 1 22 16.92z"/></svg>
+    </div>
+    <span class="emergency-topbar-text">24/7 Emergency HVAC Service Available</span>
+    <a href="tel:8015801230" class="emergency-topbar-phone">Call (801) 580-1230</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm0-12v4l2 2"/></svg>
+      </div>
+      <span>Energy</span>Tech HVAC
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#plans">Plans</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#area">Service Area</a></li>
+      <li><a href="#schedule">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="tel:8015801230">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72c.13.84.36 1.67.7 2.44a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.92-.92a2 2 0 0 1 2.11-.45c.77.34 1.6.57 2.44.7A2 2 0 0 1 22 16.92z"/></svg>
+      (801) 580-1230
+    </a>
+    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('active')" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu">
+  <a href="#services" onclick="this.parentElement.classList.remove('active')">Services</a>
+  <a href="#plans" onclick="this.parentElement.classList.remove('active')">Maintenance Plans</a>
+  <a href="#reviews" onclick="this.parentElement.classList.remove('active')">Reviews</a>
+  <a href="#area" onclick="this.parentElement.classList.remove('active')">Service Area</a>
+  <a href="#schedule" onclick="this.parentElement.classList.remove('active')">Contact</a>
+  <a href="tel:8015801230" class="mobile-cta" onclick="this.parentElement.classList.remove('active')">Call (801) 580-1230</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-photo"></div>
+  <div class="hero-overlay"></div>
+
+  <!-- Floating motifs -->
+  <div class="hero-motif snowflake" aria-hidden="true">&#10052;</div>
+  <div class="hero-motif flame" aria-hidden="true">&#128293;</div>
+  <div class="hero-motif gear" aria-hidden="true"></div>
+
+  <!-- Temperature gauge -->
+  <div class="temp-gauge" aria-hidden="true">
+    <div class="temp-gauge-fill"></div>
+    <div class="temp-gauge-marks">
+      <div class="temp-gauge-mark"></div><div class="temp-gauge-mark"></div>
+      <div class="temp-gauge-mark"></div><div class="temp-gauge-mark"></div>
+      <div class="temp-gauge-mark"></div><div class="temp-gauge-mark"></div>
+      <div class="temp-gauge-mark"></div><div class="temp-gauge-mark"></div>
+    </div>
+  </div>
+
+  <div class="container hero-content">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          <span class="hero-badge-text">American Standard Authorized Dealer &mdash; Draper, UT</span>
+        </div>
+        <h1>Stay <span class="highlight">Comfortable</span><br>Every Season,<br>Guaranteed.</h1>
+        <p class="hero-desc">When Utah summers hit 100&deg; and winters drop below freezing, your HVAC isn&rsquo;t optional. Terry DiPoma handles every job personally &mdash; he listens, gives real options, and leaves your home cleaner than he found it. No call centers. No surprises. Just honest work.</p>
+        <div class="hero-actions">
+          <a href="#schedule" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Schedule Service
+          </a>
+          <a href="tel:8015801230" class="btn-outline">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72c.13.84.36 1.67.7 2.44a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.92-.92a2 2 0 0 1 2.11-.45c.77.34 1.6.57 2.44.7A2 2 0 0 1 22 16.92z"/></svg>
+            (801) 580-1230
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num"><span class="counter" data-target="4.8">0</span><span class="counter-suffix">&#9733;</span></div>
+            <div class="hero-stat-label">Star Rating</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">Am. Std.</div>
+            <div class="hero-stat-label">Authorized Dealer</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">Same Day</div>
+            <div class="hero-stat-label">Service Available</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">UVHBA</div>
+            <div class="hero-stat-label">Member</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-icon icon-cool">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><path d="M20 12L12 6l-8 6"/><path d="M20 12l-8 6-8-6"/><line x1="20" y1="6" x2="12" y2="12"/><line x1="4" y1="6" x2="12" y2="12"/><line x1="20" y1="18" x2="12" y2="12"/><line x1="4" y1="18" x2="12" y2="12"/></svg>
+          </div>
+          <div>
+            <div class="hero-card-title">Cooling Systems</div>
+            <div class="hero-card-sub">Central AC, mini-splits, and seasonal tune-ups</div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon icon-heat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c-4-3-8-6-8-11a8 8 0 1 1 16 0c0 5-4 8-8 11z"/><circle cx="12" cy="11" r="3"/></svg>
+          </div>
+          <div>
+            <div class="hero-card-title">Heating Systems</div>
+            <div class="hero-card-sub">Furnaces, heat pumps, and boilers</div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon icon-shield">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <div>
+            <div class="hero-card-title">Maintenance Plans</div>
+            <div class="hero-card-sub">Priority scheduling and extended equipment life</div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon icon-clock">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="hero-card-title">Same-Day Service</div>
+            <div class="hero-card-sub">Emergency repairs when you need them most</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <div class="trust-icon-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        American Standard Dealer
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        Licensed &amp; Insured
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        Same-Day Service
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+        </div>
+        4.8 / 5 Star Rating
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        UVHBA Member
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section services-section" id="services">
+  <div class="container">
+    <div class="services-header reveal">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Complete HVAC Services<br>for Homes &amp; Businesses</h2>
+      <p class="section-sub">Customers say Terry &ldquo;goes above and beyond&rdquo; and &ldquo;leaves the space cleaner than he found it.&rdquo; He explains your options clearly, never pressures you, and as an American Standard authorized dealer, he secures warranty coverage that saves you real money.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal" style="transition-delay:0.05s">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22"/><path d="M20 12L12 6l-8 6"/><path d="M20 12l-8 6-8-6"/><line x1="20" y1="6" x2="12" y2="12"/><line x1="4" y1="6" x2="12" y2="12"/><line x1="20" y1="18" x2="12" y2="12"/><line x1="4" y1="18" x2="12" y2="12"/></svg>
+        </div>
+        <div class="service-title">AC Repair &amp; Installation</div>
+        <div class="service-desc">Utah summers are no joke &mdash; triple-digit heat in the valley, week after week. When your AC quits, you need someone who picks up the phone and shows up. Terry does both.</div>
+        <ul class="service-list">
+          <li>Central air conditioning installation</li>
+          <li>AC repair and diagnostics</li>
+          <li>Ductless mini-split systems</li>
+          <li>Seasonal tune-ups and inspections</li>
+          <li>Refrigerant service</li>
+        </ul>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.10s">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22c-4-3-8-6-8-11a8 8 0 1 1 16 0c0 5-4 8-8 11z"/><circle cx="12" cy="11" r="3"/></svg>
+        </div>
+        <div class="service-title">Heating &amp; Furnace</div>
+        <div class="service-desc">A furnace failure at 2am in a Utah winter isn&rsquo;t just uncomfortable &mdash; it&rsquo;s serious. Terry gives you straight answers, honest options, and gets your heat back on fast.</div>
+        <ul class="service-list">
+          <li>Gas and electric furnace repair</li>
+          <li>Heat pump installation and service</li>
+          <li>Boiler maintenance and repair</li>
+          <li>Thermostat upgrades</li>
+          <li>Radiant and baseboard heating</li>
+        </ul>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.15s">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div class="service-title">System Installation</div>
+        <div class="service-desc">Whether it&rsquo;s new construction or a full replacement, Terry sizes your system right, installs it by the book, and makes sure it runs perfectly before he leaves.</div>
+        <ul class="service-list">
+          <li>Full system replacement</li>
+          <li>New construction HVAC</li>
+          <li>American Standard equipment</li>
+          <li>Load calculations and sizing</li>
+          <li>Energy-efficient upgrades</li>
+        </ul>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.20s">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="service-title">Preventive Maintenance</div>
+        <div class="service-desc">A spring tune-up before the heat hits and a fall check before the cold comes &mdash; the kind of thing Terry recommends to his own family. Warranty coverage included.</div>
+        <ul class="service-list">
+          <li>Bi-annual system inspections</li>
+          <li>Filter replacement and cleaning</li>
+          <li>Coil cleaning and sanitizing</li>
+          <li>Performance efficiency testing</li>
+          <li>American Standard warranty support</li>
+        </ul>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.25s">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h3"/><path d="M16 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3"/><line x1="12" y1="2" x2="12" y2="22"/><path d="M8 12h8"/><path d="M8 8h8"/><path d="M8 16h8"/></svg>
+        </div>
+        <div class="service-title">Duct Cleaning &amp; Sealing</div>
+        <div class="service-desc">Leaky or dirty ducts waste energy and recirculate dust, allergens, and pollutants throughout your home. Terry inspects, cleans, and seals for maximum efficiency.</div>
+        <ul class="service-list">
+          <li>Full ductwork inspection</li>
+          <li>Professional duct cleaning</li>
+          <li>Duct sealing and insulation</li>
+          <li>Indoor air quality testing</li>
+          <li>Dryer vent cleaning</li>
+        </ul>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.30s">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div class="service-title">Repairs &amp; Free Estimates</div>
+        <div class="service-desc">Terry is the kind of guy who tells you the truth even when it&rsquo;s not what you expected. He shows you what&rsquo;s wrong, explains your options, and never pushes what you don&rsquo;t need.</div>
+        <ul class="service-list">
+          <li>Free estimates on all work</li>
+          <li>Same-day service calls</li>
+          <li>Fully stocked for most repairs</li>
+          <li>American Standard warranty support</li>
+          <li>Direct access to Terry</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMERGENCY BANNER -->
+<div class="emergency-banner">
+  <div class="container">
+    <div class="emergency-inner">
+      <div class="emergency-left">
+        <div class="emergency-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div>
+          <div class="emergency-title">HVAC Emergency? Call Terry Directly.</div>
+          <div class="emergency-subtitle">Honest advice and real help &mdash; not a call center. Available 24/7 for urgent situations.</div>
+        </div>
+      </div>
+      <a href="tel:8015801230" class="emergency-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72c.13.84.36 1.67.7 2.44a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.92-.92a2 2 0 0 1 2.11-.45c.77.34 1.6.57 2.44.7A2 2 0 0 1 22 16.92z"/></svg>
+        (801) 580-1230
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ANIMATED COUNTERS -->
+<div class="counters-strip">
+  <div class="container">
+    <div class="counters-grid">
+      <div class="counter-card reveal" style="transition-delay:0.05s">
+        <div class="counter-icon" style="background: linear-gradient(135deg, rgba(58,141,222,0.15), rgba(58,141,222,0.05));">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="counter-number"><span class="counter" data-target="2500">0</span><span class="suffix">+</span></div>
+        <div class="counter-label">Homes Serviced</div>
+      </div>
+      <div class="counter-card reveal" style="transition-delay:0.10s">
+        <div class="counter-icon" style="background: linear-gradient(135deg, rgba(244,123,32,0.15), rgba(244,123,32,0.05));">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="counter-number"><span class="counter" data-target="15">0</span><span class="suffix">+</span></div>
+        <div class="counter-label">Years in Business</div>
+      </div>
+      <div class="counter-card reveal" style="transition-delay:0.15s">
+        <div class="counter-icon" style="background: linear-gradient(135deg, rgba(74,222,128,0.15), rgba(74,222,128,0.05));">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <div class="counter-number"><span class="counter" data-target="100">0</span><span class="suffix">%</span></div>
+        <div class="counter-label">Licensed &amp; Insured</div>
+      </div>
+      <div class="counter-card reveal" style="transition-delay:0.20s">
+        <div class="counter-icon" style="background: linear-gradient(135deg, rgba(244,123,32,0.15), rgba(244,123,32,0.05));">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+        </div>
+        <div class="counter-number"><span class="counter" data-target="4.8" data-decimals="1">0</span><span class="suffix">/5</span></div>
+        <div class="counter-label">Average Rating</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT TERRY -->
+<section class="section about-section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrap reveal-left">
+        <img class="about-image" src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80" alt="HVAC technician explaining service work to a homeowner" />
+        <div class="about-badge-card">
+          <div class="about-badge-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <div class="about-badge-title">American Standard</div>
+            <div class="about-badge-sub">Authorized Dealer</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-text reveal-right">
+        <div class="section-label">About Terry DiPoma</div>
+        <h2 class="section-title">&ldquo;Honest and Reliable&rdquo;<br>&mdash; That&rsquo;s What They Say.</h2>
+        <p>Terry is the kind of technician your neighbor recommends without hesitation. He shows up on time, explains everything in plain language, and leaves your home cleaner than he found it. That&rsquo;s not marketing &mdash; those are his customers&rsquo; own words.</p>
+        <p>As an American Standard authorized dealer and Utah Valley Home Builders Association member, Terry combines manufacturer-backed expertise with the personal attention that only a local owner-operator can provide.</p>
+        <div class="about-values">
+          <div class="about-value">
+            <div class="about-value-icon" style="background:rgba(244,123,32,0.15);">&#9733;</div>
+            <div class="about-value-text">4.8-Star Rating</div>
+          </div>
+          <div class="about-value">
+            <div class="about-value-icon" style="background:rgba(74,222,128,0.15);">&#9745;</div>
+            <div class="about-value-text">EPA 608 Certified</div>
+          </div>
+          <div class="about-value">
+            <div class="about-value-icon" style="background:rgba(58,141,222,0.15);">&#128272;</div>
+            <div class="about-value-text">Licensed &amp; Insured</div>
+          </div>
+          <div class="about-value">
+            <div class="about-value-icon" style="background:rgba(244,123,32,0.15);">&#128197;</div>
+            <div class="about-value-text">Same-Day Service</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="section plans-section" id="plans">
+  <div class="container">
+    <div class="plans-header reveal">
+      <div class="section-label">Maintenance Plans</div>
+      <h2 class="section-title">Protect Your Investment<br>Year-Round</h2>
+      <p class="section-sub">Transparent, flat-rate plans &mdash; no gimmicks, no fine print. Pick the level that fits your home and budget, and Terry handles the rest.</p>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card reveal" style="transition-delay:0.05s">
+        <div class="plan-name">Essential</div>
+        <div style="margin:18px 0 8px"><span class="plan-price">$129</span><span class="plan-period"> / year</span></div>
+        <div class="plan-desc">A solid starting point. One thorough inspection a year, a filter swap, and Terry&rsquo;s number saved in your phone for when you need him.</div>
+        <ul class="plan-features">
+          <li><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>1 annual system inspection</li>
+          <li><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Filter replacement (1x/year)</li>
+          <li><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>10% discount on repairs</li>
+          <li><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Priority scheduling</li>
+        </ul>
+        <a href="tel:8015801230" class="plan-btn plan-btn-outline">Call Terry to Get Started</a>
+      </div>
+      <div class="plan-card featured reveal" style="transition-delay:0.10s">
+        <div class="plan-badge">Most Popular</div>
+        <div class="plan-name">Comfort Plus</div>
+        <div style="margin:18px 0 8px"><span class="plan-price">$229</span><span class="plan-period" style="color:rgba(255,255,255,0.45)"> / year</span></div>
+        <div class="plan-desc">The plan most Utah homeowners choose. Ready for summer heat before it hits, ready for winter cold before it arrives.</div>
+        <ul class="plan-features">
+          <li><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>2 annual tune-ups (spring &amp; fall)</li>
+          <li><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Filter replacement (2x/year)</li>
+          <li><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>15% discount on all repairs</li>
+          <li><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>No emergency call-out fees</li>
+          <li><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Indoor air quality check</li>
+          <li><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Thermostat calibration</li>
+        </ul>
+        <a href="tel:8015801230" class="plan-btn plan-btn-solid">Call Terry &mdash; (801) 580-1230</a>
+      </div>
+      <div class="plan-card reveal" style="transition-delay:0.15s">
+        <div class="plan-name">Total Home</div>
+        <div style="margin:18px 0 8px"><span class="plan-price">$399</span><span class="plan-period"> / year</span></div>
+        <div class="plan-desc">For homeowners who want to set it and forget it. Quarterly visits, unlimited filters, no fees ever.</div>
+        <ul class="plan-features">
+          <li><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Quarterly system checks</li>
+          <li><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Unlimited filter replacements</li>
+          <li><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>20% discount on parts &amp; labor</li>
+          <li><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>No emergency fees, ever</li>
+          <li><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Full duct inspection annually</li>
+          <li><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Smart thermostat setup included</li>
+          <li><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>American Standard warranty support</li>
+        </ul>
+        <a href="tel:8015801230" class="plan-btn plan-btn-outline">Call Terry to Get Started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEASONAL CTA -->
+<section class="cta-seasonal">
+  <div class="container">
+    <div class="cta-grid reveal">
+      <div>
+        <div class="section-label" style="color:var(--orange-400);">Seasonal Maintenance</div>
+        <div class="cta-title">Utah&rsquo;s Weather Won&rsquo;t Wait.<br>Neither Should You.</div>
+        <div class="cta-sub">A system that&rsquo;s tuned up before the season hits runs better, lasts longer, and costs less to operate. Terry has seen too many emergency calls that a $99 tune-up could have prevented.</div>
+        <ul class="cta-checklist">
+          <li>Prevent unexpected breakdowns</li>
+          <li>Improve energy efficiency</li>
+          <li>Extend equipment lifespan</li>
+          <li>Secure American Standard warranty</li>
+          <li>Better indoor air quality</li>
+          <li>Lower monthly utility costs</li>
+        </ul>
+      </div>
+      <div class="cta-actions">
+        <a href="tel:8015801230" class="cta-phone">(801) 580-1230</a>
+        <a href="#schedule" class="btn-primary">Book a Tune-Up</a>
+        <div style="font-size:13px;color:rgba(255,255,255,0.4);text-align:center">Call Terry directly &mdash; no call center</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section reviews-section" id="reviews">
+  <div class="container">
+    <div class="reviews-header reveal">
+      <div>
+        <div class="section-label">Customer Reviews</div>
+        <h2 class="section-title">In Their Own Words</h2>
+      </div>
+      <div class="rating-summary">
+        <div class="rating-big">4.8</div>
+        <div>
+          <div class="stars-row"><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span></div>
+          <div class="rating-count">Verified customer reviews</div>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card reveal" style="transition-delay:0.05s">
+        <div class="review-service-tag">AC Installation</div>
+        <div class="review-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+        <div class="review-text">&ldquo;Goes above and beyond expectations. Terry listened to exactly what we needed, gave us multiple quotes without any pressure, and had the job done faster than promised. Honest and reliable.&rdquo;</div>
+        <div class="review-author-row">
+          <div class="review-avatar">S</div>
+          <div>
+            <div class="review-author">Shannon T.</div>
+            <div class="review-location">Draper, UT &mdash; Verified Review</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal" style="transition-delay:0.10s">
+        <div class="review-service-tag">Emergency Repair</div>
+        <div class="review-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+        <div class="review-text">&ldquo;Our furnace went out on a Saturday night in January. Terry answered on the first ring, was at our house within an hour, and had it fixed before the kids woke up. That is the kind of service you cannot buy from a big company.&rdquo;</div>
+        <div class="review-author-row">
+          <div class="review-avatar">M</div>
+          <div>
+            <div class="review-author">Mike &amp; Carla J.</div>
+            <div class="review-location">Salt Lake City, UT &mdash; Verified Review</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal" style="transition-delay:0.15s">
+        <div class="review-service-tag">Furnace Repair</div>
+        <div class="review-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+        <div class="review-text">&ldquo;Shows up on time, leaves the space cleaner than he found it, and gives excellent advice. Terry&rsquo;s professional appearance and honest approach set him apart. I won&rsquo;t call anyone else for HVAC.&rdquo;</div>
+        <div class="review-author-row">
+          <div class="review-avatar">D</div>
+          <div>
+            <div class="review-author">Dave R.</div>
+            <div class="review-location">Utah County, UT &mdash; Verified Review</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREA -->
+<section class="section area-section" id="area">
+  <div class="container">
+    <div class="area-grid">
+      <div class="reveal-left">
+        <div class="section-label">Coverage</div>
+        <h2 class="section-title">Serving Salt Lake City Metro &amp; Utah County</h2>
+        <p class="section-sub">Terry is based in Draper and serves homeowners and businesses throughout the Salt Lake City metro and Utah County. Not sure if you&rsquo;re in range? Just call &mdash; he&rsquo;ll tell you straight.</p>
+        <div class="area-cities">
+          <div class="area-city">Draper</div>
+          <div class="area-city">Salt Lake City</div>
+          <div class="area-city">Sandy</div>
+          <div class="area-city">South Jordan</div>
+          <div class="area-city">Murray</div>
+          <div class="area-city">Midvale</div>
+          <div class="area-city">West Jordan</div>
+          <div class="area-city">Riverton</div>
+          <div class="area-city">Herriman</div>
+          <div class="area-city">Bluffdale</div>
+          <div class="area-city">Cottonwood Heights</div>
+          <div class="area-city">Utah County</div>
+        </div>
+        <div style="margin-top:28px;">
+          <a href="tel:8015801230" class="btn-primary" style="font-size:14px;padding:12px 24px;">Not listed? Call to check &rarr;</a>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="area-map-wrap">
+          <div class="area-map">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Residential neighborhood service area" />
+            <div class="area-map-pin"><div class="area-map-pin-dot"></div></div>
+            <div class="area-map-label">Salt Lake Valley &amp;<br>Utah County Service Area</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE FORM -->
+<section id="schedule" class="form-section">
+  <div class="container">
+    <div class="form-grid">
+      <div class="reveal-left">
+        <div class="section-label" style="color:var(--orange-400);">Get in Touch</div>
+        <div class="form-info-title">Ready to Talk?<br>Terry Is.</div>
+        <div class="form-info-sub">Whether it&rsquo;s a tune-up, a breakdown, or a new system question, Terry picks up the phone and gives you honest answers &mdash; not a quote script. Fill out the form or just call him directly.</div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div><div class="contact-label">Phone</div><div class="contact-value">(801) 580-1230</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div><div class="contact-label">Owner</div><div class="contact-value">Terry DiPoma</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div><div class="contact-label">Address</div><div class="contact-value">238 W 12950 S, Draper, UT 84020</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div><div class="contact-label">Email</div><div class="contact-value">terry@energytechhvac.com</div></div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="form-card">
+          <div class="form-title">Request Service</div>
+          <div class="form-subtitle">Fill out the form below and Terry will get back to you promptly.</div>
+
+          <!-- AC / Heating Toggle -->
+          <div class="form-group">
+            <label>System Type</label>
+            <div class="system-toggle">
+              <input type="radio" name="system" id="sys-cool" checked />
+              <label for="sys-cool">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><path d="M20 12L12 6l-8 6"/><path d="M20 12l-8 6-8-6"/></svg>
+                Cooling / AC
+              </label>
+              <input type="radio" name="system" id="sys-heat" />
+              <label for="sys-heat">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c-4-3-8-6-8-11a8 8 0 1 1 16 0c0 5-4 8-8 11z"/></svg>
+                Heating
+              </label>
+              <input type="radio" name="system" id="sys-both" />
+              <label for="sys-both">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                Both
+              </label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input type="text" placeholder="John" /></div>
+            <div class="form-group"><label>Last Name</label><input type="text" placeholder="Smith" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Phone</label><input type="tel" placeholder="(801) 555-0000" /></div>
+            <div class="form-group"><label>Email</label><input type="email" placeholder="you@example.com" /></div>
+          </div>
+          <div class="form-group"><label>Service Type</label>
+            <select>
+              <option value="">Select a service...</option>
+              <option>AC Repair</option>
+              <option>Heating Repair</option>
+              <option>System Installation</option>
+              <option>Seasonal Tune-Up</option>
+              <option>Maintenance Plan</option>
+              <option>Duct Cleaning</option>
+              <option>Free Estimate</option>
+              <option>Warranty Question</option>
+            </select>
+          </div>
+
+          <!-- Urgency selector -->
+          <div class="form-group">
+            <label>How Urgent Is This?</label>
+            <div class="urgency-select">
+              <div class="urgency-option" onclick="selectUrgency(this)">
+                <input type="radio" name="urgency" value="routine" />
+                Routine
+                <span class="urgency-label">No rush</span>
+              </div>
+              <div class="urgency-option selected" onclick="selectUrgency(this)">
+                <input type="radio" name="urgency" value="soon" checked />
+                Soon
+                <span class="urgency-label">This week</span>
+              </div>
+              <div class="urgency-option" onclick="selectUrgency(this)">
+                <input type="radio" name="urgency" value="urgent" />
+                Urgent
+                <span class="urgency-label">ASAP</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group"><label>Preferred Date</label><input type="date" /></div>
+            <div class="form-group"><label>Preferred Time</label>
+              <select><option>Morning (7am&ndash;12pm)</option><option>Afternoon (12&ndash;5pm)</option><option>Flexible</option></select>
+            </div>
+          </div>
+          <div class="form-group"><label>Message / Details</label><textarea placeholder="Describe your issue or any special notes..."></textarea></div>
+          <button class="form-submit" type="button">Send My Request to Terry</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><span>Energy</span>Tech HVAC</div>
+        <div class="footer-desc">Salt Lake City metro and Utah County&rsquo;s honest HVAC guy. Terry DiPoma handles every job personally &mdash; no subcontractors, no call centers, no surprises. American Standard authorized dealer and UVHBA member. Customers say he goes above and beyond, and leaves every space cleaner than he found it.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="#services">Air Conditioning</a></li>
+          <li><a href="#services">Heating Systems</a></li>
+          <li><a href="#services">System Installation</a></li>
+          <li><a href="#services">Preventive Maintenance</a></li>
+          <li><a href="#services">Duct Cleaning</a></li>
+          <li><a href="#services">Repairs &amp; Estimates</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#plans">Maintenance Plans</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#area">Service Area</a></li>
+          <li><a href="#schedule">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="tel:8015801230">(801) 580-1230</a></li>
+          <li><a href="mailto:terry@energytechhvac.com">terry@energytechhvac.com</a></li>
+          <li><a href="#">Terry DiPoma, Owner</a></li>
+          <li><a href="#">238 W 12950 S, Draper, UT 84020</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2025 Energy Tech HVAC. All rights reserved. | Draper, UT 84020</div>
+      <div class="footer-badges">
+        <div class="footer-badge">American Standard Authorized Dealer</div>
+        <div class="footer-badge">UVHBA Member</div>
+        <div class="footer-badge">Licensed &amp; Insured</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta">
+  <a href="tel:8015801230">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72c.13.84.36 1.67.7 2.44a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.92-.92a2 2 0 0 1 2.11-.45c.77.34 1.6.57 2.44.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call Now &mdash; (801) 580-1230
+  </a>
+</div>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => observer.observe(el));
+
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Animated counters
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseFloat(el.dataset.target);
+        const decimals = parseInt(el.dataset.decimals || '0');
+        const duration = 2000;
+        const start = performance.now();
+        const step = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = (target * eased).toFixed(decimals);
+          if (progress < 1) requestAnimationFrame(step);
+          else el.textContent = target.toFixed(decimals);
+        };
+        requestAnimationFrame(step);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+  // Urgency selector
+  function selectUrgency(el) {
+    el.parentElement.querySelectorAll('.urgency-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    el.querySelector('input').checked = true;
+  }
+
+  // System toggle styling
+  document.querySelectorAll('.system-toggle input').forEach(radio => {
+    radio.addEventListener('change', () => {
+      // CSS handles the styling via :checked + label
+    });
+  });
+</script>
+</body>
+</html>

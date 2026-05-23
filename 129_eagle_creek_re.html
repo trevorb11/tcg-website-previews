@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eagle Creek Real Estate | Middle Tennessee Homes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sage: #4A7C59;
+      --sage-dark: #2E5238;
+      --sage-light: #EDF4EF;
+      --tan: #C9A97A;
+      --tan-light: #F5EDD8;
+      --charcoal: #2D2D2D;
+      --cream: #FBF8F2;
+      --text: #2D2D2D;
+      --text-light: #6B6B6B;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 { font-family: 'Merriweather', serif; line-height: 1.25; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 68px;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+
+    .nav-logo {
+      font-family: 'Merriweather', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--sage); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--sage); }
+
+    .nav-cta {
+      background: var(--sage) !important;
+      color: #fff !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 3px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 90vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(45,82,56,0.88) 45%, rgba(45,82,56,0.3) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 5%;
+      padding-top: 68px;
+      max-width: 680px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.85);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1.3rem;
+    }
+
+    .hero h1 em { font-style: italic; color: var(--tan); font-weight: 300; }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.8);
+      max-width: 460px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--tan);
+      color: var(--charcoal);
+      padding: 0.85rem 2rem;
+      border: none;
+      border-radius: 3px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: #d8bc91; transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      padding: 0.85rem 2rem;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-radius: 3px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover { border-color: #fff; }
+
+    /* SEARCH BAR */
+    .search-bar {
+      background: #fff;
+      padding: 2rem 5%;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .search-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 1rem;
+      align-items: end;
+    }
+
+    .search-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .search-group label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .search-group select,
+    .search-group input {
+      border: 1.5px solid #ddd;
+      border-radius: 3px;
+      padding: 0.75rem 1rem;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+      background: #fff;
+    }
+
+    .search-group select:focus,
+    .search-group input:focus { border-color: var(--sage); }
+
+    /* SECTIONS */
+    section { padding: 5.5rem 5%; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .overline {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--text-light);
+      max-width: 580px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* SERVICES */
+    .services { background: var(--cream); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: 4px;
+      padding: 2rem 1.5rem;
+      border-top: 4px solid var(--sage);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    }
+
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--sage-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .service-icon svg { width: 22px; height: 22px; fill: none; stroke: var(--sage); stroke-width: 2; }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      color: var(--charcoal);
+    }
+
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* ABOUT */
+    .about { background: var(--sage-dark); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 4px;
+    }
+
+    .about-text .overline { color: var(--tan); }
+    .about-text .section-title { color: #fff; }
+
+    .about-text p {
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 1.2rem;
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    .about-quote {
+      border-left: 3px solid var(--tan);
+      padding: 1rem 1.5rem;
+      background: rgba(255,255,255,0.05);
+      margin: 2rem 0;
+    }
+
+    .about-quote p {
+      font-family: 'Merriweather', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--tan);
+      margin: 0;
+    }
+
+    /* WHY US */
+    .why { background: var(--cream); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .why-card {
+      padding: 2.5rem 2rem;
+      background: #fff;
+      border-radius: 4px;
+      border-bottom: 4px solid var(--tan);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+
+    .why-num {
+      font-family: 'Merriweather', serif;
+      font-size: 2rem;
+      color: var(--tan);
+      opacity: 0.5;
+      margin-bottom: 0.75rem;
+    }
+
+    .why-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      color: var(--charcoal);
+    }
+
+    .why-card p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.75;
+    }
+
+    /* AREAS */
+    .areas { background: var(--sage-light); }
+
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 3.5rem;
+    }
+
+    .area-card {
+      background: #fff;
+      border-radius: 4px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .area-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(74,124,89,0.15);
+    }
+
+    .area-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+      color: var(--sage-dark);
+    }
+
+    .area-card p {
+      font-size: 0.82rem;
+      color: var(--text-light);
+    }
+
+    .area-listings {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--sage);
+      display: block;
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* LISTINGS */
+    .listings { background: var(--cream); }
+
+    .listings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .listing-card {
+      background: #fff;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      transition: transform 0.25s;
+    }
+
+    .listing-card:hover { transform: translateY(-4px); }
+
+    .listing-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .listing-card:hover img { transform: scale(1.03); }
+
+    .listing-card-body {
+      padding: 1.25rem;
+    }
+
+    .listing-status {
+      display: inline-block;
+      background: var(--sage-light);
+      color: var(--sage-dark);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      margin-bottom: 0.6rem;
+    }
+
+    .listing-price {
+      font-family: 'Merriweather', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.4rem;
+    }
+
+    .listing-address {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .listing-details {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.82rem;
+      color: var(--text-light);
+    }
+
+    .listing-details span { display: flex; align-items: center; gap: 0.3rem; }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--tan-light); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      border-radius: 4px;
+      padding: 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .testimonial-card p {
+      font-family: 'Merriweather', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial-client {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .testimonial-client img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .testimonial-client strong {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      display: block;
+    }
+
+    .testimonial-client span {
+      font-size: 0.78rem;
+      color: var(--text-light);
+    }
+
+    /* CONTACT */
+    .contact { background: var(--sage-dark); }
+
+    .contact .section-title { color: #fff; }
+    .contact .section-desc { color: rgba(255,255,255,0.65); }
+    .contact .overline { color: var(--tan); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 5rem;
+      margin-top: 3.5rem;
+    }
+
+    .contact-info h3 {
+      font-family: 'Merriweather', serif;
+      font-size: 1.2rem;
+      color: var(--tan);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .contact-detail svg { width: 16px; height: 16px; min-width: 16px; fill: none; stroke: var(--tan); stroke-width: 2; margin-top: 3px; }
+
+    .contact-form { display: grid; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+
+    .form-group label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 3px;
+      padding: 0.8rem 1rem;
+      color: #fff;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+      font-weight: 300;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--tan); }
+    .form-group select option { background: var(--sage-dark); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    /* FOOTER */
+    footer {
+      background: #1B3322;
+      color: rgba(255,255,255,0.35);
+      padding: 2.5rem 5%;
+      text-align: center;
+    }
+
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+
+    .footer-logo {
+      font-family: 'Merriweather', serif;
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo span { color: var(--tan); }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      font-size: 0.82rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--tan); }
+
+    .footer-copy { font-size: 0.75rem; }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .search-inner { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .areas-grid { grid-template-columns: 1fr 1fr; }
+      .listings-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 580px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .areas-grid { grid-template-columns: 1fr 1fr; }
+      .listings-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Eagle Creek <span>Real Estate</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#areas">Areas</a></li>
+      <li><a href="#listings">Listings</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Talk to an Agent</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1800&q=80" alt="Tennessee home" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Lebanon, Tennessee &mdash; Middle Tennessee Real Estate</div>
+      <h1>Find Your Place in <em>Middle Tennessee.</em></h1>
+      <p>Local experts who know these communities like neighbors — because we are. From Lebanon to Nashville, we help people find homes they love and communities where they truly belong.</p>
+      <div class="hero-btns">
+        <a href="#listings" class="btn-primary">Search Homes</a>
+        <a href="#contact" class="btn-outline">Talk to an Agent</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEARCH BAR -->
+  <div class="search-bar">
+    <div class="search-inner">
+      <div class="search-group">
+        <label>Location</label>
+        <select>
+          <option>All of Middle Tennessee</option>
+          <option>Greater Nashville</option>
+          <option>Hendersonville</option>
+          <option>Murfreesboro</option>
+          <option>Lebanon</option>
+          <option>Wilson County</option>
+          <option>Gallatin</option>
+          <option>Cookeville</option>
+        </select>
+      </div>
+      <div class="search-group">
+        <label>Property Type</label>
+        <select>
+          <option>All Types</option>
+          <option>Single Family Home</option>
+          <option>Townhome</option>
+          <option>Condo</option>
+          <option>Land</option>
+          <option>Investment Property</option>
+        </select>
+      </div>
+      <button class="btn-primary" style="height:48px;white-space:nowrap;">Search Homes</button>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">How We Help</div>
+        <h2 class="section-title">Every Real Estate Need, Handled with Care</h2>
+        <p class="section-desc">Whether you're buying your first home, selling a family property, or expanding an investment portfolio, Eagle Creek brings the same personal attention to every transaction.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Home Buying</h3>
+          <p>From the first showing to the closing table, we guide buyers through every step — helping you find the right home in the right neighborhood at the right price.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          </div>
+          <h3>Home Selling</h3>
+          <p>Pricing strategy, professional marketing, skilled negotiation, and steady guidance from list date to closing day. We get your home sold at the strongest price the market supports.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+          </div>
+          <h3>Investment Properties</h3>
+          <p>Middle Tennessee's strong growth makes it a compelling market for investors. We help clients identify, evaluate, and acquire income-producing properties with confidence.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-4">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M5 7a2 2 0 012-2h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h3>Free Home Valuation</h3>
+          <p>Thinking of selling? We'll provide a complimentary, no-obligation market analysis that shows you what your home is worth in today's Middle Tennessee market.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-img reveal">
+          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&q=80" alt="Agent with homebuyer couple" />
+        </div>
+        <div class="about-text reveal reveal-delay-2" style="padding:2rem 0;">
+          <div class="overline">Who We Are</div>
+          <h2 class="section-title">Advisors, Neighbors, and Community Members Who Genuinely Care</h2>
+          <p>Eagle Creek Real Estate was built on a belief that the best real estate experiences start with the right people. Not just licensed professionals — though we're that too — but advisors who live in these communities, understand these neighborhoods from the inside, and carry a genuine investment in where their clients end up.</p>
+          <div class="about-quote">
+            <p>"We believe the best real estate experiences start with the right people — advisors, neighbors, and community members who genuinely care."</p>
+          </div>
+          <p>Based in Lebanon, Tennessee, we serve buyers and sellers across the Middle Tennessee region — from the Nashville suburbs to rural Wilson County. We know these communities because we're part of them, and we bring that local knowledge to every conversation, every showing, and every transaction we're trusted to handle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Why Eagle Creek</div>
+        <h2 class="section-title">Real Estate Done the Right Way</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal reveal-delay-1">
+          <div class="why-num">01</div>
+          <h3>We Know the Market</h3>
+          <p>Middle Tennessee is one of the most dynamic real estate markets in the country. We track every neighborhood, every price shift, and every emerging opportunity so our clients are always working with the most current and accurate information available.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-2">
+          <div class="why-num">02</div>
+          <h3>We Know You</h3>
+          <p>Every client is different. Some are buying their very first home. Some are selling a home they've lived in for thirty years. Some are building a portfolio. We listen before we advise, and we tailor everything we do to what you actually need — not a one-size-fits-all process.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-3">
+          <div class="why-num">03</div>
+          <h3>We Know the Process</h3>
+          <p>Real estate transactions have a lot of moving pieces — inspections, financing, negotiations, title work, closing paperwork. We've seen every situation, and we navigate the process proactively so that nothing catches you off guard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AREAS -->
+  <section class="areas" id="areas">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Where We Work</div>
+        <h2 class="section-title">Middle Tennessee from Lebanon to Nashville and Beyond</h2>
+        <p class="section-desc">We serve buyers and sellers across the full Middle Tennessee region, with deep familiarity in each market we operate in.</p>
+      </div>
+      <div class="areas-grid">
+        <div class="area-card reveal reveal-delay-1">
+          <h3>Greater Nashville</h3>
+          <p>The heart of Middle Tennessee's growth</p>
+          <span class="area-listings">5,480+ Active Listings</span>
+        </div>
+        <div class="area-card reveal reveal-delay-2">
+          <h3>Wilson County</h3>
+          <p>Community, land, and suburban living</p>
+          <span class="area-listings">1,281+ Active Listings</span>
+        </div>
+        <div class="area-card reveal reveal-delay-3">
+          <h3>Murfreesboro</h3>
+          <p>Growing city with small-town character</p>
+          <span class="area-listings">1,040+ Active Listings</span>
+        </div>
+        <div class="area-card reveal reveal-delay-4">
+          <h3>Lebanon</h3>
+          <p>Our home base — and a great place to be</p>
+          <span class="area-listings">678+ Active Listings</span>
+        </div>
+        <div class="area-card reveal reveal-delay-1">
+          <h3>Gallatin</h3>
+          <p>Lakeside living near Old Hickory Lake</p>
+          <span class="area-listings">633+ Active Listings</span>
+        </div>
+        <div class="area-card reveal reveal-delay-2">
+          <h3>Hendersonville</h3>
+          <p>Family-friendly and close to the water</p>
+          <span class="area-listings">412+ Active Listings</span>
+        </div>
+        <div class="area-card reveal reveal-delay-3">
+          <h3>Cookeville</h3>
+          <p>Tennessee Tech country — growing fast</p>
+          <span class="area-listings">275+ Active Listings</span>
+        </div>
+        <div class="area-card reveal reveal-delay-4">
+          <h3>Surrounding Counties</h3>
+          <p>We cover the full Middle Tennessee region</p>
+          <span class="area-listings">Ask About Your Area</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LISTINGS -->
+  <section class="listings" id="listings">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Featured Properties</div>
+        <h2 class="section-title">Homes Worth a Closer Look</h2>
+      </div>
+      <div class="listings-grid">
+        <div class="listing-card reveal reveal-delay-1">
+          <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=700&q=80" alt="Home in Lebanon TN" />
+          <div class="listing-card-body">
+            <span class="listing-status">Active</span>
+            <div class="listing-price">$389,900</div>
+            <div class="listing-address">142 Creekside Drive, Lebanon, TN 37087</div>
+            <div class="listing-details">
+              <span>4 bd</span>
+              <span>3 ba</span>
+              <span>2,180 sqft</span>
+            </div>
+          </div>
+        </div>
+        <div class="listing-card reveal reveal-delay-2">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80" alt="Home in Hendersonville TN" />
+          <div class="listing-card-body">
+            <span class="listing-status">Active</span>
+            <div class="listing-price">$524,000</div>
+            <div class="listing-address">318 Waterford Lane, Hendersonville, TN 37075</div>
+            <div class="listing-details">
+              <span>5 bd</span>
+              <span>4 ba</span>
+              <span>3,040 sqft</span>
+            </div>
+          </div>
+        </div>
+        <div class="listing-card reveal reveal-delay-3">
+          <img src="https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=700&q=80" alt="Home in Murfreesboro TN" />
+          <div class="listing-card-body">
+            <span class="listing-status">Active</span>
+            <div class="listing-price">$299,500</div>
+            <div class="listing-address">887 Oakwood Court, Murfreesboro, TN 37130</div>
+            <div class="listing-details">
+              <span>3 bd</span>
+              <span>2 ba</span>
+              <span>1,680 sqft</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:2.5rem;" class="reveal">
+        <a href="#contact" class="btn-primary">View All Listings</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">What Clients Say</div>
+        <h2 class="section-title">Real Words from Real Neighbors</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal reveal-delay-1">
+          <p>"Moving to Tennessee from out of state, we had a hundred questions and no idea where to start. Eagle Creek held our hand through the whole process and found us a home we couldn't have found on our own. We felt like they genuinely cared where we ended up."</p>
+          <div class="testimonial-client">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Client" />
+            <div>
+              <strong>Marcus and Jen T.</strong>
+              <span>Lebanon, TN</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <p>"I was nervous about selling my mother's home after she passed. It was emotional and I needed someone patient. Eagle Creek was exactly that — no pressure, no rush, just solid advice and a great outcome. I'm grateful."</p>
+          <div class="testimonial-client">
+            <img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=100&q=80" alt="Client" />
+            <div>
+              <strong>Diane R.</strong>
+              <span>Wilson County, TN</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-3">
+          <p>"We looked at a lot of agents before choosing Eagle Creek. What set them apart was that they clearly knew Lebanon and Wilson County inside and out. Every recommendation they made turned out to be exactly right."</p>
+          <div class="testimonial-client">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Client" />
+            <div>
+              <strong>Tom and Sarah K.</strong>
+              <span>Hendersonville, TN</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="overline">Let's Talk</div>
+        <h2 class="section-title">Ready to Make Your Move?</h2>
+        <p class="section-desc">Whether you're just starting to think about it or ready to move now, reach out and let's have a conversation. No pressure, no obligation — just a real conversation with someone who knows this market.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal reveal-delay-1">
+          <h3>Eagle Creek Real Estate</h3>
+          <div class="contact-detail">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Lebanon, Tennessee
+          </div>
+          <div class="contact-detail">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.16 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012.07 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            (629) 396-1688
+          </div>
+          <div class="contact-detail">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            russ.lapratt@eaglecreekre.com
+          </div>
+        </div>
+        <form class="contact-form reveal reveal-delay-2">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="First name" />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Last name" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="your@email.com" />
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" placeholder="(555) 000-0000" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>What Are You Looking to Do?</label>
+            <select>
+              <option value="">Select one</option>
+              <option>Buy a Home</option>
+              <option>Sell a Home</option>
+              <option>Buy and Sell</option>
+              <option>Investment Property</option>
+              <option>Get a Home Valuation</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tell Us About Your Situation</label>
+            <textarea placeholder="Where are you in the process? What area are you focused on? What questions can we answer?"></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;text-align:center;border:none;cursor:pointer;">Get in Touch</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Eagle Creek <span>Real Estate</span></div>
+      <div class="footer-links">
+        <a href="#services">Buying</a>
+        <a href="#services">Selling</a>
+        <a href="#areas">Areas</a>
+        <a href="#listings">Listings</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p class="footer-copy">Eagle Creek Real Estate &bull; Lebanon, Tennessee &bull; &copy; 2026 All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

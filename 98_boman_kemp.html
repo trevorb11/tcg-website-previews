@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boman-Kemp | Egress Window Systems | Manufacturer Since 1967</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #e05c00;
+      --orange-light: #fff4ee;
+      --charcoal: #1e2228;
+      --charcoal-mid: #2d3440;
+      --white: #ffffff;
+      --off-white: #f7f8fa;
+      --gray: #717e91;
+      --gray-light: #e0e5ee;
+      --text: #22272f;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      line-height: 1.15;
+      letter-spacing: 0.01em;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 5%;
+      background: var(--charcoal);
+    }
+
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav-logo span { color: var(--orange); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--orange); }
+
+    .nav-cta {
+      background: var(--orange);
+      color: var(--white) !important;
+      padding: 0.48rem 1.3rem;
+      border-radius: 3px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--charcoal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.2;
+    }
+
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(30,34,40,0.96) 55%, rgba(30,34,40,0.5));
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 5%; padding-top: 7rem;
+    }
+
+    .hero-year {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-weight: 800;
+      color: var(--white);
+      text-transform: uppercase;
+      max-width: 700px;
+      margin-bottom: 1.4rem;
+      line-height: 1.05;
+    }
+
+    .hero h1 em { font-style: normal; color: var(--orange); }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: 3px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: 3px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.35);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s, transform 0.65s; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    section { padding: 5.5rem 5%; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-tag {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+
+    .section-lead {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 560px;
+      line-height: 1.85;
+      margin-bottom: 3rem;
+      font-weight: 400;
+    }
+
+    /* EGRESS EXPLAINER */
+    .egress {
+      background: var(--off-white);
+    }
+
+    .egress-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .egress-img img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .egress-text p {
+      font-size: 0.97rem;
+      color: var(--gray);
+      line-height: 1.85;
+      margin-bottom: 1.1rem;
+    }
+
+    .code-box {
+      background: var(--charcoal);
+      color: var(--white);
+      border-radius: 4px;
+      padding: 1.4rem 1.8rem;
+      margin-top: 1.5rem;
+      border-left: 4px solid var(--orange);
+    }
+
+    .code-box .code-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.5rem;
+    }
+
+    .code-box p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+    }
+
+    /* PRODUCTS */
+    .products { background: var(--white); }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .product-card {
+      border: 1.5px solid var(--gray-light);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+    }
+
+    .product-thumb {
+      height: 160px;
+      background: var(--charcoal-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-thumb svg {
+      width: 52px; height: 52px;
+      stroke: var(--orange);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .product-body {
+      padding: 1.4rem;
+    }
+
+    .product-body h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      color: var(--charcoal);
+    }
+
+    .product-body p {
+      font-size: 0.86rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* COMPLETE SYSTEM */
+    .system {
+      background: var(--charcoal);
+      color: var(--white);
+    }
+
+    .system-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .system .section-title { color: var(--white); }
+
+    .system p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.97rem;
+      line-height: 1.85;
+      margin-bottom: 1.2rem;
+    }
+
+    .system-img img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    /* RESOURCES */
+    .resources { background: var(--off-white); }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .resource-card {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 1.8rem 1.5rem;
+      text-align: center;
+      border: 1.5px solid var(--gray-light);
+      transition: border-color 0.2s;
+    }
+
+    .resource-card:hover { border-color: var(--orange); }
+
+    .resource-card svg {
+      width: 36px; height: 36px;
+      stroke: var(--orange); fill: none; stroke-width: 1.8;
+      margin-bottom: 0.9rem;
+    }
+
+    .resource-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      color: var(--charcoal);
+    }
+
+    .resource-card p {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* WHO WE SERVE */
+    .serve-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .serve-card {
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .serve-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .serve-card .serve-label {
+      background: var(--charcoal);
+      color: var(--white);
+      padding: 0.8rem 1rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* DISTRIBUTION */
+    .distribution { background: var(--orange); }
+
+    .distribution .section-tag { color: var(--white); opacity: 0.7; }
+    .distribution .section-title { color: var(--white); }
+
+    .distribution p {
+      color: rgba(255,255,255,0.85);
+      font-size: 1rem;
+      line-height: 1.85;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    .distribution .btn-white {
+      background: var(--white);
+      color: var(--orange);
+      padding: 0.85rem 2rem;
+      border-radius: 3px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      display: inline-block;
+      transition: opacity 0.2s;
+    }
+
+    .distribution .btn-white:hover { opacity: 0.9; }
+
+    /* CONTACT */
+    .contact-section { background: var(--off-white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p { font-size: 0.95rem; color: var(--gray); line-height: 1.85; margin-bottom: 1.5rem; }
+
+    .cdetail { display: flex; gap: 0.8rem; align-items: flex-start; margin-bottom: 0.7rem; }
+
+    .cdetail svg { width: 18px; height: 18px; stroke: var(--orange); fill: none; stroke-width: 2; flex-shrink: 0; margin-top: 3px; }
+
+    .cdetail span { font-size: 0.9rem; color: var(--text); }
+
+    .form-group { margin-bottom: 1rem; }
+
+    .form-group label {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-bottom: 0.35rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.78rem 1rem;
+      border: 1.5px solid var(--gray-light);
+      border-radius: 3px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--orange); }
+
+    .form-group textarea { height: 110px; resize: vertical; }
+
+    .form-submit {
+      background: var(--charcoal);
+      color: var(--white);
+      padding: 0.85rem 2.2rem;
+      border: none;
+      border-radius: 3px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .form-submit:hover { background: var(--orange); }
+
+    footer {
+      background: var(--charcoal);
+      padding: 3rem 5%;
+    }
+
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-logo span { color: var(--orange); }
+
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--orange); }
+
+    .footer-copy {
+      width: 100%; text-align: center;
+      font-size: 0.78rem; color: rgba(255,255,255,0.3);
+      margin-top: 1.5rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 1000px) {
+      .nav-links { display: none; }
+      .products-grid { grid-template-columns: 1fr 1fr; }
+      .resources-grid { grid-template-columns: 1fr 1fr; }
+      .serve-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .egress-grid, .system-inner, .contact-grid { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .resources-grid, .serve-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Boman-<span>Kemp</span></a>
+    <ul class="nav-links">
+      <li><a href="#egress">Why Egress</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#contact" class="nav-cta">Find a Dealer</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-year">Manufacturing Since 1967</div>
+      <h1>The Standard in <em>Egress</em> Window Systems</h1>
+      <p class="hero-sub">Complete basement egress window solutions — engineered for code compliance, built to last a lifetime. Every well, buck, grate, cover, and ladder in one complete system.</p>
+      <div class="hero-btns">
+        <a href="#products" class="btn-primary">Explore Products</a>
+        <a href="#contact" class="btn-outline">Find a Dealer</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EGRESS EXPLAINER -->
+  <section class="egress" id="egress">
+    <div class="section-inner">
+      <div class="egress-grid">
+        <div class="egress-img reveal">
+          <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?w=800&auto=format&fit=crop" alt="Basement construction with egress window installation" />
+        </div>
+        <div class="egress-text reveal">
+          <span class="section-tag">Why Egress Matters</span>
+          <h2 class="section-title">Life Safety Starts Below Grade</h2>
+          <p>Egress windows are not just a building feature — they are a life-safety requirement. Every finished or habitable basement needs a properly sized window that allows occupants to escape in an emergency. Getting it wrong is not an option.</p>
+          <p>The International Residential Code (IRC) sets minimum requirements for egress window size, well width, and clear opening dimensions. Boman-Kemp products are engineered specifically to meet those requirements so builders, contractors, and homeowners never have to guess.</p>
+          <p>Since 1967, we have been the manufacturer that building professionals trust to get this right the first time. Our complete systems ship matched and ready to install, eliminating the guesswork that comes with piecing together components from different suppliers.</p>
+          <div class="code-box">
+            <div class="code-label">IRC Egress Code</div>
+            <p>Egress windows must provide a minimum clear opening of 5.7 square feet, minimum height of 24 inches, minimum width of 20 inches, and a maximum sill height of 44 inches from the floor. Boman-Kemp systems are designed to satisfy these requirements.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">Product Lines</span>
+        <h2 class="section-title">Everything You Need, One Manufacturer</h2>
+        <p class="section-lead">Boman-Kemp manufactures every component in a complete egress system — so you know it all fits together perfectly.</p>
+      </div>
+      <div class="products-grid">
+        <div class="product-card reveal">
+          <div class="product-thumb">
+            <svg viewBox="0 0 24 24" stroke-linecap="round"><rect x="2" y="8" width="20" height="14" rx="1"/><path d="M2 8l10-6 10 6"/></svg>
+          </div>
+          <div class="product-body">
+            <h3>Window Wells</h3>
+            <p>Galvanized steel window wells in a wide range of sizes to accommodate nearly any foundation height. Built to hold the earth steadfast away from your egress window opening.</p>
+          </div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-thumb">
+            <svg viewBox="0 0 24 24" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="1"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+          </div>
+          <div class="product-body">
+            <h3>Basement Windows</h3>
+            <p>Large basement windows engineered for egress compliance — sized to meet IRC minimum clear opening requirements and designed for light, ventilation, and emergency exit.</p>
+          </div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-thumb">
+            <svg viewBox="0 0 24 24" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="1"/><line x1="7" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="17" y2="20"/></svg>
+          </div>
+          <div class="product-body">
+            <h3>Window Bucks / Landing Bucks</h3>
+            <p>Easy Buck and Easy Well components that frame the window opening in the foundation wall, providing a clean, professional finish and structural support for the window unit.</p>
+          </div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-thumb">
+            <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M4 6l16 0"/><path d="M4 10l16 0"/><path d="M4 14l16 0"/><path d="M4 18l16 0"/></svg>
+          </div>
+          <div class="product-body">
+            <h3>Safety Grates</h3>
+            <p>Heavy-duty safety grates that secure the window well opening while remaining operable from the inside in an emergency. Provides security without compromising egress function.</p>
+          </div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-thumb">
+            <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M3 3h18v18H3z"/><path d="M7 3v18"/><path d="M17 3v18"/></svg>
+          </div>
+          <div class="product-body">
+            <h3>Polycarbonate Covers</h3>
+            <p>Durable polycarbonate window well covers that keep water, debris, and animals out of the well while allowing light to pass through and remaining removable for egress use.</p>
+          </div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-thumb">
+            <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M8 3v18"/><path d="M16 3v18"/><path d="M8 7h8"/><path d="M8 11h8"/><path d="M8 15h8"/></svg>
+          </div>
+          <div class="product-body">
+            <h3>Escape Ladders</h3>
+            <p>Code-compliant escape ladders for window wells deeper than 44 inches. Required by IRC for accessible emergency exit and designed for secure attachment to the well wall.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPLETE SYSTEM -->
+  <section class="system" id="system">
+    <div class="section-inner">
+      <div class="system-inner">
+        <div class="reveal">
+          <span class="section-tag" style="color: var(--orange);">The Complete System</span>
+          <h2 class="section-title">Everything Matched. Everything Ready.</h2>
+          <p>When you piece together egress components from multiple suppliers, you are accepting risk — the risk that sizing does not quite match, that a cover does not seal properly, that a grate does not fit the well opening. Contractors who have done it the hard way understand this immediately.</p>
+          <p>Boman-Kemp manufactures everything in-house. That means our window wells, bucks, windows, grates, covers, and ladders are designed to work together from the start. Order a complete system and you know it fits before the concrete truck pulls away.</p>
+          <p>Our System Selector Tool helps you identify the right combination of components for your specific foundation conditions, window location, and well depth in minutes.</p>
+          <a href="#contact" class="btn-primary" style="display:inline-block; margin-top: 1.5rem;">Use the System Selector</a>
+        </div>
+        <div class="system-img reveal">
+          <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&auto=format&fit=crop" alt="Professional basement construction and egress window installation" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section class="resources" id="resources">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">Tools & Resources</span>
+        <h2 class="section-title">Everything You Need to Specify and Install</h2>
+        <p class="section-lead">From first specification to final inspection, Boman-Kemp provides the technical resources to get the job done right.</p>
+      </div>
+      <div class="resources-grid">
+        <div class="resource-card reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+          <h4>System Selector Tool</h4>
+          <p>Enter your dimensions and get the right product combination for your specific installation</p>
+        </div>
+        <div class="resource-card reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <h4>AutoCAD Drawings</h4>
+          <p>Download complete CAD drawings for all Boman-Kemp products for your design and permit sets</p>
+        </div>
+        <div class="resource-card reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          <h4>Specifications Guide</h4>
+          <p>Full product specifications for code review, submittal packages, and procurement documentation</p>
+        </div>
+        <div class="resource-card reveal">
+          <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          <h4>Dealer Portal</h4>
+          <p>Licensed dealers can order directly through our online portal with real-time pricing and availability</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE SERVE -->
+  <section id="serve">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">Who We Serve</span>
+        <h2 class="section-title">Built for Building Professionals</h2>
+      </div>
+      <div class="serve-grid">
+        <div class="serve-card reveal">
+          <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&auto=format&fit=crop" alt="Home builder reviewing construction plans" />
+          <div class="serve-label">Home Builders</div>
+        </div>
+        <div class="serve-card reveal">
+          <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=600&auto=format&fit=crop" alt="Contractor installing window in home" />
+          <div class="serve-label">Contractors</div>
+        </div>
+        <div class="serve-card reveal">
+          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&auto=format&fit=crop" alt="Architect reviewing blueprints" />
+          <div class="serve-label">Architects</div>
+        </div>
+        <div class="serve-card reveal">
+          <img src="https://images.unsplash.com/photo-1560185009-dddeb820418a?w=600&auto=format&fit=crop" alt="Homeowner speaking with contractor" />
+          <div class="serve-label">Homeowners</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISTRIBUTION -->
+  <section class="distribution" id="distribution">
+    <div class="section-inner reveal">
+      <span class="section-tag">National Distribution</span>
+      <h2 class="section-title">Find a Dealer Near You</h2>
+      <p>Boman-Kemp products are available through a nationwide network of authorized dealers across the United States and Canada. Whether you need one window well or a full development order, a local dealer near you can help.</p>
+      <a href="#contact" class="btn-white">Locate a Dealer</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="reveal">
+          <span class="section-tag">Contact Boman-Kemp</span>
+          <h2 class="section-title">Get in Touch</h2>
+          <div class="contact-info">
+            <p>Need help selecting the right system, locating a dealer, or placing a large order? Our team is here to help you get exactly what you need.</p>
+            <div class="cdetail">
+              <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Ogden, Utah</span>
+            </div>
+            <div class="cdetail">
+              <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.23 1.2 2 2 0 012.2 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.27 7a16 16 0 006.72 6.72l1.08-1.08a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              <span>Toll-Free: (800) 733-7886</span>
+            </div>
+            <div class="cdetail">
+              <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.23 1.2 2 2 0 012.2 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.27 7a16 16 0 006.72 6.72l1.08-1.08a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              <span>Utah Direct: (801) 731-0615</span>
+            </div>
+            <div class="cdetail">
+              <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>ken-shinaut@boman-kemp.com</span>
+            </div>
+          </div>
+        </div>
+        <form class="reveal" onsubmit="return false;">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Name" />
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" placeholder="Builder / Contractor / Dealer" />
+          </div>
+          <div class="form-group">
+            <label>I Am A</label>
+            <select>
+              <option>Home Builder</option>
+              <option>Contractor</option>
+              <option>Architect</option>
+              <option>Homeowner</option>
+              <option>Dealer Inquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>State</label>
+            <input type="text" placeholder="Your state" />
+          </div>
+          <div class="form-group">
+            <label>How Can We Help?</label>
+            <textarea placeholder="Product questions, dealer location, large orders..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Boman-<span>Kemp</span> Manufacturing</div>
+      <ul class="footer-links">
+        <li><a href="#egress">Why Egress</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#distribution">Find a Dealer</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <p class="footer-copy">&copy; 2025 Boman &amp; Kemp Manufacturing, Inc. Ogden, Utah | AISC Certified | Manufacturing Egress Window Systems Since 1967</p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => obs.observe(r));
+  </script>
+</body>
+</html>

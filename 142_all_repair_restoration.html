@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Repair and Restoration | Boynton Beach, FL</title>
+  <meta name="description" content="All Repair and Restoration – South Florida's trusted experts in water damage, fire damage, mold remediation, and full property restoration. Serving Boynton Beach and surrounding communities since 2015." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Custom Properties ─────────────────────────────────────── */
+    :root {
+      --navy:        #0d2b4e;
+      --navy-dark:   #081c34;
+      --navy-mid:    #163a66;
+      --amber:       #f07c20;
+      --amber-dark:  #c9630d;
+      --amber-light: #ffa040;
+      --white:       #ffffff;
+      --off-white:   #f5f7fa;
+      --gray-light:  #e8ecf1;
+      --gray:        #8c96a5;
+      --text:        #1e293b;
+      --text-muted:  #64748b;
+      --radius:      6px;
+      --radius-lg:   12px;
+      --shadow-sm:   0 2px 8px rgba(0,0,0,.08);
+      --shadow-md:   0 6px 24px rgba(0,0,0,.12);
+      --shadow-lg:   0 12px 40px rgba(0,0,0,.18);
+      --transition:  .3s ease;
+      --font-head:   'Montserrat', sans-serif;
+      --font-body:   'Open Sans', sans-serif;
+    }
+
+    /* ─── Reset & Base ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.2; }
+
+    /* ─── Utility ───────────────────────────────────────────────── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .section-tag {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-head);
+      font-size: .9rem;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .btn-primary { background: var(--amber); color: var(--white); border-color: var(--amber); }
+    .btn-primary:hover { background: var(--amber-dark); border-color: var(--amber-dark); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .btn-outline { background: transparent; color: var(--white); border-color: var(--white); }
+    .btn-outline:hover { background: var(--white); color: var(--navy); transform: translateY(-2px); }
+    .btn-navy { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .btn-navy:hover { background: var(--navy-dark); border-color: var(--navy-dark); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+    /* ─── Scroll Reveal ─────────────────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-left { opacity: 0; transform: translateX(-32px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right { opacity: 0; transform: translateX(32px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal-right.visible { opacity: 1; transform: none; }
+    .delay-1 { transition-delay: .1s; }
+    .delay-2 { transition-delay: .2s; }
+    .delay-3 { transition-delay: .3s; }
+    .delay-4 { transition-delay: .4s; }
+
+    /* ─── Emergency Banner ──────────────────────────────────────── */
+    .emergency-bar {
+      background: var(--amber);
+      color: var(--white);
+      text-align: center;
+      padding: 9px 24px;
+      font-family: var(--font-head);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      position: relative;
+      z-index: 200;
+    }
+    .emergency-bar a { color: var(--white); border-bottom: 1px solid rgba(255,255,255,.5); padding-bottom: 1px; }
+    .emergency-bar a:hover { border-color: var(--white); }
+    .pulse-dot {
+      display: inline-block;
+      width: 9px; height: 9px;
+      background: var(--white);
+      border-radius: 50%;
+      margin-right: 8px;
+      animation: pulse 1.4s infinite;
+      vertical-align: middle;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .4; transform: scale(1.4); }
+    }
+
+    /* ─── Navigation ────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--navy);
+      box-shadow: var(--shadow-md);
+      transition: background var(--transition), padding var(--transition);
+    }
+    .nav.scrolled { background: var(--navy-dark); }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-icon {
+      width: 42px; height: 42px;
+      background: var(--amber);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .logo-icon svg { width: 24px; height: 24px; fill: var(--white); }
+    .logo-text { font-family: var(--font-head); font-size: 1rem; font-weight: 800; color: var(--white); line-height: 1.15; }
+    .logo-text span { display: block; font-size: .65rem; font-weight: 600; color: var(--amber); letter-spacing: .1em; text-transform: uppercase; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-links a {
+      font-family: var(--font-head);
+      font-size: .82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.85);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--amber); }
+    .nav-cta {
+      font-family: var(--font-head);
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--white);
+      background: var(--amber);
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--amber-dark); transform: translateY(-1px); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      border: none;
+      background: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--navy-dark);
+      padding: 16px 24px 24px;
+      gap: 6px;
+    }
+    .mobile-menu a {
+      font-family: var(--font-head);
+      font-size: .9rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.85);
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      letter-spacing: .04em;
+    }
+    .mobile-menu a:hover { color: var(--amber); }
+    .mobile-menu .btn-primary { margin-top: 10px; justify-content: center; }
+
+    /* ─── Hero ──────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 70px;
+      background:
+        linear-gradient(to right, rgba(8,28,52,.92) 45%, rgba(8,28,52,.55) 100%),
+        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+    }
+    .hero-content { padding: 80px 0; max-width: 640px; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(240,124,32,.18);
+      border: 1px solid rgba(240,124,32,.4);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-family: var(--font-head);
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--amber-light);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .hero h1 em { font-style: normal; color: var(--amber); }
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.8);
+      margin-bottom: 36px;
+      line-height: 1.75;
+      max-width: 520px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-stats {
+      display: flex;
+      gap: 36px;
+      margin-top: 52px;
+      flex-wrap: wrap;
+    }
+    .hero-stat { text-align: left; }
+    .hero-stat-num {
+      font-family: var(--font-head);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--amber);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: .8rem;
+      color: rgba(255,255,255,.7);
+      margin-top: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    /* ─── Trust Strip ───────────────────────────────────────────── */
+    .trust-strip {
+      background: var(--off-white);
+      border-top: 3px solid var(--amber);
+      padding: 28px 0;
+    }
+    .trust-strip-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-head);
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .trust-icon {
+      width: 36px; height: 36px;
+      background: var(--navy);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .trust-icon svg { width: 18px; height: 18px; fill: var(--amber); }
+    .trust-divider { width: 1px; height: 36px; background: var(--gray-light); }
+
+    /* ─── Services ──────────────────────────────────────────────── */
+    .services { padding: 90px 0; background: var(--white); }
+    .services-header { text-align: center; margin-bottom: 52px; }
+    .services-header .section-sub { margin: 0 auto; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--off-white);
+      border: 1px solid var(--gray-light);
+      border-radius: var(--radius-lg);
+      padding: 32px 24px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--amber);
+      transform: scaleX(0);
+      transition: transform var(--transition);
+      transform-origin: left;
+    }
+    .service-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-5px); background: var(--white); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon {
+      width: 56px; height: 56px;
+      background: var(--navy);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+      transition: var(--transition);
+    }
+    .service-card:hover .service-icon { background: var(--amber); }
+    .service-icon svg { width: 28px; height: 28px; fill: var(--white); }
+    .service-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .service-card p { font-size: .88rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ─── Process ───────────────────────────────────────────────── */
+    .process { padding: 90px 0; background: var(--navy); }
+    .process-header { text-align: center; margin-bottom: 56px; }
+    .process-header .section-title { color: var(--white); }
+    .process-header .section-sub { color: rgba(255,255,255,.65); margin: 0 auto; }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: calc(16.67% + 18px);
+      right: calc(16.67% + 18px);
+      height: 2px;
+      background: repeating-linear-gradient(to right, var(--amber) 0, var(--amber) 8px, transparent 8px, transparent 16px);
+    }
+    .process-step { text-align: center; position: relative; }
+    .step-num {
+      width: 72px; height: 72px;
+      background: var(--amber);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 22px;
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--white);
+      position: relative;
+      z-index: 1;
+      border: 4px solid var(--navy);
+      box-shadow: 0 0 0 4px var(--amber);
+    }
+    .process-step h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .process-step p { font-size: .88rem; color: rgba(255,255,255,.65); line-height: 1.65; max-width: 240px; margin: 0 auto; }
+
+    /* ─── About ─────────────────────────────────────────────────── */
+    .about { padding: 90px 0; background: var(--off-white); }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      aspect-ratio: 4/3;
+    }
+    .about-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .about-badge-box {
+      position: absolute;
+      bottom: -16px; right: -16px;
+      background: var(--amber);
+      color: var(--white);
+      padding: 18px 22px;
+      border-radius: var(--radius-lg);
+      font-family: var(--font-head);
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+    .about-badge-box strong { display: block; font-size: 2rem; font-weight: 800; line-height: 1; }
+    .about-badge-box span { font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; opacity: .9; }
+    .about-text { }
+    .about-text .section-sub { margin-bottom: 20px; max-width: 100%; }
+    .about-list { margin: 24px 0; display: flex; flex-direction: column; gap: 12px; }
+    .about-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: .92rem;
+      color: var(--text);
+    }
+    .check-icon {
+      width: 22px; height: 22px;
+      background: var(--amber);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .check-icon svg { width: 12px; height: 12px; fill: var(--white); }
+
+    /* ─── Testimonials ──────────────────────────────────────────── */
+    .testimonials { padding: 90px 0; background: var(--white); }
+    .testimonials-header { text-align: center; margin-bottom: 52px; }
+    .testimonials-header .section-sub { margin: 0 auto; }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testi-card {
+      background: var(--off-white);
+      border: 1px solid var(--gray-light);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: var(--transition);
+    }
+    .testi-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .testi-stars { display: flex; gap: 3px; margin-bottom: 16px; }
+    .testi-stars svg { width: 16px; height: 16px; fill: var(--amber); }
+    .testi-text {
+      font-size: .92rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: .9rem;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .testi-name { font-family: var(--font-head); font-weight: 700; font-size: .88rem; color: var(--navy); }
+    .testi-location { font-size: .78rem; color: var(--gray); margin-top: 2px; }
+
+    /* ─── Service Area ───────────────────────────────────────────── */
+    .service-area { padding: 90px 0; background: var(--navy-dark); }
+    .service-area .section-title { color: var(--white); }
+    .service-area .section-sub { color: rgba(255,255,255,.65); }
+    .service-area-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .area-text { }
+    .area-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .area-tag {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.85);
+      font-family: var(--font-head);
+      font-size: .78rem;
+      font-weight: 600;
+      padding: 7px 16px;
+      border-radius: 100px;
+      letter-spacing: .04em;
+      transition: var(--transition);
+    }
+    .area-tag:hover { background: var(--amber); border-color: var(--amber); color: var(--white); }
+    .area-cta-box {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+    }
+    .area-cta-box h3 {
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .area-cta-box p { font-size: .9rem; color: rgba(255,255,255,.65); margin-bottom: 24px; line-height: 1.65; }
+    .area-phone {
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--amber);
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    /* ─── Contact ───────────────────────────────────────────────── */
+    .contact { padding: 90px 0; background: var(--off-white); }
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .contact-info .section-sub { margin-bottom: 32px; max-width: 100%; }
+    .contact-details { display: flex; flex-direction: column; gap: 20px; }
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .detail-icon {
+      width: 44px; height: 44px;
+      background: var(--navy);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .detail-icon svg { width: 20px; height: 20px; fill: var(--amber); }
+    .detail-label { font-family: var(--font-head); font-size: .72rem; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: .1em; }
+    .detail-value { font-size: .95rem; color: var(--text); font-weight: 600; margin-top: 2px; }
+    .contact-form {
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow-sm);
+    }
+    .contact-form h3 {
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 24px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-family: var(--font-head);
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--gray-light);
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: .9rem;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color var(--transition);
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--amber); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit { width: 100%; padding: 15px; font-size: .95rem; margin-top: 6px; justify-content: center; }
+
+    /* ─── Footer ────────────────────────────────────────────────── */
+    .footer { background: var(--navy-dark); color: rgba(255,255,255,.7); }
+    .footer-top { padding: 60px 0 40px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+    .footer-brand p {
+      font-size: .88rem;
+      line-height: 1.7;
+      margin: 16px 0 20px;
+      max-width: 280px;
+    }
+    .footer-social { display: flex; gap: 10px; }
+    .social-btn {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--transition);
+    }
+    .social-btn:hover { background: var(--amber); }
+    .social-btn svg { width: 16px; height: 16px; fill: var(--white); }
+    .footer-col h4 {
+      font-family: var(--font-head);
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a {
+      font-size: .87rem;
+      color: rgba(255,255,255,.6);
+      transition: color var(--transition);
+    }
+    .footer-col ul a:hover { color: var(--amber); }
+    .footer-bottom {
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: .8rem;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-bottom a { color: var(--amber); }
+
+    /* ─── Responsive: 960px ─────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu.open { display: flex; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .testi-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-badge-box { bottom: 16px; right: 16px; }
+      .about-img-wrap { aspect-ratio: 16/9; }
+      .service-area-inner { grid-template-columns: 1fr; gap: 40px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .process-steps::before { display: none; }
+      .process-steps { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+    }
+
+    /* ─── Responsive: 640px ─────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .emergency-bar { font-size: .75rem; padding: 8px 16px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .trust-strip-inner { gap: 20px; }
+      .trust-divider { display: none; }
+      .hero-stats { gap: 24px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .contact-form { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Emergency Banner -->
+  <div class="emergency-bar">
+    <span class="pulse-dot"></span>
+    24/7 EMERGENCY RESPONSE &mdash; Water &amp; Fire Damage &mdash; Call Now: <a href="tel:+15611234567">(561) 123-4567</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="mainNav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#home" class="nav-logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          </div>
+          <div class="logo-text">
+            All Repair &amp; Restoration
+            <span>Boynton Beach, FL</span>
+          </div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="tel:+15611234567" class="nav-cta">Call (561) 123-4567</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#services">Services</a>
+      <a href="#process">How It Works</a>
+      <a href="#about">About Us</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#service-area">Service Area</a>
+      <a href="#contact">Contact</a>
+      <a href="tel:+15611234567" class="btn btn-primary">Call (561) 123-4567</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge reveal">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Trusted Since 2015 &bull; South Florida
+        </div>
+        <h1 class="reveal delay-1">
+          We <em>Restore</em> What<br />Matters Most to You
+        </h1>
+        <p class="reveal delay-2">
+          When disaster strikes your home or business, All Repair and Restoration is here around the clock. From water damage and fire recovery to mold remediation and full property restoration — we make it right, fast.
+        </p>
+        <div class="hero-btns reveal delay-3">
+          <a href="tel:+15611234567" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            Call for Emergency Help
+          </a>
+          <a href="#services" class="btn btn-outline">View Our Services</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat reveal delay-1">
+            <div class="hero-stat-num">10+</div>
+            <div class="hero-stat-label">Years in Business</div>
+          </div>
+          <div class="hero-stat reveal delay-2">
+            <div class="hero-stat-num">500+</div>
+            <div class="hero-stat-label">Properties Restored</div>
+          </div>
+          <div class="hero-stat reveal delay-3">
+            <div class="hero-stat-num">24/7</div>
+            <div class="hero-stat-label">Emergency Response</div>
+          </div>
+          <div class="hero-stat reveal delay-4">
+            <div class="hero-stat-num">100%</div>
+            <div class="hero-stat-label">Satisfaction Focus</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Strip -->
+  <div class="trust-strip">
+    <div class="container">
+      <div class="trust-strip-inner">
+        <div class="trust-item reveal">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+          </div>
+          Licensed &amp; Insured
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item reveal delay-1">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
+          </div>
+          10+ Years Experience
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item reveal delay-2">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          </div>
+          24/7 Emergency Line
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item reveal delay-3">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+          </div>
+          Free Estimates
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item reveal delay-4">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 6h-2.18c.07-.44.18-.88.18-1.36C18 2.1 15.9 0 13.36 0c-1.46 0-2.35.66-3.36 1.67L9 2.67C7.99 1.66 7.1 1 5.64 1 3.1 1 1 3.1 1 5.64c0 .48.11.92.18 1.36H1C.45 7 0 7.45 0 8v12c0 .55.45 1 1 1h22c.55 0 1-.45 1-1V8c0-.55-.45-1-1-1z"/></svg>
+          </div>
+          Insurance Claims Assistance
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services-header">
+        <span class="section-tag reveal">What We Do</span>
+        <h2 class="section-title reveal">Comprehensive Restoration Services</h2>
+        <p class="section-sub reveal">From emergency water extraction to complete structural rebuilds, our certified technicians handle every phase of property damage recovery.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2c-5.33 4.55-8 8.48-8 11.8 0 4.98 3.8 8.2 8 8.2s8-3.22 8-8.2c0-3.32-2.67-7.25-8-11.8zm0 18c-3.35 0-6-2.57-6-6.2 0-2.34 1.95-5.44 6-9.14 4.05 3.7 6 6.79 6 9.14 0 3.63-2.65 6.2-6 6.2z"/></svg>
+          </div>
+          <h3>Water Damage Restoration</h3>
+          <p>Rapid water extraction, structural drying, and full restoration after flooding, burst pipes, or storm surges. We prevent secondary damage and mold growth.</p>
+        </div>
+        <div class="service-card reveal delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M13.5 .67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/></svg>
+          </div>
+          <h3>Fire &amp; Smoke Damage Repair</h3>
+          <p>Complete fire damage assessment, smoke and soot removal, odor elimination, and structural reconstruction to bring your property back to pre-loss condition.</p>
+        </div>
+        <div class="service-card reveal delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+          </div>
+          <h3>Mold Remediation</h3>
+          <p>Professional mold testing, containment, safe removal, and treatment of affected surfaces. We address the root moisture source to prevent recurrence.</p>
+        </div>
+        <div class="service-card reveal delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+          </div>
+          <h3>General Repairs &amp; Construction</h3>
+          <p>Full-service construction and repair work including drywall, flooring, roofing, plumbing, and more. One contractor for every phase of your project.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+          </div>
+          <h3>Emergency Services</h3>
+          <p>Around-the-clock emergency response for sudden water intrusion, storm damage, and other urgent property crises. We arrive fast to minimize your loss.</p>
+        </div>
+        <div class="service-card reveal delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          </div>
+          <h3>Property Restoration</h3>
+          <p>Comprehensive end-to-end property restoration that returns your residential or commercial space to its original — or better — condition.</p>
+        </div>
+        <div class="service-card reveal delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M6 2v6l2 2-2 2v6l18-8L6 2zm2 11.37V8.63L17.28 12 8 13.37z"/></svg>
+          </div>
+          <h3>Storm Damage Recovery</h3>
+          <p>South Florida storm season specialists. Rapid board-up, tarping, debris removal, and full structural repairs after hurricanes, tropical storms, and severe weather.</p>
+        </div>
+        <div class="service-card reveal delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+          </div>
+          <h3>Insurance Claim Support</h3>
+          <p>We work directly with your insurance provider, documenting damage and advocating on your behalf so you get the coverage your claim deserves.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="process-header">
+        <span class="section-tag reveal">Simple &amp; Straightforward</span>
+        <h2 class="section-title reveal">How Our Restoration Process Works</h2>
+        <p class="section-sub reveal">We make a stressful situation manageable with a clear, proven three-step approach from first contact to final walkthrough.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal delay-1">
+          <div class="step-num">1</div>
+          <h3>Call &amp; Rapid Response</h3>
+          <p>Reach us any time — day or night. Our dispatcher will have a certified team en route to your property within the hour for emergencies.</p>
+        </div>
+        <div class="process-step reveal delay-2">
+          <div class="step-num">2</div>
+          <h3>Assess &amp; Plan</h3>
+          <p>We thoroughly inspect the damage, document everything for your insurance claim, and walk you through a clear, detailed restoration plan with no surprises.</p>
+        </div>
+        <div class="process-step reveal delay-3">
+          <div class="step-num">3</div>
+          <h3>Restore &amp; Deliver</h3>
+          <p>Our skilled technicians execute the plan efficiently, keeping you informed every step of the way until your property is fully restored and you're satisfied.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="reveal-left">
+          <div class="about-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=900&q=80"
+              alt="All Repair and Restoration team at work"
+              loading="lazy"
+            />
+            <div class="about-badge-box">
+              <strong>2015</strong>
+              <span>Founded in<br />Boynton Beach</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-text reveal-right">
+          <span class="section-tag">Who We Are</span>
+          <h2 class="section-title">South Florida's Restoration Specialists</h2>
+          <p class="section-sub">Founded in 2015 and proudly rooted in Boynton Beach, All Repair and Restoration was built on a simple principle: treat every property like it's our own. Over the past decade, we have become one of the most trusted restoration contractors in South Florida.</p>
+          <ul class="about-list">
+            <li>
+              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+              Fully licensed, bonded, and insured in the state of Florida
+            </li>
+            <li>
+              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+              Certified technicians with ongoing industry training
+            </li>
+            <li>
+              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+              Experienced navigating all major insurance carriers
+            </li>
+            <li>
+              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+              Over 500 residential and commercial projects completed
+            </li>
+            <li>
+              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+              Local, community-driven business with deep roots in Palm Beach County
+            </li>
+          </ul>
+          <a href="#contact" class="btn btn-navy">Get a Free Estimate</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="testimonials-header">
+        <span class="section-tag reveal">Customer Reviews</span>
+        <h2 class="section-title reveal">What Our Clients Are Saying</h2>
+        <p class="section-sub reveal">We let our work — and the people we've helped — speak for us. Here are a few stories from homeowners and businesses across South Florida.</p>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <div class="testi-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testi-text">"After a pipe burst flooded our kitchen and living room, All Repair and Restoration were at our door within two hours. They extracted the water, set up industrial dryers, and had our home looking better than before — all within ten days. Absolutely amazing service."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">MR</div>
+            <div>
+              <div class="testi-name">Maria R.</div>
+              <div class="testi-location">Boynton Beach, FL</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal delay-1">
+          <div class="testi-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testi-text">"We discovered significant mold behind our bathroom walls during a remodel. All Repair handled the full remediation professionally, explained every step, and even helped us file the insurance claim. I wouldn't trust anyone else with our home."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">DK</div>
+            <div>
+              <div class="testi-name">David K.</div>
+              <div class="testi-location">Delray Beach, FL</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal delay-2">
+          <div class="testi-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testi-text">"Our commercial space suffered fire damage from a kitchen incident. The team from All Repair mobilized immediately, coordinated the entire cleanup and rebuild, and got us back open ahead of schedule. Their professionalism is second to none."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">LT</div>
+            <div>
+              <div class="testi-name">Linda T.</div>
+              <div class="testi-location">Boca Raton, FL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Area -->
+  <section class="service-area" id="service-area">
+    <div class="container">
+      <div class="service-area-inner">
+        <div class="area-text">
+          <span class="section-tag reveal">Where We Work</span>
+          <h2 class="section-title reveal">Proudly Serving South Florida</h2>
+          <p class="section-sub reveal">Based in Boynton Beach, we serve homeowners and businesses throughout Palm Beach and Broward Counties. If you're in South Florida, we've got you covered.</p>
+          <div class="area-tags reveal">
+            <span class="area-tag">Boynton Beach</span>
+            <span class="area-tag">Delray Beach</span>
+            <span class="area-tag">Boca Raton</span>
+            <span class="area-tag">Lake Worth</span>
+            <span class="area-tag">West Palm Beach</span>
+            <span class="area-tag">Palm Beach Gardens</span>
+            <span class="area-tag">Wellington</span>
+            <span class="area-tag">Greenacres</span>
+            <span class="area-tag">Royal Palm Beach</span>
+            <span class="area-tag">Lantana</span>
+            <span class="area-tag">Deerfield Beach</span>
+            <span class="area-tag">Pompano Beach</span>
+            <span class="area-tag">Fort Lauderdale</span>
+            <span class="area-tag">Coral Springs</span>
+          </div>
+        </div>
+        <div class="area-cta-box reveal-right">
+          <h3>Not sure if we cover your area?</h3>
+          <p>Give us a call and we'll let you know right away. For emergencies, we prioritize rapid response throughout all of South Florida — often arriving within 60 minutes.</p>
+          <a href="tel:+15611234567" class="area-phone">(561) 123-4567</a>
+          <a href="tel:+15611234567" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            Call Us Now — Free Estimate
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-info reveal-left">
+          <span class="section-tag">Get In Touch</span>
+          <h2 class="section-title">Ready to Restore Your Property?</h2>
+          <p class="section-sub">Whether you're dealing with an emergency right now or planning ahead, we're here to help. Reach out for a free assessment and estimate.</p>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <div class="detail-icon">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              </div>
+              <div>
+                <div class="detail-label">Phone (24/7)</div>
+                <div class="detail-value"><a href="tel:+15611234567" style="color:var(--navy)">(561) 123-4567</a></div>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="detail-icon">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              </div>
+              <div>
+                <div class="detail-label">Email</div>
+                <div class="detail-value">info@allrepairrestoration.com</div>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="detail-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              </div>
+              <div>
+                <div class="detail-label">Location</div>
+                <div class="detail-value">Boynton Beach, FL 33426</div>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="detail-icon">
+                <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+              </div>
+              <div>
+                <div class="detail-label">Hours</div>
+                <div class="detail-value">24/7 Emergency Line &bull; Office: Mon–Fri 8am–6pm</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form reveal-right">
+          <h3>Request a Free Estimate</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" placeholder="John" />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" placeholder="Smith" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="(561) 000-0000" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="john@example.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service">
+              <option value="">Select a service...</option>
+              <option>Water Damage Restoration</option>
+              <option>Fire &amp; Smoke Damage Repair</option>
+              <option>Mold Remediation</option>
+              <option>Storm Damage Recovery</option>
+              <option>General Repairs &amp; Construction</option>
+              <option>Emergency Response</option>
+              <option>Insurance Claim Support</option>
+              <option>Other / Not Sure</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell Us About Your Situation</label>
+            <textarea id="message" name="message" placeholder="Briefly describe the damage or project. Include your address if possible..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Submit Request — We'll Call You Back</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#home" class="nav-logo">
+              <div class="logo-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+              </div>
+              <div class="logo-text" style="color:var(--white)">
+                All Repair &amp; Restoration
+                <span>Boynton Beach, FL</span>
+              </div>
+            </a>
+            <p>South Florida's trusted property restoration and construction specialists since 2015. We restore homes and businesses with expertise, speed, and care.</p>
+            <div class="footer-social">
+              <a href="#" class="social-btn" aria-label="Facebook">
+                <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+              <a href="#" class="social-btn" aria-label="Google">
+                <svg viewBox="0 0 24 24"><path d="M21.35 11.1H12v3.2h5.35c-.2 1.1-.8 2-1.7 2.6v2.2h2.7c1.6-1.5 2.5-3.7 2.5-6.3 0-.6-.05-1.1-.15-1.7z"/><path d="M12 22c2.7 0 4.95-.9 6.6-2.4l-2.7-2.2c-.9.6-2.05.95-3.9.95-3 0-5.55-2-6.45-4.8H2.7v2.3C4.35 19.75 7.95 22 12 22z"/><path d="M5.55 13.55c-.2-.6-.35-1.25-.35-1.95s.1-1.3.35-1.9V7.4H2.7C1.95 8.85 1.5 10.4 1.5 12s.45 3.15 1.2 4.6l2.85-3.05z"/><path d="M12 5.75c1.65 0 3.1.6 4.25 1.65l2.85-2.85C17.3 2.8 14.9 1.5 12 1.5 7.95 1.5 4.35 3.75 2.7 7.4l2.85 3.05c.9-2.75 3.45-4.7 6.45-4.7z"/></svg>
+              </a>
+              <a href="#" class="social-btn" aria-label="Yelp">
+                <svg viewBox="0 0 24 24"><path d="M12.5 2C6.7 2 2 6.7 2 12.5S6.7 23 12.5 23 23 18.3 23 12.5 18.3 2 12.5 2zm1.8 14.4l-3.1 1.2c-.3.1-.5-.1-.4-.4l.8-3.2-2.3-2.5c-.2-.2-.1-.5.2-.5l3.3-.1 1.7-2.9c.2-.3.5-.2.6.1l.8 3.2 3.1 1.1c.3.1.3.4.1.6l-2.4 2.1.4 3.3c0 .3-.3.5-.5.3l-2.3-2.3z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="#services">Water Damage Restoration</a></li>
+              <li><a href="#services">Fire &amp; Smoke Repair</a></li>
+              <li><a href="#services">Mold Remediation</a></li>
+              <li><a href="#services">Storm Damage Recovery</a></li>
+              <li><a href="#services">General Repairs</a></li>
+              <li><a href="#services">Emergency Services</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#process">Our Process</a></li>
+              <li><a href="#testimonials">Reviews</a></li>
+              <li><a href="#service-area">Service Area</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="tel:+15611234567">(561) 123-4567</a></li>
+              <li><a href="mailto:info@allrepairrestoration.com">info@allrepairrestoration.com</a></li>
+              <li><a href="#service-area">Boynton Beach, FL 33426</a></li>
+              <li style="color:rgba(255,255,255,.4); font-size:.82rem; padding-top:4px;">Emergency line available 24/7</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer-bottom">
+        <span>&copy; 2025 All Repair and Restoration. All rights reserved.</span>
+        <span>Licensed &amp; Insured &bull; Serving South Florida Since 2015</span>
+        <span><a href="#">Privacy Policy</a> &bull; <a href="#">Terms of Service</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── Navigation scroll behavior ─────────────────────────────
+    const nav = document.getElementById('mainNav');
+    const emBar = document.querySelector('.emergency-bar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // ─── Hamburger menu ─────────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // ─── Scroll reveal (IntersectionObserver) ────────────────────
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

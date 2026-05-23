@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Istituto Marangoni Miami | Fashion & Design School | Miami Design District</title>
+  <meta name="description" content="Istituto Marangoni Miami - A globally ranked top 10 fashion and design school in the Miami Design District. Est. 1935 Milan. Undergraduate, Graduate, and Vocational programs." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --noir: #111111;
+      --charcoal: #1a1a1a;
+      --graphite: #2a2a2a;
+      --gold: #c9a96e;
+      --gold-light: #d4b97a;
+      --gold-pale: #e8d5a8;
+      --gold-glow: rgba(201,169,110,0.15);
+      --white: #ffffff;
+      --off-white: #fafaf8;
+      --cream: #f5f3ef;
+      --text: #1a1a1a;
+      --text-muted: #6b6b6b;
+      --glass: rgba(255,255,255,0.06);
+      --glass-border: rgba(255,255,255,0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--black);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+
+    /* PRELOADER */
+    .preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    .preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .preloader-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      color: var(--white);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      animation: preloaderPulse 1.2s ease-in-out infinite;
+    }
+    .preloader-text span { color: var(--gold); font-style: italic; }
+    @keyframes preloaderPulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    /* NAVIGATION */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      transition: background 0.4s, backdrop-filter 0.4s, border-color 0.4s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom-color: rgba(201,169,110,0.15);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .nav-logo span { color: var(--gold); font-style: italic; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      background: transparent;
+      color: var(--gold);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.55rem 1.6rem;
+      border: 1px solid var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* MOBILE MENU */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 28px;
+      height: 20px;
+      position: relative;
+      z-index: 1001;
+    }
+    .mobile-menu-btn span {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background: var(--white);
+      position: absolute;
+      left: 0;
+      transition: all 0.3s;
+    }
+    .mobile-menu-btn span:nth-child(1) { top: 0; }
+    .mobile-menu-btn span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+    .mobile-menu-btn span:nth-child(3) { bottom: 0; }
+    .mobile-menu-btn.active span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
+    .mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
+    .mobile-menu-btn.active span:nth-child(3) { bottom: 50%; transform: translateY(50%) rotate(-45deg); }
+
+    .mobile-nav {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(10,10,10,0.97);
+      backdrop-filter: blur(30px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s;
+    }
+    .mobile-nav.active { opacity: 1; visibility: visible; }
+    .mobile-nav a {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .mobile-nav a:hover { color: var(--gold); }
+
+    /* STICKY MOBILE CTA */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 998;
+      padding: 0.8rem 1rem;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(15px);
+      border-top: 1px solid rgba(201,169,110,0.2);
+    }
+    .sticky-cta a {
+      display: block;
+      text-align: center;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.85rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    /* ================================================ */
+    /* HERO */
+    /* ================================================ */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.1);
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+    @keyframes heroZoom {
+      0% { transform: scale(1.1); }
+      100% { transform: scale(1.0); }
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(10,10,10,0.7) 0%,
+        rgba(10,10,10,0.5) 40%,
+        rgba(10,10,10,0.8) 100%
+      );
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+      padding: 2rem;
+    }
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.5s forwards;
+    }
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6.5vw, 6rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.7s forwards;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+      display: inline-block;
+    }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+      font-style: italic;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.9s forwards;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 1s ease 1.1s forwards;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--black);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 1rem 2.5rem;
+      border: none;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-gold::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s;
+    }
+    .btn-gold:hover::before { transform: translateX(100%); }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,169,110,0.3); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 1rem 2.5rem;
+      border: 1px solid rgba(255,255,255,0.3);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      transition: all 0.3s;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+    /* Hero stats bar */
+    .hero-stats {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      display: flex;
+      border-top: 1px solid rgba(201,169,110,0.2);
+      background: rgba(10,10,10,0.6);
+      backdrop-filter: blur(20px);
+    }
+    .hero-stat {
+      flex: 1;
+      text-align: center;
+      padding: 1.8rem 1rem;
+      border-right: 1px solid rgba(201,169,110,0.1);
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+    }
+    .hero-stat:nth-child(1) { animation-delay: 1.3s; }
+    .hero-stat:nth-child(2) { animation-delay: 1.5s; }
+    .hero-stat:nth-child(3) { animation-delay: 1.7s; }
+    .hero-stat:nth-child(4) { animation-delay: 1.9s; }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--gold);
+      display: block;
+      line-height: 1.2;
+    }
+    .hero-stat .lbl {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-top: 0.3rem;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ================================================ */
+    /* GEOMETRIC DIVIDER */
+    /* ================================================ */
+    .geo-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 0;
+      gap: 1rem;
+    }
+    .geo-divider .line { width: 60px; height: 1px; background: var(--gold); opacity: 0.4; }
+    .geo-divider .diamond {
+      width: 8px;
+      height: 8px;
+      border: 1px solid var(--gold);
+      transform: rotate(45deg);
+      opacity: 0.6;
+    }
+
+    /* ================================================ */
+    /* SECTION UTILITIES */
+    /* ================================================ */
+    section { padding: 7rem 2rem; }
+    .container { max-width: 1140px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .section-label.center { justify-content: center; }
+    .section-label.center::after {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+    h2.section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    h2.section-title.light { color: var(--white); }
+    h2.section-title em { font-style: italic; color: var(--gold); }
+
+    /* REVEAL ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal-right.visible { opacity: 1; transform: none; }
+    .img-reveal {
+      position: relative;
+      overflow: hidden;
+    }
+    .img-reveal::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--black);
+      transform-origin: left;
+      transition: transform 1s cubic-bezier(0.77,0,0.175,1);
+    }
+    .img-reveal.visible::after {
+      transform: scaleX(0);
+      transform-origin: right;
+    }
+
+    /* ================================================ */
+    /* ALUMNI BRANDS MARQUEE */
+    /* ================================================ */
+    .brands-section {
+      background: var(--off-white);
+      padding: 3.5rem 0;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .brands-label {
+      text-align: center;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+    .brands-marquee {
+      display: flex;
+      animation: marquee 30s linear infinite;
+      width: max-content;
+    }
+    .brands-marquee span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      padding: 0 2.5rem;
+      white-space: nowrap;
+      opacity: 0.5;
+      letter-spacing: 0.1em;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ================================================ */
+    /* HERITAGE SECTION */
+    /* ================================================ */
+    .heritage-section { background: var(--off-white); }
+    .heritage-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .heritage-img-wrap {
+      position: relative;
+    }
+    .heritage-img-wrap img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      filter: grayscale(20%);
+      transition: filter 0.5s;
+    }
+    .heritage-img-wrap:hover img { filter: grayscale(0%); }
+    .heritage-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--gold);
+      color: var(--black);
+      padding: 1.2rem 1.8rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+    .heritage-text p {
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+      font-size: 0.98rem;
+      line-height: 1.85;
+    }
+    .trust-chips {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .trust-chip {
+      background: rgba(201,169,110,0.1);
+      border: 1px solid rgba(201,169,110,0.25);
+      color: var(--gold);
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.4rem 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ================================================ */
+    /* PROGRAMS SECTION */
+    /* ================================================ */
+    .programs-section {
+      background: var(--black);
+      position: relative;
+    }
+    .programs-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    .program-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+      cursor: default;
+      position: relative;
+    }
+    .program-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.4s;
+    }
+    .program-card:hover::before { transform: scaleX(1); }
+    .program-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+      border-color: rgba(201,169,110,0.2);
+      background: rgba(255,255,255,0.05);
+    }
+    .program-card-img {
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      position: relative;
+    }
+    .program-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
+      filter: grayscale(30%);
+    }
+    .program-card:hover .program-card-img img {
+      transform: scale(1.08);
+      filter: grayscale(0%);
+    }
+    .program-card-img .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.6), transparent);
+    }
+    .program-card-body { padding: 1.8rem; }
+    .program-icon {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      color: var(--gold);
+      font-size: 0.9rem;
+      transform: rotate(45deg);
+    }
+    .program-icon svg { transform: rotate(-45deg); width: 16px; height: 16px; }
+    .program-tag {
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .program-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+    .program-card p {
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+    }
+
+    /* ================================================ */
+    /* CAMPUS SECTION */
+    /* ================================================ */
+    .campus-section { background: var(--off-white); }
+    .campus-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .campus-text p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-size: 0.98rem;
+      line-height: 1.85;
+    }
+    .campus-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .campus-feature {
+      background: var(--white);
+      border-left: 2px solid var(--gold);
+      padding: 1.2rem 1.4rem;
+      transition: transform 0.3s;
+    }
+    .campus-feature:hover { transform: translateX(4px); }
+    .campus-feature h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+    .campus-feature p { font-size: 0.8rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+    .campus-imgs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+    }
+    .campus-imgs img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 1;
+      object-fit: cover;
+      filter: grayscale(20%);
+      transition: all 0.5s;
+    }
+    .campus-imgs img:hover { filter: grayscale(0%); transform: scale(1.02); }
+    .campus-imgs .tall { aspect-ratio: 3/4; grid-row: span 2; }
+
+    /* ================================================ */
+    /* GALLERY MASONRY */
+    /* ================================================ */
+    .gallery-section {
+      background: var(--charcoal);
+      padding: 5rem 0;
+      overflow: hidden;
+    }
+    .gallery-header {
+      text-align: center;
+      padding: 0 2rem;
+      margin-bottom: 3rem;
+    }
+    .gallery-masonry {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+    }
+    .gallery-item {
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      aspect-ratio: 1;
+      filter: grayscale(40%);
+      transition: all 0.6s cubic-bezier(0.16,1,0.3,1);
+    }
+    .gallery-item:hover img {
+      transform: scale(1.08);
+      filter: grayscale(0%);
+    }
+    .gallery-item .gallery-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem 1.2rem 1rem;
+      background: linear-gradient(to top, rgba(10,10,10,0.8), transparent);
+      color: var(--white);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.4s;
+    }
+    .gallery-item:hover .gallery-label { opacity: 1; transform: translateY(0); }
+    .gallery-item.wide { grid-column: span 2; }
+    .gallery-item.wide img { aspect-ratio: 2/1; }
+    .gallery-item.tall { grid-row: span 2; }
+    .gallery-item.tall img { aspect-ratio: 1/2; }
+
+    /* ================================================ */
+    /* ANIMATED COUNTERS */
+    /* ================================================ */
+    .counters-section {
+      background: var(--black);
+      padding: 5rem 2rem;
+      position: relative;
+    }
+    .counters-section::before,
+    .counters-section::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+    .counters-section::before { top: 0; }
+    .counters-section::after { bottom: 0; transform: translateX(-50%) rotate(180deg); }
+    .counters-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+    .counter-block {
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+    }
+    .counter-block::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 20%;
+      height: 60%;
+      width: 1px;
+      background: rgba(201,169,110,0.15);
+    }
+    .counter-block:last-child::after { display: none; }
+    .counter-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .counter-label {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    /* ================================================ */
+    /* TESTIMONIALS */
+    /* ================================================ */
+    .testi-section {
+      background: var(--off-white);
+      position: relative;
+    }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .testi-card {
+      background: var(--white);
+      padding: 2.5rem;
+      border: 1px solid rgba(0,0,0,0.06);
+      position: relative;
+      transition: all 0.4s;
+    }
+    .testi-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.4s;
+    }
+    .testi-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+    .testi-card:hover::before { transform: scaleX(1); }
+    .testi-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      color: var(--gold);
+      line-height: 0.7;
+      margin-bottom: 1.2rem;
+      font-style: italic;
+    }
+    .testi-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+    .testi-name {
+      font-weight: 700;
+      color: var(--text);
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+    }
+    .testi-role {
+      font-size: 0.75rem;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+    }
+    .testi-brand {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+      font-style: italic;
+    }
+
+    /* ================================================ */
+    /* ADMISSIONS SECTION */
+    /* ================================================ */
+    .admissions-section { background: var(--white); }
+    .admissions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      transition: all 0.3s;
+    }
+    .step:hover { padding-left: 0.5rem; }
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--gold);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 2.5rem;
+      text-align: right;
+    }
+    .step-content h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+    .step-content p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+    .intake-dates {
+      background: rgba(201,169,110,0.08);
+      border: 1px solid rgba(201,169,110,0.2);
+      padding: 1.5rem 2rem;
+      margin-top: 2rem;
+    }
+    .intake-dates h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
+    }
+    .intake-dates ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .intake-dates li {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .intake-dates li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border: 1px solid var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* Admissions form (right side) */
+    .inquiry-form {
+      background: var(--cream);
+      padding: 2.5rem;
+      border: 1px solid rgba(0,0,0,0.06);
+      position: sticky;
+      top: 100px;
+    }
+    .inquiry-form h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .inquiry-form .form-sub {
+      font-size: 0.87rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .inquiry-form .form-group { margin-bottom: 0.9rem; }
+    .inquiry-form .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+      margin-bottom: 0.9rem;
+    }
+    .inquiry-form label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+    .inquiry-form input,
+    .inquiry-form select,
+    .inquiry-form textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.1);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .inquiry-form input:focus,
+    .inquiry-form select:focus,
+    .inquiry-form textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,169,110,0.1);
+    }
+    .inquiry-form textarea { min-height: 90px; resize: vertical; }
+    .inquiry-form select { cursor: pointer; }
+    .btn-submit-gold {
+      width: 100%;
+      background: var(--gold);
+      color: var(--black);
+      padding: 1rem;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-submit-gold::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s;
+    }
+    .btn-submit-gold:hover::before { transform: translateX(100%); }
+    .btn-submit-gold:hover { background: var(--gold-light); }
+
+    /* ================================================ */
+    /* CONTACT SECTION */
+    /* ================================================ */
+    .contact-section {
+      background: var(--black);
+      position: relative;
+    }
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .contact-detail-icon {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(201,169,110,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--gold);
+    }
+    .contact-detail-icon svg { width: 14px; height: 14px; }
+    .contact-detail p { color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.7; }
+    .contact-detail a { color: var(--gold); text-decoration: none; transition: opacity 0.3s; }
+    .contact-detail a:hover { opacity: 0.8; }
+
+    .contact-form-dark { display: flex; flex-direction: column; gap: 0.9rem; }
+    .contact-form-dark .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+    .contact-form-dark input,
+    .contact-form-dark select,
+    .contact-form-dark textarea {
+      padding: 0.9rem 1rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201,169,110,0.15);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .contact-form-dark input::placeholder,
+    .contact-form-dark textarea::placeholder { color: rgba(255,255,255,0.3); }
+    .contact-form-dark input:focus,
+    .contact-form-dark select:focus,
+    .contact-form-dark textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,169,110,0.08);
+    }
+    .contact-form-dark textarea { min-height: 100px; resize: vertical; }
+    .contact-form-dark select { cursor: pointer; color: rgba(255,255,255,0.5); }
+    .contact-form-dark select option { background: var(--charcoal); color: var(--white); }
+
+    /* ================================================ */
+    /* FOOTER */
+    /* ================================================ */
+    footer {
+      background: var(--noir);
+      color: rgba(255,255,255,0.4);
+      padding: 4rem 2rem 2rem;
+      border-top: 1px solid rgba(201,169,110,0.1);
+    }
+    .footer-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .footer-logo span { color: var(--gold); font-style: italic; }
+    .footer-brand p { font-size: 0.85rem; line-height: 1.85; max-width: 280px; }
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 1.2rem;
+    }
+    .footer-col a {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      display: block;
+      line-height: 2.2;
+      transition: color 0.3s;
+    }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-col p {
+      font-size: 0.85rem;
+      line-height: 2.2;
+    }
+    .footer-bottom {
+      max-width: 1140px;
+      margin: 2.5rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+    }
+    .footer-social a {
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: all 0.3s;
+      font-size: 0.75rem;
+    }
+    .footer-social a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* ================================================ */
+    /* RESPONSIVE */
+    /* ================================================ */
+    @media (max-width: 960px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links, .nav-cta { display: none; }
+      .mobile-menu-btn { display: block; }
+      .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); }
+      .hero-stats { flex-wrap: wrap; }
+      .hero-stat { flex: 1 1 50%; }
+      .hero-stat:nth-child(2) { border-right: none; }
+      .heritage-grid,
+      .campus-grid,
+      .admissions-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .programs-grid,
+      .testi-grid { grid-template-columns: 1fr 1fr; }
+      .counters-inner { grid-template-columns: repeat(2, 1fr); }
+      .counter-block:nth-child(2)::after { display: none; }
+      .gallery-masonry { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .sticky-cta { display: block; }
+      .inquiry-form { position: static; }
+      body { padding-bottom: 60px; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 5rem 1.2rem; }
+      .programs-grid,
+      .testi-grid { grid-template-columns: 1fr; }
+      .campus-imgs { grid-template-columns: 1fr; }
+      .campus-imgs .tall { grid-row: span 1; }
+      .campus-features { grid-template-columns: 1fr; }
+      .hero-stats { flex-direction: column; }
+      .hero-stat { border-right: none; border-bottom: 1px solid rgba(201,169,110,0.1); padding: 1rem; }
+      .hero-stat:last-child { border-bottom: none; }
+      .counters-inner { grid-template-columns: 1fr 1fr; }
+      .gallery-masonry { grid-template-columns: 1fr 1fr; }
+      .gallery-item.wide { grid-column: span 1; }
+      .gallery-item.wide img { aspect-ratio: 1; }
+      .gallery-item.tall { grid-row: span 1; }
+      .gallery-item.tall img { aspect-ratio: 1; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .heritage-badge { display: none; }
+      .inquiry-form .form-row { grid-template-columns: 1fr; }
+      .contact-form-dark .form-row { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PRELOADER -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-text">Istituto Marangoni <span>Miami</span></div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">Istituto Marangoni <span>Miami</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">Heritage</a></li>
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#campus">Campus</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#testimonials">Alumni</a></li>
+      <li><a href="#admissions">Admissions</a></li>
+    </ul>
+    <a href="#admissions" class="nav-cta">Apply Now</a>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#about" onclick="closeMobileMenu()">Heritage</a>
+    <a href="#programs" onclick="closeMobileMenu()">Programs</a>
+    <a href="#campus" onclick="closeMobileMenu()">Campus</a>
+    <a href="#gallery" onclick="closeMobileMenu()">Gallery</a>
+    <a href="#testimonials" onclick="closeMobileMenu()">Alumni</a>
+    <a href="#admissions" onclick="closeMobileMenu()">Admissions</a>
+    <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  </div>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="sticky-cta">
+    <a href="#admissions">Apply Now - Fall 2026 Intake Open</a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <div class="hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1600&q=80" alt="Fashion design atelier" />
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Est. 1935 Milan &middot; Miami Design District</div>
+      <h1>Shaping the<br>Future of <em>Fashion</em></h1>
+      <p class="hero-sub">Where ninety years of Italian couture tradition meets the creative pulse of Miami. A globally ranked top 10 fashion and design institution.</p>
+      <div class="hero-btns">
+        <a href="#admissions" class="btn-gold">Apply for Fall 2026</a>
+        <a href="#programs" class="btn-ghost">Explore Programs</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="num counter" data-target="1935">1935</span>
+        <span class="lbl">Founded in Milan</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">Top 10</span>
+        <span class="lbl">Fashion School Worldwide</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num counter" data-target="10">10</span>
+        <span class="lbl">Global Campuses</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">45,000+</span>
+        <span class="lbl">Alumni Worldwide</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALUMNI BRANDS MARQUEE -->
+  <div class="brands-section">
+    <div class="brands-label">Alumni Working At The World's Leading Fashion Houses</div>
+    <div style="overflow:hidden;">
+      <div class="brands-marquee">
+        <span>Gucci</span><span>Prada</span><span>Versace</span><span>Dolce & Gabbana</span>
+        <span>Valentino</span><span>Moschino</span><span>Armani</span><span>Hugo Boss</span>
+        <span>Louis Vuitton</span><span>Fendi</span><span>Dior</span><span>Chanel</span>
+        <span>Gucci</span><span>Prada</span><span>Versace</span><span>Dolce & Gabbana</span>
+        <span>Valentino</span><span>Moschino</span><span>Armani</span><span>Hugo Boss</span>
+        <span>Louis Vuitton</span><span>Fendi</span><span>Dior</span><span>Chanel</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HERITAGE ===== -->
+  <section class="heritage-section" id="about">
+    <div class="container">
+      <div class="heritage-grid">
+        <div class="reveal-left heritage-img-wrap img-reveal">
+          <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=700&q=80" alt="Fashion student sketching designs" />
+          <div class="heritage-badge">Since 1935</div>
+        </div>
+        <div class="reveal-right heritage-text" style="padding-top: 1rem;">
+          <div class="section-label">Our Heritage</div>
+          <h2 class="section-title">Ninety Years of Fashion <em>Excellence</em>. Now in Miami.</h2>
+          <div class="geo-divider" style="justify-content:flex-start; padding:1.5rem 0;">
+            <div class="line"></div><div class="diamond"></div><div class="line"></div>
+          </div>
+          <p>Founded in Milan in 1935, Istituto Marangoni has been shaping the careers of fashion and design professionals for nearly a century. Through campuses in Milan, London, Paris, Shanghai, Mumbai, and beyond, the school has established itself as one of the world's leading institutions for fashion education.</p>
+          <p>Miami is our tenth campus and our first in the United States. Situated in the Miami Design District, one of the world's most vibrant luxury and design destinations, our Miami campus brings the Marangoni tradition of excellence to the Americas with a distinctly forward-looking spirit.</p>
+          <p>Our seven-story campus houses cutting-edge classrooms, design studios, an atelier, a professional photoshoot studio, and collaborative spaces designed to mirror real creative industry environments. You don't just study here. You practice.</p>
+          <div class="trust-chips">
+            <span class="trust-chip">Top 10 Globally - Vogue</span>
+            <span class="trust-chip">Est. 1935, Milan</span>
+            <span class="trust-chip">10 Global Campuses</span>
+            <span class="trust-chip">First U.S. Campus</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROGRAMS ===== -->
+  <section class="programs-section" id="programs">
+    <div class="container">
+      <div class="reveal" style="text-align:center; max-width:600px; margin:0 auto 1rem;">
+        <div class="section-label center">Academic Programs</div>
+        <h2 class="section-title light">Build Your Path in <em>Fashion</em></h2>
+        <div class="geo-divider">
+          <div class="line"></div><div class="diamond" style="border-color:rgba(201,169,110,0.5);"></div><div class="line"></div>
+        </div>
+        <p style="color:rgba(255,255,255,0.5); font-size:0.95rem;">From immersive summer experiences to Master's degrees, our programs are built around real industry skills, portfolio development, and genuine career readiness.</p>
+      </div>
+      <div class="programs-grid">
+
+        <div class="program-card reveal">
+          <div class="program-card-img">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Summer fashion studio program" />
+            <div class="overlay"></div>
+          </div>
+          <div class="program-card-body">
+            <div class="program-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div class="program-tag">Short Course</div>
+            <h3>Summer Studios</h3>
+            <p>Intensive summer programs designed for aspiring designers in high school. Explore fashion, design, and your creative potential before committing to a full degree.</p>
+          </div>
+        </div>
+
+        <div class="program-card reveal" style="transition-delay:.1s">
+          <div class="program-card-img">
+            <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&q=80" alt="Undergraduate fashion design" />
+            <div class="overlay"></div>
+          </div>
+          <div class="program-card-body">
+            <div class="program-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+            <div class="program-tag">Undergraduate</div>
+            <h3>BA Fashion Design</h3>
+            <p>A full Bachelor's degree grounded in design fundamentals, industry practice, portfolio development, and real-world project experience.</p>
+          </div>
+        </div>
+
+        <div class="program-card reveal" style="transition-delay:.2s">
+          <div class="program-card-img">
+            <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80" alt="Graduate fashion programs" />
+            <div class="overlay"></div>
+          </div>
+          <div class="program-card-body">
+            <div class="program-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <div class="program-tag">Graduate</div>
+            <h3>Master's Programs</h3>
+            <p>Advanced specializations for professionals looking to elevate their careers in fashion design, luxury brand management, and related disciplines.</p>
+          </div>
+        </div>
+
+        <div class="program-card reveal">
+          <div class="program-card-img">
+            <img src="https://images.unsplash.com/photo-1488161628813-04466f872be2?w=600&q=80" alt="Fashion design illustration" />
+            <div class="overlay"></div>
+          </div>
+          <div class="program-card-body">
+            <div class="program-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
+            <div class="program-tag">One-Year Vocational</div>
+            <h3>Fashion Design &amp; Illustration</h3>
+            <p>Level 1: A focused one-year program covering the fundamentals of fashion design, illustration, and portfolio construction.</p>
+          </div>
+        </div>
+
+        <div class="program-card reveal" style="transition-delay:.1s">
+          <div class="program-card-img">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80" alt="Fashion collection design" />
+            <div class="overlay"></div>
+          </div>
+          <div class="program-card-body">
+            <div class="program-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+            <div class="program-tag">One-Year Vocational</div>
+            <h3>Fashion Design Collection</h3>
+            <p>Level 2: Advanced one-year program focused on developing, presenting, and refining a complete fashion collection.</p>
+          </div>
+        </div>
+
+        <div class="program-card reveal" style="transition-delay:.2s">
+          <div class="program-card-img">
+            <img src="https://images.unsplash.com/photo-1526570207772-784d36084510?w=600&q=80" alt="Online fashion education" />
+            <div class="overlay"></div>
+          </div>
+          <div class="program-card-body">
+            <div class="program-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+            <div class="program-tag">Online</div>
+            <h3>Online Programs</h3>
+            <p>Flexible online pathways that bring the Marangoni curriculum to students worldwide. Global access, international faculty, same career focus.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CAMPUS ===== -->
+  <section class="campus-section" id="campus">
+    <div class="container">
+      <div class="campus-grid">
+        <div class="reveal-left campus-text">
+          <div class="section-label">Our Campus</div>
+          <h2 class="section-title">Seven Floors. One <em>Creative</em> World.</h2>
+          <div class="geo-divider" style="justify-content:flex-start; padding:1.5rem 0;">
+            <div class="line"></div><div class="diamond"></div><div class="line"></div>
+          </div>
+          <p>Our Miami campus is not just a school; it's an environment designed to make you better at what you love. Located in the Miami Design District, surrounded by the world's premier luxury brands and design institutions, the building itself is an inspiration.</p>
+          <p>Every space has been built with creative work in mind. Students move from theory-based studios to hands-on ateliers to professional photoshoot environments, experiencing what it actually feels like to work in the industry before they enter it.</p>
+          <div class="campus-features">
+            <div class="campus-feature"><h4>Design Studios</h4><p>Cutting-edge environments for design and development work</p></div>
+            <div class="campus-feature"><h4>Atelier</h4><p>Professional garment construction and hands-on making spaces</p></div>
+            <div class="campus-feature"><h4>Photo Studio</h4><p>Fully equipped for fashion editorial and portfolio shoots</p></div>
+            <div class="campus-feature"><h4>Digital Labs</h4><p>Specialized labs for digital design, pattern making, and materials</p></div>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <div class="campus-imgs">
+            <img class="tall" src="https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?w=500&q=80" alt="Modern design school campus" />
+            <img src="https://images.unsplash.com/photo-1596496050827-8299e0220de1?w=500&q=80" alt="Fashion design studio" />
+            <img src="https://images.unsplash.com/photo-1590156206657-aec9e1a37b79?w=500&q=80" alt="Miami Design District" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="gallery-section" id="gallery">
+    <div class="gallery-header reveal">
+      <div class="section-label center" style="color:var(--gold);">Student Life & Creative Work</div>
+      <h2 class="section-title light" style="text-align:center;">Inside the <em>Atelier</em></h2>
+    </div>
+    <div class="gallery-masonry">
+      <div class="gallery-item wide">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Fashion design studio session" />
+        <div class="gallery-label">Design Studio</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500&q=80" alt="Runway fashion show" />
+        <div class="gallery-label">Runway Show</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&q=80" alt="Fashion model editorial" />
+        <div class="gallery-label">Editorial Shoot</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=500&q=80" alt="Student sketching" />
+        <div class="gallery-label">Sketching</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=500&q=80" alt="Fashion showcase" />
+        <div class="gallery-label">Showcase</div>
+      </div>
+      <div class="gallery-item wide">
+        <img src="https://images.unsplash.com/photo-1526570207772-784d36084510?w=800&q=80" alt="Campus creative spaces" />
+        <div class="gallery-label">Campus Life</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ANIMATED COUNTERS ===== -->
+  <div class="counters-section">
+    <div class="counters-inner">
+      <div class="counter-block reveal">
+        <span class="counter-num" id="counter-1">1935</span>
+        <span class="counter-label">Founded in Milan</span>
+      </div>
+      <div class="counter-block reveal" style="transition-delay:.1s">
+        <span class="counter-num" id="counter-2">10</span>
+        <span class="counter-label">Global Campuses</span>
+      </div>
+      <div class="counter-block reveal" style="transition-delay:.2s">
+        <span class="counter-num" id="counter-3">7</span>
+        <span class="counter-label">Floor Miami Campus</span>
+      </div>
+      <div class="counter-block reveal" style="transition-delay:.3s">
+        <span class="counter-num" id="counter-4">45,000+</span>
+        <span class="counter-label">Alumni Worldwide</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testi-section" id="testimonials">
+    <div class="container">
+      <div class="reveal" style="text-align:center; max-width:540px; margin:0 auto 1rem;">
+        <div class="section-label center">Alumni Stories</div>
+        <h2 class="section-title">Where Careers Are <em>Launched</em></h2>
+        <div class="geo-divider">
+          <div class="line"></div><div class="diamond"></div><div class="line"></div>
+        </div>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <div class="testi-mark">"</div>
+          <p class="testi-text">I chose Marangoni Miami because I wanted a school that treated me like a professional from day one. By my second semester, I had a real portfolio and had worked on actual briefs from industry mentors. That's the difference.</p>
+          <div class="testi-name">Valentina R.</div>
+          <div class="testi-role">BA Fashion Design Graduate</div>
+          <div class="testi-brand">Now at Versace, Miami</div>
+        </div>
+        <div class="testi-card reveal" style="transition-delay:.1s">
+          <div class="testi-mark">"</div>
+          <p class="testi-text">The campus in the Design District means everything. You're surrounded by the real industry, not just the idea of it. I've met working designers, visited showrooms, and attended events because of where this school is located.</p>
+          <div class="testi-name">Marcus A.</div>
+          <div class="testi-role">Fashion Design Collection Graduate</div>
+          <div class="testi-brand">Now Creative Director, Own Label</div>
+        </div>
+        <div class="testi-card reveal" style="transition-delay:.2s">
+          <div class="testi-mark">"</div>
+          <p class="testi-text">I did the summer studio before committing to a full degree and it was the best decision I made. It showed me exactly what the program is like, the faculty are brilliant, and I left with work I was proud to show.</p>
+          <div class="testi-name">Sofia L.</div>
+          <div class="testi-role">Summer Studio Alumna, now BA Student</div>
+          <div class="testi-brand">Interned at Dolce & Gabbana</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RECOGNITION BAR ===== -->
+  <div style="background:var(--gold); padding:3rem 2rem; text-align:center;">
+    <div class="reveal">
+      <p style="font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:rgba(10,10,10,0.5); margin-bottom:0.8rem;">Global Recognition</p>
+      <h3 style="font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:400; color:var(--black); margin-bottom:0.6rem;">Ranked Among the World's Top 10 Fashion Schools</h3>
+      <p style="color:rgba(10,10,10,0.7); font-size:0.95rem; max-width:600px; margin:0 auto;">Featured in Vogue as one of the best fashion schools in the world, reflecting Istituto Marangoni's commitment to creative excellence and professional relevance across every campus.</p>
+    </div>
+  </div>
+
+  <!-- ===== ADMISSIONS ===== -->
+  <section class="admissions-section" id="admissions">
+    <div class="container">
+      <div class="reveal" style="text-align:center; max-width:560px; margin:0 auto 3rem;">
+        <div class="section-label center">Admissions</div>
+        <h2 class="section-title">Your Path to <em>Marangoni</em></h2>
+        <div class="geo-divider">
+          <div class="line"></div><div class="diamond"></div><div class="line"></div>
+        </div>
+      </div>
+      <div class="admissions-grid">
+        <div class="reveal-left">
+          <div class="admissions-steps">
+            <div class="step">
+              <div class="step-num">01</div>
+              <div class="step-content">
+                <h4>Explore Programs</h4>
+                <p>Review our full program catalog to find the level and focus area that matches your goals and experience.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">02</div>
+              <div class="step-content">
+                <h4>Attend an Open House</h4>
+                <p>Experience the campus, meet faculty, and ask questions about curriculum, outcomes, and student life.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">03</div>
+              <div class="step-content">
+                <h4>Submit Your Application</h4>
+                <p>Complete the online application, submit your portfolio (where required), and provide academic records.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">04</div>
+              <div class="step-content">
+                <h4>Receive Your Offer</h4>
+                <p>Our admissions team will review your application and reach out with an offer or next steps for a personal interview.</p>
+              </div>
+            </div>
+          </div>
+          <div class="intake-dates">
+            <h4>Upcoming Intake Dates</h4>
+            <ul>
+              <li>Fall 2026 - September 2026 (Applications Open)</li>
+              <li>Spring 2027 - January 2027</li>
+              <li>Summer Studios 2026 - June-July 2026</li>
+            </ul>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <div class="inquiry-form">
+            <h3>Request Information</h3>
+            <p class="form-sub">Tell us about your interests and we'll connect you with the right program advisor.</p>
+            <form onsubmit="return false;">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" placeholder="Your first name" />
+                </div>
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" placeholder="Your last name" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" placeholder="you@example.com" />
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="(000) 000-0000" />
+              </div>
+              <div class="form-group">
+                <label>Program of Interest</label>
+                <select>
+                  <option value="" disabled selected>Select a program...</option>
+                  <option>Summer Studios</option>
+                  <option>BA Fashion Design (Undergraduate)</option>
+                  <option>Master's Program (Graduate)</option>
+                  <option>Fashion Design & Illustration (1-Year, Level 1)</option>
+                  <option>Fashion Design Collection (1-Year, Level 2)</option>
+                  <option>Online Program</option>
+                  <option>I'm Not Sure Yet</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Preferred Intake</label>
+                <select>
+                  <option value="" disabled selected>Select intake...</option>
+                  <option>Fall 2026 (September)</option>
+                  <option>Spring 2027 (January)</option>
+                  <option>Summer Studios 2026</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Message (Optional)</label>
+                <textarea placeholder="Tell us about yourself and what you're looking for..."></textarea>
+              </div>
+              <button class="btn-submit-gold" type="submit">Submit Inquiry</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="reveal" style="text-align:center; max-width:580px; margin:0 auto 3.5rem;">
+        <div class="section-label center" style="color:var(--gold);">Get In Touch</div>
+        <h2 class="section-title light">Visit Us in the <em>Design District</em></h2>
+        <div class="geo-divider">
+          <div class="line"></div><div class="diamond" style="border-color:rgba(201,169,110,0.5);"></div><div class="line"></div>
+        </div>
+        <p style="color:rgba(255,255,255,0.5); font-size:0.95rem;">Our admissions team is here to walk you through your options. Reach out and we'll be in touch within one business day.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="reveal-left">
+          <div class="contact-info">
+            <h3>Istituto Marangoni Miami</h3>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <p>Miami Design District<br>Miami, FL</p>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <p><a href="tel:7866608946">(786) 660-8946</a></p>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <p><a href="mailto:s.iacullo@istitutomarangoni.com">s.iacullo@istitutomarangoni.com</a></p>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <p><a href="https://www.istitutomarangonimiami.com" target="_blank">istitutomarangonimiami.com</a></p>
+            </div>
+            <p style="color:rgba(255,255,255,0.45); font-size:0.9rem; margin-top:1rem; line-height:1.8;">Our admissions team is available Monday through Friday to answer questions about programs, campus visits, and applications.</p>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <form class="contact-form-dark" onsubmit="return false;">
+            <div class="form-row">
+              <input type="text" placeholder="First Name" />
+              <input type="text" placeholder="Last Name" />
+            </div>
+            <input type="email" placeholder="Email Address" />
+            <input type="tel" placeholder="Phone Number" />
+            <select>
+              <option value="" disabled selected>Program of Interest</option>
+              <option>Summer Studios</option>
+              <option>BA Fashion Design (Undergraduate)</option>
+              <option>Master's Program (Graduate)</option>
+              <option>Fashion Design & Illustration (1-Year)</option>
+              <option>Fashion Design Collection (1-Year)</option>
+              <option>Online Program</option>
+              <option>I'm Not Sure Yet</option>
+            </select>
+            <textarea placeholder="Tell us about yourself and what you're looking for..."></textarea>
+            <button class="btn-submit-gold" type="submit">Request Information</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">Istituto Marangoni <span>Miami</span></div>
+        <p>A global top 10 fashion and design school in the Miami Design District. Part of the Istituto Marangoni family, founded Milan 1935.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Programs</h4>
+        <a href="#programs">Summer Studios</a>
+        <a href="#programs">Undergraduate</a>
+        <a href="#programs">Graduate / Master's</a>
+        <a href="#programs">One-Year Vocational</a>
+        <a href="#programs">Online Programs</a>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#about">Our Heritage</a>
+        <a href="#campus">Campus</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#testimonials">Alumni Stories</a>
+        <a href="#admissions">Admissions</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>Miami Design District<br>Miami, FL</p>
+        <a href="tel:7866608946">(786) 660-8946</a>
+        <a href="mailto:s.iacullo@istitutomarangoni.com">s.iacullo@istitutomarangoni.com</a>
+        <a href="https://www.istitutomarangonimiami.com">istitutomarangonimiami.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Istituto Marangoni Miami. Part of the Istituto Marangoni Group.</span>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="LinkedIn">LI</a>
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="TikTok">TK</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Preloader
+    window.addEventListener('load', () => {
+      setTimeout(() => document.getElementById('preloader').classList.add('hidden'), 800);
+    });
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    function closeMobileMenu() {
+      mobileMenuBtn.classList.remove('active');
+      mobileNav.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    mobileMenuBtn.addEventListener('click', () => {
+      const isActive = mobileNav.classList.toggle('active');
+      mobileMenuBtn.classList.toggle('active');
+      document.body.style.overflow = isActive ? 'hidden' : '';
+    });
+
+    // Intersection Observer for reveals
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.img-reveal').forEach(el => io.observe(el));
+
+    // Animated counter
+    function animateCounter(el, target, duration) {
+      let start = 0;
+      const increment = target / (duration / 16);
+      const step = () => {
+        start += increment;
+        if (start >= target) {
+          el.textContent = target.toLocaleString();
+          return;
+        }
+        el.textContent = Math.floor(start).toLocaleString();
+        requestAnimationFrame(step);
+      };
+      step();
+    }
+
+    const counterObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !e.target.dataset.counted) {
+          e.target.dataset.counted = 'true';
+          const target = parseInt(e.target.dataset.target);
+          if (!isNaN(target)) {
+            animateCounter(e.target, target, 2000);
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+    // Smooth scroll for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

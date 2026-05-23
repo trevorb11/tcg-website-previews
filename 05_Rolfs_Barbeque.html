@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Rolf's Barbeque | Real BBQ. Real Wood. Muskegon, Michigan.</title>
+  <meta name="description" content="Slow-smoked BBQ in Muskegon, MI. Brisket, ribs, pulled pork - all smoked over real hardwood. Catering available for events of any size. Call (616) 638-0785." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Pacifico&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --red:          #C8282E;
+      --red-dark:     #A12020;
+      --red-bright:   #E0353C;
+      --orange:       #FF6A00;
+      --orange-dark:  #D95900;
+      --amber:        #E8913A;
+      --charcoal:     #1A1816;
+      --charcoal-mid: #242120;
+      --charcoal-light: #2D2A28;
+      --card-dark:    rgba(36,33,32,0.85);
+      --card-glass:   rgba(42,38,36,0.72);
+      --white:        #FFFFFF;
+      --cream:        #FAF0E6;
+      --cream-mid:    #F5E8D5;
+      --text-light:   #F0E8DC;
+      --text-dim:     #A89888;
+      --gold:         #D4A04A;
+      --gold-light:   #E8C06A;
+      --border-dark:  rgba(255,255,255,0.07);
+      --border-warm:  rgba(212,160,74,0.15);
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-script:  'Pacifico', cursive;
+      --font-body:    'Source Sans 3', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --radius:       10px;
+      --radius-lg:    16px;
+      --shadow-warm:  0 8px 32px rgba(200,40,46,0.22);
+      --shadow-fire:  0 4px 40px rgba(255,106,0,0.15);
+      --shadow-dark:  0 8px 40px rgba(0,0,0,0.50);
+      --shadow-glow:  0 0 60px rgba(200,40,46,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--charcoal);
+      color: var(--text-light);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* Wood grain texture overlay */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 0;
+      opacity: 0.08;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
+      mix-blend-mode: overlay;
+    }
+
+    /* ============ KEYFRAME ANIMATIONS ============ */
+    @keyframes smokeRise {
+      0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+      15% { opacity: 0.08; }
+      50% { opacity: 0.05; }
+      100% { transform: translateY(-120vh) translateX(40px) scale(2.5); opacity: 0; }
+    }
+    @keyframes smokeRise2 {
+      0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+      20% { opacity: 0.06; }
+      60% { opacity: 0.03; }
+      100% { transform: translateY(-110vh) translateX(-30px) scale(2); opacity: 0; }
+    }
+    @keyframes emberFloat {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-60px) scale(0); opacity: 0; }
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(200,40,46,0.3); }
+      50% { box-shadow: 0 0 35px rgba(200,40,46,0.5); }
+    }
+    @keyframes count-up {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.85; }
+    }
+    @keyframes sizzle {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.015); }
+      50% { transform: scale(0.995); }
+      75% { transform: scale(1.008); }
+      100% { transform: scale(1); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============ SCROLL REVEALS ============ */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.12s; }
+    .reveal-delay-2 { transition-delay: 0.24s; }
+    .reveal-delay-3 { transition-delay: 0.36s; }
+    .reveal-delay-4 { transition-delay: 0.48s; }
+
+    /* ============ NAVIGATION ============ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(26,24,22,0.92);
+      backdrop-filter: blur(20px) saturate(1.2);
+      -webkit-backdrop-filter: blur(20px) saturate(1.2);
+      border-bottom: 1px solid var(--border-dark);
+      transition: all 0.4s ease;
+    }
+    nav.scrolled {
+      box-shadow: 0 4px 30px rgba(0,0,0,0.50);
+      background: rgba(26,24,22,0.97);
+      border-bottom-color: rgba(200,40,46,0.15);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      font-family: var(--font-display); font-size: 22px; font-weight: 900;
+      color: var(--white); text-decoration: none; letter-spacing: 0.04em;
+      text-transform: uppercase; display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo-icon {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+      border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .nav-logo span { color: var(--red); }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a {
+      color: var(--text-dim); font-size: 13px; font-weight: 600;
+      text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase;
+      transition: color 0.3s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 2px; background: var(--red); transform: scaleX(0);
+      transition: transform 0.3s ease; transform-origin: center;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-order {
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%) !important;
+      color: var(--white) !important;
+      padding: 10px 22px !important; border-radius: var(--radius) !important;
+      transition: all 0.3s !important; box-shadow: 0 4px 15px rgba(200,40,46,0.3);
+    }
+    .nav-order::after { display: none !important; }
+    .nav-order:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 6px 25px rgba(200,40,46,0.45) !important;
+    }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .nav-hamburger span {
+      display: block; width: 24px; height: 2px; background: var(--text-light);
+      border-radius: 2px; transition: all 0.3s;
+    }
+    .mobile-menu {
+      display: none; position: fixed; top: 72px; left: 0; right: 0;
+      background: rgba(26,24,22,0.98); backdrop-filter: blur(20px);
+      z-index: 199; padding: 16px 32px 24px;
+      border-bottom: 1px solid var(--border-dark);
+    }
+    .mobile-menu.open { display: block; animation: fadeInUp 0.3s ease; }
+    .mobile-menu li { list-style: none; padding: 14px 0; border-bottom: 1px solid var(--border-dark); }
+    .mobile-menu a {
+      color: var(--text-light); font-size: 15px; font-weight: 600;
+      text-decoration: none; text-transform: uppercase; letter-spacing: 0.06em;
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      min-height: 100vh; position: relative;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1558030006-450675393462?w=1600&q=80');
+      background-size: cover; background-position: center;
+      transform: scale(1.05);
+      animation: subtleZoom 20s ease-in-out infinite alternate;
+    }
+    @keyframes subtleZoom {
+      0% { transform: scale(1.05); }
+      100% { transform: scale(1.12); }
+    }
+    .hero-fire-overlay {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 75% 65%, rgba(255,106,0,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 25% 75%, rgba(200,40,46,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 50% at 50% 90%, rgba(232,145,58,0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hero-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(26,24,22,0.95) 0%,
+        rgba(26,24,22,0.80) 35%,
+        rgba(26,24,22,0.55) 60%,
+        rgba(26,24,22,0.35) 100%
+      );
+    }
+    .hero-bottom-fade {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 200px;
+      background: linear-gradient(to top, var(--charcoal) 0%, transparent 100%);
+      pointer-events: none; z-index: 1;
+    }
+
+    /* Smoke wisps */
+    .smoke-wisp {
+      position: absolute; bottom: -20%; pointer-events: none; z-index: 2;
+      width: 200px; height: 400px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(180,170,160,0.06) 0%, transparent 70%);
+      filter: blur(30px);
+    }
+    .smoke-wisp-1 { left: 15%; animation: smokeRise 12s ease-in-out infinite; animation-delay: 0s; }
+    .smoke-wisp-2 { left: 45%; animation: smokeRise2 15s ease-in-out infinite; animation-delay: 3s; width: 150px; }
+    .smoke-wisp-3 { left: 70%; animation: smokeRise 18s ease-in-out infinite; animation-delay: 6s; width: 180px; }
+    .smoke-wisp-4 { left: 30%; animation: smokeRise2 14s ease-in-out infinite; animation-delay: 9s; width: 120px; }
+
+    .hero-content {
+      max-width: 1200px; margin: 0 auto; padding: 120px 32px 100px;
+      position: relative; z-index: 3;
+      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 64px; align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 12px;
+      margin-bottom: 24px; padding: 6px 16px 6px 6px;
+      background: rgba(200,40,46,0.12); border: 1px solid rgba(200,40,46,0.25);
+      border-radius: 40px;
+    }
+    .hero-badge-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+      border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+    }
+    .hero-badge-text {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5.8vw, 78px);
+      font-weight: 900; line-height: 1.04;
+      color: var(--white); margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .hero h1 .red {
+      color: var(--red);
+      text-shadow: 0 0 40px rgba(200,40,46,0.3);
+    }
+    .hero-tagline {
+      font-family: var(--font-script); font-size: clamp(20px, 2.5vw, 30px);
+      color: var(--gold); margin-bottom: 24px; letter-spacing: 0.01em;
+    }
+    .hero-sub {
+      font-size: 17px; color: rgba(240,232,220,0.72); line-height: 1.75;
+      max-width: 500px; margin-bottom: 40px;
+    }
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+
+    /* Buttons */
+    .btn-red {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+      color: var(--white);
+      padding: 16px 34px; border-radius: var(--radius);
+      font-size: 15px; font-weight: 700; letter-spacing: 0.06em;
+      text-decoration: none; text-transform: uppercase;
+      transition: all 0.3s; box-shadow: var(--shadow-warm);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .btn-red:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(200,40,46,0.45);
+      background: linear-gradient(135deg, var(--red-bright) 0%, var(--red) 100%);
+    }
+    .btn-outline-cream {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 2px solid rgba(250,240,230,0.25);
+      color: var(--cream); padding: 14px 32px; border-radius: var(--radius);
+      font-size: 15px; font-weight: 700; letter-spacing: 0.06em;
+      text-decoration: none; text-transform: uppercase;
+      transition: all 0.3s; backdrop-filter: blur(4px);
+    }
+    .btn-outline-cream:hover {
+      border-color: var(--cream); background: rgba(250,240,230,0.08);
+      transform: translateY(-2px);
+    }
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      color: var(--charcoal);
+      padding: 16px 34px; border-radius: var(--radius);
+      font-size: 15px; font-weight: 800; letter-spacing: 0.06em;
+      text-decoration: none; text-transform: uppercase;
+      transition: all 0.3s; box-shadow: 0 4px 20px rgba(212,160,74,0.25);
+    }
+    .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(212,160,74,0.40); }
+
+    /* Hero trust stats */
+    .hero-trust-row {
+      display: flex; gap: 32px; flex-wrap: wrap; padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .hero-trust-item { text-align: left; }
+    .hero-trust-num {
+      font-family: var(--font-display); font-size: 28px; font-weight: 900;
+      color: var(--gold); line-height: 1;
+    }
+    .hero-trust-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-dim); margin-top: 4px;
+    }
+
+    /* Hero info card - glassmorphism */
+    .hero-info-card {
+      background: rgba(36,33,32,0.80);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg); padding: 32px;
+      backdrop-filter: blur(16px) saturate(1.3);
+      -webkit-backdrop-filter: blur(16px) saturate(1.3);
+      box-shadow: var(--shadow-dark), inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+    .info-card-title {
+      font-family: var(--font-display); font-size: 12px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--red);
+      margin-bottom: 20px; padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-dark);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .info-card-title::before {
+      content: ''; width: 8px; height: 8px; border-radius: 50%;
+      background: var(--red); display: inline-block;
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    .info-row {
+      display: flex; justify-content: space-between; gap: 12px;
+      padding: 11px 0; border-bottom: 1px solid var(--border-dark);
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-label { font-size: 13px; color: var(--text-dim); font-weight: 600; }
+    .info-value { font-size: 13px; color: var(--text-light); font-weight: 700; text-align: right; }
+    .info-value a { color: var(--orange); text-decoration: none; transition: color 0.2s; }
+    .info-value a:hover { color: var(--gold-light); }
+    .info-call-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      margin-top: 22px;
+      background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+      color: var(--white);
+      padding: 14px; border-radius: var(--radius); text-align: center;
+      font-size: 15px; font-weight: 700; text-decoration: none; letter-spacing: 0.06em;
+      text-transform: uppercase; transition: all 0.3s;
+      box-shadow: 0 4px 20px rgba(255,106,0,0.25);
+    }
+    .info-call-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255,106,0,0.40);
+    }
+
+    /* ============ FIRE DIVIDER ============ */
+    .fire-divider {
+      height: 4px; position: relative; overflow: hidden;
+      background: linear-gradient(90deg,
+        var(--red-dark) 0%, var(--red) 20%, var(--orange) 40%,
+        var(--amber) 50%, var(--orange) 60%, var(--red) 80%, var(--red-dark) 100%
+      );
+      background-size: 200% 100%;
+      animation: shimmer 4s linear infinite;
+    }
+
+    /* ============ STATS BAR ============ */
+    .stats-bar {
+      background: var(--charcoal-mid); padding: 0 32px;
+      border-bottom: 1px solid var(--border-dark);
+      position: relative; z-index: 1;
+    }
+    .stats-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+    }
+    .stat-item {
+      text-align: center; padding: 28px 16px;
+      border-right: 1px solid var(--border-dark);
+      position: relative;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-item::before {
+      content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 40px; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent);
+    }
+    .stat-num {
+      font-family: var(--font-display); font-size: clamp(28px, 3vw, 38px);
+      font-weight: 900; color: var(--white); line-height: 1;
+      background: linear-gradient(135deg, var(--white) 0%, var(--gold) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--text-dim); margin-top: 6px;
+    }
+
+    /* ============ SECTION COMMONS ============ */
+    .section { padding: 100px 32px; position: relative; z-index: 1; }
+    .section-charcoal { background: var(--charcoal); }
+    .section-dark { background: var(--charcoal-mid); }
+    .section-darker { background: #161413; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-eyebrow {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 12px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-eyebrow::before {
+      content: ''; width: 30px; height: 2px;
+      background: linear-gradient(90deg, var(--red), transparent);
+    }
+    .section-eyebrow-center {
+      justify-content: center;
+    }
+    .section-eyebrow-center::before { display: none; }
+    .section-eyebrow-gold { color: var(--gold); }
+    .section-eyebrow-gold::before { background: linear-gradient(90deg, var(--gold), transparent); }
+    .section-eyebrow-orange { color: var(--orange); }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.8vw, 52px);
+      font-weight: 900; color: var(--white);
+      letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 17px; color: var(--text-dim); line-height: 1.75; max-width: 580px;
+    }
+
+    /* ============ FEATURED MENU ============ */
+    .menu-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .menu-card {
+      background: var(--card-dark); border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg); overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.22,1,0.36,1);
+      position: relative;
+    }
+    .menu-card::before {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(200,40,46,0.0) 0%, rgba(255,106,0,0.0) 100%);
+      transition: all 0.35s; pointer-events: none;
+    }
+    .menu-card:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: var(--shadow-dark), var(--shadow-glow);
+      border-color: rgba(200,40,46,0.2);
+    }
+    .menu-card:hover::before {
+      background: linear-gradient(135deg, rgba(200,40,46,0.05) 0%, rgba(255,106,0,0.05) 100%);
+    }
+    .menu-card:hover .menu-card-img img {
+      transform: scale(1.08);
+    }
+    .menu-card-img {
+      height: 180px; position: relative; overflow: hidden;
+    }
+    .menu-card-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.22,1,0.36,1);
+    }
+    .menu-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,24,22,0.95) 0%, rgba(26,24,22,0.1) 50%, transparent 100%);
+    }
+    /* Sizzle indicator on hover */
+    .menu-card:hover .sizzle-dots { opacity: 1; }
+    .sizzle-dots {
+      position: absolute; top: 12px; right: 12px; z-index: 2;
+      display: flex; gap: 3px; opacity: 0; transition: opacity 0.4s;
+    }
+    .sizzle-dot {
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--orange); animation: emberFloat 1s ease-out infinite;
+    }
+    .sizzle-dot:nth-child(2) { animation-delay: 0.2s; }
+    .sizzle-dot:nth-child(3) { animation-delay: 0.4s; }
+    .sizzle-dot:nth-child(4) { animation-delay: 0.6s; }
+    .sizzle-dot:nth-child(5) { animation-delay: 0.15s; animation-duration: 1.3s; }
+    .menu-card-body { padding: 18px 20px 22px; position: relative; z-index: 2; }
+    .menu-card h3 {
+      font-family: var(--font-display); font-size: 19px; font-weight: 800;
+      color: var(--white); margin-bottom: 8px; letter-spacing: 0.01em;
+    }
+    .menu-card p {
+      font-size: 13px; color: var(--text-dim); line-height: 1.65; margin-bottom: 14px;
+    }
+    .menu-price-row {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .menu-price {
+      font-family: var(--font-display); font-size: 18px; font-weight: 700;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .menu-badge {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--orange); background: rgba(255,106,0,0.1);
+      padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(255,106,0,0.2);
+    }
+
+    /* ============ FULL MENU ============ */
+    .menu-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .menu-section-card {
+      background: var(--card-glass); border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg); padding: 30px;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s;
+    }
+    .menu-section-card:hover {
+      border-color: rgba(200,40,46,0.20);
+      box-shadow: var(--shadow-glow);
+    }
+    .menu-cat-title {
+      font-family: var(--font-display); font-size: 20px; font-weight: 800;
+      color: var(--red); margin-bottom: 20px; padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-dark);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .menu-cat-icon { font-size: 20px; }
+    .menu-item {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.03);
+      transition: background 0.2s; border-radius: 4px; margin: 0 -4px; padding-left: 4px; padding-right: 4px;
+    }
+    .menu-item:hover { background: rgba(255,255,255,0.02); }
+    .menu-item:last-child { border-bottom: none; }
+    .item-name { font-size: 15px; color: var(--text-light); font-weight: 600; }
+    .item-desc { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+    .item-price {
+      font-family: var(--font-display); font-size: 15px; font-weight: 700;
+      color: var(--gold); white-space: nowrap; margin-left: 16px;
+    }
+
+    /* ============ PITMASTER STORY ============ */
+    .story-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+    }
+    .story-text .section-title { margin-bottom: 20px; }
+    .story-text p {
+      font-size: 16px; color: var(--text-dim); line-height: 1.80; margin-bottom: 20px;
+    }
+    .story-text p strong { color: var(--text-light); }
+    .story-visual {
+      position: relative;
+    }
+    .story-img-main {
+      width: 100%; height: 300px; object-fit: cover;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-dark);
+      border: 1px solid var(--border-dark);
+    }
+    .story-badge-wrap {
+      background: var(--card-glass); border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg); padding: 36px;
+      backdrop-filter: blur(12px); margin-top: 24px;
+      text-align: center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+    .pitmaster-badge {
+      width: 140px; height: 140px; border-radius: 50%;
+      background: radial-gradient(circle, var(--red) 0%, var(--red-dark) 100%);
+      border: 3px solid var(--gold); display: flex; align-items: center;
+      justify-content: center; flex-direction: column; margin: 0 auto 20px;
+      box-shadow: 0 0 30px rgba(200,40,46,0.25);
+    }
+    .badge-top {
+      font-family: var(--font-display); font-size: 11px; font-weight: 900;
+      color: var(--white); letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .badge-icon { font-size: 44px; line-height: 1; margin: 2px 0; }
+    .badge-btm {
+      font-family: var(--font-display); font-size: 10px; font-weight: 700;
+      color: var(--cream); letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .story-caption {
+      font-family: var(--font-script); font-size: 22px; color: var(--gold); margin-bottom: 14px;
+    }
+    .story-craft-stats {
+      display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-top: 24px;
+      padding-top: 20px; border-top: 1px solid var(--border-dark);
+    }
+    .craft-stat { text-align: center; }
+    .craft-stat-num {
+      font-family: var(--font-display); font-size: 26px; font-weight: 900;
+      background: linear-gradient(135deg, var(--red) 0%, var(--orange) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .craft-stat-label {
+      font-size: 10px; color: var(--text-dim); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 2px;
+    }
+
+    /* ============ CATERING ============ */
+    .catering-hero {
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, var(--red-dark) 0%, #7A1616 100%);
+      border-radius: var(--radius-lg); padding: 64px 52px;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: var(--shadow-dark);
+    }
+    .catering-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&q=80');
+      background-size: cover; background-position: center;
+      opacity: 0.10; pointer-events: none;
+    }
+    .catering-hero-inner {
+      position: relative; z-index: 1;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 40px; flex-wrap: wrap;
+    }
+    .catering-hero h2 {
+      font-family: var(--font-display); font-size: clamp(24px, 3.2vw, 42px);
+      font-weight: 900; color: var(--white); letter-spacing: -0.01em;
+      max-width: 480px; line-height: 1.15;
+    }
+    .catering-hero .script-accent {
+      font-family: var(--font-script); font-size: clamp(18px, 2.2vw, 26px);
+      color: var(--gold); display: block; margin-bottom: 10px;
+    }
+    .catering-hero p {
+      color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 14px;
+      max-width: 420px; line-height: 1.7;
+    }
+    .catering-packages {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px;
+    }
+    .catering-pkg {
+      background: var(--card-glass); border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg); padding: 30px;
+      backdrop-filter: blur(8px); transition: all 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .catering-pkg::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    }
+    .catering-pkg-red::before { background: linear-gradient(90deg, var(--red), var(--red-dark)); }
+    .catering-pkg-orange::before { background: linear-gradient(90deg, var(--orange), var(--orange-dark)); }
+    .catering-pkg-gold::before { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+    .catering-pkg:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-dark);
+      border-color: rgba(255,255,255,0.12);
+    }
+    .catering-pkg h3 {
+      font-family: var(--font-display); font-size: 18px; font-weight: 800;
+      color: var(--white); margin-bottom: 12px;
+    }
+    .catering-pkg p {
+      font-size: 14px; color: var(--text-dim); line-height: 1.65; margin-bottom: 14px;
+    }
+    .catering-pkg-price {
+      font-size: 13px; color: var(--gold); font-weight: 600;
+    }
+
+    /* ============ REVIEWS ============ */
+    .reviews-header { text-align: center; margin-bottom: 48px; }
+    .reviews-trust {
+      display: flex; align-items: center; justify-content: center; gap: 24px;
+      margin-top: 20px; flex-wrap: wrap;
+    }
+    .reviews-trust-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 14px; color: var(--text-dim);
+    }
+    .reviews-trust-stars { color: var(--gold); font-size: 16px; letter-spacing: 2px; }
+    .reviews-trust-bold { color: var(--white); font-weight: 700; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .review-card {
+      background: var(--card-glass); border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg); padding: 32px;
+      backdrop-filter: blur(8px);
+      transition: all 0.35s;
+      position: relative; overflow: hidden;
+    }
+    .review-card::before {
+      content: '"'; position: absolute; top: 16px; right: 24px;
+      font-family: var(--font-display); font-size: 80px; font-weight: 900;
+      color: rgba(200,40,46,0.06); line-height: 1;
+    }
+    .review-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-dark);
+      border-color: rgba(212,160,74,0.15);
+    }
+    .review-stars { color: var(--gold); font-size: 16px; letter-spacing: 3px; margin-bottom: 16px; }
+    .review-card p {
+      font-size: 15px; color: rgba(240,232,220,0.72); font-style: italic;
+      line-height: 1.75; margin-bottom: 22px;
+    }
+    .review-footer { display: flex; align-items: center; gap: 12px; }
+    .review-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 16px; font-weight: 800; color: var(--white);
+    }
+    .review-meta {}
+    .review-author { font-size: 14px; font-weight: 700; color: var(--text-light); }
+    .review-platform { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+
+    /* ============ SOCIAL ============ */
+    .social-strip {
+      background: var(--charcoal-mid); padding: 40px 32px; text-align: center;
+      border-top: 1px solid var(--border-dark); border-bottom: 1px solid var(--border-dark);
+    }
+    .social-label {
+      font-family: var(--font-script); font-size: 26px; color: var(--gold); margin-bottom: 18px;
+    }
+    .social-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .social-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border-dark);
+      color: var(--text-dim); padding: 12px 22px; border-radius: var(--radius);
+      font-size: 13px; font-weight: 700; text-decoration: none; letter-spacing: 0.06em;
+      transition: all 0.3s; text-transform: uppercase;
+    }
+    .social-btn:hover {
+      background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15);
+      color: var(--white); transform: translateY(-2px);
+    }
+
+    /* ============ VISIT / LOCATION ============ */
+    .visit-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start;
+    }
+    .hours-table {
+      background: var(--card-glass); border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg); padding: 28px;
+      backdrop-filter: blur(8px);
+    }
+    .hours-table table { width: 100%; border-collapse: collapse; }
+    .hours-table td {
+      padding: 12px 0; font-size: 14px; border-bottom: 1px solid var(--border-dark);
+    }
+    .hours-table tr:last-child td { border-bottom: none; }
+    .hours-day { color: var(--text-dim); font-weight: 600; }
+    .hours-time { color: var(--text-light); font-weight: 700; text-align: right; }
+    .hours-closed { color: var(--red); font-weight: 700; text-align: right; }
+    .map-placeholder {
+      background: var(--card-glass); border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg); overflow: hidden;
+      height: 280px; position: relative;
+    }
+    .map-placeholder iframe {
+      width: 100%; height: 100%; border: none; filter: grayscale(0.6) brightness(0.7) contrast(1.1);
+    }
+    .expect-card {
+      background: var(--card-glass); border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg); padding: 28px;
+      backdrop-filter: blur(8px);
+    }
+    .expect-title {
+      font-family: var(--font-display); font-size: 13px; font-weight: 700;
+      color: var(--red); letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+    }
+    .expect-card p {
+      font-size: 15px; color: var(--text-dim); line-height: 1.75;
+    }
+    .contact-info-block {
+      margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--border-dark);
+    }
+    .contact-info-block p { font-size: 15px; color: var(--text-dim); }
+    .contact-info-block a { color: var(--orange); text-decoration: none; transition: color 0.2s; }
+    .contact-info-block a:hover { color: var(--gold-light); }
+
+    /* ============ CATERING INQUIRY FORM ============ */
+    .inquiry-form {
+      background: var(--card-glass); border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg); padding: 36px;
+      backdrop-filter: blur(8px); margin-top: 40px;
+    }
+    .inquiry-form h3 {
+      font-family: var(--font-display); font-size: 22px; font-weight: 800;
+      color: var(--white); margin-bottom: 6px;
+    }
+    .inquiry-form > p {
+      font-size: 14px; color: var(--text-dim); margin-bottom: 24px;
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group.full-width { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--text-dim);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 12px 16px; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius); background: rgba(255,255,255,0.04);
+      color: var(--text-light); font-family: var(--font-body); font-size: 14px;
+      outline: none; transition: border-color 0.3s;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(168,152,136,0.5); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--red); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group select { cursor: pointer; }
+    .form-group select option { background: var(--charcoal-mid); color: var(--text-light); }
+    .form-submit-row { margin-top: 20px; display: flex; justify-content: flex-end; }
+    .btn-submit {
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+      color: var(--white); border: none;
+      padding: 14px 36px; border-radius: var(--radius);
+      font-family: var(--font-body); font-size: 14px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer;
+      transition: all 0.3s; box-shadow: var(--shadow-warm);
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(200,40,46,0.40);
+    }
+
+    /* ============ NEWSLETTER ============ */
+    .newsletter-section {
+      background: var(--charcoal-mid); padding: 80px 32px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .newsletter-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 80% at 50% 120%, rgba(200,40,46,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .newsletter-inner { max-width: 560px; margin: 0 auto; position: relative; z-index: 1; }
+    .newsletter-flame {
+      font-size: 44px; margin-bottom: 8px;
+      animation: flicker 2s ease-in-out infinite;
+    }
+    .newsletter-script {
+      font-family: var(--font-script); font-size: 34px; color: var(--red); margin-bottom: 14px;
+    }
+    .newsletter-inner > p { font-size: 16px; color: var(--text-dim); margin-bottom: 28px; line-height: 1.75; }
+    .newsletter-form { display: flex; gap: 12px; max-width: 440px; margin: 0 auto; }
+    .newsletter-form input {
+      flex: 1; padding: 14px 18px; border: 1px solid rgba(255,255,255,0.10);
+      border-radius: var(--radius); background: rgba(255,255,255,0.05);
+      color: var(--text-light); font-family: var(--font-body); font-size: 14px;
+      outline: none; transition: border-color 0.3s;
+      backdrop-filter: blur(4px);
+    }
+    .newsletter-form input::placeholder { color: rgba(168,152,136,0.5); }
+    .newsletter-form input:focus { border-color: var(--red); }
+    .newsletter-form button {
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+      color: var(--white); border: none;
+      padding: 14px 24px; border-radius: var(--radius);
+      font-family: var(--font-body); font-size: 14px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer;
+      transition: all 0.3s; white-space: nowrap;
+    }
+    .newsletter-form button:hover { transform: translateY(-2px); box-shadow: var(--shadow-warm); }
+
+    /* ============ FOOTER ============ */
+    footer {
+      background: #0F0E0D; color: rgba(255,255,255,0.40);
+      padding: 56px 32px 28px;
+      border-top: 1px solid var(--border-dark);
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+      padding-bottom: 40px; border-bottom: 1px solid var(--border-dark); margin-bottom: 28px;
+    }
+    .footer-brand {}
+    .footer-logo {
+      font-family: var(--font-display); font-size: 22px; font-weight: 900;
+      color: var(--white); letter-spacing: 0.06em; text-transform: uppercase;
+      margin-bottom: 14px; display: inline-flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .footer-logo span { color: var(--red); }
+    .footer-desc { font-size: 13px; line-height: 1.75; max-width: 260px; }
+    .footer-tagline {
+      font-family: var(--font-script); font-size: 16px; color: var(--gold);
+      margin-top: 12px; display: block;
+    }
+    .footer-phone {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 12px; font-size: 15px; font-weight: 700;
+      color: var(--orange); text-decoration: none; transition: color 0.2s;
+    }
+    .footer-phone:hover { color: var(--gold-light); }
+    .footer-col h4 {
+      font-family: var(--font-display); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--white);
+      margin-bottom: 18px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a {
+      color: rgba(255,255,255,0.40); font-size: 13px; text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; font-size: 12px;
+      flex-wrap: wrap; gap: 12px; color: rgba(255,255,255,0.30);
+    }
+
+    /* ============ STICKY MOBILE CTA ============ */
+    .sticky-cta {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      z-index: 300; padding: 12px 16px;
+      background: rgba(26,24,22,0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(200,40,46,0.2);
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.40);
+    }
+    .sticky-cta-inner {
+      display: flex; gap: 10px; max-width: 500px; margin: 0 auto;
+    }
+    .sticky-cta a {
+      flex: 1; text-align: center; padding: 14px 12px;
+      border-radius: var(--radius); font-size: 14px; font-weight: 700;
+      letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .sticky-cta-primary {
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+      color: var(--white);
+    }
+    .sticky-cta-secondary {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10);
+      color: var(--text-light);
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1024px) {
+      .menu-grid { grid-template-columns: repeat(2, 1fr); }
+      .menu-tabs { grid-template-columns: 1fr 1fr; }
+      .catering-packages { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .hero-content { grid-template-columns: 1fr; gap: 40px; padding-top: 100px; }
+      .section { padding: 72px 24px; }
+      .story-grid { grid-template-columns: 1fr; gap: 48px; }
+      .menu-grid { grid-template-columns: 1fr 1fr; }
+      .menu-tabs { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .catering-hero { padding: 40px 28px; }
+      .catering-hero-inner { flex-direction: column; }
+      .catering-packages { grid-template-columns: 1fr; }
+      .visit-grid { grid-template-columns: 1fr; gap: 32px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .newsletter-form { flex-direction: column; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .sticky-cta { display: block; }
+      body { padding-bottom: 70px; }
+    }
+    @media (max-width: 480px) {
+      .menu-grid { grid-template-columns: 1fr; }
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas a { text-align: center; justify-content: center; }
+      .hero-trust-row { flex-direction: column; gap: 16px; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .reviews-trust { flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav id="mainNav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon">&#129956;</div>
+        Dr. <span>Rolf's</span> BBQ
+      </a>
+      <ul class="nav-links">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#catering">Catering</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#visit">Visit</a></li>
+        <li><a href="tel:6166380785" class="nav-order">Call to Order</a></li>
+      </ul>
+      <div class="nav-hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#menu" onclick="toggleMenu()">Menu</a></li>
+      <li><a href="#story" onclick="toggleMenu()">Our Story</a></li>
+      <li><a href="#catering" onclick="toggleMenu()">Catering</a></li>
+      <li><a href="#reviews" onclick="toggleMenu()">Reviews</a></li>
+      <li><a href="#visit" onclick="toggleMenu()">Visit Us</a></li>
+      <li><a href="tel:6166380785" style="color:var(--orange);">(616) 638-0785</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-fire-overlay"></div>
+    <div class="hero-gradient"></div>
+    <div class="hero-bottom-fade"></div>
+
+    <!-- Smoke wisps -->
+    <div class="smoke-wisp smoke-wisp-1"></div>
+    <div class="smoke-wisp smoke-wisp-2"></div>
+    <div class="smoke-wisp smoke-wisp-3"></div>
+    <div class="smoke-wisp smoke-wisp-4"></div>
+
+    <div class="hero-content">
+      <div>
+        <div class="hero-badge reveal">
+          <div class="hero-badge-icon">&#129956;</div>
+          <div class="hero-badge-text">Muskegon, Michigan</div>
+        </div>
+        <h1 class="reveal reveal-delay-1">
+          Real <span class="red">BBQ.</span><br>Real Wood.<br>No Shortcuts.
+        </h1>
+        <div class="hero-tagline reveal reveal-delay-2">A Skilled Physician, A Passionate Cook.</div>
+        <p class="hero-sub reveal reveal-delay-3">
+          Dr. Rolf Hissom has been caring for Muskegon patients for decades. On his days off, he fires up the smoker. What started as weekend cookouts for family grew into something the whole community kept asking for &mdash; so he opened the doors. Real hardwood. Low and slow. No shortcuts. Ever.
+        </p>
+        <div class="hero-ctas reveal reveal-delay-4">
+          <a href="#menu" class="btn-red">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM3 9h18M9 3v18"/></svg>
+            See the Menu
+          </a>
+          <a href="#catering" class="btn-outline-cream">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Book Catering
+          </a>
+        </div>
+        <div class="hero-trust-row reveal reveal-delay-4">
+          <div class="hero-trust-item">
+            <div class="hero-trust-num" data-count="12">12+</div>
+            <div class="hero-trust-label">Hour Smoke Time</div>
+          </div>
+          <div class="hero-trust-item">
+            <div class="hero-trust-num">225&deg;F</div>
+            <div class="hero-trust-label">Low &amp; Slow</div>
+          </div>
+          <div class="hero-trust-item">
+            <div class="hero-trust-num">100%</div>
+            <div class="hero-trust-label">Real Hardwood</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="hero-info-card">
+          <div class="info-card-title">Hours &amp; Location</div>
+          <div class="info-row">
+            <span class="info-label">Tue &ndash; Thu</span>
+            <span class="info-value">11:00 am &ndash; 8:00 pm</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Fri &ndash; Sat</span>
+            <span class="info-value">11:00 am &ndash; 9:00 pm</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Sunday</span>
+            <span class="info-value">12:00 pm &ndash; 7:00 pm</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Monday</span>
+            <span class="info-value" style="color:var(--red);">Closed</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Address</span>
+            <span class="info-value">Muskegon, MI</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Phone</span>
+            <span class="info-value"><a href="tel:6166380785">(616) 638-0785</a></span>
+          </div>
+          <a href="tel:6166380785" class="info-call-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.72 16.92z"/></svg>
+            Call to Order
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIRE DIVIDER -->
+  <div class="fire-divider"></div>
+
+  <!-- TRUST STATS BAR -->
+  <div class="stats-bar reveal">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-num" data-target="5" data-suffix="">5.0</div>
+        <div class="stat-label">Star Average</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">200+</div>
+        <div class="stat-label">5-Star Reviews</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">10k+</div>
+        <div class="stat-label">Lbs Smoked Yearly</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Shortcuts Taken</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURED MENU ITEMS -->
+  <section class="section section-charcoal" id="menu">
+    <div class="section-inner">
+      <div style="text-align:center; margin-bottom:52px;">
+        <div class="section-eyebrow section-eyebrow-center reveal">Signature Dishes</div>
+        <h2 class="section-title reveal reveal-delay-1" style="text-align:center; margin:0 auto 14px;">What We're Smoking Today</h2>
+        <p class="section-sub reveal reveal-delay-2" style="margin:0 auto; text-align:center;">
+          The pit fires up before sunrise. By the time we unlock the door, everything has been in the smoke for hours. When it's gone, it's gone &mdash; so come early on weekends.
+        </p>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-card reveal">
+          <div class="menu-card-img">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80" alt="Smoked brisket with deep smoke ring" loading="lazy" />
+            <div class="menu-overlay"></div>
+            <div class="sizzle-dots">
+              <div class="sizzle-dot"></div><div class="sizzle-dot"></div><div class="sizzle-dot"></div><div class="sizzle-dot"></div><div class="sizzle-dot"></div>
+            </div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Smoked Brisket</h3>
+            <p>12 hours in oak smoke with Dr. Rolf's house dry rub. The bark is real, the smoke ring goes deep, and it melts. Served sliced with your choice of two sides.</p>
+            <div class="menu-price-row">
+              <div class="menu-price">$18.99 / plate</div>
+              <div class="menu-badge">Fan Favorite</div>
+            </div>
+          </div>
+        </div>
+        <div class="menu-card reveal reveal-delay-1">
+          <div class="menu-card-img">
+            <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=800&q=80" alt="St. Louis style pork ribs" loading="lazy" />
+            <div class="menu-overlay"></div>
+            <div class="sizzle-dots">
+              <div class="sizzle-dot"></div><div class="sizzle-dot"></div><div class="sizzle-dot"></div><div class="sizzle-dot"></div><div class="sizzle-dot"></div>
+            </div>
+          </div>
+          <div class="menu-card-body">
+            <h3>St. Louis Ribs</h3>
+            <p>A full rack, hickory smoked low and slow until the meat pulls clean from the bone. Order wet for sauce glazed on; dry to taste the rub doing its work.</p>
+            <div class="menu-price-row">
+              <div class="menu-price">$24.99 / rack</div>
+              <div class="menu-badge">Best Seller</div>
+            </div>
+          </div>
+        </div>
+        <div class="menu-card reveal reveal-delay-2">
+          <div class="menu-card-img">
+            <img src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=800&q=80" alt="Pulled pork sandwich piled high" loading="lazy" />
+            <div class="menu-overlay"></div>
+            <div class="sizzle-dots">
+              <div class="sizzle-dot"></div><div class="sizzle-dot"></div><div class="sizzle-dot"></div><div class="sizzle-dot"></div><div class="sizzle-dot"></div>
+            </div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Pulled Pork Sandwich</h3>
+            <p>Smoked pork shoulder, hand-pulled to order, piled embarrassingly high on a brioche bun with house-made slaw. The sandwich people drive from Grand Rapids for.</p>
+            <div class="menu-price-row">
+              <div class="menu-price">$12.99</div>
+            </div>
+          </div>
+        </div>
+        <div class="menu-card reveal reveal-delay-3">
+          <div class="menu-card-img">
+            <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c8?w=800&q=80" alt="Whole smoked chicken golden skin" loading="lazy" />
+            <div class="menu-overlay"></div>
+            <div class="sizzle-dots">
+              <div class="sizzle-dot"></div><div class="sizzle-dot"></div><div class="sizzle-dot"></div><div class="sizzle-dot"></div><div class="sizzle-dot"></div>
+            </div>
+          </div>
+          <div class="menu-card-body">
+            <h3>Smoked Chicken</h3>
+            <p>Half chicken, seasoned with Dr. Rolf's signature rub and smoked until the skin crisps and the meat stays impossibly juicy. One of the most underrated things on the menu.</p>
+            <div class="menu-price-row">
+              <div class="menu-price">$14.99 / half</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:44px;">
+        <a href="#full-menu" class="btn-red reveal">See the Full Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FULL MENU SECTIONS -->
+  <section class="section section-dark" id="full-menu">
+    <div class="section-inner">
+      <div style="text-align:center; margin-bottom:48px;">
+        <div class="section-eyebrow section-eyebrow-center section-eyebrow-gold reveal">Full Menu</div>
+        <h2 class="section-title reveal reveal-delay-1" style="text-align:center; margin:0 auto 12px;">The Full Spread</h2>
+      </div>
+      <div class="menu-tabs">
+        <div class="menu-section-card reveal">
+          <div class="menu-cat-title"><span class="menu-cat-icon">&#129385;</span> Smoked Meats</div>
+          <div class="menu-item">
+            <div><div class="item-name">Brisket Plate</div><div class="item-desc">Sliced, with 2 sides</div></div>
+            <div class="item-price">$18.99</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">St. Louis Ribs</div><div class="item-desc">Full rack, wet or dry</div></div>
+            <div class="item-price">$24.99</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">Baby Back Ribs</div><div class="item-desc">Half rack + 1 side</div></div>
+            <div class="item-price">$16.99</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">Pulled Pork Plate</div><div class="item-desc">8 oz, with 2 sides</div></div>
+            <div class="item-price">$14.99</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">Smoked Chicken Half</div><div class="item-desc">With 2 sides</div></div>
+            <div class="item-price">$14.99</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">Smoked Sausage Links</div><div class="item-desc">3 links, with 1 side</div></div>
+            <div class="item-price">$13.99</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">3-Meat Combo</div><div class="item-desc">Choose any 3 meats</div></div>
+            <div class="item-price">$22.99</div>
+          </div>
+        </div>
+        <div class="menu-section-card reveal reveal-delay-1">
+          <div class="menu-cat-title"><span class="menu-cat-icon">&#127828;</span> Sandwiches</div>
+          <div class="menu-item">
+            <div><div class="item-name">Pulled Pork Sandwich</div><div class="item-desc">Brioche bun, slaw</div></div>
+            <div class="item-price">$12.99</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">Brisket Sandwich</div><div class="item-desc">Sliced brisket, pickles, onion</div></div>
+            <div class="item-price">$14.99</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">BBQ Chicken Sandwich</div><div class="item-desc">Smoked thigh, house sauce</div></div>
+            <div class="item-price">$11.99</div>
+          </div>
+          <div style="margin-top:22px;" class="menu-cat-title"><span class="menu-cat-icon">&#127858;</span> Sides</div>
+          <div class="menu-item">
+            <div><div class="item-name">Mac &amp; Cheese</div></div>
+            <div class="item-price">$4.50</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">Smoked Baked Beans</div></div>
+            <div class="item-price">$4.00</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">Collard Greens</div></div>
+            <div class="item-price">$4.00</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">Coleslaw</div></div>
+            <div class="item-price">$3.50</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">Cornbread</div></div>
+            <div class="item-price">$3.00</div>
+          </div>
+        </div>
+        <div class="menu-section-card reveal reveal-delay-2">
+          <div class="menu-cat-title"><span class="menu-cat-icon">&#127798;</span> Sauces &amp; Extras</div>
+          <div class="menu-item">
+            <div><div class="item-name">Dr. Rolf's Original</div><div class="item-desc">Sweet, tangy, smoky</div></div>
+            <div class="item-price">House</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">Spicy Habanero</div><div class="item-desc">For those who dare</div></div>
+            <div class="item-price">$1.00</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">Mustard Gold</div><div class="item-desc">Carolina-style</div></div>
+            <div class="item-price">$1.00</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">White Alabama Sauce</div></div>
+            <div class="item-price">$1.00</div>
+          </div>
+          <div style="margin-top:22px;" class="menu-cat-title"><span class="menu-cat-icon">&#127865;</span> Drinks &amp; Dessert</div>
+          <div class="menu-item">
+            <div><div class="item-name">Sweet Tea / Lemonade</div></div>
+            <div class="item-price">$2.99</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">Fountain Drink</div></div>
+            <div class="item-price">$2.49</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">Banana Pudding</div></div>
+            <div class="item-price">$5.99</div>
+          </div>
+          <div class="menu-item">
+            <div><div class="item-name">Peach Cobbler</div></div>
+            <div class="item-price">$5.99</div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:36px; font-size:14px; color:var(--text-dim);">
+        Menu items subject to availability. Call <a href="tel:6166380785" style="color:var(--orange);">(616) 638-0785</a> to confirm daily specials.
+      </div>
+    </div>
+  </section>
+
+  <!-- PITMASTER STORY -->
+  <section class="section section-charcoal" id="story">
+    <div class="section-inner">
+      <div class="story-grid">
+        <div class="story-text">
+          <div class="section-eyebrow reveal">The Pitmaster</div>
+          <h2 class="section-title reveal reveal-delay-1">A Doctor Who Cooks<br>Because He Loves It.</h2>
+          <p class="reveal reveal-delay-2">
+            <strong>Dr. Rolf Hissom</strong> has spent decades caring for patients in Muskegon. The kind of doctor who remembers your name and your family. On his days off, he disappears behind a smoker.
+          </p>
+          <p class="reveal reveal-delay-3">
+            The barbeque started the way all great things do &mdash; feeding people he cared about. Weekend cookouts for family. Neighbors showing up uninvited with empty plates. Word spread the way it does in a town like Muskegon. Eventually the question stopped being <em>whether</em> to open a restaurant and started being <em>when</em>.
+          </p>
+          <p class="reveal reveal-delay-4">
+            The same precision and care that makes Dr. Rolf a great physician is what makes his barbeque different. Low and slow, hardwood only, no shortcuts, no compromise. When the brisket isn't right, it doesn't go out. Period. Muskegon has been eating well ever since.
+          </p>
+          <a href="#catering" class="btn-red reveal reveal-delay-4" style="margin-top:28px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Let Us Feed Your People
+          </a>
+        </div>
+        <div class="story-visual reveal reveal-delay-2">
+          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80" alt="Rustic BBQ smoker with brisket" class="story-img-main" loading="lazy" />
+          <div class="story-badge-wrap">
+            <div class="pitmaster-badge">
+              <div>
+                <div class="badge-top">Dr. Rolf's</div>
+                <div class="badge-icon">&#129956;</div>
+                <div class="badge-btm">Barbeque</div>
+              </div>
+            </div>
+            <div class="story-caption">A Skilled Physician, A Passionate Cook.</div>
+            <p style="font-size:14px; color:var(--text-dim); line-height:1.65;">
+              Oak. Hickory. Low heat. Long time. No gas. No pellets. No apologies. Muskegon knows the difference &mdash; and keeps coming back.
+            </p>
+            <div class="story-craft-stats">
+              <div class="craft-stat">
+                <div class="craft-stat-num">12hr</div>
+                <div class="craft-stat-label">Avg. Smoke Time</div>
+              </div>
+              <div class="craft-stat">
+                <div class="craft-stat-num">225&deg;F</div>
+                <div class="craft-stat-label">Low &amp; Slow</div>
+              </div>
+              <div class="craft-stat">
+                <div class="craft-stat-num">Oak+</div>
+                <div class="craft-stat-label">Real Hardwood</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATERING -->
+  <section class="section section-darker" id="catering">
+    <div class="section-inner">
+      <div class="catering-hero reveal">
+        <div class="catering-hero-inner">
+          <div>
+            <span class="script-accent">Let Us Feed Your People</span>
+            <h2>Your Event Deserves<br>Real BBQ.</h2>
+            <p>Weddings, grad parties, company summer picnics, church cookouts, family reunions &mdash; Dr. Rolf's brings the pit and the care to your event. We've fed crowds of 20 and crowds of 500. Minimum 20 guests. 72-hour advance notice required.</p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <a href="tel:6166380785" class="btn-gold">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.72 16.92z"/></svg>
+              Call: (616) 638-0785
+            </a>
+            <a href="mailto:judy@drrolfsbbq.com" class="btn-outline-cream" style="justify-content:center;">Email a Catering Request</a>
+          </div>
+        </div>
+      </div>
+
+      <img src="https://images.unsplash.com/photo-1530062845289-9109b2c9c868?w=1200&q=80" alt="BBQ catering spread at an outdoor event" style="width:100%; height:240px; object-fit:cover; border-radius:var(--radius-lg); margin:36px 0 28px; box-shadow:var(--shadow-dark); border:1px solid var(--border-dark);" class="reveal" loading="lazy" />
+
+      <div class="catering-packages">
+        <div class="catering-pkg catering-pkg-red reveal">
+          <h3>Drop-Off Package</h3>
+          <p>Full setup of meats, sides, sauces, and serving equipment. You handle the rest. Perfect for office lunches and casual gatherings.</p>
+          <div class="catering-pkg-price">From $18/person &bull; 20+ guests</div>
+        </div>
+        <div class="catering-pkg catering-pkg-orange reveal reveal-delay-1">
+          <h3>Buffet Setup</h3>
+          <p>Our team arrives early to set up a full buffet line, keeps it stocked throughout your event, and handles teardown. Great for weddings and parties.</p>
+          <div class="catering-pkg-price">From $24/person &bull; 30+ guests</div>
+        </div>
+        <div class="catering-pkg catering-pkg-gold reveal reveal-delay-2">
+          <h3>Full-Service On-Site</h3>
+          <p>The full experience. We bring the pit, smoke on location, serve your guests, and leave the site spotless. The ultimate BBQ event.</p>
+          <div class="catering-pkg-price">Custom pricing &bull; 50+ guests</div>
+        </div>
+      </div>
+
+      <!-- Catering Inquiry Form -->
+      <div class="inquiry-form reveal">
+        <h3>Request a Catering Quote</h3>
+        <p>Tell us about your event and we'll get back to you within 24 hours.</p>
+        <form onsubmit="return false;">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="cater-name">Your Name</label>
+              <input type="text" id="cater-name" placeholder="Full name" />
+            </div>
+            <div class="form-group">
+              <label for="cater-email">Email</label>
+              <input type="email" id="cater-email" placeholder="you@email.com" />
+            </div>
+            <div class="form-group">
+              <label for="cater-phone">Phone</label>
+              <input type="tel" id="cater-phone" placeholder="(___) ___-____" />
+            </div>
+            <div class="form-group">
+              <label for="cater-type">Event Type</label>
+              <select id="cater-type">
+                <option value="">Select event type</option>
+                <option>Wedding</option>
+                <option>Corporate Event</option>
+                <option>Graduation Party</option>
+                <option>Family Reunion</option>
+                <option>Church / Community</option>
+                <option>Birthday Party</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="cater-date">Event Date</label>
+              <input type="date" id="cater-date" />
+            </div>
+            <div class="form-group">
+              <label for="cater-guests">Estimated Guests</label>
+              <input type="number" id="cater-guests" placeholder="e.g. 50" min="20" />
+            </div>
+            <div class="form-group full-width">
+              <label for="cater-notes">Additional Notes</label>
+              <textarea id="cater-notes" placeholder="Tell us anything else about your event, dietary needs, or questions..."></textarea>
+            </div>
+          </div>
+          <div class="form-submit-row">
+            <button type="submit" class="btn-submit">Submit Inquiry</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section section-charcoal" id="reviews">
+    <div class="section-inner">
+      <div class="reviews-header">
+        <div class="section-eyebrow section-eyebrow-center reveal">What People Are Saying</div>
+        <h2 class="section-title reveal reveal-delay-1" style="text-align:center; margin:0 auto 0;">Straight from Our Guests</h2>
+        <div class="reviews-trust reveal reveal-delay-2">
+          <div class="reviews-trust-item">
+            <span class="reviews-trust-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="reviews-trust-bold">5.0</span> average rating
+          </div>
+          <div class="reviews-trust-item">
+            <span class="reviews-trust-bold">200+</span> verified reviews
+          </div>
+          <div class="reviews-trust-item">
+            Across Google, Yelp &amp; TripAdvisor
+          </div>
+        </div>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Best brisket I've had in Michigan, and I say that having lived here my whole life. The smoke ring goes almost to the center, the bark has real texture, and the house sauce hits every note. Drove past two other BBQ places to get here and I'd do it again tomorrow."</p>
+          <div class="review-footer">
+            <div class="review-avatar">J</div>
+            <div class="review-meta">
+              <div class="review-author">James T. &mdash; Muskegon</div>
+              <div class="review-platform">Google Reviews</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Hired Dr. Rolf's for our company summer event, about 60 people. The ribs were fall-off-the-bone tender, the sides were legit, and the crew was friendly and on time. Multiple people asked who the caterer was. Already booked again for next summer."</p>
+          <div class="review-footer">
+            <div class="review-avatar">S</div>
+            <div class="review-meta">
+              <div class="review-author">Sarah M. &mdash; Muskegon Heights</div>
+              <div class="review-platform">Yelp</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Made the drive from Grand Rapids after a friend wouldn't stop talking about this place. The pulled pork sandwich was absolutely stacked and the smoked beans were the best side I've had at any BBQ joint. This is a real find."</p>
+          <div class="review-footer">
+            <div class="review-avatar">M</div>
+            <div class="review-meta">
+              <div class="review-author">Mike R. &mdash; Grand Rapids</div>
+              <div class="review-platform">TripAdvisor</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL -->
+  <div class="social-strip">
+    <div class="social-label">Follow the Smoke</div>
+    <div class="social-links">
+      <a href="#" class="social-btn">Facebook</a>
+      <a href="#" class="social-btn">Instagram</a>
+      <a href="#" class="social-btn">TikTok</a>
+      <a href="#" class="social-btn">Google</a>
+      <a href="#" class="social-btn">Yelp</a>
+      <a href="#" class="social-btn">TripAdvisor</a>
+    </div>
+  </div>
+
+  <!-- VISIT / LOCATION -->
+  <section class="section section-dark" id="visit">
+    <div class="section-inner">
+      <div class="visit-grid">
+        <div>
+          <div class="section-eyebrow reveal">Come Find Us</div>
+          <h2 class="section-title reveal reveal-delay-1">Come Hungry.<br>Leave Happy.</h2>
+          <p class="section-sub reveal reveal-delay-2" style="margin-bottom:28px;">
+            We're right here in Muskegon. Order at the counter and we'll bring it to you. Walk-ins always welcome &mdash; just know that weekends tend to fill up after noon and we do sell out. Call ahead if you're coming with a group.
+          </p>
+          <div class="hours-table reveal reveal-delay-3">
+            <table>
+              <tr>
+                <td class="hours-day">Tuesday &ndash; Thursday</td>
+                <td class="hours-time">11 am &ndash; 8 pm</td>
+              </tr>
+              <tr>
+                <td class="hours-day">Friday &ndash; Saturday</td>
+                <td class="hours-time">11 am &ndash; 9 pm</td>
+              </tr>
+              <tr>
+                <td class="hours-day">Sunday</td>
+                <td class="hours-time">12 pm &ndash; 7 pm</td>
+              </tr>
+              <tr>
+                <td class="hours-day">Monday</td>
+                <td class="hours-closed">Closed</td>
+              </tr>
+            </table>
+          </div>
+          <a href="tel:6166380785" class="btn-red reveal reveal-delay-4" style="margin-top:24px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.72 16.92z"/></svg>
+            (616) 638-0785
+          </a>
+          <!-- Map Placeholder -->
+          <div class="map-placeholder reveal reveal-delay-4" style="margin-top:24px;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46736.05847890534!2d-86.2977842!3d43.2341813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88197b8e2eb2c411%3A0xf85f0744cad12423!2sMuskegon%2C%20MI!5e0!3m2!1sen!2sus!4v1" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+        <div>
+          <div class="expect-card reveal reveal-delay-2">
+            <div class="expect-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+              What to Expect
+            </div>
+            <p>
+              Order at the counter, grab a seat, and we'll come find you when it's ready. Come as you are &mdash; we're a casual, friendly spot and the vibe is exactly what you'd expect from a doctor-turned-pitmaster who just wants to feed people well. Seating is first come, first served. Weekends get busy fast, especially Fridays after noon.
+            </p>
+            <div class="contact-info-block">
+              <div class="expect-title" style="margin-top:0;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Contact
+              </div>
+              <p>
+                Phone: <a href="tel:6166380785">(616) 638-0785</a><br>
+                Email: <a href="mailto:judy@drrolfsbbq.com">judy@drrolfsbbq.com</a><br>
+                Location: Muskegon, MI
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter-section">
+    <div class="newsletter-inner">
+      <div class="newsletter-flame reveal">&#128293;</div>
+      <div class="newsletter-script reveal reveal-delay-1">Hot Off the Grill</div>
+      <p class="reveal reveal-delay-2">
+        Weekly specials, new menu items, and catering dates. We send it when there's something worth sharing &mdash; which isn't every week, so your inbox is safe. Just the good stuff from Muskegon's favorite pit.
+      </p>
+      <form class="newsletter-form reveal reveal-delay-3" onsubmit="return false;">
+        <input type="email" placeholder="your@email.com" aria-label="Email address" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="footer-logo">
+            Dr. <span>Rolf's</span> BBQ
+          </a>
+          <p class="footer-desc">Real hardwood-smoked barbeque in Muskegon, Michigan. Dr. Rolf started cooking for the love of it &mdash; and Muskegon is better for it.</p>
+          <span class="footer-tagline">A Skilled Physician, A Passionate Cook.</span>
+          <a href="tel:6166380785" class="footer-phone">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.72 16.92z"/></svg>
+            (616) 638-0785
+          </a>
+          <p style="margin-top:6px; font-size:13px;"><a href="mailto:judy@drrolfsbbq.com" style="color:rgba(255,255,255,0.40); text-decoration:none;">judy@drrolfsbbq.com</a></p>
+        </div>
+        <div class="footer-col">
+          <h4>Menu</h4>
+          <ul>
+            <li><a href="#menu">Smoked Meats</a></li>
+            <li><a href="#menu">Sandwiches</a></li>
+            <li><a href="#menu">Sides</a></li>
+            <li><a href="#menu">Sauces</a></li>
+            <li><a href="#menu">Desserts</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Visit</h4>
+          <ul>
+            <li><a href="#visit">Hours</a></li>
+            <li><a href="#visit">Location</a></li>
+            <li><a href="#catering">Catering</a></li>
+            <li><a href="#story">Our Story</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">TikTok</a></li>
+            <li><a href="#">Google Reviews</a></li>
+            <li><a href="#">Yelp</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Dr. Rolf's Barbeque LLC. All rights reserved. Muskegon, Michigan.</p>
+        <p>Registered Trademark &#8480;</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="sticky-cta" id="stickyCta">
+    <div class="sticky-cta-inner">
+      <a href="tel:6166380785" class="sticky-cta-primary">Call to Order</a>
+      <a href="#menu" class="sticky-cta-secondary">View Menu</a>
+    </div>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    // Scroll reveal observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Nav scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('mainNav');
+      nav.classList.toggle('scrolled', window.scrollY > 30);
+
+      // Hide sticky CTA when near footer
+      const sticky = document.getElementById('stickyCta');
+      if (sticky) {
+        const footer = document.querySelector('footer');
+        const footerTop = footer.getBoundingClientRect().top;
+        sticky.style.opacity = footerTop < window.innerHeight ? '0' : '1';
+        sticky.style.pointerEvents = footerTop < window.innerHeight ? 'none' : 'auto';
+      }
+    });
+
+    // Parallax smoke on hero
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const wisps = document.querySelectorAll('.smoke-wisp');
+      wisps.forEach((w, i) => {
+        w.style.transform = `translateY(${-scrolled * (0.15 + i * 0.05)}px)`;
+      });
+    });
+
+    // Visit layout responsive
+    function checkVisitLayout() {
+      const el = document.querySelector('.visit-grid');
+      if (!el) return;
+      el.style.gridTemplateColumns = window.innerWidth < 900 ? '1fr' : '1fr 1fr';
+    }
+    checkVisitLayout();
+    window.addEventListener('resize', checkVisitLayout);
+
+    // Sizzle effect on menu card hover
+    document.querySelectorAll('.menu-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.animation = 'sizzle 0.4s ease';
+        setTimeout(() => card.style.animation = '', 400);
+      });
+    });
+  </script>
+
+</body>
+</html>

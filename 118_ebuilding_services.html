@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Empire Building Services | Commercial Contractor and Janitorial | Santa Ana, CA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #1e40af;
+      --blue-mid: #1d4ed8;
+      --blue-light: #3b82f6;
+      --sky: #0ea5e9;
+      --sky-light: #bae6fd;
+      --white: #ffffff;
+      --off-white: #f0f6ff;
+      --gray: #64748b;
+      --gray-light: #e2e8f0;
+      --text: #0f172a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Work Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(30, 64, 175, 0.98);
+      backdrop-filter: blur(8px);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .nav-logo {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--sky-light); font-weight: 300; }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      font-size: 0.87rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--sky-light); }
+
+    .nav-cta {
+      background: var(--sky);
+      color: var(--white) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: #38bdf8 !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 100px 5% 60px;
+      gap: 4rem;
+      background: var(--off-white);
+    }
+
+    .hero-content { max-width: 560px; }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(14, 165, 233, 0.12);
+      border: 1px solid var(--sky);
+      color: var(--blue);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 20px;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--blue);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 em { font-style: normal; color: var(--sky); }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--blue-mid); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--blue);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 8px;
+      text-decoration: none;
+      border: 2px solid var(--blue);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover { background: var(--blue); color: var(--white); }
+
+    .hero-image { position: relative; }
+
+    .hero-image img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: 24px;
+      left: -16px;
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+
+    .hero-badge strong {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.6rem;
+      color: var(--blue);
+      display: block;
+    }
+
+    .hero-badge span {
+      font-size: 0.82rem;
+      color: var(--gray);
+    }
+
+    /* TRUST BAR */
+    .trust-bar {
+      background: var(--blue);
+      padding: 20px 5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      color: rgba(255,255,255,0.9);
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .trust-dot { width: 6px; height: 6px; background: var(--sky-light); border-radius: 50%; }
+
+    /* SECTIONS */
+    section { padding: 90px 5%; }
+
+    .section-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-heading {
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      color: var(--blue);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .section-intro {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 580px;
+      margin-bottom: 3rem;
+    }
+
+    /* ABOUT */
+    .about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    .about-text p { color: var(--gray); margin-bottom: 1.2rem; }
+
+    .about-list {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+
+    .about-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.85rem;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .about-list li::before {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      background: var(--sky);
+      border-radius: 50%;
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    /* SERVICES SPLIT */
+    .services-split { background: var(--off-white); }
+
+    .services-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .services-tab {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2.5rem;
+      border-top: 5px solid var(--blue);
+    }
+
+    .services-tab.sky { border-top-color: var(--sky); }
+
+    .tab-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tab-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--off-white);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tab-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--blue);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .services-tab.sky .tab-icon svg { stroke: var(--sky); }
+
+    .tab-header h3 { font-size: 1.2rem; color: var(--blue); }
+
+    .services-tab.sky .tab-header h3 { color: var(--sky); }
+
+    .service-list { list-style: none; }
+
+    .service-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--gray-light);
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+
+    .service-list li:last-child { border-bottom: none; }
+
+    .service-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--blue-light);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .services-tab.sky .service-list li::before { background: var(--sky); }
+
+    /* WHY US */
+    .why-us { background: var(--blue); }
+
+    .why-us .section-heading { color: var(--white); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .why-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 14px;
+      padding: 2rem;
+      transition: background 0.2s;
+    }
+
+    .why-card:hover { background: rgba(255,255,255,0.12); }
+
+    .why-card h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      color: var(--sky-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .why-card p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.65;
+    }
+
+    /* PROCESS */
+    .process { background: var(--off-white); }
+
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .process-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .step-circle {
+      width: 48px;
+      height: 48px;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .step-content h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      color: var(--blue);
+      margin-bottom: 0.3rem;
+    }
+
+    .step-content p { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--white); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--off-white);
+      border-radius: 14px;
+      padding: 2rem;
+      border-bottom: 4px solid var(--blue-light);
+    }
+
+    .testimonial-card p {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+
+    .testimonial-author img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .testimonial-author strong { display: block; font-size: 0.9rem; color: var(--blue); }
+    .testimonial-author span { font-size: 0.8rem; color: var(--gray); }
+
+    /* CONTACT */
+    .contact { background: var(--off-white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .contact-info h2 { font-size: 1.8rem; color: var(--blue); margin-bottom: 1rem; }
+    .contact-info p { color: var(--gray); margin-bottom: 2rem; }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: var(--white);
+      border-radius: 10px;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .contact-detail strong {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--sky);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-detail span { font-size: 0.9rem; color: var(--text); }
+
+    .contact-form {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.2rem; }
+
+    .form-group label {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--gray-light);
+      border-radius: 8px;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 0.92rem;
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--blue-light); }
+
+    .form-group textarea { resize: vertical; min-height: 110px; }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-mid) 100%);
+      text-align: center;
+      padding: 90px 5%;
+    }
+
+    .cta-section h2 { font-size: clamp(1.7rem, 3.5vw, 2.5rem); color: var(--white); margin-bottom: 1rem; }
+    .cta-section p { color: rgba(255,255,255,0.75); font-size: 1.05rem; margin-bottom: 2.5rem; }
+
+    /* FOOTER */
+    footer {
+      background: var(--blue);
+      color: rgba(255,255,255,0.55);
+      padding: 60px 5% 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+    }
+
+    .footer-brand p { font-size: 0.87rem; margin-top: 1rem; line-height: 1.7; }
+
+    .footer-col h4 {
+      font-family: 'Poppins', sans-serif;
+      color: var(--sky-light);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.6rem; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.87rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--sky-light); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .about-grid,
+      .services-tabs,
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-image { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      section { padding: 65px 5%; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Empire <span>Building Services</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact" class="nav-cta">Request a Quote</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <span class="hero-eyebrow">Licensed Contractor &amp; Building Services &mdash; Southern California</span>
+      <h1>40 Years Building <em>Better Spaces</em> for Southern California</h1>
+      <p>Licensed general contractor and commercial cleaning company serving Los Angeles and Orange County since 1982. From tenant improvements to nightly janitorial, we do it all — with the same family commitment we started with.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Request a Quote</a>
+        <a href="#services" class="btn-outline">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Clean commercial office space" />
+      <div class="hero-badge">
+        <strong>1982</strong>
+        <span>Founded in Santa Ana, CA</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust-bar">
+    <div class="trust-item"><div class="trust-dot"></div>Founded 1982</div>
+    <div class="trust-item"><div class="trust-dot"></div>Licensed General Contractor</div>
+    <div class="trust-item"><div class="trust-dot"></div>Top Southern CA Contractor</div>
+    <div class="trust-item"><div class="trust-dot"></div>(714) 836-7700</div>
+    <div class="trust-item"><div class="trust-dot"></div>Santa Ana, CA</div>
+  </div>
+
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="about-image reveal">
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" alt="Building services team" />
+      </div>
+      <div class="about-text reveal">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-heading">A Family Business Built on Results and Relationships</h2>
+        <p>Empire Building Services started as a family operation in Santa Ana in 1982, when Suzanne and John DeRossett saw an opportunity to build a company that did two things most contractors struggle with: quality work and honest communication.</p>
+        <p>More than four decades later, we've grown into one of Southern California's most respected commercial service contractors — serving property managers, healthcare facilities, office parks, and retail centers across Los Angeles and Orange County.</p>
+        <p>We're still a family business. Suzanne still leads the company with the same hands-on approach that built our reputation. When you work with Empire, you get people who take personal pride in every space we touch.</p>
+        <ul class="about-list">
+          <li>Licensed general contractor — California</li>
+          <li>In-house crews for both construction and cleaning services</li>
+          <li>40+ year track record in Southern California</li>
+          <li>Single point of contact for construction and maintenance needs</li>
+          <li>Bonded and insured for commercial projects of all sizes</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-split" id="services">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">What We Offer</p>
+      <h2 class="section-heading reveal">Two Core Capabilities, One Trusted Company</h2>
+      <p class="section-intro reveal">Whether you need a tenant build-out or nightly cleaning — or both — Empire Building Services delivers with the same attention to detail.</p>
+      <div class="services-tabs">
+        <div class="services-tab reveal">
+          <div class="tab-header">
+            <div class="tab-icon">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <h3>Construction Services</h3>
+          </div>
+          <ul class="service-list">
+            <li>Tenant Improvements</li>
+            <li>Market Ready Renovations</li>
+            <li>ADA Remodels and Accessibility Upgrades</li>
+            <li>Construction Management</li>
+            <li>Commercial Renovation</li>
+            <li>Interior Build-Outs</li>
+          </ul>
+        </div>
+        <div class="services-tab sky reveal">
+          <div class="tab-header">
+            <div class="tab-icon">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </div>
+            <h3>Building Maintenance</h3>
+          </div>
+          <ul class="service-list">
+            <li>Professional Janitorial / Commercial Cleaning</li>
+            <li>Lighting Maintenance and Replacement</li>
+            <li>Window Cleaning</li>
+            <li>Trash Collection and Disposal</li>
+            <li>General Building Upkeep</li>
+            <li>Recurring Maintenance Programs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-us" id="why">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal" style="color:var(--sky-light);">Why Empire</p>
+      <h2 class="section-heading reveal">Why Southern California Property Managers Choose Us</h2>
+      <p class="section-intro reveal" style="color:rgba(255,255,255,0.65);">Four decades of repeat clients don't happen by accident. Here's what keeps our clients coming back.</p>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <h4>In-House Crews Only</h4>
+          <p>We don't subcontract the important work. Our crews are trained, supervised, and accountable to us — and to you.</p>
+        </div>
+        <div class="why-card reveal">
+          <h4>One Company, Two Capabilities</h4>
+          <p>Construction and maintenance under one roof means one phone call, one point of contact, and one company that knows your property.</p>
+        </div>
+        <div class="why-card reveal">
+          <h4>40+ Year Track Record</h4>
+          <p>We've been serving Southern California since 1982. Our reputation is built job by job, client by client.</p>
+        </div>
+        <div class="why-card reveal">
+          <h4>Family Accountability</h4>
+          <p>We're still a family business. Suzanne DeRossett is still leading this company with the same personal standards she always has.</p>
+        </div>
+        <div class="why-card reveal">
+          <h4>Licensed and Fully Insured</h4>
+          <p>Licensed general contractor in California, fully bonded and insured for your peace of mind on every project.</p>
+        </div>
+        <div class="why-card reveal">
+          <h4>Responsive Service</h4>
+          <p>We pick up the phone. We show up on time. We communicate. That's not a bonus — it's the baseline we hold ourselves to.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="process">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">How We Work</p>
+      <h2 class="section-heading reveal">Our Process, From First Call to Finished Project</h2>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="step-circle">1</div>
+          <div class="step-content">
+            <h4>Consultation and Site Walk</h4>
+            <p>We visit your property, understand the scope, and ask the right questions before putting anything in writing.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-circle">2</div>
+          <div class="step-content">
+            <h4>Scope and Proposal</h4>
+            <p>A detailed, transparent proposal with clear pricing, timeline, and scope of work — no hidden fees, no vague estimates.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-circle">3</div>
+          <div class="step-content">
+            <h4>Scheduling and Crew Assignment</h4>
+            <p>We schedule around your tenants, your business hours, and your priorities to minimize disruption.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-circle">4</div>
+          <div class="step-content">
+            <h4>Work Completion and Quality Check</h4>
+            <p>Every job is reviewed before we consider it done. We walk the finished work with you and address anything that doesn't meet our standard.</p>
+          </div>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-circle">5</div>
+          <div class="step-content">
+            <h4>Ongoing Maintenance Programs</h4>
+            <p>For recurring clients, we build maintenance schedules that keep your property looking its best year-round.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">Client Stories</p>
+      <h2 class="section-heading reveal">What Our Clients Say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <p>We've used Empire Building Services for both tenant improvements and janitorial on three of our Orange County properties. Having the same company for both services has simplified everything. Suzanne and her team are genuinely excellent.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&q=80" alt="Client" />
+            <div>
+              <strong>Patricia N.</strong>
+              <span>Property Manager, Orange County Portfolio</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>They handled an ADA remodel for our medical office and the whole process was seamless. On time, on budget, and not a single complaint from our patients about disruption. I've already referred them to two colleagues.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80" alt="Client" />
+            <div>
+              <strong>Dr. James W.</strong>
+              <span>Medical Office Owner, Santa Ana</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>Empire has been cleaning our office complex for over eight years. The consistency is remarkable — the quality we get today is the same quality we got on day one. That kind of reliability is rare and we genuinely appreciate it.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Client" />
+            <div>
+              <strong>Karen L.</strong>
+              <span>Facilities Director, Corporate Campus</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <h2>Ready to Talk About Your Property?</h2>
+    <p>Whether it's a one-time project or an ongoing maintenance contract, we'd love to hear about your needs.</p>
+    <a href="#contact" class="btn-primary">Request a Free Quote</a>
+  </div>
+
+  <section class="contact" id="contact">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p class="section-label">Get in Touch</p>
+        <h2>Let's Talk About Your Property</h2>
+        <p>Give us a call or fill out the form and we'll be in touch within one business day to schedule a site visit and proposal.</p>
+        <div class="contact-detail">
+          <div>
+            <strong>Phone</strong>
+            <span>(714) 836-7700</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div>
+            <strong>Email</strong>
+            <span>suzanned@ebuildingservices.com</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div>
+            <strong>Address</strong>
+            <span>1570 E Edinger Ave, Suite D, Santa Ana, CA 92705</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div>
+            <strong>Service Area</strong>
+            <span>Los Angeles and Orange County, California</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <h3 style="font-family:'Poppins',sans-serif;font-size:1.3rem;color:var(--blue);margin-bottom:1.5rem;">Request a Quote</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="First" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Last" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="you@property.com" />
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" placeholder="(714) 555-0100" />
+        </div>
+        <div class="form-group">
+          <label>Service Type</label>
+          <select>
+            <option value="">What do you need?</option>
+            <option>Tenant Improvements</option>
+            <option>ADA Remodel</option>
+            <option>Commercial Renovation</option>
+            <option>Janitorial / Cleaning</option>
+            <option>Building Maintenance</option>
+            <option>Both Construction and Maintenance</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Property Type and Details</label>
+          <textarea placeholder="Tell us about your property, project scope, and any relevant details about timeline or requirements..."></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;padding:1rem;font-size:0.95rem;">Request Quote</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">Empire <span>Building Services</span></a>
+        <p>Licensed general contractor and commercial building services company. Serving Los Angeles and Orange County since 1982. (714) 836-7700</p>
+      </div>
+      <div class="footer-col">
+        <h4>Construction</h4>
+        <ul>
+          <li><a href="#">Tenant Improvements</a></li>
+          <li><a href="#">ADA Remodels</a></li>
+          <li><a href="#">Market Ready</a></li>
+          <li><a href="#">Construction Mgmt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Maintenance</h4>
+        <ul>
+          <li><a href="#">Janitorial</a></li>
+          <li><a href="#">Window Cleaning</a></li>
+          <li><a href="#">Lighting</a></li>
+          <li><a href="#">General Upkeep</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:7148367700">(714) 836-7700</a></li>
+          <li><a href="mailto:suzanned@ebuildingservices.com">suzanned@ebuildingservices.com</a></li>
+          <li><a href="#">Santa Ana, CA</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Empire Building Services. All rights reserved.</p>
+      <p>Licensed General Contractor &bull; California &bull; Founded 1982</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

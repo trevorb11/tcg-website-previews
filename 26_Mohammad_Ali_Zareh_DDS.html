@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dental Views | Dr. Mohammad Ali Zareh DDS | Riverside, CA</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Lato:wght@300;400;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #0D9488;
+      --teal-dark: #0F766E;
+      --teal-light: #CCFBF1;
+      --sky: #BAE6FD;
+      --sky-mid: #7DD3FC;
+      --white: #FFFFFF;
+      --charcoal: #374151;
+      --mid: #6B7280;
+      --light: #F0FDFA;
+      --border: #E2E8F0;
+    }
+
+    body { font-family: 'Lato', sans-serif; color: var(--charcoal); background: #fff; }
+
+    /* TOP BAR */
+    .top-bar {
+      background: var(--teal);
+      padding: 8px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .top-bar span { font-size: 0.82rem; color: rgba(255,255,255,0.9); }
+    .top-bar a { color: #fff; font-weight: 700; text-decoration: none; }
+    .top-bar a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      background: var(--white);
+      padding: 18px 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo { font-family: 'Poppins', sans-serif; font-size: 1.45rem; font-weight: 700; color: var(--teal-dark); }
+    .nav-logo span { color: var(--sky-mid); }
+    .nav-tag { font-size: 0.7rem; color: var(--mid); display: block; margin-top: 1px; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--charcoal); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-cta {
+      background: var(--teal);
+      color: var(--white);
+      padding: 11px 22px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--teal-dark); transform: translateY(-1px); }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--light) 0%, #fff 60%, var(--sky) 100%);
+    }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 80px 50px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; width: 100%; }
+    .hero-badge {
+      display: inline-block;
+      background: var(--teal-light);
+      color: var(--teal-dark);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.3rem);
+      font-weight: 800;
+      color: var(--charcoal);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--teal); }
+    .hero p { font-size: 1.1rem; color: var(--mid); line-height: 1.75; margin-bottom: 36px; max-width: 460px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+    .btn-teal {
+      background: var(--teal);
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 4px 16px rgba(13,148,136,0.28);
+    }
+    .btn-teal:hover { background: var(--teal-dark); transform: translateY(-2px); }
+    .btn-outline-teal {
+      border: 2px solid var(--teal);
+      color: var(--teal);
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline-teal:hover { background: var(--teal); color: #fff; }
+    .hero-rating { display: flex; align-items: center; gap: 10px; }
+    .stars-hero { color: #F59E0B; font-size: 1.1rem; letter-spacing: 2px; }
+    .rating-text { font-size: 0.9rem; color: var(--mid); }
+    .rating-text strong { color: var(--charcoal); }
+    .hero-img { border-radius: 24px; overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,0.1); }
+    .hero-img img { width: 100%; height: 500px; object-fit: cover; display: block; }
+
+    /* SERVICES STRIP */
+    .services-strip { background: var(--teal); padding: 48px 50px; }
+    .strip-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 24px; }
+    .strip-item { text-align: center; color: #fff; }
+    .strip-icon { font-size: 2rem; margin-bottom: 10px; }
+    .strip-name { font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 600; }
+
+    /* SHARED */
+    section { padding: 90px 50px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .eyebrow {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 800;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .section-sub { font-size: 1rem; color: var(--mid); line-height: 1.7; max-width: 560px; margin-bottom: 52px; }
+
+    /* SERVICES CARDS */
+    .services-section { background: var(--light); }
+    .svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
+    .svc-card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 32px 26px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.05);
+      border-bottom: 4px solid var(--teal-light);
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+    .svc-card:hover { border-bottom-color: var(--teal); box-shadow: 0 8px 30px rgba(13,148,136,0.12); transform: translateY(-5px); }
+    .svc-icon { font-size: 2rem; margin-bottom: 14px; }
+    .svc-card h3 { font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--charcoal); margin-bottom: 8px; }
+    .svc-card p { font-size: 0.88rem; color: var(--mid); line-height: 1.65; }
+
+    /* ABOUT DR ZAREH -->
+    .about-section { background: var(--white); }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .about-img { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 56px rgba(0,0,0,0.1); position: relative; }
+    .about-img img { width: 100%; height: 460px; object-fit: cover; display: block; }
+    .rating-badge {
+      position: absolute; bottom: 24px; left: 24px;
+      background: var(--white);
+      border-radius: 14px;
+      padding: 14px 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    }
+    .rating-badge .r-stars { color: #F59E0B; font-size: 1rem; letter-spacing: 2px; margin-bottom: 4px; }
+    .rating-badge .r-num { font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--charcoal); line-height: 1; }
+    .rating-badge .r-label { font-size: 0.75rem; color: var(--mid); }
+    .about-text .section-sub { margin-bottom: 24px; }
+    .feature-list { list-style: none; margin-bottom: 36px; }
+    .feature-list li { padding: 11px 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; color: var(--charcoal); display: flex; align-items: center; gap: 12px; }
+    .check-teal { color: var(--teal); font-weight: 700; font-size: 1.2rem; }
+
+    /* LOCATIONS -->
+    .locations-section { background: var(--charcoal); }
+    .locations-section .section-title { color: var(--white); }
+    .locations-section .eyebrow { color: var(--sky-mid); }
+    .locations-section .section-sub { color: rgba(255,255,255,0.65); }
+    .loc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; }
+    .loc-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 28px; }
+    .loc-card h3 { font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .loc-card p { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
+    .loc-tag { display: inline-block; background: var(--teal); color: #fff; font-size: 0.72rem; font-weight: 600; padding: 3px 10px; border-radius: 50px; margin-bottom: 10px; }
+
+    /* PHOTO STRIP -->
+    .photo-strip { display: grid; grid-template-columns: 1fr 1fr 1fr; height: 300px; }
+    .photo-strip-item { overflow: hidden; }
+    .photo-strip-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+    .photo-strip-item:hover img { transform: scale(1.06); }
+
+    /* TESTIMONIALS -->
+    .testimonials-section { background: var(--light); }
+    .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+    .test-card { background: var(--white); border-radius: 18px; padding: 30px; box-shadow: 0 2px 14px rgba(0,0,0,0.05); }
+    .test-stars { color: #F59E0B; font-size: 0.95rem; letter-spacing: 2px; margin-bottom: 12px; }
+    .test-card p { font-size: 0.95rem; color: var(--charcoal); line-height: 1.75; margin-bottom: 14px; font-style: italic; }
+    .test-author { font-family: 'Poppins', sans-serif; font-size: 0.86rem; font-weight: 700; color: var(--teal-dark); }
+
+    /* CTA -->
+    .cta-section { background: linear-gradient(135deg, var(--teal-dark), #0F766E 50%, #134E4A); padding: 80px 50px; text-align: center; color: #fff; }
+    .cta-section h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; margin-bottom: 14px; }
+    .cta-section p { font-size: 1.05rem; opacity: 0.9; max-width: 460px; margin: 0 auto 32px; line-height: 1.7; }
+    .btn-white-pop {
+      background: #fff;
+      color: var(--teal-dark);
+      padding: 15px 36px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+    }
+    .btn-white-pop:hover { transform: translateY(-2px); }
+
+    /* FOOTER -->
+    footer { background: #0F172A; color: rgba(255,255,255,0.6); padding: 60px 50px 30px; }
+    .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand-name { font-family: 'Poppins', sans-serif; font-size: 1.2rem; font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.7; }
+    footer h4 { font-family: 'Poppins', sans-serif; color: #fff; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; }
+    footer ul { list-style: none; }
+    footer ul li { margin-bottom: 10px; }
+    footer ul li a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.87rem; transition: color 0.2s; }
+    footer ul li a:hover { color: var(--teal); }
+    .footer-bottom { max-width: 1100px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; font-size: 0.82rem; text-align: center; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 960px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      section { padding: 70px 24px; }
+      .hero-inner { grid-template-columns: 1fr; padding: 60px 24px; }
+      .hero-img { display: none; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .top-bar { padding: 8px 24px; }
+      .photo-strip { height: 200px; }
+    }
+    @media (max-width: 600px) {
+      .photo-strip { grid-template-columns: 1fr; height: auto; }
+      .photo-strip-item img { height: 180px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <span>Serving Riverside, Los Angeles, Los Alamitos &amp; Murrieta</span>
+    <span>Call or text: <a href="tel:9513135544">(951) 313-5544</a> | New Patient Special Available</span>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div>
+      <div class="nav-logo">Dental <span>Views</span></div>
+      <div class="nav-tag">Dr. Mohammad Ali Zareh, DDS &mdash; Southern California</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Services</a></li>
+      <li><a href="#">About Dr. Zareh</a></li>
+      <li><a href="#">Locations</a></li>
+      <li><a href="#">Patient Info</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <a href="#" class="nav-cta">Book Appointment</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">4.88 out of 5 stars &mdash; rated by real patients across 12 locations</div>
+        <h1>Dental care that feels <span>different from the start</span></h1>
+        <p>We know a lot of people dread going to the dentist. Dr. Zareh built Dental Views around changing that. Gentle, thorough, unhurried care at 12 offices across Southern California &mdash; and a team that will always take the time to explain what is happening and why.</p>
+        <div class="hero-btns">
+          <a href="#" class="btn-teal">Find a location near you</a>
+          <a href="#" class="btn-outline-teal">New Patient Info</a>
+        </div>
+        <div class="hero-rating">
+          <span class="stars-hero">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="rating-text"><strong>4.88/5</strong> across 12 locations &mdash; 5/5 bedside manner rating</span>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80" alt="Friendly dental care at Dental Views" />
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES STRIP -->
+  <div class="services-strip">
+    <div class="strip-inner">
+      <div class="strip-item"><div class="strip-icon">&#129463;</div><div class="strip-name">Dental Implants</div></div>
+      <div class="strip-item"><div class="strip-icon">&#128524;</div><div class="strip-name">Teeth Whitening</div></div>
+      <div class="strip-item"><div class="strip-icon">&#129686;</div><div class="strip-name">Dentures</div></div>
+      <div class="strip-item"><div class="strip-icon">&#9898;</div><div class="strip-name">Cleanings &amp; Exams</div></div>
+      <div class="strip-item"><div class="strip-icon">&#128100;</div><div class="strip-name">Pediatric Dentistry</div></div>
+      <div class="strip-item"><div class="strip-icon">&#128712;</div><div class="strip-name">Emergency Care</div></div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services-section">
+    <div class="container">
+      <p class="eyebrow reveal">Our Services</p>
+      <h2 class="section-title reveal">Everything your family needs, at one practice</h2>
+      <p class="section-sub reveal">Whether it is your child's first cleaning, a crown you have been putting off, or implants to replace a tooth for good &mdash; we do it all. No referrals to juggle, no starting over with a new office.</p>
+      <div class="svc-grid">
+        <div class="svc-card reveal">
+          <div class="svc-icon">&#9898;</div>
+          <h3>Preventive Care</h3>
+          <p>Regular cleanings and exams are the foundation of a healthy mouth. We take the time to review your x-rays with you and answer any questions honestly.</p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon">&#128291;</div>
+          <h3>Restorative Dentistry</h3>
+          <p>Fillings, crowns, bridges, and root canals to restore your teeth to full function and natural appearance.</p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon">&#129463;</div>
+          <h3>Dental Implants</h3>
+          <p>Permanent tooth replacement solutions that look, feel, and function just like your natural teeth.</p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon">&#128524;</div>
+          <h3>Cosmetic Dentistry</h3>
+          <p>Teeth whitening, veneers, and smile makeovers to give you the confidence that comes with a beautiful smile.</p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon">&#128100;</div>
+          <h3>Pediatric Dentistry</h3>
+          <p>Kids who feel safe at the dentist grow into adults who actually go. Our team is patient, kind, and good at making little ones feel like they are in good hands.</p>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon">&#128712;</div>
+          <h3>Emergency Dentistry</h3>
+          <p>Dental pain does not keep office hours. When something goes wrong, call us first. We do our best to get you seen the same day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-img reveal">
+          <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=800&q=80" alt="Dr. Zareh and dental team" />
+          <div class="rating-badge">
+            <div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="r-num">4.88</div>
+            <div class="r-label">Patient Rating</div>
+          </div>
+        </div>
+        <div class="about-text reveal">
+          <p class="eyebrow">Meet Your Doctor</p>
+          <h2 class="section-title">Dr. Mohammad Ali Zareh, DDS</h2>
+          <p class="section-sub">Dr. Zareh grew up in the Inland Empire and earned his undergraduate degree right here at UC Riverside before completing his Doctor of Dental Surgery at the University of Southern California. He opened the first Dental Views location in 2010 with a straightforward goal: build a practice where patients genuinely feel cared for. Sixteen years and 12 locations later, a 4.88-star rating across thousands of reviews says more than any credential could.</p>
+          <ul class="feature-list">
+            <li><span class="check-teal">&#10003;</span> DDS from the University of Southern California (USC)</li>
+            <li><span class="check-teal">&#10003;</span> Practicing in Southern California since 2010</li>
+            <li><span class="check-teal">&#10003;</span> Owner and Clinical Director, Dental Views</li>
+            <li><span class="check-teal">&#10003;</span> 12 offices across Riverside, LA, Los Alamitos &amp; Murrieta</li>
+            <li><span class="check-teal">&#10003;</span> 4.88/5 stars overall &mdash; 5/5 for bedside manner</li>
+          </ul>
+          <a href="#" class="btn-teal">Meet Dr. Zareh</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO STRIP -->
+  <div class="photo-strip">
+    <div class="photo-strip-item">
+      <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=700&q=80" alt="Smiling patient at dental office" />
+    </div>
+    <div class="photo-strip-item">
+      <img src="https://images.unsplash.com/photo-1570612861542-284f4c12e75f?w=700&q=80" alt="Dental team" />
+    </div>
+    <div class="photo-strip-item">
+      <img src="https://images.unsplash.com/photo-1588776814546-1ffedbe47ada?w=700&q=80" alt="Modern dental office" />
+    </div>
+  </div>
+
+  <!-- LOCATIONS -->
+  <section class="locations-section">
+    <div class="container">
+      <p class="eyebrow reveal" style="text-align:center;">Where to Find Us</p>
+      <h2 class="section-title reveal" style="text-align:center; max-width:500px; margin:0 auto 16px;">Southern California Locations</h2>
+      <p class="section-sub reveal" style="text-align:center; max-width:500px; margin:0 auto 48px;">Twelve offices across Southern California, because quality care should never mean a long drive. Find the Dental Views nearest you and book when it works for your schedule.</p>
+      <div class="loc-grid">
+        <div class="loc-card reveal">
+          <div class="loc-tag">Primary</div>
+          <h3>Riverside, CA</h3>
+          <p>(951) 313-5544<br>rp@dentalviews.com</p>
+        </div>
+        <div class="loc-card reveal">
+          <h3>Los Angeles, CA</h3>
+          <p>Westwood Blvd location serving West LA and surrounding communities.</p>
+        </div>
+        <div class="loc-card reveal">
+          <h3>Los Alamitos, CA</h3>
+          <p>Convenient location for Orange County patients seeking Dr. Zareh's care.</p>
+        </div>
+        <div class="loc-card reveal">
+          <h3>Murrieta, CA</h3>
+          <p>Serving Southwest Riverside County and Temecula Valley patients.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="container">
+      <p class="eyebrow reveal" style="text-align:center;">Patient Reviews</p>
+      <h2 class="section-title reveal" style="text-align:center; max-width:500px; margin:0 auto 48px;">What patients are saying</h2>
+      <div class="test-grid">
+        <div class="test-card reveal">
+          <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"I have been afraid of the dentist my whole life. Dr. Zareh talked me through everything before he did it, checked in constantly, and never made me feel rushed or judged. It was genuinely the best dental experience I have ever had. I finally understand why people say they have a dentist they love."</p>
+          <div class="test-author">Maria T. &mdash; Riverside, CA</div>
+        </div>
+        <div class="test-card reveal">
+          <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"My 7-year-old was terrified going in. When we walked out, she asked when she could come back. I do not know what the team did but it worked. We moved our whole family over and have not looked back. My kids actually ask when their next appointment is."</p>
+          <div class="test-author">Jason K. &mdash; Los Alamitos, CA</div>
+        </div>
+        <div class="test-card reveal">
+          <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"I needed two implants and was dreading the process. Dr. Zareh sat with me, walked through the timeline, showed me exactly what to expect, and every step went exactly as he described. The results look completely natural. Worth every penny and every minute."</p>
+          <div class="test-author">Robert M. &mdash; Murrieta, CA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Ready to book your visit?</h2>
+    <p>New patients are always welcome. Find the location closest to you and book online, or just give us a call &mdash; we are happy to help find a time that works.</p>
+    <a href="#" class="btn-white-pop">Find a location near you</a>
+    <div style="margin-top:18px; font-size:1rem; opacity:0.85;">Or call us: <a href="tel:9513135544" style="color:#fff; font-weight:700;">(951) 313-5544</a></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-name">Dental Views</div>
+        <p>Dr. Mohammad Ali Zareh, DDS &mdash; Owner and Clinical Director. A UC Riverside and USC graduate who opened his first practice in 2010 and built it into 12 locations by doing one thing consistently: treating every patient the way they deserve to be treated.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Cleanings &amp; Exams</a></li>
+          <li><a href="#">Dental Implants</a></li>
+          <li><a href="#">Cosmetic Dentistry</a></li>
+          <li><a href="#">Dentures</a></li>
+          <li><a href="#">Pediatric Dentistry</a></li>
+          <li><a href="#">Emergency Care</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">Riverside, CA</a></li>
+          <li><a href="tel:9513135544">(951) 313-5544</a></li>
+          <li><a href="mailto:rp@dentalviews.com">rp@dentalviews.com</a></li>
+          <li><a href="#">All Locations</a></li>
+          <li><a href="#">Book Online</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Dental Views. All rights reserved. | Dr. Mohammad Ali Zareh, DDS | Southern California</p>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

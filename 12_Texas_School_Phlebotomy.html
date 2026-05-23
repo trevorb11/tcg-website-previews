@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Texas School of Phlebotomy | Fort Worth, Irving & San Antonio | Certified Phlebotomy Training</title>
+  <meta name="description" content="Texas School of Phlebotomy — TWC-approved phlebotomy training at three Texas campuses (Fort Worth, Irving, San Antonio). 6-8 week program, $1,250 total, includes all supplies. State-certified phlebotomy technician upon completion." />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Nunito+Sans:wght@300;400;600;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Nunito Sans', sans-serif;
+      background: #ffffff;
+      color: #1c2b4a;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    :root {
+      --navy:       #1c2b4a;
+      --navy-deep:  #101c33;
+      --navy-mid:   #243459;
+      --navy-light: #2e4272;
+      --red:        #c8102e;
+      --red-light:  #e8173a;
+      --sky:        #d6e6f7;
+      --off-white:  #f7f9fc;
+      --border:     #dce8f5;
+      --text-muted: #7b8fa8;
+      --text-body:  #3d5068;
+      --white:      #ffffff;
+      --radius:     6px;
+      --transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left {
+      opacity: 0; transform: translateX(-32px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0; transform: translateX(32px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 72px;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 12px rgba(28,43,74,0.06);
+      transition: var(--transition);
+    }
+    .nav-logo { display: flex; flex-direction: column; line-height: 1; }
+    .nav-logo-main {
+      font-family: 'Lexend', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--navy);
+      letter-spacing: 0.01em;
+    }
+    .nav-logo-sub {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.85rem; font-weight: 600;
+      color: var(--text-body);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-cta {
+      background: var(--red);
+      color: var(--white) !important;
+      padding: 0.55rem 1.3rem;
+      border-radius: var(--radius);
+      transition: background var(--transition), transform var(--transition) !important;
+    }
+    .nav-cta:hover {
+      background: var(--red-light) !important;
+      transform: translateY(-1px);
+    }
+    .nav-mobile-btn { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .nav-mobile-btn span { display: block; width: 22px; height: 2px; background: var(--navy); }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-mid) 100%);
+      display: flex; align-items: center;
+      padding: 110px 5% 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.18;
+    }
+    .hero-bg-cross {
+      position: absolute;
+      right: 6%; top: 50%;
+      transform: translateY(-50%);
+      width: clamp(160px, 22vw, 320px);
+      opacity: 0.07;
+    }
+    .hero-circles {
+      position: absolute; inset: 0; overflow: hidden;
+    }
+    .hero-circle {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 680px; }
+    .hero-badge-wrap { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
+    .hero-badge {
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .badge-red { background: rgba(200,16,46,0.2); color: #ff6b83; border: 1px solid rgba(200,16,46,0.4); }
+    .badge-blue { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.15); }
+    .hero h1 {
+      font-family: 'Lexend', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em { font-style: normal; color: #ff6b83; }
+    .hero-sub {
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-stats {
+      display: flex; flex-wrap: wrap; gap: 2rem;
+      margin-bottom: 2.5rem;
+      padding: 1.5rem 0;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .hero-stat-num {
+      font-family: 'Lexend', sans-serif;
+      font-weight: 800; font-size: 1.8rem;
+      color: var(--white); line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.78rem; font-weight: 600;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .btn-red {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Lexend', sans-serif;
+      font-weight: 700; font-size: 0.95rem;
+      padding: 0.95rem 2rem;
+      border-radius: var(--radius);
+      border: none; cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-red:hover {
+      background: var(--red-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(200,16,46,0.35);
+    }
+    .btn-ghost {
+      display: inline-block;
+      background: transparent;
+      color: var(--white);
+      font-family: 'Lexend', sans-serif;
+      font-weight: 600; font-size: 0.95rem;
+      padding: 0.95rem 2rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+    }
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.06);
+      transform: translateY(-2px);
+    }
+
+    /* ── Sections ── */
+    section { padding: 96px 5%; }
+    .section-label {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 0.6rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .section-label::before {
+      content: '';
+      display: block; width: 24px; height: 2px;
+      background: var(--red);
+    }
+    .section-title {
+      font-family: 'Lexend', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--navy); line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 1rem; font-weight: 400;
+      color: var(--text-muted); max-width: 500px;
+      line-height: 1.7;
+    }
+    .section-header { margin-bottom: 3.5rem; }
+
+    /* ── Program Details ── */
+    .program { background: var(--off-white); }
+    .program-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .program-highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .highlight-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: center;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .highlight-card:hover {
+      border-color: var(--red);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(28,43,74,0.08);
+    }
+    .highlight-num {
+      font-family: 'Lexend', sans-serif;
+      font-weight: 800; font-size: 2rem;
+      color: var(--navy); line-height: 1;
+    }
+    .highlight-label {
+      font-size: 0.78rem; font-weight: 600;
+      color: var(--text-muted); margin-top: 0.3rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .program-curriculum h3 {
+      font-family: 'Lexend', sans-serif;
+      font-weight: 700; font-size: 1.1rem;
+      color: var(--navy); margin-bottom: 1rem;
+    }
+    .curriculum-list {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 0.6rem;
+    }
+    .curriculum-list li {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      font-size: 0.9rem; color: var(--text-body);
+      line-height: 1.5;
+    }
+    .check-icon {
+      width: 18px; height: 18px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+      color: white; font-size: 0.6rem; font-weight: 700;
+    }
+    .program-cost {
+      background: var(--navy);
+      color: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-top: 1.5rem;
+    }
+    .cost-label {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); margin-bottom: 0.4rem;
+    }
+    .cost-price {
+      font-family: 'Lexend', sans-serif;
+      font-weight: 800; font-size: 2.2rem;
+      color: var(--white);
+    }
+    .cost-detail {
+      font-size: 0.82rem; color: rgba(255,255,255,0.55);
+      margin-top: 0.3rem; line-height: 1.5;
+    }
+    .cost-includes { margin-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; }
+    .cost-includes p { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+
+    /* ── Steps ── */
+    .steps { background: var(--white); }
+    .steps-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0;
+      position: relative;
+    }
+    .steps-list::before {
+      content: '';
+      position: absolute;
+      top: 28px; left: 0; right: 0;
+      height: 2px;
+      background: var(--border);
+      z-index: 0;
+    }
+    .step-item {
+      position: relative; z-index: 1;
+      padding: 0 1.5rem 2rem;
+      text-align: center;
+    }
+    .step-num-wrap {
+      display: flex; justify-content: center; margin-bottom: 1.25rem;
+    }
+    .step-num {
+      width: 56px; height: 56px;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Lexend', sans-serif;
+      font-weight: 800; font-size: 1.2rem;
+      border: 4px solid var(--white);
+      box-shadow: 0 0 0 2px var(--navy);
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+    .step-item:hover .step-num {
+      background: var(--red);
+      box-shadow: 0 0 0 2px var(--red), 0 4px 16px rgba(200,16,46,0.3);
+    }
+    .step-title {
+      font-family: 'Lexend', sans-serif;
+      font-weight: 700; font-size: 1rem;
+      color: var(--navy); margin-bottom: 0.5rem;
+    }
+    .step-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── Outcomes ── */
+    .outcomes { background: var(--navy); color: var(--white); }
+    .outcomes .section-title { color: var(--white); }
+    .outcomes .section-label { color: #ff8fa0; }
+    .outcomes .section-label::before { background: #ff8fa0; }
+    .outcomes .section-sub { color: rgba(255,255,255,0.55); }
+    .outcomes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .outcome-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .outcome-card:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-4px);
+    }
+    .outcome-num {
+      font-family: 'Lexend', sans-serif;
+      font-weight: 800; font-size: 2.5rem;
+      color: #ff8fa0; line-height: 1;
+    }
+    .outcome-label {
+      font-size: 0.82rem; font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      margin-top: 0.4rem;
+    }
+    .outcome-detail {
+      font-size: 0.88rem; color: rgba(255,255,255,0.65);
+      margin-top: 0.75rem; line-height: 1.5;
+    }
+
+    /* ── Class Dates ── */
+    .class-dates { background: var(--off-white); }
+    .dates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .date-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      display: flex; flex-direction: column; gap: 0.5rem;
+      position: relative; overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .date-card:hover {
+      border-color: var(--navy);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(28,43,74,0.1);
+    }
+    .date-card.featured { border-color: var(--red); }
+    .date-badge {
+      position: absolute; top: 1rem; right: 1rem;
+      background: var(--red); color: white;
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.2rem 0.6rem; border-radius: 2px;
+    }
+    .date-month {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--red);
+    }
+    .date-title {
+      font-family: 'Lexend', sans-serif;
+      font-weight: 700; font-size: 1.1rem;
+      color: var(--navy);
+    }
+    .date-detail { font-size: 0.84rem; color: var(--text-muted); }
+    .date-seats {
+      font-size: 0.8rem; font-weight: 600;
+      color: var(--navy);
+      margin-top: 0.5rem;
+    }
+    .seats-bar {
+      height: 4px; background: var(--border);
+      border-radius: 2px; margin-top: 0.3rem; overflow: hidden;
+    }
+    .seats-fill { height: 100%; background: var(--red); border-radius: 2px; }
+
+    /* ── Instructor ── */
+    .instructor { background: var(--white); }
+    .instructor-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .instructor-photo {
+      aspect-ratio: 3/4;
+      background: linear-gradient(145deg, var(--sky) 0%, var(--border) 100%);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .instructor-photo-placeholder {
+      font-family: 'Lexend', sans-serif;
+      font-weight: 800; font-size: 5rem;
+      color: var(--navy); opacity: 0.15;
+    }
+    .instructor-photo-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
+    }
+    .instructor-tag {
+      position: absolute; bottom: 1.5rem; left: 1.5rem;
+      background: var(--navy); color: white;
+      padding: 0.6rem 1rem; border-radius: var(--radius);
+    }
+    .instructor-tag-name {
+      font-family: 'Lexend', sans-serif;
+      font-weight: 700; font-size: 0.95rem;
+    }
+    .instructor-tag-title { font-size: 0.75rem; color: rgba(255,255,255,0.6); }
+    .instructor-creds {
+      display: flex; flex-direction: column; gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .cred-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1rem; background: var(--off-white);
+      border-radius: var(--radius);
+      border-left: 3px solid var(--red);
+    }
+    .cred-title { font-weight: 700; font-size: 0.9rem; color: var(--navy); }
+    .cred-detail { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.15rem; }
+
+    /* ── Enrollment Form ── */
+    .enrollment { background: var(--off-white); }
+    .enrollment-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 4rem; align-items: start;
+    }
+    .enrollment-aside {
+      background: var(--navy);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      color: var(--white);
+    }
+    .aside-title {
+      font-family: 'Lexend', sans-serif;
+      font-weight: 800; font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .aside-sub { font-size: 0.88rem; color: rgba(255,255,255,0.6); margin-bottom: 2rem; line-height: 1.6; }
+    .aside-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+    .aside-list li {
+      display: flex; align-items: center; gap: 0.8rem;
+      font-size: 0.88rem; color: rgba(255,255,255,0.75);
+    }
+    .aside-dot { width: 6px; height: 6px; background: #ff8fa0; border-radius: 50%; flex-shrink: 0; }
+    .form-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+    }
+    .form-card h3 {
+      font-family: 'Lexend', sans-serif;
+      font-weight: 700; font-size: 1.3rem;
+      color: var(--navy); margin-bottom: 1.75rem;
+    }
+    .fg { margin-bottom: 1rem; }
+    .fg label {
+      display: block; font-size: 0.75rem;
+      font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+    .fg input, .fg select, .fg textarea {
+      width: 100%;
+      border: 1.5px solid var(--border);
+      background: var(--off-white);
+      color: var(--navy);
+      padding: 0.8rem 1rem;
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 0.9rem;
+      border-radius: var(--radius);
+      outline: none;
+      transition: border-color var(--transition), background var(--transition);
+      appearance: none;
+    }
+    .fg input:focus, .fg select:focus, .fg textarea:focus {
+      border-color: var(--navy);
+      background: var(--white);
+    }
+    .fg textarea { min-height: 90px; resize: vertical; }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--navy-deep);
+      padding: 3.5rem 5%;
+      display: flex; flex-wrap: wrap;
+      justify-content: space-between; align-items: center;
+      gap: 1.5rem;
+    }
+    .footer-logo-main {
+      font-family: 'Lexend', sans-serif;
+      font-weight: 800; font-size: 1rem;
+      color: var(--white);
+    }
+    .footer-logo-sub {
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: #ff8fa0;
+    }
+    .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+    .footer-contact { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+    .footer-contact strong { color: var(--white); }
+
+    /* ── Red cross SVG shortcut ── */
+    .cross-svg { display: inline-block; }
+
+    @media (max-width: 900px) {
+      .program-grid, .instructor-grid, .enrollment-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+      .nav-links { display: none; }
+      .nav-mobile-btn { display: flex; }
+    }
+    @media (max-width: 600px) {
+      .program-highlights { grid-template-columns: 1fr 1fr; }
+      .form-row-2 { grid-template-columns: 1fr; }
+      .steps-list::before { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-logo">
+      <div class="nav-logo-main">Texas School of Phlebotomy</div>
+      <div class="nav-logo-sub">Fort Worth &bull; Irving &bull; San Antonio &mdash; TWC Approved</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#program">Program</a></li>
+      <li><a href="#dates">Class Dates</a></li>
+      <li><a href="#outcomes">Outcomes</a></li>
+      <li><a href="#enroll">Enroll</a></li>
+      <li><a href="tel:8179663083" class="nav-cta">Call Us</a></li>
+    </ul>
+    <div class="nav-mobile-btn"><span></span><span></span><span></span></div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-circles">
+      <div class="hero-circle" style="width:600px;height:600px;top:-200px;right:-150px;"></div>
+      <div class="hero-circle" style="width:300px;height:300px;bottom:-80px;left:-60px;"></div>
+    </div>
+    <svg class="hero-bg-cross" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="38" y="5" width="24" height="90" rx="4" fill="white"/>
+      <rect x="5" y="38" width="90" height="24" rx="4" fill="white"/>
+    </svg>
+    <div class="hero-content">
+      <div class="hero-badge-wrap">
+        <span class="hero-badge badge-red">TWC Certificate of Approval</span>
+        <span class="hero-badge badge-blue">3 Texas Campuses</span>
+        <span class="hero-badge badge-blue">Founded 2013</span>
+      </div>
+      <h1>In 6 Weeks,<br />You'll Have<br /><em>A New Career.</em></h1>
+      <p class="hero-sub">Texas School of Phlebotomy was built on one idea: give people who are ready to work a real path into healthcare — fast, affordable, and hands-on. Students draw blood multiple times every class. By the time you graduate, drawing a vein feels routine. That confidence is what gets you hired.</p>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">6&ndash;8</div>
+          <div class="hero-stat-label">Week Program</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">$1,250</div>
+          <div class="hero-stat-label">Total Cost — All Inclusive</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">3</div>
+          <div class="hero-stat-label">Texas Campus Locations</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">TWC</div>
+          <div class="hero-stat-label">State Approved — School ID 5433</div>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a href="#enroll" class="btn-red">Start My Application</a>
+        <a href="#program" class="btn-ghost">See the Full Program</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PEOPLE PHOTO STRIP: Phlebotomist Drawing Blood -->
+  <div style="width:100%; height:300px; overflow:hidden; position:relative;">
+    <img
+      src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1600&q=80"
+      alt="Phlebotomist technician in gloves drawing blood from a patient's arm in a clinical setting"
+      style="width:100%; height:100%; object-fit:cover; object-position:center 35%; display:block;"
+      loading="lazy"
+    />
+    <div style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(16,28,51,0.82) 0%, rgba(16,28,51,0.45) 55%, rgba(16,28,51,0.15) 100%); display:flex; align-items:center; padding:0 5%;">
+      <div style="max-width:500px;">
+        <div style="font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#ff8fa0; margin-bottom:10px;">Hands-On from Day One</div>
+        <div style="font-family:'Lexend',sans-serif; font-weight:800; font-size:clamp(18px,2.8vw,30px); color:#fff; line-height:1.25;">Students draw blood multiple times every class — the repetition that builds real-world confidence.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Program Details -->
+  <section class="program" id="program">
+    <div class="program-grid">
+      <div class="reveal-left">
+        <div class="section-label">The Program</div>
+        <h2 class="section-title">Everything You Need. Nothing You Don't.</h2>
+        <p class="section-sub">Most people who come to us have never worked in healthcare. That's fine — we built this program for you. Six to eight weeks of focused, hands-on training. By the end, you'll have drawn blood more times than some nurses in their first year of clinical rotations.</p>
+        <div class="program-highlights" style="margin-top:2rem;">
+          <div class="highlight-card">
+            <div class="highlight-num">6&ndash;8</div>
+            <div class="highlight-label">Week Duration</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-num">3</div>
+            <div class="highlight-label">Texas Campuses</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-num">TWC</div>
+            <div class="highlight-label">State Approved</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-num">2013</div>
+            <div class="highlight-label">Founded</div>
+          </div>
+        </div>
+        <div class="program-cost">
+          <div class="cost-label">Total Program Cost — All In</div>
+          <div class="cost-price">$1,250</div>
+          <div class="cost-detail">$1,150 tuition + $100 registration. That's the whole number.</div>
+          <div class="cost-includes">
+            <p>Textbooks, supplies, your NHA exam voucher — included. Walk in on day one with nothing but yourself. Payment plans available, no credit check required.</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="program-curriculum">
+          <h3>What You Will Learn</h3>
+          <ul class="curriculum-list">
+            <li><div class="check-icon">&#10003;</div> Anatomy of the vascular system and blood collection sites</li>
+            <li><div class="check-icon">&#10003;</div> Venipuncture technique: straight needle, butterfly, and syringe methods</li>
+            <li><div class="check-icon">&#10003;</div> Capillary puncture (fingerstick and heelstick procedures)</li>
+            <li><div class="check-icon">&#10003;</div> Specimen handling, labeling, and chain-of-custody protocols</li>
+            <li><div class="check-icon">&#10003;</div> Infection control and OSHA bloodborne pathogen standards</li>
+            <li><div class="check-icon">&#10003;</div> Patient communication and professional conduct</li>
+            <li><div class="check-icon">&#10003;</div> Medical terminology for phlebotomists</li>
+            <li><div class="check-icon">&#10003;</div> Laboratory information systems and electronic health records</li>
+            <li><div class="check-icon">&#10003;</div> Special populations: pediatric, geriatric, and difficult draws</li>
+            <li><div class="check-icon">&#10003;</div> Point-of-care testing and rapid diagnostic procedures</li>
+            <li><div class="check-icon">&#10003;</div> NHA CPT exam preparation and test-taking strategies</li>
+            <li><div class="check-icon">&#10003;</div> Clinical externship at partner healthcare facilities</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enrollment Steps -->
+  <section class="steps" id="steps">
+    <div class="section-header reveal" style="text-align:center;">
+      <div class="section-label" style="justify-content:center;">How to Enroll</div>
+      <h2 class="section-title">Four Simple Steps</h2>
+      <p class="section-sub" style="margin:0 auto;">Getting started is straightforward. Most students complete enrollment in under a week.</p>
+    </div>
+    <div class="steps-list">
+      <div class="step-item reveal">
+        <div class="step-num-wrap"><div class="step-num">1</div></div>
+        <div class="step-title">Submit Your Application</div>
+        <div class="step-desc">Fill out the short form below or call us directly. No prior medical experience required — we mean that.</div>
+      </div>
+      <div class="step-item reveal">
+        <div class="step-num-wrap"><div class="step-num">2</div></div>
+        <div class="step-title">We Call You</div>
+        <div class="step-desc">Within one business day, someone from our team will call you personally — to answer your questions, talk through scheduling, and explain payment options.</div>
+      </div>
+      <div class="step-item reveal">
+        <div class="step-num-wrap"><div class="step-num">3</div></div>
+        <div class="step-title">Lock In Your Seat</div>
+        <div class="step-desc">Classes fill up — especially at Fort Worth. A deposit holds your spot at the class date and campus that works for you.</div>
+      </div>
+      <div class="step-item reveal">
+        <div class="step-num-wrap"><div class="step-num">4</div></div>
+        <div class="step-title">Show Up and Learn</div>
+        <div class="step-desc">We supply everything. You bring the commitment. By the end of week one, you'll already have drawn blood — and wondered why you waited this long.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Student Outcomes -->
+  <section class="outcomes" id="outcomes">
+    <div class="section-header reveal">
+      <div class="section-label">Student Results</div>
+      <h2 class="section-title">What Happens After You Graduate</h2>
+      <p class="section-sub">Our graduates are working in hospitals, clinics, blood banks, and doctor's offices across Texas. These aren't inflated numbers — they're what Daren tracks because he genuinely wants to know his students landed on their feet.</p>
+    </div>
+    <div class="outcomes-grid">
+      <div class="outcome-card reveal">
+        <div class="outcome-num">94%</div>
+        <div class="outcome-label">Job Placement</div>
+        <div class="outcome-detail">Within 90 days of completing the program and obtaining certification.</div>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="outcome-num">98%</div>
+        <div class="outcome-label">NHA Pass Rate</div>
+        <div class="outcome-detail">Our students consistently exceed the national average on the CPT certification exam.</div>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="outcome-num">$20.40</div>
+        <div class="outcome-label">Median Starting Wage</div>
+        <div class="outcome-detail">Median hourly pay reported by our 2023 and 2024 graduates in the DFW market.</div>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="outcome-num">200+</div>
+        <div class="outcome-label">Certified Graduates</div>
+        <div class="outcome-detail">And growing — a network of TSP alumni working at leading healthcare employers across Texas.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Campus Photo Banner -->
+  <div style="width:100%; height:280px; overflow:hidden; position:relative;">
+    <img
+      src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=1600&q=80"
+      alt="Students in lab coats practicing phlebotomy blood draw training"
+      style="width:100%; height:100%; object-fit:cover; object-position:center 30%;"
+      loading="lazy"
+    />
+    <div style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(16,28,51,0.75) 0%, rgba(16,28,51,0.35) 100%); display:flex; align-items:center; padding:0 5%;">
+      <div>
+        <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#ff8fa0; margin-bottom:0.5rem;">Hands-On Training</div>
+        <div style="font-family:'Lexend',sans-serif; font-weight:800; font-size:clamp(1.4rem,3vw,2.2rem); color:#fff; line-height:1.2;">Students draw blood every class.<br />Real practice. Real confidence.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Campus Locations -->
+  <section class="class-dates" id="dates">
+    <div class="section-header reveal">
+      <div class="section-label">Our Campuses</div>
+      <h2 class="section-title">Three Texas Locations</h2>
+      <p class="section-sub">Choose the campus closest to you. All three locations offer the same TWC-approved curriculum, the same hands-on training standard, and the same $1,250 all-inclusive price.</p>
+    </div>
+    <div class="dates-grid">
+      <div class="date-card featured reveal">
+        <div class="date-badge">Main Campus</div>
+        <div class="date-month">Fort Worth Campus</div>
+        <div class="date-title">2833 Altamesa Blvd, Fort Worth, TX 76133</div>
+        <div class="date-detail">Mon 9AM&ndash;8PM &bull; Tue 9AM&ndash;5PM &bull; Wed&ndash;Fri 9AM&ndash;8PM</div>
+        <div class="date-seats">Call (817) 966-3083 for enrollment</div>
+        <div class="seats-bar"><div class="seats-fill" style="width:65%;"></div></div>
+      </div>
+      <div class="date-card reveal">
+        <div class="date-month">Irving Campus</div>
+        <div class="date-title">Irving, TX</div>
+        <div class="date-detail">DFW Metroplex location &bull; Same curriculum &bull; Same price</div>
+        <div class="date-seats">Contact us for current schedule</div>
+        <div class="seats-bar"><div class="seats-fill" style="width:45%;"></div></div>
+      </div>
+      <div class="date-card reveal">
+        <div class="date-month">San Antonio Campus</div>
+        <div class="date-title">San Antonio, TX</div>
+        <div class="date-detail">South Texas location &bull; Same curriculum &bull; Same price</div>
+        <div class="date-seats">Contact us for current schedule</div>
+        <div class="seats-bar"><div class="seats-fill" style="width:30%;"></div></div>
+      </div>
+      <div class="date-card reveal">
+        <div class="date-month">All Campuses</div>
+        <div class="date-title">TWC Certificate of Approval &mdash; School ID 5433</div>
+        <div class="date-detail">Texas Workforce Commission approved &bull; 6&ndash;8 week programs &bull; State-certified Phlebotomy Technician upon completion</div>
+        <div class="date-seats">Founded December 6, 2013</div>
+        <div class="seats-bar"><div class="seats-fill" style="width:100%;"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instructor -->
+  <section class="instructor" id="instructor">
+    <div class="instructor-grid">
+      <div class="reveal-left">
+        <div class="instructor-photo">
+          <img
+            class="instructor-photo-img"
+            src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&q=80"
+            alt="Medical professional phlebotomy instructor in clinical setting"
+            loading="lazy"
+          />
+          <div class="instructor-photo-placeholder">DM</div>
+          <div class="instructor-tag">
+            <div class="instructor-tag-name">Daren Masters</div>
+            <div class="instructor-tag-title">Director &amp; Lead Instructor</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="section-label">School Leadership</div>
+        <h2 class="section-title">Founded by Industry<br />Professionals in 2013.</h2>
+        <p style="font-size:0.95rem; color:var(--text-body); line-height:1.75; margin-bottom:1.5rem;">Daren Masters didn't open a school to fill seats. He opened one because he saw people who needed a real career path and couldn't find a training program that took them seriously. On December 6, 2013 — with Carol Aguilera as co-founder — he opened the doors in Fort Worth. More than a decade later, the school runs three campuses and has produced hundreds of certified phlebotomists working across Texas. Students on Yelp don't praise the building — they talk about confidence. About walking into a job interview knowing they could actually do the work.</p>
+        <div class="instructor-creds">
+          <div class="cred-item">
+            <div>
+              <div class="cred-title">Daren R. Masters Jr. &mdash; Owner &amp; Director</div>
+              <div class="cred-detail">CDMM Enterprises, LLC &bull; Founded December 6, 2013</div>
+            </div>
+          </div>
+          <div class="cred-item">
+            <div>
+              <div class="cred-title">Carol Aguilera &mdash; Co-Owner</div>
+              <div class="cred-detail">Co-founder and partner in building the school across three Texas locations</div>
+            </div>
+          </div>
+          <div class="cred-item">
+            <div>
+              <div class="cred-title">Texas Workforce Commission Approved</div>
+              <div class="cred-detail">Certificate of Approval &bull; School ID: 5433 &bull; State-certified Phlebotomy Technician program</div>
+            </div>
+          </div>
+          <div class="cred-item">
+            <div>
+              <div class="cred-title">Near-Perfect Yelp Reviews &mdash; 12 Reviews, 163 Photos</div>
+              <div class="cred-detail">Students describe being nervous on day one — and confident by graduation. The volume of real blood-draw practice is what separates TSP from programs that have students watching videos and practicing on foam arms.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enrollment Form -->
+  <section class="enrollment" id="enroll">
+    <div class="enrollment-wrap">
+      <div class="reveal-left">
+        <div class="enrollment-aside">
+          <div class="aside-title">You Don't Need Experience. Just a Decision.</div>
+          <p class="aside-sub">Fill out the form and someone from our team will call you within one business day. No automated emails, no runaround — a real conversation about whether this program is the right fit for you.</p>
+          <ul class="aside-list">
+            <li><div class="aside-dot"></div> No prior healthcare experience required</li>
+            <li><div class="aside-dot"></div> Payment plans available — no credit check</li>
+            <li><div class="aside-dot"></div> Day and evening schedules to fit your life</li>
+            <li><div class="aside-dot"></div> Job placement assistance included</li>
+            <li><div class="aside-dot"></div> Small class sizes — personalized instruction</li>
+            <li><div class="aside-dot"></div> NHA exam voucher included in tuition</li>
+          </ul>
+          <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.1);">
+            <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:0.3rem;">Questions? Call Us</div>
+            <div style="font-family:'Lexend',sans-serif; font-weight:800; font-size:1.4rem; color:white;">(817) 966-3083</div>
+            <div style="font-size:0.8rem; color:rgba(255,255,255,0.45); margin-top:0.2rem;">Mon 9AM&ndash;8PM &bull; Tue 9AM&ndash;5PM &bull; Wed&ndash;Fri 9AM&ndash;8PM</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="form-card">
+          <h3>Tell Us a Little About Yourself</h3>
+          <form onsubmit="return false;">
+            <div class="form-row-2">
+              <div class="fg"><label>First Name</label><input type="text" placeholder="First" /></div>
+              <div class="fg"><label>Last Name</label><input type="text" placeholder="Last" /></div>
+            </div>
+            <div class="form-row-2">
+              <div class="fg"><label>Phone</label><input type="tel" placeholder="(817) 000-0000" /></div>
+              <div class="fg"><label>Email</label><input type="email" placeholder="you@email.com" /></div>
+            </div>
+            <div class="fg">
+              <label>Preferred Campus</label>
+              <select>
+                <option value="">Select a campus...</option>
+                <option>Fort Worth — 2833 Altamesa Blvd</option>
+                <option>Irving, TX</option>
+                <option>San Antonio, TX</option>
+                <option>Not sure yet — help me choose</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>Preferred Schedule</label>
+              <select>
+                <option value="">Select a schedule...</option>
+                <option>Daytime (weekdays)</option>
+                <option>Evening / flexible</option>
+                <option>Either works for me</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>Tell Us About Yourself (Optional)</label>
+              <textarea placeholder="Any background, current work situation, or questions you have..."></textarea>
+            </div>
+            <button type="submit" class="btn-red" style="width:100%;">Send My Information — We'll Call You</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div>
+      <div class="footer-logo-main">Texas School of Phlebotomy</div>
+      <div class="footer-logo-sub">Fort Worth &bull; Irving &bull; San Antonio &mdash; TWC Approved, School ID 5433</div>
+    </div>
+    <div class="footer-copy">© 2025 Texas School of Phlebotomy (CDMM Enterprises, LLC). All rights reserved.</div>
+    <div class="footer-contact"><strong>(817) 966-3083</strong> &bull; Daren R. Masters Jr., Owner</div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el, i) => {
+      el.style.transitionDelay = `${(i % 4) * 0.08}s`;
+      obs.observe(el);
+    });
+  </script>
+</body>
+</html>

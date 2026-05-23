@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bode's Precast Inc | Precast Concrete | Everson, WA</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0F172A;
+      --dark: #1E293B;
+      --mid-dark: #2D3F52;
+      --concrete: #64748B;
+      --silver: #94A3B8;
+      --orange: #C2410C;
+      --orange-light: #EA580C;
+      --amber: #D97706;
+      --amber-light: #F59E0B;
+      --off-white: #F8FAFC;
+      --border: #334155;
+    }
+
+    body { font-family: 'Roboto', sans-serif; color: #E2E8F0; background: var(--black); }
+
+    /* NAV */
+    nav {
+      background: var(--dark);
+      padding: 18px 50px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 2px solid var(--orange);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.06em; }
+    .nav-logo span { color: var(--amber); }
+    .nav-sub { font-size: 0.68rem; color: var(--silver); letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-top: 2px; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--silver); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.03em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--amber); }
+    .nav-cta { background: var(--orange); color: #fff; padding: 11px 24px; font-family: 'Oswald', sans-serif; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; border-radius: 3px; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--orange-light); }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&q=80') center/cover no-repeat;
+      filter: brightness(0.18);
+    }
+    .hero-texture {
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,0.02) 60px, rgba(255,255,255,0.02) 61px),
+                        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.02) 60px, rgba(255,255,255,0.02) 61px);
+    }
+    .hero-gradient { position: absolute; inset: 0; background: linear-gradient(to right, rgba(15,23,42,0.75) 50%, transparent); }
+    .hero-content { position: relative; max-width: 1100px; margin: 0 auto; padding: 80px 50px; width: 100%; }
+    .hero-tag { font-family: 'Oswald', sans-serif; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); margin-bottom: 20px; }
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      margin-bottom: 20px;
+      max-width: 720px;
+    }
+    .hero h1 span { color: var(--amber); }
+    .hero-sub { font-size: 1.1rem; color: var(--silver); max-width: 500px; margin-bottom: 42px; line-height: 1.7; font-weight: 300; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 52px; }
+    .btn-amber {
+      background: var(--amber);
+      color: #fff;
+      padding: 15px 32px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-amber:hover { background: var(--amber-light); transform: translateY(-2px); }
+    .btn-outline-light {
+      border: 1.5px solid rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.85);
+      padding: 15px 32px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline-light:hover { border-color: #fff; color: #fff; }
+    .hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+    .hs { border-left: 3px solid var(--orange); padding-left: 16px; }
+    .hs-num { font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700; color: #fff; line-height: 1; }
+    .hs-label { font-size: 0.8rem; color: var(--silver); margin-top: 3px; }
+
+    /* PRODUCTS STRIP -->
+    .products-strip { background: var(--orange); padding: 36px 50px; }
+    .ps-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; }
+    .ps-item { text-align: center; color: #fff; }
+    .ps-icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .ps-name { font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+
+    /* SHARED -->
+    section { padding: 90px 50px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .eyebrow { font-family: 'Oswald', sans-serif; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber); font-weight: 600; margin-bottom: 10px; }
+    .section-title { font-family: 'Oswald', sans-serif; font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 700; text-transform: uppercase; color: #fff; margin-bottom: 16px; letter-spacing: 0.02em; line-height: 1.1; }
+    .section-sub { font-size: 0.97rem; color: var(--silver); line-height: 1.7; max-width: 560px; margin-bottom: 52px; font-weight: 300; }
+
+    /* PRODUCTS GRID -->
+    .products-section { background: var(--dark); }
+    .prod-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1px; background: var(--border); }
+    .prod-card { background: var(--dark); padding: 36px 28px; border-top: 3px solid transparent; transition: border-color 0.3s; }
+    .prod-card:hover { border-top-color: var(--amber); }
+    .prod-icon { font-size: 2.2rem; margin-bottom: 14px; }
+    .prod-card h3 { font-family: 'Oswald', sans-serif; font-size: 1.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: #fff; margin-bottom: 10px; }
+    .prod-card p { font-size: 0.9rem; color: var(--silver); line-height: 1.65; }
+
+    /* ABOUT THE FAMILY -->
+    .about-section { background: var(--black); }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .about-img { border-radius: 4px; overflow: hidden; border: 2px solid var(--border); position: relative; }
+    .about-img img { width: 100%; height: 480px; object-fit: cover; display: block; }
+    .since-badge { position: absolute; bottom: 20px; right: 20px; background: var(--orange); color: #fff; font-family: 'Oswald', sans-serif; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 16px; border-radius: 3px; }
+    .about-text .section-sub { margin-bottom: 28px; }
+    .check-list { list-style: none; margin-bottom: 36px; }
+    .check-list li { padding: 11px 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; color: #CBD5E1; display: flex; align-items: center; gap: 12px; }
+    .check-am { color: var(--amber); font-weight: 700; }
+    .btn-outline-amber { display: inline-block; border: 2px solid var(--amber); color: var(--amber); padding: 13px 28px; font-family: 'Oswald', sans-serif; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 3px; transition: background 0.2s, color 0.2s; }
+    .btn-outline-amber:hover { background: var(--amber); color: #fff; }
+
+    /* PHOTO STRIP -->
+    .photo-strip { display: grid; grid-template-columns: repeat(4, 1fr); height: 260px; }
+    .photo-strip-item { overflow: hidden; }
+    .photo-strip-item img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(20%); transition: transform 0.5s, filter 0.3s; }
+    .photo-strip-item:hover img { transform: scale(1.06); filter: none; }
+
+    /* TESTIMONIALS -->
+    .testimonials-section { background: var(--dark); }
+    .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+    .test-card { border: 1px solid var(--border); border-radius: 4px; padding: 28px; border-left: 4px solid var(--orange); }
+    .test-card p { font-size: 0.93rem; color: #CBD5E1; line-height: 1.75; margin-bottom: 16px; font-style: italic; }
+    .test-author { font-family: 'Oswald', sans-serif; font-size: 0.88rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--amber); }
+
+    /* CTA -->
+    .cta-section { background: var(--amber); padding: 80px 50px; }
+    .cta-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .cta-text h2 { font-family: 'Oswald', sans-serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; text-transform: uppercase; color: var(--black); margin-bottom: 10px; letter-spacing: 0.02em; }
+    .cta-text p { font-size: 1rem; color: rgba(0,0,0,0.7); max-width: 460px; line-height: 1.65; }
+    .btn-dark-oswald { background: var(--black); color: #fff; padding: 16px 36px; font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 3px; transition: background 0.2s, transform 0.2s; white-space: nowrap; }
+    .btn-dark-oswald:hover { background: var(--dark); transform: translateY(-2px); }
+
+    /* FOOTER -->
+    footer { background: #060D16; color: rgba(255,255,255,0.55); padding: 60px 50px 30px; border-top: 2px solid var(--border); }
+    .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-logo { font-family: 'Oswald', sans-serif; font-size: 1.3rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; }
+    .footer-logo span { color: var(--amber); }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.7; }
+    footer h4 { font-family: 'Oswald', sans-serif; color: #fff; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+    footer ul { list-style: none; }
+    footer ul li { margin-bottom: 10px; }
+    footer ul li a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.87rem; transition: color 0.2s; }
+    footer ul li a:hover { color: var(--amber); }
+    .footer-bottom { max-width: 1100px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; font-size: 0.82rem; text-align: center; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 960px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      section { padding: 70px 24px; }
+      .hero-content { padding: 60px 24px; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .photo-strip { grid-template-columns: 1fr 1fr; height: auto; }
+      .photo-strip-item img { height: 180px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .cta-inner { flex-direction: column; }
+    }
+    @media (max-width: 600px) {
+      .photo-strip { grid-template-columns: 1fr; }
+      .hero-stats { flex-direction: column; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div>
+      <div class="nav-logo">Bode's <span>Precast</span></div>
+      <div class="nav-sub">Manufacturing Since 1970 &mdash; Everson, WA</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Products</a></li>
+      <li><a href="#">Septic Systems</a></li>
+      <li><a href="#">Commercial &amp; Ag</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <a href="#" class="nav-cta">Request a Quote</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-texture"></div>
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <p class="hero-tag">Precast Concrete &mdash; Everson, Washington &mdash; Family Owned Since 1970</p>
+      <h1>Built to Last.<br><span>The Heeringa</span> Family Standard.</h1>
+      <p class="hero-sub">The Heeringa family has been pouring precast concrete in the Pacific Northwest since 1970. Rick Heeringa brings over 40 years of hands-on experience to every product that leaves our Everson facility &mdash; septic tanks, retaining walls, agricultural structures, and custom work for contractors and developers across Washington and Oregon.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-amber">Talk to our team about your project</a>
+        <a href="#" class="btn-outline-light">View Products</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hs"><div class="hs-num">1970</div><div class="hs-label">Manufacturing Since</div></div>
+        <div class="hs"><div class="hs-num">55+</div><div class="hs-label">Years Family Owned</div></div>
+        <div class="hs"><div class="hs-num">2,250</div><div class="hs-label">Gal Max Tank Size</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS STRIP -->
+  <div class="products-strip">
+    <div class="ps-inner">
+      <div class="ps-item"><div class="ps-icon">&#128167;</div><div class="ps-name">Septic Tanks</div></div>
+      <div class="ps-item"><div class="ps-icon">&#128692;</div><div class="ps-name">Pump Tanks</div></div>
+      <div class="ps-item"><div class="ps-icon">&#127807;</div><div class="ps-name">Agricultural</div></div>
+      <div class="ps-item"><div class="ps-icon">&#127959;</div><div class="ps-name">Retaining Walls</div></div>
+      <div class="ps-item"><div class="ps-icon">&#128196;</div><div class="ps-name">Tilt-Up Panels</div></div>
+      <div class="ps-item"><div class="ps-icon">&#9968;</div><div class="ps-name">Precast Steps</div></div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section class="products-section">
+    <div class="container">
+      <p class="eyebrow reveal">Our Products</p>
+      <h2 class="section-title reveal">Precast Concrete for Every Application</h2>
+      <p class="section-sub reveal">Everything we make comes out of our Everson facility, poured to spec and ready to perform for decades. If you have a custom requirement, talk to Rick directly &mdash; we have handled unusual projects before and we like a challenge.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card reveal">
+        <div class="prod-icon">&#128167;</div>
+        <h3>Septic Tanks</h3>
+        <p>Residential and commercial septic tanks in multiple sizes. Built to Washington State standards and available for immediate delivery throughout the Pacific Northwest.</p>
+      </div>
+      <div class="prod-card reveal">
+        <div class="prod-icon">&#128692;</div>
+        <h3>Pump Tanks</h3>
+        <p>Durable precast pump tanks for systems requiring effluent pumping. Custom configurations available for complex site requirements.</p>
+      </div>
+      <div class="prod-card reveal">
+        <div class="prod-icon">&#128204;</div>
+        <h3>Water Storage Tanks</h3>
+        <p>Custom water storage solutions up to 2,250 gallons. Ideal for agricultural, residential, and commercial water storage applications.</p>
+      </div>
+      <div class="prod-card reveal">
+        <div class="prod-icon">&#127807;</div>
+        <h3>Agricultural Products</h3>
+        <p>Precast concrete products designed for the demands of Pacific Northwest agriculture. Feeding pads, bunkers, and custom agricultural structures.</p>
+      </div>
+      <div class="prod-card reveal">
+        <div class="prod-icon">&#9968;</div>
+        <h3>Retaining Walls</h3>
+        <p>Modular precast retaining wall systems for residential landscaping, commercial grading, and highway applications.</p>
+      </div>
+      <div class="prod-card reveal">
+        <div class="prod-icon">&#127959;</div>
+        <h3>Tilt-Up Wall Panels</h3>
+        <p>Precast tilt-up wall panels for commercial and industrial construction. Precision-manufactured for quick, efficient installation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-img reveal">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80" alt="Precast concrete manufacturing" />
+          <div class="since-badge">Est. 1970</div>
+        </div>
+        <div class="reveal">
+          <p class="eyebrow">The Heeringa Family</p>
+          <h2 class="section-title">55 years of concrete. The same family. The same standard.</h2>
+          <p class="section-sub">Bode's Precast started manufacturing in Lynden, Washington in 1970. Rick Heeringa grew up in the concrete business &mdash; ready-mix first, then precast &mdash; and has been at it for over 40 years. In 2010 he moved the operation to Everson, where every product is still made by hand by a team that cares about what it is building. When you call Bode's, you are likely talking to Rick. He knows the products inside out and will tell you straight what you need for the job.</p>
+          <ul class="check-list">
+            <li><span class="check-am">&#9632;</span> Family-owned and operated since 1970 &mdash; Lynden, then Everson, WA</li>
+            <li><span class="check-am">&#9632;</span> Rick Heeringa: 40+ years in ready-mix and precast concrete</li>
+            <li><span class="check-am">&#9632;</span> Manufacturing facility at 1861 E Pole Rd, Everson, WA</li>
+            <li><span class="check-am">&#9632;</span> Residential, commercial, and agricultural products</li>
+            <li><span class="check-am">&#9632;</span> Custom tank and product fabrication &mdash; call Rick to discuss</li>
+          </ul>
+          <a href="tel:3603543912" class="btn-outline-amber">Call Rick: (360) 354-3912</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO STRIP -->
+  <div class="photo-strip">
+    <div class="photo-strip-item">
+      <img src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=600&q=80" alt="Construction crew" />
+    </div>
+    <div class="photo-strip-item">
+      <img src="https://images.unsplash.com/photo-1591955506264-3f5a6834570a?w=600&q=80" alt="Pacific Northwest farmland" />
+    </div>
+    <div class="photo-strip-item">
+      <img src="https://images.unsplash.com/photo-1607400201515-c2c41c07d307?w=600&q=80" alt="Concrete construction" />
+    </div>
+    <div class="photo-strip-item">
+      <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&q=80" alt="Manufacturing facility" />
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="container">
+      <p class="eyebrow reveal" style="text-align:center;">Customer Feedback</p>
+      <h2 class="section-title reveal" style="text-align:center; max-width:500px; margin:0 auto 48px;">What Contractors and Builders Say</h2>
+      <div class="test-grid">
+        <div class="test-card reveal">
+          <p>"I have been calling Bode's for over 15 years. The tanks are right, the delivery is on time, and when I have a question Rick picks up the phone. That kind of reliability is hard to find in this industry. I do not bother shopping around anymore."</p>
+          <div class="test-author">Dave S. &mdash; Septic Contractor, Whatcom County, WA</div>
+        </div>
+        <div class="test-card reveal">
+          <p>"We had a tricky site where nothing standard would fit. Rick got on the phone, asked the right questions, and engineered a custom solution that worked perfectly. The product arrived on schedule and to the millimeter. Bode's is the only precast call I make now."</p>
+          <div class="test-author">Tom L. &mdash; General Contractor, Skagit County, WA</div>
+        </div>
+        <div class="test-card reveal">
+          <p>"The bunker walls we ordered are still standing strong after four winters. Way better than anything we sourced out of state, and Rick was easy to work with from the first call. Good to support a Whatcom County business that actually delivers."</p>
+          <div class="test-author">Pete M. &mdash; Farm Owner, Whatcom County, WA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h2>Talk to our team about your project</h2>
+        <p>Standard product or something custom &mdash; Rick has seen most situations and will give you a straight answer on what you need and what it will cost. Call, email, or request a quote online.</p>
+        <div style="margin-top:16px; font-size:1rem; font-family:'Oswald',sans-serif; letter-spacing:0.06em;">(360) 354-3912 &nbsp;|&nbsp; rick@bodesprecast.com</div>
+      </div>
+      <a href="tel:3603543912" class="btn-dark-oswald">Call Rick Directly</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Bode's <span>Precast</span></div>
+        <p>Family-owned precast concrete manufacturer serving the Pacific Northwest since 1970. Septic systems, tanks, retaining walls, agricultural products, and more from our facility in Everson, WA.</p>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#">Septic Tanks</a></li>
+          <li><a href="#">Pump Tanks</a></li>
+          <li><a href="#">Water Storage</a></li>
+          <li><a href="#">Agricultural</a></li>
+          <li><a href="#">Retaining Walls</a></li>
+          <li><a href="#">Tilt-Up Panels</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">1861 E Pole Rd, Everson, WA 98247</a></li>
+          <li><a href="tel:3603543912">(360) 354-3912</a></li>
+          <li><a href="mailto:rick@bodesprecast.com">rick@bodesprecast.com</a></li>
+          <li><a href="#">Request a Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Bode's Precast, Inc. All rights reserved. | Everson, Washington | Manufacturing Since 1970</p>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

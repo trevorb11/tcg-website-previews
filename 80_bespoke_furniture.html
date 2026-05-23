@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bespoke Furniture Inc — Custom Luxury Furniture, Los Angeles</title>
+  <meta name="description" content="Bespoke Furniture Inc crafts premium custom furniture in Los Angeles. From private residences to luxury hotels, our artisans create heirloom-quality pieces built to last generations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ebony: #1C1208;
+      --ebony-mid: #2A1C0E;
+      --ebony-light: #3D2A14;
+      --ivory: #F5ECD7;
+      --ivory-light: #FDF9F3;
+      --cream: #FAF6EE;
+      --cognac: #A0522D;
+      --cognac-light: #B5683E;
+      --forest: #2C3E2D;
+      --forest-light: #3A5A3C;
+      --leather: #6B3A2A;
+      --gold: #C4992A;
+      --gold-light: #D4AA3A;
+      --warm-white: #FEFCF8;
+      --text-dark: #1C1208;
+      --text-mid: #4A3A28;
+      --text-light: #8A7A68;
+      --border: #E8DDD0;
+      --glass-bg: rgba(253, 249, 243, 0.65);
+      --glass-border: rgba(196, 153, 42, 0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Libre Baskerville', serif;
+      color: var(--text-dark);
+      background: var(--warm-white);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ===== PRELOADER ===== */
+    .preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--ebony);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    .preloader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
+    .preloader-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--ivory);
+      letter-spacing: 0.06em;
+      margin-bottom: 2rem;
+    }
+    .preloader-logo span { color: var(--gold); }
+    .preloader-bar {
+      width: 120px;
+      height: 2px;
+      background: rgba(245,236,215,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .preloader-bar::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: var(--gold);
+      animation: preloaderSlide 1.2s ease-in-out infinite;
+      transform-origin: left;
+    }
+    @keyframes preloaderSlide {
+      0% { transform: translateX(-100%); }
+      50% { transform: translateX(0%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(28,18,8,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 0 2.5rem;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(28,18,8,0.98);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.4rem;
+      color: var(--ivory);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a {
+      color: rgba(245,236,215,0.7);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: transparent !important;
+      border: 1px solid var(--gold) !important;
+      color: var(--gold) !important;
+      padding: 0.5rem 1.3rem !important;
+      border-radius: 2px !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
+      font-size: 0.72rem !important;
+      transition: all 0.3s !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--gold) !important; color: var(--ebony) !important; }
+
+    /* Mobile menu toggle */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 5px;
+      z-index: 1001;
+    }
+    .nav-toggle span {
+      width: 24px;
+      height: 1.5px;
+      background: var(--ivory);
+      transition: all 0.3s;
+      display: block;
+    }
+    .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--ebony);
+      position: relative;
+      overflow: hidden;
+      padding: 100px 2.5rem 60px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1920&q=85') center/cover no-repeat;
+      opacity: 0.25;
+      transform: scale(1.1);
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1.1); }
+      to { transform: scale(1.0); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, rgba(28,18,8,0.95) 0%, rgba(28,18,8,0.82) 45%, rgba(42,28,14,0.55) 100%);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(to top, var(--warm-white), transparent);
+      z-index: 3;
+    }
+
+    /* Decorative grain texture overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.5;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+    }
+
+    .hero-line {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease 0.3s forwards;
+    }
+
+    .hero-line-bar { width: 40px; height: 1px; background: var(--gold); }
+
+    .hero-line span {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6.5vw, 5.5rem);
+      font-weight: 600;
+      color: var(--ivory);
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.01em;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease 0.5s forwards;
+    }
+
+    .hero h1 em { font-style: italic; color: var(--gold); }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(245,236,215,0.72);
+      margin-bottom: 2.5rem;
+      line-height: 1.9;
+      max-width: 540px;
+      font-style: italic;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease 0.7s forwards;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease 0.9s forwards;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--ebony);
+      padding: 0.95rem 2.4rem;
+      border-radius: 2px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: 'Libre Baskerville', serif;
+      transition: all 0.3s ease;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transition: left 0.5s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(196,153,42,0.3); }
+    .btn-primary:hover::before { left: 100%; }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(245,236,215,0.35);
+      color: var(--ivory);
+      padding: 0.95rem 2.4rem;
+      border-radius: 2px;
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+    .hero-descriptor {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(245,236,215,0.08);
+      padding-top: 2rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease 1.1s forwards;
+    }
+
+    .descriptor-item {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(245,236,215,0.45);
+    }
+
+    .descriptor-item strong {
+      display: block;
+      color: rgba(245,236,215,0.8);
+      font-size: 0.78rem;
+      margin-bottom: 0.2rem;
+    }
+
+    /* ===== ORGANIC SHAPE DIVIDER ===== */
+    .divider-wave {
+      position: relative;
+      overflow: hidden;
+      line-height: 0;
+      margin-top: -1px;
+    }
+    .divider-wave svg {
+      display: block;
+      width: 100%;
+      height: 60px;
+    }
+
+    /* ===== STATS BAR ===== */
+    .stats-bar {
+      background: var(--ebony);
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .stats-bar::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C4992A' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.6;
+    }
+    .stats-grid {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      position: relative;
+    }
+    .stat-item {
+      padding: 3.5rem 2rem;
+      text-align: center;
+      border-right: 1px solid rgba(245,236,215,0.06);
+      position: relative;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+    .stat-suffix {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--gold);
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(245,236,215,0.45);
+      margin-top: 0.3rem;
+    }
+    .stat-sublabel {
+      font-size: 0.78rem;
+      color: rgba(245,236,215,0.3);
+      font-style: italic;
+      margin-top: 0.3rem;
+    }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 100px 2.5rem; }
+    .container { max-width: 1120px; margin: 0 auto; }
+
+    .section-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-eyebrow-bar { width: 30px; height: 1px; background: var(--gold); }
+
+    .section-eyebrow span {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cognac);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      color: var(--ebony);
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.01em;
+    }
+
+    .section-lead {
+      font-size: 1rem;
+      color: var(--text-mid);
+      max-width: 580px;
+      line-height: 1.9;
+      font-style: italic;
+    }
+
+    /* ===== WHAT WE CREATE ===== */
+    .create { background: var(--ivory-light); position: relative; }
+
+    .create-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .create-item {
+      padding: 2.5rem 2rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .create-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--cognac));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .create-item:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(28,18,8,0.08); }
+    .create-item:hover::before { transform: scaleX(1); }
+
+    .create-item-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      color: rgba(196,153,42,0.18);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .create-item h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--ebony);
+      margin-bottom: 0.6rem;
+    }
+
+    .create-item p { color: var(--text-mid); font-size: 0.88rem; line-height: 1.8; }
+
+    /* ===== WHO WE WORK WITH ===== */
+    .clients { background: var(--ebony); position: relative; overflow: hidden; }
+    .clients::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1600&q=60') center/cover no-repeat;
+      opacity: 0.06;
+    }
+    .clients .section-title { color: var(--ivory); }
+    .clients .section-eyebrow span { color: var(--gold); }
+
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    .client-tile {
+      padding: 2.5rem 2rem;
+      background: rgba(245,236,215,0.03);
+      border: 1px solid rgba(245,236,215,0.08);
+      border-radius: 8px;
+      transition: all 0.4s;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .client-tile:hover { background: rgba(196,153,42,0.06); border-color: rgba(196,153,42,0.25); transform: translateY(-4px); }
+
+    .client-tile h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--ivory);
+      margin-bottom: 0.6rem;
+    }
+
+    .client-tile p { color: rgba(245,236,215,0.6); font-size: 0.88rem; line-height: 1.8; }
+
+    /* ===== CAPABILITIES ===== */
+    .capabilities { background: var(--warm-white); }
+
+    .capabilities-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .capabilities-image {
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(28,18,8,0.18);
+      position: relative;
+    }
+    .capabilities-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(196,153,42,0.15);
+      border-radius: 6px;
+      pointer-events: none;
+    }
+    .capabilities-image img { width: 100%; height: 520px; object-fit: cover; display: block; transition: transform 0.8s ease; }
+    .capabilities-image:hover img { transform: scale(1.03); }
+
+    .capabilities-text p { color: var(--text-mid); font-size: 0.97rem; line-height: 1.9; margin-bottom: 1rem; }
+
+    .cap-list { margin-top: 2rem; }
+
+    .cap-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: padding-left 0.3s;
+    }
+    .cap-item:hover { padding-left: 0.5rem; }
+    .cap-item:last-child { border-bottom: none; }
+
+    .cap-mark {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    .cap-item p { color: var(--text-mid); font-size: 0.9rem; line-height: 1.7; }
+
+    /* ===== PROCESS ===== */
+    .process {
+      background: var(--ivory);
+      position: relative;
+      overflow: hidden;
+    }
+    .process::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23C4992A' fill-opacity='0.025' fill-rule='evenodd'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .process-header { text-align: center; margin-bottom: 0; }
+    .process-header .section-eyebrow { justify-content: center; }
+    .process-header .section-lead { margin: 0 auto; }
+
+    .process-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 3.5rem;
+      position: relative;
+    }
+    .process-timeline::before {
+      content: '';
+      position: absolute;
+      top: 52px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--cognac), var(--gold));
+      opacity: 0.3;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 0 1.5rem;
+      position: relative;
+    }
+
+    .process-step-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+      background: var(--warm-white);
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      transition: all 0.4s;
+    }
+    .process-step:hover .process-step-icon {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 6px rgba(196,153,42,0.1);
+      transform: scale(1.08);
+    }
+    .process-step-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--cognac);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .process-step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .process-step h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--ebony);
+      margin-bottom: 0.6rem;
+    }
+
+    .process-step p { color: var(--text-mid); font-size: 0.85rem; line-height: 1.8; }
+
+    /* ===== PORTFOLIO ===== */
+    .portfolio { background: var(--warm-white); }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+    .portfolio-grid .portfolio-item:nth-child(1) { grid-row: span 2; }
+    .portfolio-grid .portfolio-item:nth-child(1) img { height: 100%; min-height: 580px; }
+
+    .portfolio-item {
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+
+    .portfolio-item:hover img { transform: scale(1.08); }
+
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(28,18,8,0.9) 0%, rgba(28,18,8,0.3) 40%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem;
+    }
+    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+
+    .portfolio-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(28,18,8,0.85), transparent);
+      padding: 1.5rem 1.2rem 1rem;
+      color: var(--ivory);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      transform: translateY(0);
+      transition: transform 0.4s;
+    }
+    .portfolio-label small {
+      display: block;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.7rem;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      background: var(--ebony);
+      position: relative;
+      overflow: hidden;
+    }
+    .testimonials::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1600&q=60') center/cover no-repeat;
+      opacity: 0.04;
+    }
+    .testimonials .section-title { color: var(--ivory); }
+    .testimonials .section-eyebrow span { color: var(--gold); }
+
+    .testimonials-header { text-align: center; position: relative; }
+    .testimonials-header .section-eyebrow { justify-content: center; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    .testimonial-card {
+      background: rgba(245,236,215,0.04);
+      border: 1px solid rgba(245,236,215,0.08);
+      border-radius: 8px;
+      padding: 2.5rem 2rem;
+      transition: all 0.4s;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      position: relative;
+    }
+    .testimonial-card:hover { border-color: rgba(196,153,42,0.25); transform: translateY(-4px); }
+
+    .testimonial-quote-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      color: var(--gold);
+      opacity: 0.3;
+      line-height: 1;
+      margin-bottom: -0.5rem;
+    }
+
+    .testimonial-card blockquote {
+      color: rgba(245,236,215,0.75);
+      font-size: 0.92rem;
+      line-height: 1.9;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      border-top: 1px solid rgba(245,236,215,0.06);
+      padding-top: 1.2rem;
+    }
+
+    .testimonial-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--cognac));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ivory);
+    }
+
+    .testimonial-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ivory);
+    }
+    .testimonial-role {
+      font-size: 0.72rem;
+      color: rgba(245,236,215,0.4);
+      letter-spacing: 0.05em;
+    }
+
+    .testimonial-stars {
+      color: var(--gold);
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.8rem;
+    }
+
+    /* ===== ABOUT DORON ===== */
+    .about { background: var(--ivory-light); position: relative; }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+    .about-image img { width: 100%; height: 520px; object-fit: cover; display: block; transition: transform 0.8s ease; }
+    .about-image:hover img { transform: scale(1.03); }
+
+    .about-image-caption {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      background: rgba(28,18,8,0.8);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: var(--ivory);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      font-style: italic;
+      padding: 0.8rem 1.2rem;
+      letter-spacing: 0.04em;
+      border-left: 2px solid var(--gold);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .about-text p { color: var(--text-mid); font-size: 0.97rem; line-height: 1.95; margin-bottom: 1rem; }
+
+    .about-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--ebony);
+      margin-top: 2rem !important;
+      margin-bottom: 0.2rem !important;
+    }
+
+    .about-title { color: var(--cognac) !important; font-size: 0.82rem !important; letter-spacing: 0.08em; text-transform: uppercase; }
+
+    /* ===== WHY BESPOKE ===== */
+    .why-bespoke {
+      background: var(--warm-white);
+      position: relative;
+    }
+    .why-bespoke-header { text-align: center; }
+    .why-bespoke-header .section-eyebrow { justify-content: center; }
+    .why-bespoke-header .section-lead { margin: 0 auto; }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .why-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: all 0.4s;
+    }
+    .why-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(28,18,8,0.08); }
+    .why-card-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1.2rem;
+      background: rgba(196,153,42,0.08);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .why-card-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--cognac);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .why-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--ebony);
+      margin-bottom: 0.6rem;
+    }
+    .why-card p { color: var(--text-mid); font-size: 0.88rem; line-height: 1.8; }
+
+    /* ===== CONTACT ===== */
+    .contact { background: var(--ebony); position: relative; overflow: hidden; }
+    .contact::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -30%;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,153,42,0.06), transparent 70%);
+      pointer-events: none;
+    }
+    .contact .section-title { color: var(--ivory); }
+    .contact .section-eyebrow span { color: var(--gold); }
+    .contact .section-eyebrow-bar { background: var(--gold); }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    .contact-info h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--ivory);
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p { color: rgba(245,236,215,0.65); font-size: 0.95rem; line-height: 1.9; margin-bottom: 1.5rem; font-style: italic; }
+
+    .contact-detail { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; }
+    .contact-detail-icon { width: 18px; height: 18px; fill: var(--gold); flex-shrink: 0; margin-top: 3px; }
+    .contact-detail p { color: rgba(245,236,215,0.65) !important; font-size: 0.92rem !important; margin-bottom: 0 !important; font-style: normal !important; }
+    .contact-detail a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
+    .contact-detail a:hover { color: var(--gold-light); }
+
+    .contact-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(196,153,42,0.08);
+      border: 1px solid rgba(196,153,42,0.15);
+      border-radius: 4px;
+      padding: 0.7rem 1.2rem;
+      margin-top: 1rem;
+    }
+    .contact-badge svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+    .contact-badge span { color: rgba(245,236,215,0.6); font-size: 0.78rem; letter-spacing: 0.06em; }
+
+    .contact-form-wrapper {
+      background: rgba(245,236,215,0.03);
+      border: 1px solid rgba(245,236,215,0.08);
+      border-radius: 8px;
+      padding: 2.5rem;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .contact-form-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--ivory);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-form label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(245,236,215,0.45);
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      background: rgba(245,236,215,0.04);
+      border: 1px solid rgba(245,236,215,0.1);
+      border-radius: 4px;
+      padding: 0.85rem 1rem;
+      color: var(--ivory);
+      font-size: 0.9rem;
+      font-family: 'Libre Baskerville', serif;
+      margin-bottom: 1.2rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(245,236,215,0.25); font-style: italic; }
+    .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(196,153,42,0.08);
+    }
+    .contact-form select option { background: var(--ebony); }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--ebony);
+      border: none;
+      padding: 1rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: 'Libre Baskerville', serif;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-submit::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transition: left 0.5s;
+    }
+    .btn-submit:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(196,153,42,0.3); }
+    .btn-submit:hover::before { left: 100%; }
+
+    /* ===== HANDCRAFTED BANNER ===== */
+    .handcrafted-banner {
+      background: var(--forest);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .handcrafted-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .handcrafted-banner p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: rgba(245,236,215,0.7);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      position: relative;
+    }
+    .handcrafted-banner p span { color: var(--gold); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #0E0904;
+      padding: 4rem 2.5rem 2rem;
+      color: rgba(245,236,215,0.38);
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(245,236,215,0.07);
+    }
+
+    .footer-brand p { margin-top: 0.8rem; line-height: 1.8; max-width: 320px; }
+
+    .footer-col h4 {
+      color: var(--ivory);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.5rem; }
+    .footer-col ul a { color: rgba(245,236,215,0.38); text-decoration: none; transition: color 0.3s; font-size: 0.85rem; }
+    .footer-col ul a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .footer-handcrafted {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: rgba(245,236,215,0.3);
+      font-style: italic;
+    }
+    .footer-handcrafted svg { width: 14px; height: 14px; stroke: var(--gold); fill: none; stroke-width: 1.5; opacity: 0.6; }
+
+    /* ===== STICKY MOBILE CTA ===== */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      padding: 0.8rem 1rem;
+      background: rgba(28,18,8,0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(196,153,42,0.2);
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+    .sticky-cta.visible { transform: translateY(0); }
+    .sticky-cta a {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: var(--gold);
+      color: var(--ebony);
+      padding: 0.85rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: 'Libre Baskerville', serif;
+    }
+
+    /* ===== REVEAL ANIMATIONS ===== */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid .testimonial-card:last-child { grid-column: span 2; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .process-timeline { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+      .process-timeline::before { display: none; }
+    }
+
+    @media (max-width: 900px) {
+      .capabilities-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .portfolio-grid .portfolio-item:nth-child(1) { grid-row: span 1; }
+      .portfolio-grid .portfolio-item:nth-child(1) img { min-height: 280px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 76px;
+        left: 0;
+        right: 0;
+        background: rgba(28,18,8,0.98);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        border-top: 1px solid rgba(245,236,215,0.06);
+      }
+      .nav-links.mobile-open { display: flex; }
+      .nav-toggle { display: flex; }
+      section { padding: 70px 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .create-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .testimonials-grid .testimonial-card:last-child { grid-column: span 1; }
+      .why-grid { grid-template-columns: 1fr; }
+      .process-timeline { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stat-number { font-size: 2.8rem; }
+      .sticky-cta { display: block; }
+      .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); }
+      .contact-form-wrapper { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PRELOADER -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-logo">Bespoke <span>Furniture</span></div>
+    <div class="preloader-bar"></div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">Bespoke <span>Furniture</span></a>
+    <div class="nav-toggle" id="navToggle" onclick="this.classList.toggle('active'); document.getElementById('navLinks').classList.toggle('mobile-open');">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#create">What We Create</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Request a Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-line">
+        <div class="hero-line-bar"></div>
+        <span>Custom Furniture Manufacturing -- Los Angeles, CA</span>
+      </div>
+      <h1>Furniture Built to<br/>Last <em>Generations</em></h1>
+      <p>Bespoke Furniture Inc crafts premium custom pieces in our Los Angeles workshop -- from private residences to luxury hotels -- with artisans averaging nearly fifteen years of dedicated craftsmanship.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Request a Quote</a>
+        <a href="#portfolio" class="btn-outline">View Portfolio</a>
+      </div>
+      <div class="hero-descriptor">
+        <div class="descriptor-item"><strong>In-House Manufacturing</strong>Full Los Angeles Workshop</div>
+        <div class="descriptor-item"><strong>~15 Years</strong>Avg. Artisan Tenure</div>
+        <div class="descriptor-item"><strong>Hospitality &amp; Residential</strong>Premium Custom Furniture</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div><span class="stat-number" data-target="2400">0</span><span class="stat-suffix">+</span></div>
+        <div class="stat-label">Pieces Crafted</div>
+        <div class="stat-sublabel">and counting</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div><span class="stat-number" data-target="15">0</span><span class="stat-suffix">+</span></div>
+        <div class="stat-label">Years of Woodworking</div>
+        <div class="stat-sublabel">avg. artisan tenure</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div><span class="stat-number" data-target="30">0</span><span class="stat-suffix">+</span></div>
+        <div class="stat-label">Wood Species Used</div>
+        <div class="stat-sublabel">sourced sustainably</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div><span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span></div>
+        <div class="stat-label">In-House Craftsmanship</div>
+        <div class="stat-sublabel">no outsourcing</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT WE CREATE -->
+  <section class="create" id="create">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-eyebrow"><div class="section-eyebrow-bar"></div><span>What We Create</span></div>
+        <h2 class="section-title">Every Space Has a Story.<br/>We Help You Tell It.</h2>
+        <p class="section-lead">No two projects at Bespoke Furniture are alike. Every piece we build is designed and crafted specifically for the space and the person it's made for.</p>
+      </div>
+      <div class="create-grid">
+        <div class="create-item reveal reveal-delay-1">
+          <div class="create-item-num">01</div>
+          <h3>Custom Residential</h3>
+          <p>Sofas, beds, dining tables, case goods, shelving, and statement pieces made precisely for your home and your vision. No catalog, no compromise.</p>
+        </div>
+        <div class="create-item reveal reveal-delay-2">
+          <div class="create-item-num">02</div>
+          <h3>Hospitality FF&amp;E</h3>
+          <p>Full furniture, fixtures, and equipment programs for luxury hotels, resorts, and restaurants. We understand hospitality timelines, durability requirements, and brand standards.</p>
+        </div>
+        <div class="create-item reveal reveal-delay-3">
+          <div class="create-item-num">03</div>
+          <h3>Restaurant &amp; Dining</h3>
+          <p>Custom dining chairs, banquettes, tables, and bar elements built to be beautiful and built to last through years of commercial use.</p>
+        </div>
+        <div class="create-item reveal reveal-delay-4">
+          <div class="create-item-num">04</div>
+          <h3>Commercial &amp; Office</h3>
+          <p>Branded, distinctive workspace furniture that says something about who you are -- and that holds up to the demands of daily commercial life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HANDCRAFTED BANNER -->
+  <div class="handcrafted-banner">
+    <p><span>Handcrafted</span> in Vernon, California -- Serving Clients Nationwide &amp; Internationally</p>
+  </div>
+
+  <!-- WHO WE WORK WITH -->
+  <section class="clients" id="clients">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-eyebrow"><div class="section-eyebrow-bar"></div><span>Who We Work With</span></div>
+        <h2 class="section-title">The Clients Who Come to Bespoke</h2>
+        <p class="section-lead" style="color:rgba(245,236,215,0.6);">Our work finds its way into the most considered spaces in Los Angeles and beyond. We work with clients who take the furniture in their lives seriously.</p>
+      </div>
+      <div class="clients-grid">
+        <div class="client-tile reveal reveal-delay-1">
+          <h3>Private Homeowners</h3>
+          <p>Discerning homeowners who want signature pieces made exactly for them -- not selected from a showroom floor but designed and built for a specific room and life.</p>
+        </div>
+        <div class="client-tile reveal reveal-delay-2">
+          <h3>Interior Designers</h3>
+          <p>Design professionals who need a manufacturing partner they can trust to execute complex designs with precision, communicate reliably, and deliver on time.</p>
+        </div>
+        <div class="client-tile reveal reveal-delay-3">
+          <h3>Luxury Hotels &amp; Resorts</h3>
+          <p>Properties that demand furniture which reflects their brand, survives commercial use, and impresses guests -- from lobby statement pieces to guestroom collections.</p>
+        </div>
+        <div class="client-tile reveal reveal-delay-4">
+          <h3>Restaurants &amp; Hospitality</h3>
+          <p>Restaurant owners and operators who understand that the furniture is part of the experience -- and who want pieces that look beautiful from opening night to years later.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="capabilities" id="capabilities">
+    <div class="container">
+      <div class="capabilities-inner">
+        <div class="capabilities-image reveal-left">
+          <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=800&q=80" alt="Bespoke Furniture craftsmanship workshop" />
+        </div>
+        <div class="reveal-right">
+          <div class="section-eyebrow"><div class="section-eyebrow-bar"></div><span>Our Capabilities</span></div>
+          <h2 class="section-title">No Detail Beyond<br/>Our Range</h2>
+          <p style="color:var(--text-mid); font-size:0.97rem; line-height:1.9; margin-bottom:1rem;">What makes Bespoke Furniture different from other custom manufacturers is not just the quality of the work -- it's the range. We have built pieces of extreme simplicity and extreme complexity, and we bring the same commitment to both.</p>
+          <p style="color:var(--text-mid); font-size:0.97rem; line-height:1.9; margin-bottom:0.5rem;">Our team of artisans has worked together for an average of nearly fifteen years. That continuity means every person on the floor knows the standards, knows the tools, and knows how to make things right when something doesn't meet the mark.</p>
+          <div class="cap-list">
+            <div class="cap-item"><div class="cap-mark"></div><p>Full in-house manufacturing -- no outsourcing, no quality compromise</p></div>
+            <div class="cap-item"><div class="cap-mark"></div><p>Custom upholstery in any fabric, leather, or specialty material</p></div>
+            <div class="cap-item"><div class="cap-mark"></div><p>Case goods: dressers, nightstands, armoires, credenzas, shelving</p></div>
+            <div class="cap-item"><div class="cap-mark"></div><p>Specialty finishes: lacquer, veneer, patina, hand-applied effects</p></div>
+            <div class="cap-item"><div class="cap-mark"></div><p>Sustainable material sourcing from global premium suppliers</p></div>
+            <div class="cap-item"><div class="cap-mark"></div><p>White-glove delivery and installation in Los Angeles and nationwide</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="process-header reveal">
+        <div class="section-eyebrow"><div class="section-eyebrow-bar"></div><span>Our Process</span><div class="section-eyebrow-bar"></div></div>
+        <h2 class="section-title">From Your Vision to Your Space</h2>
+        <p class="section-lead">Every project follows a process that begins with deep listening and ends with white-glove delivery of something made specifically for you.</p>
+      </div>
+      <div class="process-timeline">
+        <div class="process-step reveal reveal-delay-1">
+          <div class="process-step-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="process-step-num">Step 01</div>
+          <h3>Consultation</h3>
+          <p>We learn about your space, your vision, your lifestyle, and your specifications. Dimensions, materials, finishes, and function are all discussed before a single line is drawn.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="process-step-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <div class="process-step-num">Step 02</div>
+          <h3>Design Development</h3>
+          <p>Detailed drawings, material samples, and finish options presented for your review. We refine until every detail is exactly right before we move to production.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="process-step-icon">
+            <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <div class="process-step-num">Step 03</div>
+          <h3>Craftsmanship</h3>
+          <p>Your piece is built by our Los Angeles artisan team with the attention it deserves. We provide production updates and welcome you to visit the workshop during the build.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-4">
+          <div class="process-step-icon">
+            <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <div class="process-step-num">Step 04</div>
+          <h3>Delivery &amp; Installation</h3>
+          <p>White-glove delivery and professional installation. We don't leave until every piece is placed exactly where it belongs and you're fully satisfied with the result.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio" id="portfolio">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-eyebrow"><div class="section-eyebrow-bar"></div><span>Our Work</span></div>
+        <h2 class="section-title">A Selection of Recent Projects</h2>
+        <p class="section-lead">Each piece tells a story of collaboration between our artisans and the client who envisioned it.</p>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-item reveal reveal-delay-1">
+          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80" alt="Custom residential sofa and living room furniture" />
+          <div class="portfolio-overlay"></div>
+          <div class="portfolio-label">Private Residence -- Beverly Hills<small>Custom Sofa &amp; Case Goods</small></div>
+        </div>
+        <div class="portfolio-item reveal reveal-delay-2">
+          <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=600&q=80" alt="Luxury hotel room custom furniture" />
+          <div class="portfolio-overlay"></div>
+          <div class="portfolio-label">Boutique Hotel -- West Hollywood<small>Full FF&amp;E Program</small></div>
+        </div>
+        <div class="portfolio-item reveal reveal-delay-3">
+          <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80" alt="Custom dining furniture restaurant" />
+          <div class="portfolio-overlay"></div>
+          <div class="portfolio-label">Restaurant -- Silver Lake<small>Custom Banquettes &amp; Tables</small></div>
+        </div>
+        <div class="portfolio-item reveal reveal-delay-1">
+          <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=600&q=80" alt="Custom bedroom furniture suite" />
+          <div class="portfolio-overlay"></div>
+          <div class="portfolio-label">Private Residence -- Malibu<small>Bedroom Suite Collection</small></div>
+        </div>
+        <div class="portfolio-item reveal reveal-delay-2">
+          <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=600&q=80" alt="Luxury lobby furniture installation" />
+          <div class="portfolio-overlay"></div>
+          <div class="portfolio-label">Hotel Lobby -- Downtown Los Angeles<small>Statement Lobby Pieces</small></div>
+        </div>
+        <div class="portfolio-item reveal reveal-delay-3">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Custom office furniture executive space" />
+          <div class="portfolio-overlay"></div>
+          <div class="portfolio-label">Executive Office -- Century City<small>Custom Desk &amp; Credenza</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="testimonials-header reveal">
+        <div class="section-eyebrow"><div class="section-eyebrow-bar"></div><span>Client Testimonials</span><div class="section-eyebrow-bar"></div></div>
+        <h2 class="section-title">What Our Clients Say</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-quote-mark">"</div>
+          <blockquote>The dining table Bespoke built for us is the centerpiece of our home. Every dinner guest asks about it. It's the kind of piece that will be passed down to our children -- true heirloom quality.</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MR</div>
+            <div>
+              <div class="testimonial-name">Michael R.</div>
+              <div class="testimonial-role">Private Homeowner, Beverly Hills</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-quote-mark">"</div>
+          <blockquote>Working with Doron and his team has transformed how I approach projects. They understand the design intent immediately and execute flawlessly. The custom process is seamless -- they're my go-to manufacturing partner.</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SL</div>
+            <div>
+              <div class="testimonial-name">Sarah L.</div>
+              <div class="testimonial-role">Interior Designer, West Hollywood</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-3">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-quote-mark">"</div>
+          <blockquote>We furnished 84 rooms with Bespoke. Two years later, every piece still looks like it was installed yesterday. The durability is remarkable, and our guests consistently compliment the craftsmanship.</blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">JT</div>
+            <div>
+              <div class="testimonial-name">James T.</div>
+              <div class="testimonial-role">Hotel GM, Downtown Los Angeles</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY BESPOKE -->
+  <section class="why-bespoke" id="why">
+    <div class="container">
+      <div class="why-bespoke-header reveal">
+        <div class="section-eyebrow"><div class="section-eyebrow-bar"></div><span>Why Bespoke</span><div class="section-eyebrow-bar"></div></div>
+        <h2 class="section-title">What Sets Us Apart</h2>
+        <p class="section-lead">The difference between furniture and Bespoke furniture is felt in every joint, every finish, every detail.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal reveal-delay-1">
+          <div class="why-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Master Artisans</h3>
+          <p>Our craftspeople average nearly 15 years of tenure. That continuity means institutional knowledge, pride in the work, and a relentless standard of excellence.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-2">
+          <div class="why-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>100% In-House</h3>
+          <p>Every step happens under our roof in Vernon, CA. No outsourcing means complete quality control, faster turnaround, and zero compromise on materials or craft.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-3">
+          <div class="why-card-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>Sustainably Sourced</h3>
+          <p>Over 30 wood species from premium global suppliers, all responsibly sourced. We believe beautiful furniture should come from responsible origins.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT DORON -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-image reveal-left">
+          <img src="https://images.unsplash.com/photo-1573497019418-b400bb3ab074?w=700&q=80" alt="Doron Silverman, CEO Bespoke Furniture Inc" />
+          <div class="about-image-caption">"Every great space deserves furniture made for it -- not furniture it was made to accommodate."</div>
+        </div>
+        <div class="about-text reveal-right">
+          <div class="section-eyebrow"><div class="section-eyebrow-bar"></div><span>About Doron Silverman</span></div>
+          <h2 class="section-title">A Designer and Maker<br/>at Heart</h2>
+          <p>Doron Silverman founded Bespoke Furniture Inc with a conviction that most furniture -- even expensive furniture -- falls short of what it could be. When something is truly designed for a specific person and a specific space, it becomes something more than furniture. It becomes part of the story of that space.</p>
+          <p>Doron's background extends across the luxury goods world -- from fashion to fine furniture -- and that breadth of experience in bespoke craftsmanship informs everything about how Bespoke Furniture operates. He has collaborated with artists including Jon Buscemi, with whom he exhibited work at the Double Extra Gallery in downtown Los Angeles, bridging the worlds of furniture design and fine art.</p>
+          <p>The team Doron has assembled reflects his values. The artisans in the Los Angeles workshop have been with Bespoke Furniture for an average of nearly fifteen years. That tenure is not an accident -- it reflects a culture of pride in the work, fair treatment of the people who do it, and the belief that the best furniture is made by people who genuinely care about what they're building.</p>
+          <p class="about-name">Doron Silverman</p>
+          <p class="about-title">CEO &amp; President -- Bespoke Furniture Inc</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-eyebrow"><div class="section-eyebrow-bar"></div><span>Begin Your Project</span></div>
+        <h2 class="section-title">Commission a Piece.<br/>Make Your Space Complete.</h2>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-info reveal">
+          <h3>Call Doron: (323) 713-1400</h3>
+          <p>Every piece starts with a conversation. Tell Doron about your space, what you have in mind, and the feeling you're after. A free consultation is how every project at Bespoke begins -- and the best way to discover what's possible.</p>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.08 2.2 2 2 0 012.06.06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            <p><a href="tel:3237131400">(323) 713-1400</a></p>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <p><a href="mailto:doron@bespokefurnitureinc.com">doron@bespokefurnitureinc.com</a></p>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <p>Vernon, CA (Los Angeles area)<br/>Serving clients nationwide and internationally</p>
+          </div>
+          <div class="contact-badge">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Free consultation with every inquiry</span>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="contact-form-wrapper">
+            <div class="contact-form-title">Request a Custom Quote</div>
+            <form class="contact-form">
+              <div class="form-row">
+                <div>
+                  <label for="name">Your Name</label>
+                  <input type="text" id="name" placeholder="Full name" />
+                </div>
+                <div>
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" placeholder="you@email.com" />
+                </div>
+              </div>
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" placeholder="(000) 000-0000" />
+              <div class="form-row">
+                <div>
+                  <label for="project-type">Furniture Type</label>
+                  <select id="project-type">
+                    <option value="" disabled selected>Select type</option>
+                    <option>Dining Table</option>
+                    <option>Sofa / Seating</option>
+                    <option>Bed / Bedroom Suite</option>
+                    <option>Case Goods (Dresser, Credenza, etc.)</option>
+                    <option>Cabinets / Shelving</option>
+                    <option>Banquette / Restaurant Seating</option>
+                    <option>Hotel / Hospitality FF&amp;E</option>
+                    <option>Office / Commercial</option>
+                    <option>Statement / Art Piece</option>
+                    <option>Multiple Pieces</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="wood-pref">Wood / Material Preference</label>
+                  <select id="wood-pref">
+                    <option value="" disabled selected>Select preference</option>
+                    <option>Walnut</option>
+                    <option>White Oak</option>
+                    <option>Maple</option>
+                    <option>Cherry</option>
+                    <option>Mahogany</option>
+                    <option>Teak</option>
+                    <option>Mixed / Custom</option>
+                    <option>Upholstered (Fabric/Leather)</option>
+                    <option>Not Sure -- Need Guidance</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div>
+                  <label for="dimensions">Approximate Dimensions</label>
+                  <input type="text" id="dimensions" placeholder='e.g., 96" x 42" dining table' />
+                </div>
+                <div>
+                  <label for="budget">Approximate Budget</label>
+                  <select id="budget">
+                    <option value="" disabled selected>Select range</option>
+                    <option>$5,000 - $25,000</option>
+                    <option>$25,000 - $75,000</option>
+                    <option>$75,000 - $250,000</option>
+                    <option>$250,000+</option>
+                    <option>Prefer to Discuss</option>
+                  </select>
+                </div>
+              </div>
+              <label for="details">Project Details</label>
+              <textarea id="details" placeholder="Tell us about your space, the pieces you envision, materials you love, and your ideal timeline..."></textarea>
+              <button type="submit" class="btn-submit">Send My Inquiry</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="font-size:1.2rem;">Bespoke <span style="color:#C4992A;">Furniture</span></a>
+        <p>Bespoke Furniture Inc -- full-service custom furniture manufacturer creating premium pieces for private residences, interior designers, hotels, restaurants, and commercial properties. Los Angeles, CA.</p>
+      </div>
+      <div class="footer-col">
+        <h4>What We Create</h4>
+        <ul>
+          <li><a href="#create">Custom Residential</a></li>
+          <li><a href="#create">Hospitality FF&amp;E</a></li>
+          <li><a href="#create">Restaurant &amp; Dining</a></li>
+          <li><a href="#create">Commercial &amp; Office</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#capabilities">Our Capabilities</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#about">About Doron</a></li>
+          <li><a href="#contact">Start a Project</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Vernon, CA (Los Angeles) &nbsp;|&nbsp; (323) 713-1400 &nbsp;|&nbsp; doron@bespokefurnitureinc.com</p>
+      <div class="footer-handcrafted">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span>Handcrafted with pride in Los Angeles</span>
+      </div>
+      <p>&copy; 2025 Bespoke Furniture Inc. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="sticky-cta" id="stickyCta">
+    <a href="#contact">Request a Quote</a>
+  </div>
+
+  <script>
+    // Preloader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('preloader').classList.add('loaded');
+      }, 800);
+    });
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Reveal on scroll
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Animated counters
+    const counters = document.querySelectorAll('.stat-number[data-target]');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-target'));
+          const duration = 2000;
+          const step = target / (duration / 16);
+          let current = 0;
+          const timer = setInterval(() => {
+            current += step;
+            if (current >= target) {
+              el.textContent = target.toLocaleString();
+              clearInterval(timer);
+            } else {
+              el.textContent = Math.floor(current).toLocaleString();
+            }
+          }, 16);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.3 });
+    counters.forEach(el => counterObserver.observe(el));
+
+    // Sticky mobile CTA
+    const stickyCta = document.getElementById('stickyCta');
+    const contactSection = document.getElementById('contact');
+    const stickyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          stickyCta.classList.remove('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    stickyObserver.observe(contactSection);
+
+    window.addEventListener('scroll', () => {
+      if (window.innerWidth <= 640) {
+        const contactRect = contactSection.getBoundingClientRect();
+        const heroBottom = document.querySelector('.hero').getBoundingClientRect().bottom;
+        if (heroBottom < 0 && contactRect.top > window.innerHeight) {
+          stickyCta.classList.add('visible');
+        } else {
+          stickyCta.classList.remove('visible');
+        }
+      }
+    });
+
+    // Close mobile nav on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('mobile-open');
+        document.getElementById('navToggle').classList.remove('active');
+      });
+    });
+
+    // Smooth parallax on portfolio items
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      item.addEventListener('mousemove', (e) => {
+        const rect = item.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        item.querySelector('img').style.transform = `scale(1.08) translate(${x * -8}px, ${y * -8}px)`;
+      });
+      item.addEventListener('mouseleave', () => {
+        item.querySelector('img').style.transform = 'scale(1)';
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pivotal Point LLC | Federal IT and Professional Services | Falls Church, VA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0c1f3a;
+      --navy-mid: #163258;
+      --navy-light: #1f4a7a;
+      --red: #b22222;
+      --red-light: #d44444;
+      --silver: #c0c8d4;
+      --bg: #f0f2f5;
+      --white: #ffffff;
+      --text: #1a2836;
+      --text-light: #4a5e6e;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--navy);
+      border-bottom: 3px solid var(--red);
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .nav-brand { display: flex; flex-direction: column; }
+    .nav-brand .name {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-brand .tagline { font-size: 0.68rem; color: var(--silver); letter-spacing: 0.12em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--silver); }
+    .nav-cta {
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.5rem 1.4rem;
+      border-radius: 2px;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--red-light); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-top: 68px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, rgba(12,31,58,0.96) 0%, rgba(12,31,58,0.85) 55%, rgba(12,31,58,0.5) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2.5rem;
+    }
+    .cert-badges {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .cert-badge {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: var(--silver);
+      font-size: 0.7rem;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      padding: 0.3rem 0.8rem;
+      border-radius: 2px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .cert-badge.red { background: rgba(178,34,34,0.25); border-color: var(--red-light); color: #ff9999; }
+    .hero h1 {
+      font-family: 'Raleway', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      max-width: 640px;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+    .hero h1 span { color: var(--red-light); }
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.8);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+    .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-red {
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 0.9rem 2.2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-red:hover { background: var(--red-light); transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.9rem 2.2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border: 2px solid rgba(255,255,255,0.4);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--white); transform: translateY(-2px); }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.6rem;
+    }
+    h2.section-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+    h2.section-title.light { color: var(--white); }
+    .divider { width: 48px; height: 3px; background: var(--red); margin-bottom: 2rem; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s, transform 0.65s; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-left { opacity: 0; transform: translateX(-28px); transition: opacity 0.65s, transform 0.65s; }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right { opacity: 0; transform: translateX(28px); transition: opacity 0.65s, transform 0.65s; }
+    .reveal-right.visible { opacity: 1; transform: none; }
+
+    /* ABOUT */
+    .about-section { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-img { border-radius: 3px; overflow: hidden; aspect-ratio: 5/4; box-shadow: 0 16px 50px rgba(12,31,58,0.2); }
+    .about-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-text p { color: var(--text-light); margin-bottom: 1.1rem; font-size: 1rem; }
+    .about-certs {
+      display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.5rem;
+    }
+    .cert-chip {
+      background: var(--bg);
+      border: 1px solid var(--silver);
+      color: var(--text-light);
+      font-size: 0.72rem;
+      font-weight: 600;
+      font-family: 'Raleway', sans-serif;
+      padding: 0.35rem 0.8rem;
+      border-radius: 20px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .cert-chip.highlight { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+    /* CAPABILITIES */
+    .caps-section { background: var(--bg); }
+    .caps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2.5rem; }
+    .cap-card {
+      background: var(--white);
+      border-radius: 3px;
+      padding: 1.8rem;
+      border-left: 4px solid var(--navy);
+      box-shadow: 0 2px 12px rgba(12,31,58,0.07);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .cap-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(12,31,58,0.12); }
+    .cap-card:nth-child(even) { border-left-color: var(--red); }
+    .cap-number {
+      font-family: 'Raleway', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--bg);
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+    .cap-card h3 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.02em;
+    }
+    .cap-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
+
+    /* CLIENTS */
+    .clients-section { background: var(--navy); }
+    .clients-section .section-label { color: var(--red-light); }
+    .clients-inner { text-align: center; }
+    .clients-inner p { color: rgba(255,255,255,0.75); max-width: 600px; margin: 0 auto 2.5rem; font-size: 1rem; }
+    .agency-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .agency-block {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 3px;
+      padding: 1.2rem;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .agency-block:hover { background: rgba(255,255,255,0.12); }
+    .agency-block .acronym {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+      display: block;
+    }
+    .agency-block .full {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+      display: block;
+    }
+
+    /* CERTIFICATIONS */
+    .certs-section { background: var(--white); }
+    .certs-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; margin-top: 2.5rem; }
+    .cert-block {
+      background: var(--bg);
+      border-radius: 3px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      border-top: 3px solid var(--navy);
+      box-shadow: 0 2px 12px rgba(12,31,58,0.06);
+    }
+    .cert-block:nth-child(2) { border-top-color: var(--red); }
+    .cert-block:nth-child(3) { border-top-color: var(--navy-mid); }
+    .cert-block:nth-child(4) { border-top-color: var(--silver); }
+    .cert-block h3 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+    .cert-block p { font-size: 0.78rem; color: var(--text-light); line-height: 1.5; }
+
+    /* PERFORMANCE */
+    .perf-section { background: var(--bg); }
+    .perf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .perf-card {
+      background: var(--white);
+      border-radius: 3px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(12,31,58,0.08);
+    }
+    .perf-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      font-family: 'Raleway', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: var(--navy);
+      color: var(--white);
+      padding: 0.25rem 0.7rem;
+      border-radius: 2px;
+      margin-bottom: 1rem;
+    }
+    .perf-card h3 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.7rem;
+    }
+    .perf-card p { font-size: 0.92rem; color: var(--text-light); line-height: 1.65; }
+
+    /* WHY US */
+    .why-section { background: var(--navy-mid); }
+    .why-section .section-label { color: var(--red-light); }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-top: 2.5rem; }
+    .why-card {
+      background: rgba(255,255,255,0.07);
+      border-radius: 3px;
+      padding: 2rem;
+      border-top: 3px solid var(--red);
+    }
+    .why-card h3 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+    .why-card p { font-size: 0.93rem; color: rgba(255,255,255,0.72); line-height: 1.65; }
+
+    /* CONTACT */
+    .contact-section { background: var(--white); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .contact-info h3 { font-family: 'Raleway', sans-serif; font-weight: 700; color: var(--navy); font-size: 1.1rem; margin-bottom: 1rem; }
+    .contact-info p { color: var(--text-light); margin-bottom: 0.5rem; font-size: 0.97rem; }
+    .contact-info a { color: var(--navy); text-decoration: none; border-bottom: 1px dotted var(--silver); }
+    .contact-info a:hover { color: var(--red); }
+    .contact-form { display: flex; flex-direction: column; gap: 0.9rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+    .contact-form input, .contact-form textarea {
+      padding: 0.85rem 1rem;
+      background: var(--bg);
+      border: 1px solid var(--silver);
+      border-radius: 2px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--navy); }
+    .contact-form textarea { min-height: 110px; resize: vertical; }
+    .btn-navy {
+      background: var(--navy);
+      color: var(--white);
+      padding: 0.95rem 2rem;
+      border: none;
+      border-radius: 2px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-navy:hover { background: var(--navy-mid); }
+    .contact-img { border-radius: 3px; overflow: hidden; aspect-ratio: 4/3; margin-top: 1.5rem; }
+    .contact-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.55);
+      padding: 3rem 2rem;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 4rem; justify-content: space-between; flex-wrap: wrap; }
+    .footer-brand-name {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.04em;
+    }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.8; max-width: 260px; }
+    .footer-certs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+    .footer-cert-chip {
+      font-size: 0.65rem;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.55);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .footer-col h4 {
+      color: var(--white);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+    }
+    .footer-col p, .footer-col a { font-size: 0.87rem; color: rgba(255,255,255,0.5); text-decoration: none; display: block; line-height: 2.1; }
+    .footer-col a:hover { color: var(--silver); }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 2rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .caps-grid, .why-grid { grid-template-columns: 1fr 1fr; }
+      .certs-grid { grid-template-columns: repeat(3, 1fr); }
+      .agency-grid { grid-template-columns: repeat(3, 1fr); }
+      .perf-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .caps-grid, .why-grid, .perf-grid { grid-template-columns: 1fr; }
+      .certs-grid { grid-template-columns: 1fr 1fr; }
+      .agency-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-row { grid-template-columns: 1fr; }
+      .nav-links, .nav-cta { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" style="text-decoration:none;">
+      <div class="nav-brand">
+        <span class="name">PIVOTAL POINT LLC</span>
+        <span class="tagline">Federal IT &amp; Professional Services</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#capabilities">Capabilities</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#certifications">Certs</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Discuss Your Requirement</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="cert-badges">
+        <span class="cert-badge red">SDVOSB</span>
+        <span class="cert-badge red">EDWOSB</span>
+        <span class="cert-badge">SBA 8(a)</span>
+        <span class="cert-badge">GSA MAS</span>
+        <span class="cert-badge">SWaM</span>
+      </div>
+      <h1>IT and Cybersecurity Your Agency Can Count On</h1>
+      <p>Pivotal Point LLC has been delivering reliable federal IT, cybersecurity, and program management services from Falls Church, VA since 2008. We know what agencies need because we've done this work, across VA, NASA, DISA, and more.</p>
+      <div class="btn-row">
+        <a href="#capabilities" class="btn-red">Our Capabilities</a>
+        <a href="#contact" class="btn-ghost">Discuss Your Requirement</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal-left">
+          <div class="about-img">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80" alt="Federal IT professional" />
+          </div>
+        </div>
+        <div class="reveal-right">
+          <div class="section-label">About Us</div>
+          <h2 class="section-title">Built from Service. Built for Service.</h2>
+          <div class="divider"></div>
+          <p>Pivotal Point LLC was founded in 2008 in Falls Church, Virginia &mdash; right in the heart of the federal contracting corridor. Dokmai Webster built this firm from the ground up with a single standard: deliver technically sound IT and professional services that agencies can actually count on. We earned our reputation one successful contract at a time.</p>
+          <p>We hold both SDVOSB and EDWOSB certifications. These are not just credentials on a page. They reflect who we are, where we came from, and the values we bring to every engagement. Service is not a business strategy for us. It is how we were built.</p>
+          <p>From the VA to NASA to DISA, we have earned the trust of agencies that simply cannot afford anything less than reliable. Dokmai and the team bring that same standard to every task order, every deliverable, and every contract we sign.</p>
+          <div class="about-certs">
+            <span class="cert-chip highlight">SDVOSB</span>
+            <span class="cert-chip highlight">EDWOSB</span>
+            <span class="cert-chip">SBA 8(a)</span>
+            <span class="cert-chip">GSA MAS</span>
+            <span class="cert-chip">SWaM</span>
+            <span class="cert-chip">Est. 2008</span>
+            <span class="cert-chip">Falls Church, VA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="caps-section" id="capabilities">
+    <div class="container">
+      <div class="reveal" style="max-width:560px; margin-bottom:1rem;">
+        <div class="section-label">Core Capabilities</div>
+        <h2 class="section-title">What We Deliver</h2>
+        <div class="divider"></div>
+        <p style="color:var(--text-light);">Pivotal Point brings deep technical expertise across the full federal IT stack. Our teams are cleared, certified, and ready to execute on day one. We do not learn on the government's time.</p>
+      </div>
+      <div class="caps-grid">
+        <div class="cap-card reveal">
+          <div class="cap-number">01</div>
+          <h3>Program &amp; Project Management</h3>
+          <p>Delivering on schedule, on budget, and on scope. Our PMs are PMP-trained and experienced in federal acquisition environments.</p>
+        </div>
+        <div class="cap-card reveal" style="transition-delay:.08s">
+          <div class="cap-number">02</div>
+          <h3>Cybersecurity Risk &amp; Compliance</h3>
+          <p>Full lifecycle cybersecurity: risk assessment, FISMA compliance, vulnerability management, and continuous monitoring.</p>
+        </div>
+        <div class="cap-card reveal" style="transition-delay:.16s">
+          <div class="cap-number">03</div>
+          <h3>Cloud Migration</h3>
+          <p>Planning and executing agency migrations to FedRAMP-authorized cloud environments with minimal disruption to operations.</p>
+        </div>
+        <div class="cap-card reveal" style="transition-delay:.24s">
+          <div class="cap-number">04</div>
+          <h3>SharePoint Development</h3>
+          <p>Custom SharePoint development, administration, and migration to modern SharePoint Online environments.</p>
+        </div>
+        <div class="cap-card reveal" style="transition-delay:.32s">
+          <div class="cap-number">05</div>
+          <h3>Web &amp; Database Development</h3>
+          <p>Full-stack web application development and database design, development, and ongoing maintenance for federal systems.</p>
+        </div>
+        <div class="cap-card reveal" style="transition-delay:.4s">
+          <div class="cap-number">06</div>
+          <h3>Cable, Fiber &amp; Infrastructure</h3>
+          <p>Physical IT infrastructure services: cable installation, fiber management, DCIM/ITIM, and construction management.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTS -->
+  <section class="clients-section" id="clients">
+    <div class="container clients-inner">
+      <div class="reveal">
+        <div class="section-label" style="justify-content:center; color:var(--red-light);">Federal Clients</div>
+        <h2 class="section-title light">Trusted Across Government</h2>
+        <div class="divider" style="margin:0 auto 1.5rem;"></div>
+        <p>Past performance is everything in federal contracting, and ours speaks for itself. When the work cannot fail, these agencies called Pivotal Point.</p>
+      </div>
+      <div class="agency-grid reveal">
+        <div class="agency-block"><span class="acronym">VA</span><span class="full">Veterans Affairs</span></div>
+        <div class="agency-block"><span class="acronym">NASA</span><span class="full">Space Agency</span></div>
+        <div class="agency-block"><span class="acronym">DISA</span><span class="full">Defense Info Systems</span></div>
+        <div class="agency-block"><span class="acronym">FEMA</span><span class="full">Emergency Management</span></div>
+        <div class="agency-block"><span class="acronym">DHRA</span><span class="full">Defense HR Activity</span></div>
+        <div class="agency-block"><span class="acronym">OPM</span><span class="full">Personnel Management</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="certs-section" id="certifications">
+    <div class="container">
+      <div class="reveal" style="max-width:560px; margin-bottom:1rem;">
+        <div class="section-label">Certifications</div>
+        <h2 class="section-title">Certified to Perform</h2>
+        <div class="divider"></div>
+        <p style="color:var(--text-light);">Our certifications are the result of rigorous vetting by federal agencies and the SBA. They signal accountability, eligibility, and commitment.</p>
+      </div>
+      <div class="certs-grid">
+        <div class="cert-block reveal"><h3>SDVOSB</h3><p>Service-Disabled Veteran-Owned Small Business - SBA Certified</p></div>
+        <div class="cert-block reveal" style="transition-delay:.08s"><h3>EDWOSB</h3><p>Economically Disadvantaged Woman-Owned Small Business</p></div>
+        <div class="cert-block reveal" style="transition-delay:.16s"><h3>SBA 8(a)</h3><p>SBA 8(a) Business Development Program participant</p></div>
+        <div class="cert-block reveal" style="transition-delay:.24s"><h3>GSA MAS</h3><p>General Services Administration Multiple Award Schedule</p></div>
+        <div class="cert-block reveal" style="transition-delay:.32s"><h3>SWaM</h3><p>Small, Women-owned &amp; Minority-owned Business (Virginia)</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAST PERFORMANCE -->
+  <section class="perf-section" id="performance">
+    <div class="container">
+      <div class="reveal" style="max-width:560px; margin-bottom:1rem;">
+        <div class="section-label">Past Performance</div>
+        <h2 class="section-title">Work That Speaks for Itself</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="perf-grid">
+        <div class="perf-card reveal">
+          <span class="perf-tag">IT Infrastructure</span>
+          <h3>Veterans Administration IT Support</h3>
+          <p>Provided end-to-end IT support services including cable infrastructure management, DCIM implementation, and SharePoint administration for a major VA facility. Maintained 99.9% uptime across critical systems.</p>
+        </div>
+        <div class="perf-card reveal" style="transition-delay:.1s">
+          <span class="perf-tag">Cybersecurity</span>
+          <h3>Federal Agency FISMA Compliance</h3>
+          <p>Led a comprehensive FISMA compliance and continuous monitoring program for a federal civilian agency. Identified and remediated over 200 vulnerabilities across 18 systems within a single assessment cycle.</p>
+        </div>
+        <div class="perf-card reveal" style="transition-delay:.2s">
+          <span class="perf-tag">Cloud Migration</span>
+          <h3>Agency Cloud Transition</h3>
+          <p>Managed migration of on-premises applications to a FedRAMP-authorized cloud environment. Delivered on schedule with zero data loss, resulting in a 40% reduction in infrastructure operating costs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="why-section" id="why">
+    <div class="container">
+      <div class="reveal" style="max-width:560px; margin-bottom:1rem;">
+        <div class="section-label">Why Pivotal Point</div>
+        <h2 class="section-title light">What Sets Us Apart</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <h3>Veteran-Led Mission Focus</h3>
+          <p>As a certified SDVOSB, service is not a marketing message &mdash; it is how Pivotal Point was built. The discipline, accountability, and mission focus that comes from military service shapes every engagement we take on.</p>
+        </div>
+        <div class="why-card reveal" style="transition-delay:.1s">
+          <h3>Broad Technical Depth</h3>
+          <p>From physical cable infrastructure to cloud architecture to cybersecurity compliance, our team covers the full federal IT stack. One partner, end-to-end capability.</p>
+        </div>
+        <div class="why-card reveal" style="transition-delay:.2s">
+          <h3>Small Business Agility</h3>
+          <p>We are large enough to handle complex, multi-year programs and small enough to be genuinely responsive. You will always know who is working your contract, and Dokmai is accessible when it matters &mdash; not three management layers away.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="reveal" style="max-width:500px; margin-bottom:3rem;">
+        <div class="section-label">Get in Touch</div>
+        <h2 class="section-title">Work With Us</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="contact-grid">
+        <div class="reveal-left">
+          <div class="contact-info">
+            <h3>Pivotal Point LLC</h3>
+            <p>135 North Fairfax Street<br>Falls Church, VA 22046</p>
+            <p style="margin-top:0.8rem;"><strong>Phone:</strong> <a href="tel:7036355226">(703) 635-5226</a></p>
+            <p><strong>Email:</strong> <a href="mailto:dwebster@pivotalpointllc.com">dwebster@pivotalpointllc.com</a></p>
+            <p style="margin-top:1.5rem; color:var(--text-light);">We welcome inquiries from federal contracting officers, program managers, and teaming partners. Call Dokmai directly at (703) 635-5226 or send a note and we will be in touch promptly.</p>
+          </div>
+          <div class="contact-img">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=700&q=80" alt="IT team collaboration" />
+          </div>
+        </div>
+        <div class="reveal-right">
+          <form class="contact-form" onsubmit="return false;">
+            <div class="form-row">
+              <input type="text" placeholder="First Name" />
+              <input type="text" placeholder="Last Name" />
+            </div>
+            <input type="text" placeholder="Agency / Organization" />
+            <input type="email" placeholder="Email Address" />
+            <input type="tel" placeholder="Phone Number" />
+            <textarea placeholder="Describe your requirement or how we can help..."></textarea>
+            <button class="btn-navy" type="submit">Discuss Your Requirement</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-name">PIVOTAL POINT LLC</div>
+        <p>Federal IT and professional services. Veteran-owned. Woman-owned. Falls Church, Virginia.</p>
+        <div class="footer-certs">
+          <span class="footer-cert-chip">SDVOSB</span>
+          <span class="footer-cert-chip">EDWOSB</span>
+          <span class="footer-cert-chip">8(a)</span>
+          <span class="footer-cert-chip">GSA MAS</span>
+          <span class="footer-cert-chip">SWaM</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>135 N Fairfax St<br>Falls Church, VA 22046</p>
+        <a href="tel:7036355226">(703) 635-5226</a>
+        <a href="mailto:dwebster@pivotalpointllc.com">dwebster@pivotalpointllc.com</a>
+      </div>
+      <div class="footer-col">
+        <h4>Capabilities</h4>
+        <a href="#capabilities">Program Management</a>
+        <a href="#capabilities">Cybersecurity</a>
+        <a href="#capabilities">Cloud Migration</a>
+        <a href="#capabilities">SharePoint</a>
+        <a href="#capabilities">Infrastructure</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2024 Pivotal Point LLC. All rights reserved.</span>
+      <span>Falls Church, VA &nbsp;|&nbsp; pivotalpointllc.com</span>
+    </div>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

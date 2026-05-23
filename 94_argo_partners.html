@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Argo Partners — Buying Distressed Debt Since 1992</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Libre+Franklin:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       RESET & ROOT
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #0d1b2a;
+      --navy-mid:  #1a2e45;
+      --charcoal:  #2c3e50;
+      --gold:      #b08a4e;
+      --gold-lt:   #c9a76a;
+      --cream:     #f5f0e8;
+      --warm-white:#fdfaf5;
+      --text-dark: #1a1a1a;
+      --text-mid:  #4a4a4a;
+      --text-light:#7a7a7a;
+
+      --font-heading: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Libre Franklin', sans-serif;
+
+      --section-pad: 100px 0;
+      --container:   1160px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      background: var(--warm-white);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* Stagger delays */
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+    .d4 { transition-delay: 0.4s; }
+    .d5 { transition-delay: 0.5s; }
+    .d6 { transition-delay: 0.6s; }
+    .d7 { transition-delay: 0.7s; }
+    .d8 { transition-delay: 0.8s; }
+
+    /* ============================================================
+       HEADER
+    ============================================================ */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 20px 0;
+      background: rgba(13, 27, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(176, 138, 78, 0.25);
+      transition: padding 0.3s;
+    }
+
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+    }
+    .logo-name {
+      font-family: var(--font-heading);
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.04em;
+    }
+    .logo-tag {
+      font-size: 0.65rem;
+      font-weight: 300;
+      color: var(--gold-lt);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    nav a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.25s;
+    }
+    nav a:hover { color: var(--gold-lt); }
+
+    .btn-nav {
+      display: inline-block;
+      padding: 10px 22px;
+      background: var(--gold);
+      color: #fff !important;
+      font-size: 0.75rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.12em !important;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+    .btn-nav:hover { background: var(--gold-lt); }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--navy);
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=80');
+      background-size: cover;
+      background-position: center 30%;
+      opacity: 0.22;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, rgba(13,27,42,0.98) 45%, rgba(13,27,42,0.55) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      padding-top: 100px;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(176,138,78,0.4);
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-lt);
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.75);
+      max-width: 540px;
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--gold);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.2s;
+      border: none;
+    }
+    .btn-primary:hover { background: var(--gold-lt); transform: translateY(-2px); }
+
+    .btn-ghost {
+      display: inline-block;
+      padding: 13px 30px;
+      border: 1px solid rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.85);
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color 0.25s, color 0.25s;
+    }
+    .btn-ghost:hover { border-color: var(--gold-lt); color: var(--gold-lt); }
+
+    .hero-stat-row {
+      position: absolute;
+      bottom: 48px;
+      left: 0;
+      right: 0;
+      z-index: 2;
+    }
+
+    .hero-stat-row .container {
+      display: flex;
+      gap: 48px;
+    }
+
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-stat-num {
+      font-family: var(--font-heading);
+      font-size: 2.1rem;
+      font-weight: 600;
+      color: var(--gold-lt);
+    }
+    .hero-stat-label {
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ============================================================
+       PILLARS BAND
+    ============================================================ */
+    .pillars-band {
+      background: var(--cream);
+      border-bottom: 1px solid rgba(176,138,78,0.2);
+    }
+
+    .pillars-band .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .pillar-item {
+      padding: 50px 40px;
+      border-right: 1px solid rgba(176,138,78,0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .pillar-item:last-child { border-right: none; }
+
+    .pillar-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pillar-icon svg { fill: var(--gold); }
+
+    .pillar-item h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .pillar-item p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       SECTION LABEL
+    ============================================================ */
+    .section-label {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    /* ============================================================
+       WHAT WE BUY
+    ============================================================ */
+    .what-we-buy {
+      padding: var(--section-pad);
+      background: var(--warm-white);
+    }
+
+    .what-we-buy .section-header {
+      max-width: 600px;
+      margin-bottom: 64px;
+    }
+
+    .what-we-buy h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .what-we-buy .intro-text {
+      font-size: 1rem;
+      color: var(--text-mid);
+      margin-top: 16px;
+    }
+
+    .claims-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .claim-card {
+      background: #fff;
+      border: 1px solid rgba(176,138,78,0.2);
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .claim-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .claim-card:hover::before { transform: scaleX(1); }
+    .claim-card:hover { border-color: var(--gold-lt); transform: translateY(-4px); }
+
+    .claim-number {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: rgba(176,138,78,0.25);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .claim-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .claim-card p {
+      font-size: 0.875rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       HOW IT WORKS
+    ============================================================ */
+    .how-it-works {
+      padding: var(--section-pad);
+      background: var(--navy);
+    }
+
+    .how-it-works .section-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .how-it-works h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .how-it-works .intro-text {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 16px;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .steps-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .steps-row::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: calc(12.5% + 8px);
+      right: calc(12.5% + 8px);
+      height: 1px;
+      background: rgba(176,138,78,0.35);
+    }
+
+    .step {
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .step-dot {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--navy-mid);
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-dot-num {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--gold-lt);
+    }
+
+    .step h3 {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .step p {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       ABOUT / SPLIT
+    ============================================================ */
+    .about-section {
+      padding: var(--section-pad);
+      background: var(--cream);
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-image-wrap {
+      position: relative;
+    }
+
+    .about-image-wrap img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-accent {
+      position: absolute;
+      bottom: -24px;
+      right: -24px;
+      width: 160px;
+      height: 160px;
+      background: var(--gold);
+      opacity: 0.15;
+      z-index: 0;
+    }
+
+    .about-content h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+
+    .about-content p {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      margin-bottom: 18px;
+      line-height: 1.8;
+    }
+
+    .about-founder {
+      margin-top: 36px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(176,138,78,0.3);
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .founder-badge {
+      width: 52px;
+      height: 52px;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .founder-badge span {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .founder-details h4 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .founder-details p {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin: 0;
+    }
+
+    /* ============================================================
+       JURISDICTIONS
+    ============================================================ */
+    .jurisdictions {
+      padding: var(--section-pad);
+      background: var(--warm-white);
+    }
+
+    .jurisdictions .inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .jurisdictions-text h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 20px;
+      line-height: 1.25;
+    }
+
+    .jurisdictions-text p {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .juris-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .juris-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px 24px;
+      background: #fff;
+      border: 1px solid rgba(176,138,78,0.15);
+      border-left: 3px solid var(--gold);
+    }
+
+    .juris-item-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(176,138,78,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .juris-item-icon svg { fill: var(--gold); }
+
+    .juris-item-content h4 {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .juris-item-content p {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin: 0;
+    }
+
+    /* ============================================================
+       IMAGE ROW
+    ============================================================ */
+    .image-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      height: 400px;
+    }
+
+    .image-row img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ============================================================
+       WHY ARGO
+    ============================================================ */
+    .why-argo {
+      padding: var(--section-pad);
+      background: var(--navy-mid);
+    }
+
+    .why-argo .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .why-argo .section-label { color: var(--gold-lt); }
+    .why-argo h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+    }
+
+    .why-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(176,138,78,0.2);
+      padding: 36px 28px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .why-card:hover { background: rgba(255,255,255,0.09); }
+
+    .why-card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 1px solid rgba(176,138,78,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .why-card-icon svg { fill: var(--gold-lt); }
+
+    .why-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .why-card p {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       TEAM
+    ============================================================ */
+    .team-section {
+      padding: var(--section-pad);
+      background: var(--cream);
+    }
+
+    .team-section .inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .team-content h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 24px;
+    }
+    .team-content p {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .team-image img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+    }
+
+    .team-highlight {
+      background: var(--navy);
+      padding: 28px 32px;
+      margin-top: 32px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .team-highlight-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .team-highlight-icon svg { fill: #fff; }
+
+    .team-highlight p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.65;
+      margin: 0;
+    }
+    .team-highlight strong { color: var(--gold-lt); }
+
+    /* ============================================================
+       CONTACT
+    ============================================================ */
+    .contact-section {
+      padding: var(--section-pad);
+      background: var(--navy);
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .contact-info h2 em { font-style: italic; color: var(--gold-lt); }
+
+    .contact-info p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .contact-detail-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(176,138,78,0.15);
+      border: 1px solid rgba(176,138,78,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-detail-icon svg { fill: var(--gold-lt); }
+    .contact-detail-text p { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-bottom: 2px; letter-spacing: 0.08em; }
+    .contact-detail-text a, .contact-detail-text span {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .contact-form {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(176,138,78,0.2);
+      padding: 48px 40px;
+    }
+
+    .contact-form h3 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 28px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+
+    .form-group label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(176,138,78,0.25);
+      color: #fff;
+      padding: 12px 16px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.25s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--gold); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-group select option { background: var(--navy); }
+
+    .btn-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--gold);
+      border: none;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s;
+      margin-top: 8px;
+    }
+    .btn-submit:hover { background: var(--gold-lt); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: #060f18;
+      padding: 40px 0;
+      border-top: 1px solid rgba(176,138,78,0.15);
+    }
+
+    footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-logo-name {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-links a {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold-lt); }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1000px) {
+      .claims-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-inner,
+      .jurisdictions .inner,
+      .team-section .inner,
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .steps-row { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .steps-row::before { display: none; }
+      .pillars-band .container { grid-template-columns: 1fr; }
+      .pillar-item { border-right: none; border-bottom: 1px solid rgba(176,138,78,0.2); }
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 0 20px; }
+      .claims-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .steps-row { grid-template-columns: 1fr; }
+      .image-row { grid-template-columns: 1fr; height: auto; }
+      .image-row img { height: 240px; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-stat-row .container { gap: 28px; flex-wrap: wrap; }
+      nav { display: none; }
+      .contact-form { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <a href="#" class="logo">
+        <span class="logo-name">Argo Partners</span>
+        <span class="logo-tag">Distressed Debt Specialists</span>
+      </a>
+      <nav>
+        <a href="#what-we-buy">What We Do</a>
+        <a href="#about">Who We Are</a>
+        <a href="#how-it-works">Process</a>
+        <a href="#jurisdictions">Jurisdictions</a>
+        <a href="#contact" class="btn-nav">Sell Your Claim</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-image"></div>
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Bankruptcy Claim Buyers Since 1992</span>
+        <h1>Immediate Liquidity for Your <em>Bankruptcy Claim</em></h1>
+        <p>For over 30 years, Argo Partners has provided creditors, vendors, and investors with fast, transparent purchases of bankruptcy and distressed debt claims — so you don't have to wait years for recovery.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Get a Quote for Your Claim</a>
+          <a href="#what-we-buy" class="btn-ghost">See What We Buy</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-stat-row">
+      <div class="container">
+        <div class="hero-stat">
+          <span class="hero-stat-num">30+</span>
+          <span class="hero-stat-label">Years in Market</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">1992</span>
+          <span class="hero-stat-label">Founded</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">8</span>
+          <span class="hero-stat-label">Claim Types Purchased</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">3</span>
+          <span class="hero-stat-label">International Jurisdictions</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS BAND -->
+  <section class="pillars-band">
+    <div class="container">
+      <div class="pillar-item reveal d1">
+        <div class="pillar-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+        </div>
+        <h3>30+ Years of Market Experience</h3>
+        <p>Founded in 1992, we have decades of experience navigating U.S. and international insolvency markets — and a proven track record of delivering fair value quickly.</p>
+      </div>
+      <div class="pillar-item reveal d2">
+        <div class="pillar-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2l-5.5 9h11L12 2zm0 3.84L14.97 10H9.03L12 5.84zM17.5 13c-2.49 0-4.5 2.01-4.5 4.5S15.01 22 17.5 22s4.5-2.01 4.5-4.5S19.99 13 17.5 13zm0 7c-1.38 0-2.5-1.12-2.5-2.5S16.12 15 17.5 15s2.5 1.12 2.5 2.5S18.88 20 17.5 20zM3 21.5h8v-8H3v8zm2-6h4v4H5v-4z"/></svg>
+        </div>
+        <h3>Quick, Transparent Transactions</h3>
+        <p>We operate with straightforward documentation and no hidden costs. Our process is designed for speed — from initial contact to payment, we move with purpose.</p>
+      </div>
+      <div class="pillar-item reveal d3">
+        <div class="pillar-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+        </div>
+        <h3>Claims of Any Size Considered</h3>
+        <p>Whether your claim is modest or substantial, Argo Partners evaluates every inquiry seriously. We provide competitive offers on unsecured, administrative, and specialty claims.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE BUY -->
+  <section class="what-we-buy" id="what-we-buy">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">What We Purchase</span>
+        <h2>The Claims We Buy</h2>
+        <p class="intro-text">Argo Partners acquires financial interests across the full spectrum of distressed situations. If you hold a claim against a distressed or insolvent entity, there is a good chance we can help you monetize it today.</p>
+      </div>
+      <div class="claims-grid">
+        <div class="claim-card reveal d1">
+          <div class="claim-number">01</div>
+          <h3>Unsecured Creditor Claims</h3>
+          <p>Trade creditors holding general unsecured claims in Chapter 7 or Chapter 11 cases can receive immediate payment rather than waiting years for a plan distribution.</p>
+        </div>
+        <div class="claim-card reveal d2">
+          <div class="claim-number">02</div>
+          <h3>Administrative Claims (503(b)(9))</h3>
+          <p>Goods delivered to a debtor within 20 days of its bankruptcy filing may qualify for administrative priority treatment. We purchase these high-value claims swiftly.</p>
+        </div>
+        <div class="claim-card reveal d3">
+          <div class="claim-number">03</div>
+          <h3>Vendor &amp; Trade Claims</h3>
+          <p>Suppliers, distributors, and service providers holding outstanding invoices against a bankrupt company can convert their receivable into immediate liquidity with Argo.</p>
+        </div>
+        <div class="claim-card reveal d4">
+          <div class="claim-number">04</div>
+          <h3>Landlord / Lease Rejection Claims</h3>
+          <p>When a debtor rejects a commercial lease, the resulting damages claim can take years to resolve. We buy these claims at fair market value without the wait.</p>
+        </div>
+        <div class="claim-card reveal d1">
+          <div class="claim-number">05</div>
+          <h3>Insurance Liquidation Claims</h3>
+          <p>Policyholders and claimants in insurance company insolvencies face a drawn-out state liquidation process. Argo purchases these claims to provide near-term recovery.</p>
+        </div>
+        <div class="claim-card reveal d2">
+          <div class="claim-number">06</div>
+          <h3>Class Action Litigation Rights</h3>
+          <p>Class members entitled to future settlement distributions often prefer certainty today. We evaluate and purchase litigation claims and judgment rights on a case-by-case basis.</p>
+        </div>
+        <div class="claim-card reveal d3">
+          <div class="claim-number">07</div>
+          <h3>Canadian CCAA / BIA Claims</h3>
+          <p>Creditors in Companies' Creditors Arrangement Act and Bankruptcy and Insolvency Act proceedings in Canada can access the same immediate liquidity solutions we provide in the U.S.</p>
+        </div>
+        <div class="claim-card reveal d4">
+          <div class="claim-number">08</div>
+          <h3>UK Administration Claims</h3>
+          <p>Creditors in UK administration and liquidation proceedings benefit from Argo's cross-border experience, allowing them to exit their position quickly rather than navigating lengthy foreign insolvency processes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" style="color: var(--gold);">Simple Process</span>
+        <h2>Four Steps to Getting Paid</h2>
+        <p class="intro-text">We have refined our process over 30 years to make selling a distressed claim as fast and painless as possible. There is no complex paperwork and no prolonged negotiation.</p>
+      </div>
+      <div class="steps-row">
+        <div class="step reveal d1">
+          <div class="step-dot"><span class="step-dot-num">1</span></div>
+          <h3>Contact Us</h3>
+          <p>Share the basics about your claim — the debtor company, claim amount, and any available supporting documentation. A member of our team typically responds the same day.</p>
+        </div>
+        <div class="step reveal d2">
+          <div class="step-dot"><span class="step-dot-num">2</span></div>
+          <h3>Receive an Offer</h3>
+          <p>We analyze your claim based on case status, expected recovery, and current market conditions, then deliver a competitive, transparent offer — no games, no low-ball tactics.</p>
+        </div>
+        <div class="step reveal d3">
+          <div class="step-dot"><span class="step-dot-num">3</span></div>
+          <h3>Sign Assignment Docs</h3>
+          <p>Once you accept our offer, we handle the assignment documentation and file the required notices with the bankruptcy court on your behalf. Our paperwork is straightforward.</p>
+        </div>
+        <div class="step reveal d4">
+          <div class="step-dot"><span class="step-dot-num">4</span></div>
+          <h3>Receive Payment</h3>
+          <p>After documentation is completed, you receive payment quickly. You are done — we take on the uncertainty and waiting, so you can move forward with certainty.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-image-wrap reveal-left">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=80" alt="Financial professional" />
+          <div class="about-accent"></div>
+        </div>
+        <div class="about-content reveal-right">
+          <span class="section-label">Our Story</span>
+          <h2>Built on Three Decades of Distressed Debt Expertise</h2>
+          <p>Argo Partners was founded in 1992 by Michael Singer as an investment fund dedicated to acquiring creditors' claims held against distressed and bankrupt companies. What started as a focused U.S. operation has grown into a firm that operates across U.S., Canadian, and UK insolvency markets.</p>
+          <p>Our core expertise remains unchanged: providing liquidity to creditors who would rather receive fair value today than endure the uncertainty of a lengthy bankruptcy process. We have facilitated hundreds of claim purchases across industries — from retail and manufacturing to financial services and real estate.</p>
+          <p>Argo does not invest in operating companies. We acquire financial interests — unsecured claims, trade receivables, litigation rights, lease rejection damages, and contract rejections — and we do so with speed, clarity, and integrity.</p>
+          <div class="about-founder">
+            <div class="founder-badge"><span>MF</span></div>
+            <div class="founder-details">
+              <h4>Matthew Friend</h4>
+              <p>Research &amp; Analysis — matthew@argopartners.net</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE ROW -->
+  <div class="image-row">
+    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=75" alt="New York financial district" />
+    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=75" alt="Business professionals" />
+    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=75" alt="Document review" />
+  </div>
+
+  <!-- JURISDICTIONS -->
+  <section class="jurisdictions" id="jurisdictions">
+    <div class="container">
+      <div class="inner">
+        <div class="jurisdictions-text reveal-left">
+          <span class="section-label">Where We Operate</span>
+          <h2>Multi-Jurisdictional Expertise</h2>
+          <p>Distress doesn't stop at borders. Argo Partners has the cross-border experience necessary to purchase claims arising in U.S., Canadian, and UK insolvency proceedings — giving creditors everywhere access to immediate liquidity solutions.</p>
+          <p>Our team understands the nuances of each legal framework and handles all filing requirements so you don't have to navigate unfamiliar court processes on your own.</p>
+        </div>
+        <ul class="juris-list reveal-right">
+          <li class="juris-item d1">
+            <div class="juris-item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            </div>
+            <div class="juris-item-content">
+              <h4>U.S. Bankruptcy Courts — Chapter 7 &amp; 11</h4>
+              <p>Primary market. We purchase claims from debtors in federal bankruptcy proceedings nationwide.</p>
+            </div>
+          </li>
+          <li class="juris-item d2">
+            <div class="juris-item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            </div>
+            <div class="juris-item-content">
+              <h4>Canadian CCAA / BIA Proceedings</h4>
+              <p>Companies' Creditors Arrangement Act and Bankruptcy and Insolvency Act — Canada's two primary insolvency frameworks.</p>
+            </div>
+          </li>
+          <li class="juris-item d3">
+            <div class="juris-item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            </div>
+            <div class="juris-item-content">
+              <h4>UK Administration &amp; Liquidation</h4>
+              <p>Creditors in formal UK insolvency proceedings — both administration and compulsory and voluntary liquidation.</p>
+            </div>
+          </li>
+          <li class="juris-item d4">
+            <div class="juris-item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            </div>
+            <div class="juris-item-content">
+              <h4>Insurance Company Liquidations</h4>
+              <p>Policyholders and claimants in state insurance liquidation proceedings handled by guaranty associations.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY ARGO -->
+  <section class="why-argo">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Why Argo</span>
+        <h2>The Argo Advantage</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal d1">
+          <div class="why-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+          </div>
+          <h3>Established Market Leader</h3>
+          <p>More than three decades of continuous operation make Argo one of the longest-standing and most trusted names in bankruptcy claims purchasing.</p>
+        </div>
+        <div class="why-card reveal d2">
+          <div class="why-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+          </div>
+          <h3>Competitive Pricing</h3>
+          <p>Our deep market knowledge and deal volume allow us to offer some of the most competitive purchase prices in the distressed claims marketplace.</p>
+        </div>
+        <div class="why-card reveal d3">
+          <div class="why-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          </div>
+          <h3>No-Hassle Process</h3>
+          <p>We handle the documentation, court filings, and administrative work. Sellers never need to engage with bankruptcy court proceedings once a deal is signed.</p>
+        </div>
+        <div class="why-card reveal d4">
+          <div class="why-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+          </div>
+          <h3>Fast Payment Options</h3>
+          <p>Once documentation is in order, payment is swift. We understand that the reason you are selling is to access funds now — and we deliver on that expectation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team-section">
+    <div class="container">
+      <div class="inner">
+        <div class="team-content reveal-left">
+          <span class="section-label">Our Team</span>
+          <h2>Deep Expertise in Bankruptcy and Finance</h2>
+          <p>The Argo Partners team brings together professionals with backgrounds in bankruptcy law, structured finance, fixed income, and claims administration. This cross-disciplinary expertise allows us to evaluate complex claims quickly and price them fairly.</p>
+          <p>We have experience across virtually every major industry — retail, hospitality, energy, telecommunications, healthcare, and financial services — meaning we understand the specific nuances that drive recovery values in different sectors.</p>
+          <p>Whether your claim is straightforward or involves complex priority disputes, our team has seen it and knows how to handle it efficiently.</p>
+          <div class="team-highlight">
+            <div class="team-highlight-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </div>
+            <p>Ready to discuss your claim? Contact <strong>Matthew Friend</strong> directly at <strong>matthew@argopartners.net</strong> or call <strong>(212) 643-5444</strong>. Initial consultations are confidential and carry no obligation.</p>
+          </div>
+        </div>
+        <div class="team-image reveal-right">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=900&q=80" alt="Finance professionals" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-info reveal-left">
+          <span class="section-label" style="color: var(--gold);">Get in Touch</span>
+          <h2>Get Paid Now, <em>Not Later</em></h2>
+          <p>If you hold a claim against a bankrupt or distressed entity, don't wait years for an uncertain recovery. Reach out to Argo Partners and receive a no-obligation offer, often within the same business day.</p>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <p>Address</p>
+                <span>12 West 37th Street, Suite 900, New York, NY 10018</span>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <p>Phone</p>
+                <a href="tel:+12126435444">(212) 643-5444</a>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              </div>
+              <div class="contact-detail-text">
+                <p>Email</p>
+                <a href="mailto:matthew@argopartners.net">matthew@argopartners.net</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form reveal-right">
+          <h3>Tell Us About Your Claim</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="Jane" />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Smith" />
+            </div>
+          </div>
+          <div class="form-group full">
+            <label>Company / Organization</label>
+            <input type="text" placeholder="Your company name" />
+          </div>
+          <div class="form-group full">
+            <label>Email Address</label>
+            <input type="email" placeholder="jane@company.com" />
+          </div>
+          <div class="form-group full">
+            <label>Debtor Company Name</label>
+            <input type="text" placeholder="Name of the bankrupt entity" />
+          </div>
+          <div class="form-group full">
+            <label>Claim Type</label>
+            <select>
+              <option value="" disabled selected>Select claim type</option>
+              <option>Unsecured Creditor Claim</option>
+              <option>Administrative Claim (503(b)(9))</option>
+              <option>Vendor / Trade Claim</option>
+              <option>Landlord / Lease Rejection Claim</option>
+              <option>Insurance Liquidation Claim</option>
+              <option>Class Action Litigation Rights</option>
+              <option>Canadian CCAA / BIA Claim</option>
+              <option>UK Administration Claim</option>
+              <option>Other / Not Sure</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>Additional Details</label>
+            <textarea placeholder="Approximate claim amount, court jurisdiction, case number if known..."></textarea>
+          </div>
+          <button class="btn-submit">Submit Claim Inquiry</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <span class="footer-logo-name">Argo Partners</span>
+      <span class="footer-copy">&copy; 2025 Argo Partners. All rights reserved. 12 W 37th St, Suite 900, New York, NY 10018.</span>
+      <div class="footer-links">
+        <a href="#what-we-buy">What We Buy</a>
+        <a href="#how-it-works">Process</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

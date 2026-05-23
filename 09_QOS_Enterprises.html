@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QOS Enterprises LLC | MIL-SPEC Plating, Finishing &amp; Defense Manufacturing | Rochester, NY</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy: #1a2540;
+      --navy-mid: #212f52;
+      --navy-light: #283861;
+      --blue: #008AFF;
+      --blue-dark: #006ed6;
+      --blue-glow: rgba(0,138,255,0.12);
+      --white: #FFFFFF;
+      --off-white: #F0F4F8;
+      --light-bg: #E8EDF4;
+      --body-text: #334155;
+      --text-muted: #64748B;
+      --border: #D1D9E6;
+      --dark-bg: #131d30;
+      --gear-gray: #2a3550;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      color: var(--body-text);
+      background: var(--off-white);
+      overflow-x: hidden;
+      line-height: 1.65;
+    }
+
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* ===== SCROLL REVEALS ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.delay-1 { transition-delay: 0.1s; }
+    .fade-up.delay-2 { transition-delay: 0.2s; }
+    .fade-up.delay-3 { transition-delay: 0.3s; }
+    .fade-up.delay-4 { transition-delay: 0.4s; }
+    .fade-up.delay-5 { transition-delay: 0.5s; }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--dark-bg);
+      border-bottom: 2px solid var(--blue);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    /* Gear icon */
+    .nav-gear {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    .nav-qos {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: 0.12em;
+      color: var(--white);
+    }
+    .nav-qos span { color: var(--blue); }
+    .nav-ent {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5rem;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta {
+      background: var(--blue) !important;
+      color: var(--white) !important;
+      padding: 9px 20px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--blue-dark) !important; }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--white); }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: var(--dark-bg);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0 80px;
+    }
+    /* Diagonal industrial stripe pattern */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 40px,
+        rgba(0,138,255,0.025) 40px,
+        rgba(0,138,255,0.025) 41px
+      );
+    }
+    /* Hero photo: industrial plating/anodizing line */
+    .hero-photo-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1565043666747-69f6646db940?w=1600&q=80');
+      background-size: cover;
+      background-position: center 50%;
+      opacity: 0.15;
+      mix-blend-mode: luminosity;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,138,255,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      width: 100%;
+    }
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      color: var(--blue);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--blue);
+    }
+    .hero h1 {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--blue);
+    }
+    .hero-tagline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--blue);
+      margin-bottom: 20px;
+      background: var(--blue-glow);
+      border: 1px solid rgba(0,138,255,0.2);
+      padding: 10px 16px;
+      display: inline-block;
+    }
+    .hero p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-blue {
+      background: var(--blue);
+      color: var(--white);
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 14px 30px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-blue:hover { background: var(--blue-dark); transform: translateY(-2px); }
+    .btn-outline-white {
+      background: transparent;
+      color: var(--white);
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 12px 28px;
+      border: 1px solid rgba(255,255,255,0.3);
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .btn-outline-white:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-2px); }
+
+    /* Hero certs panel */
+    .hero-certs {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(0,138,255,0.2);
+      padding: 36px;
+    }
+    .certs-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .cert-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .cert-row:last-child { border-bottom: none; }
+    .cert-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 4px;
+      background: var(--blue-glow);
+      border: 1px solid rgba(0,138,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .cert-icon svg { width: 18px; height: 18px; stroke: var(--blue); fill: none; stroke-width: 2; }
+    .cert-name {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: var(--white);
+    }
+    .cert-desc {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 2px;
+    }
+    .cert-badge {
+      margin-left: auto;
+      background: rgba(0,255,100,0.1);
+      border: 1px solid rgba(0,255,100,0.25);
+      color: #4ade80;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      padding: 4px 10px;
+      white-space: nowrap;
+    }
+
+    /* ===== CAPABILITIES BAR ===== */
+    .capabilities-bar {
+      background: var(--navy);
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(0,138,255,0.2);
+    }
+    .cap-scroll {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .cap-scroll::-webkit-scrollbar { display: none; }
+    .cap-item {
+      padding: 12px 28px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      white-space: nowrap;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .cap-item:hover { color: var(--blue); }
+
+    /* ===== SERVICES ===== */
+    .services {
+      background: var(--off-white);
+      padding: 96px 0;
+    }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: var(--navy);
+      line-height: 1.1;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 52px;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .service-card:hover { border-color: rgba(0,138,255,0.3); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(26,37,64,0.12); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .service-card h3 {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--navy);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .service-card p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+    .service-specs {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .spec-tag {
+      background: var(--light-bg);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: var(--navy);
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+    }
+
+    /* ===== SERVICES PHOTO BREAK ===== */
+    .services-photo-break {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+      margin-top: 48px;
+      border: 1px solid rgba(0,138,255,0.15);
+    }
+    .services-photo-break img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      filter: brightness(0.5) saturate(0.6);
+      transition: transform 0.5s;
+    }
+    .services-photo-break:hover img { transform: scale(1.03); }
+    .services-photo-break-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(19,29,48,0.8) 0%, rgba(19,29,48,0.3) 60%, transparent 100%);
+      display: flex;
+      align-items: center;
+      padding: 0 48px;
+    }
+    .services-photo-break-text h3 {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .services-photo-break-text p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      color: var(--blue);
+      text-transform: uppercase;
+    }
+
+    /* ===== QUALITY INSPECTOR SECTION ===== */
+    .quality-section {
+      background: var(--white);
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+    .quality-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .quality-image {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .quality-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      transition: transform 0.5s;
+    }
+    .quality-image:hover img { transform: scale(1.04); }
+    .quality-image-badge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: var(--blue);
+      color: var(--white);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 10px 18px;
+    }
+    .quality-content h2 {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .quality-content p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .quality-checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .quality-checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.88rem;
+      color: var(--body-text);
+      font-weight: 500;
+    }
+    .quality-checklist li::before {
+      content: 'OK';
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      background: var(--blue-glow);
+      border: 1px solid rgba(0,138,255,0.3);
+      color: var(--blue);
+      padding: 3px 7px;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+    @media (max-width: 1024px) {
+      .quality-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== DEFENSE FEATURE ===== */
+    .defense {
+      background: var(--navy);
+      padding: 96px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .defense::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 60px,
+        rgba(0,138,255,0.02) 60px,
+        rgba(0,138,255,0.02) 61px
+      );
+    }
+    .defense-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .defense-content h2 {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .defense-content h2 em {
+      font-style: normal;
+      color: var(--blue);
+    }
+    .defense-content p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+    .defense-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .defense-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.75);
+    }
+    .defense-list li::before {
+      content: '//';
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--blue);
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .defense-image-area {
+      position: relative;
+      aspect-ratio: 4/3;
+      background: var(--dark-bg);
+      border: 1px solid rgba(0,138,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .defense-image-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.65;
+      transition: opacity 0.4s;
+    }
+    .defense-image-area:hover img { opacity: 0.8; }
+    .defense-overlay-text {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px;
+      background: linear-gradient(to top, rgba(13,19,32,0.9) 0%, transparent 100%);
+    }
+    .defense-overlay-text .d-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      color: var(--blue);
+    }
+    .defense-overlay-text .d-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--white);
+      margin-top: 4px;
+    }
+
+    /* ===== STATS ===== */
+    .stats {
+      background: var(--white);
+      padding: 72px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+    .stat-cell {
+      padding: 36px 28px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .stat-cell:last-child { border-right: none; }
+    .stat-cell:hover { background: var(--light-bg); }
+    .stat-num {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: 2.2rem;
+      color: var(--blue);
+      display: block;
+    }
+    .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* ===== STANDARDS ===== */
+    .standards {
+      background: var(--off-white);
+      padding: 80px 0;
+    }
+    .standards-header { text-align: center; margin-bottom: 52px; }
+    .standards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .standard-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 28px 20px;
+      text-align: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .standard-card:hover { border-color: var(--blue); transform: translateY(-3px); }
+    .standard-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--blue);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .standard-name {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .standard-desc {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ===== CTA ===== */
+    .cta-section {
+      background: var(--navy);
+      padding: 80px 0;
+    }
+    .cta-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .cta-inner h2 {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .cta-inner p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.8;
+    }
+    .cta-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cta-phone {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: 2rem;
+      color: var(--white);
+      text-decoration: none;
+      display: block;
+      transition: color 0.2s;
+    }
+    .cta-phone:hover { color: var(--blue); }
+    .cta-email {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .cta-email:hover { color: var(--blue); }
+    .cta-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .cta-form input,
+    .cta-form select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.06);
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.82rem;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .cta-form input::placeholder { color: rgba(255,255,255,0.3); }
+    .cta-form input:focus,
+    .cta-form select:focus { border-color: var(--blue); }
+    .cta-form select option { background: var(--navy); color: var(--white); }
+    .cta-form button {
+      width: 100%;
+      padding: 14px;
+      background: var(--blue);
+      color: var(--white);
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .cta-form button:hover { background: var(--blue-dark); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark-bg);
+      padding: 56px 0 28px;
+      border-top: 1px solid rgba(0,138,255,0.15);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-qos {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: 0.12em;
+      color: var(--white);
+    }
+    .footer-qos span { color: var(--blue); }
+    .footer-ent {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      margin-top: 2px;
+    }
+    .footer-desc {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.75;
+      margin-top: 14px;
+    }
+    .footer-contact-info {
+      margin-top: 16px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+      line-height: 2;
+    }
+    .footer-contact-info a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-contact-info a:hover { color: var(--blue); }
+    .footer-col h4 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.82rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p { font-size: 0.72rem; color: rgba(255,255,255,0.25); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-certs { max-width: 500px; }
+      .defense-inner { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .standards-grid { grid-template-columns: repeat(2, 1fr); }
+      .cta-inner { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .services-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .standards-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <svg class="nav-gear" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <circle cx="24" cy="24" r="8" stroke="#008AFF" stroke-width="2.5"/>
+          <path d="M24 4v6M24 38v6M4 24h6M38 24h6M10.1 10.1l4.2 4.2M33.7 33.7l4.2 4.2M37.9 10.1l-4.2 4.2M14.3 33.7l-4.2 4.2" stroke="#008AFF" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <div class="nav-logo-text">
+          <span class="nav-qos">Q<span>O</span>S</span>
+          <span class="nav-ent">Enterprises LLC</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Defense Work</a></li>
+        <li><a href="#">Standards</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#" class="nav-cta">Request a Quote</a></li>
+      </ul>
+      <div class="nav-hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-photo-bg"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-eyebrow fade-up">// Rochester, NY &mdash; ISO-Certified MIL-SPEC Plating for Defense &amp; Federal Programs</div>
+          <h1 class="fade-up delay-1">Precision <em>MIL-SPEC</em> Plating, Finishing &amp; Defense Manufacturing</h1>
+          <div class="hero-tagline fade-up delay-2">Quality Goals. Every Part. Every Order. No Exceptions.</div>
+          <p class="fade-up delay-2">Defense components do not get a second chance in the field. QOS Enterprises has spent 30 years earning the trust of federal and prime defense contractors with ISO-certified plating, the only automatic anodizing line in the Northeast, and a quality system that treats every part as mission-critical &mdash; because it is.</p>
+          <div class="hero-actions fade-up delay-3">
+            <a href="#" class="btn-blue">Request a Quote</a>
+            <a href="#" class="btn-outline-white">View Capabilities</a>
+          </div>
+        </div>
+        <div class="hero-certs fade-up delay-2">
+          <div class="certs-title">// Certifications &amp; Standards</div>
+          <div class="cert-row">
+            <div class="cert-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <div class="cert-name">ISO 9000</div>
+              <div class="cert-desc">Certified quality management system &mdash; earned, audited, maintained</div>
+            </div>
+            <span class="cert-badge">ACTIVE</span>
+          </div>
+          <div class="cert-row">
+            <div class="cert-icon">
+              <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div>
+              <div class="cert-name">MIL-SPEC Plating</div>
+              <div class="cert-desc">Military specification compliance</div>
+            </div>
+            <span class="cert-badge">CERTIFIED</span>
+          </div>
+          <div class="cert-row">
+            <div class="cert-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="cert-name">Federal Supply Chain</div>
+              <div class="cert-desc">Prime contractor approved supplier</div>
+            </div>
+            <span class="cert-badge">APPROVED</span>
+          </div>
+          <div class="cert-row">
+            <div class="cert-icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div>
+              <div class="cert-name">Automatic Anodizing Line</div>
+              <div class="cert-desc">The only fully automatic anodizing line in the Northeast &mdash; consistent, high-volume, repeatable</div>
+            </div>
+            <span class="cert-badge">UNIQUE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES BAR -->
+  <div class="capabilities-bar">
+    <div class="container">
+      <div class="cap-scroll fade-up">
+        <span class="cap-item">Electroless Nickel Plating</span>
+        <span class="cap-item">Hard Chrome Plating</span>
+        <span class="cap-item">Anodizing (Type I, II, III)</span>
+        <span class="cap-item">Zinc Plating</span>
+        <span class="cap-item">Silver Plating</span>
+        <span class="cap-item">Gold Plating</span>
+        <span class="cap-item">Cadmium Plating</span>
+        <span class="cap-item">Tin Plating</span>
+        <span class="cap-item">Chromate Conversion</span>
+        <span class="cap-item">Masking &amp; Plugging</span>
+        <span class="cap-item">Metal Fabrication</span>
+        <span class="cap-item">Assembly &amp; Subassembly</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services">
+    <div class="container">
+      <div class="fade-up">
+        <div class="section-label">// Core Services</div>
+        <h2 class="section-title">Skilled Work. Federal Specification.<br>Done Right the First Time.</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card fade-up delay-1">
+          <div class="service-code">// SVC-01</div>
+          <h3>Metal Plating</h3>
+          <p>Electroless nickel, hard chrome, zinc, cadmium, silver, gold, and tin plating processes. All work performed to applicable MIL-SPEC, AMS, and ASTM specifications with full documentation and traceability.</p>
+          <div class="service-specs">
+            <span class="spec-tag">MIL-C-26074</span>
+            <span class="spec-tag">MIL-QQ-C-320</span>
+            <span class="spec-tag">AMS 2404</span>
+          </div>
+        </div>
+        <div class="service-card fade-up delay-2">
+          <div class="service-code">// SVC-02</div>
+          <h3>Anodizing</h3>
+          <p>Type I, II, and III (hard coat) anodizing for aluminum components. We operate the only fully automatic anodizing line in the Northeast. That is not a marketing claim &mdash; it means every part runs through a precisely controlled, fully automated process that produces consistent results batch after batch, for high-volume defense programs that cannot afford variation.</p>
+          <div class="service-specs">
+            <span class="spec-tag">MIL-A-8625</span>
+            <span class="spec-tag">Type I / II / III</span>
+            <span class="spec-tag">Auto Line</span>
+          </div>
+        </div>
+        <div class="service-card fade-up delay-3">
+          <div class="service-code">// SVC-03</div>
+          <h3>Masking &amp; Selective Plating</h3>
+          <p>Precision masking to protect threaded features, bearing surfaces, and toleranced areas during plating. Custom masking fixtures designed in-house for complex geometries and high-volume production runs.</p>
+          <div class="service-specs">
+            <span class="spec-tag">Custom Fixtures</span>
+            <span class="spec-tag">Thread Protection</span>
+            <span class="spec-tag">High Volume</span>
+          </div>
+        </div>
+        <div class="service-card fade-up delay-1">
+          <div class="service-code">// SVC-04</div>
+          <h3>Finishing &amp; Surface Prep</h3>
+          <p>Chemical conversion coating (chromate), passivation of stainless steel, phosphating, and surface preparation for adhesive bonding. Improves corrosion resistance and coating adhesion to specification.</p>
+          <div class="service-specs">
+            <span class="spec-tag">MIL-C-5541</span>
+            <span class="spec-tag">AMS 2700</span>
+            <span class="spec-tag">ASTM B633</span>
+          </div>
+        </div>
+        <div class="service-card fade-up delay-2">
+          <div class="service-code">// SVC-05</div>
+          <h3>Repair &amp; Refurbishment</h3>
+          <p>Salvage plating to restore worn, damaged, or out-of-tolerance components. Strip and re-plate services, dimensional restoration, and compatibility verification for fielded defense hardware and MRO programs.</p>
+          <div class="service-specs">
+            <span class="spec-tag">MRO Support</span>
+            <span class="spec-tag">Salvage Plating</span>
+            <span class="spec-tag">Field Hardware</span>
+          </div>
+        </div>
+        <div class="service-card fade-up delay-3">
+          <div class="service-code">// SVC-06</div>
+          <h3>Metal Fabrication &amp; Assembly</h3>
+          <p>Sheet metal fabrication, machining, and subassembly services to support turnkey manufacturing programs. Provides plating and fabrication from a single source, reducing lead time and qualification burden.</p>
+          <div class="service-specs">
+            <span class="spec-tag">Sheet Metal</span>
+            <span class="spec-tag">Subassembly</span>
+            <span class="spec-tag">Single Source</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo break: close-up of precision metal parts being plated/finished -->
+      <div class="services-photo-break fade-up">
+        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1400&q=80" alt="Precision metal parts in industrial finishing process" />
+        <div class="services-photo-break-overlay">
+          <div class="services-photo-break-text">
+            <h3>Every Part Treated Like the Mission Depends On It</h3>
+            <p>// Plated to MIL-SPEC. Full traceability. Certificate of conformance on every order shipped from Rochester.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- QUALITY INSPECTOR SECTION -->
+  <section class="quality-section">
+    <div class="container">
+      <div class="quality-grid">
+        <div class="quality-image fade-up">
+          <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80" alt="Quality inspector examining precision parts with calipers and gauges" />
+          <div class="quality-image-badge">// QA Inspection</div>
+        </div>
+        <div class="fade-up delay-1">
+          <div class="section-label">// Quality Assurance</div>
+          <h2>ISO 9000 Is Not a Plaque on Our Wall.<br>It Is How We Work Every Day.</h2>
+          <p>Our ISO 9000 certified quality management system was built by people who understand that a plating defect on a defense component is not a warranty issue &mdash; it is a mission risk. Every part that leaves our Rochester facility has been inspected for coating thickness, adhesion, and dimensional conformance. Every order ships with full documentation.</p>
+          <p>From First Article Inspection through high-volume production runs, we provide the traceability records and certificates of conformance that federal and prime contractors require without having to ask for them twice.</p>
+          <ul class="quality-checklist">
+            <li>Coating thickness verification on every order</li>
+            <li>Certificate of Conformance (C of C) provided with shipment</li>
+            <li>First Article Inspection (FAI) support and full plating reports</li>
+            <li>Material traceability from raw chemical to finished part</li>
+            <li>In-process and final inspection per applicable specification</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEFENSE FEATURE -->
+  <section class="defense">
+    <div class="container">
+      <div class="defense-inner">
+        <div class="defense-content fade-up">
+          <div class="section-label" style="color: var(--blue);">// Defense &amp; Federal Work</div>
+          <h2>When the People Who Use These Parts<br>Wear a Uniform, <em>Quality Is Not Optional</em></h2>
+          <p>For over 30 years, QOS Enterprises has supplied plating and finishing services to federal agencies and Tier 1 defense prime contractors. We take that responsibility seriously. The machinists and inspectors in our Rochester shop know that what they do matters beyond the part print &mdash; and they work that way, every shift.</p>
+          <ul class="defense-list">
+            <li>Qualified supplier to Tier 1 defense prime contractors for over three decades</li>
+            <li>Full DFARS and FAR compliance documentation &mdash; no chasing paperwork</li>
+            <li>First Article Inspection (FAI) support with complete plating reports</li>
+            <li>Certificate of conformance and full material traceability on every order</li>
+            <li>ITAR-aware facility with appropriate handling and access protocols</li>
+            <li>Rapid-response capability for urgent MRO, spares, and fielded hardware programs</li>
+          </ul>
+          <div style="margin-top: 32px;">
+            <a href="#" class="btn-blue">Request Our Capability Statement</a>
+          </div>
+        </div>
+        <div class="defense-image-area fade-up delay-2">
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&q=80" alt="Military fighter jet and defense aerospace equipment" />
+          <div class="defense-overlay-text">
+            <div class="d-code">// PROGRAM SUPPORT</div>
+            <div class="d-title">MIL-SPEC Plating for Critical Defense Components</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid fade-up">
+        <div class="stat-cell">
+          <span class="stat-num">ISO</span>
+          <span class="stat-label">9000 Certified &mdash; Audited Annually, Not Just Framed</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-num">#1</span>
+          <span class="stat-label">Only Automatic Anodizing Line in the Northeast</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-num">30+</span>
+          <span class="stat-label">Years Trusted by Defense Contractors</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-num">6</span>
+          <span class="stat-label">Critical Plating Properties: Hardness, Corrosion, Conductivity &amp; More</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STANDARDS -->
+  <section class="standards">
+    <div class="container">
+      <div class="standards-header fade-up">
+        <div class="section-label">// Specifications &amp; Standards</div>
+        <h2 class="section-title">Tell Us Your Spec.<br>We Know How to Meet It.</h2>
+      </div>
+      <div class="standards-grid">
+        <div class="standard-card fade-up delay-1">
+          <span class="standard-code">MIL-A-8625</span>
+          <div class="standard-name">Anodic Coatings for Aluminum</div>
+          <div class="standard-desc">Type I, II, and III hard coat anodizing for military and aerospace aluminum parts.</div>
+        </div>
+        <div class="standard-card fade-up delay-2">
+          <span class="standard-code">MIL-C-26074</span>
+          <div class="standard-name">Electroless Nickel</div>
+          <div class="standard-desc">Electroless nickel plating specification for lubricity, corrosion, and hardness applications.</div>
+        </div>
+        <div class="standard-card fade-up delay-3">
+          <span class="standard-code">MIL-QQ-C-320</span>
+          <div class="standard-name">Chrome Plating</div>
+          <div class="standard-desc">Hard chrome and decorative chrome to military specification for wear resistance.</div>
+        </div>
+        <div class="standard-card fade-up delay-4">
+          <span class="standard-code">MIL-C-5541</span>
+          <div class="standard-name">Chemical Film</div>
+          <div class="standard-desc">Chromate conversion coatings for aluminum &mdash; corrosion protection and paint adhesion.</div>
+        </div>
+        <div class="standard-card fade-up delay-1">
+          <span class="standard-code">AMS 2404</span>
+          <div class="standard-name">Electroless Nickel (AMS)</div>
+          <div class="standard-desc">Aerospace Materials Specification for electroless nickel in aerospace applications.</div>
+        </div>
+        <div class="standard-card fade-up delay-2">
+          <span class="standard-code">ASTM B633</span>
+          <div class="standard-name">Zinc Electroplating</div>
+          <div class="standard-desc">Electrodeposited coatings of zinc on iron and steel for corrosion protection.</div>
+        </div>
+        <div class="standard-card fade-up delay-3">
+          <span class="standard-code">AMS 2700</span>
+          <div class="standard-name">Passivation</div>
+          <div class="standard-desc">Passivation of corrosion resistant steel and stainless steel components.</div>
+        </div>
+        <div class="standard-card fade-up delay-4">
+          <span class="standard-code">ISO 9000</span>
+          <div class="standard-name">Quality Management</div>
+          <div class="standard-desc">Certified quality management system governing all QOS processes and documentation.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="fade-up">
+          <div class="section-label" style="color: var(--blue);">// Talk to Our Engineers</div>
+          <h2>Send Us Your Print.<br>We Will Tell You Exactly What We Can Do.</h2>
+          <p>Call or email Edward directly &mdash; you will be talking to someone who understands your spec, your timeline, and what it means to get this right. We respond to all RFQs within one business day, and for urgent MRO or production requirements, we will do what it takes to turn it around faster.</p>
+          <div style="margin-top: 28px;">
+            <a href="tel:5854540550" class="cta-phone">(585) 454-0550</a>
+            <a href="mailto:edward.mcgrattan@qosllc.com" class="cta-email">edward.mcgrattan@qosllc.com</a>
+            <div style="margin-top: 14px; font-size: 0.78rem; color: rgba(255,255,255,0.35); font-family: 'JetBrains Mono', monospace;">Edward McGrattan &mdash; QOS Enterprises LLC &mdash; Rochester, NY</div>
+          </div>
+        </div>
+        <div class="cta-form fade-up delay-1">
+          <input type="text" placeholder="Your Name" />
+          <input type="text" placeholder="Company / Program Name" />
+          <input type="email" placeholder="Email Address" />
+          <input type="tel" placeholder="Phone Number" />
+          <select>
+            <option value="" disabled selected>Service Required</option>
+            <option>Electroless Nickel Plating</option>
+            <option>Hard Chrome Plating</option>
+            <option>Anodizing (Type I / II / III)</option>
+            <option>Zinc or Cadmium Plating</option>
+            <option>Silver or Gold Plating</option>
+            <option>Chemical Conversion / Chromate</option>
+            <option>Masking &amp; Selective Plating</option>
+            <option>Repair &amp; Refurbishment</option>
+            <option>Metal Fabrication / Assembly</option>
+          </select>
+          <button type="submit">Submit My RFQ</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-qos">Q<span>O</span>S</div>
+          <div class="footer-ent">Enterprises LLC &mdash; Rochester, NY</div>
+          <div class="footer-desc">30 years of ISO-certified MIL-SPEC plating, anodizing, and finishing for federal and prime defense contractors in Rochester, NY. The only automatic anodizing line in the Northeast. Quality Goals &mdash; since day one.</div>
+          <div class="footer-contact-info">
+            <div><a href="tel:5854540550">(585) 454-0550</a></div>
+            <div><a href="mailto:edward.mcgrattan@qosllc.com">edward.mcgrattan@qosllc.com</a></div>
+            <div>Rochester, NY</div>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>// Services</h4>
+          <ul>
+            <li><a href="#">Metal Plating</a></li>
+            <li><a href="#">Anodizing</a></li>
+            <li><a href="#">Masking</a></li>
+            <li><a href="#">Surface Finishing</a></li>
+            <li><a href="#">Repair &amp; Refurb</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>// Standards</h4>
+          <ul>
+            <li><a href="#">MIL-SPEC Processes</a></li>
+            <li><a href="#">ISO 9000</a></li>
+            <li><a href="#">AMS Specifications</a></li>
+            <li><a href="#">ASTM Standards</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>// Company</h4>
+          <ul>
+            <li><a href="#">About QOS</a></li>
+            <li><a href="#">Defense Work</a></li>
+            <li><a href="#">Capability Statement</a></li>
+            <li><a href="#">Request a Quote</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 QOS Enterprises LLC. All rights reserved. Rochester, NY.</p>
+        <p>ISO 9000 Certified &nbsp;|&nbsp; MIL-SPEC Qualified &nbsp;|&nbsp; Federal Supplier</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    const hamburger = document.querySelector('.nav-hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        const isVisible = navLinks.style.display === 'flex';
+        navLinks.style.display = isVisible ? 'none' : 'flex';
+        if (!isVisible) {
+          navLinks.style.flexDirection = 'column';
+          navLinks.style.position = 'absolute';
+          navLinks.style.top = '68px';
+          navLinks.style.left = '0';
+          navLinks.style.right = '0';
+          navLinks.style.background = '#131d30';
+          navLinks.style.padding = '24px 28px';
+          navLinks.style.gap = '18px';
+          navLinks.style.zIndex = '200';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

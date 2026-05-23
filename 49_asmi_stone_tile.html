@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASMI Stone and Tile — Premium Surfaces | Midwest Distribution</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal: #1a1a1a;
+      --stone: #c4a882;
+      --stone-light: #d9c4a3;
+      --stone-pale: #f9f6f1;
+      --slate: #4a5568;
+      --slate-light: #718096;
+      --white: #ffffff;
+      --border: #e8e0d8;
+      --text: #2d2d2d;
+      --muted: #7a756e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--stone-pale);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 16px;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Bodoni Moda', serif;
+      line-height: 1.15;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-36px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(36px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: none; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(26, 26, 26, 0.97);
+      backdrop-filter: blur(10px);
+      padding: 0 5%;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(196,168,130,0.2);
+    }
+    .nav-logo {
+      font-family: 'Bodoni Moda', serif;
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--stone-light);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+    }
+    .nav-logo em {
+      font-style: italic;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.78rem;
+      display: block;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: 'Jost', sans-serif;
+      font-style: normal;
+      line-height: 1.2;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { color: var(--stone-light); }
+    .nav-cta {
+      background: var(--stone) !important;
+      color: var(--charcoal) !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 2px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--stone-light) !important; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1800&auto=format&fit=crop&q=80');
+      background-size: cover;
+      background-position: center 30%;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,26,26,0.95) 15%, rgba(26,26,26,0.55) 60%, rgba(26,26,26,0.15) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 0 5% 80px;
+      max-width: 900px;
+    }
+    .hero-tag {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+    .hero h1 {
+      font-size: clamp(3rem, 6.5vw, 5.5rem);
+      color: var(--white);
+      font-weight: 500;
+      font-style: italic;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.02em;
+    }
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.85;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .btn-stone {
+      background: var(--stone);
+      color: var(--charcoal);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: background 0.25s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-stone:hover { background: var(--stone-light); transform: translateY(-2px); }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.8);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: border-color 0.25s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--stone); }
+    .hero-certs {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .hero-cert {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .hero-cert::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--stone);
+      border-radius: 50%;
+    }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 100px 5%; }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    /* ===== INTRO ===== */
+    .intro { background: var(--charcoal); color: var(--white); }
+    .intro-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .intro-text h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 500;
+      font-style: italic;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .intro-text p {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 1.25rem;
+      font-weight: 300;
+      font-size: 1rem;
+    }
+    .intro-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .intro-stat {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      border: 1px solid rgba(196,168,130,0.2);
+    }
+    .intro-stat-num {
+      font-family: 'Bodoni Moda', serif;
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: var(--stone);
+      line-height: 1;
+    }
+    .intro-stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-top: 0.4rem;
+    }
+    .intro-image img {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.75);
+    }
+
+    /* ===== COLLECTIONS ===== */
+    .collections { background: var(--stone-pale); }
+    .collections-inner { max-width: 1200px; margin: 0 auto; }
+    .collections-header { text-align: center; margin-bottom: 4rem; }
+    .collections-header h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 500;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    .collections-header p { color: var(--muted); max-width: 560px; margin: 0 auto; }
+    .collections-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--border);
+      margin-bottom: 2px;
+    }
+    .collection-card {
+      background: var(--white);
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s;
+    }
+    .collection-card:hover { z-index: 1; transform: scale(1.02); }
+    .collection-image {
+      height: 280px;
+      overflow: hidden;
+    }
+    .collection-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+      filter: saturate(0.7);
+    }
+    .collection-card:hover .collection-image img {
+      transform: scale(1.08);
+      filter: saturate(0.9);
+    }
+    .collection-body {
+      padding: 2rem;
+    }
+    .collection-type {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .collection-card h3 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      font-style: italic;
+      margin-bottom: 0.75rem;
+    }
+    .collection-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+    .collection-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1.25rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
+    .collection-link:hover { gap: 0.6rem; color: var(--stone); }
+
+    /* ===== FEATURED ===== */
+    .featured { background: var(--charcoal); color: var(--white); padding: 80px 5%; }
+    .featured-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .featured-header { text-align: center; margin-bottom: 3rem; }
+    .featured-header h2 {
+      font-size: clamp(2rem, 3.5vw, 2.6rem);
+      font-weight: 500;
+      font-style: italic;
+      color: var(--white);
+    }
+    .featured-header p {
+      color: rgba(255,255,255,0.45);
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+    }
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+    }
+    .featured-item {
+      background: var(--charcoal);
+      padding: 2rem;
+      transition: background 0.3s;
+    }
+    .featured-item:hover { background: #252525; }
+    .featured-name {
+      font-family: 'Bodoni Moda', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      font-style: italic;
+      color: var(--stone-light);
+      margin-bottom: 0.4rem;
+    }
+    .featured-type {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+    .featured-swatch {
+      width: 100%;
+      height: 80px;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #e8e0d5 0%, #d4c9b8 50%, #c8baa6 100%);
+      opacity: 0.6;
+    }
+
+    /* ===== WHO WE SERVE ===== */
+    .serve { background: var(--stone-pale); }
+    .serve-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .serve-text h2 {
+      font-size: clamp(2rem, 3.5vw, 2.6rem);
+      font-weight: 500;
+      font-style: italic;
+      margin-bottom: 1.25rem;
+    }
+    .serve-text p {
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      font-weight: 300;
+    }
+    .serve-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+    .serve-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .serve-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--stone);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .serve-image img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.7);
+    }
+
+    /* ===== SHOWROOMS ===== */
+    .showrooms { background: var(--white); }
+    .showrooms-inner { max-width: 1100px; margin: 0 auto; }
+    .showrooms-header { text-align: center; margin-bottom: 3.5rem; }
+    .showrooms-header h2 {
+      font-size: clamp(2rem, 3.5vw, 2.6rem);
+      font-weight: 500;
+      font-style: italic;
+    }
+    .showrooms-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .showroom-card {
+      background: var(--stone-pale);
+      padding: 3rem;
+      border-left: 3px solid var(--stone);
+    }
+    .showroom-card h3 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      font-style: italic;
+      margin-bottom: 0.75rem;
+    }
+    .showroom-card p {
+      color: var(--muted);
+      font-size: 0.93rem;
+      margin-bottom: 1rem;
+    }
+    .showroom-detail {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    /* ===== WHY ASMI ===== */
+    .why { background: var(--charcoal); color: var(--white); }
+    .why-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .why-header { text-align: center; margin-bottom: 3.5rem; }
+    .why-header h2 {
+      font-size: clamp(2rem, 3.5vw, 2.6rem);
+      font-weight: 500;
+      font-style: italic;
+      color: var(--white);
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: rgba(255,255,255,0.06);
+    }
+    .why-card {
+      background: var(--charcoal);
+      padding: 2.5rem;
+      transition: background 0.3s;
+    }
+    .why-card:hover { background: #232323; }
+    .why-num {
+      font-family: 'Bodoni Moda', serif;
+      font-size: 3rem;
+      font-weight: 400;
+      color: rgba(196,168,130,0.2);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+    .why-card h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+    .why-card p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery { padding: 0; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      height: 420px;
+    }
+    .gallery-item {
+      overflow: hidden;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.6);
+      transition: transform 0.5s, filter 0.4s;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.06);
+      filter: saturate(0.9);
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials { background: var(--stone-pale); }
+    .testimonials-inner { max-width: 1100px; margin: 0 auto; }
+    .testimonials-header { text-align: center; margin-bottom: 3.5rem; }
+    .testimonials-header h2 {
+      font-size: clamp(2rem, 3.5vw, 2.6rem);
+      font-weight: 500;
+      font-style: italic;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .t-card {
+      background: var(--white);
+      padding: 2.5rem;
+      position: relative;
+    }
+    .t-bar {
+      width: 40px;
+      height: 2px;
+      background: var(--stone);
+      margin-bottom: 1.5rem;
+    }
+    .t-card p {
+      font-style: italic;
+      color: var(--text);
+      font-size: 0.92rem;
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+      font-family: 'Bodoni Moda', serif;
+      font-weight: 400;
+    }
+    .t-author {
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--charcoal);
+    }
+    .t-role {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact { background: var(--charcoal); color: var(--white); }
+    .contact-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-text h2 {
+      font-size: clamp(2rem, 3.5vw, 2.6rem);
+      font-weight: 500;
+      font-style: italic;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+    .contact-text p {
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 2rem;
+    }
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .cd {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .cd-accent {
+      width: 2px;
+      height: 40px;
+      background: var(--stone);
+      flex-shrink: 0;
+    }
+    .cd-info strong {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--stone-light);
+      margin-bottom: 0.2rem;
+      font-weight: 600;
+    }
+    .cd-info span { font-size: 0.9rem; color: rgba(255,255,255,0.5); }
+    .contact-form {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(196,168,130,0.15);
+      padding: 2.5rem;
+    }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 0.4rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--white);
+      padding: 0.75rem 1rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--stone); }
+    .form-group select option { background: var(--charcoal); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit {
+      width: 100%;
+      background: var(--stone);
+      color: var(--charcoal);
+      border: none;
+      padding: 1rem;
+      font-family: 'Jost', sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .form-submit:hover { background: var(--stone-light); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #0e0e0e;
+      padding: 4rem 5% 2rem;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .f-logo {
+      font-family: 'Bodoni Moda', serif;
+      font-size: 1.3rem;
+      font-weight: 500;
+      font-style: italic;
+      color: var(--stone-light);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .f-sub {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      display: block;
+      margin-bottom: 1.25rem;
+    }
+    .footer-brand p {
+      color: rgba(255,255,255,0.3);
+      font-size: 0.87rem;
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+    .cert-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .cert-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--stone);
+      border: 1px solid rgba(196,168,130,0.25);
+      padding: 0.25rem 0.6rem;
+    }
+    .footer-col h4 {
+      font-family: 'Bodoni Moda', serif;
+      font-style: italic;
+      color: var(--stone-light);
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 1.25rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul a {
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      font-size: 0.87rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: var(--stone-light); }
+    .footer-bottom {
+      padding-top: 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom p { color: rgba(255,255,255,0.2); font-size: 0.8rem; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .intro-inner, .serve-inner, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .collections-grid { grid-template-columns: 1fr 1fr; }
+      .featured-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .showrooms-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 70px 5%; }
+      .nav-links { display: none; }
+      .collections-grid { grid-template-columns: 1fr; }
+      .featured-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); height: 360px; }
+      .footer-top { grid-template-columns: 1fr; }
+      .intro-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      ASMI Surfaces
+      <em>Stone &amp; Tile — Midwest Distribution</em>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#collections">Collections</a></li>
+      <li><a href="#showrooms">Showrooms</a></li>
+      <li><a href="#serve">Who We Serve</a></li>
+      <li><a href="#showrooms" class="nav-cta">Visit Our Showroom</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <span class="hero-tag">Premium Stone, Tile &amp; Engineered Surfaces — Midwest</span>
+      <h1>Surfaces That Define Spaces</h1>
+      <p>Premium quartz, natural stone, and tile distributed across the Midwest — for fabricators, designers, and builders who demand exceptional quality and consistent availability. Showrooms in St. Louis and Kansas.</p>
+      <div class="hero-buttons">
+        <a href="#showrooms" class="btn-stone">Visit Our Showroom</a>
+        <a href="#contact" class="btn-outline">Request Samples</a>
+      </div>
+      <div class="hero-certs">
+        <div class="hero-cert">NSF Certified</div>
+        <div class="hero-cert">Greenguard Gold</div>
+        <div class="hero-cert">Italian Breton Technology</div>
+        <div class="hero-cert">Locally Stocked</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro" id="about">
+    <div class="intro-inner">
+      <div class="intro-text reveal-left">
+        <span class="section-label" style="color:var(--stone-light);">Who We Are</span>
+        <h2>The Right Surface Changes Everything</h2>
+        <p>ASMI Stone and Tile LLC was built on a straightforward belief: fabricators, designers, and builders deserve a distribution partner who makes their job easier, not harder. That means having the right materials in stock, providing accurate specifications, and delivering product reliably — every time.</p>
+        <p>We distribute premium surface materials across the Midwest from our showrooms in St. Louis and Kansas, where clients can experience our materials firsthand — the texture, the finish, the scale — before making a decision. No guessing from a small sample chip.</p>
+        <p>Ronald Clair and the ASMI team have built relationships with producers around the world to offer materials that range from accessible and practical to rare and extraordinary. Our Vault Collection, manufactured with Italian Breton Stone Technology, represents the highest standard of engineered slab available in our region.</p>
+        <div class="intro-stats">
+          <div class="intro-stat">
+            <div class="intro-stat-num">2</div>
+            <div class="intro-stat-label">Showroom Locations</div>
+          </div>
+          <div class="intro-stat">
+            <div class="intro-stat-num">818+</div>
+            <div class="intro-stat-label">Import Shipments</div>
+          </div>
+          <div class="intro-stat">
+            <div class="intro-stat-num">GG</div>
+            <div class="intro-stat-label">Greenguard Gold</div>
+          </div>
+        </div>
+      </div>
+      <div class="intro-image reveal-right">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&auto=format&fit=crop&q=80" alt="Premium stone and tile surfaces in luxury kitchen" />
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLECTIONS -->
+  <section class="collections" id="collections">
+    <div class="collections-inner">
+      <div class="collections-header reveal">
+        <span class="section-label">Our Products</span>
+        <h2>Five Families of Premium Surface Materials</h2>
+        <p>From the timeless beauty of natural stone to the precision of Italian-engineered quartz, every material in our portfolio is selected for quality, consistency, and design versatility.</p>
+      </div>
+      <div class="collections-grid">
+        <div class="collection-card reveal">
+          <div class="collection-image">
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&auto=format&fit=crop&q=80" alt="Quartz countertop surface" />
+          </div>
+          <div class="collection-body">
+            <span class="collection-type">Engineered Stone</span>
+            <h3>Quartz Countertops</h3>
+            <p>Four curated collections — Exotics, Exclusives, Eccentrics, and Essentials — offering design options for every project and every budget without compromising on durability or finish quality.</p>
+            <a href="#contact" class="collection-link">View Collection &#8594;</a>
+          </div>
+        </div>
+        <div class="collection-card reveal">
+          <div class="collection-image">
+            <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?w=600&auto=format&fit=crop&q=80" alt="Marble and natural stone surfaces" />
+          </div>
+          <div class="collection-body">
+            <span class="collection-type">Natural Stone</span>
+            <h3>Granite, Marble &amp; Quartzite</h3>
+            <p>Sourced from quarries across the world, our natural stone collection brings unmatched character and individuality to every installation. No two slabs are identical — that is the nature of natural stone.</p>
+            <a href="#contact" class="collection-link">View Collection &#8594;</a>
+          </div>
+        </div>
+        <div class="collection-card reveal">
+          <div class="collection-image">
+            <img src="https://images.unsplash.com/photo-1600210491892-03d54741d176?w=600&auto=format&fit=crop&q=80" alt="The Vault Collection engineered slabs" />
+          </div>
+          <div class="collection-body">
+            <span class="collection-type">Premium Engineered</span>
+            <h3>The Vault Collection</h3>
+            <p>Our signature line, manufactured with Italian Breton Stone Technology — the gold standard of engineered slab production. NSF and Greenguard Gold certified for residential and commercial applications of the highest standards.</p>
+            <a href="#contact" class="collection-link">View Collection &#8594;</a>
+          </div>
+        </div>
+        <div class="collection-card reveal">
+          <div class="collection-image">
+            <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&auto=format&fit=crop&q=80" alt="Premium tile for walls and floors" />
+          </div>
+          <div class="collection-body">
+            <span class="collection-type">Wall &amp; Floor</span>
+            <h3>Tile Solutions</h3>
+            <p>A comprehensive tile selection covering wall, floor, and outdoor applications. From large-format porcelain to artisanal ceramics, we carry materials suited to every design aesthetic and technical requirement.</p>
+            <a href="#contact" class="collection-link">View Collection &#8594;</a>
+          </div>
+        </div>
+        <div class="collection-card reveal">
+          <div class="collection-image">
+            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&auto=format&fit=crop&q=80" alt="Specialty and unique surface finishes" />
+          </div>
+          <div class="collection-body">
+            <span class="collection-type">Specialty</span>
+            <h3>Distinctive &amp; Specialty Surfaces</h3>
+            <p>For projects that demand something exceptional, our specialty selection includes unique finishes, rare stone varieties, and custom-order options. If you have a specific vision, we will source it.</p>
+            <a href="#contact" class="collection-link">Inquire &#8594;</a>
+          </div>
+        </div>
+        <div class="collection-card reveal">
+          <div class="collection-image">
+            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&auto=format&fit=crop&q=80" alt="Trending surface materials and finishes" />
+          </div>
+          <div class="collection-body">
+            <span class="collection-type">Trending Now</span>
+            <h3>New &amp; Trending Selections</h3>
+            <p>Our current trend favorites include Moonflakes, Statuario Fiona, and Lincoln Snow. Visit our showrooms to see what is generating the most interest among designers and fabricators this season.</p>
+            <a href="#showrooms" class="collection-link">Visit a Showroom &#8594;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED -->
+  <div class="featured">
+    <div class="featured-inner">
+      <div class="featured-header reveal">
+        <span class="section-label" style="color:var(--stone-light);">Trending Materials</span>
+        <h2>Currently Popular Selections</h2>
+        <p>These are the surfaces our showroom visitors return to most often — finishes that are having a moment across residential and commercial design.</p>
+      </div>
+      <div class="featured-grid">
+        <div class="featured-item reveal">
+          <div class="featured-swatch" style="background:linear-gradient(135deg, #f0eceb 0%, #e0d6d2 50%, #d0c5c0 100%);"></div>
+          <div class="featured-name">Moonflakes</div>
+          <div class="featured-type">Quartz — Vault Collection</div>
+        </div>
+        <div class="featured-item reveal">
+          <div class="featured-swatch" style="background:linear-gradient(135deg, #f5f2f0 0%, #ede7e3 50%, #e2dbd5 100%);"></div>
+          <div class="featured-name">Statuario Fiona</div>
+          <div class="featured-type">Engineered Marble Look</div>
+        </div>
+        <div class="featured-item reveal">
+          <div class="featured-swatch" style="background:linear-gradient(135deg, #f8f7f5 0%, #f0eeea 50%, #e8e4de 100%);"></div>
+          <div class="featured-name">Lincoln Snow</div>
+          <div class="featured-type">Quartz — Essentials</div>
+        </div>
+        <div class="featured-item reveal">
+          <div class="featured-swatch" style="background:linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 50%, #0e0e0e 100%);"></div>
+          <div class="featured-name">Nero Absolute</div>
+          <div class="featured-type">Natural Granite</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHO WE SERVE -->
+  <section class="serve" id="serve">
+    <div class="serve-inner">
+      <div class="serve-image reveal-left">
+        <img src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b?w=800&auto=format&fit=crop&q=80" alt="Interior designer reviewing surface materials" />
+      </div>
+      <div class="serve-text reveal-right">
+        <span class="section-label">Who We Serve</span>
+        <h2>Built for the Professionals Who Build</h2>
+        <p>ASMI Surfaces partners with the people and firms who put our materials to work — fabricators, designers, architects, and builders who need a distributor they can trust to have the right product in stock and deliver it reliably.</p>
+        <p>We understand that in your business, delays cost money and surface inconsistencies create client problems. Our locally stocked inventory and experienced team are structured around preventing both of those outcomes.</p>
+        <div class="serve-list">
+          <div class="serve-item"><div class="serve-dot"></div>Stone Fabricators &amp; Countertop Shops</div>
+          <div class="serve-item"><div class="serve-dot"></div>Interior Designers &amp; Architects</div>
+          <div class="serve-item"><div class="serve-dot"></div>Custom Home Builders</div>
+          <div class="serve-item"><div class="serve-dot"></div>Remodeling Contractors</div>
+          <div class="serve-item"><div class="serve-dot"></div>Commercial Developers</div>
+          <div class="serve-item"><div class="serve-dot"></div>Tile &amp; Flooring Retailers</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWROOMS -->
+  <section class="showrooms" id="showrooms">
+    <div class="showrooms-inner">
+      <div class="showrooms-header reveal">
+        <span class="section-label">Experience It in Person</span>
+        <h2>Two Midwest Showrooms</h2>
+        <p style="color:var(--muted);max-width:500px;margin:0 auto;">There is no substitute for experiencing a surface in person — the weight of it, the finish, how the light plays across it. Visit either of our showrooms to see the full ASMI collection.</p>
+      </div>
+      <div class="showrooms-grid">
+        <div class="showroom-card reveal">
+          <h3>St. Louis Showroom</h3>
+          <p>Our flagship St. Louis location features the full ASMI portfolio in large-format displays designed to give you a realistic sense of how each material will look in a completed project. Our team is available to assist with material selection, specification questions, and project sourcing.</p>
+          <div class="showroom-detail">Contact for address &amp; hours</div>
+        </div>
+        <div class="showroom-card reveal">
+          <h3>Kansas Showroom</h3>
+          <p>Our Kansas location serves the region's growing base of fabricators and design professionals with the same curated selection and expert guidance available in St. Louis. Locally stocked inventory is available for immediate fulfillment across both service areas.</p>
+          <div class="showroom-detail">Contact for address &amp; hours</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY ASMI -->
+  <section class="why" id="why">
+    <div class="why-inner">
+      <div class="why-header reveal">
+        <span class="section-label" style="color:var(--stone-light);">Why ASMI</span>
+        <h2>What Sets Our Distribution Apart</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-num">01</div>
+          <h3>NSF &amp; Greenguard Gold Certified</h3>
+          <p>Our Vault Collection carries NSF and Greenguard Gold certification, meeting the most rigorous standards for food safety and indoor air quality — essential for kitchen and commercial applications.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-num">02</div>
+          <h3>Italian Breton Stone Technology</h3>
+          <p>The Vault Collection is manufactured using Breton Stone Technology — the Italian engineering process that defines the gold standard in engineered slab quality, consistency, and durability.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-num">03</div>
+          <h3>Locally Stocked Inventory</h3>
+          <p>We maintain substantial inventory at both of our Midwest locations, which means the material you select today is available for fulfillment on your timeline — not whenever a container arrives from overseas.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-num">04</div>
+          <h3>Experienced Team</h3>
+          <p>Our team understands surface materials from a technical and aesthetic standpoint. We can assist with material specification, tolerance requirements, fabrication considerations, and installation compatibility.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-num">05</div>
+          <h3>Showroom Experience</h3>
+          <p>Unlike online-only distributors, we believe in letting clients see and touch materials at full scale. Our showrooms are designed to help you make confident decisions before committing to a specification.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-num">06</div>
+          <h3>Residential &amp; Commercial</h3>
+          <p>We support projects of every scale — from a single custom kitchen countertop to a multi-floor commercial buildout requiring consistent material supply across a long project timeline.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <div class="gallery">
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&auto=format&fit=crop&q=80" alt="Luxury kitchen with quartz countertops" /></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1615873968403-89e068629265?w=500&auto=format&fit=crop&q=80" alt="Marble bathroom surfaces" /></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600210491892-03d54741d176?w=500&auto=format&fit=crop&q=80" alt="Contemporary tile flooring" /></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1565183997392-2f6f122e5912?w=500&auto=format&fit=crop&q=80" alt="Commercial space with premium stone" /></div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="testimonials-inner">
+      <div class="testimonials-header reveal">
+        <span class="section-label">What Our Partners Say</span>
+        <h2>From the People Who Use Our Materials</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="t-card reveal">
+          <div class="t-bar"></div>
+          <p>"ASMI is the only stone distributor we use for our fabrication shop. The inventory is always there when we need it, the quality is absolutely consistent, and the team actually knows the product. That combination is rarer than people realize."</p>
+          <div class="t-author">James F.</div>
+          <div class="t-role">Owner, Stone Fabrication Shop — St. Louis, MO</div>
+        </div>
+        <div class="t-card reveal">
+          <div class="t-bar"></div>
+          <p>"As an interior designer, I need to specify materials with confidence. ASMI's showroom lets me bring clients in and show them the full scale of a slab — not a tiny sample. That changes how clients make decisions, and it closes projects faster."</p>
+          <div class="t-author">Natalie W.</div>
+          <div class="t-role">Principal Interior Designer — Kansas City, MO</div>
+        </div>
+        <div class="t-card reveal">
+          <div class="t-bar"></div>
+          <p>"We specified the Vault Collection for an 8-unit luxury development and ASMI kept us stocked through 14 months of construction without a single gap in supply. That kind of reliability is what makes a project run."</p>
+          <div class="t-author">Thomas K.</div>
+          <div class="t-role">Project Manager, Custom Home Builder</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-text reveal-left">
+        <span class="section-label" style="color:var(--stone-light);">Reach Out</span>
+        <h2>Let's Find the Perfect Surface for Your Project</h2>
+        <p>Whether you are specifying a single residential project or sourcing materials for a commercial development, we welcome the conversation. Our team responds within one business day.</p>
+        <div class="contact-details">
+          <div class="cd">
+            <div class="cd-accent"></div>
+            <div class="cd-info">
+              <strong>Call Ronald</strong>
+              <span><a href="tel:3173396149" style="color:inherit;">(317) 339-6149</a></span>
+            </div>
+          </div>
+          <div class="cd">
+            <div class="cd-accent"></div>
+            <div class="cd-info">
+              <strong>Email</strong>
+              <span>r.stclair@asmisurfaces.com</span>
+            </div>
+          </div>
+          <div class="cd">
+            <div class="cd-accent"></div>
+            <div class="cd-info">
+              <strong>Showrooms</strong>
+              <span>St. Louis, MO &amp; Kansas — Contact for address &amp; hours</span>
+            </div>
+          </div>
+          <div class="cd">
+            <div class="cd-accent"></div>
+            <div class="cd-info">
+              <strong>Distribution Region</strong>
+              <span>Midwest — Missouri, Kansas, Indiana &amp; surrounding states</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal-right">
+        <form>
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="First and last name" />
+          </div>
+          <div class="form-group">
+            <label>Company / Role</label>
+            <input type="text" placeholder="Fabricator, designer, builder, developer..." />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="your@company.com" />
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="(xxx) xxx-xxxx" />
+          </div>
+          <div class="form-group">
+            <label>Project Type</label>
+            <select>
+              <option value="">Residential or commercial?</option>
+              <option>Residential — Single Home</option>
+              <option>Residential — Multi-Unit Development</option>
+              <option>Commercial — Office / Retail</option>
+              <option>Commercial — Hospitality</option>
+              <option>Commercial — Healthcare / Institutional</option>
+              <option>Fabrication Shop / Trade</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Materials Interest</label>
+            <select>
+              <option value="">What are you looking for?</option>
+              <option>Quartz Countertops</option>
+              <option>Natural Stone (Granite / Marble / Quartzite)</option>
+              <option>The Vault Collection</option>
+              <option>Tile (Wall / Floor / Outdoor)</option>
+              <option>Multiple / Undecided</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Project Details</label>
+            <textarea placeholder="Tell us about your project — scope, timeline, design direction, quantities if known..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Request Samples or a Quote</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="f-logo">ASMI Surfaces</a>
+          <span class="f-sub">Stone &amp; Tile LLC — Midwest Premium Surface Distribution</span>
+          <p>Premium quartz, natural stone, and tile distributed across the Midwest. Showrooms in St. Louis and Kansas. Serving fabricators, designers, architects, and builders who demand quality and reliable availability.</p>
+          <div class="cert-row">
+            <span class="cert-tag">NSF Certified</span>
+            <span class="cert-tag">Greenguard Gold</span>
+            <span class="cert-tag">Italian Breton Tech</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Collections</h4>
+          <ul>
+            <li><a href="#collections">Quartz Countertops</a></li>
+            <li><a href="#collections">Natural Stone</a></li>
+            <li><a href="#collections">The Vault Collection</a></li>
+            <li><a href="#collections">Tile Solutions</a></li>
+            <li><a href="#collections">Specialty Surfaces</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Information</h4>
+          <ul>
+            <li><a href="#showrooms">St. Louis Showroom</a></li>
+            <li><a href="#showrooms">Kansas Showroom</a></li>
+            <li><a href="#serve">Who We Serve</a></li>
+            <li><a href="tel:3173396149">(317) 339-6149</a></li>
+            <li><a href="mailto:r.stclair@asmisurfaces.com">r.stclair@asmisurfaces.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 ASMI Stone and Tile LLC / ASMI Surfaces. All rights reserved. Midwest Distribution.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

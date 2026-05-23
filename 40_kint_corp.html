@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kint Corp | CO2 &amp; Beverage Gas | Fire Protection Services | Harrisburg, PA</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700;900&family=Lato:wght@300;400;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0d1f3c;
+      --navy-mid: #162d54;
+      --red: #c0291a;
+      --red-light: #e03020;
+      --silver: #8598ae;
+      --silver-light: #b0c0d0;
+      --light: #f2f4f8;
+      --lighter: #f8f9fb;
+      --white: #ffffff;
+      --border: #d5dce8;
+      --text: #1a2540;
+      --text-mid: #4a5870;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: var(--lighter); color: var(--text); line-height: 1.7; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      background: var(--navy); padding: 0 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px; border-bottom: 3px solid var(--red);
+    }
+    .nav-logo { text-decoration: none; display: flex; align-items: center; gap: 14px; }
+    .nav-logo-shield {
+      width: 40px; height: 44px; background: var(--red);
+      clip-path: polygon(50% 0%, 100% 20%, 100% 75%, 50% 100%, 0% 75%, 0% 20%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .nav-logo-k { font-family: 'Titillium Web', sans-serif; font-weight: 900; font-size: 1.1rem; color: var(--white); }
+    .nav-logo-text { display: flex; flex-direction: column; }
+    .nav-logo-name { font-family: 'Titillium Web', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--white); letter-spacing: 0.06em; line-height: 1; }
+    .nav-logo-sub { font-size: 0.6rem; color: var(--silver-light); letter-spacing: 0.14em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.72); text-decoration: none; font-size: 0.88rem; letter-spacing: 0.05em; font-family: 'Titillium Web', sans-serif; font-weight: 600; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--red-light); }
+    .nav-cta {
+      background: var(--red); color: var(--white);
+      padding: 10px 24px; font-family: 'Titillium Web', sans-serif; font-weight: 700;
+      font-size: 0.88rem; letter-spacing: 0.08em; text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--red-light); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 120px 48px 80px; position: relative; overflow: hidden;
+      background: var(--navy);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.1;
+    }
+    .hero::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--red), var(--navy)); }
+    .hero-content { position: relative; z-index: 2; max-width: 720px; }
+    .hero-dual-badge { display: flex; gap: 0; margin-bottom: 32px; width: fit-content; }
+    .hero-badge {
+      padding: 10px 22px; font-family: 'Titillium Web', sans-serif; font-weight: 700;
+      font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase;
+    }
+    .hero-badge.bev { background: rgba(176,192,208,0.15); color: var(--silver-light); border: 1px solid rgba(176,192,208,0.25); }
+    .hero-badge.fire { background: var(--red); color: var(--white); border: 1px solid var(--red); }
+    .hero h1 {
+      font-family: 'Titillium Web', sans-serif;
+      font-size: clamp(2.6rem, 5vw, 4.4rem);
+      color: var(--white); line-height: 1.12; margin-bottom: 20px; font-weight: 900;
+      text-transform: uppercase; letter-spacing: 0.02em;
+    }
+    .hero h1 .safe { color: var(--silver-light); }
+    .hero h1 .fire-word { color: var(--red-light); }
+    .hero-founding { font-size: 0.85rem; color: var(--silver); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 28px; font-weight: 400; }
+    .hero p { font-size: 1.05rem; color: rgba(255,255,255,0.72); max-width: 580px; margin-bottom: 44px; font-weight: 300; line-height: 1.8; }
+    .hero-btns { display: flex; gap: 14px; }
+    .btn-red {
+      display: inline-block; background: var(--red); color: var(--white);
+      padding: 15px 36px; font-family: 'Titillium Web', sans-serif; font-weight: 700;
+      font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-red:hover { background: var(--red-light); }
+    .btn-ghost {
+      display: inline-block; border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.85);
+      padding: 15px 36px; font-family: 'Titillium Web', sans-serif; font-weight: 600;
+      font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; transition: border-color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--red-light); color: var(--red-light); }
+    .hero-stats { display: flex; gap: 0; margin-top: 64px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 36px; }
+    .h-stat { padding-right: 44px; margin-right: 44px; border-right: 1px solid rgba(255,255,255,0.1); }
+    .h-stat:last-child { border-right: none; }
+    .h-stat-num { font-family: 'Titillium Web', sans-serif; font-size: 2rem; color: var(--red-light); font-weight: 900; }
+    .h-stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* SECTION COMMONS */
+    section { padding: 96px 48px; }
+    .container { max-width: 1160px; margin: 0 auto; }
+    .section-label { font-family: 'Titillium Web', sans-serif; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; font-weight: 700; }
+    .section-title { font-family: 'Titillium Web', sans-serif; font-size: clamp(1.9rem, 3vw, 2.8rem); color: var(--navy); margin-bottom: 20px; line-height: 1.15; font-weight: 700; text-transform: uppercase; }
+    .section-title.light { color: var(--white); }
+    .section-sub { font-size: 1rem; color: var(--text-mid); max-width: 580px; margin-bottom: 56px; line-height: 1.8; }
+
+    /* DUAL SERVICES */
+    .dual-services { background: var(--lighter); }
+    .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .service-pillar { padding: 56px 44px; }
+    .service-pillar.beverage { background: var(--navy-mid); }
+    .service-pillar.fire-prot { background: var(--red); }
+    .service-pillar-title { font-family: 'Titillium Web', sans-serif; font-size: 1.4rem; font-weight: 700; text-transform: uppercase; color: var(--white); margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; gap: 14px; }
+    .service-pillar-title svg { width: 28px; height: 28px; stroke: var(--white); fill: none; stroke-width: 1.8; opacity: 0.8; }
+    .service-pillar ul { list-style: none; }
+    .service-pillar ul li { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.95rem; color: rgba(255,255,255,0.88); }
+    .service-pillar ul li:last-child { border-bottom: none; }
+    .service-pillar ul li::before { content: ''; display: block; width: 5px; height: 5px; background: rgba(255,255,255,0.6); border-radius: 50%; flex-shrink: 0; margin-top: 9px; }
+
+    /* INDUSTRIES */
+    .industries { background: var(--white); }
+    .industries-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 52px; }
+    .industry-card {
+      padding: 36px 28px; background: var(--lighter);
+      border-top: 3px solid var(--border); transition: border-color 0.2s;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease, border-color 0.2s;
+    }
+    .industry-card.visible { opacity: 1; transform: translateY(0); }
+    .industry-card:hover { border-top-color: var(--navy); }
+    .industry-icon { width: 42px; height: 42px; background: var(--light); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .industry-icon svg { width: 20px; height: 20px; stroke: var(--navy-mid); fill: none; stroke-width: 1.8; }
+    .industry-card h3 { font-family: 'Titillium Web', sans-serif; font-size: 1.05rem; font-weight: 700; text-transform: uppercase; color: var(--navy); margin-bottom: 10px; }
+    .industry-card p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.75; }
+
+    /* HISTORY */
+    .history { background: var(--navy); }
+    .history-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .history-img img { width: 100%; height: 480px; object-fit: cover; opacity: 0.75; }
+    .history-timeline { margin-top: 32px; }
+    .hist-item { display: flex; gap: 24px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .hist-item:last-child { border-bottom: none; }
+    .hist-year { font-family: 'Titillium Web', sans-serif; font-size: 1.1rem; color: var(--red-light); font-weight: 900; flex-shrink: 0; width: 72px; }
+    .hist-content h4 { font-family: 'Titillium Web', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .hist-content p { font-size: 0.86rem; color: rgba(255,255,255,0.6); line-height: 1.7; }
+
+    /* WHY KINT */
+    .why { background: var(--lighter); }
+    .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 52px; }
+    .why-card {
+      padding: 40px 28px; background: var(--white);
+      border-bottom: 3px solid var(--border); text-align: center;
+      transition: border-color 0.2s;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.2s;
+    }
+    .why-card.visible { opacity: 1; transform: translateY(0); }
+    .why-card:hover { border-bottom-color: var(--red); }
+    .why-card-icon { width: 48px; height: 48px; background: var(--light); margin: 0 auto 18px; display: flex; align-items: center; justify-content: center; }
+    .why-card-icon svg { width: 22px; height: 22px; stroke: var(--navy); fill: none; stroke-width: 1.8; }
+    .why-card h3 { font-family: 'Titillium Web', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; color: var(--navy); margin-bottom: 12px; }
+    .why-card p { font-size: 0.86rem; color: var(--text-mid); line-height: 1.75; }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--white); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 52px; }
+    .testimonial-card {
+      background: var(--lighter); padding: 36px 28px;
+      border-top: 3px solid var(--border); transition: border-color 0.2s;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.2s;
+    }
+    .testimonial-card.visible { opacity: 1; transform: translateY(0); }
+    .testimonial-card:hover { border-top-color: var(--red); }
+    .testimonial-card blockquote { font-size: 0.95rem; color: var(--text-mid); line-height: 1.8; font-style: italic; margin-bottom: 24px; }
+    .testimonial-author { font-family: 'Titillium Web', sans-serif; font-size: 0.92rem; font-weight: 700; text-transform: uppercase; color: var(--navy); }
+    .testimonial-role { font-size: 0.8rem; color: var(--text-mid); margin-top: 4px; }
+
+    /* CONTACT */
+    .contact-section { background: var(--navy); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .contact-info p { font-size: 0.98rem; color: rgba(255,255,255,0.68); line-height: 1.8; margin-bottom: 32px; }
+    .contact-detail { margin-bottom: 22px; }
+    .contact-label { font-family: 'Titillium Web', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--red-light); margin-bottom: 4px; font-weight: 700; }
+    .contact-value { font-size: 1rem; color: var(--white); }
+    .contact-both-locations { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 32px; }
+    .location-card { background: rgba(255,255,255,0.05); padding: 18px 20px; border-top: 2px solid rgba(192,41,26,0.5); }
+    .location-card h4 { font-family: 'Titillium Web', sans-serif; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--red-light); margin-bottom: 8px; }
+    .location-card p { font-size: 0.86rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    form { display: flex; flex-direction: column; gap: 14px; }
+    form input, form textarea, form select {
+      padding: 13px 16px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15);
+      font-family: 'Lato', sans-serif; font-size: 0.92rem; color: var(--white);
+      outline: none; transition: border-color 0.2s;
+    }
+    form input::placeholder, form textarea::placeholder { color: rgba(255,255,255,0.35); }
+    form select { color: rgba(255,255,255,0.65); }
+    form select option { background: var(--navy); }
+    form input:focus, form textarea:focus { border-color: var(--red); }
+    form textarea { height: 130px; resize: vertical; }
+    form button {
+      background: var(--red); color: var(--white);
+      padding: 14px 36px; font-family: 'Titillium Web', sans-serif;
+      font-size: 0.9rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; border: none; cursor: pointer;
+      transition: background 0.2s; align-self: flex-start;
+    }
+    form button:hover { background: var(--red-light); }
+
+    /* FOOTER */
+    footer { background: #060f1e; padding: 52px 48px 26px; border-top: 3px solid var(--red); }
+    .footer-inner { max-width: 1160px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 36px; }
+    .footer-brand-text { margin-top: 14px; font-size: 0.85rem; color: rgba(255,255,255,0.38); line-height: 1.75; max-width: 240px; }
+    .footer-col h4 { font-family: 'Titillium Web', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--red-light); margin-bottom: 14px; font-weight: 700; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { color: rgba(255,255,255,0.48); text-decoration: none; font-size: 0.86rem; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--red-light); }
+    .footer-bottom { display: flex; justify-content: space-between; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.28); }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .dual-grid, .history-grid, .contact-grid { grid-template-columns: 1fr; gap: 2px; }
+      .history-grid { gap: 40px; }
+      .contact-grid { gap: 40px; }
+      .industries-grid, .why-grid, .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 64px 20px; }
+      .hero { padding: 100px 20px 56px; }
+      .hero-stats { flex-wrap: wrap; }
+      .h-stat { border-right: none; }
+      .contact-both-locations { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 580px) {
+      .industries-grid, .why-grid, .testimonials-grid, .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-shield"><span class="nav-logo-k">K</span></div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">Kint Corp</span>
+        <span class="nav-logo-sub">Harrisburg, PA &mdash; George A. Kint Inc.</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#history">History</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Request Service</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-dual-badge">
+        <div class="hero-badge bev">Beverage &amp; CO2</div>
+        <div class="hero-badge fire">Fire Protection</div>
+      </div>
+      <h1>Keeping Pennsylvania<br><span class="safe">Businesses</span><br><span class="fire-word">Safe</span> &amp; Refreshed</h1>
+      <p class="hero-founding">Harrisburg, PA &mdash; Brian Kint, President &mdash; George A. Kint Inc. Legacy</p>
+      <p>Your draft beer needs CO2. Your kitchen needs a compliant fire suppression system. Brian Kint has built a business that handles both &mdash; and has been doing it for generations out of Harrisburg, Pennsylvania. One company. Two essential services. A lot fewer vendors to manage.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-red">Request a Quote</a>
+        <a href="#services" class="btn-ghost">Our Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="h-stat">
+          <div class="h-stat-num">2</div>
+          <div class="h-stat-label">PA Locations (Harrisburg &amp; Aston)</div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-num">100+</div>
+          <div class="h-stat-label">Years of Trusted Service</div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-num">2-in-1</div>
+          <div class="h-stat-label">Beverage Gas &amp; Fire Protection</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DUAL SERVICES -->
+  <div class="dual-services" id="services">
+    <div class="dual-grid">
+      <div class="service-pillar beverage">
+        <div class="service-pillar-title">
+          <svg viewBox="0 0 24 24"><path d="M8 2h8l1 7a5 5 0 0 1-10 0L8 2z"/><path d="M12 14v7M8 21h8"/></svg>
+          Beverage Gas &amp; CO2 Supply
+        </div>
+        <ul>
+          <li>CO2 delivery for draft beer and soda systems</li>
+          <li>Mixed gas and nitrogen delivery</li>
+          <li>Gas cylinder management and exchange</li>
+          <li>Scheduled supply contracts with reliable delivery</li>
+          <li>Emergency CO2 delivery for business-critical situations</li>
+          <li>Beverage system consultation and supply setup</li>
+          <li>Specialty gas for craft breweries and beverage producers</li>
+        </ul>
+      </div>
+      <div class="service-pillar fire-prot">
+        <div class="service-pillar-title">
+          <svg viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+          Fire Protection Services
+        </div>
+        <ul>
+          <li>Fire extinguisher sales — all types and classes</li>
+          <li>Annual inspection and certification</li>
+          <li>Recharge, hydrostatic testing, and maintenance</li>
+          <li>Fire suppression system installation</li>
+          <li>Restaurant hood suppression systems</li>
+          <li>Compliance documentation for insurance and code</li>
+          <li>Emergency service and replacement programs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- INDUSTRIES -->
+  <section class="industries" id="industries">
+    <div class="container">
+      <p class="section-label reveal">Who We Serve</p>
+      <h2 class="section-title reveal">The Businesses That<br>Depend on Kint</h2>
+      <p class="section-sub reveal">From the bar that needs CO2 for draft beer to the office building that needs fire extinguisher certifications before their next insurance inspection &mdash; Kint Corp has the experience and the inventory to get the job done. The fact that one company handles both is unusual. It is also exactly the point.</p>
+      <div class="industries-grid">
+        <div class="industry-card">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M9 3v18"/></svg>
+          </div>
+          <h3>Restaurants &amp; Bars</h3>
+          <p>Reliable CO2 for draught beer and fountain soda systems, plus annual fire extinguisher inspections and hood suppression service to keep your kitchen safe and compliant.</p>
+        </div>
+        <div class="industry-card">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><path d="M8 2h8l1 7a5 5 0 0 1-10 0L8 2z"/><path d="M12 14v7M8 21h8"/></svg>
+          </div>
+          <h3>Beverage Distributors &amp; Breweries</h3>
+          <p>Mixed gas and CO2 supply for craft breweries, beverage distributors, and specialty producers who need consistent, reliable gas delivery to keep production running.</p>
+        </div>
+        <div class="industry-card">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>Commercial &amp; Industrial</h3>
+          <p>Fire protection equipment installation and service for office buildings, warehouses, industrial facilities, and multi-tenant commercial properties across Central Pennsylvania.</p>
+        </div>
+        <div class="industry-card">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Hospitality &amp; Hotels</h3>
+          <p>Complete beverage gas supply for hotel bars and restaurants, along with annual fire protection inspections and compliance documentation for your entire property.</p>
+        </div>
+        <div class="industry-card">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 1 10 10c0 5-4 8.5-10 10C6 20.5 2 17 2 12A10 10 0 0 1 12 2z"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <h3>Railroads &amp; Transportation</h3>
+          <p>Kint Corp's roots go back to supplying CO2 fire extinguishers to the railroad. We continue to serve transportation and industrial clients across the region.</p>
+        </div>
+        <div class="industry-card">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Healthcare &amp; Institutions</h3>
+          <p>Compliant fire protection equipment and maintenance for healthcare facilities, schools, and institutional buildings where code compliance and safety documentation are non-negotiable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORY -->
+  <section class="history" id="history">
+    <div class="container">
+      <div class="history-grid">
+        <div class="reveal">
+          <img src="https://images.unsplash.com/photo-1565689157206-0fddef7589a2?w=800&q=80" alt="Kint Corp service team at work in Pennsylvania" loading="lazy" style="width:100%; height:480px; object-fit:cover;" />
+        </div>
+        <div>
+          <p class="section-label" style="color: rgba(255,255,255,0.55);">Our History</p>
+          <h2 class="section-title light">From the Railroad to<br>the Restaurant</h2>
+          <p style="color: rgba(255,255,255,0.68); font-size: 1rem; line-height: 1.8; margin-bottom: 32px;">The Kint story is one of the more unusual in Pennsylvania business &mdash; a company that started supplying CO2 fire extinguishers to railroads and ended up becoming an indispensable partner to the restaurant and hospitality industry. That kind of reinvention takes vision. The fact that they kept both service lines running and growing takes discipline. Brian Kint carries that legacy forward today.</p>
+          <div class="history-timeline">
+            <div class="hist-item">
+              <div class="hist-year">Founded</div>
+              <div class="hist-content">
+                <h4>George A. Kint Starts with the Railroads</h4>
+                <p>George A. Kint Inc. is founded supplying CO2 fire extinguishers to the railroad industry in Central Pennsylvania &mdash; a demanding, precision-driven customer that set the standard for everything that followed.</p>
+              </div>
+            </div>
+            <div class="hist-item">
+              <div class="hist-year">Expand</div>
+              <div class="hist-content">
+                <h4>From Railroads to Soda Fountains</h4>
+                <p>Kint begins supplying CO2 to soda fountains in downtown Harrisburg &mdash; a pivot that planted the seed for what is now the company's beverage gas division. The same gas, a very different customer, and a big idea about what the business could become.</p>
+              </div>
+            </div>
+            <div class="hist-item">
+              <div class="hist-year">Growth</div>
+              <div class="hist-content">
+                <h4>Building Expertise Across Two Industries</h4>
+                <p>As the beverage industry booms and fire protection regulations grow more demanding, Kint grows with both. Installation, inspection, maintenance, and delivery capabilities are added &mdash; one service at a time, always with the same commitment to reliability.</p>
+              </div>
+            </div>
+            <div class="hist-item">
+              <div class="hist-year">Today</div>
+              <div class="hist-content">
+                <h4>Brian Kint Carries the Legacy Forward</h4>
+                <p>Brian Kint leads Kint Corp as President, operating out of Harrisburg and Aston, PA &mdash; delivering CO2 to bars and breweries, keeping commercial kitchens fire-safe, and honoring a name that Central Pennsylvania businesses have trusted for generations.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY KINT -->
+  <section class="why">
+    <div class="container">
+      <p class="section-label reveal">Why Kint Corp</p>
+      <h2 class="section-title reveal">One Call. Two Essential Services.<br>One Name You Can Count On.</h2>
+      <p class="section-sub reveal">Brian Kint and his team serve restaurants, bars, breweries, commercial properties, and industrial facilities across Central Pennsylvania. The reason customers stay for ten, fifteen, twenty years is simple: Kint shows up.</p>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-card-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Reliable Delivery</h3>
+          <p>Consistent, scheduled CO2 and gas deliveries so your bar or restaurant never runs short during service hours.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Code-Compliant Service</h3>
+          <p>All fire protection work meets applicable codes and standards. We provide complete documentation for insurance carriers and safety inspections.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>Two PA Locations</h3>
+          <p>Harrisburg and Aston, PA locations ensure broad coverage across Central and Eastern Pennsylvania for faster delivery and service response.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Long-Term Relationships</h3>
+          <p>Many of Kint's customers have been with the company for decades. That track record of consistency is the strongest endorsement we have.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <p class="section-label reveal">What Our Customers Say</p>
+      <h2 class="section-title reveal">Built on Reliability</h2>
+      <div class="reveal" style="margin: 40px 0 52px;">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80" alt="Restaurant and bar clients served by Kint Corp beverage gas in Central Pennsylvania" loading="lazy" style="width: 100%; height: 260px; object-fit: cover; object-position: center 60%;" />
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <blockquote>"We have been getting our CO2 from Kint for over twelve years. Deliveries are on time, the team is easy to work with, and I have never once had to worry about running dry during a busy weekend. In this business, that kind of reliability is everything."</blockquote>
+          <div class="testimonial-author">Dan M., Owner</div>
+          <div class="testimonial-role">Restaurant &amp; Bar, Harrisburg, PA</div>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>"Kint handles fire extinguisher inspections across all three of our buildings. Every year, same crew, prompt service, thorough documentation. Our insurance carrier accepts their certifications without question. That is exactly what we need and they deliver it every time."</blockquote>
+          <div class="testimonial-author">Carol S., Facilities Manager</div>
+          <div class="testimonial-role">Commercial Property, Central Pennsylvania</div>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>"Another brewer referred us to Kint and we have not looked back. They show up when they say they will, the pricing is fair, and they understand what a production schedule actually means. We cannot afford a CO2 shortage on a brew day. Kint gets that."</blockquote>
+          <div class="testimonial-author">Head Brewer</div>
+          <div class="testimonial-role">Craft Brewery, Lancaster County, PA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="reveal">
+          <p class="section-label">Request Service</p>
+          <h2 class="section-title light">Ready to Work<br>with Kint Corp?</h2>
+          <p>Whether you need a CO2 delivery contract for your restaurant, a fire extinguisher inspection before your next audit, or a quote on a suppression system installation &mdash; reach out and Brian's team will get back to you promptly. Most questions can be answered with one call to (717) 234-8006.</p>
+          <div class="contact-detail">
+            <div class="contact-label">Call Brian Directly</div>
+            <div class="contact-value"><a href="tel:7172348006" style="color: var(--red-light); text-decoration: none; font-size: 1.15rem; font-weight: 700;">(717) 234-8006</a></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">briankint@kintcorp.com</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-label">Website</div>
+            <div class="contact-value">kintcorp.com</div>
+          </div>
+          <div class="contact-both-locations">
+            <div class="location-card">
+              <h4>Harrisburg, PA</h4>
+              <p>1300 Crooked Hill Road<br>Harrisburg, PA 17110</p>
+            </div>
+            <div class="location-card">
+              <h4>Aston, PA</h4>
+              <p>Eastern Pennsylvania<br>Service Location</p>
+            </div>
+          </div>
+        </div>
+        <div class="reveal">
+          <form>
+            <input type="text" placeholder="Your Name" required />
+            <input type="text" placeholder="Business Name" required />
+            <input type="email" placeholder="Email Address" required />
+            <input type="tel" placeholder="Phone Number" />
+            <select>
+              <option value="">I'm inquiring about...</option>
+              <option>CO2 / Beverage Gas Delivery</option>
+              <option>Fire Extinguisher Inspection</option>
+              <option>Fire Suppression Installation</option>
+              <option>Fire Extinguisher Purchase</option>
+              <option>Emergency Service</option>
+              <option>Both Beverage Gas and Fire Protection</option>
+            </select>
+            <input type="text" placeholder="Business Type / Industry" />
+            <textarea placeholder="Tell us about your needs — number of locations, current setup, preferred delivery schedule, etc."></textarea>
+            <button type="submit">Send My Request</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <a href="#" class="nav-logo" style="text-decoration: none; display: inline-flex;">
+            <div class="nav-logo-shield"><span class="nav-logo-k">K</span></div>
+            <div class="nav-logo-text">
+              <span class="nav-logo-name">Kint Corp</span>
+              <span class="nav-logo-sub">George A. Kint Inc. &mdash; Harrisburg, PA</span>
+            </div>
+          </a>
+          <p class="footer-brand-text">CO2 and beverage gas supply plus fire protection services across Central Pennsylvania. Serving businesses for generations.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Beverage Gas</h4>
+          <ul>
+            <li><a href="#">CO2 Delivery</a></li>
+            <li><a href="#">Mixed Gas &amp; Nitrogen</a></li>
+            <li><a href="#">Delivery Contracts</a></li>
+            <li><a href="#">Cylinder Management</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Fire Protection</h4>
+          <ul>
+            <li><a href="#">Fire Extinguisher Sales</a></li>
+            <li><a href="#">Annual Inspection</a></li>
+            <li><a href="#">Suppression Systems</a></li>
+            <li><a href="#">Compliance &amp; Certification</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:7172348006">(717) 234-8006</a></li>
+            <li><a href="mailto:briankint@kintcorp.com">briankint@kintcorp.com</a></li>
+            <li><a href="#">Harrisburg, PA 17110</a></li>
+            <li><a href="#">Aston, PA</a></li>
+            <li><a href="#">kintcorp.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Kint Corp / George A. Kint Inc. All rights reserved.</p>
+        <p>CO2, Beverage Gas &amp; Fire Protection &mdash; Central Pennsylvania</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal, .industry-card, .why-card, .testimonial-card').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('.industry-card').forEach((el, i) => { el.style.transitionDelay = `${i * 0.1}s`; });
+    document.querySelectorAll('.why-card').forEach((el, i) => { el.style.transitionDelay = `${i * 0.12}s`; });
+    document.querySelectorAll('.testimonial-card').forEach((el, i) => { el.style.transitionDelay = `${i * 0.15}s`; });
+  </script>
+</body>
+</html>

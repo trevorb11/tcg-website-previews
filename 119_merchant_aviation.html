@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Merchant Aviation | Airport Development and Aviation Consulting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --midnight: #0a0e1a;
+      --navy: #0d1b2e;
+      --blue: #0c4a80;
+      --sky: #1a8cdb;
+      --sky-light: #60b4f5;
+      --silver: #a8b4c8;
+      --white: #ffffff;
+      --off-white: #f4f7fc;
+      --gray: #64748b;
+      --gray-light: #dde5f0;
+      --text: #1e293b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Exo 2', sans-serif; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(10, 14, 26, 0.97);
+      backdrop-filter: blur(10px);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-logo {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-logo span { color: var(--sky-light); font-weight: 300; }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--sky-light); }
+
+    .nav-cta {
+      background: var(--sky);
+      color: var(--white) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--sky-light) !important; color: var(--navy) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--midnight);
+      display: flex;
+      align-items: center;
+      padding: 120px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.25;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(10,14,26,0.95) 40%, rgba(12,74,128,0.5) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: var(--sky-light);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--sky);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+      color: var(--white);
+      line-height: 1.1;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 .accent { color: var(--sky-light); }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 2.5rem;
+      max-width: 560px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--sky);
+      color: var(--white);
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 700;
+      font-size: 0.92rem;
+      letter-spacing: 0.5px;
+      padding: 0.9rem 2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--sky-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 700;
+      font-size: 0.92rem;
+      padding: 0.9rem 2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.35);
+      transition: border-color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--sky-light); }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--navy);
+      border-top: 2px solid var(--sky);
+      padding: 40px 5%;
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-item strong {
+      display: block;
+      font-family: 'Exo 2', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: var(--sky-light);
+    }
+
+    .stat-item span {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--silver);
+    }
+
+    /* SECTIONS */
+    section { padding: 90px 5%; }
+
+    .section-label {
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-heading {
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      color: var(--navy);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .section-intro {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 580px;
+      margin-bottom: 3rem;
+    }
+
+    /* ABOUT */
+    .about { background: var(--off-white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .about-text p { color: var(--gray); margin-bottom: 1.2rem; }
+
+    .adp-badge {
+      background: var(--navy);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .adp-badge-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--sky);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .adp-badge-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: var(--white);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .adp-badge strong {
+      display: block;
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.9rem;
+      color: var(--sky-light);
+      margin-bottom: 0.2rem;
+    }
+
+    .adp-badge span {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--gray-light);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      border-top: 4px solid var(--sky);
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(12,74,128,0.12);
+      border-top-color: var(--navy);
+    }
+
+    .service-card h3 {
+      font-size: 1rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    /* PROJECT EXPERIENCE */
+    .experience { background: var(--navy); }
+
+    .experience .section-heading { color: var(--white); }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .experience-card {
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .experience-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      opacity: 0.7;
+    }
+
+    .experience-body {
+      padding: 1.5rem;
+    }
+
+    .experience-tag {
+      display: inline-block;
+      background: rgba(26,140,219,0.2);
+      color: var(--sky-light);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.7rem;
+    }
+
+    .experience-card h3 {
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .experience-card p {
+      font-size: 0.83rem;
+      color: var(--silver);
+    }
+
+    /* TEAM */
+    .team { background: var(--off-white); }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .team-text p { color: var(--gray); margin-bottom: 1.2rem; }
+
+    .team-image img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: var(--off-white);
+      border-radius: 12px;
+      padding: 2rem;
+      border-left: 4px solid var(--sky);
+    }
+
+    .testimonial-card p {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+
+    .testimonial-author img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .testimonial-author strong { display: block; font-size: 0.9rem; color: var(--navy); }
+    .testimonial-author span { font-size: 0.8rem; color: var(--gray); }
+
+    /* CONTACT */
+    .contact { background: var(--off-white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .contact-info h2 { font-size: 1.8rem; color: var(--navy); margin-bottom: 1rem; }
+    .contact-info p { color: var(--gray); margin-bottom: 2rem; }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: var(--white);
+      border-radius: 10px;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .contact-detail strong {
+      display: block;
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--sky);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-detail span { font-size: 0.9rem; color: var(--text); }
+
+    .contact-form {
+      background: var(--navy);
+      padding: 2.5rem;
+      border-radius: 14px;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.2rem; }
+
+    .form-group label {
+      display: block;
+      font-family: 'Exo 2', sans-serif;
+      font-size: 0.73rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.92rem;
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--sky-light); }
+
+    .form-group select option { background: var(--navy); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+
+    /* CTA */
+    .cta-section {
+      background: var(--midnight);
+      text-align: center;
+      padding: 90px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1556388158-158ea5ccacbd?w=1400&q=80') center/cover no-repeat;
+      opacity: 0.1;
+    }
+
+    .cta-section > * { position: relative; z-index: 2; }
+
+    .cta-section h2 { font-size: clamp(1.8rem, 4vw, 3rem); color: var(--white); margin-bottom: 1rem; }
+    .cta-section p { color: rgba(255,255,255,0.7); font-size: 1.05rem; margin-bottom: 2.5rem; }
+
+    /* FOOTER */
+    footer {
+      background: var(--midnight);
+      color: rgba(255,255,255,0.5);
+      padding: 60px 5% 30px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+    }
+
+    .footer-brand p { font-size: 0.87rem; margin-top: 1rem; line-height: 1.7; }
+
+    .footer-col h4 {
+      font-family: 'Exo 2', sans-serif;
+      color: var(--sky-light);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.6rem; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 0.87rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--sky-light); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .about-grid,
+      .team-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .experience-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      section { padding: 65px 5%; }
+      .stats-bar { gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Merchant <span>Aviation</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#experience">Projects</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Airport Development and Aviation Consulting</div>
+      <h1>Elevating Airports.<br><span class="accent">Connecting</span><br>Communities.</h1>
+      <p>Strategic aviation consulting from master planning to capital delivery — for airport authorities, government agencies, and aviation decision-makers who demand results.</p>
+      <div class="hero-buttons">
+        <a href="#services" class="btn-primary">Explore Our Services</a>
+        <a href="#contact" class="btn-outline">Start a Conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat-item">
+      <strong>50+</strong>
+      <span>Airports Worldwide</span>
+    </div>
+    <div class="stat-item">
+      <strong>2015</strong>
+      <span>Founded</span>
+    </div>
+    <div class="stat-item">
+      <strong>29</strong>
+      <span>Groupe ADP Airports</span>
+    </div>
+    <div class="stat-item">
+      <strong>$M+</strong>
+      <span>Capital Programs Managed</span>
+    </div>
+  </div>
+
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="about-image reveal">
+        <img src="https://images.unsplash.com/photo-1569049912-6d1f6b9b7b1a?w=800&q=80" alt="Airport terminal interior" />
+      </div>
+      <div class="about-text reveal">
+        <p class="section-label">Who We Are</p>
+        <h2 class="section-heading">A Global Aviation Consulting Firm with Local Commitment</h2>
+        <p>Founded in 2015 in Summit, New Jersey, Merchant Aviation was built to bring a new level of strategic thinking to airport development. We're not an architecture firm that learned aviation on the job, and we're not an engineering company trying to do consulting. We're aviation consultants — through and through.</p>
+        <p>Our team brings together expertise in airport planning, financial feasibility, capital program management, and passenger experience — the full spectrum of what it takes to develop an airport that works for the communities it serves and the airlines that operate in it.</p>
+        <p>In recent years, Merchant Aviation has become part of the Groupe ADP family — one of the world's leading airport operators, managing 29 airports worldwide. That partnership gives our clients access to global knowledge and networks while maintaining the responsive, results-oriented service that defined us from the beginning.</p>
+        <div class="adp-badge">
+          <div class="adp-badge-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <div>
+            <strong>A Groupe ADP Company</strong>
+            <span>Connected to a global network of 29 airports across three continents.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">What We Do</p>
+      <h2 class="section-heading reveal">Full-Spectrum Airport Consulting Services</h2>
+      <p class="section-intro reveal">From the first feasibility study to the ribbon-cutting ceremony, we guide airport development projects through every phase with strategic clarity and operational precision.</p>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <h3>Strategic Visioning and Master Planning</h3>
+          <p>Long-range airport master plans that align with community needs, aviation demand forecasts, and long-term financial sustainability.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Airport Planning and Programming</h3>
+          <p>Facility programming, capacity analysis, and concept-level planning that sets the foundation for every successful airport project.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Capital Improvement Program Management</h3>
+          <p>End-to-end management of multi-million dollar airport capital programs — on time, on budget, and compliant with FAA requirements.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Financial Feasibility Studies</h3>
+          <p>Rigorous financial analysis and feasibility studies to evaluate project viability, funding strategies, and return on investment.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Architectural Design Coordination</h3>
+          <p>Design coordination and quality oversight across terminal, landside, and airside infrastructure projects.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Construction Management</h3>
+          <p>Owner-representative construction management services ensuring projects are delivered per specifications, on schedule, and within budget.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Passenger Experience Consulting</h3>
+          <p>Passenger flow analysis, terminal design optimization, and amenity planning that creates airports people actually enjoy using.</p>
+        </div>
+        <div class="service-card reveal">
+          <h3>Operational Efficiency Analysis</h3>
+          <p>Process and operations assessment to identify inefficiencies and recommend improvements that enhance airport performance and profitability.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience" id="experience">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal" style="color:var(--sky-light);">Our Work</p>
+      <h2 class="section-heading reveal">Project Experience Across 50+ Airports</h2>
+      <p class="section-intro reveal" style="color:var(--silver);">From regional airports to international hubs, our portfolio reflects the full range of what airport development demands.</p>
+      <div class="experience-grid">
+        <div class="experience-card reveal">
+          <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=600&q=80" alt="Airport terminal project" />
+          <div class="experience-body">
+            <span class="experience-tag">Terminal Development</span>
+            <h3>Regional Terminal Modernization</h3>
+            <p>Full master plan update and terminal concept development for a growing regional airport serving a metropolitan market.</p>
+          </div>
+        </div>
+        <div class="experience-card reveal">
+          <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?w=600&q=80" alt="Airport runway and infrastructure" />
+          <div class="experience-body">
+            <span class="experience-tag">Capital Program</span>
+            <h3>Multi-Phase Capital Improvement</h3>
+            <p>Multi-year capital program management for a major airport authority, coordinating over a dozen simultaneous construction projects.</p>
+          </div>
+        </div>
+        <div class="experience-card reveal">
+          <img src="https://images.unsplash.com/photo-1610642372651-fe6e7bc15db2?w=600&q=80" alt="Airport planning" />
+          <div class="experience-body">
+            <span class="experience-tag">Feasibility</span>
+            <h3>International Gateway Feasibility</h3>
+            <p>Financial feasibility and business case development for a new international gateway project serving a growing metropolitan region.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="team" id="team">
+    <div class="team-grid">
+      <div class="team-text reveal">
+        <p class="section-label">Our Team</p>
+        <h2 class="section-heading">Aviation Specialists with Operational Depth</h2>
+        <p>The Merchant Aviation team brings together professionals with backgrounds spanning airport operations, architectural design, civil engineering, financial analysis, and aviation planning. We've worked for airports, airlines, and government agencies — which means we understand the dynamics of every stakeholder at the table.</p>
+        <p>Our leadership team has managed airport programs on five continents and brings that international perspective to every domestic project we undertake. Being part of the Groupe ADP network extends that reach even further, connecting our clients to best practices from some of the world's best-performing airports.</p>
+        <p>What sets our team apart isn't just the credentials — it's the commitment to understanding our clients' specific context, constraints, and goals before recommending anything.</p>
+        <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:1.5rem;">Meet the Team</a>
+      </div>
+      <div class="team-image reveal">
+        <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&q=80" alt="Professional aviation team" />
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" style="background:var(--white);">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p class="section-label reveal">Client Feedback</p>
+      <h2 class="section-heading reveal">What Airport Authorities Say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <p>Merchant Aviation came in during a critical planning phase and brought both the technical depth and the strategic perspective we needed. Their financial feasibility work gave our board the confidence to move forward on a project that's transformed our airport.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80" alt="Airport director" />
+            <div>
+              <strong>Mark A.</strong>
+              <span>Airport Director, Regional Authority</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>Working with a firm that has operational experience in airports, not just design experience, changes everything. Merchant Aviation understood our constraints from day one and designed around our real-world operational needs.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&q=80" alt="Operations director" />
+            <div>
+              <strong>Christine V.</strong>
+              <span>VP Operations, International Airport</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p>The capital program management Merchant Aviation provided on our terminal expansion was outstanding. Multi-agency, complex phasing, and a live airport environment — they navigated all of it without a single significant disruption to operations.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Program manager" />
+            <div>
+              <strong>David L.</strong>
+              <span>Capital Programs Director, Municipal Airport</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-section">
+    <h2>Ready to Elevate Your Airport?</h2>
+    <p>Whether you're planning a terminal expansion or starting from a blank master plan, we'd love to learn about your project.</p>
+    <a href="#contact" class="btn-primary">Start the Conversation</a>
+  </div>
+
+  <section class="contact" id="contact">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p class="section-label">Contact Us</p>
+        <h2>Let's Discuss Your Airport Project</h2>
+        <p>All inquiries are handled by senior members of our team. We respond to project inquiries within one business day.</p>
+        <div class="contact-detail">
+          <div>
+            <strong>Phone</strong>
+            <span>(908) 273-3600</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div>
+            <strong>Email</strong>
+            <span>kiranm@merchantaviation.com</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div>
+            <strong>Headquarters</strong>
+            <span>382 Springfield Ave, Suite 411, Summit, NJ 07901</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div>
+            <strong>Network</strong>
+            <span>Groupe ADP Company &mdash; Global Reach</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <h3 style="font-family:'Exo 2',sans-serif;font-size:1.3rem;color:var(--white);margin-bottom:1.5rem;">Tell Us About Your Project</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="First" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Last" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Organization</label>
+          <input type="text" placeholder="Airport authority, agency, or firm" />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="you@organization.gov" />
+        </div>
+        <div class="form-group">
+          <label>Service Area of Interest</label>
+          <select>
+            <option value="">Select...</option>
+            <option>Master Planning</option>
+            <option>Capital Program Management</option>
+            <option>Financial Feasibility</option>
+            <option>Construction Management</option>
+            <option>Passenger Experience</option>
+            <option>Operational Efficiency</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Project Description</label>
+          <textarea placeholder="Tell us about your airport, the scope of work, timeline, and any specific constraints we should know about..."></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;padding:1rem;font-size:0.95rem;">Submit Inquiry</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">Merchant <span>Aviation</span></a>
+        <p>Full-service aviation consulting for airport development. A Groupe ADP Company. Headquartered in Summit, NJ &mdash; serving airports worldwide since 2015.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Master Planning</a></li>
+          <li><a href="#">Capital Programs</a></li>
+          <li><a href="#">Feasibility</a></li>
+          <li><a href="#">Construction Mgmt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Groupe ADP</a></li>
+          <li><a href="#">Projects</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:9082733600">(908) 273-3600</a></li>
+          <li><a href="mailto:kiranm@merchantaviation.com">kiranm@merchantaviation.com</a></li>
+          <li><a href="#">Summit, NJ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Merchant Aviation, LLC. A Groupe ADP Company. All rights reserved.</p>
+      <p>Summit, NJ &bull; Founded 2015</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

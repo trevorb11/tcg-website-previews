@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alper Enterprises Inc | Commercial Roofing Contractors | Delaware Valley</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal: #1c1e22;
+      --slate: #2c3645;
+      --orange: #d96b2a;
+      --orange-light: #e88542;
+      --light: #f0eeea;
+      --lighter: #f8f7f4;
+      --text: #222222;
+      --text-mid: #555555;
+      --white: #ffffff;
+      --border: #ddd9d2;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: var(--lighter); color: var(--text); line-height: 1.7; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      background: var(--charcoal); padding: 0 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px; border-bottom: 3px solid var(--orange);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .nav-logo-mark {
+      background: var(--orange); color: var(--white);
+      font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 700;
+      width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;
+      letter-spacing: 0.04em;
+    }
+    .nav-logo-text { font-family: 'Oswald', sans-serif; font-size: 1.15rem; color: var(--white); letter-spacing: 0.06em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.88rem; letter-spacing: 0.07em; text-transform: uppercase; font-family: 'Oswald', sans-serif; font-weight: 400; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta {
+      background: var(--orange); color: var(--white);
+      padding: 11px 26px; font-family: 'Oswald', sans-serif; font-weight: 600;
+      font-size: 0.88rem; letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--orange-light); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--charcoal);
+      display: flex; align-items: flex-end;
+      padding: 0;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.22;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      width: 100%; padding: 0 48px 80px;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      min-height: 100vh; padding-top: 120px;
+    }
+    .hero-badge {
+      display: inline-block; background: var(--orange); color: var(--white);
+      font-family: 'Oswald', sans-serif; font-size: 0.78rem; letter-spacing: 0.18em;
+      text-transform: uppercase; padding: 6px 18px; margin-bottom: 28px;
+      width: fit-content;
+    }
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      color: var(--white); line-height: 1.05; margin-bottom: 28px;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em;
+      max-width: 700px;
+    }
+    .hero h1 span { color: var(--orange); }
+    .hero p {
+      font-size: 1.1rem; color: rgba(255,255,255,0.75);
+      max-width: 560px; margin-bottom: 44px; font-weight: 300; line-height: 1.8;
+    }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-orange {
+      background: var(--orange); color: var(--white);
+      padding: 16px 38px; font-family: 'Oswald', sans-serif; font-size: 0.95rem;
+      font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-orange:hover { background: var(--orange-light); }
+    .btn-ghost {
+      border: 2px solid rgba(255,255,255,0.4); color: var(--white);
+      padding: 16px 38px; font-family: 'Oswald', sans-serif; font-size: 0.95rem;
+      font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; transition: border-color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
+    .hero-stats {
+      display: flex; gap: 0; margin-top: 60px;
+      border-top: 1px solid rgba(255,255,255,0.12); padding-top: 40px;
+    }
+    .hero-stat { padding-right: 48px; margin-right: 48px; border-right: 1px solid rgba(255,255,255,0.12); }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-num { font-family: 'Oswald', sans-serif; font-size: 2.2rem; color: var(--orange); font-weight: 700; }
+    .hero-stat-label { font-size: 0.82rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* SECTION COMMONS */
+    section { padding: 96px 48px; }
+    .container { max-width: 1160px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Oswald', sans-serif; font-size: 0.75rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 12px; font-weight: 500;
+    }
+    .section-title {
+      font-family: 'Oswald', sans-serif; font-size: clamp(2rem, 3.5vw, 3rem);
+      color: var(--charcoal); margin-bottom: 20px; line-height: 1.15; text-transform: uppercase; font-weight: 700;
+    }
+    .section-title.light { color: var(--white); }
+    .section-sub { font-size: 1rem; color: var(--text-mid); max-width: 580px; margin-bottom: 56px; line-height: 1.8; }
+
+    /* SERVICES */
+    .services { background: var(--lighter); }
+    .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 56px; }
+    .service-item {
+      background: var(--white); padding: 36px 28px;
+      border-top: 3px solid var(--border);
+      transition: border-color 0.2s;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease, border-color 0.2s;
+    }
+    .service-item.visible { opacity: 1; transform: translateY(0); }
+    .service-item:hover { border-top-color: var(--orange); }
+    .service-item h3 { font-family: 'Oswald', sans-serif; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--charcoal); margin-bottom: 12px; margin-top: 16px; }
+    .service-item p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; }
+    .service-num { font-family: 'Oswald', sans-serif; font-size: 2rem; color: var(--orange); opacity: 0.3; font-weight: 700; }
+
+    /* INDUSTRIES */
+    .industries { background: var(--slate); }
+    .industries-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 56px; }
+    .industry-card {
+      background: rgba(255,255,255,0.04); padding: 40px 36px;
+      border-left: 3px solid rgba(217,107,42,0.3);
+      transition: border-color 0.2s, background 0.2s;
+      opacity: 0; transform: translateX(-20px);
+      transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.2s;
+    }
+    .industry-card.visible { opacity: 1; transform: translateX(0); }
+    .industry-card:hover { border-left-color: var(--orange); background: rgba(255,255,255,0.07); }
+    .industry-card h3 { font-family: 'Oswald', sans-serif; font-size: 1.15rem; text-transform: uppercase; color: var(--white); margin-bottom: 10px; }
+    .industry-card p { font-size: 0.92rem; color: rgba(255,255,255,0.6); line-height: 1.7; }
+
+    /* WHY ALPER */
+    .why-alper { background: var(--white); }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .why-image img { width: 100%; height: 500px; object-fit: cover; }
+    .why-list { list-style: none; margin-top: 36px; }
+    .why-list li {
+      display: flex; gap: 20px; padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .why-list li:last-child { border-bottom: none; }
+    .why-list-icon { width: 36px; height: 36px; background: var(--orange); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .why-list-icon span { color: var(--white); font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 0.9rem; }
+    .why-list-content h4 { font-family: 'Oswald', sans-serif; font-size: 1.05rem; text-transform: uppercase; color: var(--charcoal); margin-bottom: 6px; }
+    .why-list-content p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--light); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 56px; }
+    .testimonial-card {
+      background: var(--white); padding: 36px 30px;
+      border-bottom: 3px solid var(--orange);
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .testimonial-card.visible { opacity: 1; transform: translateY(0); }
+    .testimonial-card blockquote { font-size: 0.97rem; color: var(--text-mid); line-height: 1.8; font-style: italic; margin-bottom: 24px; }
+    .testimonial-author { font-family: 'Oswald', sans-serif; font-size: 0.9rem; text-transform: uppercase; color: var(--charcoal); letter-spacing: 0.06em; }
+    .testimonial-role { font-size: 0.82rem; color: var(--text-mid); margin-top: 4px; }
+
+    /* ABOUT */
+    .about { background: var(--charcoal); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-text p { font-size: 1rem; color: rgba(255,255,255,0.72); line-height: 1.85; margin-bottom: 20px; }
+    .about-callout {
+      background: var(--orange); padding: 28px 32px; margin: 32px 0;
+    }
+    .about-callout p { font-family: 'Oswald', sans-serif; font-size: 1.2rem; color: var(--white); font-style: italic; line-height: 1.5; margin: 0; }
+    .about-img img { width: 100%; height: 480px; object-fit: cover; }
+    .about-img-caption { background: var(--slate); padding: 16px 20px; }
+    .about-img-caption p { font-size: 0.85rem; color: rgba(255,255,255,0.55); font-style: italic; }
+
+    /* CONTACT */
+    .contact-section { background: var(--lighter); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .contact-info p { font-size: 1rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 32px; }
+    .contact-detail { margin-bottom: 20px; }
+    .contact-detail-label { font-family: 'Oswald', sans-serif; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--orange); margin-bottom: 4px; }
+    .contact-detail-value { font-size: 1rem; color: var(--charcoal); }
+    form { display: flex; flex-direction: column; gap: 18px; }
+    form input, form textarea {
+      padding: 13px 16px; border: 1px solid var(--border); background: var(--white);
+      font-family: 'Lato', sans-serif; font-size: 0.95rem; color: var(--text);
+      outline: none; transition: border-color 0.2s;
+    }
+    form input:focus, form textarea:focus { border-color: var(--orange); }
+    form textarea { height: 130px; resize: vertical; }
+    form button {
+      background: var(--orange); color: var(--white);
+      padding: 15px 36px; font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; border: none; cursor: pointer;
+      transition: background 0.2s; align-self: flex-start;
+    }
+    form button:hover { background: var(--orange-light); }
+
+    /* FOOTER */
+    footer { background: #111316; padding: 56px 48px 28px; border-top: 3px solid var(--orange); }
+    .footer-inner { max-width: 1160px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 56px; margin-bottom: 44px; }
+    .footer-brand-text { margin-top: 14px; font-size: 0.88rem; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 260px; }
+    .footer-col h4 { font-family: 'Oswald', sans-serif; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--orange); margin-bottom: 18px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 9px; }
+    .footer-col ul li a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--orange); }
+    .footer-bottom { display: flex; justify-content: space-between; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .industries-grid, .why-grid, .about-grid, .contact-grid, .footer-grid, .testimonials-grid { grid-template-columns: 1fr; gap: 40px; }
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 64px 20px; }
+      .hero-content { padding: 100px 20px 56px; }
+      .hero-stats { flex-wrap: wrap; gap: 24px; }
+      .hero-stat { border-right: none; padding-right: 0; margin-right: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark">AE</div>
+      <span class="nav-logo-text">Alper Enterprises</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Alper</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Schedule an Assessment</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Commercial Roofing &mdash; Delaware Valley Since 1991</div>
+      <h1>30 Years.<br><span>Roofs That Hold.</span></h1>
+      <p>Craig Alper started as a journeyman roofer. He worked his way up to running one of the largest commercial roofing operations in the country. Then in 1991 he built his own firm — because he knew exactly where most contractors cut corners, and he wasn't willing to do it.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-orange">Schedule a Roof Assessment</a>
+        <a href="#services" class="btn-ghost">Our Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">30+</div>
+          <div class="hero-stat-label">Years in Business</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">20+</div>
+          <div class="hero-stat-label">Skilled Tradespeople</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">1991</div>
+          <div class="hero-stat-label">Founded</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <p class="section-label reveal">What We Do</p>
+      <h2 class="section-title reveal">Commercial Roofing Services</h2>
+      <p class="section-sub reveal">From new construction installs to the leak three other contractors gave up on — Alper Enterprises handles the full spectrum of commercial, industrial, and institutional roofing across South Jersey and the greater Philadelphia area. The unglamorous work that keeps buildings functional. We own it.</p>
+      <div class="services-grid">
+        <div class="service-item">
+          <div class="service-num">01</div>
+          <h3>Built-Up Roofing</h3>
+          <p>Multi-layer BUR systems engineered for long-term performance on flat and low-slope commercial structures. Proven technology, expertly installed.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-num">02</div>
+          <h3>Modified Bitumen</h3>
+          <p>Torch-applied and cold-applied modified bitumen membranes for superior flexibility and durability in the Mid-Atlantic climate.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-num">03</div>
+          <h3>EPDM &amp; TPO Systems</h3>
+          <p>Single-ply membrane systems that deliver energy efficiency and weather resistance — installed and seamed to manufacturer specifications.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-num">04</div>
+          <h3>Sheet Metal &amp; Flashing</h3>
+          <p>Precision fabricated sheet metal work including copings, gutters, downspouts, counterflashing, and custom architectural details.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-num">05</div>
+          <h3>Historical Restoration</h3>
+          <p>Sensitive, code-compliant roofing work on historic structures — preserving architectural character while ensuring modern performance standards.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-num">06</div>
+          <h3>Leak Investigation &amp; Repair</h3>
+          <p>We find and fix the leaks that others can't. Forensic investigation, targeted repairs, and permanent solutions — not temporary patches.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-num">07</div>
+          <h3>New Roof Installation</h3>
+          <p>Complete tear-off and replacement programs for commercial buildings of all types — designed to maximize useful life and minimize disruption.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-num">08</div>
+          <h3>Preventive Maintenance</h3>
+          <p>Scheduled inspection and maintenance programs that extend roof life, catch problems early, and protect your capital investment year-round.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="industries">
+    <div class="container">
+      <p class="section-label reveal">Industries Served</p>
+      <h2 class="section-title light reveal">We Work Where It Matters</h2>
+      <p class="section-sub reveal" style="color: rgba(255,255,255,0.65);">Alper Enterprises serves commercial, industrial, and institutional clients throughout the Delaware Valley. Our crews understand the unique demands of each building type and occupancy class.</p>
+      <div class="industries-grid">
+        <div class="industry-card">
+          <h3>Commercial Office &amp; Retail</h3>
+          <p>Minimal disruption to tenants and operations is non-negotiable. We schedule around your business hours and deliver predictable results.</p>
+        </div>
+        <div class="industry-card">
+          <h3>Industrial &amp; Manufacturing</h3>
+          <p>Large-footprint industrial roofing including metal buildings, sawtooth roofs, and mixed systems. We understand what downtime costs.</p>
+        </div>
+        <div class="industry-card">
+          <h3>Municipal &amp; Government</h3>
+          <p>Prevailing wage, certified payroll, and all public contracting requirements handled professionally. School buildings, public works facilities, and more.</p>
+        </div>
+        <div class="industry-card">
+          <h3>Healthcare &amp; Institutional</h3>
+          <p>Sterile environments and active patient care areas demand a different level of job-site discipline. We meet and exceed those standards on every healthcare project.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY ALPER -->
+  <section class="why-alper" id="why">
+    <div class="container">
+      <div class="why-grid">
+        <div class="reveal">
+          <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80" alt="Roofing contractor working on commercial roof" loading="lazy" style="width:100%; height:500px; object-fit:cover;" />
+        </div>
+        <div>
+          <p class="section-label reveal">Why Choose Alper</p>
+          <h2 class="section-title reveal">Experience Built<br>From the Roof Up</h2>
+          <p style="color: var(--text-mid); font-size: 1rem; line-height: 1.8; margin-bottom: 32px;" class="reveal">Craig didn't start in an office — he started on a roof. He spent years as a journeyman learning the trade from the ground up, then climbed through every level of the industry until he was running one of the largest commercial roofing operations in the country. In 1991, he walked away from that to build something smaller and better. Alper Enterprises has operated that way ever since.</p>
+          <ul class="why-list">
+            <li>
+              <div class="why-list-icon"><span>01</span></div>
+              <div class="why-list-content">
+                <h4>Leadership on Every Job</h4>
+                <p>Craig Alper is not a distant owner. Our senior tradespeople are involved from estimate to final walkthrough — not just showing up for the close-out punch list.</p>
+              </div>
+            </li>
+            <li>
+              <div class="why-list-icon"><span>02</span></div>
+              <div class="why-list-content">
+                <h4>Specialists in Difficult Work</h4>
+                <p>We take on the historical restorations, the impossible leaks, and the complex multi-system roofs that other contractors decline. Thirty years of solving hard problems is our competitive advantage.</p>
+              </div>
+            </li>
+            <li>
+              <div class="why-list-icon"><span>03</span></div>
+              <div class="why-list-content">
+                <h4>Licensed, Insured &amp; Bonded</h4>
+                <p>Full insurance coverage, industry association memberships, and all licensing current — because your property and your liability coverage deserve a contractor who does things right.</p>
+              </div>
+            </li>
+            <li>
+              <div class="why-list-icon"><span>04</span></div>
+              <div class="why-list-content">
+                <h4>Delaware Valley Specialists</h4>
+                <p>South Jersey, Philadelphia, and surrounding communities. We are not a national chain with rotating crews — we are local, we are accountable, and we will be here after the job is done.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <p class="section-label reveal">Client Feedback</p>
+      <h2 class="section-title reveal">What Property Managers Say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <blockquote>"We had a leak in our warehouse that three different roofing companies looked at over two years. None of them fixed it. Craig was on the roof for one afternoon and found the source. It was repaired by the end of that week. Should have called Alper in 2021."</blockquote>
+          <div class="testimonial-author">Facilities Director</div>
+          <div class="testimonial-role">Industrial Warehouse, Burlington County NJ</div>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>"We've done two municipal projects with Alper now. Both times the crew showed up when they said they would, the prevailing wage paperwork was clean, and the work held up through inspection without a single punch-list item. That's rare. We're already in conversations about a third building."</blockquote>
+          <div class="testimonial-author">Director of Public Works</div>
+          <div class="testimonial-role">Township Government, Delaware Valley</div>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>"We own a 1924 commercial building in the Germantown section of Philadelphia — the roofing work had to preserve the original slate and parapet details. Alper understood the challenge immediately and didn't try to talk us into something easier. The finished work is something we're proud of."</blockquote>
+          <div class="testimonial-author">Property Owner</div>
+          <div class="testimonial-role">Historic Commercial Building, Philadelphia</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p class="section-label">Our Story</p>
+          <h2 class="section-title light">Built on a Journeyman's Standards</h2>
+          <p>Craig Alper learned roofing from the top of a building, not the top of an org chart. He came up through the trade — journeyman, foreman, project manager — until he was running one of the largest commercial roofing operations in the country. Then he founded Alper Enterprises in Moorestown, NJ in 1991, because he'd seen what commercial roofing looked like when it was done the right way, and he wanted to build a company that actually did it.</p>
+          <p>More than thirty years later, Alper Enterprises is still serving South Jersey, Philadelphia, and the surrounding region. The crew is smaller by design. The attention to each job is not.</p>
+          <div class="about-callout">
+            <p>"A roof is not glamorous work. But when it fails, everything inside fails with it. That responsibility is why I still walk every job myself."<br><br>&mdash; Craig Alper, Owner</p>
+          </div>
+          <p>Craig is still on job sites. His senior tradespeople are still involved from estimate through final walkthrough. That's not something Alper markets — it's just how the company works.</p>
+          <a href="#contact" class="btn-orange" style="margin-top: 24px; display: inline-block;">Schedule a Roof Assessment</a>
+        </div>
+        <div class="about-img reveal">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80" alt="Commercial roofing professionals on a project" loading="lazy" />
+          <div class="about-img-caption">
+            <p>Alper Enterprises crew on a commercial roofing project in the Delaware Valley.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="reveal">
+          <p class="section-label">Get In Touch</p>
+          <h2 class="section-title">Schedule a Roof Assessment</h2>
+          <p style="color: var(--text-mid); font-size: 1rem; line-height: 1.8; margin-bottom: 32px;">If your roof needs attention — or if you want a second opinion before a small problem becomes an expensive one — give us a call. Craig or a senior member of the team will come out, take a look, and give you a straight answer. No pressure, no upsell.</p>
+          <div class="contact-detail">
+            <div class="contact-detail-label">Call Craig Direct</div>
+            <div class="contact-detail-value" style="font-size:1.2rem; font-weight:700; color: var(--charcoal);">(856) 866-5646</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-label">Email</div>
+            <div class="contact-detail-value">craig@alper-enterprises.com</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-label">Service Area</div>
+            <div class="contact-detail-value">Delaware Valley — South Jersey &amp; Greater Philadelphia</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-label">Office</div>
+            <div class="contact-detail-value">Moorestown, NJ</div>
+          </div>
+        </div>
+        <div class="reveal">
+          <form>
+            <input type="text" placeholder="Your Name" required />
+            <input type="text" placeholder="Company / Organization" />
+            <input type="email" placeholder="Email Address" required />
+            <input type="tel" placeholder="Phone Number" />
+            <input type="text" placeholder="Property Address" />
+            <textarea placeholder="Tell us about your roofing needs — type of building, current issues, timeline..."></textarea>
+            <button type="submit">Request an Assessment</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="nav-logo">
+            <div class="nav-logo-mark">AE</div>
+            <span class="nav-logo-text">Alper Enterprises</span>
+          </div>
+          <p class="footer-brand-text">Commercial roofing contractors serving the Delaware Valley since 1991. Licensed, bonded, and insured. Built on a journeyman's standards.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Built-Up Roofing</a></li>
+            <li><a href="#">Modified Bitumen</a></li>
+            <li><a href="#">EPDM &amp; TPO</a></li>
+            <li><a href="#">Sheet Metal Work</a></li>
+            <li><a href="#">Historical Restoration</a></li>
+            <li><a href="#">Leak Repair</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:8568665646">(856) 866-5646</a></li>
+            <li><a href="mailto:craig@alper-enterprises.com">craig@alper-enterprises.com</a></li>
+            <li><a href="#">Moorestown, NJ</a></li>
+            <li><a href="#">alper-enterprises.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Alper Enterprises Inc. All rights reserved.</p>
+        <p>Commercial Roofing &mdash; Delaware Valley</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal, .service-item, .industry-card, .testimonial-card').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('.service-item').forEach((el, i) => { el.style.transitionDelay = `${i * 0.08}s`; });
+    document.querySelectorAll('.industry-card').forEach((el, i) => { el.style.transitionDelay = `${i * 0.12}s`; });
+    document.querySelectorAll('.testimonial-card').forEach((el, i) => { el.style.transitionDelay = `${i * 0.15}s`; });
+  </script>
+</body>
+</html>

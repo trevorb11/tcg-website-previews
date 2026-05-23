@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Persessi LLC | Unified Communications & Technology Solutions — Durham, NC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0d1b2e;
+      --navy-lt: #152440;
+      --slate:   #1e3a5f;
+      --sky:     #1a73e8;
+      --sky-lt:  #4a90e2;
+      --green:   #22a06b;
+      --green-lt:#2ec47f;
+      --cream:   #f6f8fc;
+      --warm:    #eef1f7;
+      --text:    #1a2540;
+      --muted:   #5a6882;
+      --white:   #ffffff;
+      --radius:  6px;
+      --shadow:  0 4px 24px rgba(13,27,46,0.10);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.65;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 66px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--green); }
+    .nav-badge {
+      background: var(--green);
+      color: var(--white);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.45rem;
+      border-radius: 3px;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-cta {
+      background: var(--green);
+      color: var(--white);
+      padding: 0.5rem 1.35rem;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--green-lt); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 92vh;
+      background: var(--navy);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 100px 5% 60px;
+      margin-top: 66px;
+      gap: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%; right: -10%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(26,115,232,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20%; left: 30%;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(34,160,107,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: rgba(34,160,107,0.15);
+      border: 1px solid rgba(34,160,107,0.4);
+      color: var(--green);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 span { color: var(--sky); }
+    .hero p {
+      color: rgba(255,255,255,0.72);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      max-width: 500px;
+      font-weight: 300;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--sky);
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--sky-lt); transform: translateY(-2px); }
+    .btn-green {
+      background: var(--green);
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.2s;
+      display: inline-block;
+    }
+    .btn-green:hover { background: var(--green-lt); }
+    .hero-img-wrap {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .hero-img-main {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 16px 56px rgba(0,0,0,0.5);
+    }
+    .hero-img-main img { width: 100%; height: 340px; object-fit: cover; display: block; }
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem;
+    }
+    .hero-stat {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .hero-stat strong {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .hero-stat span { font-size: 0.72rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--navy-lt);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      gap: 3rem; padding: 1.1rem 5%; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+    }
+    .trust-dot { width: 5px; height: 5px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 5%; }
+    .section-label {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-weight: 800; color: var(--navy); line-height: 1.2; margin-bottom: 1rem;
+    }
+    .section-sub { color: var(--muted); font-size: 1rem; max-width: 560px; line-height: 1.7; font-weight: 300; }
+    .center { text-align: center; }
+    .center .section-sub { margin: 0 auto; }
+
+    /* ── ABOUT ── */
+    .about { background: var(--cream); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4.5rem; align-items: center; max-width: 1100px; margin: 0 auto;
+    }
+    .about-img img {
+      width: 100%; height: 440px; object-fit: cover;
+      display: block; border-radius: 10px; box-shadow: var(--shadow);
+    }
+    .about-pills {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem;
+    }
+    .pill {
+      background: var(--warm); border: 1.5px solid #c8d4e8;
+      border-radius: 20px; padding: 0.35rem 0.9rem;
+      font-size: 0.8rem; font-weight: 600; color: var(--slate);
+    }
+    .vet-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--navy); color: var(--white);
+      padding: 0.6rem 1.25rem; border-radius: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      margin-top: 1rem;
+    }
+    .vet-badge span { color: var(--green); }
+
+    /* ── SERVICES ── */
+    .services { background: var(--white); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; max-width: 1100px; margin: 3rem auto 0;
+    }
+    .service-card {
+      background: var(--cream);
+      border-radius: 10px; padding: 2rem 1.75rem;
+      border-left: 4px solid transparent;
+      box-shadow: var(--shadow);
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .service-card:hover {
+      border-left-color: var(--sky);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(13,27,46,0.14);
+    }
+    .service-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--sky); margin-bottom: 1rem;
+    }
+    .service-icon {
+      width: 46px; height: 46px; background: var(--navy);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;
+    }
+    .service-icon svg { width: 22px; height: 22px; fill: none; stroke: var(--green); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .service-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 0.6rem;
+    }
+    .service-card p { color: var(--muted); font-size: 0.875rem; font-weight: 300; }
+
+    /* ── SOLUTIONS SPOTLIGHT ── */
+    .spotlight { background: var(--navy); }
+    .spotlight .section-title { color: var(--white); }
+    .spotlight .section-label { color: var(--green); }
+    .spotlight-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center; max-width: 1100px; margin: 3rem auto 0;
+    }
+    .spotlight img {
+      width: 100%; height: 380px; object-fit: cover;
+      border-radius: 10px; box-shadow: 0 12px 48px rgba(0,0,0,0.45);
+    }
+    .spotlight-features { display: flex; flex-direction: column; gap: 1.25rem; }
+    .feature-row {
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px; padding: 1.25rem;
+      transition: background 0.2s;
+    }
+    .feature-row:hover { background: rgba(255,255,255,0.09); }
+    .f-icon {
+      width: 40px; height: 40px; background: var(--green); border-radius: 6px;
+      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    }
+    .f-icon svg { width: 18px; height: 18px; fill: none; stroke: var(--white); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .feature-row h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 0.3rem;
+    }
+    .feature-row p { color: rgba(255,255,255,0.6); font-size: 0.85rem; font-weight: 300; }
+
+    /* ── INDUSTRIES ── */
+    .industries { background: var(--warm); }
+    .industries-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem; max-width: 1000px; margin: 2.5rem auto 0;
+    }
+    .industry-chip {
+      background: var(--white); border: 1.5px solid #c8d4e8;
+      border-radius: 8px; padding: 1.25rem; text-align: center;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .industry-chip:hover { border-color: var(--sky); box-shadow: var(--shadow); }
+    .industry-chip h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.875rem; font-weight: 700; color: var(--navy); margin-bottom: 0.25rem;
+    }
+    .industry-chip p { font-size: 0.775rem; color: var(--muted); font-weight: 300; }
+
+    /* ── PROCESS ── */
+    .process { background: var(--white); }
+    .process-steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0; max-width: 1100px; margin: 3rem auto 0;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute; top: 28px; left: 10%; right: 10%; height: 2px;
+      background: linear-gradient(to right, var(--sky), var(--green));
+      z-index: 0;
+    }
+    .p-step { text-align: center; padding: 0 1.5rem; position: relative; z-index: 1; }
+    .p-circle {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--navy); border: 3px solid var(--sky);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.25rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem; font-weight: 800; color: var(--white);
+    }
+    .p-step h3 { font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
+    .p-step p { color: var(--muted); font-size: 0.85rem; font-weight: 300; }
+
+    /* ── WHY PERSESSI ── */
+    .why { background: var(--cream); }
+    .why-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem; max-width: 1100px; margin: 3rem auto 0;
+    }
+    .why-card {
+      background: var(--white); border-radius: 10px; padding: 2rem;
+      box-shadow: var(--shadow); border-top: 3px solid var(--green);
+    }
+    .why-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.6rem;
+    }
+    .why-card p { color: var(--muted); font-size: 0.875rem; font-weight: 300; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--navy); }
+    .testimonials .section-title { color: var(--white); }
+    .testimonials .section-label { color: var(--green); }
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem; max-width: 1100px; margin: 3rem auto 0;
+    }
+    .testi-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 2rem;
+    }
+    .testi-stars { color: var(--green); font-size: 1rem; letter-spacing: 0.05em; margin-bottom: 1rem; }
+    .testi-card p {
+      color: rgba(255,255,255,0.72); font-size: 0.95rem;
+      font-style: italic; margin-bottom: 1.25rem; line-height: 1.7;
+    }
+    .testi-author { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--white); font-size: 0.875rem; }
+    .testi-co { font-size: 0.78rem; color: rgba(255,255,255,0.45); }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 80px 5%;
+      background: linear-gradient(135deg, var(--slate) 0%, var(--navy) 60%);
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute; top: -50%; left: -10%;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(34,160,107,0.15) 0%, transparent 65%);
+    }
+    .cta-inner { position: relative; z-index: 1; }
+    .cta-section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800; color: var(--white); margin-bottom: 1rem;
+    }
+    .cta-section p { color: rgba(255,255,255,0.72); font-size: 1.05rem; max-width: 540px; margin: 0 auto 2rem; font-weight: 300; }
+    .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-ghost {
+      border: 2px solid rgba(255,255,255,0.4);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700; font-size: 0.9rem;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--white); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.4fr;
+      gap: 4.5rem; max-width: 1100px; margin: 3rem auto 0; align-items: start;
+    }
+    .contact-info h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 1rem;
+    }
+    .contact-detail {
+      display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 1.25rem;
+    }
+    .c-icon {
+      width: 38px; height: 38px; background: var(--navy); border-radius: 6px;
+      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    }
+    .c-icon svg { width: 16px; height: 16px; fill: none; stroke: var(--green); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .contact-detail p { color: var(--muted); font-size: 0.9rem; font-weight: 300; }
+    .contact-detail strong { color: var(--text); display: block; margin-bottom: 0.2rem; font-weight: 600; }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      background: var(--cream); border: 1.5px solid #d0d8e8;
+      color: var(--text); padding: 0.8rem 1rem;
+      border-radius: var(--radius); font-family: 'Open Sans', sans-serif;
+      font-size: 0.9rem; transition: border-color 0.2s;
+    }
+    .contact-form input::placeholder, .contact-form textarea::placeholder { color: #a0a8b8; }
+    .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
+      outline: none; border-color: var(--sky);
+    }
+    .contact-form select option { background: var(--white); }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+    .btn-submit {
+      background: var(--sky); color: var(--white);
+      padding: 0.9rem 2rem; border: none; border-radius: var(--radius);
+      font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .btn-submit:hover { background: var(--sky-lt); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 2.5rem 5%;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.15rem; font-weight: 800; color: var(--white);
+    }
+    .footer-logo span { color: var(--green); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: none; }
+    .footer-links a:hover { color: var(--green); }
+    footer .small { color: rgba(255,255,255,0.3); font-size: 0.75rem; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-img-wrap { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .spotlight-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .process-steps::before { display: none; }
+    }
+    @media (max-width: 600px) {
+      .trust-bar { gap: 1rem; }
+      .hero-stats { grid-template-columns: repeat(2,1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">Persessi<span>.</span><span class="nav-badge">Veteran Owned</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Get Started</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Veteran-Owned &bull; Chapel Hill / Durham, NC</div>
+      <h1>Communications<br />Technology That<br /><span>Actually Works.</span></h1>
+      <p>Persessi LLC delivers unified communications, VoIP phone systems, video conferencing, and project management solutions to businesses throughout North Carolina and beyond — with the discipline and accountability of a veteran-led team.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#services">Our Solutions</a>
+        <a class="btn-green" href="#contact">Request a Consultation</a>
+      </div>
+    </div>
+    <div class="hero-img-wrap">
+      <div class="hero-img-main">
+        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80" alt="Professional team in collaboration" />
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>10+</strong><span>Years Experience</span></div>
+        <div class="hero-stat"><strong>100%</strong><span>Veteran Owned</span></div>
+        <div class="hero-stat"><strong>NC</strong><span>Based & Beyond</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item"><div class="trust-dot"></div>Veteran-Owned Business</div>
+    <div class="trust-item"><div class="trust-dot"></div>Unified Communications</div>
+    <div class="trust-item"><div class="trust-dot"></div>VoIP & Video Conferencing</div>
+    <div class="trust-item"><div class="trust-dot"></div>Project Management</div>
+    <div class="trust-item"><div class="trust-dot"></div>Chapel Hill / Durham, NC</div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="reveal">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Persessi team at work" />
+      </div>
+      <div class="reveal">
+        <p class="section-label">About Persessi</p>
+        <h2 class="section-title">Mission-Driven.<br />Results-Focused.</h2>
+        <p style="color:var(--muted);margin-bottom:1rem;font-weight:300;">Persessi LLC was founded by Brian Ingram, a military veteran whose service instilled a deep commitment to precision, reliability, and getting the mission done right the first time. Today, we bring that same discipline to unified communications and technology deployment for businesses across the country.</p>
+        <p style="color:var(--muted);margin-bottom:1rem;font-weight:300;">Based in the Chapel Hill/Durham area of North Carolina, our team specializes in designing, implementing, and managing communication systems that help organizations collaborate more effectively, reduce costs, and scale with confidence.</p>
+        <p style="color:var(--muted);margin-bottom:1.5rem;font-weight:300;">Whether your team is in a single office, across multiple locations, or entirely remote, we build communication infrastructure that keeps people connected and projects on track.</p>
+        <div class="about-pills">
+          <div class="pill">VoIP Systems</div>
+          <div class="pill">Video Conferencing</div>
+          <div class="pill">Unified Communications</div>
+          <div class="pill">Project Management</div>
+          <div class="pill">Cloud Communications</div>
+          <div class="pill">System Integration</div>
+        </div>
+        <div class="vet-badge">Veteran-Owned &amp; Operated &bull; <span>Persessi LLC</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="center reveal">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">Our Core Services</h2>
+      <p class="section-sub">From initial assessment through ongoing support, Persessi provides end-to-end communications technology solutions tailored to your organization's needs and budget.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 15.92z"/></svg>
+        </div>
+        <h3>VoIP Phone Systems</h3>
+        <p>Replace legacy phone infrastructure with modern, cloud-based VoIP systems that deliver enterprise-grade features at a fraction of the cost. Scalable for teams of any size.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </div>
+        <h3>Video Conferencing</h3>
+        <p>Design and deployment of professional video conferencing infrastructure — from single boardrooms to enterprise-wide rollouts. Hardware, software, and integration included.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Unified Communications</h3>
+        <p>Bring voice, video, messaging, and collaboration tools together into a single, seamless platform. Reduce friction, improve response times, and keep your team aligned.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Communications System Design</h3>
+        <p>Custom architecture and network design for new deployments or technology refreshes. We assess your environment and build a solution that meets your technical and business requirements.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3>Project Management</h3>
+        <p>Structured project management methodology applied to technology deployments — clear timelines, defined milestones, and accountability at every stage. We deliver on what we commit to.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        </div>
+        <h3>Ongoing Support & Managed Services</h3>
+        <p>Post-deployment support, system monitoring, training, and managed services to ensure your communications infrastructure stays reliable, secure, and optimized over time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS SPOTLIGHT -->
+  <section class="spotlight" id="spotlight">
+    <div class="spotlight-grid">
+      <div class="reveal">
+        <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&q=80" alt="Modern office communications technology" />
+      </div>
+      <div class="reveal">
+        <p class="section-label">Why It Matters</p>
+        <h2 class="section-title" style="color:var(--white)">Communication Is the<br />Backbone of Every Operation</h2>
+        <div class="spotlight-features">
+          <div class="feature-row">
+            <div class="f-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div>
+              <h4>Reduce Downtime Risk</h4>
+              <p>Legacy systems fail at the worst times. Modern unified communications platforms are built for reliability, redundancy, and rapid recovery.</p>
+            </div>
+          </div>
+          <div class="feature-row">
+            <div class="f-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div>
+              <h4>Cut Communication Costs</h4>
+              <p>VoIP and cloud communications can dramatically reduce your monthly telecom spend while giving your team more features and flexibility than ever before.</p>
+            </div>
+          </div>
+          <div class="feature-row">
+            <div class="f-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div>
+              <h4>Enable Remote Work</h4>
+              <p>Whether your team is in the office, at home, or in the field — unified communications keeps everyone connected and productive from any device, anywhere.</p>
+            </div>
+          </div>
+          <div class="feature-row">
+            <div class="f-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div>
+              <h4>Scale Without Pain</h4>
+              <p>Modern platforms grow with your organization. Add users, locations, and features without the disruption and expense of traditional system upgrades.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="industries" id="industries">
+    <div class="center reveal">
+      <p class="section-label">Who We Serve</p>
+      <h2 class="section-title">Industries We Support</h2>
+      <p class="section-sub">Persessi works with organizations across sectors that rely on clear, reliable communication to deliver services and drive results.</p>
+    </div>
+    <div class="industries-grid">
+      <div class="industry-chip reveal">
+        <h4>Healthcare</h4>
+        <p>Clinical &amp; administrative</p>
+      </div>
+      <div class="industry-chip reveal">
+        <h4>Government</h4>
+        <p>Federal, state &amp; local</p>
+      </div>
+      <div class="industry-chip reveal">
+        <h4>Education</h4>
+        <p>K-12 &amp; higher ed</p>
+      </div>
+      <div class="industry-chip reveal">
+        <h4>Financial Services</h4>
+        <p>Banks &amp; credit unions</p>
+      </div>
+      <div class="industry-chip reveal">
+        <h4>Professional Services</h4>
+        <p>Law, consulting &amp; more</p>
+      </div>
+      <div class="industry-chip reveal">
+        <h4>Technology</h4>
+        <p>SaaS &amp; IT companies</p>
+      </div>
+      <div class="industry-chip reveal">
+        <h4>Nonprofit</h4>
+        <p>Mission-driven orgs</p>
+      </div>
+      <div class="industry-chip reveal">
+        <h4>Manufacturing</h4>
+        <p>Operations &amp; logistics</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="center reveal">
+      <p class="section-label">Our Approach</p>
+      <h2 class="section-title">How We Work</h2>
+      <p class="section-sub">We follow a structured, proven process for every engagement — because discipline and clarity in the planning phase leads to successful outcomes in deployment.</p>
+    </div>
+    <div class="process-steps">
+      <div class="p-step reveal">
+        <div class="p-circle">1</div>
+        <h3>Discovery</h3>
+        <p>We assess your current environment, understand your goals, and identify gaps in your communications infrastructure.</p>
+      </div>
+      <div class="p-step reveal">
+        <div class="p-circle">2</div>
+        <h3>Design</h3>
+        <p>Our team designs a tailored solution with clear specifications, technology recommendations, and a detailed implementation plan.</p>
+      </div>
+      <div class="p-step reveal">
+        <div class="p-circle">3</div>
+        <h3>Proposal</h3>
+        <p>You receive a transparent, itemized proposal with no hidden costs. We walk you through every line and answer every question.</p>
+      </div>
+      <div class="p-step reveal">
+        <div class="p-circle">4</div>
+        <h3>Deployment</h3>
+        <p>Structured rollout managed against a defined project plan, with regular status updates and zero-surprise delivery.</p>
+      </div>
+      <div class="p-step reveal">
+        <div class="p-circle">5</div>
+        <h3>Support</h3>
+        <p>Training, ongoing support, and monitoring ensure your system stays up, your team knows how to use it, and you get the value you paid for.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY PERSESSI -->
+  <section class="why">
+    <div class="center reveal">
+      <p class="section-label">The Persessi Advantage</p>
+      <h2 class="section-title">Why Organizations Choose Us</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <h3>Veteran-Led Team</h3>
+        <p>Military service demands precision, accountability, and follow-through. We bring those values to every client engagement — no excuses, no runaround, no missed commitments.</p>
+      </div>
+      <div class="why-card reveal">
+        <h3>Vendor-Neutral Advice</h3>
+        <p>We're not locked into one platform or manufacturer. We evaluate your needs first, then recommend the solution that genuinely fits — not whatever pays us the highest margin.</p>
+      </div>
+      <div class="why-card reveal">
+        <h3>End-to-End Ownership</h3>
+        <p>From initial scoping through deployment and support, Persessi owns the outcome. You won't be passed around between vendors or left to figure out integration on your own.</p>
+      </div>
+      <div class="why-card reveal">
+        <h3>Small Business Agility</h3>
+        <p>We're responsive in ways large integrators can't be. Decisions are made by the same people doing the work, which means faster answers and better follow-through throughout your project.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="center reveal">
+      <p class="section-label">Client Experiences</p>
+      <h2 class="section-title">What Our Clients Say</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Persessi replaced our aging phone system across three office locations in under two weeks, with zero interruption to our operations. Brian and his team ran it like a military operation — organized, efficient, and exactly on schedule."</p>
+        <div class="testi-author">Operations Director</div>
+        <div class="testi-co">Professional Services Firm, Raleigh, NC</div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"We'd worked with two other vendors who overpromised and underdelivered. Persessi was completely different. They told us exactly what they'd do, documented every step, and delivered a system that our staff actually loves using."</p>
+        <div class="testi-author">IT Manager</div>
+        <div class="testi-co">Healthcare Organization, Durham, NC</div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"The video conferencing setup they designed for our board rooms has been flawless. More importantly, they trained our entire staff and stayed available for follow-up questions for weeks after deployment. That level of care is rare."</p>
+        <div class="testi-author">Executive Director</div>
+        <div class="testi-co">Nonprofit Organization, Chapel Hill, NC</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <h2 class="reveal">Ready to Upgrade Your Communications?</h2>
+      <p class="reveal">Let's start with a conversation. We'll listen to your challenges, assess your current setup, and give you a straight answer about whether and how we can help.</p>
+      <div class="cta-actions">
+        <a class="btn-primary" href="#contact">Request a Consultation</a>
+        <a class="btn-ghost" href="mailto:brian.ingram@persessi.com">Email Brian Directly</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="center reveal">
+      <p class="section-label">Let's Talk</p>
+      <h2 class="section-title">Get in Touch</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <h3>Contact Persessi LLC</h3>
+        <div class="contact-detail">
+          <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <p><strong>Location</strong>Chapel Hill / Durham, NC<br />Serving clients across North Carolina and nationally</p>
+        </div>
+        <div class="contact-detail">
+          <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <p><strong>Email</strong>brian.ingram@persessi.com</p>
+        </div>
+        <div class="contact-detail">
+          <div class="c-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <p><strong>Response Time</strong>We typically respond to all inquiries within one business day. For urgent needs, please note that in your message.</p>
+        </div>
+        <div class="contact-detail">
+          <div class="c-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <p><strong>Veteran-Owned Business</strong>Persessi LLC is a verified veteran-owned small business. We welcome inquiries from organizations with VOSB/SDVOSB supplier diversity requirements.</p>
+        </div>
+      </div>
+      <form class="contact-form reveal" onsubmit="return false;">
+        <div class="form-row">
+          <input type="text" placeholder="Your Name" />
+          <input type="text" placeholder="Company Name" />
+        </div>
+        <div class="form-row">
+          <input type="email" placeholder="Email Address" />
+          <input type="tel" placeholder="Phone Number" />
+        </div>
+        <select>
+          <option value="" disabled selected>What are you looking for?</option>
+          <option>VoIP Phone System</option>
+          <option>Video Conferencing</option>
+          <option>Unified Communications Platform</option>
+          <option>Project Management Services</option>
+          <option>System Assessment / Audit</option>
+          <option>Managed Support Services</option>
+          <option>General Inquiry</option>
+        </select>
+        <textarea placeholder="Tell us about your organization, your current setup, and what you're trying to solve. The more context you share, the better prepared we'll be to help."></textarea>
+        <button class="btn-submit" type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Persessi<span>.</span></div>
+        <p class="small" style="margin-top:0.35rem;">Veteran-Owned &bull; Chapel Hill / Durham, NC</p>
+      </div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#industries">Industries</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p class="small">&copy; 2025 Persessi LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

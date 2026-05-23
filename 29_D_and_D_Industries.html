@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D&amp;D Industries Inc | Used Metalworking Equipment | Monclova, OH</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;600&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #111827;
+      --dark: #1F2937;
+      --steel: #374151;
+      --steel-mid: #4B5563;
+      --silver: #9CA3AF;
+      --silver-light: #D1D5DB;
+      --amber: #B45309;
+      --amber-light: #D97706;
+      --amber-bright: #F59E0B;
+      --white: #F9FAFB;
+      --border: #374151;
+    }
+
+    body { font-family: 'Source Sans 3', sans-serif; color: var(--silver-light); background: var(--black); }
+
+    /* NAV */
+    nav {
+      background: var(--dark);
+      padding: 18px 50px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 3px solid var(--amber);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo { font-family: 'Barlow', sans-serif; font-size: 1.5rem; font-weight: 800; color: #fff; letter-spacing: -0.01em; }
+    .nav-logo span { color: var(--amber-bright); }
+    .nav-sub { font-size: 0.68rem; color: var(--silver); letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-top: 2px; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--silver); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--amber-bright); }
+    .nav-cta { background: var(--amber); color: #fff; padding: 11px 24px; font-family: 'Barlow', sans-serif; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.02em; text-decoration: none; border-radius: 4px; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--amber-light); }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--black);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.15;
+    }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(17,24,39,0.9) 50%, rgba(17,24,39,0.4) 100%); }
+    .hero-content { position: relative; max-width: 1100px; margin: 0 auto; padding: 80px 50px; width: 100%; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
+    .hero-text {}
+    .hero-tag { font-family: 'Barlow', sans-serif; font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--amber-bright); margin-bottom: 20px; font-weight: 600; }
+    .hero h1 { font-family: 'Barlow', sans-serif; font-size: clamp(2.4rem, 5vw, 4.2rem); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 18px; letter-spacing: -0.02em; }
+    .hero h1 span { color: var(--amber-bright); }
+    .hero-sub { font-size: 1.05rem; color: var(--silver); max-width: 480px; margin-bottom: 38px; line-height: 1.7; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-amber {
+      background: var(--amber);
+      color: #fff;
+      padding: 14px 30px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-amber:hover { background: var(--amber-light); transform: translateY(-2px); }
+    .btn-outline-silver {
+      border: 1.5px solid var(--steel-mid);
+      color: var(--silver-light);
+      padding: 14px 30px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline-silver:hover { border-color: var(--silver-light); color: #fff; }
+    .hero-card { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 10px; padding: 32px; }
+    .hero-card-title { font-family: 'Barlow', sans-serif; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber-bright); font-weight: 700; margin-bottom: 20px; }
+    .hc-stat { padding: 14px 0; border-bottom: 1px solid var(--border); }
+    .hc-stat:last-child { border-bottom: none; }
+    .hc-num { font-family: 'Barlow', sans-serif; font-size: 2rem; font-weight: 800; color: #fff; line-height: 1; }
+    .hc-label { font-size: 0.88rem; color: var(--silver); margin-top: 3px; }
+
+    /* SERVICES STRIP -->
+    .svc-strip { background: var(--amber); padding: 32px 50px; }
+    .ss-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 18px; }
+    .ss-item { text-align: center; color: #fff; }
+    .ss-icon { font-size: 1.7rem; margin-bottom: 6px; }
+    .ss-name { font-family: 'Barlow', sans-serif; font-size: 0.88rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    /* SHARED -->
+    section { padding: 90px 50px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .eyebrow { font-family: 'Barlow', sans-serif; font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--amber-bright); font-weight: 700; margin-bottom: 10px; }
+    .section-title { font-family: 'Barlow', sans-serif; font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 800; color: #fff; margin-bottom: 16px; line-height: 1.15; letter-spacing: -0.02em; }
+    .section-sub { font-size: 0.97rem; color: var(--silver); line-height: 1.7; max-width: 560px; margin-bottom: 52px; }
+
+    /* SERVICES -->
+    .services-section { background: var(--dark); }
+    .svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--border); }
+    .svc-card { background: var(--dark); padding: 36px 28px; border-bottom: 3px solid transparent; transition: border-color 0.3s; }
+    .svc-card:hover { border-bottom-color: var(--amber-bright); }
+    .svc-num { font-family: 'Barlow', sans-serif; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--amber-bright); font-weight: 700; margin-bottom: 12px; text-transform: uppercase; }
+    .svc-card h3 { font-family: 'Barlow', sans-serif; font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .svc-card p { font-size: 0.9rem; color: var(--silver); line-height: 1.65; }
+
+    /* ABOUT -->
+    .about-section { background: var(--black); }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .about-img { border-radius: 6px; overflow: hidden; border: 1px solid var(--border); }
+    .about-img img { width: 100%; height: 460px; object-fit: cover; display: block; }
+    .about-text .section-sub { margin-bottom: 28px; }
+    .check-list { list-style: none; margin-bottom: 36px; }
+    .check-list li { padding: 11px 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; color: var(--silver-light); display: flex; align-items: center; gap: 12px; }
+    .check-amber { color: var(--amber-bright); font-weight: 700; }
+    .btn-amber-outline { display: inline-block; border: 2px solid var(--amber-bright); color: var(--amber-bright); padding: 13px 28px; font-family: 'Barlow', sans-serif; font-size: 0.98rem; font-weight: 700; text-decoration: none; border-radius: 4px; transition: background 0.2s, color 0.2s; }
+    .btn-amber-outline:hover { background: var(--amber-bright); color: var(--black); }
+
+    /* FEATURED INVENTORY -->
+    .inventory-section { background: var(--dark); }
+    .inv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .inv-card { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: border-color 0.3s; }
+    .inv-card:hover { border-color: var(--amber-bright); }
+    .inv-img { height: 180px; overflow: hidden; }
+    .inv-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+    .inv-card:hover .inv-img img { transform: scale(1.06); }
+    .inv-info { padding: 20px; }
+    .inv-tag { font-family: 'Barlow', sans-serif; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber-bright); font-weight: 700; margin-bottom: 6px; }
+    .inv-name { font-family: 'Barlow', sans-serif; font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .inv-desc { font-size: 0.85rem; color: var(--silver); }
+
+    /* TESTIMONIALS -->
+    .testimonials-section { background: var(--black); }
+    .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+    .test-card { border: 1px solid var(--border); border-radius: 6px; padding: 28px; border-top: 3px solid var(--amber); }
+    .test-card p { font-size: 0.93rem; color: var(--silver-light); line-height: 1.75; margin-bottom: 16px; font-style: italic; }
+    .test-author { font-family: 'Barlow', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--amber-bright); }
+
+    /* CTA -->
+    .cta-section { background: var(--steel); padding: 80px 50px; }
+    .cta-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+    .cta-text h2 { font-family: 'Barlow', sans-serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; color: #fff; margin-bottom: 10px; }
+    .cta-text p { font-size: 1rem; color: var(--silver); max-width: 460px; line-height: 1.65; }
+    .btn-amber-solid { background: var(--amber-bright); color: var(--black); padding: 16px 36px; font-family: 'Barlow', sans-serif; font-size: 1.05rem; font-weight: 800; text-decoration: none; border-radius: 4px; transition: background 0.2s, transform 0.2s; white-space: nowrap; }
+    .btn-amber-solid:hover { background: var(--amber-light); transform: translateY(-2px); }
+
+    /* FOOTER -->
+    footer { background: #080F1A; color: rgba(255,255,255,0.5); padding: 60px 50px 30px; border-top: 1px solid var(--border); }
+    .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-logo { font-family: 'Barlow', sans-serif; font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .footer-logo span { color: var(--amber-bright); }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.7; }
+    footer h4 { font-family: 'Barlow', sans-serif; color: #fff; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; letter-spacing: 0.04em; }
+    footer ul { list-style: none; }
+    footer ul li { margin-bottom: 10px; }
+    footer ul li a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.87rem; transition: color 0.2s; }
+    footer ul li a:hover { color: var(--amber-bright); }
+    .footer-bottom { max-width: 1100px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; font-size: 0.82rem; text-align: center; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 960px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      section { padding: 70px 24px; }
+      .hero-content { grid-template-columns: 1fr; padding: 60px 24px; }
+      .hero-card { display: none; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .cta-inner { flex-direction: column; }
+      .svc-strip { padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div>
+      <div class="nav-logo">D<span>&amp;</span>D Industries</div>
+      <div class="nav-sub">Used Metalworking Equipment &mdash; Monclova, Ohio &mdash; Est. 1994</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Inventory</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Appraisals</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <a href="#" class="nav-cta">Browse Inventory</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <p class="hero-tag">Used Metalworking Equipment &mdash; Monclova, Ohio &mdash; Est. 1994</p>
+        <h1>1,500+ Machines.<br><span>Diana Zerbey</span> Knows Every One.</h1>
+        <p class="hero-sub">D&amp;D Industries has been the serious buyer's and seller's choice for used metalworking equipment since 1994. Our team has real manufacturing backgrounds &mdash; we speak your language, understand your application, and won't put you in the wrong machine. Browse our 160,000 sq ft facility in Northwest Ohio or tell us what you need and we'll find it.</p>
+        <div class="hero-btns">
+          <a href="#" class="btn-amber">Browse inventory</a>
+          <a href="#" class="btn-outline-silver">Request equipment specs</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-title">D&amp;D Industries at a Glance</div>
+        <div class="hc-stat"><div class="hc-num">1,500+</div><div class="hc-label">Machines in inventory</div></div>
+        <div class="hc-stat"><div class="hc-num">160K</div><div class="hc-label">Sq ft warehouse space</div></div>
+        <div class="hc-stat"><div class="hc-num">AMEA</div><div class="hc-label">Certified appraisers</div></div>
+        <div class="hc-stat"><div class="hc-num">1994</div><div class="hc-label">Established</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES STRIP -->
+  <div class="svc-strip">
+    <div class="ss-inner">
+      <div class="ss-item"><div class="ss-icon">&#128722;</div><div class="ss-name">Buy Equipment</div></div>
+      <div class="ss-item"><div class="ss-icon">&#128176;</div><div class="ss-name">Sell Equipment</div></div>
+      <div class="ss-item"><div class="ss-icon">&#128203;</div><div class="ss-name">Appraisals</div></div>
+      <div class="ss-item"><div class="ss-icon">&#127981;</div><div class="ss-name">Liquidations</div></div>
+      <div class="ss-item"><div class="ss-icon">&#128666;</div><div class="ss-name">Logistics</div></div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services-section">
+    <div class="container">
+      <p class="eyebrow reveal">What We Do</p>
+      <h2 class="section-title reveal">One call handles the whole transaction</h2>
+      <p class="section-sub reveal">Buying used equipment is a big decision. You need to know what condition the machine is actually in, what it will cost to move, and whether it fits your production requirements. Our team has the manufacturing background to answer all of that honestly &mdash; before you commit to anything.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card reveal">
+        <div class="svc-num">Buy</div>
+        <h3>Purchase Equipment</h3>
+        <p>Browse 1,500+ machines on hand, or describe what you need and we will source it. Our staff has real shop-floor backgrounds and will ask the right questions before recommending anything.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-num">Sell</div>
+        <h3>Sell Your Equipment</h3>
+        <p>Surplus machines sitting idle cost you space and money. We buy individual pieces or complete plant contents, and our AMEA-certified appraisers will give you a number you can trust.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-num">Appraise</div>
+        <h3>Equipment Appraisals</h3>
+        <p>AMEA-certified appraisals for fair market value, liquidation value, and insurance purposes. Thorough documentation accepted by banks, courts, and insurers.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-num">Liquidate</div>
+        <h3>Plant Liquidation</h3>
+        <p>Complete plant liquidation services for closures, downsizing, or estate situations. We manage the entire process from inventory through final sale.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-num">Move</div>
+        <h3>Logistics &amp; Rigging</h3>
+        <p>Coordinated machinery logistics including rigging, transportation, and installation support. We make sure your equipment arrives safely and on time.</p>
+      </div>
+      <div class="svc-card reveal">
+        <div class="svc-num">Plan</div>
+        <h3>Turnkey Projects</h3>
+        <p>From shop layout consulting to complete equipment packages for new operations. Our team builds complete solutions around your production goals.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-img reveal">
+          <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80" alt="D&D Industries team and facility" />
+        </div>
+        <div class="reveal">
+          <p class="eyebrow">About D&amp;D Industries</p>
+          <h2 class="section-title">Diana Zerbey and a team that actually knows machines</h2>
+          <p class="section-sub">D&amp;D Industries has been in Monclova, Ohio since 1994. Diana Zerbey oversees operations and conditions of sale, and she is direct, knowledgeable, and will not waste your time. The people you talk to here have manufacturing backgrounds &mdash; they have run production floors, they understand tolerances, and they know what a machine needs to be worth buying. That is a different experience than browsing an online listing and hoping for the best.</p>
+          <ul class="check-list">
+            <li><span class="check-amber">&#9632;</span> In business since 1994, Monclova, Ohio</li>
+            <li><span class="check-amber">&#9632;</span> AMEA-certified machinery appraisers on staff</li>
+            <li><span class="check-amber">&#9632;</span> 160,000 sq ft warehouse &mdash; you can come walk the floor</li>
+            <li><span class="check-amber">&#9632;</span> 1,500+ machines in inventory at any given time</li>
+            <li><span class="check-amber">&#9632;</span> Staff with real hands-on manufacturing experience</li>
+          </ul>
+          <a href="tel:4198666894" class="btn-amber-outline">Call Diana: (419) 866-6894</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED INVENTORY -->
+  <section class="inventory-section">
+    <div class="container">
+      <p class="eyebrow reveal">Featured Equipment</p>
+      <h2 class="section-title reveal">A Sample of What We Have in Stock</h2>
+      <p class="section-sub reveal">Our inventory turns constantly. These are examples of what we typically carry &mdash; call or email to ask about specific makes, models, capacities, or condition details. Diana and the team will give you a straight answer.</p>
+      <div class="inv-grid">
+        <div class="inv-card reveal">
+          <div class="inv-img"><img src="https://images.unsplash.com/photo-1565514020179-026b92b84bb6?w=600&q=80" alt="CNC machining center" /></div>
+          <div class="inv-info"><div class="inv-tag">CNC Machining</div><div class="inv-name">Vertical Machining Centers</div><div class="inv-desc">Multiple makes and models available. 3-axis and 5-axis configurations in stock.</div></div>
+        </div>
+        <div class="inv-card reveal">
+          <div class="inv-img"><img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&q=80" alt="Industrial lathe" /></div>
+          <div class="inv-info"><div class="inv-tag">Turning</div><div class="inv-name">CNC &amp; Manual Lathes</div><div class="inv-desc">Engine lathes, CNC turning centers, and Swiss-type machines across multiple swing sizes.</div></div>
+        </div>
+        <div class="inv-card reveal">
+          <div class="inv-img"><img src="https://images.unsplash.com/photo-1562408590-e32931084e23?w=600&q=80" alt="Industrial press" /></div>
+          <div class="inv-info"><div class="inv-tag">Fabrication</div><div class="inv-name">Press Brakes &amp; Shears</div><div class="inv-desc">Hydraulic and mechanical press brakes, shears, and forming equipment. Various tonnages.</div></div>
+        </div>
+        <div class="inv-card reveal">
+          <div class="inv-img"><img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=600&q=80" alt="Surface grinder" /></div>
+          <div class="inv-info"><div class="inv-tag">Grinding</div><div class="inv-name">Surface &amp; Cylindrical Grinders</div><div class="inv-desc">Precision grinding equipment for finishing applications. Multiple work envelope sizes available.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="container">
+      <p class="eyebrow reveal" style="text-align:center;">Client Testimonials</p>
+      <h2 class="section-title reveal" style="text-align:center; max-width:500px; margin:0 auto 48px;">What buyers and sellers say</h2>
+      <div class="test-grid">
+        <div class="test-card reveal">
+          <p>"We needed seven CNC machines for a new facility and had a tight budget. D&amp;D's team understood our production specs, walked us through the floor, and found equipment that checked every box for less than half the cost of new. The machines have been running without issue for two years."</p>
+          <div class="test-author">Tom K. &mdash; Manufacturing Manager, Toledo, OH</div>
+        </div>
+        <div class="test-card reveal">
+          <p>"We had to close a facility and needed the equipment liquidated fast. Diana coordinated everything &mdash; appraisal, sale, rigging, removal. The AMEA appraisal went through our bank's review without a single question. I would call D&amp;D again without hesitation."</p>
+          <div class="test-author">Frank R. &mdash; Plant Director, Detroit, MI</div>
+        </div>
+        <div class="test-card reveal">
+          <p>"I have bought from a lot of equipment dealers. Most are just brokers who do not know what they are selling. The people at D&amp;D actually understand machining. They asked about my tolerances, my material, my cycle time &mdash; and then pointed me to exactly the right lathe. That is rare."</p>
+          <div class="test-author">Gary M. &mdash; Job Shop Owner, Fort Wayne, IN</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h2>Ready to buy, sell, or get a straight answer?</h2>
+        <p>Tell Diana and the team what you are working with. Whether you need one machine or a full liquidation, we will give you an honest assessment and a fair number. No pressure, no runaround.</p>
+        <div style="margin-top:14px; font-size:0.97rem; color:var(--silver-light);">(419) 866-6894 &nbsp;|&nbsp; diana@danddindustries.com &nbsp;|&nbsp; 2060 Mescher Dr, Monclova, OH</div>
+      </div>
+      <a href="tel:4198666894" class="btn-amber-solid">Call (419) 866-6894</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">D<span>&amp;</span>D Industries</div>
+        <p>Used metalworking equipment dealers since 1994. Buy, sell, appraise, and liquidate. 160,000 sq ft facility in Monclova, Ohio. AMEA-certified appraisers on staff.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Browse Inventory</a></li>
+          <li><a href="#">Sell Your Equipment</a></li>
+          <li><a href="#">Equipment Appraisals</a></li>
+          <li><a href="#">Plant Liquidation</a></li>
+          <li><a href="#">Logistics &amp; Rigging</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">2060 Mescher Dr, Monclova, OH 43542</a></li>
+          <li><a href="tel:4198666894">(419) 866-6894</a></li>
+          <li><a href="mailto:diana@danddindustries.com">diana@danddindustries.com</a></li>
+          <li><a href="#">Get an Appraisal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 D&amp;D Industries, Inc. All rights reserved. | Monclova, Ohio | Established 1994 | AMEA Certified</p>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

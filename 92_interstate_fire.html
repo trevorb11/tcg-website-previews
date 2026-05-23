@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interstate Fire &amp; Safety | Fire Protection Since 1951 | Tri-State Area</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Condensed:wght@300;400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --fire-red: #c41e1e;
+    --fire-red-bright: #e02020;
+    --fire-red-dark: #8b1010;
+    --charcoal: #1a1a1a;
+    --dark: #141414;
+    --dark-mid: #222222;
+    --steel: #3a3a3a;
+    --warm-gray: #f4f1ed;
+    --border: #e0d8d0;
+    --gray: #6b7280;
+    --white: #ffffff;
+    --text: #1a1a1a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+    background: var(--white);
+  }
+
+  h1, h2 {
+    font-family: 'Anton', sans-serif;
+    line-height: 1;
+    letter-spacing: 0.03em;
+  }
+
+  h3, h4 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  .container {
+    width: 90%;
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left { opacity: 0; transform: translateX(-22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+  .reveal-right { opacity: 0; transform: translateX(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+  /* EMERGENCY BAR */
+  .emergency-bar {
+    background: var(--fire-red);
+    text-align: center;
+    padding: 9px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1001;
+  }
+
+  .emergency-bar a { color: var(--white); text-decoration: none; }
+
+  /* HEADER */
+  header {
+    position: fixed;
+    top: 36px; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(26,26,26,0.97);
+    backdrop-filter: blur(6px);
+    border-bottom: 3px solid var(--fire-red);
+    padding: 14px 0;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-decoration: none;
+  }
+
+  .logo-main {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .logo-main span { color: var(--fire-red); }
+
+  .logo-sub {
+    font-size: 0.58rem;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+  }
+
+  nav a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--fire-red); }
+
+  .btn-nav {
+    background: var(--fire-red);
+    color: var(--white) !important;
+    padding: 9px 20px;
+    border-radius: 3px;
+  }
+  .btn-nav:hover { background: var(--fire-red-bright) !important; }
+
+  /* HERO */
+  .hero {
+    height: 100vh;
+    min-height: 700px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 80px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.45) saturate(0.8);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, rgba(20,20,20,0.92) 50%, rgba(140,16,16,0.3) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--fire-red);
+    color: var(--white);
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 7vw, 6rem);
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .hero-year {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.4rem);
+    color: var(--fire-red);
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 36px;
+    line-height: 1.72;
+    font-weight: 300;
+    max-width: 560px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--fire-red);
+    color: var(--white);
+    padding: 13px 28px;
+    border-radius: 3px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--fire-red-bright); transform: translateY(-2px); }
+
+  .btn-outline {
+    border: 2px solid rgba(255,255,255,0.4);
+    color: var(--white);
+    padding: 11px 26px;
+    border-radius: 3px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--fire-red); color: var(--fire-red); }
+
+  /* COVERAGE BAND */
+  .coverage-band {
+    background: var(--charcoal);
+    padding: 28px 0;
+    border-bottom: 2px solid var(--fire-red);
+  }
+
+  .coverage-inner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .coverage-label {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--fire-red);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-right: 8px;
+  }
+
+  .coverage-item {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.8);
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 2px;
+  }
+
+  /* SECTIONS */
+  section { padding: 88px 0; }
+
+  .section-label {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fire-red);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .section-title {
+    font-size: clamp(2.2rem, 4.5vw, 4rem);
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .section-lead {
+    font-size: 1rem;
+    color: var(--gray);
+    max-width: 640px;
+    line-height: 1.78;
+    margin-bottom: 48px;
+  }
+
+  /* SERVICES */
+  .services-section { background: var(--warm-gray); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .service-card {
+    background: var(--white);
+    border-radius: 3px;
+    padding: 24px 20px;
+    border-top: 4px solid var(--fire-red);
+    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 24px rgba(196,30,30,0.12);
+  }
+
+  .service-card h3 {
+    font-size: 1rem;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .service-card p {
+    font-size: 0.86rem;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+
+  /* HISTORY SPLIT */
+  .history-section { background: var(--white); }
+
+  .history-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .history-image {
+    height: 500px;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 6px 6px 0 var(--fire-red);
+  }
+
+  .history-content p {
+    font-size: 0.94rem;
+    color: var(--gray);
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .timeline-year {
+    background: var(--fire-red);
+    color: var(--white);
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 2px;
+    min-width: 52px;
+    text-align: center;
+    margin-top: 2px;
+  }
+
+  .timeline-item p {
+    font-size: 0.88rem;
+    color: var(--gray);
+    line-height: 1.55;
+    margin-bottom: 0;
+  }
+
+  /* WHY INTERSTATE */
+  .why-section { background: var(--dark); }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+
+  .why-card {
+    text-align: center;
+    padding: 28px 18px;
+    border: 1px solid rgba(196,30,30,0.25);
+    border-radius: 3px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .why-card:hover {
+    border-color: var(--fire-red);
+    background: rgba(196,30,30,0.05);
+  }
+
+  .why-num {
+    font-family: 'Anton', sans-serif;
+    font-size: 3rem;
+    color: var(--fire-red);
+    line-height: 1;
+    margin-bottom: 10px;
+    opacity: 0.7;
+  }
+
+  .why-card h4 {
+    font-size: 0.95rem;
+    color: var(--white);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .why-card p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+
+  /* IMAGE ROW */
+  .image-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 260px;
+    gap: 0;
+  }
+
+  /* COMPLIANCE */
+  .compliance-section { background: var(--warm-gray); }
+
+  .compliance-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .compliance-image {
+    height: 400px;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .compliance-content p { font-size: 0.94rem; color: var(--gray); line-height: 1.8; margin-bottom: 18px; }
+
+  .compliance-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .compliance-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 0.9rem;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  .compliance-list li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    min-width: 6px;
+    background: var(--fire-red);
+    border-radius: 50%;
+    margin-top: 7px;
+  }
+
+  /* CONTACT */
+  .contact-section { background: var(--white); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .contact-info p { font-size: 0.94rem; color: var(--gray); line-height: 1.78; margin-bottom: 26px; }
+  .contact-details { display: flex; flex-direction: column; gap: 12px; }
+  .c-row { font-size: 0.9rem; color: var(--gray); display: flex; gap: 10px; }
+  .c-row strong { color: var(--text); min-width: 70px; }
+
+  .contact-form {
+    background: var(--warm-gray);
+    border-radius: 3px;
+    padding: 36px;
+    border-top: 4px solid var(--fire-red);
+  }
+
+  .form-group { margin-bottom: 18px; }
+
+  .form-group label {
+    display: block;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 6px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid #d8d2c8;
+    border-radius: 3px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--fire-red); }
+
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  .btn-submit {
+    width: 100%;
+    background: var(--fire-red);
+    color: var(--white);
+    border: none;
+    padding: 13px;
+    border-radius: 3px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-submit:hover { background: var(--fire-red-bright); }
+
+  /* FOOTER */
+  footer {
+    background: var(--charcoal);
+    color: rgba(255,255,255,0.55);
+    padding: 50px 0 26px;
+    border-top: 3px solid var(--fire-red);
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    margin-bottom: 24px;
+  }
+
+  .footer-brand p { margin-top: 12px; font-size: 0.86rem; line-height: 1.7; }
+
+  .footer-col h4 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--fire-red);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .footer-col a {
+    display: block;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    font-size: 0.86rem;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--fire-red); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .history-grid, .compliance-grid, .contact-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .history-image, .compliance-image { height: 280px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+    .image-row { height: auto; }
+    .image-row div { height: 200px; }
+  }
+
+  @media (max-width: 640px) {
+    nav { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    section { padding: 60px 0; }
+    .hero { padding-top: 90px; }
+    .image-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- EMERGENCY BAR -->
+<div class="emergency-bar">
+  Emergency Fire Safety Service: <a href="tel:9149376100">914-937-6100</a> | Available 24/7
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="container header-inner">
+    <a href="#" class="logo">
+      <span class="logo-main"><span>Interstate</span> Fire &amp; Safety</span>
+      <span class="logo-sub">Full-Service Fire Protection | Est. 1951</span>
+    </a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#history">About</a>
+      <a href="#compliance">Compliance</a>
+      <a href="#contact" class="btn-nav">Request Inspection</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1600&q=80" alt="Fire protection sprinkler system in a commercial building">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <div class="hero-badge">Emergency: 914-937-6100</div>
+    <h1>PROTECTING LIVES.</h1>
+    <h1>PROTECTING PROPERTY.</h1>
+    <span class="hero-year">Since 1951 — Serving the Tri-State Area</span>
+    <p>Interstate Fire &amp; Safety is a full-service fire protection company with over 70 years of experience serving Connecticut, New Jersey, Massachusetts, Rhode Island, and the greater New York area. From fire alarms to suppression systems, we do it all.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Schedule an Inspection</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE BAND -->
+<div class="coverage-band">
+  <div class="container coverage-inner">
+    <span class="coverage-label">Coverage Area:</span>
+    <span class="coverage-item">Connecticut</span>
+    <span class="coverage-item">New Jersey</span>
+    <span class="coverage-item">Massachusetts</span>
+    <span class="coverage-item">Rhode Island</span>
+    <span class="coverage-item">Nassau County, NY</span>
+    <span class="coverage-item">Suffolk County, NY</span>
+    <span class="coverage-item">New York City</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="container">
+    <span class="section-label reveal">Our Services</span>
+    <h2 class="section-title reveal">Complete Fire Protection Solutions</h2>
+    <p class="section-lead reveal">From initial installation through annual inspections and emergency service, Interstate Fire &amp; Safety provides every fire protection service your facility needs — with the expertise built over seven decades in the industry.</p>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <h3>Fire Alarm Systems</h3>
+        <p>Design, installation, inspection, and monitoring of fire alarm systems for commercial, industrial, and residential properties throughout the Tri-State area.</p>
+      </div>
+      <div class="service-card reveal">
+        <h3>Fire Sprinkler Systems</h3>
+        <p>Full-service sprinkler installation, maintenance, repair, and annual inspections — ensuring your suppression system performs when it is needed most.</p>
+      </div>
+      <div class="service-card reveal">
+        <h3>Fire Extinguisher Service</h3>
+        <p>Inspection, recharging, hydrostatic testing, and replacement of portable fire extinguishers — in compliance with NFPA 10 standards.</p>
+      </div>
+      <div class="service-card reveal">
+        <h3>Kitchen Suppression Systems</h3>
+        <p>Installation and maintenance of Ansul and other commercial kitchen suppression systems for restaurants and food service operations.</p>
+      </div>
+      <div class="service-card reveal">
+        <h3>Gas &amp; Service Station Systems</h3>
+        <p>Specialized fire suppression solutions for fuel dispensing facilities, garages, and service stations — meeting all regulatory requirements.</p>
+      </div>
+      <div class="service-card reveal">
+        <h3>Marine Suppression</h3>
+        <p>Fire suppression systems for marine vessels and waterfront facilities — designed and installed to meet Coast Guard and NFPA marine standards.</p>
+      </div>
+      <div class="service-card reveal">
+        <h3>Exit &amp; Emergency Lighting</h3>
+        <p>Installation, testing, and maintenance of exit signs and emergency lighting systems to ensure safe egress during any emergency.</p>
+      </div>
+      <div class="service-card reveal">
+        <h3>Special Hazards Protection</h3>
+        <p>Clean agent, foam, CO2, and other specialized suppression systems for data centers, museums, laboratories, and other sensitive environments.</p>
+      </div>
+      <div class="service-card reveal">
+        <h3>Testing, Inspections &amp; Repairs</h3>
+        <p>Comprehensive annual and periodic inspections, testing, and repairs for all fire protection systems — keeping your facility compliant and protected year-round.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section class="history-section" id="history">
+  <div class="container">
+    <div class="history-grid">
+      <div class="history-image reveal-left">
+        <img src="https://images.unsplash.com/photo-1453153525310-d5bf6cbca8a0?w=900&q=80" alt="Interstate Fire and Safety team providing fire protection services in the Tri-State area">
+      </div>
+      <div class="reveal-right">
+        <span class="section-label">Our History</span>
+        <h2 class="section-title">70+ Years of Fire Protection Excellence</h2>
+        <p>Interstate Fire &amp; Safety was founded in 1951 by Joseph Bucci as a one-person fire extinguisher company serving the local community. Over the following seven decades, through the leadership of William Barnes Jr. beginning in 1971, the company grew steadily into a full-service fire protection organization serving multiple states across the Northeast.</p>
+        <p>Today, Interstate Fire &amp; Safety serves clients across Connecticut, New Jersey, Massachusetts, Rhode Island, Nassau and Suffolk Counties in New York, and New York City — with a fully trained staff and a comprehensive range of fire protection services built on the same foundation of outstanding customer service that has defined the company since day one.</p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="timeline-year">1951</span>
+            <p>Founded by Joseph Bucci as a single-person fire extinguisher company serving the local community.</p>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">1971</span>
+            <p>William Barnes Jr. took over leadership — beginning a decades-long expansion into a full-service, multi-state fire protection company.</p>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">Today</span>
+            <p>A full-service fire protection company affiliated with Encore Fire Protection, serving 7 states/regions across the Northeast with a fully trained, dedicated staff.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY INTERSTATE -->
+<section class="why-section">
+  <div class="container">
+    <span class="section-label reveal" style="text-align:center;display:block;">Why Interstate</span>
+    <h2 class="section-title reveal" style="color:var(--white);text-align:center;margin-bottom:48px;">Trusted. Experienced. Reliable.</h2>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-num">70+</div>
+        <h4>Years in Service</h4>
+        <p>Seven decades of fire protection expertise serving the Tri-State area — a track record built on results.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num">7</div>
+        <h4>States and Regions</h4>
+        <p>CT, NJ, MA, RI, Nassau, Suffolk, and NYC — broad geographic coverage with local knowledge.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num">24/7</div>
+        <h4>Emergency Response</h4>
+        <p>Fire safety emergencies do not wait for business hours — neither does our emergency service team.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-num">Full</div>
+        <h4>Service Coverage</h4>
+        <p>Every fire protection service your facility needs — from alarms to suppression to inspection — under one roof.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE ROW -->
+<div class="image-row">
+  <div class="reveal"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80" alt="Fire protection inspection technician at work"></div>
+  <div class="reveal"><img src="https://images.unsplash.com/photo-1617802690658-1173a812650d?w=700&q=80" alt="Commercial fire sprinkler system close-up"></div>
+  <div class="reveal"><img src="https://images.unsplash.com/photo-1545259741-2ea3ebf61fa3?w=700&q=80" alt="Fire safety professional reviewing compliance documentation"></div>
+</div>
+
+<!-- COMPLIANCE -->
+<section class="compliance-section" id="compliance">
+  <div class="container">
+    <div class="compliance-grid">
+      <div class="reveal-left">
+        <span class="section-label">Compliance &amp; Code</span>
+        <h2 class="section-title">Keeping You Code-Compliant</h2>
+        <p>Fire protection codes and regulations vary by state, municipality, and occupancy type — and they change regularly. Our team maintains current knowledge of all applicable codes and standards across every jurisdiction we serve.</p>
+        <p>We work with property managers, building owners, and facility managers to ensure their fire protection systems meet or exceed all current requirements — and to document that compliance thoroughly for insurance and regulatory purposes.</p>
+        <ul class="compliance-list">
+          <li>NFPA 72 — National Fire Alarm and Signaling Code</li>
+          <li>NFPA 13 — Standard for the Installation of Sprinkler Systems</li>
+          <li>NFPA 10 — Standard for Portable Fire Extinguishers</li>
+          <li>NFPA 17A — Standard for Wet Chemical Extinguishing Systems</li>
+          <li>State and local fire codes across CT, NJ, MA, RI, and NY</li>
+          <li>Insurance carrier compliance documentation and reporting</li>
+        </ul>
+      </div>
+      <div class="compliance-image reveal-right">
+        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=900&q=80" alt="Fire safety professional reviewing building compliance documentation">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <span class="section-label">Schedule an Inspection</span>
+        <h2 class="section-title">Let Us Protect Your Property</h2>
+        <p>Whether you need an annual inspection, a new system installed, or emergency service for a fire protection issue — Interstate Fire &amp; Safety is ready to respond. Contact us today to schedule an appointment.</p>
+        <div class="contact-details">
+          <div class="c-row"><strong>Emergency:</strong><span>914-937-6100 (24/7)</span></div>
+          <div class="c-row"><strong>Email:</strong><span>william.barnes@interstatefireandsfty.net</span></div>
+          <div class="c-row"><strong>Location:</strong><span>Greenwich, CT (serving CT, NJ, MA, RI, Nassau, Suffolk, NYC)</span></div>
+          <div class="c-row"><strong>Founded:</strong><span>1951 — 70+ years of fire protection excellence</span></div>
+        </div>
+      </div>
+      <div class="contact-form reveal-right">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Your full name">
+        </div>
+        <div class="form-group">
+          <label>Company / Property</label>
+          <input type="text" placeholder="Building or company name">
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" placeholder="(914) 000-0000">
+        </div>
+        <div class="form-group">
+          <label>Service Needed</label>
+          <select>
+            <option value="">Select a service</option>
+            <option>Fire Alarm Inspection / Service</option>
+            <option>Sprinkler Inspection / Service</option>
+            <option>Fire Extinguisher Service</option>
+            <option>Kitchen Suppression System</option>
+            <option>Emergency Service</option>
+            <option>New System Installation</option>
+            <option>Compliance Audit</option>
+            <option>General Inquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Property Location &amp; Details</label>
+          <textarea placeholder="Tell us about your property and what you need..."></textarea>
+        </div>
+        <button class="btn-submit">Request My Inspection</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <span class="logo-main"><span style="color:var(--fire-red)">Interstate</span> Fire &amp; Safety</span>
+          <span class="logo-sub">Full-Service Fire Protection | Established 1951</span>
+        </a>
+        <p>A full-service fire protection company serving the Tri-State area for over 70 years — committed to outstanding customer service and the highest standards of fire safety.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#">Fire Alarm Systems</a>
+        <a href="#">Sprinkler Systems</a>
+        <a href="#">Extinguisher Service</a>
+        <a href="#">Kitchen Suppression</a>
+        <a href="#">Emergency Lighting</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:9149376100">914-937-6100 (Emergency)</a>
+        <a href="mailto:william.barnes@interstatefireandsfty.net">william.barnes@interstatefireandsfty.net</a>
+        <a href="#">Greenwich, CT</a>
+        <a href="#">Tri-State Area Coverage</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 Interstate Fire &amp; Safety Equipment Company. All rights reserved.</span>
+      <span>Protecting Lives and Property Since 1951</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

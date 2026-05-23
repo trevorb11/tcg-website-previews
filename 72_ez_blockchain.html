@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EZ Blockchain — US-Based Bitcoin Mining Infrastructure & Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0A0A0A;
+      --dark: #121212;
+      --dark-card: #1A1A1A;
+      --orange: #F4732A;
+      --orange-light: #FF8C42;
+      --white: #FFFFFF;
+      --off-white: #F5F5F0;
+      --grey-text: #A0A0A0;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: var(--white);
+      background: var(--black);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(10px);
+      padding: 0 2rem;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--orange); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--grey-text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--orange); }
+
+    .nav-cta {
+      background: var(--orange);
+      color: var(--white) !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 6px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--orange-light) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+      padding: 100px 2rem 60px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.08;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 20%;
+      right: 10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(244,115,42,0.15), transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(244,115,42,0.12);
+      border: 1px solid rgba(244,115,42,0.3);
+      color: var(--orange);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.12;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--orange);
+    }
+
+    .hero p {
+      font-size: 1.12rem;
+      color: var(--grey-text);
+      margin-bottom: 2rem;
+      line-height: 1.75;
+      max-width: 560px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      font-family: 'Space Grotesk', sans-serif;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      font-family: 'Space Grotesk', sans-serif;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+    .hero-awards {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+    }
+
+    .award-tag {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      color: var(--grey-text);
+    }
+
+    .award-tag span {
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    /* SECTION COMMONS */
+    section { padding: 90px 2rem; }
+
+    .container { max-width: 1120px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--grey-text);
+      max-width: 580px;
+      line-height: 1.75;
+    }
+
+    /* SMARTGRID SECTION */
+    .smartgrid { background: var(--dark); }
+
+    .smartgrid-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .smartgrid-image {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .smartgrid-image img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .smartgrid-text .section-title {
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+    }
+
+    .smartgrid-text p {
+      color: var(--grey-text);
+      font-size: 0.97rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .impact-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .impact-stat {
+      background: rgba(244,115,42,0.08);
+      border: 1px solid rgba(244,115,42,0.2);
+      border-radius: 10px;
+      padding: 1.2rem;
+    }
+
+    .impact-stat span {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--orange);
+    }
+
+    .impact-stat p {
+      font-size: 0.82rem !important;
+      color: var(--grey-text) !important;
+      margin-bottom: 0 !important;
+    }
+
+    /* SERVICES */
+    .services { background: var(--black); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: rgba(244,115,42,0.4);
+      transform: translateY(-4px);
+    }
+
+    .service-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: rgba(244,115,42,0.2);
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+
+    .service-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.7rem;
+    }
+
+    .service-card p {
+      color: var(--grey-text);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    .service-tag {
+      display: inline-block;
+      background: rgba(244,115,42,0.1);
+      border: 1px solid rgba(244,115,42,0.2);
+      color: var(--orange);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+    }
+
+    /* WHY EZ */
+    .why { background: var(--dark); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .why-item {
+      padding: 1.8rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .why-item-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--orange);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .why-item-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--white);
+    }
+
+    .why-item h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .why-item p {
+      color: var(--grey-text);
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    /* AUDIENCE SPLIT */
+    .audience { background: var(--black); }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .audience-card {
+      border-radius: 14px;
+      padding: 2.5rem;
+      border: 1px solid var(--border);
+    }
+
+    .audience-card.oil { background: linear-gradient(135deg, #1A1A1A, #2A1810); border-color: rgba(244,115,42,0.25); }
+    .audience-card.miner { background: linear-gradient(135deg, #1A1A1A, #111825); border-color: rgba(100,160,255,0.15); }
+
+    .audience-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .audience-card ul {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .audience-card ul li {
+      color: var(--grey-text);
+      font-size: 0.93rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .audience-card ul li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--orange);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ABOUT */
+    .about { background: var(--dark); }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      background: var(--orange);
+      color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+    }
+
+    .about-text p {
+      color: var(--grey-text);
+      font-size: 0.97rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .about-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--white) !important;
+      margin-top: 1.5rem !important;
+      margin-bottom: 0.2rem !important;
+    }
+
+    .about-role {
+      color: var(--orange) !important;
+      font-size: 0.88rem !important;
+    }
+
+    /* CONTACT */
+    .contact { background: var(--black); border-top: 1px solid var(--border); }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-detail-icon {
+      width: 20px;
+      height: 20px;
+      fill: var(--orange);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .contact-detail p { color: var(--grey-text); font-size: 0.93rem; line-height: 1.5; }
+    .contact-detail a { color: var(--orange); text-decoration: none; }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      color: var(--white);
+      font-size: 0.92rem;
+      font-family: 'IBM Plex Sans', sans-serif;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,0.3); }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus {
+      outline: none;
+      border-color: var(--orange);
+    }
+
+    .contact-form select option { background: var(--dark-card); }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      padding: 1rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-submit:hover { background: var(--orange-light); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      background: #050505;
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem 2rem;
+      color: var(--grey-text);
+      font-size: 0.87rem;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .footer-brand p { margin-top: 0.8rem; line-height: 1.7; max-width: 300px; }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.5rem; }
+    .footer-col ul a { color: var(--grey-text); text-decoration: none; font-size: 0.87rem; transition: color 0.2s; }
+    .footer-col ul a:hover { color: var(--orange); }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .smartgrid-inner { grid-template-columns: 1fr; }
+      .about-inner { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .audience-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      section { padding: 60px 1.2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .impact-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">EZ <span>Blockchain</span></a>
+    <ul class="nav-links">
+      <li><a href="#smartgrid">EZ Smartgrid</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Forbes 30 Under 30 &nbsp;|&nbsp; Chicago, IL &nbsp;|&nbsp; Founded 2017</div>
+      <h1>Gas That Was Being<br/><em>Burned for Nothing</em><br/>Now Mines Bitcoin</h1>
+      <p>EZ Blockchain built the infrastructure to turn flared natural gas — a massive environmental waste — into electricity that powers Bitcoin mining on-site. Oil producers stop flaring. Miners get cheap, clean power. Everybody wins.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Partner With Us</a>
+        <a href="#smartgrid" class="btn-outline">See How EZ Smartgrid Works</a>
+      </div>
+      <div class="hero-awards">
+        <div class="award-tag"><span>Forbes 30 Under 30</span> Europe 2021</div>
+        <div class="award-tag"><span>65%+</span> Renewable Energy Mix</div>
+        <div class="award-tag">CO2 Reduction <span>Up to 70%</span></div>
+        <div class="award-tag">US-Based <span>Infrastructure</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SMARTGRID -->
+  <section class="smartgrid" id="smartgrid">
+    <div class="container">
+      <div class="smartgrid-inner">
+        <div class="smartgrid-image reveal">
+          <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80" alt="EZ Smartgrid flared gas mining infrastructure" />
+        </div>
+        <div class="smartgrid-text reveal">
+          <div class="section-label">EZ Smartgrid FMS</div>
+          <h2 class="section-title">The Idea That Made Sergii Forbes 30 Under 30</h2>
+          <p>Oil and gas producers have a problem: billions of cubic feet of natural gas are flared at well sites every year because there's no economical way to capture it. It gets burned off into the atmosphere — wasted energy and needless emissions, site after site across North America.</p>
+          <p>Sergii Gerasymovych saw something others missed. Bitcoin miners need cheap electricity. Oil producers have gas they can't use. The EZ Smartgrid Flaring Mitigation System is what happens when you connect those two facts. A mobile unit drives onto the well pad, converts the flared gas into electricity, and powers on-site Bitcoin mining — no infrastructure investment required from the producer.</p>
+          <p>The producer gets a new revenue stream from gas they were previously torching. Emissions drop by up to 70%. Miners get power at rates that make the economics of mining work. It's genuinely brilliant, and it works.</p>
+          <div class="impact-stats">
+            <div class="impact-stat">
+              <span>70%</span>
+              <p>CO2 reduction from flaring</p>
+            </div>
+            <div class="impact-stat">
+              <span>65%+</span>
+              <p>Renewable energy mix</p>
+            </div>
+            <div class="impact-stat">
+              <span>3 MW</span>
+              <p>New Chicago-area site</p>
+            </div>
+            <div class="impact-stat">
+              <span>2017</span>
+              <p>Founded in Chicago</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">End-to-End Mining Infrastructure Services</h2>
+        <p class="section-lead">From Bitcoin mining hosting packages to full flared gas monetization systems, EZ Blockchain provides the infrastructure and expertise to make mining work for you.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-number">01</div>
+          <h3>Bitcoin Mining Hosting</h3>
+          <p>Co-locate your mining hardware in our US-based data centers. Three flexible hosting packages starting at $0.055/kWh with a one-time setup fee. Full facility management included.</p>
+          <div class="service-tag">For Crypto Miners</div>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-number">02</div>
+          <h3>EZ Smartgrid FMS</h3>
+          <p>Mobile, plug-and-play flaring mitigation units deployed directly on your oil well pad. Turn stranded or flared gas into electricity that powers on-site Bitcoin mining — zero infrastructure investment required from you.</p>
+          <div class="service-tag">For Oil & Gas Producers</div>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-number">03</div>
+          <h3>Infrastructure Management</h3>
+          <p>Full end-to-end management of your mining facility — design, deployment, operations, and optimization. Our team handles the technical complexity so you can focus on your returns.</p>
+          <div class="service-tag">Full Service</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY EZ -->
+  <section class="why" id="why">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Our Advantage</div>
+        <h2 class="section-title">Why EZ Blockchain Is Different</h2>
+        <p class="section-lead">Most mining companies ask "where can we find cheap power?" EZ Blockchain asked a better question: "where is energy being wasted, and can we use it?" That shift in thinking is why this company exists.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-item reveal reveal-delay-1">
+          <div class="why-item-icon">
+            <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3>Sustainable Energy Focus</h3>
+          <p>More than 65% of our power capacity comes from renewable or stranded energy sources. We mine Bitcoin in a way that makes environmental sense.</p>
+        </div>
+        <div class="why-item reveal reveal-delay-2">
+          <div class="why-item-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>US-Based Infrastructure</h3>
+          <p>All our data centers and operations are based in the United States, providing security, regulatory clarity, and low-latency access for North American clients.</p>
+        </div>
+        <div class="why-item reveal reveal-delay-3">
+          <div class="why-item-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+          </div>
+          <h3>Forbes-Recognized Leadership</h3>
+          <p>CEO Sergii Gerasymovych was named to Forbes 30 Under 30 Europe 2021 (Manufacturing & Industry) and honored among the Top 100 USA Entrepreneurs with Ukrainian Origin.</p>
+        </div>
+        <div class="why-item reveal reveal-delay-4">
+          <div class="why-item-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Proven Track Record</h3>
+          <p>Since 2017, EZ Blockchain has consistently expanded its infrastructure, forged strategic industry partnerships, and deployed successful flared gas solutions across multiple US states.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIENCE -->
+  <section class="audience" id="audience">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:0;">
+        <div class="section-label">Who We Work With</div>
+        <h2 class="section-title">Two Problems. One Solution.</h2>
+        <p class="section-lead" style="margin:0 auto;">EZ Blockchain bridges the gap between the energy sector and the crypto mining industry — creating value for both.</p>
+      </div>
+      <div class="audience-grid" style="margin-top:3rem;">
+        <div class="audience-card oil reveal reveal-delay-1">
+          <h3>Oil &amp; Gas Producers</h3>
+          <ul>
+            <li>Turn flared or stranded gas into a revenue stream</li>
+            <li>No upfront infrastructure investment required</li>
+            <li>Reduce regulatory and environmental pressure from flaring</li>
+            <li>Mobile, scalable deployment — follows your production</li>
+            <li>Compliance support and emissions reporting</li>
+          </ul>
+          <a href="#contact" class="btn-primary" style="display:inline-block; padding: 0.7rem 1.5rem; font-size:0.9rem;">Partner With Us</a>
+        </div>
+        <div class="audience-card miner reveal reveal-delay-2">
+          <h3>Crypto Miners</h3>
+          <ul>
+            <li>Flexible hosting packages from $0.055/kWh</li>
+            <li>US-based secure facilities with full management</li>
+            <li>Competitive energy rates from sustainable sources</li>
+            <li>Scalable capacity as your operation grows</li>
+            <li>Transparent reporting on hashrate and uptime</li>
+          </ul>
+          <a href="#contact" class="btn-primary" style="display:inline-block; padding: 0.7rem 1.5rem; font-size:0.9rem;">See Hosting Plans</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-image reveal">
+          <img src="https://images.unsplash.com/photo-1573497019418-b400bb3ab074?w=600&q=80" alt="Sergii Gerasymovych, CEO EZ Blockchain" />
+          <div class="about-badge">Forbes 30 Under 30 Europe 2021</div>
+        </div>
+        <div class="about-text reveal">
+          <div class="section-label">Leadership</div>
+          <h2 class="section-title" style="font-size: clamp(1.5rem, 2.8vw, 2.2rem);">Sergii Gerasymovych: Forbes 30 Under 30, and the Person Behind EZ Smartgrid</h2>
+          <p>Sergii co-founded EZ Blockchain in Chicago in 2017. He was 20-something years old, and his idea — that flared natural gas from oil wells could power Bitcoin mining — struck most people as eccentric. It turned out to be exactly right.</p>
+          <p>The math made sense and the environmental case was undeniable: flaring is one of the most visible and avoidable sources of methane emissions in the energy industry. Sergii's EZ Smartgrid FMS captures that gas before it burns, turns it into electricity, and puts it to work. No wasted energy. No wasted capital. Just a system that benefits the producer, the miner, and the atmosphere simultaneously.</p>
+          <p>In 2021, Forbes recognized Sergii in their 30 Under 30 Europe list for Manufacturing and Industry. He was also named among the Top 100 USA Entrepreneurs with Ukrainian Origin. He runs EZ Blockchain out of downtown Chicago, where the company continues to expand its infrastructure and forge new partnerships in the oil patch and beyond.</p>
+          <p class="about-name">Sergii Gerasymovych</p>
+          <p class="about-role">CEO &amp; Co-Founder, EZ Blockchain LLC</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">Ready to Mine Smarter?</h2>
+        <p class="section-lead">Whether you're an oil and gas producer with stranded gas or a miner looking for cost-effective hosting, we'd love to talk.</p>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-info reveal">
+          <h3>Talk to Sergii's team</h3>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.08 2.2 2 2 0 012.06.06h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            <p><a href="tel:7737186395">(773) 718-6395</a></p>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <p><a href="mailto:sergii@ezblockchain.net">sergii@ezblockchain.net</a></p>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <p>311 S. Wacker Drive, Suite 1410<br/>Chicago, IL 60606</p>
+          </div>
+        </div>
+        <div class="reveal">
+          <form class="contact-form">
+            <div class="form-row">
+              <input type="text" placeholder="Your Name" />
+              <input type="email" placeholder="Email Address" />
+            </div>
+            <input type="text" placeholder="Company / Organization" />
+            <select>
+              <option value="" disabled selected>I am interested in...</option>
+              <option>Bitcoin Mining Hosting</option>
+              <option>EZ Smartgrid FMS (Oil &amp; Gas)</option>
+              <option>Infrastructure Management</option>
+              <option>General Inquiry</option>
+            </select>
+            <textarea placeholder="Tell us about your situation — energy source, scale, timeline, or questions..."></textarea>
+            <button type="submit" class="btn-submit">Send Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">EZ <span style="color:#F4732A;">Blockchain</span></a>
+        <p>EZ Blockchain LLC builds and operates US-based Bitcoin mining infrastructure powered by flared gas and sustainable energy. Founded 2017. Chicago, IL.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Bitcoin Mining Hosting</a></li>
+          <li><a href="#smartgrid">EZ Smartgrid FMS</a></li>
+          <li><a href="#services">Infrastructure Management</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Sergii</a></li>
+          <li><a href="#why">Why EZ Blockchain</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>311 S. Wacker Drive, Suite 1410, Chicago, IL 60606 &nbsp;|&nbsp; (773) 718-6395 &nbsp;|&nbsp; sergii@ezblockchain.net</p>
+      <p>&copy; 2025 EZ Blockchain LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

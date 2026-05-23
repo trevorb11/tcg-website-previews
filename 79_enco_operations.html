@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enco Operations — Chicago General Contractor &amp; Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabin:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #8B1A1A;
+      --red-dark: #5C0E0E;
+      --red-light: #A82020;
+      --concrete: #6B7280;
+      --concrete-light: #9CA3AF;
+      --black: #111111;
+      --dark: #1A1A1A;
+      --white: #FFFFFF;
+      --off-white: #F8F7F5;
+      --light-grey: #F0EFED;
+      --text-dark: #111111;
+      --text-mid: #4A4A4A;
+      --text-light: #7A7A7A;
+      --border: #DDDBD8;
+      --cream: #FAF9F7;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Cabin', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(17,17,17,0.97);
+      backdrop-filter: blur(8px);
+      padding: 0 2rem;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.7rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+    }
+
+    .nav-logo span { color: var(--red-light); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.72); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--red-light); }
+
+    .nav-cta {
+      background: var(--red);
+      color: var(--white) !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 4px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--red-light) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+      padding: 100px 2rem 60px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80') center/cover no-repeat;
+      opacity: 0.18;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, rgba(17,17,17,0.96) 0%, rgba(17,17,17,0.82) 60%, rgba(139,26,26,0.2) 100%);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to top, var(--white), transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(139,26,26,0.15);
+      border: 1px solid rgba(139,26,26,0.35);
+      color: var(--red-light);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      color: var(--white);
+      line-height: 0.95;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero h1 em { font-style: normal; color: var(--red-light); }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+      max-width: 540px;
+    }
+
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--red-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--red-light); color: var(--red-light); }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.5rem;
+    }
+
+    .hero-stat span {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--red-light);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    .hero-stat p { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+
+    /* SECTIONS */
+    section { padding: 90px 2rem; }
+    .container { max-width: 1120px; margin: 0 auto; }
+
+    .section-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+      color: var(--black);
+      line-height: 1.05;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.04em;
+    }
+
+    .section-lead { font-size: 1.05rem; color: var(--text-mid); max-width: 580px; line-height: 1.8; }
+
+    /* WHAT WE BUILD */
+    .what-we-build { background: var(--off-white); }
+
+    .build-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .build-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 2rem;
+      border-top: 4px solid var(--red);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+
+    .build-card:hover { transform: translateY(-4px); }
+
+    .build-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      color: var(--black);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+    }
+
+    .build-card p { color: var(--text-mid); font-size: 0.92rem; line-height: 1.7; }
+
+    /* SERVICES */
+    .services { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover { transform: translateY(-5px); }
+
+    .service-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .service-body {
+      padding: 1.8rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+    }
+
+    .service-body h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      color: var(--black);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-body p { color: var(--text-mid); font-size: 0.9rem; line-height: 1.7; }
+
+    /* TRACK RECORD */
+    .track { background: var(--red-dark); }
+    .track .section-title { color: var(--white); }
+    .track .section-label { color: rgba(255,255,255,0.65); }
+
+    .track-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .track-stat {
+      text-align: center;
+      padding: 2.5rem 1.2rem;
+      background: rgba(255,255,255,0.06);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .track-stat span {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .track-stat p { color: rgba(255,255,255,0.65); font-size: 0.85rem; }
+
+    /* COMMUNITY */
+    .community { background: var(--off-white); }
+
+    .community-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .community-image { border-radius: 10px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.1); }
+    .community-image img { width: 100%; height: 420px; object-fit: cover; display: block; }
+
+    .community-text p { color: var(--text-mid); font-size: 0.97rem; line-height: 1.85; margin-bottom: 1rem; }
+
+    .values-list { margin-top: 1.5rem; }
+
+    .value-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.92rem;
+      color: var(--text-mid);
+    }
+
+    .value-item:last-child { border-bottom: none; }
+
+    .value-dot { width: 8px; height: 8px; background: var(--red); border-radius: 50%; flex-shrink: 0; }
+
+    /* SERVICE AREA */
+    .area { background: var(--white); }
+
+    .area-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .area-image { border-radius: 10px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.1); }
+    .area-image img { width: 100%; height: 380px; object-fit: cover; display: block; }
+
+    .area-list {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+
+    .area-tag {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      font-weight: 500;
+    }
+
+    .area-dot { width: 8px; height: 8px; background: var(--red); border-radius: 50%; flex-shrink: 0; }
+
+    /* PROCESS */
+    .process { background: var(--light-grey); }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .process-step {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 2rem;
+      border-bottom: 4px solid var(--concrete);
+    }
+
+    .process-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: rgba(139,26,26,0.15);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .process-step h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      color: var(--black);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+    }
+
+    .process-step p { color: var(--text-mid); font-size: 0.9rem; line-height: 1.7; }
+
+    /* ABOUT */
+    .about { background: var(--cream); }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image { border-radius: 10px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.1); position: relative; }
+    .about-image img { width: 100%; height: 420px; object-fit: cover; display: block; }
+
+    .about-badge {
+      position: absolute;
+      bottom: 1.2rem;
+      left: 1.2rem;
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+    }
+
+    .about-text p { color: var(--text-mid); font-size: 0.97rem; line-height: 1.85; margin-bottom: 1rem; }
+
+    .about-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      color: var(--black);
+      letter-spacing: 0.06em;
+      margin-top: 1.5rem !important;
+    }
+
+    .about-title { color: var(--red) !important; font-size: 0.88rem !important; margin-bottom: 0 !important; }
+
+    /* CONTACT */
+    .contact { background: var(--black); }
+    .contact .section-title { color: var(--white); }
+    .contact .section-label { color: var(--red-light); }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p { color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.5rem; }
+
+    .contact-detail { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; }
+    .contact-detail-icon { width: 20px; height: 20px; fill: var(--red-light); flex-shrink: 0; margin-top: 2px; }
+    .contact-detail p { color: rgba(255,255,255,0.65) !important; font-size: 0.93rem !important; margin-bottom: 0 !important; }
+    .contact-detail a { color: var(--red-light); text-decoration: none; }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 6px;
+      padding: 0.85rem 1rem;
+      color: var(--white);
+      font-size: 0.92rem;
+      font-family: 'Cabin', sans-serif;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,0.32); }
+    .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { outline: none; border-color: var(--red-light); }
+    .contact-form select option { background: var(--black); }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 1rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-submit:hover { background: var(--red-light); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      background: #080808;
+      padding: 3rem 2rem 2rem;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.87rem;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-brand p { margin-top: 0.8rem; line-height: 1.7; max-width: 300px; }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.5rem; }
+    .footer-col ul a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-col ul a:hover { color: var(--red-light); }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .community-inner { grid-template-columns: 1fr; }
+      .area-inner { grid-template-columns: 1fr; }
+      .about-inner { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      section { padding: 60px 1.2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .area-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">ENCO<span> Operations</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#community">Our Values</a></li>
+      <li><a href="#about">About Javier</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Minority-Owned &nbsp;|&nbsp; Chicago, IL &nbsp;|&nbsp; Licensed General Contractor</div>
+      <h1>Built for <em>Chicago</em>.<br/>Built to Last.</h1>
+      <p>Enco Operations is a Chicago-based general contracting and development firm delivering new construction and remodeling projects with the craftsmanship, honesty, and community pride that this city deserves.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Discuss Your Construction Project</a>
+        <a href="#services" class="btn-outline">View Our Work</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><span>24+</span><p>Building Permits</p></div>
+        <div class="hero-stat"><span>$49M+</span><p>In Project Value</p></div>
+        <div class="hero-stat"><span>8+</span><p>Years in Business</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE BUILD -->
+  <section class="what-we-build" id="what">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">What We Build</div>
+        <h2 class="section-title">Residential. Commercial. Multi-Unit.</h2>
+        <p class="section-lead">From single-family new construction to multi-unit residential and commercial projects, Enco Operations has the experience and crew to get it done right.</p>
+      </div>
+      <div class="build-grid">
+        <div class="build-card reveal reveal-delay-1">
+          <h3>New Residential Construction</h3>
+          <p>Ground-up single-family homes built to your specifications. We handle every phase — foundation, framing, mechanical, finishes — with the care of a contractor who takes pride in the work.</p>
+        </div>
+        <div class="build-card reveal reveal-delay-2">
+          <h3>Multi-Unit Residential</h3>
+          <p>2-flat to small apartment building construction and gut rehabs. We understand Chicago's multi-unit market and deliver the quality that keeps tenants and investors satisfied long-term.</p>
+        </div>
+        <div class="build-card reveal reveal-delay-3">
+          <h3>Commercial Construction</h3>
+          <p>Office buildouts, retail renovations, and commercial new construction. We work on your timeline and understand the demands of commercial clients running a business during construction.</p>
+        </div>
+        <div class="build-card reveal reveal-delay-4">
+          <h3>Residential Remodeling</h3>
+          <p>Kitchen remodels, bathroom renovations, additions, basement finishing, and full gut rehabs for Chicago homeowners who want work done by someone who will treat their home with respect.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Our Services</div>
+        <h2 class="section-title">End-to-End General Contracting</h2>
+        <p class="section-lead">Enco Operations is a full-service general contractor and development firm. We manage the full scope — from your first conversation through the final inspection.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+          <img class="service-img" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="New construction Chicago" />
+          <div class="service-body">
+            <h3>General Contracting</h3>
+            <p>Licensed general contracting for residential and commercial projects across Chicago. We coordinate all subcontractors, manage the schedule, and hold ourselves responsible for the outcome.</p>
+          </div>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <img class="service-img" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80" alt="Construction development planning" />
+          <div class="service-body">
+            <h3>Development Consulting</h3>
+            <p>Guiding developers and investors through the full project lifecycle — site evaluation, permitting, contractor coordination, and project management from concept to certificate of occupancy.</p>
+          </div>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <img class="service-img" src="https://images.unsplash.com/photo-1489171078254-c3365d6e359f?w=600&q=80" alt="Chicago home renovation" />
+          <div class="service-body">
+            <h3>Renovation &amp; Remodeling</h3>
+            <p>Full interior and exterior renovations — gut rehabs, kitchen and bath remodels, additions, and exterior work. We treat your existing property with the care it deserves throughout the process.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACK RECORD -->
+  <section class="track" id="track">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:0;">
+        <div class="section-label">Our Track Record</div>
+        <h2 class="section-title" style="color:var(--white);">The Work Speaks for Itself</h2>
+      </div>
+      <div class="track-grid">
+        <div class="track-stat reveal reveal-delay-1"><span>24+</span><p>Building Permits Pulled</p></div>
+        <div class="track-stat reveal reveal-delay-2"><span>$49M+</span><p>In Total Project Value</p></div>
+        <div class="track-stat reveal reveal-delay-3"><span>15+</span><p>Completed Projects (3 Years)</p></div>
+        <div class="track-stat reveal reveal-delay-4"><span>8+</span><p>Years Serving Chicago</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY & VALUES -->
+  <section class="community" id="community">
+    <div class="container">
+      <div class="community-inner">
+        <div class="community-image reveal">
+          <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=700&q=80" alt="Chicago community construction" />
+        </div>
+        <div class="reveal">
+          <div class="section-label">Community &amp; Values</div>
+          <h2 class="section-title">Rooted in Chicago. Committed to the Community.</h2>
+          <p class="section-lead" style="margin-bottom:1rem;">Enco Operations isn't just a company that builds in Chicago — we're a company that belongs to this city. Javier Enciso founded Enco Operations on the Southwest Side, and that community investment shapes everything about how we do business.</p>
+          <p style="color:var(--text-mid); font-size:0.97rem; line-height:1.85; margin-bottom:1rem;">As a Hispanic American-owned and operated business, we understand what it means to build something from the ground up. We bring that same drive and accountability to every project we take on — treating clients' properties and budgets with the same respect we'd want for our own.</p>
+          <div class="values-list">
+            <div class="value-item"><div class="value-dot"></div>Minority-owned and operated — Hispanic American</div>
+            <div class="value-item"><div class="value-dot"></div>Licensed and insured general contractor in Illinois</div>
+            <div class="value-item"><div class="value-dot"></div>Supporting local subcontractors and Chicago suppliers</div>
+            <div class="value-item"><div class="value-dot"></div>Transparent pricing — no surprise change orders</div>
+            <div class="value-item"><div class="value-dot"></div>Direct communication with Javier on every project</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section class="area" id="area">
+    <div class="container">
+      <div class="area-inner">
+        <div class="reveal">
+          <div class="section-label">Service Area</div>
+          <h2 class="section-title">Chicago &amp; Surrounding Communities</h2>
+          <p class="section-lead">Based on the Southwest Side, Enco Operations serves Chicago neighborhoods and suburbs across Cook County and the greater Chicagoland area.</p>
+          <div class="area-list">
+            <div class="area-tag"><div class="area-dot"></div>Southwest Side Chicago</div>
+            <div class="area-tag"><div class="area-dot"></div>South Side Chicago</div>
+            <div class="area-tag"><div class="area-dot"></div>West Side Chicago</div>
+            <div class="area-tag"><div class="area-dot"></div>Northwest Side Chicago</div>
+            <div class="area-tag"><div class="area-dot"></div>Suburban Cook County</div>
+            <div class="area-tag"><div class="area-dot"></div>Greater Chicagoland</div>
+          </div>
+        </div>
+        <div class="area-image reveal">
+          <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=700&q=80" alt="Chicago skyline" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:0;">
+        <div class="section-label">How We Work</div>
+        <h2 class="section-title">Straight Talk. No Surprises.</h2>
+        <p class="section-lead" style="margin:0 auto;">Our process is built around honest communication, realistic timelines, and craftsmanship that you can see and touch when we're done.</p>
+      </div>
+      <div class="process-steps" style="margin-top:3rem;">
+        <div class="process-step reveal reveal-delay-1">
+          <div class="process-num">01</div>
+          <h3>Free Consultation</h3>
+          <p>Javier visits your site, listens to your vision, and assesses the scope. No assumptions, no generic quotes — we want to see your project before we tell you what it costs.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="process-num">02</div>
+          <h3>Detailed Estimate</h3>
+          <p>A transparent, itemized proposal with clear scope of work, material specifications, timeline, and pricing. We explain every line so there are no surprises down the road.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="process-num">03</div>
+          <h3>Construction</h3>
+          <p>Our licensed crews get to work. Javier maintains hands-on involvement and keeps you updated at every major milestone — with weekly check-ins and direct access by phone.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-4">
+          <div class="process-num">04</div>
+          <h3>Handover</h3>
+          <p>A thorough walkthrough together. We address every punch list item before we consider the project complete. We don't leave until you're fully satisfied.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-image reveal">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=700&q=80" alt="Javier Enciso, Founder of Enco Operations" />
+          <div class="about-badge">Founder &amp; President</div>
+        </div>
+        <div class="about-text reveal">
+          <div class="section-label">About Javier Enciso</div>
+          <h2 class="section-title">Built by Someone Who Knows What It Takes</h2>
+          <p>Javier Enciso founded Enco Operations from Chicago's Southwest Side with a straightforward commitment: do honest work, charge a fair price, and never cut corners on the things that matter. That's the business he's built, and it's the one he shows up to run every single day.</p>
+          <p>Javier is not a contractor who wins the job and hands it to a crew. He's on the site. He takes the calls. He walks the punch list. When you hire Enco Operations, you get Javier's personal accountability attached to every project — and that's something no amount of marketing can replicate.</p>
+          <p>Over more than eight years building in Chicago, Enco Operations has compiled a track record that includes 24+ permitted projects totaling more than $49 million in project value. That record was built one project at a time, by doing the work right and earning repeat business from clients who trusted Javier with their homes, their investments, and their communities.</p>
+          <p class="about-name">Javier Enciso</p>
+          <p class="about-title">Founder &amp; President, Enco Operations LLC</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Let's Build Together</div>
+        <h2 class="section-title">Discuss Your Construction Project</h2>
+        <p class="section-lead" style="color:rgba(255,255,255,0.65);">Tell Javier about your project and he'll schedule a site visit to assess the scope and give you a transparent, itemized estimate. No pressure, no commitment — just an honest conversation about what you want to build.</p>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-info reveal">
+          <h3>Talk to Javier Directly</h3>
+          <p>Javier Enciso handles every project inquiry personally. When you reach out to Enco Operations, you're talking to the person who will be responsible for your build.</p>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <p><a href="mailto:javier@encoperations.com">javier@encoperations.com</a></p>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-detail-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <p>3858 W 59th Pl, Chicago, IL 60629<br/>Serving all of Chicagoland</p>
+          </div>
+        </div>
+        <div class="reveal">
+          <form class="contact-form">
+            <div class="form-row">
+              <input type="text" placeholder="Your Name" />
+              <input type="tel" placeholder="Phone Number" />
+            </div>
+            <input type="email" placeholder="Email Address" />
+            <input type="text" placeholder="Project Address / Neighborhood" />
+            <div class="form-row">
+              <select>
+                <option value="" disabled selected>Project Type</option>
+                <option>New Residential Construction</option>
+                <option>Multi-Unit Residential</option>
+                <option>Commercial Construction</option>
+                <option>Residential Renovation / Remodel</option>
+                <option>Development Consulting</option>
+                <option>Other</option>
+              </select>
+              <select>
+                <option value="" disabled selected>Estimated Budget</option>
+                <option>Under $50,000</option>
+                <option>$50,000 – $150,000</option>
+                <option>$150,000 – $500,000</option>
+                <option>$500,000 – $1M</option>
+                <option>Over $1M</option>
+                <option>Not Sure Yet</option>
+              </select>
+            </div>
+            <textarea placeholder="Describe your project — what are you building, where is it located, and what's most important to you?"></textarea>
+            <button type="submit" class="btn-submit">Send My Request</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="font-size:1.4rem;">ENCO<span style="color:#A82020;"> Operations</span></a>
+        <p>Enco Operations LLC — Hispanic-owned general contractor and development firm based in Chicago's Southwest Side. Licensed, insured, and committed to building this city right since 2016.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">General Contracting</a></li>
+          <li><a href="#services">Development Consulting</a></li>
+          <li><a href="#services">Renovation &amp; Remodeling</a></li>
+          <li><a href="#what">New Construction</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Javier</a></li>
+          <li><a href="#community">Our Values</a></li>
+          <li><a href="#area">Service Area</a></li>
+          <li><a href="#contact">Get a Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>3858 W 59th Pl, Chicago, IL 60629 &nbsp;|&nbsp; javier@encoperations.com</p>
+      <p>&copy; 2025 Enco Operations LLC. All rights reserved. Licensed Illinois General Contractor.</p>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

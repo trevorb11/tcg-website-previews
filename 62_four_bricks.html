@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Four Bricks LLC | Business Consulting & Investment Advisory | Orlando, FL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal: #1e1e1e;
+      --dark: #111111;
+      --amber: #e07b22;
+      --amber-light: #f59c45;
+      --cream: #f8f3ec;
+      --warm-white: #fffdf9;
+      --gray: #6b6b6b;
+      --gray-light: #e8e4de;
+      --text: #1e1e1e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text);
+      background: var(--warm-white);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      background: var(--dark);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .nav-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: var(--warm-white);
+      letter-spacing: 0.04em;
+    }
+
+    .nav-logo span { color: var(--amber); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--amber); }
+
+    .nav-cta {
+      background: var(--amber) !important;
+      color: var(--dark) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 4px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--dark);
+      display: flex;
+      align-items: center;
+      padding: 120px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-text {
+      position: absolute;
+      right: -2%;
+      bottom: -5%;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(120px, 20vw, 220px);
+      color: rgba(255,255,255,0.03);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .hero-text { color: var(--warm-white); }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--amber);
+      color: var(--dark);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 3px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2.5rem, 4.5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--amber);
+    }
+
+    .hero p {
+      color: rgba(255,255,255,0.7);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 460px;
+    }
+
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-amber {
+      display: inline-block;
+      background: var(--amber);
+      color: var(--dark);
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-amber:hover { background: var(--amber-light); transform: translateY(-2px); }
+
+    .btn-ghost {
+      display: inline-block;
+      border: 2px solid rgba(255,255,255,0.3);
+      color: var(--warm-white);
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
+
+    .hero-image {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.85);
+    }
+
+    .hero-image-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.75));
+    }
+
+    .hero-quote {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--warm-white);
+      border-left: 4px solid var(--amber);
+      padding-left: 1rem;
+    }
+
+    /* SECTION COMMONS */
+    section { padding: 90px 5%; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 900;
+      color: var(--charcoal);
+      line-height: 1.2;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--gray);
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    /* FOUR PILLARS */
+    .pillars { background: var(--cream); }
+
+    .pillars-header { text-align: center; margin-bottom: 4rem; }
+    .pillars-header .section-sub { margin: 0 auto; }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .pillar {
+      padding: 3rem 2rem;
+      border-right: 1px solid var(--gray-light);
+      position: relative;
+    }
+
+    .pillar:last-child { border-right: none; }
+
+    .pillar-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 4rem;
+      font-weight: 900;
+      color: rgba(224,123,34,0.12);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .pillar h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--charcoal);
+      margin-bottom: 0.75rem;
+    }
+
+    .pillar-accent {
+      width: 30px;
+      height: 3px;
+      background: var(--amber);
+      margin-bottom: 1rem;
+    }
+
+    .pillar p { font-size: 0.92rem; color: var(--gray); line-height: 1.75; }
+
+    /* ABOUT */
+    .about { background: var(--warm-white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-tag {
+      position: absolute;
+      top: 2rem;
+      right: -1rem;
+      background: var(--amber);
+      color: var(--dark);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.5rem;
+      border-radius: 3px;
+    }
+
+    .about p { color: var(--gray); line-height: 1.85; margin-bottom: 1.25rem; }
+
+    .about-bullets { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .bullet-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--charcoal);
+    }
+
+    .bullet-item::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--amber);
+      border-radius: 50%;
+      margin-top: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    /* SERVICES */
+    .services { background: var(--charcoal); }
+
+    .services .section-title { color: var(--warm-white); }
+    .services .section-sub { color: rgba(255,255,255,0.65); }
+
+    .services-header { margin-bottom: 3.5rem; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .service-card {
+      background: var(--charcoal);
+      padding: 3rem 2.5rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.3s;
+    }
+
+    .service-card:hover { background: rgba(224,123,34,0.08); }
+
+    .service-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--amber);
+      letter-spacing: 0.15em;
+      margin-bottom: 0.75rem;
+    }
+
+    .service-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      color: var(--warm-white);
+      margin-bottom: 1rem;
+    }
+
+    .service-card p { color: rgba(255,255,255,0.6); font-size: 0.93rem; line-height: 1.8; }
+
+    /* WHO WE WORK WITH */
+    .who { background: var(--cream); }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .who-card {
+      background: var(--warm-white);
+      border: 1px solid var(--gray-light);
+      border-radius: 6px;
+      padding: 2.5rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .who-card:hover { border-color: var(--amber); box-shadow: 0 8px 32px rgba(224,123,34,0.1); }
+
+    .who-card h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-bottom: 0.75rem;
+    }
+
+    .who-card p { font-size: 0.9rem; color: var(--gray); line-height: 1.75; }
+
+    /* WHY US */
+    .why {
+      background: var(--amber);
+      color: var(--dark);
+      text-align: center;
+    }
+
+    .why .section-title { color: var(--dark); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .why-item .why-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .why-item .why-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* CONTACT */
+    .contact { background: var(--dark); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-info .section-title { color: var(--warm-white); }
+
+    .contact-info p { color: rgba(255,255,255,0.65); line-height: 1.85; margin-bottom: 2rem; }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.95rem;
+    }
+
+    .contact-detail strong { color: var(--amber); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; display: block; }
+
+    .contact-form {
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 3rem;
+    }
+
+    .contact-form h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-bottom: 2rem;
+    }
+
+    .form-group { margin-bottom: 1.25rem; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--charcoal);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1.5px solid var(--gray-light);
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--text);
+      background: var(--warm-white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--amber); }
+
+    .form-group textarea { min-height: 100px; resize: vertical; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--amber);
+      color: var(--dark);
+      border: none;
+      padding: 1rem;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .form-submit:hover { background: var(--amber-light); }
+
+    /* FOOTER */
+    footer {
+      background: #0a0a0a;
+      color: rgba(255,255,255,0.5);
+      padding: 40px 5% 25px;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    footer strong { color: rgba(255,255,255,0.8); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-image { display: none; }
+      .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+      .pillar { border-right: none; border-bottom: 1px solid var(--gray-light); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .who-grid { grid-template-columns: 1fr; }
+      .pillars-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">Four<span>Bricks</span></span>
+    <ul class="nav-links">
+      <li><a href="#pillars">Our Approach</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Talk to Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-text">BUILD</div>
+    <div class="hero-inner">
+      <div class="hero-text reveal">
+        <span class="hero-eyebrow">Business Consulting &amp; Real Estate Investment Advisory | Orlando, FL</span>
+        <h1>Build Something<br /><em>That Lasts.</em></h1>
+        <p>David Lessin has built businesses and real estate portfolios. He's made the mistakes you're trying to avoid and learned what actually works. Now he works directly with entrepreneurs and investors in Central Florida to help them do the same — faster and with fewer costly detours.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn-amber">Talk to David</a>
+          <a href="#pillars" class="btn-ghost">Our Approach</a>
+        </div>
+      </div>
+      <div class="hero-image reveal reveal-delay-2">
+        <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=800&q=80" alt="Business strategy team working together" loading="lazy" />
+        <div class="hero-image-overlay">
+          <p class="hero-quote">Strategy is the foundation. Execution is the building.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUR PILLARS -->
+  <section class="pillars" id="pillars">
+    <div class="section-inner">
+      <div class="pillars-header reveal">
+        <p class="section-label">The Four Bricks</p>
+        <h2 class="section-title">Every Solid Business<br />Is Built on These</h2>
+        <p class="section-sub">Whether you're starting fresh, scaling up, or building a real estate portfolio, there are four pillars that separate businesses that last from ones that don't. We help you build all four — in the right order.</p>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar reveal">
+          <div class="pillar-number">01</div>
+          <div class="pillar-accent"></div>
+          <h3>Foundation</h3>
+          <p>Business structure, legal entity setup, and strategic planning. You have to know what you're building before you can build it. We start at the bottom and make sure it holds.</p>
+        </div>
+        <div class="pillar reveal reveal-delay-1">
+          <div class="pillar-number">02</div>
+          <div class="pillar-accent"></div>
+          <h3>Capital</h3>
+          <p>Funding strategy, financial modeling, and investment structure. Knowing where money comes from — and how to make it work harder — is the difference between growing and stalling.</p>
+        </div>
+        <div class="pillar reveal reveal-delay-2">
+          <div class="pillar-number">03</div>
+          <div class="pillar-accent"></div>
+          <h3>Operations</h3>
+          <p>Systems, processes, and team-building for scale. Good ideas die in bad operations. We help you build the infrastructure to deliver consistently and grow without chaos.</p>
+        </div>
+        <div class="pillar reveal reveal-delay-3">
+          <div class="pillar-number">04</div>
+          <div class="pillar-accent"></div>
+          <h3>Growth</h3>
+          <p>Market expansion, deal sourcing, and portfolio development. Once the foundation is solid, we focus on building up — strategic growth that compounds over time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80" alt="David Lessin consulting with entrepreneur" loading="lazy" />
+          <span class="about-tag">Orlando, FL</span>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <p class="section-label">Who We Are</p>
+          <h2 class="section-title">Operators First.<br />Consultants Second.</h2>
+          <p>David Lessin didn't become a business advisor by studying business. He became one by building it — navigating the same decisions, cash crunches, and market uncertainties that his clients face every day. The lessons that matter most to him are the ones he learned with real money on the line.</p>
+          <p>When you work with Four Bricks, you work directly with David. Not a coordinator, not a junior analyst — the person who built this and has the scars to prove it. That direct access is the point. He brings hands-on operator experience to every engagement, because theory only gets you so far in Central Florida's fast-moving market.</p>
+          <p>Whether you're placing your first real estate investment in Orlando or optimizing a business that's already generating revenue, Four Bricks is the call you make when you're serious about building something that holds.</p>
+          <div class="about-bullets">
+            <div class="bullet-item">Direct access to principals — not junior staff</div>
+            <div class="bullet-item">Orlando-based with deep Central Florida market knowledge</div>
+            <div class="bullet-item">Hands-on experience in business building and real estate</div>
+            <div class="bullet-item">Practical accountability, not theoretical advice</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="services-header reveal">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-title">How We Can Help You</h2>
+        <p class="section-sub">Our engagements are tailored to your situation. Here's what we focus on — and we'll build a custom approach from the first conversation.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-num">01 / Real Estate Advisory</div>
+          <h3>Investment Analysis &amp; Acquisition</h3>
+          <p>We help you find, evaluate, and structure real estate investments in the Orlando and Central Florida market. From single-family to commercial, we walk you through due diligence, deal structuring, and long-term portfolio strategy.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-num">02 / Business Consulting</div>
+          <h3>Strategic Business Planning</h3>
+          <p>Whether you're launching or optimizing, we work with you to build a clear strategic roadmap — one with real milestones, financial projections, and accountability built in. No vague frameworks. Concrete plans.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-num">03 / Entrepreneurship</div>
+          <h3>One-on-One Coaching</h3>
+          <p>For entrepreneurs who need a thinking partner, a challenger, and someone who's been where they're going. We work in direct engagement — regular sessions, real accountability, and honest feedback when you need it most.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-num">04 / Group Programs</div>
+          <h3>Workshops &amp; Masterminds</h3>
+          <p>Group learning environments for entrepreneurs and investors at similar stages. Facilitated by Four Bricks with peer learning built in — because your best insights sometimes come from the person sitting next to you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE WORK WITH -->
+  <section class="who">
+    <div class="section-inner">
+      <div class="reveal">
+        <p class="section-label">Who We Work With</p>
+        <h2 class="section-title">You're Our Kind of Client If...</h2>
+      </div>
+      <div class="who-grid">
+        <div class="who-card reveal">
+          <h4>First-Time Investors</h4>
+          <p>You've heard about real estate investing, you're serious about it, and you want someone who can help you navigate the first deal without making expensive mistakes.</p>
+        </div>
+        <div class="who-card reveal reveal-delay-1">
+          <h4>Small Business Owners</h4>
+          <p>You've got a business that works, but you're stuck — growth has stalled, operations feel chaotic, or you need a clear strategy for the next chapter.</p>
+        </div>
+        <div class="who-card reveal reveal-delay-2">
+          <h4>Seasoned Entrepreneurs</h4>
+          <p>You've built something before. Now you're building again and want a strategic partner who can keep up with where you're going — not catch up to where you've been.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why">
+    <div class="section-inner">
+      <p class="section-label reveal">Why Four Bricks</p>
+      <h2 class="section-title reveal">Built Different.</h2>
+      <div class="why-grid">
+        <div class="why-item reveal">
+          <div class="why-num">Real</div>
+          <div class="why-label">Operator Experience</div>
+        </div>
+        <div class="why-item reveal reveal-delay-1">
+          <div class="why-num">Direct</div>
+          <div class="why-label">Principal Access</div>
+        </div>
+        <div class="why-item reveal reveal-delay-2">
+          <div class="why-num">Local</div>
+          <div class="why-label">Orlando Market Knowledge</div>
+        </div>
+        <div class="why-item reveal reveal-delay-3">
+          <div class="why-num">Proven</div>
+          <div class="why-label">System, Not Theory</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p class="section-label" style="color:var(--amber);">Get in Touch</p>
+          <h2 class="section-title">Ready to Lay the First Brick?</h2>
+          <p>Every engagement starts with a conversation. Tell us where you are, where you want to be, and we'll tell you honestly whether and how we can help. No pressure. Just a straight conversation.</p>
+          <div class="contact-detail">
+            <div>
+              <strong>Call David directly</strong>
+              <a href="tel:5626394626" style="color:inherit;text-decoration:none;">(562) 639-4626</a>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div>
+              <strong>Email</strong>
+              jkoopmans@dbntm.com
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div>
+              <strong>Location</strong>
+              Orlando, Florida
+            </div>
+          </div>
+        </div>
+        <div class="contact-form reveal reveal-delay-1">
+          <h3>Start the Conversation</h3>
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="First and last name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="you@email.com" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="(407) 000-0000" />
+          </div>
+          <div class="form-group">
+            <label for="interest">What Are You Working On?</label>
+            <select id="interest">
+              <option value="">Select your focus</option>
+              <option>Real Estate Investing</option>
+              <option>Business Strategy</option>
+              <option>Entrepreneurship Coaching</option>
+              <option>Group / Mastermind</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell Us More</label>
+            <textarea id="message" placeholder="Where are you right now, and what are you trying to build?"></textarea>
+          </div>
+          <button class="form-submit">Send It</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Four Bricks LLC / DBNTM</strong> | Orlando, Florida</p>
+    <p style="margin-top:0.5rem;">Business Consulting &amp; Investment Advisory | (562) 639-4626 | jkoopmans@dbntm.com</p>
+    <p style="margin-top:1rem; opacity:0.5;">&copy; 2025 Four Bricks LLC. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

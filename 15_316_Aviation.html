@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>316 Aviation | Embraer &amp; DHC-6 Aircraft Parts Supplier | Pembroke Pines, FL</title>
+  <meta name="description" content="316 Aviation — specialist aircraft parts supplier for Embraer 120, ERJ 135, ERJ 145 and DHC-6 Twin Otter. Free 24/7 AOG emergency service. Pembroke Pines, FL (near FLL and MIA). 30+ years combined aviation experience." />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: #0a0e1a;
+      color: #d8e4f0;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    :root {
+      --navy:       #0a0e1a;
+      --navy-2:     #0e1424;
+      --navy-3:     #121a30;
+      --navy-4:     #1a2440;
+      --navy-5:     #223050;
+      --sky:        #4da8da;
+      --sky-light:  #7ec4e8;
+      --sky-pale:   #c8e4f4;
+      --sky-dim:    rgba(77,168,218,0.12);
+      --white:      #ffffff;
+      --off-white:  #e8f0f8;
+      --text-muted: #6a88a8;
+      --text-body:  #a8c0d8;
+      --border:     rgba(77,168,218,0.15);
+      --radius:     3px;
+      --transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal { opacity:0; transform:translateY(36px); transition:opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-left { opacity:0; transform:translateX(-36px); transition:opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-left.visible { opacity:1; transform:translateX(0); }
+    .reveal-right { opacity:0; transform:translateX(36px); transition:opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-right.visible { opacity:1; transform:translateX(0); }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top:0; left:0; right:0; z-index:100;
+      display: flex; align-items:center; justify-content:space-between;
+      padding: 0 5%; height: 70px;
+      background: rgba(10,14,26,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .nav-logo-mark {
+      width: 36px; height: 36px;
+      background: var(--sky);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 0.85rem;
+      color: var(--navy);
+      letter-spacing: 0.02em;
+    }
+    .nav-logo-text {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 1.3rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--off-white);
+    }
+    .nav-logo-text span { color: var(--sky); }
+    .nav-links { display:flex; gap:2rem; list-style:none; }
+    .nav-links a {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600; font-size: 0.9rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-body);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--sky); }
+    .nav-cta {
+      background: var(--sky) !important;
+      color: var(--navy) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: var(--radius);
+      transition: background var(--transition), transform var(--transition) !important;
+    }
+    .nav-cta:hover { background: var(--sky-light) !important; transform: translateY(-1px); }
+    .nav-mobile-btn { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+    .nav-mobile-btn span { display:block; width:22px; height:1.5px; background:var(--sky); }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items:center;
+      padding: 100px 5% 80px;
+      position: relative; overflow: hidden;
+      background: var(--navy);
+    }
+    .hero-photo {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+      opacity: 0.22;
+    }
+    .hero-grid-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(77,168,218,0.04) 0%, transparent 40%),
+        repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(77,168,218,0.04) 59px, rgba(77,168,218,0.04) 60px),
+        repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(77,168,218,0.04) 59px, rgba(77,168,218,0.04) 60px);
+    }
+    .hero-glow {
+      position: absolute;
+      top: 20%; right: -5%;
+      width: 700px; height: 700px;
+      background: radial-gradient(ellipse, rgba(77,168,218,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-aircraft {
+      position: absolute;
+      right: 4%; top: 50%;
+      transform: translateY(-50%);
+      width: clamp(280px, 40vw, 580px);
+      opacity: 0.08;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 660px; }
+    .hero-top-bar {
+      display: flex; align-items:center; gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    .hero-top-line { width: 40px; height: 1px; background: var(--sky); }
+    .hero-top-text {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600; font-size: 0.78rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sky);
+    }
+    .hero h1 {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--off-white);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em { font-style: normal; color: var(--sky); }
+    .hero-sub {
+      font-size: clamp(1rem, 1.8vw, 1.1rem);
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-specs {
+      display: flex; flex-wrap:wrap; gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-spec {
+      display: flex; align-items:center; gap:0.6rem;
+      background: rgba(77,168,218,0.08);
+      border: 1px solid rgba(77,168,218,0.2);
+      padding: 0.5rem 1rem;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600; font-size: 0.82rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--sky-pale);
+    }
+    .spec-dot { width: 6px; height: 6px; background: var(--sky); flex-shrink:0; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:1rem; align-items:center; }
+    .btn-sky {
+      display: inline-block;
+      background: var(--sky);
+      color: var(--navy);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 0.95rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.95rem 2.2rem;
+      border: none; cursor: pointer;
+      border-radius: var(--radius);
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-sky:hover {
+      background: var(--sky-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(77,168,218,0.3);
+    }
+    .btn-outline-sky {
+      display: inline-block;
+      background: transparent;
+      color: var(--sky);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 0.95rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.95rem 2.2rem;
+      border: 1px solid rgba(77,168,218,0.4);
+      cursor: pointer;
+      border-radius: var(--radius);
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+    }
+    .btn-outline-sky:hover {
+      border-color: var(--sky);
+      background: rgba(77,168,218,0.06);
+      transform: translateY(-2px);
+    }
+    .hero-phone { font-size: 0.9rem; color: var(--text-muted); }
+    .hero-phone strong { color: var(--sky-light); font-weight: 600; }
+
+    /* ── Stats Bar ── */
+    .stats-bar {
+      background: var(--navy-3);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stats-inner {
+      display: flex; align-items:stretch;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      flex: 1; min-width: 160px;
+      display: flex; flex-direction:column;
+      align-items: center; justify-content:center;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-item:hover { background: rgba(77,168,218,0.04); }
+    .stat-num {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 2.4rem;
+      color: var(--sky); line-height: 1;
+    }
+    .stat-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--text-muted); margin-top: 0.3rem;
+    }
+
+    /* ── Sections ── */
+    section { padding: 96px 5%; }
+    .section-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 0.75rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--sky);
+      display: flex; align-items:center; gap:0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .section-label::before { content:''; display:block; width:28px; height:1px; background:var(--sky); }
+    .section-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      letter-spacing: 0.02em; text-transform: uppercase;
+      color: var(--off-white); line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 0.97rem; font-weight: 300;
+      color: var(--text-muted); max-width: 500px;
+      line-height: 1.75;
+    }
+    .section-header { margin-bottom: 3.5rem; }
+
+    /* ── Services ── */
+    .services { background: var(--navy-2); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .service-card {
+      background: var(--navy-2);
+      padding: 2.5rem 2rem;
+      position: relative; overflow:hidden;
+      transition: background var(--transition);
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top:0; left:0; right:0;
+      height: 2px; background: var(--sky);
+      transform: scaleX(0); transform-origin:left;
+      transition: transform 0.4s ease;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover { background: var(--navy-3); }
+    .service-code {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 0.72rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sky); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .service-code::after { content:''; flex:1; height:1px; background: rgba(77,168,218,0.2); }
+    .service-card h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 1.4rem;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--off-white); margin-bottom: 0.75rem;
+    }
+    .service-card p {
+      font-size: 0.88rem; color: var(--text-muted);
+      line-height: 1.75; margin-bottom: 1.5rem;
+    }
+    .service-items {
+      list-style: none;
+      display: flex; flex-direction:column; gap:0.45rem;
+    }
+    .service-items li {
+      font-size: 0.82rem; color: var(--text-body);
+      display: flex; align-items:center; gap:0.7rem;
+    }
+    .service-items li::before {
+      content: '';
+      width: 16px; height: 1px;
+      background: var(--sky); flex-shrink:0;
+    }
+
+    /* ── Certifications ── */
+    .certs { background: var(--navy); }
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .cert-card {
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.75rem;
+      position: relative;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .cert-card:hover { border-color: var(--sky); transform: translateY(-3px); }
+    .cert-seal {
+      width: 48px; height: 48px;
+      border: 2px solid var(--sky);
+      display: flex; align-items:center; justify-content:center;
+      margin-bottom: 1.25rem;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 0.8rem;
+      color: var(--sky); letter-spacing: 0.08em;
+      transition: background var(--transition), color var(--transition);
+    }
+    .cert-card:hover .cert-seal { background: var(--sky); color: var(--navy); }
+    .cert-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 1rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--off-white); margin-bottom: 0.4rem;
+    }
+    .cert-body { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ── Capabilities ── */
+    .capabilities { background: var(--navy-2); }
+    .cap-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items:center;
+    }
+    .cap-list {
+      display: flex; flex-direction:column; gap:0;
+    }
+    .cap-item {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items:center; gap:1.25rem;
+      transition: padding-left var(--transition);
+      cursor: default;
+    }
+    .cap-item:first-child { border-top: 1px solid var(--border); }
+    .cap-item:hover { padding-left: 0.5rem; }
+    .cap-item:hover .cap-indicator { background: var(--sky); width: 8px; }
+    .cap-indicator {
+      width: 3px; height: 3px;
+      background: rgba(77,168,218,0.4);
+      border-radius: 50%; flex-shrink:0;
+      transition: background var(--transition), width var(--transition);
+    }
+    .cap-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600; font-size: 1rem;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--off-white); flex:1;
+    }
+    .cap-tag {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--sky);
+      background: rgba(77,168,218,0.1);
+      border: 1px solid rgba(77,168,218,0.2);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+    }
+    .cap-visual {
+      position: relative;
+      aspect-ratio: 1;
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      display: flex; align-items:center; justify-content:center;
+      overflow: hidden;
+    }
+    .cap-visual-photo {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.15;
+    }
+    .cap-visual-grid {
+      position: absolute; inset:0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(77,168,218,0.05) 30px, rgba(77,168,218,0.05) 31px),
+        repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(77,168,218,0.05) 30px, rgba(77,168,218,0.05) 31px);
+    }
+    .cap-visual-center {
+      position: relative; z-index:2;
+      text-align: center;
+    }
+    .cap-visual-num {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 5rem;
+      color: rgba(77,168,218,0.15); line-height: 1;
+    }
+    .cap-visual-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sky);
+    }
+    .cap-cross {
+      position: absolute;
+      width: 1px; background: rgba(77,168,218,0.15);
+    }
+    .cap-cross-v { height: 100%; left: 50%; }
+    .cap-cross-h { width: 100%; height: 1px; top: 50%; }
+
+    /* ── Safety Record ── */
+    .safety {
+      background: linear-gradient(135deg, var(--navy-4) 0%, var(--navy-3) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 72px 5%;
+      text-align: center;
+    }
+    .safety-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--sky); margin-bottom: 1.25rem;
+    }
+    .safety h2 {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2rem, 5vw, 4rem);
+      letter-spacing: 0.02em; text-transform: uppercase;
+      color: var(--off-white); line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .safety h2 em { color: var(--sky); font-style: normal; }
+    .safety p { font-size: 0.95rem; color: var(--text-muted); max-width: 540px; margin: 0 auto 2.5rem; line-height: 1.75; }
+    .safety-pillars {
+      display: flex; flex-wrap:wrap; gap:1rem;
+      justify-content: center;
+    }
+    .safety-pillar {
+      background: rgba(77,168,218,0.06);
+      border: 1px solid rgba(77,168,218,0.2);
+      padding: 0.75rem 1.5rem;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600; font-size: 0.85rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--sky-pale);
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .safety-pillar:hover { background: rgba(77,168,218,0.12); border-color: var(--sky); }
+
+    /* ── Contact / Quote ── */
+    .contact { background: var(--navy-2); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem; align-items:start;
+    }
+    .contact-info-block { margin-bottom: 1.75rem; }
+    .cib-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 0.3rem;
+    }
+    .cib-value {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600; font-size: 1.05rem;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--off-white);
+    }
+    .cib-sub { font-size: 0.82rem; color: var(--text-muted); margin-top:0.1rem; }
+    .contact-form-wrap {
+      background: var(--navy-3);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+    }
+    .contact-form-wrap h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 1.3rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--off-white); margin-bottom: 1.75rem;
+    }
+    .fg { margin-bottom: 1rem; }
+    .fg label {
+      display: block;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 0.4rem;
+    }
+    .fg input, .fg select, .fg textarea {
+      width: 100%;
+      background: var(--navy-4);
+      border: 1px solid rgba(77,168,218,0.15);
+      color: var(--off-white);
+      padding: 0.85rem 1rem;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.9rem;
+      border-radius: var(--radius);
+      outline: none;
+      transition: border-color var(--transition), background var(--transition);
+      appearance: none;
+    }
+    .fg input:focus, .fg select:focus, .fg textarea:focus {
+      border-color: var(--sky);
+      background: var(--navy-5);
+    }
+    .fg input::placeholder, .fg textarea::placeholder { color: var(--text-muted); }
+    .fg textarea { min-height: 110px; resize: vertical; }
+    .form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid var(--border);
+      padding: 3.5rem 5%;
+      display: flex; flex-wrap:wrap;
+      justify-content: space-between; align-items:center;
+      gap: 1.5rem;
+    }
+    .footer-logo-wrap { display:flex; align-items:center; gap:0.75rem; }
+    .footer-logo-mark {
+      width: 30px; height: 30px;
+      background: var(--sky);
+      display: flex; align-items:center; justify-content:center;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 0.72rem;
+      color: var(--navy);
+    }
+    .footer-logo-text {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 1.1rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--off-white);
+    }
+    .footer-logo-text span { color: var(--sky); }
+    .footer-copy { font-size: 0.75rem; color: var(--text-muted); }
+    .footer-contact { font-size: 0.85rem; color: var(--text-body); }
+    .footer-contact strong { color: var(--sky-light); }
+
+    @media (max-width:960px) {
+      .cap-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .cap-visual { display: none; }
+      .nav-links { display: none; }
+      .nav-mobile-btn { display: flex; }
+    }
+    @media (max-width:640px) {
+      .form-2col { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.8rem; }
+      .stat-item { min-width: 50%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-logo">
+      <div class="nav-logo-mark">316</div>
+      <div class="nav-logo-text"><span>316</span> Aviation</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#certs">Why Us</a></li>
+      <li><a href="#capabilities">Platforms</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="tel:9048689913" class="nav-cta">Call Now</a></li>
+    </ul>
+    <div class="nav-mobile-btn"><span></span><span></span><span></span></div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <img
+      class="hero-photo"
+      src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600&q=80"
+      alt="Regional jet aircraft on airport tarmac — Embraer ERJ regional airliner"
+      loading="eager"
+    />
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
+    <svg class="hero-aircraft" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Simplified aircraft silhouette -->
+      <path d="M50 150 L450 130 L560 145 L450 160 L50 150Z" fill="white"/>
+      <path d="M200 150 L280 60 L340 80 L260 150Z" fill="white"/>
+      <path d="M200 150 L260 230 L310 220 L250 150Z" fill="white"/>
+      <path d="M420 148 L460 120 L480 130 L460 150L420 152Z" fill="white"/>
+      <path d="M80 150 L30 130 L20 145 L30 160 L80 150Z" fill="white"/>
+    </svg>
+    <div class="hero-content">
+      <div class="hero-top-bar">
+        <div class="hero-top-line"></div>
+        <div class="hero-top-text">Pembroke Pines, FL &bull; Near FLL &amp; MIA &bull; Embraer &amp; Twin Otter Specialist</div>
+      </div>
+      <h1>When Your<br />Aircraft Is<br /><em>Grounded.</em></h1>
+      <p class="hero-sub">316 Aviation specializes in parts for Embraer 120, ERJ 135, ERJ 145, and DHC-6 Twin Otter operators. When your aircraft is on the ground, minutes matter. Steven Marin and his team have 30+ years of combined aviation experience — and our 24/7 AOG service is completely free, because that's what a real partner does.</p>
+      <div class="hero-specs">
+        <div class="hero-spec"><div class="spec-dot"></div> Embraer 120 / ERJ 135 / ERJ 145</div>
+        <div class="hero-spec"><div class="spec-dot"></div> DHC-6 Twin Otter</div>
+        <div class="hero-spec"><div class="spec-dot"></div> Free 24/7 AOG Service</div>
+        <div class="hero-spec"><div class="spec-dot"></div> 30+ Years Combined Experience</div>
+      </div>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-sky">Tell Us What You Need</a>
+        <a href="#services" class="btn-outline-sky">What We Do</a>
+        <div class="hero-phone">AOG Line — 24/7: <strong>(904) 868-9913</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-num">30+</div>
+        <div class="stat-label">Years Combined Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Embraer Platform Variants</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">FREE</div>
+        <div class="stat-label">AOG Emergency Service</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">AOG Availability</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Facebook Recommendation Rate</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="section-header reveal">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Parts, Support, and Someone Who Picks Up</h2>
+      <p class="section-sub">Most parts suppliers cover everything broadly and know nothing deeply. We do the opposite — Embraer and Twin Otter, inside and out. When you call 316 Aviation, you reach people who know your aircraft by memory, not by catalog search.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-code">SVC-01</div>
+        <h3>Parts Sales &amp; Supply</h3>
+        <p>We know these aircraft. Not in the "we've seen the catalog" sense — in the "we've been sourcing these specific components for years and know which parts give operators trouble" sense. New, overhauled, and serviceable stock, priced for regional operators.</p>
+        <ul class="service-items">
+          <li>Embraer 120 parts</li>
+          <li>ERJ 135 parts</li>
+          <li>ERJ 145 parts</li>
+          <li>DHC-6 Twin Otter parts</li>
+          <li>New, overhauled, and serviceable components</li>
+        </ul>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-code">SVC-02</div>
+        <h3>Free 24/7 AOG Service</h3>
+        <p>An aircraft on the ground costs your operation money every single hour. Most competitors charge for AOG support. We don't — because when you're dealing with a grounded aircraft at 2am, the last thing you need is to negotiate a service fee before someone will help you. Call us. We answer.</p>
+        <ul class="service-items">
+          <li>24/7 emergency AOG response</li>
+          <li>No charge for AOG support</li>
+          <li>Rapid parts identification and sourcing</li>
+          <li>Direct line to experienced staff</li>
+          <li>Fast turnaround to minimize downtime</li>
+        </ul>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-code">SVC-03</div>
+        <h3>Part Number Identification</h3>
+        <p>Not sure of the part number? Describe the component, the ATA chapter, the symptom, or just the old part — our team's 30+ years of combined experience with Embraer and Twin Otter means we can usually get there from a description alone. We'll find what you need.</p>
+        <ul class="service-items">
+          <li>Part number lookup and cross-reference</li>
+          <li>Technical support by experienced staff</li>
+          <li>Embraer and DHC platform expertise</li>
+          <li>Documentation review assistance</li>
+          <li>Alternate and equivalent part sourcing</li>
+        </ul>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-code">SVC-04</div>
+        <h3>Repair Management</h3>
+        <p>We coordinate repair and overhaul of components requiring shop work — managing the process so you can focus on keeping aircraft flying rather than chasing repair facilities.</p>
+        <ul class="service-items">
+          <li>Repair shop coordination</li>
+          <li>Component overhaul management</li>
+          <li>Status tracking and communication</li>
+          <li>Paperwork and airworthiness documentation</li>
+          <li>Turn time management</li>
+        </ul>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-code">SVC-05</div>
+        <h3>Freight Quote Support</h3>
+        <p>Parts are no good sitting in a warehouse across the country. Our location near FLL and MIA gives us direct access to freight routes serving the Caribbean, Latin America, and international operators. We'll get you a freight quote and get the part moving.</p>
+        <ul class="service-items">
+          <li>Freight rate sourcing and comparison</li>
+          <li>International shipping coordination</li>
+          <li>Priority and AOG freight options</li>
+          <li>Export documentation support</li>
+          <li>Strategic location near FLL and MIA</li>
+        </ul>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-code">SVC-06</div>
+        <h3>Technical Support</h3>
+        <p>Questions about compatibility, installation, or interchange options? Our team's depth on Embraer and Twin Otter isn't theoretical — it comes from years of working these platforms. Call or email and you'll get a direct answer from someone who knows the aircraft.</p>
+        <ul class="service-items">
+          <li>Technical consultation by phone and email</li>
+          <li>Embraer platform technical guidance</li>
+          <li>DHC-6 Twin Otter system knowledge</li>
+          <li>Compatibility and interchange advice</li>
+          <li>Experienced team, accessible response</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PEOPLE PHOTO STRIP: Aviation Mechanics in the Hangar -->
+  <div style="width:100%; height:300px; overflow:hidden; position:relative;">
+    <img
+      src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80"
+      alt="Aviation maintenance technicians inspecting aircraft parts and components in a hangar workshop"
+      style="width:100%; height:100%; object-fit:cover; object-position:center 50%; display:block;"
+      loading="lazy"
+    />
+    <div style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(10,14,26,0.88) 0%, rgba(10,14,26,0.50) 55%, rgba(10,14,26,0.20) 100%); display:flex; align-items:center; padding:0 5%;">
+      <div>
+        <div style="font-family:'Rajdhani',sans-serif; font-weight:700; font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--sky); margin-bottom:0.6rem;">30+ Years Combined Experience</div>
+        <div style="font-family:'Rajdhani',sans-serif; font-weight:700; font-size:clamp(1.4rem,3vw,2.4rem); text-transform:uppercase; color:var(--off-white); line-height:1.1;">The people who know<br /><span style="color:var(--sky);">Embraer &amp; Twin Otter.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Parts Facility Banner -->
+  <div style="width:100%; height:300px; overflow:hidden; position:relative;">
+    <img
+      src="https://images.unsplash.com/photo-1559329255-3f72e2d8b74b?w=1600&q=80"
+      alt="Aviation parts warehouse facility with organized aircraft component inventory"
+      style="width:100%; height:100%; object-fit:cover; object-position:center 40%;"
+      loading="lazy"
+    />
+    <div style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(10,14,26,0.88) 0%, rgba(10,14,26,0.45) 70%); display:flex; align-items:center; padding:0 5%;">
+      <div>
+        <div style="font-family:'Rajdhani',sans-serif; font-weight:700; font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--sky); margin-bottom:0.6rem;">Specialist Supply Chain</div>
+        <div style="font-family:'Rajdhani',sans-serif; font-weight:700; font-size:clamp(1.4rem,3vw,2.4rem); text-transform:uppercase; color:var(--off-white); line-height:1.1;">Embraer &amp; Twin Otter parts.<br /><span style="color:var(--sky);">In stock. Fast.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why 316 -->
+  <section class="certs" id="certs">
+    <div class="section-header reveal">
+      <div class="section-label">Why 316 Aviation</div>
+      <h2 class="section-title">Know Your Aircraft.<br />Know Your Supplier.</h2>
+      <p class="section-sub">Breadth sounds good in a brochure. Depth is what matters when your aircraft is grounded. 316 Aviation has chosen to specialize in two platform families — and that focus is exactly why Embraer and Twin Otter operators keep calling us back.</p>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-card reveal">
+        <div class="cert-seal">EMB</div>
+        <div class="cert-title">Embraer Platform Specialist</div>
+        <div class="cert-body">The Embraer 120, ERJ 135, and ERJ 145 are our aircraft. Years of sourcing parts for these platforms means our team knows the components, the common problem areas, and the cross-references that save operators time when it matters most.</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-seal">DHC</div>
+        <div class="cert-title">DHC-6 Twin Otter Specialist</div>
+        <div class="cert-body">The Twin Otter is still flying in some of the most demanding operating environments on earth — island routes, remote communities, bush operations. These operators deserve a supplier who knows the aircraft as well as they do. We're that supplier.</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-seal">AOG</div>
+        <div class="cert-title">Free 24/7 AOG Emergency Service</div>
+        <div class="cert-body">Zero charge. Any hour. Any day. Most competitors treat AOG response as a premium service — we treat it as a basic obligation to the operators we serve. Featured in CAP Logistics as a best-practice example of supporting aircraft uptime.</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-seal">FL</div>
+        <div class="cert-title">Strategic South Florida Location</div>
+        <div class="cert-body">Pembroke Pines, FL puts us minutes from both FLL and MIA — two of the busiest cargo hubs in the Southeast, with direct freight access to the Caribbean, Latin America, and beyond. That geography matters when a part needs to move today.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities -->
+  <section class="capabilities" id="capabilities">
+    <div class="section-header reveal">
+      <div class="section-label">Aircraft Platforms</div>
+      <h2 class="section-title">Our Specialization</h2>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-list reveal-left">
+        <div class="cap-item">
+          <div class="cap-indicator"></div>
+          <div class="cap-name">Embraer 120 Brasilia</div>
+          <div class="cap-tag">Regional Turboprop</div>
+        </div>
+        <div class="cap-item">
+          <div class="cap-indicator"></div>
+          <div class="cap-name">Embraer ERJ 135</div>
+          <div class="cap-tag">Regional Jet</div>
+        </div>
+        <div class="cap-item">
+          <div class="cap-indicator"></div>
+          <div class="cap-name">Embraer ERJ 145</div>
+          <div class="cap-tag">Regional Jet</div>
+        </div>
+        <div class="cap-item">
+          <div class="cap-indicator"></div>
+          <div class="cap-name">DHC-6 Twin Otter</div>
+          <div class="cap-tag">Twin Turboprop</div>
+        </div>
+        <div class="cap-item">
+          <div class="cap-indicator"></div>
+          <div class="cap-name">Airframe Components</div>
+          <div class="cap-tag">Structural Parts</div>
+        </div>
+        <div class="cap-item">
+          <div class="cap-indicator"></div>
+          <div class="cap-name">Avionics &amp; Electrical</div>
+          <div class="cap-tag">Systems Parts</div>
+        </div>
+        <div class="cap-item">
+          <div class="cap-indicator"></div>
+          <div class="cap-name">Engine &amp; Powerplant Components</div>
+          <div class="cap-tag">Propulsion Parts</div>
+        </div>
+        <div class="cap-item">
+          <div class="cap-indicator"></div>
+          <div class="cap-name">Hydraulics &amp; Landing Gear</div>
+          <div class="cap-tag">Systems Parts</div>
+        </div>
+        <div class="cap-item">
+          <div class="cap-indicator"></div>
+          <div class="cap-name">Other Parts by Inquiry</div>
+          <div class="cap-tag">Contact Us</div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="cap-visual">
+          <img
+            class="cap-visual-photo"
+            src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=800&q=80"
+            alt="Aircraft maintenance hangar with technicians working on engine components"
+            loading="lazy"
+          />
+          <div class="cap-visual-grid"></div>
+          <div class="cap-cross cap-cross-v"></div>
+          <div class="cap-cross cap-cross-h"></div>
+          <div class="cap-visual-center">
+            <div class="cap-visual-num">30+</div>
+            <div class="cap-visual-label">Years Combined Experience</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience & Trust -->
+  <div class="safety">
+    <div class="safety-label">Experience &amp; Trust</div>
+      <h2>30+ Years.<br /><em>100% Recommended.</em></h2>
+    <p>Steven Marin and his team have spent their careers in aviation — not in sales offices, but working these aircraft platforms with real operators who can't afford to be wrong. A 100% Facebook recommendation rate isn't a marketing campaign. It's what happens when you pick up the phone at 2am and you actually solve the problem.</p>
+    <div class="safety-pillars">
+      <div class="safety-pillar">Embraer 120 / ERJ 135 / ERJ 145 Specialist</div>
+      <div class="safety-pillar">DHC-6 Twin Otter Specialist</div>
+      <div class="safety-pillar">Free 24/7 AOG Emergency Response</div>
+      <div class="safety-pillar">Strategic Location Near FLL &amp; MIA</div>
+      <div class="safety-pillar">30+ Years Combined Aviation Experience</div>
+      <div class="safety-pillar">100% Facebook Recommendation Rate</div>
+    </div>
+  </div>
+
+  <!-- Contact / Quote -->
+  <section class="contact" id="contact">
+    <div class="contact-grid">
+      <div class="reveal-left">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">Tell Us What<br />You Need.<br /><em>We'll Find It.</em></h2>
+        <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.75; margin-bottom:2.5rem;">Operators flying Embraer and Twin Otter routes reach us from across the Americas for parts, technical guidance, and AOG support. Give us the part number, the platform, and how urgently you need it — we'll take it from there.</p>
+        <div class="contact-info-block">
+          <div class="cib-label">Sales &amp; AOG Line</div>
+          <div class="cib-value">sales@316aviation.com</div>
+          <div class="cib-sub">(904) 868-9913 &bull; Free 24/7 AOG — we pick up</div>
+        </div>
+        <div class="contact-info-block">
+          <div class="cib-label">Owner</div>
+          <div class="cib-value">Steven Marin</div>
+          <div class="cib-sub">316 Aviation Company Inc.</div>
+        </div>
+        <div class="contact-info-block">
+          <div class="cib-label">Address</div>
+          <div class="cib-value">21011 Johnson St, Suite 129</div>
+          <div class="cib-sub">Pembroke Pines, FL &bull; Near FLL &amp; MIA airports</div>
+        </div>
+        <div class="contact-info-block">
+          <div class="cib-label">AOG Service</div>
+          <div class="cib-value">Free &bull; 24/7 &bull; Any Day</div>
+          <div class="cib-sub">Aircraft on the ground? Call now. No charge, no voicemail — a real person, any hour.</div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="contact-form-wrap">
+          <h3>Tell Us What You Need</h3>
+          <form onsubmit="return false;">
+            <div class="form-2col">
+              <div class="fg"><label>First Name</label><input type="text" placeholder="First" /></div>
+              <div class="fg"><label>Last Name</label><input type="text" placeholder="Last" /></div>
+            </div>
+            <div class="form-2col">
+              <div class="fg"><label>Phone</label><input type="tel" placeholder="(000) 000-0000" /></div>
+              <div class="fg"><label>Email</label><input type="email" placeholder="you@airline.com" /></div>
+            </div>
+            <div class="form-2col">
+              <div class="fg"><label>Company / Airline</label><input type="text" placeholder="Your airline or operator name" /></div>
+              <div class="fg"><label>Aircraft Platform</label>
+                <select>
+                  <option value="">Select platform...</option>
+                  <option>Embraer 120 Brasilia</option>
+                  <option>Embraer ERJ 135</option>
+                  <option>Embraer ERJ 145</option>
+                  <option>DHC-6 Twin Otter</option>
+                  <option>Other / Not sure</option>
+                </select>
+              </div>
+            </div>
+            <div class="fg">
+              <label>Service Needed</label>
+              <select>
+                <option value="">Select a service...</option>
+                <option>Parts Inquiry / Quote</option>
+                <option>AOG Emergency Support</option>
+                <option>Part Number Identification</option>
+                <option>Repair Management</option>
+                <option>Freight Quote</option>
+                <option>Technical Support</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>Part Number or Description</label>
+              <textarea placeholder="Enter the part number, ATA chapter, description, or any details about the component you need..."></textarea>
+            </div>
+            <button type="submit" class="btn-sky" style="width:100%; border:none; cursor:pointer;">Send Request — We'll Get Back to You Fast</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo-wrap">
+      <div class="footer-logo-mark">316</div>
+      <div class="footer-logo-text"><span>316</span> Aviation</div>
+    </div>
+    <div class="footer-copy">© 2025 316 Aviation Company Inc. All rights reserved. Pembroke Pines, FL &bull; Embraer &amp; DHC-6 Parts Specialist</div>
+    <div class="footer-contact">Steven Marin, Owner &bull; <strong>sales@316aviation.com</strong> &bull; <strong>(904) 868-9913</strong></div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((el, i) => {
+      el.style.transitionDelay = `${(i % 4) * 0.08}s`;
+      obs.observe(el);
+    });
+
+    // Nav scroll
+    window.addEventListener('scroll', () => {
+      document.querySelector('nav').style.borderBottomColor =
+        window.scrollY > 60 ? 'rgba(77,168,218,0.25)' : 'rgba(77,168,218,0.15)';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enlighteneering, Inc. | Leadership Development & Organizational Consulting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0d1f3c;
+      --navy-mid: #152a50;
+      --gold: #c9a84c;
+      --gold-light: #e8c96b;
+      --white: #ffffff;
+      --off-white: #f7f5f0;
+      --gray-light: #eceae4;
+      --gray-text: #5a5a5a;
+      --text-dark: #1a1a2e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    /* ===== NAVIGATION ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: rgba(13, 31, 60, 0.97);
+      backdrop-filter: blur(8px);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 3px;
+      font-weight: 700 !important;
+    }
+
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1a3a6e 100%);
+      display: flex;
+      align-items: center;
+      padding: 120px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .hero-text { color: var(--white); }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 4vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+      max-width: 480px;
+    }
+
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 0.85rem 2rem;
+      border-radius: 3px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      display: inline-block;
+      border: 2px solid rgba(255,255,255,0.5);
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: 3px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.1); }
+
+    .hero-image {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+      position: relative;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 1.2rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      line-height: 1.4;
+    }
+
+    .hero-badge .badge-num {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+    }
+
+    /* ===== STATS BAR ===== */
+    .stats-bar {
+      background: var(--off-white);
+      border-bottom: 1px solid var(--gray-light);
+      padding: 2.5rem 5%;
+    }
+
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stat-item .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .stat-item .label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gray-text);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.3rem;
+    }
+
+    /* ===== SECTION COMMONS ===== */
+    section { padding: 90px 5%; }
+
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--gray-text);
+      max-width: 620px;
+      line-height: 1.8;
+    }
+
+    /* ===== ABOUT ===== */
+    .about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-image::before {
+      content: '';
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      right: 15px;
+      bottom: 15px;
+      border: 3px solid var(--gold);
+      border-radius: 8px;
+      z-index: -1;
+    }
+
+    .about-text .section-sub { margin-bottom: 1.5rem; }
+
+    .about-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .highlight-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .highlight-icon {
+      width: 42px;
+      height: 42px;
+      background: rgba(201,168,76,0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+    }
+
+    .highlight-icon svg { width: 18px; height: 18px; fill: var(--gold); }
+
+    .highlight-text strong {
+      display: block;
+      color: var(--navy);
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .highlight-text span { font-size: 0.9rem; color: var(--gray-text); }
+
+    /* ===== SERVICES ===== */
+    .services { background: var(--off-white); }
+
+    .services-header { text-align: center; margin-bottom: 3.5rem; }
+
+    .services-header .section-sub { margin: 0 auto; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      border-top: 4px solid var(--gold);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.12); }
+
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .service-card p { color: var(--gray-text); font-size: 0.95rem; line-height: 1.75; }
+
+    /* ===== WHO WE SERVE ===== */
+    .who-serve { background: var(--navy); color: var(--white); }
+
+    .who-serve .section-title { color: var(--white); }
+    .who-serve .section-sub { color: rgba(255,255,255,0.75); }
+
+    .serve-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .serve-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 8px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: background 0.3s;
+    }
+
+    .serve-card:hover { background: rgba(201,168,76,0.12); }
+
+    .serve-card svg {
+      width: 36px;
+      height: 36px;
+      fill: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .serve-card h4 {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+
+    .serve-card p { font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
+
+    /* ===== LEADERSHIP ===== */
+    .leadership { background: var(--white); }
+
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .leader-photo {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    }
+
+    .leader-photo img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    .leader-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+
+    .leader-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .leader-bio {
+      color: var(--gray-text);
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+
+    .credential-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .badge {
+      background: var(--off-white);
+      border: 1px solid var(--gray-light);
+      border-radius: 20px;
+      padding: 0.4rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials { background: var(--off-white); }
+
+    .testimonials-header { text-align: center; margin-bottom: 3rem; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: var(--gold);
+      opacity: 0.25;
+      position: absolute;
+      top: 0.5rem;
+      left: 1.5rem;
+      line-height: 1;
+    }
+
+    .testimonial-text {
+      font-size: 0.95rem;
+      color: var(--gray-text);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+      padding-top: 1rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .author-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .author-name { font-weight: 700; color: var(--navy); font-size: 0.9rem; }
+    .author-role { font-size: 0.8rem; color: var(--gray-text); }
+
+    /* ===== CTA SECTION ===== */
+    .cta-section {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      text-align: center;
+      padding: 100px 5%;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(201,168,76,0.1) 0%, transparent 70%);
+    }
+
+    .cta-section .section-title { color: var(--white); position: relative; }
+
+    .cta-sub {
+      color: rgba(255,255,255,0.75);
+      font-size: 1.1rem;
+      margin-bottom: 2.5rem;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+
+    .contact-form {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 3rem;
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+      text-align: left;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .form-group.full { grid-column: 1 / -1; }
+
+    .form-group label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.8rem 1rem;
+      border: 1.5px solid var(--gray-light);
+      border-radius: 5px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--text-dark);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--navy); }
+
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .form-submit {
+      margin-top: 1.5rem;
+      width: 100%;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      padding: 1rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
+    }
+
+    .form-submit:hover { background: var(--gold); color: var(--navy); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #080f1e;
+      color: rgba(255,255,255,0.7);
+      padding: 50px 5% 30px;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-brand .nav-logo { font-size: 1.5rem; margin-bottom: 1rem; display: block; }
+
+    .footer-brand p { font-size: 0.9rem; line-height: 1.75; max-width: 300px; }
+
+    .footer-col h4 {
+      font-weight: 700;
+      color: var(--white);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .footer-col a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+
+    .footer-col a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-image { display: none; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .serve-grid { grid-template-columns: repeat(2, 1fr); }
+      .leadership-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-image::before { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .serve-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .form-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <span class="nav-logo">Enlighten<span>eering</span></span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#leadership">Leadership</a></li>
+      <li><a href="#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text reveal">
+        <p class="hero-eyebrow">Federal &amp; Government Leadership Development | McLean, VA</p>
+        <h1>Leaders Who Grow.<br />Agencies That Perform.</h1>
+        <p>Marilyn Wiles retired as an Air Force Colonel, earned her doctorate from UCLA, and became a Stanford Sloan Fellow. Then she spent the next 25 years doing the thing she was trained to do: helping government leaders and their organizations get better. That's Enlighteneering.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn-primary">Discuss Your Challenge</a>
+          <a href="#services" class="btn-outline">Our Services</a>
+        </div>
+      </div>
+      <div class="hero-image reveal reveal-delay-2">
+        <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&q=80" alt="Leadership team in collaborative discussion" loading="lazy" />
+        <div class="hero-badge">
+          <span class="badge-num">300+</span>
+          Certified Coaches &amp;<br />Consultants Nationwide
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item reveal">
+        <div class="num">20+</div>
+        <div class="label">Years in Practice</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="num">300+</div>
+        <div class="label">Coaches &amp; Consultants</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="num">WOSB</div>
+        <div class="label">Woman-Owned Small Business</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="num">Fed/Comm</div>
+        <div class="label">Government &amp; Corporate Clients</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80" alt="Professional executive coaching session" loading="lazy" />
+        </div>
+        <div class="about-text reveal reveal-delay-1">
+          <p class="section-label">Our Mission</p>
+          <h2 class="section-title">Built from the Inside Out, Since 2001</h2>
+          <p class="section-sub">When Dr. Marilyn Wiles founded Enlighteneering in McLean, Virginia, she wasn't theorizing about leadership — she'd lived it. From leading Air Force units to studying systems engineering at UCLA to being named a Sloan Fellow at Stanford, she knew exactly what high-performing organizations needed. And she knew most consultants couldn't deliver it. So she built a firm that could.</p>
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div class="highlight-text">
+                <strong>Federal, State &amp; Local Government</strong>
+                <span>From Cabinet-level agencies to county departments — we speak the language of public sector leadership and know how government actually works</span>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <svg viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+              </div>
+              <div class="highlight-text">
+                <strong>A Network Built for Results</strong>
+                <span>300+ certified coaches and consultants located across the United States</span>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <svg viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </div>
+              <div class="highlight-text">
+                <strong>Elite Credentials, Human Approach</strong>
+                <span>Doctoral-level expertise combined with genuine care for every leader we work with</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="services-header reveal">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-title">No Off-the-Shelf Programs. Ever.</h2>
+        <p class="section-sub">Every engagement begins with a real conversation about what's happening in your organization — not a sales pitch. We diagnose before we prescribe, and we build solutions designed for your mission, your people, and your timeline.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <h3>Management Consulting</h3>
+          <p>Organizational development strategies designed to create alignment, build resilience, and drive measurable results. We work alongside your leadership team to diagnose what isn't working — and build what will.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <h3>Executive Coaching</h3>
+          <p>One-on-one coaching engagements for senior leaders and high-potential professionals. Drawing on proven frameworks and real executive experience, we help leaders perform at their highest level — and sustain it.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <h3>Leadership Training</h3>
+          <p>Custom training programs that build competencies at every level of your organization. From frontline supervisors to C-suite executives, we meet leaders where they are and take them further than they expected.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE SERVE -->
+  <section class="who-serve" id="clients">
+    <div class="section-inner">
+      <p class="section-label reveal">Who We Serve</p>
+      <h2 class="section-title reveal">Leaders in Every Sector</h2>
+      <p class="section-sub reveal">From federal agencies to corporate boardrooms, Enlighteneering has guided leaders through periods of growth, transition, and transformation.</p>
+      <div class="serve-grid">
+        <div class="serve-card reveal">
+          <svg viewBox="0 0 24 24"><path d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10h1v11H4zm15 0h1v11h-1zm-7.5 0h1v11h-1z"/></svg>
+          <h4>Federal Agencies</h4>
+          <p>Deep experience supporting leadership development across civilian and defense agency missions</p>
+        </div>
+        <div class="serve-card reveal reveal-delay-1">
+          <svg viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          <h4>State &amp; Local Government</h4>
+          <p>Helping public servants lead with clarity, purpose, and accountability at every level of government</p>
+        </div>
+        <div class="serve-card reveal reveal-delay-2">
+          <svg viewBox="0 0 24 24"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <h4>Corporate Leaders</h4>
+          <p>Executive coaching and consulting for companies building high-performing, mission-aligned teams</p>
+        </div>
+        <div class="serve-card reveal reveal-delay-3">
+          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+          <h4>Military &amp; Transitioning Veterans</h4>
+          <p>Leadership transition coaching for military professionals entering civilian and executive roles</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section class="leadership" id="leadership">
+    <div class="section-inner">
+      <div class="leadership-grid">
+        <div class="leader-photo reveal">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80" alt="Dr. Marilyn Wiles, President and CEO" loading="lazy" />
+        </div>
+        <div class="reveal reveal-delay-1">
+          <p class="section-label">Our Founder</p>
+          <h2 class="section-title">Dr. Marilyn P. Wiles</h2>
+          <p class="leader-title">President &amp; Chief Executive Officer</p>
+          <p class="leader-bio">Marilyn Wiles didn't come to consulting to be comfortable. She came because she'd spent a career — from Vietnam-era Air Force service to command leadership to the Stanford Graduate School of Business — learning exactly what separates high-performing organizations from struggling ones. And she'd seen too many agencies and companies settle for less than they were capable of.</p>
+          <p class="leader-bio">A retired Air Force Colonel with a doctorate in Systems Engineering from UCLA, Dr. Wiles was selected as a Sloan Fellow at Stanford — a distinction reserved for executives identified as future leaders of major organizations. She took those credentials and that conviction and founded Enlighteneering in 2001 in McLean, Virginia, five miles from the agencies she set out to serve.</p>
+          <p class="leader-bio">Today, she leads a network of more than 300 coaches and consultants across the country — every one of them selected because they can do what Marilyn does: walk into an organization, understand what's really happening, and help leaders rise to meet it.</p>
+          <div class="credential-badges">
+            <span class="badge">Retired USAF Colonel</span>
+            <span class="badge">PhD, Systems Engineering (UCLA)</span>
+            <span class="badge">Stanford Sloan Fellow</span>
+            <span class="badge">Vietnam Veteran</span>
+            <span class="badge">WOSB Certified</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="section-inner">
+      <div class="testimonials-header reveal">
+        <p class="section-label">What Our Clients Say</p>
+        <h2 class="section-title">Leaders Who Made the Leap</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <p class="testimonial-text">We were a high-performing unit on paper, but we weren't functioning like one. Enlighteneering came in, spent real time with our senior team, and identified the specific friction points we'd stopped seeing. Twelve months later the difference is measurable and our people will tell you they feel it every day.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Client portrait" class="author-avatar" />
+            <div>
+              <div class="author-name">Regional Director</div>
+              <div class="author-role">Federal Civilian Agency, Washington, DC</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-1">
+          <p class="testimonial-text">I've worked with executive coaches before. Dr. Wiles is different. She doesn't validate you — she challenges you. She pushes on the assumptions you've stopped questioning. Six months into working with her, I was promoted. I don't think that's a coincidence.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&q=80" alt="Client portrait" class="author-avatar" />
+            <div>
+              <div class="author-name">Deputy Director</div>
+              <div class="author-role">Defense Contractor, Northern Virginia</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <p class="testimonial-text">We were in the middle of a difficult reorganization with morale at a low point. Enlighteneering helped us rebuild the leadership culture from the top down. They told us what we needed to hear, not what we wanted to hear. That honesty was exactly what our team needed.</p>
+          <div class="testimonial-author">
+            <img src="https://images.unsplash.com/photo-1559718062-361155fad299?w=100&q=80" alt="Client portrait" class="author-avatar" />
+            <div>
+              <div class="author-name">Deputy Secretary</div>
+              <div class="author-role">State Government Agency, Mid-Atlantic Region</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / CTA -->
+  <section class="cta-section" id="contact">
+    <div style="position:relative; z-index:1;">
+      <p class="section-label reveal" style="color:var(--gold);">Let's Connect</p>
+      <h2 class="section-title reveal" style="margin-bottom:1rem;">Tell Marilyn What You're Facing</h2>
+      <p class="cta-sub reveal">Whether it's a leadership challenge, a reorganization, or a team that isn't performing the way it should — this is exactly what Enlighteneering was built for. Your first conversation is always complimentary, and always confidential.</p>
+      <div class="contact-form reveal">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="Full name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="you@organization.gov" />
+          </div>
+          <div class="form-group">
+            <label for="org">Organization</label>
+            <input type="text" id="org" placeholder="Agency or company name" />
+          </div>
+          <div class="form-group">
+            <label for="service">Area of Interest</label>
+            <select id="service">
+              <option value="">Select a service</option>
+              <option>Management Consulting</option>
+              <option>Executive Coaching</option>
+              <option>Leadership Training</option>
+              <option>Not sure — I need guidance</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label for="message">Tell Us About Your Challenge</label>
+            <textarea id="message" placeholder="Briefly describe your organization's current leadership challenge or goal..."></textarea>
+          </div>
+        </div>
+        <button class="form-submit" type="submit">Send My Inquiry</button>
+        <p style="text-align:center; margin-top:1rem; font-size:0.85rem; color:var(--gray-text);">Prefer to call? Reach Marilyn directly: <strong><a href="tel:7036227634" style="color:var(--navy); text-decoration:none;">(703) 622-7634</a></strong> | <a href="mailto:marilyn@enlighteneering.com" style="color:var(--navy);">marilyn@enlighteneering.com</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="nav-logo">Enlighten<span>eering</span></span>
+        <p>Organizational development, executive coaching, and leadership training for those who refuse to settle for ordinary. Serving federal, state, and corporate clients since 2001.</p>
+        <p style="margin-top:1rem; font-size:0.85rem;">2010 Corporate Ridge, Suite 700 | McLean, VA 22102</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Management Consulting</a></li>
+          <li><a href="#">Executive Coaching</a></li>
+          <li><a href="#">Leadership Training</a></li>
+          <li><a href="#">Government Consulting</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">WOSB Certification</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>2025 Enlighteneering, Inc. All rights reserved.</span>
+      <span>Woman-Owned Small Business | McLean, Virginia</span>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

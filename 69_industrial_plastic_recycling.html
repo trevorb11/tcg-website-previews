@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Industrial Plastic Recycling Inc | IPR Corp | South Holland, IL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #1e6b3d;
+      --green-mid: #268a4f;
+      --green-light: #30a862;
+      --green-pale: #e8f5ed;
+      --charcoal: #1e2424;
+      --charcoal-mid: #282e2e;
+      --gray-dark: #3d4545;
+      --gray-mid: #6b7070;
+      --gray-light: #dde4e4;
+      --recycling-blue: #2563a8;
+      --recycling-blue-light: #3b7acc;
+      --cream: #f8f6f2;
+      --white: #ffffff;
+      --text: #1e2424;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      background: var(--charcoal);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      border-bottom: 3px solid var(--green);
+    }
+
+    .nav-logo {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--white);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .nav-logo span { color: var(--green-light); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--green-light); }
+
+    .nav-cta {
+      background: var(--green) !important;
+      color: var(--white) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 3px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--green-mid) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 120px 5% 80px;
+      overflow: hidden;
+      background: var(--charcoal);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1400&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15;
+      filter: grayscale(60%);
+    }
+
+    .hero-accent {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+      background: linear-gradient(to bottom, var(--green), var(--green-light));
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .hero-text { color: var(--white); }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(48,168,98,0.15);
+      border: 1px solid rgba(48,168,98,0.4);
+      color: var(--green-light);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span { color: var(--green-light); }
+
+    .hero p {
+      color: rgba(255,255,255,0.75);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+    }
+
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-green {
+      display: inline-block;
+      background: var(--green);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-green:hover { background: var(--green-mid); transform: translateY(-2px); }
+
+    .btn-outline {
+      display: inline-block;
+      border: 2px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: border-color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--green-light); color: var(--green-light); }
+
+    .hero-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .hero-stat {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-left: 4px solid var(--green-light);
+      border-radius: 3px;
+      padding: 1.5rem 2rem;
+    }
+
+    .hero-stat .stat-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--green-light);
+      line-height: 1;
+    }
+
+    .hero-stat .stat-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.65);
+      margin-top: 0.3rem;
+    }
+
+    /* PROCESS STRIP */
+    .process-strip {
+      background: var(--green);
+      padding: 2rem 5%;
+      overflow: hidden;
+    }
+
+    .process-strip-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .process-step {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex: 1;
+      padding: 0.5rem 1.5rem;
+    }
+
+    .process-step:first-child { padding-left: 0; }
+
+    .step-circle {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .step-label { font-size: 0.85rem; font-weight: 600; color: var(--white); line-height: 1.3; }
+
+    .step-arrow {
+      color: rgba(255,255,255,0.4);
+      font-size: 1.2rem;
+    }
+
+    /* SECTION COMMONS */
+    section { padding: 90px 5%; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1.1;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-sub {
+      font-size: 1.02rem;
+      color: var(--gray-mid);
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    /* ABOUT */
+    .about { background: var(--cream); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-image-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(30,64,48,0.92);
+      padding: 1.25rem;
+      color: var(--white);
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+    }
+
+    .about p { color: var(--gray-mid); line-height: 1.85; margin-bottom: 1.25rem; }
+
+    .mission-block {
+      background: var(--green-pale);
+      border-left: 4px solid var(--green);
+      border-radius: 0 4px 4px 0;
+      padding: 1.5rem 2rem;
+      margin-top: 1.75rem;
+    }
+
+    .mission-block p { margin: 0; font-style: italic; color: var(--green); }
+
+    /* SERVICES */
+    .services { background: var(--white); }
+
+    .services-header { margin-bottom: 3.5rem; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .service-card {
+      border: 1px solid var(--gray-light);
+      border-radius: 4px;
+      padding: 2.5rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--green);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover { border-color: var(--green); box-shadow: 0 8px 32px rgba(30,107,61,0.1); }
+    .service-card:hover::after { transform: scaleX(1); }
+
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-bottom: 0.85rem;
+      letter-spacing: 0.04em;
+    }
+
+    .service-card p { color: var(--gray-mid); font-size: 0.92rem; line-height: 1.78; }
+
+    /* MATERIALS */
+    .materials { background: var(--charcoal); }
+
+    .materials .section-title { color: var(--white); }
+    .materials .section-sub { color: rgba(255,255,255,0.65); }
+
+    .materials-header { margin-bottom: 3.5rem; }
+
+    .materials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .buy-sell-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .buy-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      padding: 2.5rem;
+    }
+
+    .buy-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1.25rem;
+    }
+
+    .buy-card.buying h3 { color: var(--green-light); }
+    .buy-card.selling h3 { color: var(--recycling-blue-light); }
+
+    .buy-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .buy-card li {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      display: flex;
+      gap: 0.65rem;
+      align-items: flex-start;
+    }
+
+    .buy-card.buying li::before { content: '+'; color: var(--green-light); font-weight: 700; }
+    .buy-card.selling li::before { content: '->'; color: var(--recycling-blue-light); font-weight: 700; font-family: 'Oswald', sans-serif; }
+
+    .resin-types {
+      margin-top: 2rem;
+    }
+
+    .resin-types h4 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .resin-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .resin-tag {
+      background: rgba(30,168,98,0.15);
+      border: 1px solid rgba(30,168,98,0.3);
+      color: var(--green-light);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 0.8rem;
+      border-radius: 2px;
+    }
+
+    /* ENVIRONMENT */
+    .environment { background: var(--green-pale); }
+
+    .environment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .env-image {
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .env-image img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .environment p { color: var(--gray-mid); line-height: 1.85; margin-bottom: 1.25rem; }
+
+    .env-points { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1.75rem; }
+
+    .env-point {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .env-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .env-point p { margin: 0; font-size: 0.95rem; }
+
+    /* WHY IPR */
+    .why { background: var(--cream); }
+
+    .why-header { text-align: center; margin-bottom: 3.5rem; }
+    .why-header .section-sub { margin: 0 auto; }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .why-card {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      background: var(--white);
+      border-radius: 4px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      border-top: 4px solid var(--green);
+    }
+
+    .why-icon { font-size: 2rem; margin-bottom: 1rem; }
+
+    .why-card h4 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--charcoal);
+      margin-bottom: 0.6rem;
+    }
+
+    .why-card p { font-size: 0.85rem; color: var(--gray-mid); line-height: 1.75; }
+
+    /* CONTACT */
+    .contact { background: var(--charcoal-mid); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-info .section-title { color: var(--white); }
+    .contact-info .section-sub { color: rgba(255,255,255,0.65); margin-bottom: 2rem; }
+
+    .contact-detail {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .contact-detail:last-child { border-bottom: none; }
+
+    .contact-detail strong {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--green-light);
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-detail span { color: rgba(255,255,255,0.75); font-size: 0.95rem; }
+
+    .contact-form {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 3rem;
+    }
+
+    .contact-form h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-bottom: 2rem;
+    }
+
+    .form-group { margin-bottom: 1.25rem; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--charcoal);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1.5px solid var(--gray-light);
+      border-radius: 3px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--text);
+      background: var(--cream);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--green); }
+
+    .form-group textarea { min-height: 100px; resize: vertical; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--green);
+      color: var(--white);
+      border: none;
+      padding: 1rem;
+      border-radius: 3px;
+      font-size: 1rem;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .form-submit:hover { background: var(--green-mid); }
+
+    /* FOOTER */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.55);
+      padding: 50px 5% 30px;
+      border-top: 3px solid var(--green);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo span { color: var(--green-light); }
+
+    .footer-brand p { font-size: 0.88rem; line-height: 1.75; max-width: 300px; }
+
+    .footer-col h4 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 500;
+      color: var(--white);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .footer-col a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--green-light); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-stats { flex-direction: row; flex-wrap: wrap; }
+      .hero-stat { flex: 1 1 200px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .materials-grid { grid-template-columns: 1fr; }
+      .buy-sell-grid { max-width: 500px; }
+      .environment-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .process-strip-inner { flex-wrap: wrap; gap: 0.5rem; }
+      .step-arrow { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo"><span>IPR</span> Corp | Industrial Plastic Recycling</span>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#materials">Materials</a></li>
+      <li><a href="#environment">Environment</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-accent"></div>
+    <div class="hero-inner">
+      <div class="hero-text reveal">
+        <span class="hero-eyebrow">Industrial Plastic Recycling | South Holland, IL</span>
+        <h1>Industrial Plastics<br /><span>Recycled.</span><br />Responsibly.</h1>
+        <p>USA's reliable plastic recycler and supplier. We buy industrial plastic scrap, process it efficiently, and return it to manufacturers as high-quality recycled material — keeping it out of landfills and back in the supply chain where it belongs.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn-green">Sell Your Scrap Plastic</a>
+          <a href="#materials" class="btn-outline">Materials We Handle</a>
+        </div>
+      </div>
+      <div class="hero-stats reveal reveal-delay-1">
+        <div class="hero-stat">
+          <div class="stat-num">USA</div>
+          <div class="stat-label">Based operations — reliable domestic supply chain</div>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-num">Full-Cycle</div>
+          <div class="stat-label">From collection through processing to resale</div>
+        </div>
+        <div class="hero-stat">
+          <div class="stat-num">B2B</div>
+          <div class="stat-label">Industrial-scale buying and selling — no small-batch retail</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS STRIP -->
+  <div class="process-strip">
+    <div class="process-strip-inner">
+      <div class="process-step">
+        <div class="step-circle">1</div>
+        <span class="step-label">Collect &amp; Acquire</span>
+      </div>
+      <span class="step-arrow">&#8250;</span>
+      <div class="process-step">
+        <div class="step-circle">2</div>
+        <span class="step-label">Sort &amp; Categorize</span>
+      </div>
+      <span class="step-arrow">&#8250;</span>
+      <div class="process-step">
+        <div class="step-circle">3</div>
+        <span class="step-label">Shred &amp; Grind</span>
+      </div>
+      <span class="step-arrow">&#8250;</span>
+      <div class="process-step">
+        <div class="step-circle">4</div>
+        <span class="step-label">Pelletize</span>
+      </div>
+      <span class="step-arrow">&#8250;</span>
+      <div class="process-step">
+        <div class="step-circle">5</div>
+        <span class="step-label">Bale &amp; Palletize</span>
+      </div>
+      <span class="step-arrow">&#8250;</span>
+      <div class="process-step">
+        <div class="step-circle">6</div>
+        <span class="step-label">Supply to Manufacturers</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <img src="https://images.unsplash.com/photo-1605600659908-0ef719419d41?w=800&q=80" alt="Industrial worker at plastic recycling facility" loading="lazy" />
+          <div class="about-image-label">South Holland, IL — Serving the USA</div>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <p class="section-label">Who We Are</p>
+          <h2 class="section-title">USA's Reliable<br />Plastic Recyclers</h2>
+          <p>Industrial Plastic Recycling Inc (IPR Corp) is a privately-held corporation headquartered in South Holland, Illinois, dedicated to one thing: taking industrial plastic waste and turning it back into valuable raw material.</p>
+          <p>We serve manufacturers across the United States — buying their scrap plastic streams, processing the material through our industrial facility, and selling high-quality recycled pellets and regrind to injection molders, extruders, thermoformers, and compounders who need reliable, consistent feedstock.</p>
+          <p>We built IPR on the belief that responsible recycling and a profitable business aren't in conflict — they're the same thing. Every pound of plastic we process is one less pound in a landfill, and one more pound putting your supply chain to work.</p>
+          <div class="mission-block">
+            <p>"We strive to minimize the carbon footprint on a global level to make the environment more sustainable and protect nature from getting overburdened by excessive plastic usage."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="services-header reveal">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-title">Full-Service Plastic<br />Processing</h2>
+        <p class="section-sub">From the moment your scrap material leaves your facility to the point where recycled pellets reach the next manufacturer — we manage the full cycle.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">&#128202;</div>
+          <h3>Collection &amp; Acquisition</h3>
+          <p>We buy industrial scrap, trim, off-spec material, and post-industrial plastic in bulk. Competitive pricing, reliable scheduling, and straightforward transactions — we make selling your scrap simple.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">&#128290;</div>
+          <h3>Shredding &amp; Grinding</h3>
+          <p>Industrial-scale size reduction of plastic materials to specification for downstream processing. Consistent particle size output for downstream pelletizing or direct regrind use.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">&#9881;</div>
+          <h3>Plastic Pelletizing</h3>
+          <p>Processing recycled plastic into reusable pellets that meet the quality specifications of injection molders, extruders, and other plastic processors. Consistent output for consistent production.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">&#128203;</div>
+          <h3>Sorting &amp; Categorizing</h3>
+          <p>Identification and separation of plastics by resin type, color, and chemical characteristics. Proper categorization is the foundation of high-quality recycled material — we do it right.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">&#128230;</div>
+          <h3>Baling &amp; Palletizing</h3>
+          <p>Preparation of processed material for efficient storage, transport, and delivery. Baled and palletized to industry standards for seamless integration into your receiving process.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">&#128704;</div>
+          <h3>Material Supply</h3>
+          <p>Selling high-quality recycled plastic material to manufacturers who need consistent, reliable feedstock. We supply processors with the recycled material their operations depend on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MATERIALS -->
+  <section class="materials" id="materials">
+    <div class="section-inner">
+      <div class="materials-header reveal">
+        <p class="section-label" style="color:var(--green-light);">Materials</p>
+        <h2 class="section-title">We Buy. We Sell. We Close the Loop.</h2>
+        <p class="section-sub">Whether you have scrap plastic to move or need recycled material for your production line — we're your connection in the industrial plastic supply chain.</p>
+      </div>
+      <div class="materials-grid">
+        <div class="buy-sell-grid reveal">
+          <div class="buy-card buying">
+            <h3>We Buy From</h3>
+            <ul>
+              <li>Plastic manufacturers and processors</li>
+              <li>Injection molding operations</li>
+              <li>Film and sheet extruders</li>
+              <li>Distribution centers</li>
+              <li>Industrial facilities with scrap streams</li>
+              <li>Converters and fabricators</li>
+            </ul>
+          </div>
+          <div class="buy-card selling">
+            <h3>We Supply To</h3>
+            <ul>
+              <li>Injection molders</li>
+              <li>Film &amp; sheet extruders</li>
+              <li>Thermoformers</li>
+              <li>Plastic compounders</li>
+              <li>Pipe and profile extruders</li>
+              <li>Blow molders</li>
+            </ul>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <h3 style="font-family:'Oswald',sans-serif; font-weight:600; font-size:1.4rem; text-transform:uppercase; color:rgba(255,255,255,0.85); margin-bottom:1.25rem; letter-spacing:0.04em;">Material Types We Handle</h3>
+          <p style="color:rgba(255,255,255,0.6); font-size:0.95rem; line-height:1.8; margin-bottom:2rem;">We handle a wide range of commodity and engineering-grade resins in various forms — pellets, regrind, film, sheet, molded parts, and packaging. Both post-industrial and post-consumer industrial grades.</p>
+          <div class="resin-types">
+            <h4>Common Resin Types</h4>
+            <div class="resin-tags">
+              <span class="resin-tag">HDPE</span>
+              <span class="resin-tag">LDPE</span>
+              <span class="resin-tag">LLDPE</span>
+              <span class="resin-tag">PP</span>
+              <span class="resin-tag">PET</span>
+              <span class="resin-tag">ABS</span>
+              <span class="resin-tag">PS</span>
+              <span class="resin-tag">PVC</span>
+              <span class="resin-tag">Nylon</span>
+              <span class="resin-tag">PC</span>
+              <span class="resin-tag">POM</span>
+              <span class="resin-tag">TPE/TPR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENVIRONMENT -->
+  <section class="environment" id="environment">
+    <div class="section-inner">
+      <div class="environment-grid">
+        <div class="reveal">
+          <p class="section-label">Environmental Commitment</p>
+          <h2 class="section-title">Every Pound Matters</h2>
+          <p>We started IPR Corp because we believe industrial plastic recycling is one of the most straightforward ways to meaningfully reduce environmental waste — and it just happens to make good business sense. There's no conflict between doing the right thing and running a profitable operation. They reinforce each other.</p>
+          <p>Every pound of plastic we process is a pound that doesn't end up in a landfill, incinerator, or the environment. It's also a pound of virgin plastic that doesn't need to be produced — saving energy, raw materials, and the carbon that comes with them.</p>
+          <div class="env-points">
+            <div class="env-point">
+              <div class="env-icon">&#127807;</div>
+              <p>Diverting plastic waste from landfills and keeping it in productive use within the manufacturing supply chain</p>
+            </div>
+            <div class="env-point">
+              <div class="env-icon">&#9889;</div>
+              <p>Reducing the energy consumption and carbon emissions associated with producing virgin plastic from raw materials</p>
+            </div>
+            <div class="env-point">
+              <div class="env-icon">&#128260;</div>
+              <p>Closing the loop — turning one manufacturer's waste into another's raw material, over and over again</p>
+            </div>
+          </div>
+        </div>
+        <div class="env-image reveal reveal-delay-1">
+          <img src="https://images.unsplash.com/photo-1542601906897-afdebbc4a985?w=800&q=80" alt="Environmental sustainability and nature" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY IPR -->
+  <section class="why">
+    <div class="section-inner">
+      <div class="why-header reveal">
+        <p class="section-label">Why IPR Corp</p>
+        <h2 class="section-title">What Sets Us Apart</h2>
+        <p class="section-sub">There are a lot of plastic recyclers. Here's why manufacturers and industrial facilities trust IPR with their material.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-icon">&#127981;</div>
+          <h4>USA-Based</h4>
+          <p>Domestic operations mean no import delays, consistent quality control, and reliable scheduling you can build your production around</p>
+        </div>
+        <div class="why-card reveal reveal-delay-1">
+          <div class="why-icon">&#128276;</div>
+          <h4>Dedicated Support</h4>
+          <p>A team that knows your account, knows your material specs, and picks up the phone when you call. No anonymous customer service.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-2">
+          <div class="why-icon">&#128200;</div>
+          <h4>Competitive Pricing</h4>
+          <p>Fair market rates for your scrap material. We price transparently and build relationships, not one-time transactions.</p>
+        </div>
+        <div class="why-card reveal reveal-delay-3">
+          <div class="why-icon">&#9881;</div>
+          <h4>Full-Cycle Service</h4>
+          <p>Collection, processing, and supply handled under one operation. Simpler logistics, consistent quality, single point of contact.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p class="section-label" style="color:var(--green-light);">Get in Touch</p>
+          <h2 class="section-title">Get a Recycling Quote</h2>
+          <p class="section-sub">Tell us what you have and how much. Renee and the IPR team respond quickly with pricing and logistics. No runaround — just a straightforward conversation about your material and what it's worth.</p>
+          <div class="contact-detail">
+            <strong>Call Renee Karris</strong>
+            <span><a href="tel:7083338383" style="color:inherit;text-decoration:none;">(708) 333-8383</a></span>
+          </div>
+          <div class="contact-detail">
+            <strong>Email</strong>
+            <span>rkarris@iprcorp.net</span>
+          </div>
+          <div class="contact-detail">
+            <strong>Office Email</strong>
+            <span>office@iprcorp.net</span>
+          </div>
+          <div class="contact-detail">
+            <strong>Location</strong>
+            <span>525 W. 169th Street<br />South Holland, IL 60473</span>
+          </div>
+        </div>
+        <div class="contact-form reveal reveal-delay-1">
+          <h3>Get a Quote</h3>
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="Full name" />
+          </div>
+          <div class="form-group">
+            <label for="company">Company</label>
+            <input type="text" id="company" placeholder="Company name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="you@company.com" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" placeholder="(708) 000-0000" />
+          </div>
+          <div class="form-group">
+            <label for="inquiry">Type of Inquiry</label>
+            <select id="inquiry">
+              <option value="">Select one</option>
+              <option>Selling scrap plastic (I have material to sell)</option>
+              <option>Buying recycled material (I need feedstock)</option>
+              <option>Both buying and selling</option>
+              <option>General inquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="material">Material Description</label>
+            <textarea id="material" placeholder="Resin type, form (pellets, regrind, film, etc.), approximate volume per month, location..."></textarea>
+          </div>
+          <button class="form-submit" type="submit">Request a Quote</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo"><span>IPR</span> Corp</span>
+        <p>Industrial Plastic Recycling Inc — USA's reliable plastic recyclers and suppliers. Full-service collection, processing, and supply of industrial plastic materials. South Holland, IL.</p>
+        <p style="margin-top:1rem; font-size:0.85rem;">525 W. 169th Street | South Holland, IL 60473<br /><a href="tel:7083338383" style="color:inherit;text-decoration:none;">(708) 333-8383</a> | office@iprcorp.net</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Plastic Collection</a></li>
+          <li><a href="#">Shredding &amp; Grinding</a></li>
+          <li><a href="#">Pelletizing</a></li>
+          <li><a href="#">Material Supply</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About IPR</a></li>
+          <li><a href="#">Materials We Handle</a></li>
+          <li><a href="#">Environmental Mission</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>2025 Industrial Plastic Recycling Inc (IPR Corp). All rights reserved.</span>
+      <span>South Holland, IL | USA-Based Industrial Plastic Recycling</span>
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

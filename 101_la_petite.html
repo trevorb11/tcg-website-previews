@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Petite Academy | Early Education &amp; Childcare | Norman, OK</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --yellow: #f5a623;
+      --yellow-light: #fff8ed;
+      --blue: #3b82c4;
+      --blue-light: #e8f3fd;
+      --green: #4caf74;
+      --green-light: #e8f7ee;
+      --white: #ffffff;
+      --off-white: #fdfbf7;
+      --gray: #727b8a;
+      --gray-light: #e8ecf2;
+      --text: #1f2d3d;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Nunito', sans-serif;
+      line-height: 1.25;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 5%;
+      background: var(--white);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+    }
+
+    .nav-logo {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--yellow); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+
+    .nav-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--blue); }
+
+    .nav-cta {
+      background: var(--yellow);
+      color: var(--white) !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 50px;
+      font-weight: 800 !important;
+    }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s, transform 0.7s; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #3b82c4 0%, #1e5fa0 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bubbles {
+      position: absolute; inset: 0;
+    }
+
+    .hero-bubbles::before {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(245,166,35,0.15);
+      top: -100px; right: -80px;
+    }
+
+    .hero-bubbles::after {
+      content: '';
+      position: absolute;
+      width: 250px; height: 250px;
+      border-radius: 50%;
+      background: rgba(76,175,116,0.12);
+      bottom: 80px; left: -60px;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1600&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15;
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 5%; padding-top: 8rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 1.3rem;
+      line-height: 1.15;
+    }
+
+    .hero-text h1 em {
+      font-style: normal;
+      color: var(--yellow);
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 2.2rem;
+      line-height: 1.9;
+      font-weight: 300;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-yellow {
+      background: var(--yellow);
+      color: var(--white);
+      padding: 0.88rem 2rem;
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-yellow:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(245,166,35,0.4);
+    }
+
+    .btn-white-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 0.88rem 2rem;
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.45);
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .btn-white-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--white);
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    section { padding: 5.5rem 5%; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-tag {
+      display: inline-block;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 900;
+      margin-bottom: 0.9rem;
+    }
+
+    .section-lead {
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 560px;
+      line-height: 1.85;
+      margin-bottom: 3rem;
+    }
+
+    /* PROGRAMS */
+    .programs { background: var(--off-white); }
+
+    .programs-scroll {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    .program-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 1.8rem;
+      border: 2px solid transparent;
+      transition: border-color 0.2s, transform 0.25s;
+      cursor: default;
+    }
+
+    .program-card:hover {
+      border-color: var(--yellow);
+      transform: translateY(-3px);
+    }
+
+    .program-age {
+      display: inline-block;
+      background: var(--yellow-light);
+      color: var(--yellow);
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      margin-bottom: 0.7rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .program-card h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .program-card p {
+      font-size: 0.86rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* WHY LA PETITE */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .why-card {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+    }
+
+    .why-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+    }
+
+    .why-icon svg {
+      width: 30px; height: 30px;
+      fill: none; stroke-width: 2;
+    }
+
+    .why-card h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+      color: var(--text);
+    }
+
+    .why-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.7; }
+
+    /* CURRICULUM */
+    .curriculum {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    .curriculum-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .curriculum .section-title { color: var(--white); }
+
+    .curriculum p {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.97rem;
+      line-height: 1.9;
+      margin-bottom: 1.1rem;
+    }
+
+    .curriculum-img img {
+      width: 100%;
+      border-radius: 16px;
+      display: block;
+    }
+
+    /* SAFETY */
+    .safety { background: var(--off-white); }
+
+    .safety-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .safety-img img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+    }
+
+    .safety-text p {
+      font-size: 0.97rem;
+      color: var(--gray);
+      line-height: 1.9;
+      margin-bottom: 1.1rem;
+    }
+
+    .app-badge {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--white);
+      border-radius: 14px;
+      padding: 1.2rem 1.6rem;
+      border: 2px solid var(--blue-light);
+      margin-top: 2rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    .app-badge svg {
+      width: 40px; height: 40px;
+      stroke: var(--blue); fill: none; stroke-width: 1.5;
+      flex-shrink: 0;
+    }
+
+    .app-badge h4 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--blue);
+      margin-bottom: 0.2rem;
+    }
+
+    .app-badge p {
+      font-size: 0.82rem;
+      color: var(--gray);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+    }
+
+    .testimonial-card {
+      background: var(--off-white);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 2px solid var(--gray-light);
+    }
+
+    .testimonial-card blockquote {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.8;
+      font-style: italic;
+      margin-bottom: 1.2rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .author-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      color: var(--blue);
+      font-size: 0.9rem;
+    }
+
+    .author-name {
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .author-role {
+      font-size: 0.78rem;
+      color: var(--gray);
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p { font-size: 0.95rem; color: var(--gray); line-height: 1.85; margin-bottom: 1.5rem; }
+
+    .cdetail { display: flex; gap: 0.8rem; align-items: flex-start; margin-bottom: 0.7rem; }
+
+    .cdetail svg { width: 18px; height: 18px; stroke: var(--blue); fill: none; stroke-width: 2; flex-shrink: 0; margin-top: 3px; }
+
+    .cdetail span { font-size: 0.9rem; color: var(--text); }
+
+    .form-group { margin-bottom: 1.1rem; }
+
+    .form-group label {
+      display: block;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.78rem 1rem;
+      border: 2px solid var(--gray-light);
+      border-radius: 10px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--blue); }
+
+    .form-group textarea { height: 110px; resize: vertical; }
+
+    .form-submit {
+      background: var(--blue);
+      color: var(--white);
+      padding: 0.88rem 2.2rem;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .form-submit:hover { background: var(--yellow); transform: translateY(-1px); }
+
+    footer {
+      background: var(--blue);
+      color: rgba(255,255,255,0.6);
+      padding: 3rem 5%;
+    }
+
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--white);
+    }
+
+    .footer-logo span { color: var(--yellow); }
+
+    .footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--yellow); }
+
+    .footer-copy {
+      width: 100%; text-align: center;
+      font-size: 0.78rem; color: rgba(255,255,255,0.3);
+      margin-top: 1.5rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero-content { grid-template-columns: 1fr; }
+      .hero-image { display: none; }
+      .curriculum-grid, .safety-grid, .contact-grid { grid-template-columns: 1fr; }
+      .programs-scroll { grid-template-columns: 1fr 1fr; }
+      .why-grid, .testimonials-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .programs-scroll, .why-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">La <span>Petite</span> Academy</a>
+    <ul class="nav-links">
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#curriculum">Our Approach</a></li>
+      <li><a href="#safety">Safety</a></li>
+      <li><a href="#contact" class="nav-cta">Schedule a Tour</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-bubbles"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Every Child Deserves a <em>Great Start</em></h1>
+        <p class="hero-sub">Award-winning early education and childcare for infants through school age. Five-star accredited, parent-loved, and rooted in more than fifty years of experience helping children thrive. Now serving families in Norman, Oklahoma.</p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-yellow">Schedule a Tour</a>
+          <a href="#programs" class="btn-white-outline">Explore Programs</a>
+        </div>
+      </div>
+      <div class="hero-image reveal">
+        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&auto=format&fit=crop" alt="Children learning and playing at La Petite Academy with their teacher" />
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section class="programs" id="programs">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">Our Programs</span>
+        <h2 class="section-title">Care and Learning at Every Stage</h2>
+        <p class="section-lead">We offer a continuum of programs designed to meet children exactly where they are developmentally — from the earliest weeks of life through the start of middle school.</p>
+      </div>
+      <div class="programs-scroll">
+        <div class="program-card reveal">
+          <div class="program-age">Ages 6 weeks – 12 months</div>
+          <h3>Infant Care</h3>
+          <p>Warm, attentive care in a safe, stimulating environment. Our infant teachers build genuine relationships with each baby and communicate with parents throughout every day.</p>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-age">Ages 12 – 30 months</div>
+          <h3>Toddlers</h3>
+          <p>Structured play and early language development for the busy toddler years. Our classrooms are designed to encourage exploration, movement, and the joy of early discovery.</p>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-age">Ages 2.5 – 3 years</div>
+          <h3>Early Preschool</h3>
+          <p>Building social skills, pre-reading foundations, and curiosity in a classroom designed around child-led learning and teacher-guided activities that prepare children for preschool.</p>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-age">Ages 3 – 4 years</div>
+          <h3>Preschool</h3>
+          <p>Creative, inquiry-based learning that introduces early literacy, numeracy, science, and social studies concepts through hands-on activities, storytelling, and collaborative play.</p>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-age">Ages 4 – 5 years</div>
+          <h3>Pre-Kindergarten</h3>
+          <p>A rigorous but joyful curriculum designed to close the kindergarten readiness gap. Children who complete our Pre-K program arrive on the first day of school confident and ready to learn.</p>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-age">Ages 5 – 12 years</div>
+          <h3>Before &amp; After School + Summer Camp</h3>
+          <p>Safe, enriching before and after school care plus summer camp for school-age children. Homework help, enrichment activities, outdoor play, and friendships that last beyond the school year.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY LA PETITE -->
+  <section id="why">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">Why La Petite Academy</span>
+        <h2 class="section-title">What Sets Us Apart</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-icon" style="background: var(--yellow-light);">
+            <svg viewBox="0 0 24 24" stroke="var(--yellow)" stroke-linecap="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <h3>5-Star NECPA Accreditation</h3>
+          <p>La Petite Academy Norman holds the highest accreditation available through the National Early Childhood Program Accreditation — a standard that only a fraction of childcare centers achieve.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon" style="background: var(--blue-light);">
+            <svg viewBox="0 0 24 24" stroke="var(--blue)" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>50+ Years Serving Families</h3>
+          <p>La Petite Academy has been a trusted name in early education for over half a century. Generations of families have trusted us with their children's earliest and most formative years.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon" style="background: var(--green-light);">
+            <svg viewBox="0 0 24 24" stroke="var(--green)" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+          </div>
+          <h3>SproutAbout Family App</h3>
+          <p>Live streaming video of your child's classroom, daily reports, photos, and real-time updates — all through our exclusive SproutAbout mobile app. Stay connected no matter where you are.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRICULUM -->
+  <section class="curriculum" id="curriculum">
+    <div class="section-inner">
+      <div class="curriculum-grid">
+        <div class="reveal">
+          <span class="section-tag" style="color:rgba(255,255,255,0.55);">Our Approach</span>
+          <h2 class="section-title">Learning Through Doing. Growing Through Play.</h2>
+          <p>We believe children learn best when they are engaged, curious, and having fun. Our curriculum is built around developmentally appropriate, play-based learning that builds the academic, social, and emotional skills children need to succeed.</p>
+          <p>Every age group has a carefully designed curriculum with daily structure that balances teacher-led instruction with child-initiated exploration. Our teachers are trained not just to manage classrooms but to observe children thoughtfully and respond to what each child individually needs to grow.</p>
+          <p>School readiness is not just about knowing letters and numbers. It is about being able to sit and listen, ask questions, share and take turns, manage frustration, and try again after getting something wrong. We build all of it, every day.</p>
+        </div>
+        <div class="curriculum-img reveal">
+          <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=800&auto=format&fit=crop" alt="Teacher and children engaged in a hands-on learning activity at preschool" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAFETY -->
+  <section class="safety" id="safety">
+    <div class="section-inner">
+      <div class="safety-grid">
+        <div class="safety-img reveal">
+          <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&auto=format&fit=crop" alt="Safe and welcoming La Petite classroom environment" />
+        </div>
+        <div class="safety-text reveal">
+          <span class="section-tag">Safety &amp; Peace of Mind</span>
+          <h2 class="section-title">We Take the Trust You Place in Us Seriously</h2>
+          <p>Leaving your child in someone else's care takes trust. We have spent over fifty years working to deserve it. Our Norman center operates under strict safety protocols, with controlled access entry, daily health checks, and trained staff who know how to handle emergencies with calm and competence.</p>
+          <p>Every teacher at La Petite Academy undergoes thorough background screening before their first day and receives ongoing training in early childhood education, first aid, and child safety throughout their time with us.</p>
+          <p>And because we know parents need to feel connected even when they cannot be there, our SproutAbout app gives you a live view of your child's classroom, photo updates throughout the day, and a direct line to your child's teacher.</p>
+          <div class="app-badge">
+            <svg viewBox="0 0 24 24" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="17" r="1" fill="var(--blue)"/></svg>
+            <div>
+              <h4>SproutAbout Family App</h4>
+              <p>Live classroom video, daily photos, updates, and messaging with your child's teacher</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">Parent Stories</span>
+        <h2 class="section-title">Families Love La Petite</h2>
+        <p class="section-lead">The most meaningful things we do every day are reflected in what our families tell us.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <blockquote>"Our daughter went from shy and clingy at drop-off to running into the classroom with a huge smile every single morning. The teachers here genuinely love these kids — you can see it."</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">MR</div>
+            <div>
+              <div class="author-name">Megan R.</div>
+              <div class="author-role">Parent of a Preschooler</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <blockquote>"Having the SproutAbout app is everything for a working parent. I can check in during lunch and see my son doing art or reading with his class. It keeps me from spending the whole day wondering if he's okay."</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">DC</div>
+            <div>
+              <div class="author-name">David C.</div>
+              <div class="author-role">Parent of a Toddler</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <blockquote>"My son walked into kindergarten reading already. The Pre-K program at La Petite genuinely prepared him — not just academically but socially. He knew how to be a student when school started."</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">AL</div>
+            <div>
+              <div class="author-name">Amanda L.</div>
+              <div class="author-role">Parent of a Kindergartner</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="background: var(--off-white);">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="reveal">
+          <span class="section-tag">Schedule a Tour</span>
+          <h2 class="section-title">Come See Us</h2>
+          <div class="contact-info">
+            <p>The best way to know if La Petite Academy is right for your family is to visit. We would love to show you around, answer your questions, and introduce you to the teachers who will care for your child. Tours are available most weekdays.</p>
+            <div class="cdetail">
+              <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Norman, Oklahoma (Two Locations)</span>
+            </div>
+            <div class="cdetail">
+              <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.23 1.2 2 2 0 012.2 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.27 7a16 16 0 006.72 6.72l1.08-1.08a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              <span>(405) 364-0250</span>
+            </div>
+            <div class="cdetail">
+              <svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>parentline@lpacorp.com</span>
+            </div>
+          </div>
+        </div>
+        <form class="reveal" onsubmit="return false;">
+          <div class="form-group">
+            <label>Parent / Guardian Name</label>
+            <input type="text" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label>Child's Age or Program of Interest</label>
+            <select>
+              <option>Infant (6 weeks – 12 months)</option>
+              <option>Toddler (12 – 30 months)</option>
+              <option>Early Preschool (2.5 – 3 years)</option>
+              <option>Preschool (3 – 4 years)</option>
+              <option>Pre-Kindergarten (4 – 5 years)</option>
+              <option>Before &amp; After School / Summer Camp</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="(000) 000-0000" />
+          </div>
+          <div class="form-group">
+            <label>Preferred Start Date</label>
+            <input type="text" placeholder="Approximate month / year" />
+          </div>
+          <div class="form-group">
+            <label>Any Questions for Us?</label>
+            <textarea placeholder="What would you like to know? We are happy to help."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Request a Tour</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">La <span>Petite</span> Academy — Norman, OK</div>
+      <ul class="footer-links">
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#curriculum">Our Approach</a></li>
+        <li><a href="#safety">Safety</a></li>
+        <li><a href="#contact">Schedule a Tour</a></li>
+      </ul>
+    </div>
+    <p class="footer-copy">&copy; 2025 La Petite Academy. Norman, Oklahoma | (405) 364-0250 | NECPA 5-Star Accredited | Serving Families for 50+ Years</p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => obs.observe(r));
+  </script>
+</body>
+</html>

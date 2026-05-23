@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auvidatel, Inc. | Low-Voltage Installation Experts | Florida</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1A2744;
+      --orange: #E05C1A;
+      --orange-light: #F07438;
+      --gray-light: #F4F5F7;
+      --gray-mid: #8A8F9C;
+      --white: #FFFFFF;
+      --text: #1E2330;
+      --text-light: #555B6E;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      line-height: 1.1;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(26, 39, 68, 0.96);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 70px;
+    }
+
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .nav-logo span { color: var(--orange); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--orange); }
+
+    .nav-cta {
+      background: var(--orange);
+      color: var(--white) !important;
+      padding: 0.5rem 1.2rem !important;
+      border-radius: 3px;
+    }
+
+    .nav-cta:hover { background: var(--orange-light); }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--navy);
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      opacity: 0.22;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26,39,68,0.95) 0%, rgba(26,39,68,0.7) 60%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+      padding: 0 5%;
+      padding-top: 70px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 span { color: var(--orange); }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 520px;
+      margin-bottom: 2.2rem;
+      font-weight: 300;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border: none;
+      border-radius: 3px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-radius: 3px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover { border-color: var(--white); color: var(--white); }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 4rem;
+      left: 5%;
+      right: 5%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 600px;
+      z-index: 2;
+    }
+
+    .hero-stat {
+      border-left: 3px solid var(--orange);
+      padding-left: 1rem;
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .hero-stat span {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* SECTIONS */
+    section { padding: 5rem 5%; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    /* ABOUT */
+    .about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    .about-img {
+      position: relative;
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .about-img-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--navy);
+      color: var(--white);
+      padding: 1.5rem;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .about-img-badge strong {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      display: block;
+      color: var(--orange);
+      line-height: 1;
+    }
+
+    .about-img-badge span {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .about-text h2 { margin-bottom: 1.2rem; }
+    .about-text p { color: var(--text-light); margin-bottom: 1rem; line-height: 1.75; }
+
+    .about-checklist {
+      list-style: none;
+      margin-top: 1.5rem;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .about-checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--text-light);
+    }
+
+    .about-checklist li::before {
+      content: '';
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      background: var(--orange);
+      border-radius: 50%;
+      margin-top: 2px;
+    }
+
+    /* SERVICES */
+    .services { background: var(--gray-light); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 2rem;
+      border-top: 4px solid var(--orange);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--navy);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .service-icon svg { width: 24px; height: 24px; fill: none; stroke: var(--orange); stroke-width: 2; }
+
+    .service-card h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--navy);
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.65;
+    }
+
+    /* WHY US */
+    .why { background: var(--navy); color: var(--white); }
+
+    .why .section-title { color: var(--white); }
+    .why .section-desc { color: rgba(255,255,255,0.65); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .why-item {
+      border-left: 4px solid var(--orange);
+      padding: 1.5rem 1.5rem 1.5rem 1.75rem;
+      background: rgba(255,255,255,0.05);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .why-item h3 {
+      font-size: 1.25rem;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .why-item p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.65;
+    }
+
+    /* INDUSTRIES */
+    .industries { background: var(--white); }
+
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .industry-badge {
+      background: var(--gray-light);
+      border-radius: 4px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      transition: background 0.2s, color 0.2s;
+      cursor: default;
+    }
+
+    .industry-badge:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .industry-badge span {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    /* PROCESS */
+    .process { background: var(--gray-light); }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: var(--orange);
+      z-index: 0;
+    }
+
+    .process-step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-num {
+      width: 56px;
+      height: 56px;
+      background: var(--navy);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--orange);
+      border: 3px solid var(--orange);
+    }
+
+    .process-step h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+      color: var(--navy);
+    }
+
+    .process-step p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    /* LOCATIONS */
+    .locations { background: var(--white); }
+
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .location-card {
+      border: 2px solid var(--gray-light);
+      border-radius: 4px;
+      padding: 2rem;
+      text-align: center;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .location-card:hover {
+      border-color: var(--orange);
+      box-shadow: 0 8px 24px rgba(224,92,26,0.1);
+    }
+
+    .location-card h3 {
+      font-size: 1.3rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .location-card .hq-badge {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      margin-bottom: 0.5rem;
+    }
+
+    .location-card p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    /* PHOTO BAND */
+    .photo-band {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      height: 360px;
+      overflow: hidden;
+    }
+
+    .photo-band img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .photo-band img:hover { transform: scale(1.05); }
+
+    /* CONTACT */
+    .contact { background: var(--navy); }
+    .contact .section-title { color: var(--white); }
+    .contact .section-desc { color: rgba(255,255,255,0.65); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .contact-info h3 {
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-info p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-detail svg { width: 18px; height: 18px; fill: none; stroke: var(--orange); stroke-width: 2; }
+
+    .contact-form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 3px;
+      padding: 0.75rem 1rem;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--orange);
+    }
+
+    .form-group select option { background: var(--navy); }
+
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    /* FOOTER */
+    footer {
+      background: #0F1A2E;
+      color: rgba(255,255,255,0.5);
+      padding: 3rem 5%;
+      text-align: center;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo span { color: var(--orange); }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--orange); }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* REVEAL ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero-stats { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .industries-grid { grid-template-columns: repeat(3, 1fr); }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+      .locations-grid { grid-template-columns: 1fr 1fr; }
+      .photo-band { grid-template-columns: 1fr; height: auto; }
+      .photo-band img { height: 260px; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 580px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .industries-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-steps { grid-template-columns: 1fr; }
+      .locations-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Auvida<span>tel</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#locations">Locations</a></li>
+      <li><a href="#contact" class="nav-cta">Request a Bid</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&q=80" alt="Commercial installation technician" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Florida's Low-Voltage Specialists</div>
+      <h1>Precision<br><span>Installation.</span><br>Built on Trust.</h1>
+      <p>Professional low-voltage subcontracting for security, life safety, AV, and access control systems — serving Fortune 500 clients across Florida since 2003.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Request a Bid</a>
+        <a href="#services" class="btn-outline">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <strong>20+</strong>
+        <span>Years in Business</span>
+      </div>
+      <div class="hero-stat">
+        <strong>4</strong>
+        <span>Florida Offices</span>
+      </div>
+      <div class="hero-stat">
+        <strong>F500</strong>
+        <span>Clients Served</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-img reveal">
+          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80" alt="Technician installing security system" />
+          <div class="about-img-badge">
+            <strong>2003</strong>
+            <span>Est. Winter Haven, FL</span>
+          </div>
+        </div>
+        <div class="about-text reveal reveal-delay-2">
+          <div class="section-label">Our Story</div>
+          <h2 class="section-title">Built from the Ground Up by People Who Know the Work</h2>
+          <p>Auvidatel was founded in 2003 by brothers Daniel, Mario, and Michael Insua — a family who believed that quality installation labor could be delivered at a level the industry rarely saw. What started as a small audio, video, data, and telephone subcontractor in Winter Haven, Florida has grown into one of the state's most trusted low-voltage installation firms.</p>
+          <p>Recognizing an unmet need in the security and life safety space, they expanded their services and never looked back. Today, Auvidatel operates four offices across Florida and delivers turnkey installation services for some of the nation's largest companies.</p>
+          <ul class="about-checklist">
+            <li>Trusted by Fortune 500 companies as an installation labor partner</li>
+            <li>Four Florida offices: Winter Haven, Stuart, Longwood, and Tampa</li>
+            <li>Deep expertise in security, life safety, and access control systems</li>
+            <li>Led by founders who still know every aspect of the work firsthand</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Installation Services Built for<br>Commercial Environments</h2>
+        <p class="section-desc">Every system we install is approached with the same commitment — do it right the first time, stand behind the work, and make the general contractor's life easier.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Security Systems</h3>
+          <p>Complete security system installation including cameras, motion detectors, intrusion detection, and integrated control panels for commercial and institutional environments.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Life Safety Systems</h3>
+          <p>Installation of fire alarm systems, emergency notification, and life safety infrastructure that meets all applicable codes and protects occupants when it matters most.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <h3>Access Control</h3>
+          <p>Automated locks, key fob systems, badge swipe readers, and biometric access points — installed to spec and integrated with your existing security infrastructure.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>CCTV Systems</h3>
+          <p>Surveillance camera installation for interior and exterior coverage, including IP camera systems, NVR/DVR setup, and structured cabling to support full-property monitoring.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.16 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012.07 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <h3>Nurse Call Systems</h3>
+          <p>Healthcare-grade nurse call installation designed for hospitals, skilled nursing facilities, and outpatient care environments that require reliable patient-to-staff communication.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>AV / Data / Telephone</h3>
+          <p>Structured cabling, audio-visual system installation, data network infrastructure, and telephone system setup — the low-voltage backbone modern commercial spaces depend on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-label">The Auvidatel Difference</div>
+        <h2 class="section-title" style="color:#fff;">Why Contractors Choose Us</h2>
+        <p class="section-desc">We're not a generalist. We're not a vendor pushing product. We're installation specialists who show up, do the work right, and make sure every system performs the way it should.</p>
+      </div>
+      <div class="why-grid" style="margin-top:3rem;">
+        <div class="why-item reveal reveal-delay-1">
+          <h3>Subcontractor Expertise</h3>
+          <p>We've been low-voltage subcontractors since 2003. That singular focus means our crews are trained, equipped, and experienced specifically for the installation environments you're working in — not learning on your timeline.</p>
+        </div>
+        <div class="why-item reveal reveal-delay-2">
+          <h3>Fortune 500 Ready</h3>
+          <p>Our processes, documentation, and professionalism meet the compliance standards required by major commercial clients. We understand what enterprise-level project management looks like — and we deliver accordingly.</p>
+        </div>
+        <div class="why-item reveal reveal-delay-3">
+          <h3>Florida-Wide Coverage</h3>
+          <p>With offices in Winter Haven, Stuart, Longwood, and Tampa, we have the geographic reach to cover projects across the entire state without the coordination challenges that come with far-flung subcontractors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="industries" id="industries">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-label">Industries Served</div>
+        <h2 class="section-title">We Work Across Sectors That Demand Precision</h2>
+      </div>
+      <div class="industries-grid" style="margin-top:3rem;">
+        <div class="industry-badge reveal reveal-delay-1">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E05C1A" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Healthcare</span>
+        </div>
+        <div class="industry-badge reveal reveal-delay-2">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E05C1A" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span>Commercial Office</span>
+        </div>
+        <div class="industry-badge reveal reveal-delay-3">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E05C1A" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+          <span>Retail</span>
+        </div>
+        <div class="industry-badge reveal reveal-delay-1">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E05C1A" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          <span>Education</span>
+        </div>
+        <div class="industry-badge reveal reveal-delay-2">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E05C1A" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+          <span>Government</span>
+        </div>
+        <div class="industry-badge reveal reveal-delay-3">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E05C1A" stroke-width="2"><path d="M2 20h20M4 20V10l8-6 8 6v10"/><path d="M10 20v-6h4v6"/></svg>
+          <span>Hospitality</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-label">How We Work</div>
+        <h2 class="section-title">Four Steps from Scope to Handoff</h2>
+        <p class="section-desc">Our process is built to make your job easier. No surprises, no delays from our end, and full documentation at every stage.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal reveal-delay-1">
+          <div class="step-num">01</div>
+          <h3>Project Assessment</h3>
+          <p>We review plans, walk the site, and identify everything needed to execute the installation cleanly and on schedule.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="step-num">02</div>
+          <h3>Scope and Bid</h3>
+          <p>We deliver a detailed, itemized bid with clear labor scope — so you know exactly what you're getting and what to budget.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="step-num">03</div>
+          <h3>Installation</h3>
+          <p>Our trained crews execute on-site with precision, minimal disruption, and full coordination with the general contractor's schedule.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-4">
+          <div class="step-num">04</div>
+          <h3>Testing and Handoff</h3>
+          <p>Every system is tested before we sign off. We document the installation and ensure the owner and GC have everything they need.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO BAND -->
+  <div class="photo-band">
+    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80" alt="Technician at work" />
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Security installation team" />
+    <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&q=80" alt="Professional installation crew" />
+  </div>
+
+  <!-- LOCATIONS -->
+  <section class="locations" id="locations">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-label">Where We Work</div>
+        <h2 class="section-title">Four Offices. One State. Complete Coverage.</h2>
+        <p class="section-desc">Auvidatel operates throughout Florida from four strategically positioned offices. Wherever your project is, we're close enough to show up and handle it right.</p>
+      </div>
+      <div class="locations-grid">
+        <div class="location-card reveal reveal-delay-1">
+          <span class="hq-badge">Headquarters</span>
+          <h3>Winter Haven</h3>
+          <p>Central Florida<br>Corporate Office<br>(863) 288-8844</p>
+        </div>
+        <div class="location-card reveal reveal-delay-2">
+          <h3>Stuart</h3>
+          <p>Treasure Coast<br>Regional Office</p>
+        </div>
+        <div class="location-card reveal reveal-delay-3">
+          <h3>Longwood</h3>
+          <p>Greater Orlando<br>Regional Office</p>
+        </div>
+        <div class="location-card reveal reveal-delay-4">
+          <h3>Tampa</h3>
+          <p>Tampa Bay Area<br>Regional Office</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-label">Get in Touch</div>
+        <h2 class="section-title">Ready to Talk About Your Project?</h2>
+        <p class="section-desc">Send us the details and we'll be in touch with a response within one business day. For urgent needs, call us directly.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal reveal-delay-1">
+          <h3>Auvidatel, Inc.</h3>
+          <p>Corporate Headquarters<br>Winter Haven, Florida</p>
+          <div class="contact-detail">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.16 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012.07 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            (863) 288-8844
+          </div>
+          <div class="contact-detail">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            dinsua@auvidatel.com
+          </div>
+          <div style="margin-top:2rem;">
+            <h3 style="color:rgba(255,255,255,0.8);font-size:0.95rem;margin-bottom:1rem;">Also in:</h3>
+            <p>Stuart &bull; Longwood &bull; Tampa</p>
+          </div>
+        </div>
+        <form class="contact-form reveal reveal-delay-2">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" placeholder="Full name" />
+            </div>
+            <div class="form-group">
+              <label>Company</label>
+              <input type="text" placeholder="Company name" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" placeholder="(555) 000-0000" />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="your@email.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Project Type</label>
+            <select>
+              <option value="">Select a service</option>
+              <option>Security Systems</option>
+              <option>Life Safety / Fire Alarm</option>
+              <option>Access Control</option>
+              <option>CCTV Installation</option>
+              <option>Nurse Call Systems</option>
+              <option>AV / Data / Telephone</option>
+              <option>Multiple Services</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Project Details</label>
+            <textarea placeholder="Tell us about the project — size, location, timeline, and scope of work"></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;text-align:center;">Submit Request for Bid</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Auvida<span>tel</span></div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#industries">Industries</a>
+        <a href="#locations">Locations</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Auvidatel, Inc. All rights reserved. Winter Haven, FL &bull; Stuart &bull; Longwood &bull; Tampa</p>
+    </div>
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
