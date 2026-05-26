@@ -1806,12 +1806,19 @@ h1, h2, h3, h4, h5, h6 {
 /* ===== Carousel ===== */
 .carousel-wrap { position: relative; overflow: hidden; }
 .carousel-track {
-  display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory;
+  display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 10px 0 20px;
+  scroll-padding-left: 0;
 }
 .carousel-track::-webkit-scrollbar { display: none; }
 .carousel-track .resource-card {
-  min-width: 300px; flex-shrink: 0; scroll-snap-align: start;
+  min-width: calc(100vw - 64px); max-width: calc(100vw - 64px); flex-shrink: 0; scroll-snap-align: start;
+}
+@media (min-width: 600px) {
+  .carousel-track .resource-card { min-width: 320px; max-width: none; }
+}
+@media (min-width: 900px) {
+  .carousel-track .resource-card { min-width: 300px; }
 }
 .carousel-controls {
   display: flex; justify-content: center; gap: 12px; margin-top: 20px;
@@ -1844,8 +1851,6 @@ h1, h2, h3, h4, h5, h6 {
 .other-rv-card__desc { font-size: 0.88rem; color: #6b6b6b; line-height: 1.5; }
 @media (max-width: 768px) {
   .other-rv-grid { grid-template-columns: repeat(2, 1fr); }
-  .carousel-track .resource-card { min-width: 240px; }
-  .carousel-track { padding: 10px 4px 20px; gap: 12px; }
   .resource-card { padding: 24px 20px; }
 }
 @media (max-width: 480px) {
@@ -2686,12 +2691,16 @@ document.addEventListener('DOMContentLoaded', function() {
   var prevBtn = document.getElementById('carouselPrev');
   var nextBtn = document.getElementById('carouselNext');
   if (track && prevBtn && nextBtn) {
-    var scrollAmount = 340;
+    function getScrollAmount() {
+      var card = track.querySelector('.resource-card');
+      if (card) return card.offsetWidth + 16;
+      return 340;
+    }
     prevBtn.addEventListener('click', function() {
-      track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
     });
     nextBtn.addEventListener('click', function() {
-      track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
     });
   }
 });
