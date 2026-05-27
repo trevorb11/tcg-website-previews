@@ -1893,6 +1893,12 @@ h1, h2, h3, h4, h5, h6 {
   .other-rv-grid { grid-template-columns: 1fr; }
 }
 </style>
+<style>
+/* Carousel override: single-slide view */
+.carousel-track { display:flex; gap:16px; transition: transform 0.45s ease; will-change: transform; transform: translateX(0); }
+.carousel-slide { flex: 0 0 100%; max-width: 100%; }
+.carousel-track::-webkit-scrollbar { display: none; }
+</style>
 </head>
 
 <body>
