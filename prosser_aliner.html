@@ -2781,3 +2781,57 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </body>
 </html>
+<script>
+// Scout15 carousel JS: show one slide at a time using transform
+(function(){
+  const track = document.getElementById('scout15-track');
+  if(!track) return;
+  const slides = Array.from(track.children);
+  const prev = document.getElementById('scout15-prev');
+  const next = document.getElementById('scout15-next');
+  let idx = 0;
+
+  function update() {
+    // ensure each slide is full width of the carousel container
+    const containerWidth = track.parentElement.getBoundingClientRect().width;
+    slides.forEach(s => {
+      s.style.minWidth = containerWidth + 'px';
+      s.style.maxWidth = containerWidth + 'px';
+    });
+    track.style.transform = 'translateX(' + (-idx * containerWidth) + 'px)';
+  }
+
+  function prevSlide() { idx = (idx - 1 + slides.length) % slides.length; update(); }
+  function nextSlide() { idx = (idx + 1) % slides.length; update(); }
+
+  // wire buttons
+  if(prev) prev.addEventListener('click', prevSlide);
+  if(next) next.addEventListener('click', nextSlide);
+
+  // keyboard
+  window.addEventListener('keydown', (e) => {
+    if(document.activeElement && ['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) return;
+    if(e.key === 'ArrowLeft') prevSlide();
+    if(e.key === 'ArrowRight') nextSlide();
+  });
+
+  // resize
+  let raf;
+  function onResize(){ cancelAnimationFrame(raf); raf = requestAnimationFrame(update); }
+  window.addEventListener('resize', onResize);
+
+  // initial layout after images load
+  let images = track.querySelectorAll('img');
+  let loaded = 0;
+  images.forEach(img => {
+    if(img.complete) { loaded++; return; }
+    img.addEventListener('load', () => { loaded++; if(loaded === images.length) update(); });
+    img.addEventListener('error', () => { loaded++; if(loaded === images.length) update(); });
+  });
+  // if all already loaded
+  setTimeout(update, 150);
+
+  // expose for debugging
+  window._scout15 = { go: (n)=>{ idx = (n%slides.length+slides.length)%slides.length; update(); } };
+})();
+</script>
