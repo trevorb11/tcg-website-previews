@@ -1803,6 +1803,42 @@ h1, h2, h3, h4, h5, h6 {
     padding-bottom: 80px;
   }
 }
+
+/* ===== Scout 15 Preview ===== */
+.scout15-section { background: var(--charcoal); overflow: hidden; }
+.scout15-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--prosser-red); color: #fff;
+  font-family: "Libre Franklin", sans-serif; font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 50px; margin-bottom: 20px;
+}
+.scout15-badge::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: #fff; animation: scout15pulse 1.5s ease-in-out infinite;
+}
+@keyframes scout15pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+.scout15-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  margin: 40px 0 32px;
+}
+.scout15-img {
+  width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px;
+  transition: transform 0.4s ease, filter 0.4s ease; cursor: pointer;
+}
+.scout15-img:hover { transform: scale(1.03); filter: brightness(1.1); }
+.scout15-cta-wrap { text-align: center; margin-top: 36px; }
+.scout15-note {
+  font-size: 0.85rem; color: rgba(255,255,255,0.45); margin-top: 14px;
+  font-style: italic;
+}
+@media (max-width: 768px) {
+  .scout15-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .scout15-grid { grid-template-columns: 1fr; }
+}
+
 /* ===== Carousel ===== */
 .carousel-wrap { position: relative; overflow: hidden; }
 .carousel-track {
@@ -1987,6 +2023,29 @@ h1, h2, h3, h4, h5, h6 {
   </div>
 </section>
 
+
+
+<!-- ==================== 2027 SCOUT 15 PREVIEW ==================== -->
+<section class="section scout15-section" id="scout15">
+  <div class="container">
+    <div class="reveal" style="text-align: center;">
+      <div class="scout15-badge">Coming Soon</div>
+      <p class="section__eyebrow" style="color: var(--green-light);">Exclusive First Look</p>
+      <h2 class="section__title" style="color: #fff;">2027 Aliner Scout 15</h2>
+      <p class="section__subtitle" style="color: rgba(255,255,255,0.7); margin: 0 auto;">The next generation Scout is here. Bigger footprint, same lightweight DNA. We just got our first look at the factory and wanted to share it with you before anyone else.</p>
+    </div>
+    <div class="scout15-grid reveal">
+      <img class="scout15-img" src="/scout15-1.jpg" alt="2027 Aliner Scout 15 exterior left side view" loading="lazy" />
+      <img class="scout15-img" src="/scout15-2.jpg" alt="2027 Aliner Scout 15 exterior front view" loading="lazy" />
+      <img class="scout15-img" src="/scout15-3.jpg" alt="2027 Aliner Scout 15 exterior right side view" loading="lazy" />
+      <img class="scout15-img" src="/scout15-4.jpg" alt="2027 Aliner Scout 15 interior kitchen and dining" loading="lazy" />
+    </div>
+    <div class="scout15-cta-wrap reveal">
+      <a href="https://www.prosserrv.com/contact-us" class="btn btn--red" style="font-size: 1rem; padding: 18px 48px;">Pre-Order the 2027 Scout 15</a>
+      <p class="scout15-note">Contact Mike at Prosser RV to reserve yours. Limited allocation expected.</p>
+    </div>
+  </div>
+</section>
 
 <!-- ==================== THE LINEUP ==================== -->
 <section class="section" id="lineup">
