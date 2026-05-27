@@ -1899,6 +1899,17 @@ h1, h2, h3, h4, h5, h6 {
 .carousel-slide { flex: 0 0 100%; max-width: 100%; }
 .carousel-track::-webkit-scrollbar { display: none; }
 </style>
+
+/* STRONG CAROUSEL OVERRIDES - ensure single slide visible */
+<style>
+.scout15-grid { display: block !important; }
+.carousel-wrap { overflow: hidden !important; position: relative !important; }
+#scout15-track { display: flex !important; flex-wrap: nowrap !important; transition: transform 0.45s ease !important; will-change: transform !important; }
+#scout15-track > .carousel-slide { flex: 0 0 100% !important; max-width: 100% !important; min-width: 100% !important; box-sizing: border-box !important; }
+#scout15-track img { width:100% !important; height: auto !important; display:block !important; }
+.carousel-controls { position: absolute !important; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 5; }
+</style>
+
 </head>
 
 <body>
