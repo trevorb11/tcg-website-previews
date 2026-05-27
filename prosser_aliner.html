@@ -2836,6 +2836,86 @@ document.addEventListener('DOMContentLoaded', function() {
 })();
 </script>
 
+
+<!-- FORCED DOM-REWRITE CAROUSEL (runtime) - replaces Scout15 grid with a robust single-slide carousel -->
+<script>
+(function(){
+  function runOnce(){
+    try{
+      var grid = document.querySelector('.scout15-grid') || document.querySelector('#scout15 .scout15-grid');
+      if(!grid) return;
+      // collect images
+      var imgs = Array.from(grid.querySelectorAll('img.scout15-img, img[src*="scout15"]'));
+      if(imgs.length < 1) return;
+
+      // build carousel container
+      var carousel = document.createElement('div'); carousel.className = 'carousel-wrap forced-carousel';
+      var track = document.createElement('div'); track.id = 'scout15-track-forced'; track.style.display='flex'; track.style.flexWrap='nowrap'; track.style.transition='transform 0.45s ease'; track.style.willChange='transform'; track.style.gap='0';
+
+      imgs.forEach(function(img){
+        var slide = document.createElement('div'); slide.className = 'carousel-slide forced-slide';
+        var cloned = img.cloneNode(true);
+        cloned.loading = 'lazy'; cloned.decoding='async';
+        // ensure responsive
+        cloned.style.width='100%'; cloned.style.height='auto'; cloned.style.display='block';
+        slide.appendChild(cloned);
+        track.appendChild(slide);
+        // remove original
+        img.remove();
+      });
+
+      // controls
+      var controls = document.createElement('div'); controls.className='carousel-controls forced-controls';
+      var prev = document.createElement('button'); prev.className='carousel-btn forced-prev'; prev.id='scout15-prev-forced'; prev.setAttribute('aria-label','Previous'); prev.textContent='‹';
+      var next = document.createElement('button'); next.className='carousel-btn forced-next'; next.id='scout15-next-forced'; next.setAttribute('aria-label','Next'); next.textContent='›';
+      controls.appendChild(prev); controls.appendChild(next);
+
+      carousel.appendChild(track);
+      carousel.appendChild(controls);
+
+      // replace grid with carousel
+      grid.parentNode.replaceChild(carousel, grid);
+
+      // sizing & behavior
+      var slides = Array.from(track.children);
+      var idx = 0;
+      function sizeAndPos(){
+        var w = Math.round(carousel.getBoundingClientRect().width);
+        slides.forEach(function(s){ s.style.flex = '0 0 '+w+'px'; s.style.maxWidth = w + 'px'; s.style.minWidth = w + 'px'; s.style.boxSizing='border-box'; });
+        track.style.transform = 'translateX(' + (-idx * w) + 'px)';
+      }
+      function prevSlide(){ idx = (idx - 1 + slides.length) % slides.length; sizeAndPos(); }
+      function nextSlide(){ idx = (idx + 1) % slides.length; sizeAndPos(); }
+
+      prev.addEventListener('click', prevSlide);
+      next.addEventListener('click', nextSlide);
+      window.addEventListener('resize', function(){ requestAnimationFrame(sizeAndPos); });
+      document.addEventListener('keydown', function(e){ if(e.key==='ArrowLeft') prevSlide(); if(e.key==='ArrowRight') nextSlide(); });
+
+      // observe for late DOM changes
+      var mo = new MutationObserver(function(){ sizeAndPos(); });
+      mo.observe(track, { childList:true, subtree:true, attributes:true });
+
+      // initial sizing after images have loaded
+      var imgsInside = track.querySelectorAll('img'); var loaded=0; imgsInside.forEach(function(im){ if(im.complete) { loaded++; return; } im.addEventListener('load', function(){ loaded++; if(loaded===imgsInside.length) sizeAndPos(); }); im.addEventListener('error', function(){ loaded++; if(loaded===imgsInside.length) sizeAndPos(); }); });
+      setTimeout(sizeAndPos, 50); setTimeout(sizeAndPos, 300); setTimeout(sizeAndPos, 800);
+
+      // inject minimal styles to ensure single-slide view
+      var style = document.createElement('style'); style.innerHTML = '
+.forced-carousel{position:relative;overflow:hidden;}
+#scout15-track-forced{display:flex;gap:0;}
+#scout15-track-forced>.forced-slide{flex:0 0 100%;max-width:100%;min-width:100%;}
+.forced-controls{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:5;}
+.forced-prev,.forced-next{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.9);border:none;font-size:20px;cursor:pointer;}
+';
+      document.head.appendChild(style);
+
+    }catch(err){console.error('forced carousel error',err)}
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', function(){ setTimeout(runOnce,100); }); else setTimeout(runOnce,100);
+})();
+</script>
+
 </body>
 </html>
 <script>
