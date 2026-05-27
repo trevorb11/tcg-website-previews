@@ -2790,6 +2790,52 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+
+<!-- Carousel runtime force - ensures single-slide display even if other CSS runs later -->
+<script>
+(function(){
+  const track = document.getElementById('scout15-track');
+  if(!track) return;
+  const container = track.parentElement;
+  const slides = Array.from(track.children);
+  const prev = document.getElementById('scout15-prev');
+  const next = document.getElementById('scout15-next');
+  let idx = 0;
+  function applyStyles(){
+    try{
+      container.style.overflow='hidden';
+      track.style.display='flex';
+      track.style.flexWrap='nowrap';
+      track.style.willChange='transform';
+      track.style.transition='transform 0.45s ease';
+      const w = Math.round(container.getBoundingClientRect().width);
+      slides.forEach(s=>{
+        s.style.minWidth = w + 'px';
+        s.style.maxWidth = w + 'px';
+        s.style.flex = '0 0 ' + w + 'px';
+        const img = s.querySelector('img');
+        if(img){ img.style.width='100%'; img.style.height='auto'; img.decoding='async'; }
+      });
+      track.style.transform = 'translateX(' + (-idx * w) + 'px)';
+    }catch(e){console.error('carousel applyStyles',e)}
+  }
+  function prevSlide(){ idx = (idx-1+slides.length)%slides.length; applyStyles(); }
+  function nextSlide(){ idx = (idx+1)%slides.length; applyStyles(); }
+  if(prev) prev.addEventListener('click', prevSlide);
+  if(next) next.addEventListener('click', nextSlide);
+  window.addEventListener('resize', ()=>{ requestAnimationFrame(applyStyles); });
+  // Re-apply after small delays to override other scripts/styles
+  window.addEventListener('load', ()=>{ setTimeout(applyStyles,50); setTimeout(applyStyles,300); setTimeout(applyStyles,800); });
+  // MutationObserver in case DOM updates later
+  const mo = new MutationObserver(()=>{ applyStyles(); });
+  mo.observe(track,{childList:true,subtree:true,attributes:true});
+  // initial attempt
+  setTimeout(applyStyles,100);
+  // expose for debugging
+  window._scout15 = { go:(n)=>{ idx = ((n%slides.length)+slides.length)%slides.length; applyStyles(); }, next: nextSlide, prev: prevSlide };
+})();
+</script>
+
 </body>
 </html>
 <script>
