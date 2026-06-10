@@ -5,6 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Interior Wood Systems, Inc. | Custom Cabinetry & Millwork | Sonoma County</title>
   <meta name="description" content="Interior Wood Systems, Inc. crafts custom cabinets, millwork, and finish carpentry across Sonoma County and the North Bay. CA License #495608." />
+  <link rel="canonical" href="https://tcg-website-previews.vercel.app/140_interior_wood_systems.html" />
+  <meta name="theme-color" content="#3B2314" />
+  <meta property="og:title" content="Interior Wood Systems, Inc. | Custom Cabinetry &amp; Millwork | Sonoma County" />
+  <meta property="og:description" content="Interior Wood Systems, Inc. crafts custom cabinets, millwork, and finish carpentry across Sonoma County and the North Bay. CA License #495608." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tcg-website-previews.vercel.app/140_interior_wood_systems.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1800&amp;q=85&amp;auto=format&amp;fit=crop" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%233B2314'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='bold' fill='%23D4A853' text-anchor='middle'%3EIW%3C/text%3E%3C/svg%3E" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Interior Wood Systems, Inc.",
+    "description": "Interior Wood Systems, Inc. crafts custom cabinets, millwork, and finish carpentry across Sonoma County and the North Bay. CA License #495608.",
+    "url": "https://tcg-website-previews.vercel.app/140_interior_wood_systems.html",
+    "telephone": "+1-707-249-3915",
+    "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1800&q=85&auto=format&fit=crop",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "137-B Utility Ct",
+      "addressLocality": "Rohnert Park",
+      "addressRegion": "CA",
+      "postalCode": "94928",
+      "addressCountry": "US"
+    },
+    "areaServed": ["Sonoma County", "North Bay"],
+    "founder": {
+      "@type": "Person",
+      "name": "Dave Ghiglieri"
+    },
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "license",
+      "name": "California Contractor License #495608"
+    }
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -1478,6 +1516,36 @@
       transform: translateY(-2px);
       box-shadow: 0 12px 36px rgba(140,79,48,.5);
     }
+    .form-success {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-top: 18px;
+      padding: 18px 20px;
+      background: rgba(61,92,58,.08);
+      border: 1.5px solid var(--clr-green-soft);
+      border-radius: var(--radius-sm);
+      color: var(--clr-green-deep);
+    }
+    .form-success[hidden] { display: none; }
+    .form-success svg {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      stroke: var(--clr-green-mid);
+    }
+    .form-success strong {
+      display: block;
+      font-weight: 600;
+      font-size: .92rem;
+      margin-bottom: 2px;
+    }
+    .form-success p {
+      font-size: .86rem;
+      color: var(--clr-text-mid);
+      line-height: 1.55;
+    }
 
     /* =========================================================
        FOOTER
@@ -1640,6 +1708,14 @@
 
       .form-row { grid-template-columns: 1fr; }
       .contact-form { padding: 32px 24px; }
+      .form-group { margin-bottom: 20px; }
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        padding: 15px 16px;
+        font-size: 16px; /* prevents iOS zoom on focus */
+      }
+      .btn-submit { padding: 18px; font-size: .88rem; }
 
       .footer-grid { grid-template-columns: 1fr; }
       .footer-brand { grid-column: span 1; }
@@ -2281,30 +2357,30 @@
           <h3>Request a Free Estimate</h3>
           <p class="contact-form-sub">Tell us about your project and we'll be in touch within one business day.</p>
           <div class="form-divider"></div>
-          <form action="#" method="post" onsubmit="return false;">
+          <form id="estimateForm">
             <div class="form-row">
               <div class="form-group">
                 <label for="fname">First Name</label>
-                <input type="text" id="fname" name="fname" placeholder="Jane" autocomplete="given-name" />
+                <input type="text" id="fname" name="fname" placeholder="Jane" autocomplete="given-name" required />
               </div>
               <div class="form-group">
                 <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lname" placeholder="Smith" autocomplete="family-name" />
+                <input type="text" id="lname" name="lname" placeholder="Smith" autocomplete="family-name" required />
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="jane@example.com" autocomplete="email" />
+                <input type="email" id="email" name="email" placeholder="jane@example.com" autocomplete="email" required />
               </div>
               <div class="form-group">
                 <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" placeholder="(707) 555-0100" autocomplete="tel" />
+                <input type="tel" id="phone" name="phone" placeholder="(707) 555-0100" autocomplete="tel" required />
               </div>
             </div>
             <div class="form-group">
               <label for="service">Service Needed</label>
-              <select id="service" name="service">
+              <select id="service" name="service" required>
                 <option value="" disabled selected>Select a service…</option>
                 <option>Custom Cabinet Manufacturing</option>
                 <option>Cabinet Installation</option>
@@ -2320,6 +2396,15 @@
               <textarea id="message" name="message" placeholder="Tell us about your project — room, style, timeline, any specifics…"></textarea>
             </div>
             <button type="submit" class="btn-submit">Send My Request</button>
+            <div class="form-success" id="formSuccess" role="status" aria-live="polite" hidden>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <div>
+                <strong>Thank you — your request has been received.</strong>
+                <p>We'll be in touch within one business day to talk about your project.</p>
+              </div>
+            </div>
           </form>
         </div>
       </div>
@@ -2426,6 +2511,16 @@
       });
     }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
     revealEls.forEach(el => observer.observe(el));
+
+    // --- Contact Form (client-side demo) ---
+    const estimateForm = document.getElementById('estimateForm');
+    const formSuccess = document.getElementById('formSuccess');
+    estimateForm.addEventListener('submit', (e) => {
+      e.preventDefault(); // demo only — no data is sent
+      estimateForm.reset();
+      formSuccess.hidden = false;
+      formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
   </script>
 
 </body>

@@ -4,6 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Checkout | Pizza Love — Houston, TX</title>
+  <meta name="description" content="Secure checkout for Pizza Love — Houston's artisan wood-fired pizzeria in Montrose. Delivery and pickup available." />
+  <link rel="canonical" href="https://eatpizzalove.com/144_pizza_love_checkout.html" />
+  <meta property="og:title" content="Checkout | Pizza Love — Houston, TX" />
+  <meta property="og:description" content="Secure checkout for Pizza Love — Houston's artisan wood-fired pizzeria in Montrose. Delivery and pickup available." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://eatpizzalove.com/144_pizza_love_checkout.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=1600&q=80" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#c0392b" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%95%3C/text%3E%3C/svg%3E" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Checkout | Pizza Love — Houston, TX",
+    "url": "https://eatpizzalove.com/144_pizza_love_checkout.html",
+    "description": "Secure checkout for Pizza Love — Houston's artisan wood-fired pizzeria in Montrose.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Pizza Love LLC",
+      "url": "https://eatpizzalove.com/"
+    }
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -470,11 +494,11 @@
 
 <!-- HEADER -->
 <header class="checkout-header">
-  <a href="/144_pizza_love.html" class="checkout-back">
+  <a href="/" class="checkout-back">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
     Back to Menu
   </a>
-  <a href="/144_pizza_love.html" class="checkout-logo">
+  <a href="/" class="checkout-logo">
     <div class="checkout-logo-icon">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
     </div>
@@ -603,7 +627,7 @@
       <button class="cart-remove" onclick="removeCard(this)">&times;</button>
     </div>
 
-    <a href="/144_pizza_love.html" class="cart-add-more animate-in delay-4">
+    <a href="/" class="cart-add-more animate-in delay-4">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
       Add More Items
     </a>
@@ -620,27 +644,27 @@
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">First Name</label>
-          <input class="form-input" type="text" placeholder="Michael" />
+          <input class="form-input" type="text" placeholder="Michael" required autocomplete="given-name" maxlength="50" />
         </div>
         <div class="form-group">
           <label class="form-label">Last Name</label>
-          <input class="form-input" type="text" placeholder="Johnson" />
+          <input class="form-input" type="text" placeholder="Johnson" required autocomplete="family-name" maxlength="50" />
         </div>
       </div>
       <div class="form-row full">
         <div class="form-group">
           <label class="form-label">Delivery Address</label>
-          <input class="form-input" type="text" placeholder="1234 Montrose Blvd, Houston, TX 77006" />
+          <input class="form-input" type="text" placeholder="1234 Montrose Blvd, Houston, TX 77006" required autocomplete="street-address" maxlength="120" />
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Apt / Suite</label>
-          <input class="form-input" type="text" placeholder="Apt 4B" />
+          <input class="form-input" type="text" placeholder="Apt 4B" autocomplete="address-line2" maxlength="20" />
         </div>
         <div class="form-group">
           <label class="form-label">Phone</label>
-          <input class="form-input" type="tel" placeholder="(713) 555-0123" />
+          <input class="form-input" type="tel" inputmode="tel" placeholder="(713) 555-0123" required autocomplete="tel" maxlength="20" />
         </div>
       </div>
 
@@ -648,17 +672,17 @@
       <div class="form-row full">
         <div class="form-group">
           <label class="form-label">Card Number</label>
-          <input class="form-input" type="text" placeholder="4242 4242 4242 4242" />
+          <input class="form-input" type="text" inputmode="numeric" placeholder="4242 4242 4242 4242" required autocomplete="cc-number" maxlength="19" />
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Expiration</label>
-          <input class="form-input" type="text" placeholder="MM / YY" />
+          <input class="form-input" type="text" inputmode="numeric" placeholder="MM / YY" required autocomplete="cc-exp" maxlength="7" />
         </div>
         <div class="form-group">
           <label class="form-label">CVV</label>
-          <input class="form-input" type="text" placeholder="123" />
+          <input class="form-input" type="text" inputmode="numeric" placeholder="123" required autocomplete="cc-csc" maxlength="4" />
         </div>
       </div>
     </div>
@@ -761,7 +785,7 @@
 
 <!-- FOOTER -->
 <footer class="checkout-footer">
-  &copy; 2026 Pizza Love LLC &bull; Houston, TX &bull; <a href="/144_pizza_love.html">Back to Menu</a>
+  &copy; 2026 Pizza Love LLC &bull; Houston, TX &bull; <a href="/">Back to Menu</a>
 </footer>
 
 <script>
