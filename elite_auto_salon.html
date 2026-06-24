@@ -630,7 +630,24 @@ section { padding: 100px 0; }
 .price-card.featured .btn-primary { background: var(--accent); }
 
 /* ============ WHY US ============ */
-.why-us { background: var(--black); }
+.why-us {
+  position: relative;
+  overflow: hidden;
+}
+.why-us::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1600&q=80') center/cover no-repeat;
+  opacity: 0.12;
+}
+.why-us::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.7) 40%, rgba(10,10,10,0.85) 100%);
+}
+.why-us > .container { position: relative; z-index: 1; }
 .why-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
