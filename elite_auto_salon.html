@@ -464,7 +464,23 @@ section { padding: 100px 0; }
 
 /* ============ SERVICES ============ */
 .services { background: var(--black); }
-.services-grid {
+.services-category { margin-bottom: 64px; }
+.services-category:last-child { margin-bottom: 0; }
+.services-category-label {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--accent);
+  border: 1px solid rgba(0, 102, 255, 0.3);
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 32px;
+  background: rgba(0, 102, 255, 0.06);
+}
+.services-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
@@ -477,6 +493,7 @@ section { padding: 100px 0; }
   transition: all var(--transition);
   position: relative;
   overflow: hidden;
+  text-align: left;
 }
 .service-card::before {
   content: '';
@@ -502,6 +519,11 @@ section { padding: 100px 0; }
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+  transition: all var(--transition);
+}
+.service-card:hover .service-icon {
+  background: rgba(0, 102, 255, 0.18);
+  transform: scale(1.08);
 }
 .service-icon svg {
   width: 24px;
@@ -521,6 +543,11 @@ section { padding: 100px 0; }
   color: var(--gray-300);
   font-size: 0.9rem;
   line-height: 1.6;
+}
+.services-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,102,255,0.15), transparent);
+  margin: 48px 0;
 }
 
 /* ============ PRICING ============ */
@@ -1165,72 +1192,85 @@ section { padding: 100px 0; }
       <h2>Premium Detailing Services</h2>
       <p class="section-desc">Every service is performed with meticulous attention to detail, using only professional-grade products and proven techniques.</p>
     </div>
-    <div class="services-grid">
-
-      <div class="service-card reveal">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="currentColor" fill="none" stroke-width="1.5"/><path d="M8 12h8M12 8v8" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round"/></svg>
+    <!-- Category 1: Exterior -->
+    <div class="services-category reveal">
+      <span class="services-category-label">Exterior Services</span>
+      <div class="services-row">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+          </div>
+          <h3>Full Exterior Detail</h3>
+          <p>Hand wash, clay bar treatment, polish, and protective wax or sealant to restore your vehicle's showroom finish.</p>
         </div>
-        <h3>Full Exterior Detail</h3>
-        <p>Hand wash, clay bar treatment, polish, and protective wax or sealant to restore your vehicle's showroom finish.</p>
-      </div>
-
-      <div class="service-card reveal">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          </div>
+          <h3>Paint Correction</h3>
+          <p>Multi-stage machine polishing to remove swirl marks, scratches, and oxidation, restoring depth and clarity to your paint.</p>
         </div>
-        <h3>Full Interior Detail</h3>
-        <p>Deep cleaning of all interior surfaces, leather conditioning, steam cleaning, and thorough vacuuming and sanitizing.</p>
-      </div>
-
-      <div class="service-card reveal">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3>Scratch Removal</h3>
+          <p>Expert paint restoration techniques to eliminate scratches, scuffs, and blemishes, making your vehicle look like new again.</p>
         </div>
-        <h3>Ceramic Coating</h3>
-        <p>Professional-grade ceramic coating application for long-lasting paint protection, incredible gloss, and hydrophobic properties.</p>
       </div>
+    </div>
 
-      <div class="service-card reveal">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    <div class="services-divider"></div>
+
+    <!-- Category 2: Protection -->
+    <div class="services-category reveal">
+      <span class="services-category-label">Protection & Coating</span>
+      <div class="services-row">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Ceramic Coating</h3>
+          <p>Professional-grade ceramic coating application for long-lasting paint protection, incredible gloss, and hydrophobic properties.</p>
         </div>
-        <h3>Paint Correction</h3>
-        <p>Multi-stage machine polishing to remove swirl marks, scratches, and oxidation, restoring depth and clarity to your paint.</p>
-      </div>
-
-      <div class="service-card reveal">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+          </div>
+          <h3>Rain Repellent Treatment</h3>
+          <p>Advanced hydrophobic coating for all glass surfaces, dramatically improving visibility and safety during wet weather driving.</p>
         </div>
-        <h3>Scratch Removal</h3>
-        <p>Expert paint restoration techniques to eliminate scratches, scuffs, and blemishes, making your vehicle look like new again.</p>
-      </div>
-
-      <div class="service-card reveal">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <h3>Headlight Restoration</h3>
+          <p>Professional restoration of cloudy, yellowed headlight lenses to crystal-clear condition, improving both appearance and nighttime safety.</p>
         </div>
-        <h3>Rain Repellent Treatment</h3>
-        <p>Advanced hydrophobic coating for all glass surfaces, dramatically improving visibility and safety during wet weather driving.</p>
       </div>
+    </div>
 
-      <div class="service-card reveal">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+    <div class="services-divider"></div>
+
+    <!-- Category 3: Interior -->
+    <div class="services-category reveal">
+      <span class="services-category-label">Interior & Engine</span>
+      <div class="services-row">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>
+          </div>
+          <h3>Full Interior Detail</h3>
+          <p>Deep cleaning of all interior surfaces, leather conditioning, steam cleaning, and thorough vacuuming and sanitizing.</p>
         </div>
-        <h3>Headlight Restoration</h3>
-        <p>Professional restoration of cloudy, yellowed headlight lenses to crystal-clear condition, improving both appearance and nighttime safety.</p>
-      </div>
-
-      <div class="service-card reveal">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09zM12 15l-3-3M22 2l-7.5 7.5"/><path d="M15 10l5-5M18 13a8.32 8.32 0 01-1 4.27 7 7 0 01-5.23 3.57A17.5 17.5 0 012 22a17.5 17.5 0 011.16-9.77A7 7 0 016.73 7 8.32 8.32 0 0111 6"/></svg>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09zM12 15l-3-3M22 2l-7.5 7.5"/><path d="M15 10l5-5M18 13a8.32 8.32 0 01-1 4.27 7 7 0 01-5.23 3.57A17.5 17.5 0 012 22a17.5 17.5 0 011.16-9.77A7 7 0 016.73 7 8.32 8.32 0 0111 6"/></svg>
+          </div>
+          <h3>Engine Bay Cleaning</h3>
+          <p>Thorough degreasing and detailing of your engine compartment, restoring it to a clean, show-ready condition.</p>
         </div>
-        <h3>Engine Bay Cleaning</h3>
-        <p>Thorough degreasing and detailing of your engine compartment, restoring it to a clean, show-ready condition.</p>
       </div>
-
     </div>
   </div>
 </section>
