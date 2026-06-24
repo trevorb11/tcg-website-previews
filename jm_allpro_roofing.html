@@ -144,9 +144,13 @@ img { max-width: 100%; height: auto; display: block; }
   border: none;
   border-radius: var(--radius);
   cursor: pointer;
-  transition: all var(--transition);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
   line-height: 1;
+  min-height: 48px;
+}
+.btn:active {
+  transform: translateY(0) scale(0.98);
 }
 .btn-gold {
   background: var(--gold);
@@ -318,9 +322,12 @@ nav a {
   color: rgba(255,255,255,0.85);
   font-weight: 500;
   font-size: 0.95rem;
-  padding: 8px 14px;
+  padding: 10px 14px;
   border-radius: var(--radius);
   transition: all var(--transition);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
 nav a:hover {
   color: var(--white);
@@ -414,10 +421,28 @@ nav a:hover {
   min-height: 90vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, rgba(21,44,74,0.92) 0%, rgba(30,58,95,0.88) 100%),
-              url('https://images.unsplash.com/photo-1632759145351-1d592919f522?w=1600&h=900&fit=crop') center/cover no-repeat;
+  background: var(--navy-dark);
   color: var(--white);
   overflow: hidden;
+}
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.35;
+}
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(21,44,74,0.85) 0%, rgba(30,58,95,0.75) 100%);
+  z-index: 1;
 }
 .hero::after {
   content: '';
@@ -534,6 +559,10 @@ nav a:hover {
   flex-direction: column;
   align-items: center;
   gap: 8px;
+  transition: transform var(--transition);
+}
+.trust-item:hover {
+  transform: translateY(-3px);
 }
 .trust-icon {
   width: 56px;
@@ -559,6 +588,16 @@ nav a:hover {
 /* ===== COST-PLUS PRICING ===== */
 .pricing-section {
   background: var(--off-white);
+  position: relative;
+}
+.pricing-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--navy), var(--gold), var(--navy));
 }
 .pricing-grid {
   display: grid;
@@ -569,6 +608,7 @@ nav a:hover {
 .pricing-content h2 {
   color: var(--navy);
   margin-bottom: 20px;
+  font-size: clamp(2rem, 4.5vw, 3rem);
 }
 .pricing-content p {
   color: var(--gray-700);
@@ -581,30 +621,41 @@ nav a:hover {
   margin: 32px 0;
 }
 .pricing-compare-card {
-  padding: 20px;
-  border-radius: var(--radius);
+  padding: 24px 20px;
+  border-radius: var(--radius-lg);
   text-align: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.pricing-compare-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
 }
 .compare-bad {
-  background: rgba(220,53,69,0.08);
-  border: 1px solid rgba(220,53,69,0.2);
+  background: rgba(220,53,69,0.06);
+  border: 2px solid rgba(220,53,69,0.18);
 }
 .compare-good {
-  background: rgba(40,167,69,0.08);
-  border: 1px solid rgba(40,167,69,0.2);
+  background: rgba(40,167,69,0.06);
+  border: 2px solid rgba(40,167,69,0.25);
 }
-.compare-bad h4 { color: #dc3545; font-size: 0.9rem; margin-bottom: 8px; }
-.compare-good h4 { color: #28a745; font-size: 0.9rem; margin-bottom: 8px; }
-.compare-bad p, .compare-good p { font-size: 0.85rem; color: var(--gray-700); margin: 0; }
+.compare-bad h4 { color: #dc3545; font-size: 0.95rem; margin-bottom: 8px; font-weight: 700; }
+.compare-good h4 { color: #28a745; font-size: 0.95rem; margin-bottom: 8px; font-weight: 700; }
+.compare-bad p, .compare-good p { font-size: 0.88rem; color: var(--gray-700); margin: 0; line-height: 1.5; }
 
 .invoice-card {
   background: var(--white);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-xl);
   overflow: hidden;
+  border: 1px solid var(--gray-200);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.invoice-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.18);
 }
 .invoice-header {
-  background: var(--navy);
+  background: linear-gradient(135deg, var(--navy-dark), var(--navy));
   color: var(--white);
   padding: 24px 28px;
   display: flex;
@@ -621,6 +672,14 @@ nav a:hover {
   padding: 14px 0;
   border-bottom: 1px solid var(--gray-200);
   font-size: 0.95rem;
+  transition: background var(--transition);
+}
+.invoice-line:hover {
+  background: rgba(212,168,67,0.04);
+  margin: 0 -12px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-radius: 6px;
 }
 .invoice-line:last-child { border-bottom: none; }
 .invoice-line-label {
@@ -628,34 +687,48 @@ nav a:hover {
   align-items: center;
   gap: 10px;
   color: var(--gray-700);
+  min-width: 0;
 }
-.invoice-line-label svg { width: 18px; height: 18px; fill: var(--navy); }
-.invoice-line-amount { font-weight: 600; color: var(--navy); }
+.invoice-line-label svg { width: 18px; height: 18px; fill: var(--navy); flex-shrink: 0; }
+.invoice-line-amount { font-weight: 700; color: var(--navy); white-space: nowrap; font-family: 'Outfit', sans-serif; }
 .invoice-total {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 28px;
-  background: var(--navy);
+  padding: 22px 28px;
+  background: linear-gradient(135deg, var(--navy-dark), var(--navy));
   color: var(--white);
 }
-.invoice-total span:first-child { font-weight: 600; }
+.invoice-total span:first-child { font-weight: 600; font-size: 1.1rem; }
 .invoice-total span:last-child {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-size: 1.6rem;
+  font-weight: 800;
   color: var(--gold);
 }
 .invoice-note {
   padding: 16px 28px;
-  background: rgba(212,168,67,0.08);
+  background: rgba(212,168,67,0.1);
   font-size: 0.85rem;
   color: var(--gray-700);
   display: flex;
   align-items: center;
   gap: 8px;
+  font-weight: 500;
 }
 .invoice-note svg { width: 16px; height: 16px; fill: var(--gold); flex-shrink: 0; }
+.invoice-savings {
+  background: linear-gradient(135deg, rgba(40,167,69,0.08), rgba(40,167,69,0.04));
+  border-top: 2px solid rgba(40,167,69,0.2);
+  padding: 16px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  color: #28a745;
+  font-size: 0.95rem;
+}
 
 /* ===== SERVICES ===== */
 .services-grid {
@@ -706,7 +779,17 @@ nav a:hover {
   width: 40%;
   height: 100%;
   background: url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=1000&fit=crop') center/cover;
-  opacity: 0.15;
+  opacity: 0.1;
+}
+.veteran-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(212,168,67,0.08) 0%, transparent 70%);
+  border-radius: 50%;
 }
 .veteran-grid {
   display: grid;
@@ -792,9 +875,23 @@ nav a:hover {
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--gray-200);
   transition: all var(--transition);
+  position: relative;
+}
+.testimonial-card::before {
+  content: '\201C';
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.15;
+  font-family: Georgia, serif;
 }
 .testimonial-card:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  border-color: var(--gold);
 }
 .testimonial-stars {
   display: flex;
@@ -847,12 +944,13 @@ nav a:hover {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 16px;
+  padding: 14px 16px;
   background: var(--off-white);
   border-radius: var(--radius);
   font-weight: 500;
   color: var(--navy);
   transition: all var(--transition);
+  min-height: 48px;
 }
 .area-item:hover { background: var(--gold); color: var(--navy-dark); }
 .area-item svg { width: 18px; height: 18px; fill: var(--gold); flex-shrink: 0; }
@@ -940,6 +1038,49 @@ nav a:hover {
 }
 .warranty-card ul li svg { width: 16px; height: 16px; fill: var(--gold); flex-shrink: 0; }
 
+.gaf-elite-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(212,168,67,0.12);
+  border: 2px solid rgba(212,168,67,0.35);
+  padding: 12px 24px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--gold);
+  letter-spacing: 0.3px;
+}
+
+/* ===== CTA BAND ===== */
+.cta-band {
+  background: var(--gold);
+  padding: 48px 0;
+  text-align: center;
+}
+.cta-band h2 {
+  color: var(--navy-dark);
+  margin-bottom: 8px;
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+}
+.cta-band p {
+  color: var(--navy-dark);
+  opacity: 0.85;
+  font-size: 1.1rem;
+  margin-bottom: 24px;
+}
+.cta-band .btn-navy {
+  font-size: 1.1rem;
+  padding: 16px 36px;
+}
+.cta-band .btn-navy:hover {
+  background: var(--navy-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
 /* ===== CONTACT ===== */
 .contact-section { background: var(--off-white); }
 .contact-grid {
@@ -975,7 +1116,19 @@ nav a:hover {
   background: var(--white);
   border-radius: var(--radius-lg);
   padding: 36px;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--gray-200);
+  position: relative;
+  overflow: hidden;
+}
+.contact-form-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-dark));
 }
 .contact-form-card h3 {
   color: var(--navy);
@@ -1001,14 +1154,15 @@ nav a:hover {
 .form-group select,
 .form-group textarea {
   width: 100%;
-  padding: 12px 16px;
+  padding: 14px 16px;
   border: 1px solid var(--gray-300);
   border-radius: var(--radius);
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
+  font-size: 16px;
   color: var(--gray-700);
-  transition: border-color var(--transition);
+  transition: border-color var(--transition), box-shadow var(--transition);
   background: var(--white);
+  min-height: 48px;
 }
 .form-group input:focus,
 .form-group select:focus,
@@ -1018,7 +1172,7 @@ nav a:hover {
   box-shadow: 0 0 0 3px rgba(212,168,67,0.15);
 }
 .form-group textarea { resize: vertical; min-height: 100px; }
-.form-submit { width: 100%; margin-top: 8px; font-size: 1.05rem; justify-content: center; }
+.form-submit { width: 100%; margin-top: 8px; font-size: 1.1rem; justify-content: center; padding: 18px 32px; font-weight: 700; }
 .form-note {
   text-align: center;
   margin-top: 12px;
@@ -1121,22 +1275,28 @@ nav a:hover {
   bottom: 0;
   left: 0;
   right: 0;
-  background: var(--gold);
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
   z-index: 1000;
-  box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.25);
 }
 .mobile-call-bar a {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 16px;
+  padding: 18px 16px;
   color: var(--navy-dark);
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
+  min-height: 56px;
 }
 .mobile-call-bar svg { width: 22px; height: 22px; fill: var(--navy-dark); }
+@keyframes subtle-pulse {
+  0%, 100% { box-shadow: 0 -4px 24px rgba(0,0,0,0.25); }
+  50% { box-shadow: 0 -4px 32px rgba(212,168,67,0.4); }
+}
+.mobile-call-bar { animation: subtle-pulse 3s ease-in-out infinite; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
@@ -1158,14 +1318,29 @@ nav a:hover {
   .mobile-call-bar { display: block; }
   body { padding-bottom: 60px; }
 
-  .section-padding { padding: 60px 0; }
+  .header-inner { height: 60px; }
+  html { scroll-padding-top: 68px; }
+
+  .section-padding { padding: 56px 0; }
   .hero { min-height: 80vh; }
-  .hero-inner { padding: 80px 0 100px; }
+  .hero-inner { padding: 70px 0 100px; }
+  .hero-badge { font-size: 0.78rem; padding: 6px 12px; }
   .hero-ctas { flex-direction: column; }
-  .hero-ctas .btn { text-align: center; justify-content: center; }
-  .hero-trust { gap: 20px; }
+  .hero-ctas .btn { text-align: center; justify-content: center; min-height: 52px; }
+  .hero-trust { gap: 16px; }
+  .hero-description { font-size: 1.05rem; }
 
   .pricing-comparison { grid-template-columns: 1fr; }
+  .invoice-body { padding: 20px 16px; }
+  .invoice-header { padding: 20px 16px; flex-wrap: wrap; gap: 4px; }
+  .invoice-total { padding: 18px 16px; }
+  .invoice-note { padding: 14px 16px; }
+  .invoice-savings { padding: 14px 16px; font-size: 0.85rem; }
+  .invoice-line { font-size: 0.88rem; padding: 12px 0; }
+  .invoice-line-label { gap: 8px; font-size: 0.85rem; }
+  .invoice-line-label svg { width: 16px; height: 16px; }
+  .invoice-line:hover { margin: 0; padding-left: 0; padding-right: 0; }
+
   .veteran-values { grid-template-columns: 1fr; }
   .trust-bar-inner { grid-template-columns: 1fr 1fr; }
   .area-list { grid-template-columns: 1fr; }
@@ -1173,13 +1348,29 @@ nav a:hover {
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; text-align: center; }
   .services-grid { grid-template-columns: 1fr 1fr; }
+
+  .service-card { padding: 24px 18px; }
+  .warranty-card { padding: 28px 20px; }
+
+  .mobile-nav a { padding: 14px 16px; min-height: 48px; display: flex; align-items: center; }
+  .mobile-nav .nav-cta-mobile { min-height: 52px; justify-content: center; }
+
+  .contact-form-card { padding: 28px 20px; }
+  .section-subtitle { margin-bottom: 36px; }
 }
 
 @media (max-width: 480px) {
   .services-grid { grid-template-columns: 1fr; }
-  .trust-bar-inner { grid-template-columns: 1fr; }
+  .trust-bar-inner { grid-template-columns: 1fr; gap: 20px; }
   .testimonials-grid { grid-template-columns: 1fr; }
   .warranty-grid { grid-template-columns: 1fr; }
+  .container { padding: 0 16px; }
+  .hero h1 { font-size: 1.9rem; }
+  .hero-description { font-size: 1rem; }
+  .invoice-line-label span { display: inline; }
+  .pricing-comparison { gap: 12px; }
+  .pricing-compare-card { padding: 18px 14px; }
+  .testimonial-card { padding: 24px 20px; }
 }
 </style>
 </head>
@@ -1253,6 +1444,10 @@ nav a:hover {
 
 <!-- HERO -->
 <section class="hero" id="hero">
+  <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1632759145351-1d592919f522?w=1600&h=900&fit=crop">
+    <source src="https://assets.mixkit.co/videos/preview/mixkit-worker-installing-shingles-on-a-roof-20498-large.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
   <div class="container">
     <div class="hero-inner">
       <div class="hero-content">
@@ -1485,6 +1680,10 @@ nav a:hover {
             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
             Every line item verified. No markups. No commissions. Just honest numbers.
           </div>
+          <div class="invoice-savings">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="#28a745"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+            Typical competitor quote: $14,500 &mdash; You save $4,120
+          </div>
         </div>
       </div>
     </div>
@@ -1498,9 +1697,9 @@ nav a:hover {
       <div class="veteran-content reveal">
         <div class="section-label">Meet Johnny</div>
         <h2>Built on Honor.<br>Not on Margins.</h2>
-        <p>Johnny Sanchez served as a Staff Sergeant in the United States Marine Corps. He is a 100% disabled veteran who knows what it means to put others first, to show up when things are hard, and to never cut corners &mdash; no matter what.</p>
-        <p>When Johnny came home from the service, he saw an industry full of inflated prices, commission-hungry salespeople, and homeowners getting taken advantage of. He started All-Pro Roofing to fix that. Every roof he touches is built the way he was trained &mdash; with discipline, integrity, and zero excuses.</p>
-        <p>When you call All-Pro, Johnny answers the phone. Not a call center. Not a salesperson. Johnny. That is how he runs things, and that is how it will always be.</p>
+        <p>Johnny Sanchez served as a Staff Sergeant in the United States Marine Corps. He came home from the service as a 100% disabled veteran &mdash; and he brought the same values with him: show up early, tell the truth, do what you said you would do, and never leave a job half-finished.</p>
+        <p>When he looked at the roofing industry in Texas, he saw homeowners getting sold by commission-driven salespeople who disappeared after the contract was signed. He saw inflated quotes with no breakdowns. He saw good people getting taken advantage of. Johnny started All-Pro Roofing because he could not stand it anymore.</p>
+        <p>When you call All-Pro, Johnny answers the phone. Not a call center. Not a salesperson. Johnny. He will show up at your house, walk your roof, sit at your kitchen table, and show you every number. That is how he runs things &mdash; and that is how it will always be.</p>
 
         <div class="veteran-values">
           <div class="veteran-value">
@@ -1550,8 +1749,8 @@ nav a:hover {
       <div class="veteran-image reveal reveal-delay-2">
         <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=500&fit=crop" alt="Professional roofing crew at work on a residential home" loading="lazy">
         <div class="discount-banner">
-          <h4>Military, First Responder &amp; Teacher Discounts</h4>
-          <p>Johnny believes in taking care of those who take care of others. Ask about special pricing when you call.</p>
+          <h4>Giving Back to Those Who Serve</h4>
+          <p>Military, first responder, and teacher discounts available. Johnny knows what service means &mdash; and he takes care of people who give to their communities.</p>
         </div>
       </div>
     </div>
@@ -1642,6 +1841,18 @@ nav a:hover {
   </div>
 </section>
 
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="container">
+    <h2>Your Roof Is Your Home's First Line of Defense</h2>
+    <p>Get a transparent, no-pressure quote from Johnny himself. No salespeople. No surprises.</p>
+    <a href="tel:7609783678" class="btn btn-navy btn-lg">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.72 11.72 0 003.66.58 1 1 0 011 1v3.61a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.64a1 1 0 011 1 11.72 11.72 0 00.58 3.66 1 1 0 01-.24 1.01z"/></svg>
+      Call Johnny &mdash; (760) 978-3678
+    </a>
+  </div>
+</section>
+
 <!-- SERVICE AREA -->
 <section class="section-padding bg-white" id="service-area">
   <div class="container">
@@ -1701,8 +1912,12 @@ nav a:hover {
   <div class="container">
     <div class="text-center reveal">
       <div class="section-label" style="color: var(--gold-light);">GAF Warranties</div>
+      <div class="gaf-elite-badge">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="#D4A843"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+        <span>GAF Master Elite Contractor &mdash; Top 2% Nationwide</span>
+      </div>
       <h2>Industry-Leading Protection<br>for Your Roof</h2>
-      <p class="section-subtitle" style="color: rgba(255,255,255,0.7);">As a GAF Master Elite contractor, All-Pro Roofing can offer warranty coverage that most roofers simply cannot. Your investment is protected for decades.</p>
+      <p class="section-subtitle" style="color: rgba(255,255,255,0.7);">Only 2% of roofing contractors in America earn the GAF Master Elite designation. That means All-Pro can offer warranty coverage that most roofers simply cannot. Your investment is protected for decades.</p>
     </div>
     <div class="warranty-grid">
       <div class="warranty-card reveal">
@@ -1747,6 +1962,18 @@ nav a:hover {
         </ul>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- CTA BAND 2 -->
+<section class="cta-band" style="background: var(--navy); padding: 40px 0;">
+  <div class="container">
+    <h2 style="color: var(--white);">Ready to See Every Dollar on Your Quote?</h2>
+    <p style="color: rgba(255,255,255,0.8);">Fill out the form below or call Johnny directly. He answers personally &mdash; guaranteed.</p>
+    <a href="#contact" class="btn btn-gold btn-lg">
+      Get Your Free Estimate
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="#1e3a5f"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+    </a>
   </div>
 </section>
 
@@ -1803,6 +2030,7 @@ nav a:hover {
 
       <div class="contact-form-card reveal reveal-delay-2">
         <h3>Request Your Free Estimate</h3>
+        <p style="font-size: 0.9rem; color: var(--gray-500); margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--gray-200);">No call centers. No automated replies. Johnny reviews every request personally and responds &mdash; usually within the hour.</p>
         <form id="contactForm" onsubmit="handleSubmit(event)">
           <div class="form-row">
             <div class="form-group">
