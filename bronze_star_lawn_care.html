@@ -87,7 +87,78 @@
   "sameAs": []
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What areas do you serve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bronze Star Complete Lawn Care and Home Solutions is based in Phenix City, Alabama, and serves the entire Chattahoochee Valley region including Columbus, GA, Fort Moore (formerly Fort Benning), Smiths Station, Opelika, Auburn, Seale, and surrounding communities in both Alabama and Georgia."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are you licensed and insured?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Bronze Star is fully insured and holds a Category 3 Pesticide Sprayer certification in both Alabama and Georgia, as well as a Level 1 Tennessee Erosion Control certification. We are also registered on SAM.gov for federal contracting."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer free estimates?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. We provide free, no-obligation estimates for all of our services. You can request one by calling (706) 464-5224, emailing fordlogistics34@gmail.com, or filling out the contact form on our website. We respond to all inquiries within 24 hours."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What services do you provide?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We offer a full range of lawn care and home improvement services including lawn maintenance, landscaping and design, tree trimming and removal, pressure washing, home remodeling, roofing, interior and exterior painting, land clearing, erosion control, plumbing, gas lines, electrical, and HVAC work."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are you veteran-owned?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Bronze Star Complete Lawn Care and Home Solutions is a Service-Disabled Veteran-Owned Small Business (SDVOSB) founded by Robert C. Ford. We are also VOSB verified and registered on SAM.gov. The Bronze Star name reflects our military heritage and commitment to discipline, integrity, and excellence."
+      }
+    }
+  ]
+}
+</script>
 <style>
+/* ── Skip Link ── */
+.skip-link { position: absolute; top: -100%; left: 16px; background: var(--green-deep); color: var(--white); padding: 12px 24px; border-radius: 0 0 8px 8px; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 1rem; z-index: 10000; transition: top 0.2s ease; }
+.skip-link:focus { top: 0; outline: 3px solid var(--bronze); outline-offset: 2px; }
+
+/* ── Back to Top ── */
+.back-to-top { position: fixed; bottom: 90px; right: 20px; z-index: 996; width: 48px; height: 48px; border-radius: 50%; background: var(--green-deep); border: 2px solid var(--bronze); color: var(--white); cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transform: translateY(12px); transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background 0.3s ease; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+.back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { background: var(--green-mid); }
+.back-to-top svg { width: 22px; height: 22px; fill: var(--white); }
+@media (min-width: 960px) { .back-to-top { bottom: 32px; } }
+
+/* ── FAQ Accordion ── */
+.faq { background: var(--cream); position: relative; }
+.faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+.faq-item { background: var(--white); border-radius: 12px; border: 1px solid rgba(46,74,46,0.08); box-shadow: 0 2px 12px rgba(0,0,0,0.04); overflow: hidden; transition: box-shadow 0.3s ease; }
+.faq-item:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+.faq-question { width: 100%; background: none; border: none; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer; font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 1.05rem; color: var(--green-deep); text-align: left; min-height: 48px; }
+.faq-question:hover { color: var(--bronze-dark); }
+.faq-question svg { width: 20px; height: 20px; fill: var(--bronze); flex-shrink: 0; transition: transform 0.3s ease; }
+.faq-item.open .faq-question svg { transform: rotate(180deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
+.faq-answer-inner { padding: 0 24px 20px; color: var(--charcoal-light); font-size: 0.95rem; line-height: 1.7; }
+
 /* ── Reset & Base ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-text-size-adjust: 100%; }
@@ -389,6 +460,7 @@ p { margin-bottom: 1rem; }
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to content</a>
 
 <!-- ── Header ── -->
 <header class="header" id="header">
@@ -408,6 +480,7 @@ p { margin-bottom: 1rem; }
       <li><a href="#testimonials">Reviews</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#service-area">Areas</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -432,6 +505,7 @@ p { margin-bottom: 1rem; }
   <li><a href="#testimonials">Reviews</a></li>
   <li><a href="#about">About</a></li>
   <li><a href="#service-area">Service Areas</a></li>
+  <li><a href="#faq">FAQ</a></li>
   <li><a href="#contact">Contact</a></li>
 </ul>
 <div class="mobile-nav-phone">
@@ -443,6 +517,7 @@ p { margin-bottom: 1rem; }
 </nav>
 
 <!-- ── Hero with Background Video ── -->
+<main id="main-content">
 <section class="hero" id="hero">
 <div class="hero-video-wrap">
   <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=1600&q=80">
@@ -897,6 +972,70 @@ p { margin-bottom: 1rem; }
 </div>
 </section>
 
+<!-- ── FAQ ── -->
+<section class="faq section-padding" id="faq">
+<div class="container">
+  <div class="text-center reveal">
+    <p class="section-subtitle">Common Questions</p>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-desc">Have questions about our services? Here are answers to the most common ones. If you need more information, do not hesitate to reach out.</p>
+  </div>
+  <div class="faq-list">
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        What areas do you serve?
+        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">Bronze Star Complete Lawn Care and Home Solutions is based in Phenix City, Alabama, and serves the entire Chattahoochee Valley region including Columbus, GA, Fort Moore (formerly Fort Benning), Smiths Station, Opelika, Auburn, Seale, and surrounding communities in both Alabama and Georgia.</div>
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        Are you licensed and insured?
+        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">Yes. Bronze Star is fully insured and holds a Category 3 Pesticide Sprayer certification in both Alabama and Georgia, as well as a Level 1 Tennessee Erosion Control certification. We are also registered on SAM.gov for federal contracting.</div>
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        Do you offer free estimates?
+        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">Absolutely. We provide free, no-obligation estimates for all of our services. You can request one by calling (706) 464-5224, emailing fordlogistics34@gmail.com, or filling out the contact form on our website. We respond to all inquiries within 24 hours.</div>
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        What services do you provide?
+        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">We offer a full range of lawn care and home improvement services including lawn maintenance, landscaping and design, tree trimming and removal, pressure washing, home remodeling, roofing, interior and exterior painting, land clearing, erosion control, plumbing, gas lines, electrical, and HVAC work.</div>
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" aria-expanded="false">
+        Are you veteran-owned?
+        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" fill="currentColor"/></svg>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">Yes. Bronze Star Complete Lawn Care and Home Solutions is a Service-Disabled Veteran-Owned Small Business (SDVOSB) founded by Robert C. Ford. We are also VOSB verified and registered on SAM.gov. The Bronze Star name reflects our military heritage and commitment to discipline, integrity, and excellence.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
 <!-- ── Contact ── -->
 <section class="contact section-padding" id="contact">
 <div class="container">
@@ -993,6 +1132,8 @@ p { margin-bottom: 1rem; }
 </div>
 </section>
 
+</main>
+
 <!-- ── Footer ── -->
 <footer class="footer">
 <div class="container">
@@ -1072,6 +1213,11 @@ p { margin-bottom: 1rem; }
   </a>
 </div>
 
+<!-- ── Back to Top Button ── -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" fill="currentColor"/></svg>
+</button>
+
 <script>
 // ── Mobile Nav ──
 var hamburger = document.getElementById('hamburger');
@@ -1143,6 +1289,36 @@ floatingCta.style.transition = 'transform 0.3s ease';
 floatingCta.style.transform = 'translateY(100%)';
 window.addEventListener('scroll', updateFloatingCta, { passive: true });
 updateFloatingCta();
+
+// ── Back to Top ──
+var backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', function() {
+  backToTop.classList.toggle('visible', window.scrollY > 500);
+}, { passive: true });
+backToTop.addEventListener('click', function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ── FAQ Accordion ──
+document.querySelectorAll('.faq-question').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var item = this.parentElement;
+    var answer = item.querySelector('.faq-answer');
+    var isOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
+      openItem.classList.remove('open');
+      openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      openItem.querySelector('.faq-answer').style.maxHeight = null;
+    });
+    // Open clicked if it was closed
+    if (!isOpen) {
+      item.classList.add('open');
+      this.setAttribute('aria-expanded', 'true');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  });
+});
 </script>
 </body>
 </html>

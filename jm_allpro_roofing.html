@@ -76,6 +76,63 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is cost-plus pricing and how does it save me money?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cost-plus pricing means you pay the actual cost of materials and labor, plus a fixed, transparent markup — no inflated estimates, no hidden fees. Unlike traditional contractors who pad their bids with undisclosed margins, we show you every line item. Most homeowners in Fort Bend County save significantly because they see exactly where every dollar goes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does homeowner's insurance cover storm damage to my roof?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In most cases, yes. Texas homeowner's insurance policies typically cover roof damage caused by hail, wind, and other storms. Johnny will personally inspect your roof, document the damage with photos, and help you navigate the claims process so you get the coverage you are entitled to."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are you GAF Master Elite certified?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. All-Pro Roofing is a GAF Master Elite contractor — a distinction held by only 2% of roofers nationwide. This means we can offer GAF's best warranty options, including the Golden Pledge Limited Warranty, and our crews meet the highest standards for installation quality and training."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer financing for roof replacements?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we offer flexible financing options to make a new roof affordable. Call Johnny at (760) 978-3678 to discuss payment plans that fit your budget."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How quickly can you come inspect my roof?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We typically schedule inspections within 24 to 48 hours of your call. After a major storm, demand can spike, so calling sooner means getting on the schedule faster. Johnny answers personally — no phone trees or call centers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you speak Spanish?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! Johnny and the All-Pro team are fully bilingual. We proudly serve the Spanish-speaking community across Rosenberg, Sugar Land, Richmond, and all of Fort Bend County."
+      }
+    }
+  ]
+}
+</script>
+
 <style>
 /* ===== RESET & BASE ===== */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -1268,6 +1325,107 @@ nav a:hover {
 }
 .footer-bottom a:hover { color: var(--gold); }
 
+/* ===== SKIP TO CONTENT ===== */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 10000;
+  padding: 12px 24px;
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  border-radius: var(--radius);
+  transition: top 0.2s;
+}
+.skip-to-content:focus {
+  top: 12px;
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ===== FAQ ACCORDION ===== */
+.faq-section { background: var(--white); }
+.faq-list { max-width: 820px; margin: 40px auto 0; }
+.faq-item {
+  border-bottom: 1px solid var(--gray-200);
+}
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--navy);
+  text-align: left;
+  line-height: 1.4;
+  gap: 16px;
+}
+.faq-question:hover { color: var(--gold-dark); }
+.faq-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition), background var(--transition);
+}
+.faq-icon svg { width: 14px; height: 14px; fill: var(--white); }
+.faq-item.open .faq-icon { transform: rotate(180deg); background: var(--gold); }
+.faq-item.open .faq-icon svg { fill: var(--navy-dark); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+.faq-answer-inner {
+  padding: 0 0 20px;
+  color: var(--gray-700);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  z-index: 999;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: var(--navy);
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s, background 0.3s;
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.back-to-top:hover { background: var(--gold); }
+.back-to-top:hover svg { fill: var(--navy-dark); }
+.back-to-top svg { width: 22px; height: 22px; fill: var(--white); transition: fill 0.3s; }
+
 /* ===== MOBILE CLICK-TO-CALL BAR ===== */
 .mobile-call-bar {
   display: none;
@@ -1377,6 +1535,8 @@ nav a:hover {
 
 <body>
 
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
+
 <!-- TOP BAR -->
 <div class="top-bar">
   <div class="container">
@@ -1443,6 +1603,7 @@ nav a:hover {
 </div>
 
 <!-- HERO -->
+<main id="main-content">
 <section class="hero" id="hero">
   <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1632759145351-1d592919f522?w=1600&h=900&fit=crop">
     <source src="https://assets.mixkit.co/videos/preview/mixkit-worker-installing-shingles-on-a-roof-20498-large.mp4" type="video/mp4">
@@ -1977,6 +2138,72 @@ nav a:hover {
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="section-padding faq-section" id="faq">
+  <div class="container">
+    <div class="text-center">
+      <div class="section-label">Common Questions</div>
+      <h2 class="text-navy">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq1">
+          What is cost-plus pricing and how does it save me money?
+          <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+        </button>
+        <div class="faq-answer" id="faq1" role="region">
+          <div class="faq-answer-inner">Cost-plus pricing means you pay the actual cost of materials and labor, plus a fixed, transparent markup &mdash; no inflated estimates, no hidden fees. Unlike traditional contractors who pad their bids with undisclosed margins, we show you every line item. Most homeowners in Fort Bend County save significantly because they see exactly where every dollar goes. It is the most honest way to price a roof, and it is the foundation of how All-Pro does business.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq2">
+          Does homeowner&rsquo;s insurance cover storm damage to my roof?
+          <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+        </button>
+        <div class="faq-answer" id="faq2" role="region">
+          <div class="faq-answer-inner">In most cases, yes. Texas homeowner&rsquo;s insurance policies typically cover roof damage caused by hail, wind, and other storms. Johnny will personally inspect your roof, document the damage with photos, and help you navigate the claims process so you get the coverage you are entitled to.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq3">
+          Are you GAF Master Elite certified?
+          <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+        </button>
+        <div class="faq-answer" id="faq3" role="region">
+          <div class="faq-answer-inner">Yes. All-Pro Roofing is a GAF Master Elite contractor &mdash; a distinction held by only 2% of roofers nationwide. This means we can offer GAF&rsquo;s best warranty options, including the Golden Pledge Limited Warranty, and our crews meet the highest standards for installation quality and training.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq4">
+          Do you offer financing for roof replacements?
+          <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+        </button>
+        <div class="faq-answer" id="faq4" role="region">
+          <div class="faq-answer-inner">Yes, we offer flexible financing options to make a new roof affordable. Call Johnny at (760) 978-3678 to discuss payment plans that fit your budget. We want to make sure a quality roof is accessible to every homeowner in the Rosenberg and Fort Bend County area.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq5">
+          How quickly can you come inspect my roof?
+          <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+        </button>
+        <div class="faq-answer" id="faq5" role="region">
+          <div class="faq-answer-inner">We typically schedule inspections within 24 to 48 hours of your call. After a major storm, demand can spike, so calling sooner means getting on the schedule faster. Johnny answers personally &mdash; no phone trees or call centers.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq6">
+          &iquest;Hablan espa&ntilde;ol? Do you speak Spanish?
+          <span class="faq-icon"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></span>
+        </button>
+        <div class="faq-answer" id="faq6" role="region">
+          <div class="faq-answer-inner">&iexcl;S&iacute;! Johnny and the All-Pro team are fully bilingual. We proudly serve the Spanish-speaking community across Rosenberg, Sugar Land, Richmond, and all of Fort Bend County. Ll&aacute;menos &mdash; estamos aqu&iacute; para ayudarle.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="section-padding contact-section" id="contact">
   <div class="container">
@@ -2086,6 +2313,8 @@ nav a:hover {
 </section>
 
 <!-- FOOTER -->
+</main>
+
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -2174,6 +2403,11 @@ nav a:hover {
   </a>
 </div>
 
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+</button>
+
 <script>
 // ===== HAMBURGER MENU =====
 const hamburger = document.getElementById('hamburger');
@@ -2240,6 +2474,40 @@ window.addEventListener('scroll', () => {
     header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.12)';
   }
   lastScroll = currentScroll;
+});
+
+// ===== FAQ ACCORDION =====
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const answer = item.querySelector('.faq-answer');
+    const isOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item.open').forEach(openItem => {
+      openItem.classList.remove('open');
+      openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      openItem.querySelector('.faq-answer').style.maxHeight = null;
+    });
+    // Open clicked if it was closed
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  });
+});
+
+// ===== BACK TO TOP =====
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > 500) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+});
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 </script>
 
