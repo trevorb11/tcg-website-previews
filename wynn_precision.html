@@ -19,7 +19,7 @@
 <meta name="robots" content="index, follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -146,10 +146,25 @@ body {
   overflow-x: hidden;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Barlow', 'IBM Plex Sans', sans-serif;
+  font-family: 'Chakra Petch', 'IBM Plex Sans', sans-serif;
   line-height: 1.2;
   font-weight: 700;
 }
+.mono {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+}
+::selection {
+  background: #FF6B35;
+  color: #151B23;
+}
+/* Refined scrollbar */
+::-webkit-scrollbar { width: 11px; }
+::-webkit-scrollbar-track { background: #151B23; }
+::-webkit-scrollbar-thumb {
+  background: #33414F;
+  border: 2px solid #151B23;
+}
+::-webkit-scrollbar-thumb:hover { background: #2E9BE8; }
 img, video { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 ul, ol { list-style: none; }
@@ -165,7 +180,7 @@ button, input, select, textarea {
   position: absolute;
   top: -100%;
   left: 16px;
-  background: #0077CC;
+  background: #1E8FDE;
   color: #fff;
   padding: 12px 24px;
   z-index: 10000;
@@ -181,22 +196,94 @@ button, input, select, textarea {
    VARIABLES
    ============================================================ */
 :root {
-  --primary: #1C2938;
-  --accent: #0077CC;
-  --accent-hover: #005fa3;
-  --silver: #B8C4CE;
-  --light-bg: #F4F6F8;
+  --primary: #151B23;
+  --accent: #1E8FDE;
+  --accent-hover: #1272B8;
+  --orange: #FF6B35;
+  --orange-hover: #E5551F;
+  --silver: #AEBBC7;
+  --light-bg: #F3F5F7;
   --white: #FFFFFF;
-  --charcoal: #1a1a1a;
-  --text-secondary: #4a5568;
-  --border: #e2e8f0;
-  --radius: 8px;
-  --radius-lg: 12px;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --charcoal: #171B20;
+  --text-secondary: #46525E;
+  --border: #DDE3E9;
+  --mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --radius: 2px;
+  --radius-lg: 3px;
+  --shadow-sm: 0 1px 3px rgba(21,27,35,0.08);
+  --shadow-md: 0 4px 16px rgba(21,27,35,0.10);
+  --shadow-lg: 0 8px 32px rgba(21,27,35,0.14);
   --container: 1200px;
   --header-h: 72px;
+  --blueprint-line: rgba(30,143,222,0.05);
+}
+
+/* Blueprint grid overlay — apply to dark or light sections */
+.blueprint-grid {
+  position: relative;
+}
+.blueprint-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(0deg, var(--blueprint-line) 0 1px, transparent 1px 48px),
+    repeating-linear-gradient(90deg, var(--blueprint-line) 0 1px, transparent 1px 48px);
+  z-index: 0;
+}
+
+/* Crosshair corner marks (+) aligned to the content grid */
+.crosshair-corners > .container {
+  position: relative;
+}
+.crosshair-corners > .container::before,
+.crosshair-corners > .container::after {
+  content: '+';
+  position: absolute;
+  top: -48px;
+  font-family: var(--mono);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  color: rgba(30,143,222,0.4);
+  pointer-events: none;
+  z-index: 3;
+}
+.crosshair-corners > .container::before { left: 0; }
+.crosshair-corners > .container::after { right: 0; }
+@media (max-width: 600px) {
+  .crosshair-corners > .container::before,
+  .crosshair-corners > .container::after { top: -36px; font-size: 14px; }
+}
+
+/* Dimension-line divider between sections */
+.dim-divider {
+  position: relative;
+  height: 0;
+  margin: 12px 0 44px;
+}
+.dim-divider::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  border-top: 1px dashed var(--border);
+}
+.dim-divider::after {
+  content: '\2190\00A0\00A0' attr(data-dim) '\00A0\00A0\2192';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #9AA7B2;
+  background: var(--white);
+  padding: 0 14px;
+  white-space: nowrap;
 }
 
 /* ============================================================
@@ -213,25 +300,29 @@ button, input, select, textarea {
 .section-label {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-family: 'Barlow', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 2.5px;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 16px;
 }
 .section-label svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   flex-shrink: 0;
+}
+.section-label .idx {
+  color: #8B98A5;
+  font-weight: 400;
 }
 .section-title {
   font-size: clamp(28px, 4vw, 42px);
   color: var(--primary);
   margin-bottom: 16px;
-  font-weight: 800;
+  font-weight: 700;
 }
 .section-subtitle {
   font-size: 17px;
@@ -243,28 +334,28 @@ button, input, select, textarea {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Chakra Petch', sans-serif;
   font-weight: 700;
   font-size: 15px;
   letter-spacing: 0.5px;
   padding: 14px 32px;
-  border-radius: 6px;
+  border-radius: var(--radius);
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
   border: 2px solid transparent;
   text-transform: uppercase;
 }
 .btn svg { width: 18px; height: 18px; }
 .btn-primary {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
+  background: var(--orange);
+  color: #151B23;
+  border-color: var(--orange);
 }
 .btn-primary:hover {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0,119,204,0.35);
+  background: var(--orange-hover);
+  border-color: var(--orange-hover);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(255,107,53,0.4);
 }
 .btn-outline {
   background: transparent;
@@ -339,7 +430,7 @@ button, input, select, textarea {
   transition: background 0.3s, box-shadow 0.3s, backdrop-filter 0.3s;
 }
 .header.scrolled {
-  background: rgba(28,41,56,0.97);
+  background: rgba(21,27,35,0.97);
   box-shadow: 0 2px 20px rgba(0,0,0,0.2);
   backdrop-filter: blur(12px);
 }
@@ -354,8 +445,8 @@ button, input, select, textarea {
   align-items: center;
   gap: 10px;
   color: #fff;
-  font-family: 'Barlow', sans-serif;
-  font-weight: 900;
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: 700;
   font-size: 22px;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -366,9 +457,11 @@ button, input, select, textarea {
 }
 .logo-sub {
   display: block;
-  font-size: 9px;
-  font-weight: 500;
+  font-family: var(--mono);
+  font-size: 8.5px;
+  font-weight: 400;
   letter-spacing: 1.5px;
+  text-transform: uppercase;
   color: var(--silver);
   margin-top: -2px;
 }
@@ -379,7 +472,7 @@ button, input, select, textarea {
 }
 .nav-links a {
   color: rgba(255,255,255,0.85);
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Chakra Petch', sans-serif;
   font-weight: 600;
   font-size: 14px;
   letter-spacing: 0.8px;
@@ -388,14 +481,14 @@ button, input, select, textarea {
 }
 .nav-links a:hover { color: #fff; }
 .nav-cta {
-  background: var(--accent) !important;
-  color: #fff !important;
+  background: var(--orange) !important;
+  color: #151B23 !important;
   padding: 10px 22px !important;
-  border-radius: 5px !important;
+  border-radius: 2px !important;
   font-size: 13px !important;
-  transition: background 0.2s !important;
+  transition: background 0.15s, color 0.15s !important;
 }
-.nav-cta:hover { background: var(--accent-hover) !important; }
+.nav-cta:hover { background: var(--orange-hover) !important; color: #fff !important; }
 
 /* Hamburger */
 .hamburger {
@@ -438,7 +531,7 @@ button, input, select, textarea {
 .mobile-nav a {
   display: block;
   color: rgba(255,255,255,0.9);
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Chakra Petch', sans-serif;
   font-weight: 600;
   font-size: 16px;
   letter-spacing: 1px;
@@ -487,7 +580,52 @@ button, input, select, textarea {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(28,41,56,0.92) 0%, rgba(28,41,56,0.7) 50%, rgba(0,30,60,0.85) 100%);
+  background: linear-gradient(135deg, rgba(21,27,35,0.93) 0%, rgba(21,27,35,0.72) 50%, rgba(10,25,45,0.88) 100%);
+}
+.hero-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(30,143,222,0.06) 0 1px, transparent 1px 48px),
+    repeating-linear-gradient(90deg, rgba(30,143,222,0.06) 0 1px, transparent 1px 48px);
+}
+/* Animated scan-line across hero */
+.hero-scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(30,143,222,0.55), transparent);
+  z-index: 2;
+  pointer-events: none;
+  animation: scanline 9s linear infinite;
+}
+@keyframes scanline {
+  0% { top: 0; opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+/* Staggered page-load reveal on hero elements */
+@keyframes heroRise {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-badge, .hero h1, .hero-sub, .hero-btns, .hero-stats {
+  opacity: 0;
+  animation: heroRise 0.7s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+}
+.hero-badge { animation-delay: 0.1s; }
+.hero h1 { animation-delay: 0.25s; }
+.hero-sub { animation-delay: 0.4s; }
+.hero-btns { animation-delay: 0.55s; }
+.hero-stats { animation-delay: 0.7s; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-badge, .hero h1, .hero-sub, .hero-btns, .hero-stats { animation: none; opacity: 1; }
+  .hero-scanline { animation: none; opacity: 0; }
 }
 .hero-content {
   position: relative;
@@ -499,14 +637,14 @@ button, input, select, textarea {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(0,119,204,0.15);
-  border: 1px solid rgba(0,119,204,0.3);
-  color: #4da8e8;
+  background: rgba(30,143,222,0.12);
+  border: 1px solid rgba(30,143,222,0.35);
+  color: #5EB2EE;
   padding: 6px 16px;
-  border-radius: 40px;
-  font-family: 'Barlow', sans-serif;
+  border-radius: 2px;
+  font-family: var(--mono);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 28px;
@@ -515,7 +653,7 @@ button, input, select, textarea {
 .hero h1 {
   font-size: clamp(36px, 5.5vw, 64px);
   color: #fff;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.08;
   margin-bottom: 24px;
 }
@@ -539,20 +677,37 @@ button, input, select, textarea {
   gap: 48px;
   margin-top: 56px;
   padding-top: 32px;
-  border-top: 1px solid rgba(255,255,255,0.12);
+  border-top: 1px dashed rgba(255,255,255,0.18);
+  position: relative;
+}
+/* Measurement annotation over the stats rule */
+.hero-stats::before {
+  content: '\2190\00A0 \00B1 0.0001 IN \2192';
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(-50%);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.35);
+  background: transparent;
+  padding-left: 12px;
 }
 .hero-stat-num {
-  font-family: 'Barlow', sans-serif;
-  font-size: 36px;
-  font-weight: 800;
+  font-family: var(--mono);
+  font-size: 32px;
+  font-weight: 600;
   color: #fff;
+  letter-spacing: -1px;
 }
 .hero-stat-label {
-  font-size: 13px;
-  color: rgba(255,255,255,0.55);
+  font-family: var(--mono);
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
   text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 500;
+  letter-spacing: 1.5px;
+  font-weight: 400;
   margin-top: 4px;
 }
 @media (max-width: 600px) {
@@ -578,6 +733,19 @@ button, input, select, textarea {
   display: flex;
   align-items: flex-end;
 }
+/* Viewfinder corner brackets */
+.cap-corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  z-index: 3;
+  pointer-events: none;
+  border: 0 solid var(--orange);
+}
+.cap-corner.tl { top: 14px; left: 14px; border-top-width: 2px; border-left-width: 2px; }
+.cap-corner.tr { top: 14px; right: 14px; border-top-width: 2px; border-right-width: 2px; }
+.cap-corner.bl { bottom: 14px; left: 14px; border-bottom-width: 2px; border-left-width: 2px; }
+.cap-corner.br { bottom: 14px; right: 14px; border-bottom-width: 2px; border-right-width: 2px; }
 .cap-featured-bg {
   position: absolute;
   inset: 0;
@@ -588,7 +756,7 @@ button, input, select, textarea {
 .cap-featured-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(28,41,56,0.95) 0%, rgba(28,41,56,0.6) 50%, rgba(28,41,56,0.3) 100%);
+  background: linear-gradient(to top, rgba(21,27,35,0.95) 0%, rgba(21,27,35,0.6) 50%, rgba(21,27,35,0.3) 100%);
 }
 .cap-featured-content {
   position: relative;
@@ -598,7 +766,7 @@ button, input, select, textarea {
 }
 .cap-featured-content h3 {
   font-size: 28px;
-  font-weight: 800;
+  font-weight: 700;
   color: #fff;
   margin-bottom: 12px;
 }
@@ -614,14 +782,14 @@ button, input, select, textarea {
   flex-wrap: wrap;
 }
 .cap-featured-spec {
-  background: rgba(0,119,204,0.15);
-  border: 1px solid rgba(0,119,204,0.3);
-  border-radius: 6px;
+  background: rgba(30,143,222,0.12);
+  border: 1px solid rgba(30,143,222,0.35);
+  border-radius: 2px;
   padding: 8px 16px;
-  font-family: 'Barlow', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  color: #4da8e8;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: #5EB2EE;
   letter-spacing: 0.5px;
 }
 @media (max-width: 600px) {
@@ -638,23 +806,27 @@ button, input, select, textarea {
   gap: 36px;
   margin: 40px 0;
   padding: 20px 24px;
-  background: linear-gradient(135deg, var(--primary), #1a3a55);
+  background:
+    repeating-linear-gradient(0deg, rgba(30,143,222,0.05) 0 1px, transparent 1px 24px),
+    repeating-linear-gradient(90deg, rgba(30,143,222,0.05) 0 1px, transparent 1px 24px),
+    linear-gradient(135deg, var(--primary), #1B2B3D);
+  border: 1px solid rgba(30,143,222,0.25);
   border-radius: var(--radius);
   flex-wrap: wrap;
 }
 .cap-spec-bar-item {
-  font-family: 'Barlow', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 0.8px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.5px;
   display: flex;
   align-items: center;
   gap: 8px;
   white-space: nowrap;
 }
 .cap-spec-bar-item .spec-val {
-  color: var(--accent);
+  color: #5EB2EE;
 }
 .cap-spec-bar-sep {
   width: 1px;
@@ -672,15 +844,25 @@ button, input, select, textarea {
   margin-bottom: 32px;
 }
 .cap-group-title {
-  font-family: 'Barlow', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 2px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 20px;
   padding-bottom: 8px;
-  border-bottom: 2px solid var(--border);
+  border-bottom: 1px dashed var(--border);
+  position: relative;
+}
+.cap-group-title::after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  bottom: -8px;
+  font-family: var(--mono);
+  color: rgba(30,143,222,0.4);
+  font-size: 14px;
 }
 .cap-group-grid-2 {
   display: grid;
@@ -695,20 +877,22 @@ button, input, select, textarea {
 .cap-card {
   background: var(--light-bg);
   border: 1px solid var(--border);
+  border-left: 2px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 32px 24px;
-  transition: all 0.3s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 .cap-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-md);
   border-color: var(--accent);
+  border-left-color: var(--orange);
+  background: var(--white);
 }
 .cap-icon {
   width: 52px;
   height: 52px;
-  background: linear-gradient(135deg, var(--primary), #2a3f55);
-  border-radius: 10px;
+  background: linear-gradient(135deg, var(--primary), #26333F);
+  border-radius: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -761,7 +945,7 @@ button, input, select, textarea {
 .photo-break-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(28,41,56,0.75);
+  background: rgba(21,27,35,0.75);
 }
 .photo-break-content {
   position: relative;
@@ -771,20 +955,22 @@ button, input, select, textarea {
   max-width: 700px;
 }
 .photo-break-quote {
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Chakra Petch', sans-serif;
   font-size: clamp(24px, 4vw, 38px);
-  font-weight: 800;
+  font-weight: 700;
   color: #fff;
   line-height: 1.3;
   margin-bottom: 16px;
 }
 .photo-break-attr {
-  font-size: 14px;
+  font-family: var(--mono);
+  font-size: 12px;
   color: rgba(255,255,255,0.5);
-  font-weight: 500;
-  letter-spacing: 1px;
+  font-weight: 400;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
 }
+.photo-break-attr::before { content: '/ '; color: var(--orange); }
 @media (max-width: 600px) {
   .photo-break { height: 300px; }
 }
@@ -846,7 +1032,7 @@ button, input, select, textarea {
 }
 .ind-card-visual:hover .ind-card-text h3 {
   color: #fff;
-  text-shadow: 0 0 12px rgba(0,119,204,0.4);
+  text-shadow: 0 0 12px rgba(30,143,222,0.4);
 }
 .ind-card-text p {
   font-size: 13px;
@@ -875,8 +1061,10 @@ button, input, select, textarea {
   top: 0;
   left: 0;
   right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  height: 0;
+  margin: 0 5%;
+  border-top: 1px dashed var(--border);
+  background: none;
 }
 .process-timeline {
   display: flex;
@@ -923,13 +1111,13 @@ button, input, select, textarea {
   height: 64px;
   border-radius: 50%;
   background: var(--white);
-  border: 3px solid var(--border);
+  border: 2px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Barlow', sans-serif;
-  font-size: 24px;
-  font-weight: 800;
+  font-family: var(--mono);
+  font-size: 22px;
+  font-weight: 600;
   color: var(--primary);
   margin-bottom: 20px;
   transition: all 0.4s ease;
@@ -937,7 +1125,7 @@ button, input, select, textarea {
 .process-timeline.animated .process-num {
   border-color: var(--accent);
   color: var(--accent);
-  box-shadow: 0 0 0 6px rgba(0,119,204,0.1);
+  box-shadow: 0 0 0 6px rgba(30,143,222,0.1);
 }
 .process-step h3 {
   font-size: 16px;
@@ -997,6 +1185,16 @@ button, input, select, textarea {
   position: relative;
   overflow: hidden;
 }
+.why::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(30,143,222,0.05) 0 1px, transparent 1px 48px),
+    repeating-linear-gradient(90deg, rgba(30,143,222,0.05) 0 1px, transparent 1px 48px);
+  z-index: 1;
+}
 .why-bg-img {
   position: absolute;
   inset: 0;
@@ -1019,22 +1217,22 @@ button, input, select, textarea {
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: var(--radius-lg);
   padding: 36px 24px;
-  transition: all 0.3s;
+  transition: background 0.15s ease, border-color 0.15s ease;
 }
 .why-card:hover {
-  background: rgba(255,255,255,0.08);
-  border-color: rgba(0,119,204,0.3);
-  transform: translateY(-4px);
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(30,143,222,0.45);
 }
 .why-num {
-  font-family: 'Barlow', sans-serif;
-  font-size: 48px;
-  font-weight: 900;
+  font-family: var(--mono);
+  font-size: 40px;
+  font-weight: 600;
   color: var(--accent);
-  opacity: 0.3;
+  opacity: 0.4;
   line-height: 1;
   margin-bottom: 16px;
 }
+.why-num::before { content: '/ '; opacity: 0.5; }
 .why-card h3 {
   font-size: 18px;
   font-weight: 700;
@@ -1062,8 +1260,10 @@ button, input, select, textarea {
   top: 0;
   left: 0;
   right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  height: 0;
+  margin: 0 5%;
+  border-top: 1px dashed var(--border);
+  background: none;
 }
 .about-wrap {
   display: grid;
@@ -1074,7 +1274,7 @@ button, input, select, textarea {
 }
 .about-text h3 {
   font-size: 24px;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--primary);
   margin-bottom: 20px;
 }
@@ -1111,10 +1311,10 @@ button, input, select, textarea {
 }
 .certs-title {
   text-align: center;
-  font-family: 'Barlow', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 2.5px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--text-secondary);
   margin-bottom: 32px;
@@ -1131,14 +1331,14 @@ button, input, select, textarea {
   gap: 10px;
   background: var(--white);
   border: 1px solid var(--border);
-  border-radius: 50px;
+  border-radius: 2px;
   padding: 12px 24px;
-  font-family: 'Barlow', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
   color: var(--primary);
   letter-spacing: 0.5px;
-  transition: all 0.25s;
+  transition: border-color 0.15s, box-shadow 0.15s;
   position: relative;
   overflow: hidden;
 }
@@ -1146,15 +1346,14 @@ button, input, select, textarea {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 20px center, rgba(0,119,204,0.06), transparent 60%);
+  background: radial-gradient(circle at 20px center, rgba(30,143,222,0.06), transparent 60%);
   opacity: 0;
   transition: opacity 0.3s;
 }
 .cert-badge:hover::before { opacity: 1; }
 .cert-badge:hover {
   border-color: var(--accent);
-  box-shadow: 0 2px 16px rgba(0,119,204,0.15);
-  transform: translateY(-2px);
+  box-shadow: 0 2px 16px rgba(30,143,222,0.15);
 }
 .cert-badge svg {
   width: 20px;
@@ -1165,7 +1364,7 @@ button, input, select, textarea {
   stroke-linecap: round;
   stroke-linejoin: round;
   flex-shrink: 0;
-  filter: drop-shadow(0 0 4px rgba(0,119,204,0.3));
+  filter: drop-shadow(0 0 4px rgba(30,143,222,0.3));
 }
 
 /* ============================================================
@@ -1181,8 +1380,10 @@ button, input, select, textarea {
   top: 0;
   left: 0;
   right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  height: 0;
+  margin: 0 5%;
+  border-top: 1px dashed var(--border);
+  background: none;
 }
 .testimonials-grid {
   display: grid;
@@ -1231,7 +1432,7 @@ button, input, select, textarea {
   font-style: italic;
 }
 .testimonial-author {
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Chakra Petch', sans-serif;
   font-size: 14px;
   font-weight: 700;
   color: var(--primary);
@@ -1285,8 +1486,10 @@ button, input, select, textarea {
   top: 0;
   left: 0;
   right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  height: 0;
+  margin: 0 5%;
+  border-top: 1px dashed var(--border);
+  background: none;
 }
 .rfq-wrap {
   display: grid;
@@ -1296,7 +1499,7 @@ button, input, select, textarea {
 }
 .rfq-info h3 {
   font-size: 24px;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--primary);
   margin-bottom: 16px;
 }
@@ -1340,8 +1543,9 @@ button, input, select, textarea {
   margin-bottom: 2px;
 }
 .rfq-contact-value {
-  font-size: 15px;
-  font-weight: 600;
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 500;
   color: var(--primary);
 }
 .rfq-contact-value a { color: var(--accent); }
@@ -1364,7 +1568,7 @@ button, input, select, textarea {
 .form-group.full { grid-column: 1 / -1; }
 .form-group label {
   display: block;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Chakra Petch', sans-serif;
   font-size: 13px;
   font-weight: 700;
   color: var(--primary);
@@ -1380,16 +1584,16 @@ button, input, select, textarea {
   padding: 12px 16px;
   background: var(--white);
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 2px;
   font-size: 15px;
   color: var(--charcoal);
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(0,119,204,0.1);
+  box-shadow: 0 0 0 3px rgba(30,143,222,0.1);
 }
 .form-group textarea { min-height: 120px; resize: vertical; }
 .form-group select { cursor: pointer; }
@@ -1430,7 +1634,7 @@ button, input, select, textarea {
   background: none;
   cursor: pointer;
   text-align: left;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Chakra Petch', sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: var(--primary);
@@ -1481,10 +1685,10 @@ button, input, select, textarea {
   max-width: 280px;
 }
 .footer h4 {
-  font-family: 'Barlow', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 2px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
   color: rgba(255,255,255,0.4);
   margin-bottom: 20px;
@@ -1523,7 +1727,9 @@ button, input, select, textarea {
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
-  font-size: 13px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.3px;
   color: rgba(255,255,255,0.35);
 }
 @media (max-width: 768px) {
@@ -1543,23 +1749,23 @@ button, input, select, textarea {
   left: 50%;
   transform: translateX(-50%);
   z-index: 900;
-  background: var(--accent);
-  color: #fff;
+  background: var(--orange);
+  color: #151B23;
   padding: 14px 36px;
-  border-radius: 50px;
-  font-family: 'Barlow', sans-serif;
+  border-radius: 3px;
+  font-family: 'Chakra Petch', sans-serif;
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  box-shadow: 0 4px 20px rgba(0,119,204,0.45);
-  transition: all 0.25s;
+  box-shadow: 0 4px 20px rgba(255,107,53,0.45);
+  transition: background 0.15s, color 0.15s;
   align-items: center;
   gap: 8px;
 }
 .floating-cta:hover {
-  background: var(--accent-hover);
-  transform: translateX(-50%) translateY(-2px);
+  background: var(--orange-hover);
+  color: #fff;
 }
 .floating-cta svg { width: 18px; height: 18px; }
 @media (max-width: 768px) {
@@ -1618,9 +1824,9 @@ button, input, select, textarea {
   <div class="container">
     <a href="#" class="logo" aria-label="Wynn Precision Home">
       <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="2" y="2" width="32" height="32" rx="4" stroke="#0077CC" stroke-width="2"/>
+        <rect x="2" y="2" width="32" height="32" rx="4" stroke="#1E8FDE" stroke-width="2"/>
         <path d="M8 12L13 24L18 16L23 24L28 12" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <line x1="8" y1="28" x2="28" y2="28" stroke="#0077CC" stroke-width="1.5"/>
+        <line x1="8" y1="28" x2="28" y2="28" stroke="#1E8FDE" stroke-width="1.5"/>
       </svg>
       <div>
         Wynn Precision
@@ -1659,6 +1865,7 @@ button, input, select, textarea {
     <source src="https://assets.mixkit.co/active_storage/videos/48889/48889-video-720.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
+  <div class="hero-scanline" aria-hidden="true"></div>
   <div class="container">
     <div class="hero-content">
       <div class="hero-badge">
@@ -1701,12 +1908,11 @@ button, input, select, textarea {
 <main id="main">
 
 <!-- Capabilities — Redesigned -->
-<section class="capabilities section-pad" id="capabilities">
+<section class="capabilities section-pad crosshair-corners" id="capabilities">
   <div class="container">
     <div class="reveal section-accent">
       <div class="section-label">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-        Capabilities
+        <span class="idx">/ 01 &mdash;</span> Capabilities
       </div>
       <h2 class="section-title">Precision Machining Services</h2>
       <p class="section-subtitle">Full-spectrum machining capabilities for the most demanding aerospace and defense applications. Every part held to exacting tolerances.</p>
@@ -1714,6 +1920,10 @@ button, input, select, textarea {
 
     <!-- Featured Capability: CNC Machining -->
     <div class="cap-featured reveal">
+      <span class="cap-corner tl" aria-hidden="true"></span>
+      <span class="cap-corner tr" aria-hidden="true"></span>
+      <span class="cap-corner bl" aria-hidden="true"></span>
+      <span class="cap-corner br" aria-hidden="true"></span>
       <img class="cap-featured-bg" src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=1200&q=80" alt="CNC machining center cutting metal with precision" loading="lazy">
       <div class="cap-featured-overlay"></div>
       <div class="cap-featured-content">
@@ -1759,6 +1969,8 @@ button, input, select, textarea {
         </div>
       </div>
     </div>
+
+    <div class="dim-divider" data-dim="TOL &plusmn;0.0001 IN" aria-hidden="true"></div>
 
     <!-- Group: Milling, Turning & Production -->
     <div class="cap-group reveal">
@@ -1822,12 +2034,11 @@ button, input, select, textarea {
 </div>
 
 <!-- Industries — Visual Cards -->
-<section class="industries section-pad" id="industries">
+<section class="industries section-pad crosshair-corners blueprint-grid" id="industries">
   <div class="container">
     <div class="reveal section-accent" style="text-align:center;">
       <div class="section-label" style="justify-content:center;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20M5 20V8l7-5 7 5v12"/><rect x="9" y="12" width="6" height="8"/></svg>
-        Industries Served
+        <span class="idx">/ 02 &mdash;</span> Industries Served
       </div>
       <h2 class="section-title">Trusted Across Critical Sectors</h2>
       <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">We manufacture precision components for industries where failure is not an option.</p>
@@ -1885,12 +2096,11 @@ button, input, select, textarea {
 <!-- ============================================================
      PROCESS SECTION
      ============================================================ -->
-<section class="process section-pad" id="process">
+<section class="process section-pad crosshair-corners" id="process">
   <div class="container">
     <div class="reveal section-accent" style="text-align:center;">
       <div class="section-label" style="justify-content:center;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        Our Process
+        <span class="idx">/ 03 &mdash;</span> Our Process
       </div>
       <h2 class="section-title">From RFQ to Delivery</h2>
       <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">A disciplined, repeatable process that ensures quality at every step.</p>
@@ -1929,14 +2139,13 @@ button, input, select, textarea {
 </section>
 
 <!-- Why Wynn Precision -->
-<section class="why section-pad" id="why">
+<section class="why section-pad crosshair-corners" id="why">
   <!-- Subtle background shop photo -->
   <img class="why-bg-img" src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=1200&q=60" alt="" loading="lazy" aria-hidden="true">
   <div class="container">
     <div class="reveal section-accent" style="text-align:center;">
       <div class="section-label" style="justify-content:center;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        Why Wynn Precision
+        <span class="idx">/ 04 &mdash;</span> Why Wynn Precision
       </div>
       <h2 class="section-title">Built for What Matters</h2>
       <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">Four pillars that set us apart in aerospace and defense machining.</p>
@@ -1967,12 +2176,11 @@ button, input, select, textarea {
 </section>
 
 <!-- About -->
-<section class="about section-pad" id="about">
+<section class="about section-pad crosshair-corners" id="about">
   <div class="container">
     <div class="reveal section-accent">
       <div class="section-label">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        About Us
+        <span class="idx">/ 05 &mdash;</span> About Us
       </div>
       <h2 class="section-title">The Shop Behind the Parts</h2>
     </div>
@@ -2023,12 +2231,11 @@ button, input, select, textarea {
 <!-- ============================================================
      TESTIMONIALS
      ============================================================ -->
-<section class="testimonials section-pad" id="testimonials">
+<section class="testimonials section-pad crosshair-corners" id="testimonials">
   <div class="container">
     <div class="reveal section-accent" style="text-align:center;">
       <div class="section-label" style="justify-content:center;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        What Our Clients Say
+        <span class="idx">/ 06 &mdash;</span> What Our Clients Say
       </div>
       <h2 class="section-title">Trusted by Procurement Teams</h2>
       <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">Hear directly from the engineers and buyers who count on us for their most critical parts.</p>
@@ -2061,12 +2268,11 @@ button, input, select, textarea {
 </section>
 
 <!-- RFQ / Contact -->
-<section class="rfq section-pad" id="rfq">
+<section class="rfq section-pad crosshair-corners" id="rfq">
   <div class="container">
     <div class="reveal section-accent">
       <div class="section-label">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Request a Quote
+        <span class="idx">/ 07 &mdash;</span> Request a Quote
       </div>
       <h2 class="section-title">Start Your Project</h2>
       <p class="section-subtitle">Submit your requirements and we will respond with a detailed quote, typically within one business day.</p>
@@ -2183,12 +2389,11 @@ button, input, select, textarea {
 </section>
 
 <!-- FAQ -->
-<section class="faq section-pad" id="faq">
+<section class="faq section-pad crosshair-corners" id="faq">
   <div class="container">
     <div class="reveal section-accent" style="text-align:center;">
       <div class="section-label" style="justify-content:center;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        FAQ
+        <span class="idx">/ 08 &mdash;</span> FAQ
       </div>
       <h2 class="section-title">Frequently Asked Questions</h2>
     </div>
@@ -2243,9 +2448,9 @@ button, input, select, textarea {
       <div class="footer-brand">
         <a href="#" class="logo" aria-label="Wynn Precision Home">
           <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
-            <rect x="2" y="2" width="32" height="32" rx="4" stroke="#0077CC" stroke-width="2"/>
+            <rect x="2" y="2" width="32" height="32" rx="4" stroke="#1E8FDE" stroke-width="2"/>
             <path d="M8 12L13 24L18 16L23 24L28 12" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <line x1="8" y1="28" x2="28" y2="28" stroke="#0077CC" stroke-width="1.5"/>
+            <line x1="8" y1="28" x2="28" y2="28" stroke="#1E8FDE" stroke-width="1.5"/>
           </svg>
           <div>
             Wynn Precision
